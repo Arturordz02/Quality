@@ -78,13 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 4. GESTIÓN DE DROPDOWNS Y SUBMENÚS (TÁCTIL & ESCRITORIO) ---
     dropdownToggles.forEach(toggle => {
         toggle.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-
             if (window.innerWidth < 992) {
                 // En móviles, permitir que actúe como acordeón sin interferir
                 const parentDropdown = this.closest('.dropdown');
                 if (parentDropdown) {
-                    // Cerrar otros dropdowns hermanos
                     document.querySelectorAll('.nav-item.dropdown').forEach(item => {
                         if (item !== parentDropdown) {
                             item.classList.remove('show', 'is-open');
@@ -94,15 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (otherMenu) otherMenu.classList.remove('show');
                         }
                     });
-                }
-            } else {
-                // En escritorio (> 992px), navegación suave si es ancla #
-                if (href && href.startsWith('#') && href.length > 1) {
-                    const targetEl = document.querySelector(href);
-                    if (targetEl) {
-                        e.preventDefault();
-                        targetEl.scrollIntoView({ behavior: 'smooth' });
-                    }
                 }
             }
         });
@@ -169,10 +157,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 7. SELECTOR FLOTANTE MULTIPAÍS DE WHATSAPP ---
+    // --- 7. SELECTOR FLOTANTE MULTIPAÍS DE WHATSAPP (Zero Dead-Space) ---
     let floatingWidget = document.getElementById('whatsappFloatingWidget');
     if (!floatingWidget) {
-        // Inyectar dinámicamente si no existe en el DOM
         const widgetHTML = `
         <div class="whatsapp-floating-widget" id="whatsappFloatingWidget">
             <div class="whatsapp-floating-menu" id="whatsappFloatingMenu" aria-hidden="true">
@@ -189,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="small text-light text-opacity-75" style="font-size: 0.78rem;">Selecciona tu país de contacto:</span>
                 </div>
                 <div class="whatsapp-menu-body">
-                    <a href="https://api.whatsapp.com/send?phone=51993463118&text=Buen%20d%C3%ADa%20deseo%20informaci%C3%B3n%20de%20cursos/consultor%C3%ADa" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
+                    <a href="https://api.whatsapp.com/send?phone=51993463118&text=Buen%20d%C3%ADa%20Quality%20Consulting,%20deseo%20informaci%C3%B3n%20de%20sus%20servicios/cursos" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
                         <span class="country-flag">🇵🇪</span>
                         <div class="country-info">
                             <span class="country-name">Perú (Central)</span>
@@ -197,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <i class="fas fa-chevron-right arrow-go"></i>
                     </a>
-                    <a href="https://api.whatsapp.com/send?phone=56990760986&text=Buen%20d%C3%ADa%20deseo%20informaci%C3%B3n%20de%20cursos/consultor%C3%ADa" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
+                    <a href="https://api.whatsapp.com/send?phone=56990760986&text=Buen%20d%C3%ADa%20Quality%20Consulting,%20deseo%20informaci%C3%B3n%20de%20sus%20servicios/cursos" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
                         <span class="country-flag">🇨🇱</span>
                         <div class="country-info">
                             <span class="country-name">Chile</span>
@@ -205,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <i class="fas fa-chevron-right arrow-go"></i>
                     </a>
-                    <a href="https://api.whatsapp.com/send?phone=573152276029&text=Buen%20d%C3%ADa%20deseo%20informaci%C3%B3n%20de%20cursos/consultor%C3%ADa" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
+                    <a href="https://api.whatsapp.com/send?phone=573152276029&text=Buen%20d%C3%ADa%20Quality%20Consulting,%20deseo%20informaci%C3%B3n%20de%20sus%20servicios/cursos" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
                         <span class="country-flag">🇪🇨</span>
                         <div class="country-info">
                             <span class="country-name">Ecuador</span>
@@ -213,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <i class="fas fa-chevron-right arrow-go"></i>
                     </a>
-                    <a href="https://api.whatsapp.com/send?phone=50768195911&text=Buen%20d%C3%ADa%20deseo%20informaci%C3%B3n%20de%20cursos/consultor%C3%ADa" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
+                    <a href="https://api.whatsapp.com/send?phone=50768195911&text=Buen%20d%C3%ADa%20Quality%20Consulting,%20deseo%20informaci%C3%B3n%20de%20sus%20servicios/cursos" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
                         <span class="country-flag">🇵🇦</span>
                         <div class="country-info">
                             <span class="country-name">Panamá</span>
@@ -221,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <i class="fas fa-chevron-right arrow-go"></i>
                     </a>
-                    <a href="https://api.whatsapp.com/send?phone=525537208429&text=Buen%20d%C3%ADa%20deseo%20informaci%C3%B3n%20de%20cursos/consultor%C3%ADa" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
+                    <a href="https://api.whatsapp.com/send?phone=525537208429&text=Buen%20d%C3%ADa%20Quality%20Consulting,%20deseo%20informaci%C3%B3n%20de%20sus%20servicios/cursos" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
                         <span class="country-flag">🇲🇽</span>
                         <div class="country-info">
                             <span class="country-name">México</span>
@@ -261,14 +248,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // Click o toque en el botón flotante
         floatingBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
             toggleWidget();
         });
 
-        // Click en el botón de cerrar
         if (closeBtn) {
             closeBtn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -277,14 +262,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Click fuera del widget para cerrarlo
         document.addEventListener('click', (e) => {
             if (floatingWidget.classList.contains('is-open') && !floatingWidget.contains(e.target)) {
                 toggleWidget(false);
             }
         });
 
-        // Prevenir que clics dentro del menú cierren el widget
         if (floatingMenu) {
             floatingMenu.addEventListener('click', (e) => {
                 e.stopPropagation();
