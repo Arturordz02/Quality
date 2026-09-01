@@ -73,6 +73,71 @@
     padding: 0;
 }
 
+/* Optimización de Respuesta Táctil Inmediata y Cero Delay en Clics/Taps */
+a, button, input, textarea, select, label, .btn, .nav-link, .dropdown-item, .input-group-text, [role="button"] {
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Desactivar transforms y pseudo-elementos de Hover.css en pantallas táctiles para evitar doble toque */
+@media (hover: none) and (pointer: coarse) {
+    [class*="hvr-"] {
+        transform: none !important;
+        animation: none !important;
+    }
+    [class*="hvr-"]::before,
+    [class*="hvr-"]::after {
+        display: none !important;
+    }
+}
+
+/* Reglas Globales de Formularios y Recuadros de Texto para Activación Inmediata */
+.form-control,
+.form-select,
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="password"] {
+    cursor: text !important;
+    user-select: text !important;
+    -webkit-user-select: text !important;
+    position: relative !important;
+    z-index: 2 !important;
+    pointer-events: auto !important;
+}
+
+.input-group {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.input-group-text {
+    cursor: pointer !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+}
+
+/* Corrección de Pseudo-elementos y Capas Decorativas (Nunca deben bloquear clics ni toques) */
+.support-info-card::before,
+.pmo-card::before,
+.stepper-card::before,
+.permit-service-card::before,
+.costos-module-card::before,
+.temario-card::before,
+.pmbok-card::before,
+.tool-card::before,
+.reflection-card::before,
+.vm-card::before,
+.value-card::after,
+.lego-step-card::before,
+.versus-card::before,
+.pillar-6-card::before,
+.promo-discount-banner::before {
+    pointer-events: none !important;
+}
+
 html {
     scroll-behavior: smooth;
     font-size: 16px;

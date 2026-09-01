@@ -335,7 +335,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 9. GESTIÓN ASÍNCRONA DE FORMULARIOS (CONTACTO Y LIBRO DE RECLAMACIONES) ---
+    // --- 9. MEJORA DE FOCO INMEDIATO EN RECUADROS DE FORMULARIOS ---
+    document.querySelectorAll('.input-group-text').forEach(addon => {
+        addon.addEventListener('click', () => {
+            const input = addon.parentElement.querySelector('input, textarea, select');
+            if (input) input.focus();
+        });
+    });
+
+    // --- 10. GESTIÓN ASÍNCRONA DE FORMULARIOS (CONTACTO Y LIBRO DE RECLAMACIONES) ---
     
     // Función auxiliar para mostrar alertas animadas sin alterar el diseño existente
     const showFormAlert = (containerEl, type, message, details = []) => {
