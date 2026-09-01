@@ -335,9 +335,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 9. MEJORA DE FOCO INMEDIATO EN RECUADROS DE FORMULARIOS ---
+    // --- 9. MEJORA DE FOCO INMEDIATO EN RECUADROS DE FORMULARIOS (Área 100% Activa) ---
+    document.addEventListener('click', (e) => {
+        const inputGroup = e.target.closest('.input-group');
+        if (inputGroup) {
+            const input = inputGroup.querySelector('input, textarea, select');
+            if (input && document.activeElement !== input) {
+                input.focus();
+            }
+        }
+    });
+
     document.querySelectorAll('.input-group-text').forEach(addon => {
-        addon.addEventListener('click', () => {
+        addon.addEventListener('click', (e) => {
+            e.preventDefault();
             const input = addon.parentElement.querySelector('input, textarea, select');
             if (input) input.focus();
         });

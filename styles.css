@@ -91,15 +91,57 @@ a, button, input, textarea, select, label, .btn, .nav-link, .dropdown-item, .inp
     }
 }
 
-/* Reglas Globales de Formularios y Recuadros de Texto para Activación Inmediata */
+/* Erradicar puntos muertos en botones: los hijos internos (iconos, spans) no deben bloquear el clic del contenedor */
+.btn *,
+button *,
+.social-btn *,
+.social-pill-btn *,
+.mobile-toggle-btn *,
+.btn-qcs-primary *,
+.btn-success *,
+.btn-warning *,
+.hero-channel-card * {
+    pointer-events: none !important;
+}
+
+/* Dimensiones mínimas y áreas táctiles generosas (48px mínimo según directrices de accesibilidad) */
+.btn,
+button.btn,
+a.btn,
+button[type="submit"] {
+    min-height: 48px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    user-select: none !important;
+    pointer-events: auto !important;
+}
+
+.btn-lg {
+    min-height: 54px !important;
+    padding: 0.95rem 1.75rem !important;
+}
+
+/* Reglas Globales de Formularios y Recuadros de Texto para Activación Inmediata en Toda la Superficie */
+.input-group {
+    position: relative !important;
+    z-index: 1 !important;
+    cursor: text !important;
+}
+
+.input-group > .form-control,
+.input-group > .form-select,
 .form-control,
 .form-select,
-textarea,
 input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="number"],
 input[type="password"] {
+    min-height: 52px !important;
+    padding: 0.85rem 1.15rem !important;
+    font-size: 0.98rem !important;
     cursor: text !important;
     user-select: text !important;
     -webkit-user-select: text !important;
@@ -108,15 +150,35 @@ input[type="password"] {
     pointer-events: auto !important;
 }
 
-.input-group {
-    position: relative !important;
-    z-index: 1 !important;
-}
-
-.input-group-text {
+.input-group > .input-group-text {
+    min-height: 52px !important;
+    padding: 0.85rem 1.15rem !important;
     cursor: pointer !important;
     user-select: none !important;
     -webkit-user-select: none !important;
+    background-color: #f8fafc !important;
+}
+
+textarea.form-control,
+textarea {
+    min-height: 140px !important;
+    padding: 1rem 1.15rem !important;
+    font-size: 0.98rem !important;
+    cursor: text !important;
+    user-select: text !important;
+    -webkit-user-select: text !important;
+    position: relative !important;
+    z-index: 2 !important;
+    pointer-events: auto !important;
+    line-height: 1.6 !important;
+}
+
+.form-control:focus,
+.form-select:focus,
+textarea:focus {
+    border-color: var(--qcs-yellow) !important;
+    box-shadow: 0 0 0 0.25rem rgba(229, 168, 19, 0.25) !important;
+    outline: none !important;
 }
 
 /* Corrección de Pseudo-elementos y Capas Decorativas (Nunca deben bloquear clics ni toques) */
@@ -7912,9 +7974,12 @@ html, body {
     }
 
     .social-btn {
-        width: 30px !important;
-        height: 30px !important;
-        font-size: 0.8rem !important;
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 0.95rem !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
     /* Grillas y Columnas a 1 Sola Columna Fluida */
