@@ -1,0 +1,936 @@
+<!DOCTYPE html><html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuestas y Estudios en Gestión de Proyectos | Quality Consulting Solutions</title>
+    <meta name="description" content="Participa en las encuestas e investigaciones aplicadas de Quality Consulting Solutions sobre el Síndrome del 90% en la compleción de proyectos y diagnósticos de calidad.">
+    
+        <!-- Favicon Oficial -->
+    <link rel="icon" type="image/png" href="img/Logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="img/Logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Open+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Hoja de estilos principal del sitio -->
+    <link rel="stylesheet" href="styles.css?v=2.2">
+
+    <!-- Estilos Especializados Research Lab & Industry Survey Hub -->
+    <style>
+        body {
+            background-color: var(--qcs-bg-light);
+            color: #1e293b;
+        }
+
+        /* ----------------------------------------------------
+           1. HERO SECTION (Research & Survey Style)
+           ---------------------------------------------------- */
+        .survey-hero-banner {
+            position: relative;
+            padding: 190px 1.5rem 85px 1.5rem;
+            background: linear-gradient(135deg, #0F1113 0%, #1A1D20 50%, #1A1D20 100%);
+            color: #ffffff;
+            overflow: hidden;
+            border-bottom: 4px solid #0dcaf0;
+        }
+
+        .survey-hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 85% 20%, rgba(229, 168, 19, 0.25) 0%, transparent 60%),
+                        radial-gradient(circle at 15% 85%, rgba(197, 155, 39, 0.18) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .survey-hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .survey-hero-title {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+        }
+
+        .survey-hero-subtitle {
+            font-family: var(--font-body);
+            font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+            color: #e2e8f0;
+            max-width: 840px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .research-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-family: var(--font-heading);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .research-pill:hover {
+            background: #ffffff;
+            color: #0F1113;
+            border-color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* ----------------------------------------------------
+           2. ESTUDIO DESTACADO: SÍNDROME DEL 90% (Analytics Box)
+           ---------------------------------------------------- */
+        .analytics-study-card {
+            background: #ffffff;
+            border-radius: 24px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 20px 45px rgba(15, 17, 19, 0.2);
+            padding: 3rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .analytics-study-card:hover {
+            box-shadow: 0 25px 55px rgba(15, 17, 19, 0.2);
+        }
+
+        .study-badge-active {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: #ffffff;
+            font-size: 0.78rem;
+            font-weight: 800;
+            font-family: var(--font-heading);
+            letter-spacing: 1px;
+            padding: 0.4rem 0.95rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+            text-transform: uppercase;
+        }
+
+        .study-badge-active .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse-animation 1.5s infinite;
+        }
+
+        @keyframes pulse-animation {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(255, 255, 255, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+
+        .study-title {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: clamp(1.4rem, 2.3vw, 2rem);
+            color: #0F1113;
+            margin-top: 1rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.35;
+        }
+
+        .concept-card-box {
+            background: linear-gradient(135deg, #F4F5F7 0%, #F4F5F7 100%);
+            border-left: 5px solid var(--qcs-yellow);
+            border-radius: 12px;
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .concept-text {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: #334155;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* Simulador de Barra de Progreso */
+        .progress-simulator-wrapper {
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 2rem 1.75rem;
+            margin: 2rem 0;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .progress-simulator-title {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--qcs-dark-slate);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .custom-progress-container {
+            height: 38px;
+            border-radius: 20px;
+            background-color: #e2e8f0;
+            overflow: hidden;
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .progress-bar-achieved {
+            background: linear-gradient(90deg, #1A1D20 0%, #E5A813 80%, #E5A813 100%);
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            position: relative;
+        }
+
+        .progress-bar-critical {
+            background: repeating-linear-gradient(
+                45deg,
+                #E5A813,
+                #E5A813 10px,
+                #C9910D 10px,
+                #C9910D 20px
+            );
+            font-family: var(--font-heading);
+            font-size: 0.78rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+            animation: move-stripes 2s linear infinite;
+        }
+
+        @keyframes move-stripes {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 0; }
+        }
+
+        .progress-stages-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #64748b;
+            font-family: var(--font-heading);
+        }
+
+        .critical-warning-box {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin-top: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #92400e;
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        /* Métricas Rápidas */
+        .metric-mini-card {
+            background: #F4F5F7;
+            border-radius: 14px;
+            padding: 1.25rem;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            height: 100%;
+            transition: all 0.25s ease;
+        }
+
+        .metric-mini-card:hover {
+            background: #ffffff;
+            border-color: var(--qcs-yellow);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(15, 17, 19, 0.2);
+        }
+
+        .metric-value {
+            font-family: var(--font-heading);
+            font-size: 1.85rem;
+            font-weight: 900;
+            color: var(--qcs-dark-slate);
+            line-height: 1.1;
+            margin-bottom: 0.35rem;
+        }
+
+        .metric-label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #64748b;
+            line-height: 1.4;
+        }
+
+        /* ----------------------------------------------------
+           3. BENEFICIOS DE PARTICIPAR (Grid 3 Cards)
+           ---------------------------------------------------- */
+        .benefit-card {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            padding: 2.25rem 2rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #1A1D20, #0dcaf0);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(15, 17, 19, 0.2);
+            border-color: #0dcaf0;
+        }
+
+        .benefit-card:hover::before {
+            opacity: 1;
+        }
+
+        .benefit-num {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: #0dcaf0;
+            background: rgba(229, 168, 19, 0.25);
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .benefit-card-title {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--qcs-dark-slate);
+            margin-bottom: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .benefit-card-title i {
+            color: var(--qcs-dark-slate);
+            font-size: 1.3rem;
+        }
+
+        .benefit-card-desc {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: #475569;
+            margin: 0;
+        }
+
+        /* ----------------------------------------------------
+           4. LLAMADO A LA ACCIÓN FINAL (In-House & Diagnósticos)
+           ---------------------------------------------------- */
+        .inhouse-cta-section {
+            background: linear-gradient(145deg, #0F1113 0%, #1A1D20 50%, #24292E 100%);
+            border-radius: 24px;
+            padding: 3.5rem 2.5rem;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(15, 17, 19, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .inhouse-cta-section::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(142, 146, 151, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .inhouse-cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -10%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(229, 168, 19, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+    </style>
+
+    <!-- Animate.css (Efectos principales de entrada) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- AOS (Animate On Scroll para tarjetas y secciones) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <!-- Hover.css (Microinteracciones en botones y enlaces) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+</head>
+<body>
+
+    <!-- ==========================================================================
+         CONTENEDOR PRINCIPAL DEL HEADER (Bootstrap 5 Integrado)
+         ========================================================================== -->
+    <header class="main-header" id="mainHeader">
+        
+        <!-- Franja Superior: Logo, Título Central y Redes Sociales -->
+        <div class="header-top">
+            <div class="header-container top-container">
+                
+                <!-- Logo a la izquierda -->
+                <div class="header-logo">
+                    <a href="index.html" class="logo-link" aria-label="Quality Consulting Solutions Inicio">
+                        <div class="logo-badge d-flex align-items-center">
+                            <img src="img/Logo.png" alt="Quality Consulting Solutions Logo" width="44" height="44" class="d-inline-block align-text-top rounded-2 me-2 brand-logo animate__animated animate__bounceIn" style="object-fit: cover; width: 44px; height: 44px;">
+                            <div class="logo-text-wrap">
+                                <span class="logo-title">QUALITY</span>
+                                <span class="logo-sub">CONSULTING</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Título Centrado -->
+                <div class="header-center-title">
+                    <h1 class="animate__animated animate__fadeInDown">QUALITY CONSULTING SOLUTIONS</h1>
+                    <p class="tagline animate__animated animate__fadeInUp animate__delay-1s">Ingeniería • Gestión de Proyectos • Capacitación • Calidad</p>
+                </div>
+
+                <!-- Redes Sociales a la derecha & Botón Móvil -->
+                <div class="header-actions">
+                    <div class="social-networks" aria-label="Redes Sociales">
+                        <a href="https://pe.linkedin.com/in/omarsamaniego" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.facebook.com/qaqcconsulting" target="_blank" rel="noopener noreferrer" class="social-btn facebook" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCbCdXwbcl-uouYa6Y4_kY0A?view_as=subscriber" target="_blank" rel="noopener noreferrer" class="social-btn youtube" aria-label="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp animate__animated animate__pulse animate__infinite" aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+
+                    <!-- Botón Hamburguesa Nativo Bootstrap 5 para Mobile -->
+                    <button class="navbar-toggler mobile-toggle-btn" id="mobileToggleBtn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarQuality" aria-controls="navbarQuality" aria-expanded="false" aria-label="Abrir menú de navegación">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Barra de Navegación Principal Horizontal con Bootstrap 5 -->
+        <nav class="navbar navbar-expand-lg main-navbar p-0" id="mainNavbar" aria-label="Navegación principal">
+            <div class="header-container nav-container w-100">
+                <div class="collapse navbar-collapse justify-content-center" id="navbarQuality">
+                    <ul class="navbar-nav nav-menu" id="navMenu">
+
+                        <!-- HOME -->
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link hvr-underline-from-left">HOME</a>
+                        </li>
+
+                        <!-- NOSOTROS -->
+                        <li class="nav-item">
+                            <a href="nosotros.html" class="nav-link hvr-underline-from-left">NOSOTROS</a>
+                        </li>
+
+                        <!-- CONSULTORIA (Desplegable) -->
+                        <li class="nav-item dropdown">
+                            <a href="consultoria.html" class="nav-link dropdown-toggle hvr-underline-from-left" id="dropdownConsultoria" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                CONSULTORIA <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownConsultoria">
+                                <li><a href="gestion-de-pmo.html" class="dropdown-item">GESTION DE PMO</a></li>
+                                <li><a href="headhunting.html" class="dropdown-item">HEADHUNTING</a></li>
+                                <li><a href="gestion-de-riesgos.html" class="dropdown-item">GESTION DE RIESGOS</a></li>
+                                <li><a href="sindrome-del-90.html" class="dropdown-item">RIESGO DEL PLAZO</a></li>
+                                <li><a href="lego-serious-play.html" class="dropdown-item">LEGO SERIOUS PLAY</a></li>
+                                <li><a href="cronograma-forense.html" class="dropdown-item">CRONOGRAMA-FORENSE</a></li>
+                                <li><a href="homologaciones.html" class="dropdown-item">HOMOLOGACIONES</a></li>
+                                <li><a href="gestion-de-la-calidad.html" class="dropdown-item">GESTION DE LA CALIDAD</a></li>
+                                <li><a href="permisologia.html" class="dropdown-item">PERMISOLOGIA</a></li>
+                                <li><a href="universidad-corporativa.html" class="dropdown-item">UNIVERSIDAD CORPORATIVA</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- CAPACITACION (Desplegable Extenso) -->
+                        <li class="nav-item dropdown dropdown-large">
+                            <a href="capacitacion.html" class="nav-link dropdown-toggle hvr-underline-from-left" id="dropdownCapacitacion" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                CAPACITACION <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownCapacitacion">
+                                <li><a href="lean-last-planner.html" class="dropdown-item">LEAN-LAST-PLANNER</a></li>
+                                <li><a href="riesgos-tecnicos.html" class="dropdown-item">RIESGOS TECNICOS</a></li>
+                                <li><a href="riesgos-pmi.html" class="dropdown-item">RIESGOS PMI</a></li>
+                                <li><a href="riesgos-cadena-produccion.html" class="dropdown-item">RIESGOS CADENA PRODUCCION</a></li>
+                                <li><a href="calidad-y-pmi.html" class="dropdown-item">CALIDAD Y PMI</a></li>
+                                <li><a href="costos.html" class="dropdown-item">COSTOS</a></li>
+                                <li><a href="nec.html" class="dropdown-item">NEC</a></li>
+                                <li><a href="fidic.html" class="dropdown-item">FIDIC</a></li>
+                                <li><a href="pmo.html" class="dropdown-item">PMO</a></li>
+                                <li><a href="gerencia-de-calidad.html" class="dropdown-item">GERENCIA DE CALIDAD</a></li>
+                                <li><a href="valor-ganado.html" class="dropdown-item">VALOR GANADO</a></li>
+                                <li><a href="bim-revit-architecture.html" class="dropdown-item">BIM REVIT ARCHITECTURE</a></li>
+                                <li><a href="iso-9001.html" class="dropdown-item">ISO 9001</a></li>
+                                <li><a href="oficina-tecnica.html" class="dropdown-item">OFICINA-TECNICA</a></li>
+                                <li><a href="herramientas.html" class="dropdown-item">HERRAMIENTAS</a></li>
+                                <li><a href="proyectos-pmi.html" class="dropdown-item">PROYECTOS PMI</a></li>
+                                <li><a href="contratos.html" class="dropdown-item">CONTRATOS</a></li>
+                                <li><a href="contratos-estado.html" class="dropdown-item">CONTRATOS-ESTADO</a></li>
+                                <li><a href="gruas-torre.html" class="dropdown-item">GRUAS TORRE</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- PRESS -->
+                        <li class="nav-item">
+                            <a href="press.html" class="nav-link hvr-underline-from-left">PRESS</a>
+                        </li>
+
+                        <!-- MEDIOS -->
+                        <li class="nav-item">
+                            <a href="medios.html" class="nav-link hvr-underline-from-left">MEDIOS</a>
+                        </li>
+
+                        <!-- CLIENTES -->
+                        <li class="nav-item">
+                            <a href="clientes.html" class="nav-link hvr-underline-from-left">CLIENTES</a>
+                        </li>
+
+                        <!-- MÁS... -->
+                        <li class="nav-item dropdown dropdown-more">
+                            <a href="javascript:void(0)" class="nav-link dropdown-toggle active hvr-underline-from-left" id="dropdownMas" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                MÁS... <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMas">
+                                <li class="dropdown-submenu">
+                                    <a href="investigacion.html" class="dropdown-item submenu-toggle">
+                                        <span>INVESTIGACION</span>
+                                        <i class="fa-solid fa-chevron-right submenu-arrow"></i>
+                                    </a>
+                                    <ul class="dropdown-menu-lateral">
+                                        <li><a href="encuestas-proyectos.html" class="dropdown-item active">Encuestas-Proyectos</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contacto.html" class="dropdown-item">CONTACTO</a></li>
+                                <li><a href="noticias.html" class="dropdown-item">NOTICIAS</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Overlay móvil -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+    </header>
+
+    <main>
+        <!-- ==========================================================================
+             1. HERO SECTION (Research & Industry Survey Style)
+             ========================================================================== -->
+        <section class="survey-hero-banner text-center">
+            <div class="survey-hero-pattern"></div>
+            <div class="container position-relative">
+                
+                <!-- Badge Superior Neón -->
+                <div class="d-inline-block mb-3">
+                    <span class="badge bg-warning text-dark text-dark px-3 py-2 rounded-pill fw-bold mb-2 shadow-sm">
+                        <i class="fas fa-poll me-2"></i> INVESTIGACIÓN APLICADA &amp; ESTUDIOS DEL SECTOR
+                    </span>
+                </div>
+
+                <!-- Título Principal -->
+                <h1 class="survey-hero-title animate__animated animate__fadeInDown">ENCUESTAS Y ESTUDIOS EN GESTIÓN DE PROYECTOS</h1>
+
+                <!-- Subtítulo -->
+                <p class="survey-hero-subtitle">
+                    Participa en nuestras investigaciones sectoriales para identificar brechas, recopilar mejores prácticas y contribuir al desarrollo técnico de la industria.
+                </p>
+
+                <!-- Micro-detalles de investigación -->
+                <div class="d-flex justify-content-center flex-wrap gap-3 mt-4">
+                    <span class="research-pill">
+                        <i class="fa-solid fa-microscope text-warning"></i> Metodología QCS Analytics
+                    </span>
+                    <span class="research-pill">
+                        <i class="fa-solid fa-chart-line text-warning"></i> Curva de Liberación ®
+                    </span>
+                    <span class="research-pill">
+                        <i class="fa-solid fa-shield-halved text-success"></i> 100% Confidencial
+                    </span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             2. SECCIÓN DESTACADA: ESTUDIO SOBRE EL "SÍNDROME DEL 90%" EN PROYECTOS
+             ========================================================================== -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-11">
+                        
+                        <div class="analytics-study-card">
+                            
+                            <!-- Header de Estudio -->
+                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-2">
+                                <span class="study-badge-active">
+                                    <span class="pulse-dot"></span> ESTUDIO ACTIVO
+                                </span>
+                                <span class="badge bg-light text-muted border px-3 py-2 rounded-pill font-montserrat fw-semibold">
+                                    <i class="fa-solid fa-calendar-check me-1 text-dark"></i> Convocatoria Abierta
+                                </span>
+                            </div>
+
+                            <!-- Título del Estudio -->
+                            <h2 class="study-title animate__animated animate__fadeInUp animate__delay-1s">
+                                ENCUESTA SOBRE EL SÍNDROME DEL 90% EN LA COMPLECIÓN DE PROYECTOS
+                            </h2>
+
+                            <!-- Card Conceptual -->
+                            <div class="concept-card-box">
+                                <p class="concept-text">
+                                    El "Síndrome del 90%" representa una de las desviaciones más frecuentes en ingeniería y construcción: proyectos que alcanzan rápidamente un 90% de avance según la medición tradicional, pero que consumen desproporcionadamente tiempo y recursos para cerrar el 10% restante.
+                                </p>
+                            </div>
+
+                            <!-- Visualizador de Barra de Progreso Simulada -->
+                            <div class="progress-simulator-wrapper">
+                                <div class="progress-simulator-title">
+                                    <span><i class="fa-solid fa-chart-bar me-2 text-dark"></i> Simulación del Avance Físico vs Esfuerzo Real</span>
+                                    <span class="badge bg-warning text-dark px-2 py-1 rounded">Desviación Típica del Plazo</span>
+                                </div>
+
+                                <div class="custom-progress-container d-flex">
+                                    <div class="progress-bar-achieved" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                                        <span>90% Avance Tradicional Reportado</span>
+                                    </div>
+                                    <div class="progress-bar-critical" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" title="Saldo Crítico de Cierre">
+                                        <span>10% Saldo</span>
+                                    </div>
+                                </div>
+
+                                <div class="progress-stages-labels">
+                                    <span>0% Inicio de Obra</span>
+                                    <span>50% Producción Masiva</span>
+                                    <span class="text-danger fw-bold"><i class="fa-solid fa-triangle-exclamation"></i> 90% Umbral Crítico</span>
+                                    <span>100% Cierre Real</span>
+                                </div>
+
+                                <div class="critical-warning-box">
+                                    <i class="fa-solid fa-triangle-exclamation fa-2x text-warning flex-shrink-0"></i>
+                                    <div>
+                                        <strong>Fenómeno de Incertidumbre:</strong> En este último 10% se acumulan punch-lists no liberados, pruebas hidrostáticas/eléctricas, comisionamiento y trámites de recepción, demandando hasta un 50% o más del tiempo total de cronograma si no se gestiona con la metodología de <em>Curva de Liberación®</em>.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Métricas de Impacto del Sector -->
+                            <div class="row g-3 my-4">
+                                <div class="col-md-4">
+                                    <div class="metric-mini-card">
+                                        <div class="metric-value">+80%</div>
+                                        <div class="metric-label">De proyectos experimentan demoras desproporcionadas en el cierre final</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="metric-mini-card">
+                                        <div class="metric-value">3.2x</div>
+                                        <div class="metric-label">Tiempo adicional promedio requerido para finiquitar el saldo restante</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="metric-mini-card">
+                                        <div class="metric-value">100%</div>
+                                        <div class="metric-label">Impacto mitigable aplicando auditoría preventiva y Curva de Liberación®</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ==========================================================================
+                                 3. BOTÓN DE PARTICIPACIÓN DIRECTA (CTA Principal de la Encuesta)
+                                 ========================================================================== -->
+                            <div class="text-center my-4 p-4 bg-light rounded-4 shadow-sm">
+                                <h3 class="fw-bold mb-3 text-dark animate__animated animate__fadeInUp animate__delay-1s"><i class="fas fa-edit me-2"></i> Tu experiencia en proyectos es fundamental</h3>
+                                <p class="text-muted mb-4">Aporta con tus respuestas para generar estadísticas reales sobre el sector y recibir los resultados del estudio.</p>
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSefkBUAMlZbIdNiwxcSfbAJYeIrn8coZki1N4KJARd_aevQqQ/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-success btn-lg px-5 py-3 fw-bold rounded-pill shadow-lg btn-qcs-primary hvr-float-shadow"><i class="fas fa-paper-plane me-2"></i> PARTICIPA DE LA ENCUESTA AQUÍ</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             4. POR QUÉ PARTICIPAR EN LOS ESTUDIOS DE QCS (Grid de 3 Beneficios)
+             ========================================================================== -->
+        <section class="py-5 bg-white border-top border-bottom">
+            <div class="container">
+                
+                <div class="text-center mb-5">
+                    <span class="badge bg-warning-subtle text-dark fw-bold px-3 py-2 rounded-pill text-uppercase mb-2">
+                        <i class="fa-solid fa-bullseye me-1"></i> Aporte Colectivo
+                    </span>
+                    <h2 class="fw-extrabold font-montserrat text-dark display-6 mb-2 animate__animated animate__fadeInUp animate__delay-1s" style="font-weight: 800;">
+                        VALOR DE TU PARTICIPACIÓN
+                    </h2>
+                    <p class="text-muted mx-auto" style="max-width: 680px;">
+                        Tus aportes como director de proyecto, residente, supervisor o consultor nutren la base estadística para la optimización de estándares de ingeniería en la región.
+                    </p>
+                </div>
+
+                <div class="row g-4 justify-content-center">
+                    
+                    <!-- Beneficio 01 -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="benefit-card">
+                            <div>
+                                <div class="benefit-num">01</div>
+                                <h3 class="benefit-card-title animate__animated animate__fadeInUp animate__delay-1s">
+                                    <span>Diagnóstico del Sector</span>
+                                    <i class="fas fa-chart-pie"></i>
+                                </h3>
+                                <p class="benefit-card-desc">
+                                    Contribuyes a identificar las causas raíz de las demoras en cierres de proyectos, fallas de comisionamiento y cuellos de botella en la gestión de obras.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Beneficio 02 -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="benefit-card">
+                            <div>
+                                <div class="benefit-num">02</div>
+                                <h3 class="benefit-card-title animate__animated animate__fadeInUp animate__delay-1s">
+                                    <span>Confidencialidad Acreditada</span>
+                                    <i class="fas fa-user-shield"></i>
+                                </h3>
+                                <p class="benefit-card-desc">
+                                    Tus datos e información son procesados bajo estrictos parámetros de confidencialidad y anonimato estadístico con fines puramente académicos y de investigación.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Beneficio 03 -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="benefit-card">
+                            <div>
+                                <div class="benefit-num">03</div>
+                                <h3 class="benefit-card-title animate__animated animate__fadeInUp animate__delay-1s">
+                                    <span>Acceso a Resultados</span>
+                                    <i class="fas fa-file-invoice"></i>
+                                </h3>
+                                <p class="benefit-card-desc">
+                                    Los participantes registrados reciben el reporte de conclusiones y recomendaciones del estudio con benchmarking exclusivo de la industria.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             5. LLAMADO A LA ACCIÓN FINAL (Contacto e Investigaciones In-House)
+             ========================================================================== -->
+        <section class="py-5">
+            <div class="container">
+                <div class="inhouse-cta-section">
+                    <div class="row align-items-center">
+                        
+                        <div class="col-lg-8 mb-4 mb-lg-0">
+                            <span class="badge bg-warning text-dark bg-opacity-25 text-warning border border-warning px-3 py-2 rounded-pill fw-bold mb-3">
+                                <i class="fa-solid fa-briefcase me-1"></i> SERVICIOS CORPORATIVOS IN-HOUSE
+                            </span>
+                            <h2 class="fw-bold font-montserrat text-white mb-3 animate__animated animate__fadeInUp animate__delay-1s" style="font-size: clamp(1.6rem, 2.5vw, 2.3rem);">
+                                ¿Deseas realizar un estudio o diagnóstico de calidad en tu organización?
+                            </h2>
+                            <p class="text-light text-opacity-90 mb-3" style="font-size: 1.05rem; line-height: 1.8;">
+                                En Quality Consulting Solutions diseñamos encuestas, diagnósticos y auditorías técnicas a la medida de tu empresa.
+                            </p>
+                            <p class="mb-0">
+                                <i class="fa-solid fa-phone me-2 text-warning"></i>
+                                Central Telefónica / WhatsApp: <a href="tel:+51993463118" class="text-white fw-bold">+51 993 463 118</a>
+                            </p>
+                        </div>
+
+                        <div class="col-lg-4 text-lg-end text-center">
+                            <div class="d-flex flex-column gap-3 justify-content-center">
+                                <a href="contacto.html" class="btn btn-lg px-4 py-3 fw-bold shadow-lg btn-qcs-primary hvr-float-shadow" style="background-color: #0dcaf0; border-color: #0dcaf0; color: #0F1113;">
+                                    <i class="fa-solid fa-envelope me-2"></i> Contacto Directo
+                                </a>
+                                <a href="gestion-de-la-calidad.html" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold btn-qcs-primary hvr-float-shadow">
+                                    <i class="fa-solid fa-layer-group me-2"></i> Ver Servicios de Consultoría
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================================================
+         FOOTER CORPORATIVO
+         ========================================================================== -->
+            <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                
+                <!-- Columna 1: Identidad Corporativa -->
+                <div class="footer-col brand-col">
+                    <div class="logo-badge d-flex align-items-center mb-3">
+                        <img src="img/Logo.png" alt="Quality Consulting Solutions Logo" width="44" height="44" class="d-inline-block align-text-top rounded-2 me-2 brand-logo animate__animated animate__bounceIn" style="object-fit: cover; width: 44px; height: 44px; ">
+                        <div class="logo-text-wrap">
+                            <span class="logo-title text-light">QUALITY</span>
+                            <span class="logo-sub">CONSULTING</span>
+                        </div>
+                    </div>
+                    <p class="footer-desc">
+                        Soluciones estratégicas en ingeniería, gestión de proyectos, PMO, homologación de proveedores y capacitación corporativa especializada.
+                    </p>
+                    <div class="footer-socials mt-3">
+                        <a href="https://pe.linkedin.com/in/omarsamaniego" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/qaqcconsulting" target="_blank" rel="noopener noreferrer" class="social-btn facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/channel/UCbCdXwbcl-uouYa6Y4_kY0A?view_as=subscriber" target="_blank" rel="noopener noreferrer" class="social-btn youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp animate__animated animate__pulse animate__infinite" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Enlaces RÃ¡pidos -->
+                <div class="footer-col links-col">
+                    <h4 class="footer-heading">Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+                        <li><a href="nosotros.html"><i class="fa-solid fa-angle-right"></i> Nosotros</a></li>
+                        <li><a href="index.html#consultoria"><i class="fa-solid fa-angle-right"></i> Consultoría</a></li>
+                        <li><a href="index.html#capacitacion"><i class="fa-solid fa-angle-right"></i> Capacitación</a></li>
+                        <li><a href="medios.html"><i class="fa-solid fa-angle-right"></i> Medios y Podcasts</a></li>
+                        <li><a href="clientes.html"><i class="fa-solid fa-angle-right"></i> Clientes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Contacto & Libro de Reclamaciones -->
+                <div class="footer-col contact-col">
+                    <h4 class="footer-heading">Contacto Oficial</h4>
+                    <p><i class="fa-solid fa-location-dot me-2 text-warning"></i> Av. Javier Prado 757, piso 10 Magdalena, Lima 17</p>
+                    <p><i class="fa-solid fa-envelope me-2 text-warning"></i> <a href="mailto:contacto@quality-consulting.org" class="text-light">contacto@quality-consulting.org</a></p>
+                    <p><i class="fa-solid fa-phone me-2 text-warning"></i> <a href="tel:+51993463118" class="text-light">+51 993 463 118</a></p>
+                    <div class="mt-3">
+                        <a href="contacto.html#libro-reclamaciones" class="btn btn-outline-warning btn-sm fw-bold d-inline-flex align-items-center rounded-pill px-3 py-2 btn-qcs-primary hvr-float-shadow">
+                            <i class="fas fa-book-open me-2"></i> Libro de Reclamaciones
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Quality Consulting Solutions. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script Principal del sitio -->
+    <script src="script.js?v=2.2"></script>
+
+
+
+
+<!-- AOS init -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+  });
+</script>
+</body></html>

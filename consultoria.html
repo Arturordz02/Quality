@@ -1,0 +1,658 @@
+<!DOCTYPE html><html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios de Consultoría Técnica y Gestión de Proyectos | Quality Consulting Solutions</title>
+    <meta name="description" content="Acompañamos a las organizaciones del sector construcción, infraestructura y minería en la optimización de procesos, PMO, auditorías ISO 9001 y gestión de riesgos.">
+    
+        <!-- Favicon Oficial -->
+    <link rel="icon" type="image/png" href="img/Logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="img/Logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Open+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Hoja de estilos principal del sitio -->
+    <link rel="stylesheet" href="styles.css?v=2.2">
+
+    <!-- Estilos Especializados para la Landing de Consultoría -->
+    <style>
+        body {
+            background-color: var(--qcs-bg-light);
+            color: #1e293b;
+        }
+
+        /* ----------------------------------------------------
+           1. HERO CONSULTORÍA
+           ---------------------------------------------------- */
+        .consulting-hero-banner {
+            position: relative;
+            padding: 190px 1.5rem 85px 1.5rem;
+            background: linear-gradient(145deg, #0F1113 0%, #1A1D20 50%, #24292E 100%);
+            color: #ffffff;
+            overflow: hidden;
+            border-bottom: 4px solid var(--accent-gold);
+        }
+
+        .consulting-hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 85% 25%, rgba(229, 168, 19, 0.22) 0%, transparent 60%),
+                        radial-gradient(circle at 15% 80%, rgba(142, 146, 151, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .consulting-hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 28px 28px;
+            opacity: 0.65;
+            pointer-events: none;
+        }
+
+        .consulting-hero-title {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: clamp(2rem, 4.2vw, 3.3rem);
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            margin-bottom: 1.25rem;
+            text-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+        }
+
+        .consulting-hero-subtitle {
+            font-family: var(--font-body);
+            font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+            color: #e2e8f0;
+            max-width: 860px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ----------------------------------------------------
+           2. GRID DE 4 EJES DE CONSULTORÍA
+           ---------------------------------------------------- */
+        .consulting-card {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 30px rgba(15, 35, 60, 0.06);
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .consulting-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(15, 17, 19, 0.2);
+            border-color: var(--accent-gold);
+        }
+
+        .consulting-card-img-wrap {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .consulting-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .consulting-card:hover .consulting-card-img {
+            transform: scale(1.08);
+        }
+
+        .consulting-card-icon-badge {
+            position: absolute;
+            bottom: -20px;
+            right: 1.5rem;
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            background: #ffffff;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .consulting-card-body {
+            padding: 2.25rem 1.75rem 1.75rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .consulting-card-title {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--qcs-dark-slate);
+            margin-bottom: 0.75rem;
+            line-height: 1.35;
+        }
+
+        .consulting-card-desc {
+            font-size: 0.92rem;
+            line-height: 1.7;
+            color: #475569;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ----------------------------------------------------
+           3. BANNER Y MAPA DE UBICACIÓN
+           ---------------------------------------------------- */
+        .consulting-cta-banner {
+            background: linear-gradient(145deg, #0F1113 0%, #1A1D20 50%, #24292E 100%);
+            border-radius: 24px;
+            padding: 3.5rem 2.5rem;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(15, 17, 19, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .consulting-cta-banner::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(229, 168, 19, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+    </style>
+
+    <!-- Animate.css (Efectos principales de entrada) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- AOS (Animate On Scroll para tarjetas y secciones) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <!-- Hover.css (Microinteracciones en botones y enlaces) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+</head>
+<body>
+
+    <!-- ==========================================================================
+         CONTENEDOR PRINCIPAL DEL HEADER (Bootstrap 5 Integrado)
+         ========================================================================== -->
+    <header class="main-header" id="mainHeader">
+        
+        <!-- Franja Superior: Logo, Título Central y Redes Sociales -->
+        <div class="header-top">
+            <div class="header-container top-container">
+                
+                <!-- Logo a la izquierda -->
+                <div class="header-logo">
+                    <a href="index.html" class="logo-link" aria-label="Quality Consulting Solutions Inicio">
+                        <div class="logo-badge d-flex align-items-center">
+                            <img src="img/Logo.png" alt="Quality Consulting Solutions Logo" width="44" height="44" class="d-inline-block align-text-top rounded-2 me-2 brand-logo animate__animated animate__bounceIn" style="object-fit: cover; width: 44px; height: 44px;">
+                            <div class="logo-text-wrap">
+                                <span class="logo-title">QUALITY</span>
+                                <span class="logo-sub">CONSULTING</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Título Centrado -->
+                <div class="header-center-title">
+                    <h1 class="animate__animated animate__fadeInDown">QUALITY CONSULTING SOLUTIONS</h1>
+                    <p class="tagline animate__animated animate__fadeInUp animate__delay-1s">Ingeniería • Gestión de Proyectos • Capacitación • Calidad</p>
+                </div>
+
+                <!-- Redes Sociales a la derecha & Botón Móvil -->
+                <div class="header-actions">
+                    <div class="social-networks" aria-label="Redes Sociales">
+                        <a href="https://pe.linkedin.com/in/omarsamaniego" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.facebook.com/qaqcconsulting" target="_blank" rel="noopener noreferrer" class="social-btn facebook" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCbCdXwbcl-uouYa6Y4_kY0A?view_as=subscriber" target="_blank" rel="noopener noreferrer" class="social-btn youtube" aria-label="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp animate__animated animate__pulse animate__infinite" aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+
+                    <!-- Botón Hamburguesa Nativo Bootstrap 5 para Mobile -->
+                    <button class="navbar-toggler mobile-toggle-btn" id="mobileToggleBtn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarQuality" aria-controls="navbarQuality" aria-expanded="false" aria-label="Abrir menú de navegación">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Barra de Navegación Principal Horizontal con Bootstrap 5 -->
+        <nav class="navbar navbar-expand-lg main-navbar p-0" id="mainNavbar" aria-label="Navegación principal">
+            <div class="header-container nav-container w-100">
+                <div class="collapse navbar-collapse justify-content-center" id="navbarQuality">
+                    <ul class="navbar-nav nav-menu" id="navMenu">
+
+                        <!-- HOME -->
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link hvr-underline-from-left">HOME</a>
+                        </li>
+
+                        <!-- NOSOTROS -->
+                        <li class="nav-item">
+                            <a href="nosotros.html" class="nav-link hvr-underline-from-left">NOSOTROS</a>
+                        </li>
+
+                        <!-- CONSULTORIA (Desplegable) -->
+                        <li class="nav-item dropdown">
+                            <a href="consultoria.html" class="nav-link dropdown-toggle active hvr-underline-from-left" id="dropdownConsultoria" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                CONSULTORIA <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownConsultoria">
+                                <li><a href="gestion-de-pmo.html" class="dropdown-item">GESTION DE PMO</a></li>
+                                <li><a href="headhunting.html" class="dropdown-item">HEADHUNTING</a></li>
+                                <li><a href="gestion-de-riesgos.html" class="dropdown-item">GESTION DE RIESGOS</a></li>
+                                <li><a href="sindrome-del-90.html" class="dropdown-item">RIESGO DEL PLAZO</a></li>
+                                <li><a href="lego-serious-play.html" class="dropdown-item">LEGO SERIOUS PLAY</a></li>
+                                <li><a href="cronograma-forense.html" class="dropdown-item">CRONOGRAMA-FORENSE</a></li>
+                                <li><a href="homologaciones.html" class="dropdown-item">HOMOLOGACIONES</a></li>
+                                <li><a href="gestion-de-la-calidad.html" class="dropdown-item">GESTION DE LA CALIDAD</a></li>
+                                <li><a href="permisologia.html" class="dropdown-item">PERMISOLOGIA</a></li>
+                                <li><a href="universidad-corporativa.html" class="dropdown-item">UNIVERSIDAD CORPORATIVA</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- CAPACITACION (Desplegable Extenso) -->
+                        <li class="nav-item dropdown dropdown-large">
+                            <a href="capacitacion.html" class="nav-link dropdown-toggle hvr-underline-from-left" id="dropdownCapacitacion" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                CAPACITACION <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownCapacitacion">
+                                <li><a href="lean-last-planner.html" class="dropdown-item">LEAN-LAST-PLANNER</a></li>
+                                <li><a href="riesgos-tecnicos.html" class="dropdown-item">RIESGOS TECNICOS</a></li>
+                                <li><a href="riesgos-pmi.html" class="dropdown-item">RIESGOS PMI</a></li>
+                                <li><a href="riesgos-cadena-produccion.html" class="dropdown-item">RIESGOS CADENA PRODUCCION</a></li>
+                                <li><a href="calidad-y-pmi.html" class="dropdown-item">CALIDAD Y PMI</a></li>
+                                <li><a href="costos.html" class="dropdown-item">COSTOS</a></li>
+                                <li><a href="nec.html" class="dropdown-item">NEC</a></li>
+                                <li><a href="fidic.html" class="dropdown-item">FIDIC</a></li>
+                                <li><a href="pmo.html" class="dropdown-item">PMO</a></li>
+                                <li><a href="gerencia-de-calidad.html" class="dropdown-item">GERENCIA DE CALIDAD</a></li>
+                                <li><a href="valor-ganado.html" class="dropdown-item">VALOR GANADO</a></li>
+                                <li><a href="bim-revit-architecture.html" class="dropdown-item">BIM REVIT ARCHITECTURE</a></li>
+                                <li><a href="iso-9001.html" class="dropdown-item">ISO 9001</a></li>
+                                <li><a href="oficina-tecnica.html" class="dropdown-item">OFICINA-TECNICA</a></li>
+                                <li><a href="herramientas.html" class="dropdown-item">HERRAMIENTAS</a></li>
+                                <li><a href="proyectos-pmi.html" class="dropdown-item">PROYECTOS PMI</a></li>
+                                <li><a href="contratos.html" class="dropdown-item">CONTRATOS</a></li>
+                                <li><a href="contratos-estado.html" class="dropdown-item">CONTRATOS-ESTADO</a></li>
+                                <li><a href="gruas-torre.html" class="dropdown-item">GRUAS TORRE</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- PRESS -->
+                        <li class="nav-item">
+                            <a href="press.html" class="nav-link hvr-underline-from-left">PRESS</a>
+                        </li>
+
+                        <!-- MEDIOS -->
+                        <li class="nav-item">
+                            <a href="medios.html" class="nav-link hvr-underline-from-left">MEDIOS</a>
+                        </li>
+
+                        <!-- CLIENTES -->
+                        <li class="nav-item">
+                            <a href="clientes.html" class="nav-link hvr-underline-from-left">CLIENTES</a>
+                        </li>
+
+                        <!-- MÁS... -->
+                        <li class="nav-item dropdown dropdown-more">
+                            <a href="javascript:void(0)" class="nav-link dropdown-toggle hvr-underline-from-left" id="dropdownMas" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                MÁS... <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMas">
+                                <li class="dropdown-submenu">
+                                    <a href="investigacion.html" class="dropdown-item submenu-toggle">
+                                        <span>INVESTIGACION</span>
+                                        <i class="fa-solid fa-chevron-right submenu-arrow"></i>
+                                    </a>
+                                    <ul class="dropdown-menu-lateral">
+                                        <li><a href="encuestas-proyectos.html" class="dropdown-item">Encuestas-Proyectos</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contacto.html" class="dropdown-item">CONTACTO</a></li>
+                                <li><a href="noticias.html" class="dropdown-item">NOTICIAS</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Overlay móvil -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+    </header>
+
+    <main>
+        <!-- ==========================================================================
+             1. HERO Y PRESENTACIÓN (Consultoría)
+             ========================================================================== -->
+        <section class="consulting-hero-banner text-center">
+            <div class="consulting-hero-pattern"></div>
+            <div class="container position-relative">
+                
+                <!-- Badge Superior -->
+                <div class="d-inline-block mb-3">
+                    <span class="badge bg-light text-dark px-3 py-2 rounded-pill fw-bold mb-2 shadow-sm">
+                        <i class="fas fa-briefcase me-2"></i> SERVICIOS DE CONSULTORÍA TÉCNICA
+                    </span>
+                </div>
+
+                <!-- Título Principal -->
+                <h1 class="consulting-hero-title animate__animated animate__fadeInDown">
+                    SOLUCIONES ESTRATÉGICAS EN GESTIÓN DE PROYECTOS Y CALIDAD
+                </h1>
+
+                <!-- Subtítulo / Párrafo Introductorio -->
+                <p class="consulting-hero-subtitle">
+                    Acompañamos a las organizaciones del sector construcción, infraestructura y minería en la optimización de sus procesos, diseño de sistemas de calidad, auditorías técnicas y gestión de riesgos para garantizar el éxito de sus inversiones.
+                </p>
+
+                <!-- Micro-badges -->
+                <div class="d-flex justify-content-center flex-wrap gap-3 mt-4">
+                    <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold">
+                        <i class="fa-solid fa-check-circle me-1"></i> Asesoría Personalizada
+                    </span>
+                    <span class="badge bg-light bg-opacity-25 text-white px-3 py-2 rounded-pill fw-semibold">
+                        <i class="fa-solid fa-building-columns me-1"></i> Metodología PMBOK® &amp; ISO
+                    </span>
+                    <span class="badge bg-light bg-opacity-25 text-white px-3 py-2 rounded-pill fw-semibold">
+                        <i class="fa-solid fa-clock-rotate-left me-1"></i> Curva de Liberación ®
+                    </span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             2. GRID DE 4 EJES DE CONSULTORÍA
+             ========================================================================== -->
+        <section class="py-5">
+            <div class="container">
+                
+                <div class="text-center mb-5">
+                    <span class="badge bg-warning-subtle text-dark fw-bold px-3 py-2 rounded-pill text-uppercase mb-2">
+                        <i class="fa-solid fa-network-wired me-1"></i> Ejes Estratégicos
+                    </span>
+                    <h2 class="fw-extrabold font-montserrat text-dark display-6 mb-2 animate__animated animate__fadeInUp animate__delay-1s" style="font-weight: 800;">
+                        ÁREAS CLAVE DE INTERVENCIÓN
+                    </h2>
+                    <p class="text-muted mx-auto" style="max-width: 700px;">
+                        Diagnósticos rigurosos, implementación de estándares y acompañamiento en obra para mitigar riesgos y elevar el desempeño de tus proyectos.
+                    </p>
+                </div>
+
+                <div class="row g-4 justify-content-center">
+                    
+                    <!-- Eje 1: Gestión de la Calidad e ISO 9001 -->
+                    <div class="col-lg-6 col-md-6">
+                        <div class="consulting-card rounded-4 border-start border-4 border-warning hvr-box-shadow-outset" data-aos="fade-right">
+                            <div class="consulting-card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Gestión de la Calidad e ISO 9001 en Construcción" class="consulting-card-img" loading="lazy">
+                                <div class="consulting-card-icon-badge">
+                                    <i class="fas fa-certificate text-dark fs-2"></i>
+                                </div>
+                            </div>
+                            <div class="consulting-card-body">
+                                <div>
+                                    <h3 class="consulting-card-title animate__animated animate__fadeInUp animate__delay-1s">Gestión de la Calidad e ISO 9001</h3>
+                                    <p class="consulting-card-desc">
+                                        Implementación de planes de calidad, auditorías de soporte para certificación y control no conformidades para elevar el estándar de ejecución técnica en obra.
+                                    </p>
+                                </div>
+                                <div>
+                                    <a href="gestion-de-la-calidad.html" class="btn btn-qcs-dark hvr-grow w-100 py-2 fw-bold rounded-pill btn-qcs-primary hvr-float-shadow" style="border-color: var(--qcs-yellow); color: var(--qcs-dark-slate);">
+                                        Conocer más de Calidad <i class="fas fa-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Eje 2: Gobernanza de Proyectos & PMO -->
+                    <div class="col-lg-6 col-md-6">
+                        <div class="consulting-card rounded-4 border-start border-4 border-warning hvr-box-shadow-outset" data-aos="fade-up">
+                            <div class="consulting-card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Gobernanza de Proyectos y PMO" class="consulting-card-img" loading="lazy">
+                                <div class="consulting-card-icon-badge">
+                                    <i class="fas fa-sitemap text-success fs-2"></i>
+                                </div>
+                            </div>
+                            <div class="consulting-card-body">
+                                <div>
+                                    <h3 class="consulting-card-title animate__animated animate__fadeInUp animate__delay-1s">Gobernanza de Proyectos &amp; PMO</h3>
+                                    <p class="consulting-card-desc">
+                                        Estructuración de Oficinas de Gestión de Proyectos, alineación estratégica y gestión de portafolios para garantizar el control de costes y plazos en megaobras.
+                                    </p>
+                                </div>
+                                <div>
+                                    <a href="gestion-de-pmo.html" class="btn btn-qcs-dark hvr-grow w-100 py-2 fw-bold rounded-pill btn-qcs-primary hvr-float-shadow" style="border-color: var(--qcs-yellow); color: var(--qcs-dark-slate);">
+                                        Conocer más de PMO <i class="fas fa-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Eje 3: Gestión de Riesgos & Cronogramas -->
+                    <div class="col-lg-6 col-md-6">
+                        <div class="consulting-card rounded-4 border-start border-4 border-warning hvr-box-shadow-outset" data-aos="fade-left">
+                            <div class="consulting-card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Gestión de Riesgos y Cronogramas Forenses" class="consulting-card-img" loading="lazy">
+                                <div class="consulting-card-icon-badge">
+                                    <i class="fas fa-shield-alt text-warning fs-2"></i>
+                                </div>
+                            </div>
+                            <div class="consulting-card-body">
+                                <div>
+                                    <h3 class="consulting-card-title animate__animated animate__fadeInUp animate__delay-1s">Gestión de Riesgos &amp; Cronogramas</h3>
+                                    <p class="consulting-card-desc">
+                                        Identificación, análisis cualitativo/cuantitativo y tratamiento de incertidumbres en contratos. Aplicación de la Curva de Liberación® y peritajes forenses.
+                                    </p>
+                                </div>
+                                <div>
+                                    <a href="gestion-de-riesgos.html" class="btn btn-qcs-dark hvr-grow w-100 py-2 fw-bold rounded-pill btn-qcs-primary hvr-float-shadow" style="border-color: var(--qcs-yellow); color: var(--qcs-dark-slate);">
+                                        Conocer más de Riesgos <i class="fas fa-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Eje 4: Homologación & Auditoría de Proveedores -->
+                    <div class="col-lg-6 col-md-6">
+                        <div class="consulting-card rounded-4 border-start border-4 border-warning hvr-box-shadow-outset" data-aos="fade-right">
+                            <div class="consulting-card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Homologación y Auditoría de Proveedores" class="consulting-card-img" loading="lazy">
+                                <div class="consulting-card-icon-badge">
+                                    <i class="fas fa-truck-loading text-warning fs-2"></i>
+                                </div>
+                            </div>
+                            <div class="consulting-card-body">
+                                <div>
+                                    <h3 class="consulting-card-title animate__animated animate__fadeInUp animate__delay-1s">Homologación &amp; Auditoría de Proveedores</h3>
+                                    <p class="consulting-card-desc">
+                                        Evaluación técnica de la cadena de suministro para proyectos de construcción, garantizando proveedores calificados y cumplimiento normativo.
+                                    </p>
+                                </div>
+                                <div>
+                                    <a href="homologaciones.html" class="btn btn-qcs-dark hvr-grow w-100 py-2 fw-bold rounded-pill btn-qcs-primary hvr-float-shadow" style="border-color: var(--qcs-yellow); color: var(--qcs-dark-slate);">
+                                        Conocer más de Homologaciones <i class="fas fa-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             3. CTA DIRECTO A COTIZACIÓN & MAPA CORPORATIVO
+             ========================================================================== -->
+        <section class="py-5">
+            <div class="container">
+                <div class="consulting-cta-banner">
+                    <div class="row align-items-center">
+                        
+                        <div class="col-lg-8 mb-4 mb-lg-0">
+                            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3 shadow-sm">
+                                <i class="fa-solid fa-headset me-1"></i> ATENCIÓN TÉCNICA
+                            </span>
+                            <h2 class="fw-bold font-montserrat text-white mb-3 animate__animated animate__fadeInUp animate__delay-1s" style="font-size: clamp(1.6rem, 2.5vw, 2.3rem);">
+                                Solicita una propuesta de consultoría para tu empresa
+                            </h2>
+                            <p class="text-light text-opacity-90 mb-3" style="font-size: 1.05rem; line-height: 1.8;">
+                                Diseñamos planes de intervención técnica y auditoría adaptados a los retos específicos de tus proyectos de infraestructura.
+                            </p>
+                            <div class="d-flex flex-wrap gap-4 text-light">
+                                <div>
+                                    <i class="fa-solid fa-phone text-warning me-2"></i>
+                                    WhatsApp Corporativo: <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="text-white fw-bold animate__animated animate__pulse animate__infinite">+51 993 463 118</a>
+                                </div>
+                                <div>
+                                    <i class="fa-solid fa-location-dot text-warning me-2"></i>
+                                    Sede: <span class="text-white fw-semibold">Av. Javier Prado 757, piso 10 Magdalena, Lima 17</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 text-lg-end text-center">
+                            <div class="d-flex flex-column gap-3 justify-content-center">
+                                <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="btn btn-warning btn-lg px-4 py-3 fw-bold rounded-pill shadow-lg text-dark animate__animated animate__pulse animate__infinite btn-qcs-primary hvr-float-shadow">
+                                    <i class="fab fa-whatsapp me-2"></i> Cotizar por WhatsApp
+                                </a>
+                                <a href="contacto.html" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold rounded-pill btn-qcs-primary hvr-float-shadow">
+                                    <i class="fa-solid fa-envelope me-2"></i> Formulario de Contacto
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================================================
+         FOOTER CORPORATIVO
+         ========================================================================== -->
+            <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                
+                <!-- Columna 1: Identidad Corporativa -->
+                <div class="footer-col brand-col">
+                    <div class="logo-badge d-flex align-items-center mb-3">
+                        <img src="img/Logo.png" alt="Quality Consulting Solutions Logo" width="44" height="44" class="d-inline-block align-text-top rounded-2 me-2 brand-logo animate__animated animate__bounceIn" style="object-fit: cover; width: 44px; height: 44px; ">
+                        <div class="logo-text-wrap">
+                            <span class="logo-title text-light">QUALITY</span>
+                            <span class="logo-sub">CONSULTING</span>
+                        </div>
+                    </div>
+                    <p class="footer-desc">
+                        Soluciones estratégicas en ingeniería, gestión de proyectos, PMO, homologación de proveedores y capacitación corporativa especializada.
+                    </p>
+                    <div class="footer-socials mt-3">
+                        <a href="https://pe.linkedin.com/in/omarsamaniego" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/qaqcconsulting" target="_blank" rel="noopener noreferrer" class="social-btn facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/channel/UCbCdXwbcl-uouYa6Y4_kY0A?view_as=subscriber" target="_blank" rel="noopener noreferrer" class="social-btn youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp animate__animated animate__pulse animate__infinite" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Enlaces RÃ¡pidos -->
+                <div class="footer-col links-col">
+                    <h4 class="footer-heading">Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+                        <li><a href="nosotros.html"><i class="fa-solid fa-angle-right"></i> Nosotros</a></li>
+                        <li><a href="index.html#consultoria"><i class="fa-solid fa-angle-right"></i> Consultoría</a></li>
+                        <li><a href="index.html#capacitacion"><i class="fa-solid fa-angle-right"></i> Capacitación</a></li>
+                        <li><a href="medios.html"><i class="fa-solid fa-angle-right"></i> Medios y Podcasts</a></li>
+                        <li><a href="clientes.html"><i class="fa-solid fa-angle-right"></i> Clientes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Contacto & Libro de Reclamaciones -->
+                <div class="footer-col contact-col">
+                    <h4 class="footer-heading">Contacto Oficial</h4>
+                    <p><i class="fa-solid fa-location-dot me-2 text-warning"></i> Av. Javier Prado 757, piso 10 Magdalena, Lima 17</p>
+                    <p><i class="fa-solid fa-envelope me-2 text-warning"></i> <a href="mailto:contacto@quality-consulting.org" class="text-light">contacto@quality-consulting.org</a></p>
+                    <p><i class="fa-solid fa-phone me-2 text-warning"></i> <a href="tel:+51993463118" class="text-light">+51 993 463 118</a></p>
+                    <div class="mt-3">
+                        <a href="contacto.html#libro-reclamaciones" class="btn btn-outline-warning btn-sm fw-bold d-inline-flex align-items-center rounded-pill px-3 py-2 btn-qcs-primary hvr-float-shadow">
+                            <i class="fas fa-book-open me-2"></i> Libro de Reclamaciones
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Quality Consulting Solutions. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script Principal del sitio -->
+    <script src="script.js?v=2.2"></script>
+
+
+
+
+<!-- AOS init -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+  });
+</script>
+</body></html>

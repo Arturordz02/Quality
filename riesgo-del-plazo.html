@@ -1,0 +1,385 @@
+<!DOCTYPE html><html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riesgo del Plazo | Quality Consulting Solutions</title>
+    <meta name="description" content="Evaluación del síndrome del 90% y gestión de restricciones para proyectar la fecha de completación en proyectos de construcción.">
+        <!-- Favicon Oficial -->
+    <link rel="icon" type="image/png" href="img/Logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="img/Logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;family=Open+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Styles -->
+        <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+<link rel="stylesheet" href="styles.css?v=2.2">
+
+    <!-- Animate.css (Efectos principales de entrada) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- AOS (Animate On Scroll para tarjetas y secciones) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <!-- Hover.css (Microinteracciones en botones y enlaces) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+</head>
+<body>
+    <!-- HEADER (copiado del resto del sitio) -->
+        <!-- ==========================================================================
+         CONTENEDOR PRINCIPAL DEL HEADER (Bootstrap 5 Integrado)
+         ========================================================================== -->
+    <header class="main-header" id="mainHeader">
+        
+        <!-- Franja Superior: Logo, Título Central y Redes Sociales -->
+        <div class="header-top">
+            <div class="header-container top-container">
+                
+                <!-- Logo a la izquierda -->
+                <div class="header-logo">
+                    <a href="index.html" class="logo-link" aria-label="Quality Consulting Solutions Inicio">
+                        <div class="logo-badge d-flex align-items-center">
+                            <img src="img/Logo.png" alt="Quality Consulting Solutions Logo" width="44" height="44" class="d-inline-block align-text-top rounded-2 me-2 brand-logo animate__animated animate__bounceIn" style="object-fit: cover; width: 44px; height: 44px;">
+                            <div class="logo-text-wrap">
+                                <span class="logo-title">QUALITY</span>
+                                <span class="logo-sub">CONSULTING</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Título Centrado -->
+                <div class="header-center-title">
+                    <h1 class="animate__animated animate__fadeInDown">QUALITY CONSULTING SOLUTIONS</h1>
+                    <p class="tagline animate__animated animate__fadeInUp animate__delay-1s">Ingeniería • Gestión de Proyectos • Capacitación • Calidad</p>
+                </div>
+
+                <!-- Redes Sociales a la derecha & Botón Móvil -->
+                <div class="header-actions">
+                    <div class="social-networks" aria-label="Redes Sociales">
+                        <a href="https://pe.linkedin.com/in/omarsamaniego" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.facebook.com/qaqcconsulting" target="_blank" rel="noopener noreferrer" class="social-btn facebook" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCbCdXwbcl-uouYa6Y4_kY0A?view_as=subscriber" target="_blank" rel="noopener noreferrer" class="social-btn youtube" aria-label="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp animate__animated animate__pulse animate__infinite" aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+
+                    <!-- Botón Hamburguesa Nativo Bootstrap 5 para Mobile -->
+                    <button class="navbar-toggler mobile-toggle-btn" id="mobileToggleBtn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarQuality" aria-controls="navbarQuality" aria-expanded="false" aria-label="Abrir menú de navegación">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Barra de Navegación Principal Horizontal con Bootstrap 5 -->
+        <nav class="navbar navbar-expand-lg main-navbar p-0" id="mainNavbar" aria-label="Navegación principal">
+            <div class="header-container nav-container w-100">
+                <div class="collapse navbar-collapse justify-content-center" id="navbarQuality">
+                    <ul class="navbar-nav nav-menu" id="navMenu">
+
+                        <!-- HOME -->
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link hvr-underline-from-left">HOME</a>
+                        </li>
+
+                        <!-- NOSOTROS -->
+                        <li class="nav-item">
+                            <a href="nosotros.html" class="nav-link hvr-underline-from-left">NOSOTROS</a>
+                        </li>
+
+                        <!-- CONSULTORIA (Desplegable) -->
+                        <li class="nav-item dropdown">
+                            <a href="consultoria.html" class="nav-link dropdown-toggle hvr-underline-from-left" id="dropdownConsultoria" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                CONSULTORIA <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownConsultoria">
+                                <li><a href="gestion-de-pmo.html" class="dropdown-item">GESTION DE PMO</a></li>
+                                <li><a href="headhunting.html" class="dropdown-item">HEADHUNTING</a></li>
+                                <li><a href="gestion-de-riesgos.html" class="dropdown-item">GESTION DE RIESGOS</a></li>
+                                <li><a href="sindrome-del-90.html" class="dropdown-item">RIESGO DEL PLAZO</a></li>
+                                <li><a href="lego-serious-play.html" class="dropdown-item">LEGO SERIOUS PLAY</a></li>
+                                <li><a href="cronograma-forense.html" class="dropdown-item">CRONOGRAMA-FORENSE</a></li>
+                                <li><a href="homologaciones.html" class="dropdown-item">HOMOLOGACIONES</a></li>
+                                <li><a href="gestion-de-la-calidad.html" class="dropdown-item">GESTION DE LA CALIDAD</a></li>
+                                <li><a href="permisologia.html" class="dropdown-item">PERMISOLOGIA</a></li>
+                                <li><a href="universidad-corporativa.html" class="dropdown-item">UNIVERSIDAD CORPORATIVA</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- CAPACITACION (Desplegable Extenso) -->
+                        <li class="nav-item dropdown dropdown-large">
+                            <a href="capacitacion.html" class="nav-link dropdown-toggle active hvr-underline-from-left" id="dropdownCapacitacion" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                CAPACITACION <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownCapacitacion">
+                                <li><a href="lean-last-planner.html" class="dropdown-item">LEAN-LAST-PLANNER</a></li>
+                                <li><a href="riesgos-tecnicos.html" class="dropdown-item">RIESGOS TECNICOS</a></li>
+                                <li><a href="riesgos-pmi.html" class="dropdown-item">RIESGOS PMI</a></li>
+                                <li><a href="riesgos-cadena-produccion.html" class="dropdown-item">RIESGOS CADENA PRODUCCION</a></li>
+                                <li><a href="calidad-y-pmi.html" class="dropdown-item">CALIDAD Y PMI</a></li>
+                                <li><a href="costos.html" class="dropdown-item">COSTOS</a></li>
+                                <li><a href="nec.html" class="dropdown-item">NEC</a></li>
+                                <li><a href="fidic.html" class="dropdown-item">FIDIC</a></li>
+                                <li><a href="pmo.html" class="dropdown-item">PMO</a></li>
+                                <li><a href="gerencia-de-calidad.html" class="dropdown-item">GERENCIA DE CALIDAD</a></li>
+                                <li><a href="valor-ganado.html" class="dropdown-item">VALOR GANADO</a></li>
+                                <li><a href="bim-revit-architecture.html" class="dropdown-item">BIM REVIT ARCHITECTURE</a></li>
+                                <li><a href="iso-9001.html" class="dropdown-item">ISO 9001</a></li>
+                                <li><a href="oficina-tecnica.html" class="dropdown-item">OFICINA-TECNICA</a></li>
+                                <li><a href="herramientas.html" class="dropdown-item">HERRAMIENTAS</a></li>
+                                <li><a href="proyectos-pmi.html" class="dropdown-item">PROYECTOS PMI</a></li>
+                                <li><a href="contratos.html" class="dropdown-item">CONTRATOS</a></li>
+                                <li><a href="contratos-estado.html" class="dropdown-item">CONTRATOS-ESTADO</a></li>
+                                <li><a href="gruas-torre.html" class="dropdown-item">GRUAS TORRE</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- PRESS -->
+                        <li class="nav-item">
+                            <a href="press.html" class="nav-link hvr-underline-from-left">PRESS</a>
+                        </li>
+
+                        <!-- MEDIOS -->
+                        <li class="nav-item">
+                            <a href="medios.html" class="nav-link hvr-underline-from-left">MEDIOS</a>
+                        </li>
+
+                        <!-- CLIENTES -->
+                        <li class="nav-item">
+                            <a href="clientes.html" class="nav-link hvr-underline-from-left">CLIENTES</a>
+                        </li>
+
+                        <!-- MÁS... -->
+                        <li class="nav-item dropdown dropdown-more">
+                            <a href="javascript:void(0)" class="nav-link dropdown-toggle hvr-underline-from-left" id="dropdownMas" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                MÁS... <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMas">
+                                <li class="dropdown-submenu">
+                                    <a href="investigacion.html" class="dropdown-item submenu-toggle">
+                                        <span>INVESTIGACION</span>
+                                        <i class="fa-solid fa-chevron-right submenu-arrow"></i>
+                                    </a>
+                                    <ul class="dropdown-menu-lateral">
+                                        <li><a href="encuestas-proyectos.html" class="dropdown-item">Encuestas-Proyectos</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contacto.html" class="dropdown-item">CONTACTO</a></li>
+                                <li><a href="noticias.html" class="dropdown-item">NOTICIAS</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Overlay móvil -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+    </header>
+
+    <main class="page-content">
+        <!-- HERO SECTION -->
+        <!-- Reemplazar fondo por /img/hero-plazo.jpg -->
+        <section class="page-banner">
+            <div class="page-banner-bg banner-riesgos-bg"></div>
+            <div class="page-banner-overlay"></div>
+            <div class="page-banner-container">
+                <h1 class="banner-title animate__animated animate__fadeInDown">EVALUACIÓN DEL RIESGO DEL CUMPLIMIENTO DEL PLAZO</h1>
+                <p class="banner-subtitle animate__animated animate__fadeInUp animate__delay-1s">Detección del “Síndrome del 90%”, análisis de restricciones y proyección de la fecha de compleción.</p>
+            </div>
+        </section>
+
+        <!-- INTRO SECTION (2‑column) -->
+        <section class="content-section bg-alternate">
+            <div class="content-wrapper grid-split-layout">
+                <div class="intro-text">
+                    <h2 class="animate__animated animate__fadeInUp animate__delay-1s">¿Qué es el Síndrome del 90%?</h2>
+                    <p>Cuando un proyecto supera el 90 % de avance y, sin embargo, el saldo restante se retrasa, el plazo final suele extenderse de forma significativa. Este fenómeno, conocido como “Síndrome del 90 %”, afecta la planificación y la toma de decisiones críticas.</p>
+                    <p>Aplicamos la metodología <strong>Curva de Liberación®</strong> para identificar los cuellos de botella, re‑evaluar el alcance restante y generar una proyección fiable del cierre del proyecto.</p>
+                </div>
+                <div class="intro-media">
+                    <img src="https://via.placeholder.com/600x400" alt="Imagen ilustrativa del Síndrome del 90%">
+                </div>
+            </div>
+        </section>
+
+        <!-- ROADMAP / PROCESS SECTION -->
+        <section class="content-section">
+            <h2 class="section-title text-center animate__animated animate__fadeInUp animate__delay-1s">Nuestro proceso</h2>
+            <div class="roadmap-grid">
+                <div class="roadmap-step-card">
+                    <div class="feature-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+                    <h4>Revisión del alcance y del avance real</h4>
+                    <p>Diagnóstico del estado actual, identificación de la brecha entre avance reportado y real.</p>
+                </div>
+                <div class="roadmap-step-card">
+                    <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h4>Evaluación del Síndrome del 90 %</h4>
+                    <p>Análisis estadístico del ritmo de ejecución y detección de desviaciones críticas.</p>
+                </div>
+                <div class="roadmap-step-card">
+                    <div class="feature-icon"><i class="fa-solid fa-filter"></i></div>
+                    <h4>Matriz de restricciones y mitigación</h4>
+                    <p>Identificación de restricciones técnicas, de recursos y de procesos; propuesta de mitigaciones.</p>
+                </div>
+                <div class="roadmap-step-card">
+                    <div class="feature-icon"><i class="fa-solid fa-file-check"></i></div>
+                    <h4>Informe técnico y recomendaciones</h4>
+                    <p>Entrega de un informe con proyección de fecha de finalización, plan de acción y métricas de seguimiento.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALLERY SECTION (3 columns) -->
+        <section class="content-section bg-alternate">
+            <h2 class="section-title text-center animate__animated animate__fadeInUp animate__delay-1s">Casos de estudio y recursos</h2>
+            <div class="feature-grid">
+                <div class="feature-card rounded-4 border-start border-4 border-warning hvr-box-shadow-outset" data-aos="fade-right">
+                    <img src="https://www.quality-consulting.org/uploads/5/7/2/0/57202727/10-pmi_orig.jpg" alt="PMI Global Congress, Washington D.C.">
+                    <h4>PMI Global Congress</h4>
+                </div>
+                <div class="feature-card rounded-4 border-start border-4 border-warning hvr-box-shadow-outset" data-aos="fade-up">
+                    <iframe src="https://www.youtube.com/embed/Pxe6RP_J9Ek" title="Techsuyo at Stanford University" allowfullscreen=""></iframe>
+                    <h4>Techsuyo at Stanford University</h4>
+                </div>
+                <div class="feature-card rounded-4 border-start border-4 border-warning hvr-box-shadow-outset" data-aos="fade-left">
+                    <img src="https://www.quality-consulting.org/uploads/5/7/2/0/57202727/19-lnx_orig.jpeg" alt="Congreso Lean Construction - México D.F.">
+                    <h4>Lean Construction México</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- BENEFITS / SERVICE VALUE SECTION -->
+        <section class="content-section">
+            <h2 class="section-title text-center animate__animated animate__fadeInUp animate__delay-1s">Valor del servicio</h2>
+            <div class="feature-grid">
+                <div class="feature-card rounded-4 border-start border-4 border-warning hvr-box-shadow-outset" data-aos="fade-right">
+                    <div class="feature-icon"><i class="fa-solid fa-clock"></i></div>
+                    <h4>Evaluación especializada del plazo</h4>
+                </div>
+                <div class="feature-card rounded-4 border-start border-4 border-warning hvr-box-shadow-outset" data-aos="fade-up">
+                    <div class="feature-icon"><i class="fa-solid fa-exclamation-triangle"></i></div>
+                    <h4>Identificación de restricciones críticas</h4>
+                </div>
+                <div class="feature-card rounded-4 border-start border-4 border-warning hvr-box-shadow-outset" data-aos="fade-left">
+                    <div class="feature-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                    <h4>Análisis del avance real vs. planificado</h4>
+                </div>
+                <div class="feature-card rounded-4 border-start border-4 border-warning hvr-box-shadow-outset" data-aos="fade-right">
+                    <div class="feature-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                    <h4>Proyección fiable de la fecha de completación</h4>
+                </div>
+                <div class="feature-card rounded-4 border-start border-4 border-warning hvr-box-shadow-outset" data-aos="fade-up">
+                    <div class="feature-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                    <h4>Apoyo para la toma de decisiones estratégicas</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA BANNER -->
+        <section class="cta-box">
+            <div class="cta-content">
+                <h2 class="animate__animated animate__fadeInUp animate__delay-1s">¿Listo para controlar el riesgo de plazo?</h2>
+                <p>Llámanos o solicítanos una reunión para analizar tu proyecto.</p>
+                <div class="cta-actions">
+                    <a href="tel:+51993463118" class="btn btn-qcs-primary hvr-float-shadow"><i class="fa-solid fa-phone"></i> +51 993 463 118</a>
+                    <a href="https://www.quality-consulting.org/contacto.html" class="btn btn-qcs-dark hvr-grow">Contáctanos</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER (copiado del resto del sitio) -->
+            <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                
+                <!-- Columna 1: Identidad Corporativa -->
+                <div class="footer-col brand-col">
+                    <div class="logo-badge d-flex align-items-center mb-3">
+                        <img src="img/Logo.png" alt="Quality Consulting Solutions Logo" width="44" height="44" class="d-inline-block align-text-top rounded-2 me-2 brand-logo animate__animated animate__bounceIn" style="object-fit: cover; width: 44px; height: 44px; ">
+                        <div class="logo-text-wrap">
+                            <span class="logo-title text-light">QUALITY</span>
+                            <span class="logo-sub">CONSULTING</span>
+                        </div>
+                    </div>
+                    <p class="footer-desc">
+                        Soluciones estratégicas en ingeniería, gestión de proyectos, PMO, homologación de proveedores y capacitación corporativa especializada.
+                    </p>
+                    <div class="footer-socials mt-3">
+                        <a href="https://pe.linkedin.com/in/omarsamaniego" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/qaqcconsulting" target="_blank" rel="noopener noreferrer" class="social-btn facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/channel/UCbCdXwbcl-uouYa6Y4_kY0A?view_as=subscriber" target="_blank" rel="noopener noreferrer" class="social-btn youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp animate__animated animate__pulse animate__infinite" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Enlaces RÃ¡pidos -->
+                <div class="footer-col links-col">
+                    <h4 class="footer-heading">Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+                        <li><a href="nosotros.html"><i class="fa-solid fa-angle-right"></i> Nosotros</a></li>
+                        <li><a href="index.html#consultoria"><i class="fa-solid fa-angle-right"></i> Consultoría</a></li>
+                        <li><a href="index.html#capacitacion"><i class="fa-solid fa-angle-right"></i> Capacitación</a></li>
+                        <li><a href="medios.html"><i class="fa-solid fa-angle-right"></i> Medios y Podcasts</a></li>
+                        <li><a href="clientes.html"><i class="fa-solid fa-angle-right"></i> Clientes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Contacto & Libro de Reclamaciones -->
+                <div class="footer-col contact-col">
+                    <h4 class="footer-heading">Contacto Oficial</h4>
+                    <p><i class="fa-solid fa-location-dot me-2 text-warning"></i> Av. Javier Prado 757, piso 10 Magdalena, Lima 17</p>
+                    <p><i class="fa-solid fa-envelope me-2 text-warning"></i> <a href="mailto:contacto@quality-consulting.org" class="text-light">contacto@quality-consulting.org</a></p>
+                    <p><i class="fa-solid fa-phone me-2 text-warning"></i> <a href="tel:+51993463118" class="text-light">+51 993 463 118</a></p>
+                    <div class="mt-3">
+                        <a href="contacto.html#libro-reclamaciones" class="btn btn-outline-warning btn-sm fw-bold d-inline-flex align-items-center rounded-pill px-3 py-2 btn-qcs-primary hvr-float-shadow">
+                            <i class="fas fa-book-open me-2"></i> Libro de Reclamaciones
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Quality Consulting Solutions. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+        <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+<script src="script.js?v=2.2"></script>
+
+
+
+
+<!-- AOS init -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+  });
+</script>
+</body></html>

@@ -1,0 +1,1150 @@
+<!DOCTYPE html><html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacitación: Contratos Internacionales FIDIC | Quality Consulting Solutions</title>
+    <meta name="description" content="Curso especializado de alto nivel en Contratos Internacionales FIDIC: Rainbow Suite (Red Book, Yellow Book, Silver Book) 1999 y 2017. Asesoría legal y técnica en infraestructura.">
+    
+        <!-- Favicon Oficial -->
+    <link rel="icon" type="image/png" href="img/Logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="img/Logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;family=Open+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Hoja de estilos principal -->
+        <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+<link rel="stylesheet" href="styles.css?v=2.2">
+
+    <!-- Estilos Especializados para FIDIC (Legal-Tech / Executive UI) -->
+    <style>
+        /* ==========================================================================
+           FIDIC LEGAL-TECH CUSTOM STYLES
+           ========================================================================== */
+        
+        /* Badge Dorado Brillante */
+        .badge-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.45rem 1.35rem;
+            background: linear-gradient(135deg, rgba(197, 155, 39, 0.28), rgba(223, 175, 51, 0.4));
+            border: 1px solid #C9910D;
+            color: #fef08a;
+            font-size: 0.82rem;
+            font-weight: 800;
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 50px;
+            margin-bottom: 1.35rem;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 20px rgba(223, 175, 51, 0.3);
+            animation: crownGlow 3s infinite alternate;
+        }
+
+        @keyframes crownGlow {
+            0% { box-shadow: 0 4px 16px rgba(223, 175, 51, 0.25); border-color: #E5A813; }
+            100% { box-shadow: 0 6px 28px rgba(223, 175, 51, 0.55); border-color: #fde047; }
+        }
+
+        /* Banner FIDIC Especial */
+        .banner-fidic-bg {
+            background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Rainbow Suite Display (3 Insignias / Cards en el Hero) */
+        .rainbow-suite-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-top: 2.25rem;
+            perspective: 1000px;
+        }
+
+        .rainbow-card {
+            background: rgba(15, 35, 60, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 1.5rem 1.25rem;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .rainbow-card:hover {
+            transform: translateY(-6px) scale(1.02);
+        }
+
+        /* Acento Rojo: Red Book */
+        .rainbow-card.red-book {
+            border-top: 4px solid #ef4444;
+        }
+        .rainbow-card.red-book:hover {
+            box-shadow: 0 12px 30px rgba(239, 68, 68, 0.35);
+            border-color: rgba(239, 68, 68, 0.6);
+        }
+        .rainbow-card.red-book .book-tag {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+            border: 1px solid #ef4444;
+        }
+
+        /* Acento Amarillo: Yellow Book */
+        .rainbow-card.yellow-book {
+            border-top: 4px solid #eab308;
+        }
+        .rainbow-card.yellow-book:hover {
+            box-shadow: 0 12px 30px rgba(234, 179, 8, 0.35);
+            border-color: rgba(234, 179, 8, 0.6);
+        }
+        .rainbow-card.yellow-book .book-tag {
+            background: rgba(234, 179, 8, 0.2);
+            color: #fef08a;
+            border: 1px solid #eab308;
+        }
+
+        /* Acento Plata: Silver Book */
+        .rainbow-card.silver-book {
+            border-top: 4px solid #cbd5e1;
+        }
+        .rainbow-card.silver-book:hover {
+            box-shadow: 0 12px 30px rgba(203, 213, 225, 0.35);
+            border-color: rgba(203, 213, 225, 0.8);
+        }
+        .rainbow-card.silver-book .book-tag {
+            background: rgba(203, 213, 225, 0.2);
+            color: #F4F5F7;
+            border: 1px solid #cbd5e1;
+        }
+
+        .book-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.72rem;
+            font-weight: 800;
+            font-family: var(--font-heading);
+            padding: 0.25rem 0.65rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .rainbow-card-title {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 0.4rem;
+        }
+
+        .rainbow-card-desc {
+            font-size: 0.82rem;
+            color: #e2e8f0;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Layout Asimétrico: Ficha Ejecutiva Docente */
+        .teacher-executive-card {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 16px 36px rgba(15, 35, 60, 0.1);
+            overflow: hidden;
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+            position: relative;
+        }
+
+        .teacher-executive-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 48px rgba(15, 35, 60, 0.16);
+        }
+
+        .teacher-card-top-accent {
+            height: 6px;
+            background: linear-gradient(90deg, #ef4444, #eab308, #94a3b8, var(--accent-gold));
+        }
+
+        .teacher-card-body {
+            padding: 2rem 1.75rem;
+        }
+
+        .teacher-media-row {
+            display: flex;
+            align-items: center;
+            gap: 1.4rem;
+            margin-bottom: 1.35rem;
+        }
+
+        .teacher-img-wrap {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--primary-blue));
+            box-shadow: 0 8px 20px rgba(15, 17, 19, 0.2);
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .teacher-img-card {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .teacher-name-box h3 {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 0.25rem;
+        }
+
+        .teacher-role-tag {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .teacher-bullets-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.25rem 0 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .teacher-bullets-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            font-size: 0.86rem;
+            color: #334155;
+            line-height: 1.5;
+        }
+
+        .teacher-bullets-list li i {
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Tarjeta Conceptual Amplia (Objetivo & Enfoque 1999 vs 2017) */
+        .concept-fidic-card {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            padding: 2.25rem 2rem;
+            box-shadow: var(--shadow-sm);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .edition-compare-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .edition-item {
+            background: #F4F5F7;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1rem 1.15rem;
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        .edition-item.gold-edge {
+            border-left-color: var(--accent-gold);
+        }
+
+        .edition-item h4 {
+            font-family: var(--font-heading);
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 0.35rem;
+        }
+
+        .edition-item p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+            margin: 0;
+        }
+
+        /* 3D / Glassmorphism Grid de Contenidos (5 Ejes) */
+        .fidic-modules-5-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .fidic-glass-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 1.75rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fidic-glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--primary-blue));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .fidic-glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(15, 17, 19, 0.2);
+            border-color: rgba(197, 155, 39, 0.45);
+        }
+
+        .fidic-glass-card:hover::before {
+            opacity: 1;
+        }
+
+        .fidic-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .fidic-number-badge {
+            font-family: var(--font-heading);
+            font-size: 0.76rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: #fef08a;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            border: 1px solid rgba(229, 168, 19, 0.4);
+        }
+
+        .fidic-icon-box {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(15, 17, 19, 0.2);
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            transition: all var(--transition-fast);
+        }
+
+        .fidic-glass-card:hover .fidic-icon-box {
+            background: linear-gradient(135deg, var(--accent-gold), #C9910D);
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        .fidic-card-title {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            line-height: 1.35;
+        }
+
+        .fidic-card-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        /* Showcase Multimedia Dashboard / Cinema Frame */
+        .cinema-showcase-wrapper {
+            max-width: 960px;
+            margin: 0 auto;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 24px 60px rgba(11, 21, 40, 0.25);
+            border: 1px solid rgba(197, 155, 39, 0.3);
+            background: #0F1113;
+        }
+
+        .cinema-header-bar {
+            background: linear-gradient(135deg, #0F1113, #0F1113);
+            padding: 0.9rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-family: var(--font-heading);
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .cinema-status-dots {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .cinema-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .dot-red { background: #ef4444; }
+        .dot-yellow { background: #eab308; }
+        .dot-green { background: #22c55e; }
+
+        @media (max-width: 1024px) {
+            .rainbow-suite-grid {
+                grid-template-columns: 1fr;
+            }
+            .fidic-modules-5-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .fidic-modules-5-grid > :last-child:nth-child(2n + 1) {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .fidic-modules-5-grid {
+                grid-template-columns: 1fr;
+            }
+            .fidic-modules-5-grid > :last-child:nth-child(2n + 1) {
+                grid-column: auto;
+            }
+            .edition-compare-box {
+                grid-template-columns: 1fr;
+            }
+            .teacher-media-row {
+                flex-direction: column;
+                text-align: center;
+            }
+            .teacher-img-wrap {
+                margin: 0 auto;
+            }
+        }
+    </style>
+
+    <!-- Animate.css (Efectos principales de entrada) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- AOS (Animate On Scroll para tarjetas y secciones) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <!-- Hover.css (Microinteracciones en botones y enlaces) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+</head>
+<body>
+
+    <!-- ==========================================================================
+         1. HEADER CORPORATIVO
+         ========================================================================== -->
+        <!-- ==========================================================================
+         CONTENEDOR PRINCIPAL DEL HEADER (Bootstrap 5 Integrado)
+         ========================================================================== -->
+    <header class="main-header" id="mainHeader">
+        
+        <!-- Franja Superior: Logo, Título Central y Redes Sociales -->
+        <div class="header-top">
+            <div class="header-container top-container">
+                
+                <!-- Logo a la izquierda -->
+                <div class="header-logo">
+                    <a href="index.html" class="logo-link" aria-label="Quality Consulting Solutions Inicio">
+                        <div class="logo-badge d-flex align-items-center">
+                            <img src="img/Logo.png" alt="Quality Consulting Solutions Logo" width="44" height="44" class="d-inline-block align-text-top rounded-2 me-2 brand-logo animate__animated animate__bounceIn" style="object-fit: cover; width: 44px; height: 44px;">
+                            <div class="logo-text-wrap">
+                                <span class="logo-title">QUALITY</span>
+                                <span class="logo-sub">CONSULTING</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Título Centrado -->
+                <div class="header-center-title">
+                    <h1 class="animate__animated animate__fadeInDown">QUALITY CONSULTING SOLUTIONS</h1>
+                    <p class="tagline animate__animated animate__fadeInUp animate__delay-1s">Ingeniería • Gestión de Proyectos • Capacitación • Calidad</p>
+                </div>
+
+                <!-- Redes Sociales a la derecha & Botón Móvil -->
+                <div class="header-actions">
+                    <div class="social-networks" aria-label="Redes Sociales">
+                        <a href="https://pe.linkedin.com/in/omarsamaniego" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.facebook.com/qaqcconsulting" target="_blank" rel="noopener noreferrer" class="social-btn facebook" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCbCdXwbcl-uouYa6Y4_kY0A?view_as=subscriber" target="_blank" rel="noopener noreferrer" class="social-btn youtube" aria-label="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp animate__animated animate__pulse animate__infinite" aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+
+                    <!-- Botón Hamburguesa Nativo Bootstrap 5 para Mobile -->
+                    <button class="navbar-toggler mobile-toggle-btn" id="mobileToggleBtn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarQuality" aria-controls="navbarQuality" aria-expanded="false" aria-label="Abrir menú de navegación">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Barra de Navegación Principal Horizontal con Bootstrap 5 -->
+        <nav class="navbar navbar-expand-lg main-navbar p-0" id="mainNavbar" aria-label="Navegación principal">
+            <div class="header-container nav-container w-100">
+                <div class="collapse navbar-collapse justify-content-center" id="navbarQuality">
+                    <ul class="navbar-nav nav-menu" id="navMenu">
+
+                        <!-- HOME -->
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link hvr-underline-from-left">HOME</a>
+                        </li>
+
+                        <!-- NOSOTROS -->
+                        <li class="nav-item">
+                            <a href="nosotros.html" class="nav-link hvr-underline-from-left">NOSOTROS</a>
+                        </li>
+
+                        <!-- CONSULTORIA (Desplegable) -->
+                        <li class="nav-item dropdown">
+                            <a href="consultoria.html" class="nav-link dropdown-toggle hvr-underline-from-left" id="dropdownConsultoria" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                CONSULTORIA <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownConsultoria">
+                                <li><a href="gestion-de-pmo.html" class="dropdown-item">GESTION DE PMO</a></li>
+                                <li><a href="headhunting.html" class="dropdown-item">HEADHUNTING</a></li>
+                                <li><a href="gestion-de-riesgos.html" class="dropdown-item">GESTION DE RIESGOS</a></li>
+                                <li><a href="sindrome-del-90.html" class="dropdown-item">RIESGO DEL PLAZO</a></li>
+                                <li><a href="lego-serious-play.html" class="dropdown-item">LEGO SERIOUS PLAY</a></li>
+                                <li><a href="cronograma-forense.html" class="dropdown-item">CRONOGRAMA-FORENSE</a></li>
+                                <li><a href="homologaciones.html" class="dropdown-item">HOMOLOGACIONES</a></li>
+                                <li><a href="gestion-de-la-calidad.html" class="dropdown-item">GESTION DE LA CALIDAD</a></li>
+                                <li><a href="permisologia.html" class="dropdown-item">PERMISOLOGIA</a></li>
+                                <li><a href="universidad-corporativa.html" class="dropdown-item">UNIVERSIDAD CORPORATIVA</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- CAPACITACION (Desplegable Extenso) -->
+                        <li class="nav-item dropdown dropdown-large">
+                            <a href="capacitacion.html" class="nav-link dropdown-toggle active hvr-underline-from-left" id="dropdownCapacitacion" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                CAPACITACION <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownCapacitacion">
+                                <li><a href="lean-last-planner.html" class="dropdown-item">LEAN-LAST-PLANNER</a></li>
+                                <li><a href="riesgos-tecnicos.html" class="dropdown-item">RIESGOS TECNICOS</a></li>
+                                <li><a href="riesgos-pmi.html" class="dropdown-item">RIESGOS PMI</a></li>
+                                <li><a href="riesgos-cadena-produccion.html" class="dropdown-item">RIESGOS CADENA PRODUCCION</a></li>
+                                <li><a href="calidad-y-pmi.html" class="dropdown-item">CALIDAD Y PMI</a></li>
+                                <li><a href="costos.html" class="dropdown-item">COSTOS</a></li>
+                                <li><a href="nec.html" class="dropdown-item">NEC</a></li>
+                                <li><a href="fidic.html" class="dropdown-item active">FIDIC</a></li>
+                                <li><a href="pmo.html" class="dropdown-item">PMO</a></li>
+                                <li><a href="gerencia-de-calidad.html" class="dropdown-item">GERENCIA DE CALIDAD</a></li>
+                                <li><a href="valor-ganado.html" class="dropdown-item">VALOR GANADO</a></li>
+                                <li><a href="bim-revit-architecture.html" class="dropdown-item">BIM REVIT ARCHITECTURE</a></li>
+                                <li><a href="iso-9001.html" class="dropdown-item">ISO 9001</a></li>
+                                <li><a href="oficina-tecnica.html" class="dropdown-item">OFICINA-TECNICA</a></li>
+                                <li><a href="herramientas.html" class="dropdown-item">HERRAMIENTAS</a></li>
+                                <li><a href="proyectos-pmi.html" class="dropdown-item">PROYECTOS PMI</a></li>
+                                <li><a href="contratos.html" class="dropdown-item">CONTRATOS</a></li>
+                                <li><a href="contratos-estado.html" class="dropdown-item">CONTRATOS-ESTADO</a></li>
+                                <li><a href="gruas-torre.html" class="dropdown-item">GRUAS TORRE</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- PRESS -->
+                        <li class="nav-item">
+                            <a href="press.html" class="nav-link hvr-underline-from-left">PRESS</a>
+                        </li>
+
+                        <!-- MEDIOS -->
+                        <li class="nav-item">
+                            <a href="medios.html" class="nav-link hvr-underline-from-left">MEDIOS</a>
+                        </li>
+
+                        <!-- CLIENTES -->
+                        <li class="nav-item">
+                            <a href="clientes.html" class="nav-link hvr-underline-from-left">CLIENTES</a>
+                        </li>
+
+                        <!-- MÁS... -->
+                        <li class="nav-item dropdown dropdown-more">
+                            <a href="javascript:void(0)" class="nav-link dropdown-toggle hvr-underline-from-left" id="dropdownMas" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                MÁS... <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMas">
+                                <li class="dropdown-submenu">
+                                    <a href="investigacion.html" class="dropdown-item submenu-toggle">
+                                        <span>INVESTIGACION</span>
+                                        <i class="fa-solid fa-chevron-right submenu-arrow"></i>
+                                    </a>
+                                    <ul class="dropdown-menu-lateral">
+                                        <li><a href="encuestas-proyectos.html" class="dropdown-item">Encuestas-Proyectos</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contacto.html" class="dropdown-item">CONTACTO</a></li>
+                                <li><a href="noticias.html" class="dropdown-item">NOTICIAS</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Overlay móvil -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+    </header>
+
+    <main class="page-content">
+
+        <!-- ==========================================================================
+             1. HERO DE ALTO IMPACTO (Executive Hero)
+             ========================================================================== -->
+        <section class="page-banner banner-fidic">
+            <div class="page-banner-bg banner-fidic-bg"></div>
+            <div class="page-banner-overlay"></div>
+            <div class="page-banner-container">
+                
+                <!-- Badge Dorado Brillante Requerido -->
+                <div class="page-title-wrap">
+                    <span class="badge-gold">
+                        <i class="fas fa-crown"></i> ESTÁNDAR GLOBAL DE INFRAESTRUCTURA
+                    </span>
+                    <h1 class="page-main-title animate__animated animate__fadeInDown">CONTRATOS INTERNACIONALES FIDIC</h1>
+                    <div class="title-underline"></div>
+                </div>
+
+                <!-- Subtítulo Requerido -->
+                <div class="intro-card">
+                    <p class="intro-text animate__animated animate__fadeInUp animate__delay-1s">
+                        Aprende la gestión técnica y contractual de la Rainbow Suite (Libros Rojo, Amarillo y Plata) en sus versiones 1999 y 2017.
+                    </p>
+                </div>
+
+                <!-- Display Interactivo de los Libros FIDIC (Rainbow Suite) -->
+                <div class="rainbow-suite-grid">
+                    
+                    <!-- 1. Red Book -->
+                    <div class="rainbow-card red-book">
+                        <span class="book-tag"><i class="fa-solid fa-book-bookmark"></i> RED BOOK</span>
+                        <h3 class="rainbow-card-title animate__animated animate__fadeInUp animate__delay-1s">Construcción</h3>
+                        <p class="rainbow-card-desc animate__animated animate__fadeInUp animate__delay-1s">
+                            Diseño a cargo del Cliente. Modelo estándar para obras de ingeniería civil e infraestructura con administración directa de El Ingeniero.
+                        </p>
+                    </div>
+
+                    <!-- 2. Yellow Book -->
+                    <div class="rainbow-card yellow-book">
+                        <span class="book-tag"><i class="fa-solid fa-compass-drafting"></i> YELLOW BOOK</span>
+                        <h3 class="rainbow-card-title animate__animated animate__fadeInUp animate__delay-1s">Planta y Diseño/Construcción</h3>
+                        <p class="rainbow-card-desc animate__animated animate__fadeInUp animate__delay-1s">
+                            Esquema Design &amp; Build a cargo del Contratista. Ideal para plantas industriales, proyectos electromecánicos e instalaciones complejas.
+                        </p>
+                    </div>
+
+                    <!-- 3. Silver Book -->
+                    <div class="rainbow-card silver-book">
+                        <span class="book-tag"><i class="fa-solid fa-industry"></i> SILVER BOOK</span>
+                        <h3 class="rainbow-card-title animate__animated animate__fadeInUp animate__delay-1s">EPC / Llave en Mano</h3>
+                        <p class="rainbow-card-desc animate__animated animate__fadeInUp animate__delay-1s">
+                            Ingeniería, Procura y Construcción (Turnkey). Transferencia máxima de riesgos al Contratista con certeza garantizada de precio final y plazo.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             2. LAYOUT ASIMÉTRICO: PERFIL DOCENTE & OBJETIVO (Ficha Ejecutiva)
+             ========================================================================== -->
+        <section class="content-section" id="perfil-objetivo">
+            <div class="section-container">
+                
+                <div class="grid-split-layout">
+                    
+                    <!-- Columna Izquierda: Card Premium de Sharon Grados -->
+                    <div class="split-text-col">
+                        <div class="section-header-compact">
+                            <span class="sub-badge"><i class="fa-solid fa-gavel"></i> Asesoría Legal-Tech Especializada</span>
+                            <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">DOCENTE DEL PROGRAMA</h2>
+                            <div class="heading-line"></div>
+                        </div>
+
+                        <div class="teacher-executive-card" style="margin-top: 1.25rem;">
+                            <div class="teacher-card-top-accent"></div>
+                            <div class="teacher-card-body">
+                                
+                                <div class="teacher-media-row">
+                                    <div class="teacher-img-wrap">
+                                        <img src="https://www.quality-consulting.org/uploads/5/7/2/0/57202727/sharon-2_orig.jpg" alt="Abg. Sharon Grados" class="teacher-img-card" loading="lazy">
+                                    </div>
+                                    <div class="teacher-name-box">
+                                        <span class="teacher-role-tag">Docente Principal</span>
+                                        <h3 class="animate__animated animate__fadeInUp animate__delay-1s">ABG. SHARON GRADOS</h3>
+                                        
+                                        <!-- Badges de Alto Nivel Requeridos -->
+                                        <div class="docente-credentials-row" style="margin-bottom: 0;">
+                                            <span class="credential-badge"><i class="fa-solid fa-scale-balanced"></i> Legal Claims Advisor</span>
+                                            <span class="credential-badge"><i class="fa-solid fa-plane-departure"></i> Aeropuerto Chinchero</span>
+                                            <span class="credential-badge"><i class="fa-solid fa-oil-well"></i> Refinería Talara</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Resumen y Viñetas Requeridas -->
+                                <ul class="teacher-bullets-list">
+                                    <li>
+                                        <i class="fa-solid fa-circle-check"></i>
+                                        <span>Abogada experta en Derecho de la Construcción, prevención de controversias y reclamaciones (Claims) bajo esquemas FIDIC y NEC.</span>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-circle-check"></i>
+                                        <span>Miembro destacada de la prestigiosa <strong>UK Society of Construction Law (SCL)</strong> y de la Dispute Resolution Board Foundation (DRBF).</span>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-circle-check"></i>
+                                        <span>Asesora contractual en megaproyectos de envergadura nacional: Modernización de la Refinería de Talara y Aeropuerto Internacional de Chinchero.</span>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-circle-check"></i>
+                                        <span>Especialista en administración de Dispute Avoidance/Adjudication Boards (DAAB) y prórrogas de tiempo (Extension of Time - EOT).</span>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Columna Derecha: Objetivo & Enfoque 1999 vs 2017 -->
+                    <div class="split-text-col">
+                        <div class="section-header-compact">
+                            <span class="sub-badge"><i class="fa-solid fa-bullseye"></i> Rigor Internacional &amp; Aplicación Práctica</span>
+                            <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">OBJETIVO &amp; ENFOQUE METODOLÓGICO</h2>
+                            <div class="heading-line"></div>
+                        </div>
+
+                        <div class="concept-fidic-card" style="margin-top: 1.25rem;">
+                            <div>
+                                <p class="paragraph-text paragraph-lead" style="margin-bottom: 1rem;">
+                                    Proporcionar a directores de proyectos, ingenieros y abogados las herramientas técnicas y contractuales indispensables para administrar eficientemente la Rainbow Suite de FIDIC, dominando la gestión de riesgos, reclamaciones oportunas y resolución de disputas.
+                                </p>
+                                <p class="paragraph-text" style="font-size: 0.88rem; color: #475569; margin-bottom: 0;">
+                                    El programa enfatiza la adaptación de las Condiciones Particulares a la normativa jurídica nacional y analiza la evolución contractual de la edición 1999 a la versión 2017 para blindar legal y financieramente los proyectos de inversión.
+                                </p>
+                            </div>
+
+                            <!-- Comparativa 1999 vs 2017 -->
+                            <div class="edition-compare-box">
+                                <div class="edition-item">
+                                    <h4><i class="fa-solid fa-clock-rotate-left"></i> Edición 1999</h4>
+                                    <p>Flexibilidad operativa, amplias facultades de determinación para El Ingeniero y DAB como mecanismo reactivo ante reclamaciones.</p>
+                                </div>
+                                <div class="edition-item gold-edge">
+                                    <h4><i class="fa-solid fa-shield-halved"></i> Edición 2017</h4>
+                                    <p>Mayor balance recíproco, plazos perentorios estrictos (Time Bars), DAAB con enfoque preventivo y digitalización de avisos formales.</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             3. CONTENIDOS DEL CURSO (Grid Estilizado con Hover 3D / Glassmorphism)
+             ========================================================================== -->
+        <section class="content-section bg-alternate" id="estructura-curricular">
+            <div class="section-container">
+                
+                <div class="section-header-center">
+                    <span class="sub-badge"><i class="fa-solid fa-layer-group"></i> Malla Curricular de Alta Especialización</span>
+                    <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">ESTRUCTURA CURRICULAR DE LA RAINBOW SUITE</h2>
+                    <div class="heading-line center-line"></div>
+                    <p class="section-subtitle-text">
+                        5 ejes estratégicos estructurados para dominar la interpretación de cláusulas, distribución de riesgos y gestión de reclamaciones en mega-obras.
+                    </p>
+                </div>
+
+                <!-- Grid de 5 Tarjetas Dinámicas -->
+                <div class="fidic-modules-5-grid">
+                    
+                    <!-- Eje 01 -->
+                    <div class="fidic-glass-card">
+                        <div class="fidic-card-header">
+                            <span class="fidic-number-badge">MÓDULO 01</span>
+                            <div class="fidic-icon-box"><i class="fa-solid fa-book-open"></i></div>
+                        </div>
+                        <h3 class="fidic-card-title animate__animated animate__fadeInUp animate__delay-1s">01. Introducción a los Modelos FIDIC</h3>
+                        <p class="fidic-card-desc">
+                            Filosofía y origen de la Federación Internacional de Ingenieros Consultores (FIDIC). Estructura general de la Rainbow Suite, cláusulas generales y armonización contractual en proyectos multilaterales.
+                        </p>
+                    </div>
+
+                    <!-- Eje 02 -->
+                    <div class="fidic-glass-card">
+                        <div class="fidic-card-header">
+                            <span class="fidic-number-badge">MÓDULO 02</span>
+                            <div class="fidic-icon-box"><i class="fa-solid fa-users-gear"></i></div>
+                        </div>
+                        <h3 class="fidic-card-title animate__animated animate__fadeInUp animate__delay-1s">02. Intervinientes y Obligaciones</h3>
+                        <p class="fidic-card-desc">
+                            Roles y responsabilidades jurídicas del Empleador (Employer) y del Contratista (Contractor). La figura dual de "El Ingeniero" (The Engineer): facultades técnicas, deber de imparcialidad y determinaciones vinculantes.
+                        </p>
+                    </div>
+
+                    <!-- Eje 03 -->
+                    <div class="fidic-glass-card">
+                        <div class="fidic-card-header">
+                            <span class="fidic-number-badge">MÓDULO 03</span>
+                            <div class="fidic-icon-box"><i class="fa-solid fa-file-signature"></i></div>
+                        </div>
+                        <h3 class="fidic-card-title animate__animated animate__fadeInUp animate__delay-1s">03. Cláusulas Principales</h3>
+                        <p class="fidic-card-desc">
+                            Administración operativa de riesgos de diseño, suspensión y terminación contractual. Fuerza mayor (Circunstancias Excepcionales), prórrogas de plazo (EOT), procedimiento de Variaciones y ajuste de costos.
+                        </p>
+                    </div>
+
+                    <!-- Eje 04 -->
+                    <div class="fidic-glass-card">
+                        <div class="fidic-card-header">
+                            <span class="fidic-number-badge">MÓDULO 04</span>
+                            <div class="fidic-icon-box"><i class="fa-solid fa-scale-unbalanced"></i></div>
+                        </div>
+                        <h3 class="fidic-card-title animate__animated animate__fadeInUp animate__delay-1s">04. Sistema de Gestión Conflictual FIDIC</h3>
+                        <p class="fidic-card-desc">
+                            Tratamiento riguroso de Reclamaciones (Claims) bajo la Cláusula 20: notificaciones, plazos de caducidad perentorios (Time Bars), sustento técnico-legal y funcionamiento continuo de los Dispute Boards (DAB / DAAB).
+                        </p>
+                    </div>
+
+                    <!-- Eje 05 -->
+                    <div class="fidic-glass-card">
+                        <div class="fidic-card-header">
+                            <span class="fidic-number-badge">MÓDULO 05</span>
+                            <div class="fidic-icon-box"><i class="fa-solid fa-landmark-flag"></i></div>
+                        </div>
+                        <h3 class="fidic-card-title animate__animated animate__fadeInUp animate__delay-1s">05. Condiciones Particulares y Adaptación Nacional</h3>
+                        <p class="fidic-card-desc">
+                            Técnicas de redacción de Condiciones Particulares para la adecuación al Código Civil y la legislación de contrataciones públicas y privadas en el Perú. Buenas prácticas y lecciones aprendidas en arbitrajes.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             4. SHOWCASE MULTIMEDIA (Video Interactivo - Marco de Cine / Dashboard)
+             ========================================================================== -->
+        <section class="content-section" id="showcase-multimedia">
+            <div class="section-container">
+                
+                <div class="section-header-center">
+                    <span class="sub-badge"><i class="fa-brands fa-youtube"></i> Masterclass &amp; Análisis Contractual</span>
+                    <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">CONFERENCIAS Y SESIONES TÉCNICAS FIDIC</h2>
+                    <div class="heading-line center-line"></div>
+                    <p class="section-subtitle-text">
+                        Visualiza la presentación técnica sobre la aplicación práctica de los Contratos FIDIC y la gestión estratégica de reclamaciones.
+                    </p>
+                </div>
+
+                <!-- Showcase Marco de Cine -->
+                <div class="cinema-showcase-wrapper">
+                    
+                    <div class="cinema-header-bar">
+                        <div class="cinema-status-dots">
+                            <span class="cinema-dot dot-red"></span>
+                            <span class="cinema-dot dot-yellow"></span>
+                            <span class="cinema-dot dot-green"></span>
+                            <span style="margin-left: 0.5rem; font-size: 0.82rem; color: #cbd5e1;"><i class="fa-brands fa-youtube text-danger" style="color: #ef4444;"></i> Masterclass Oficial • Rainbow Suite FIDIC</span>
+                        </div>
+                        <div class="video-live-pill">
+                            <span class="video-live-dot"></span> HD 1080p Stream
+                        </div>
+                    </div>
+
+                    <div class="video-responsive-container">
+                        <iframe src="https://www.youtube.com/embed/x41lT53XiMw" title="Masterclass Contratos Internacionales FIDIC - Quality Consulting Solutions" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </div>
+
+                    <div class="video-caption-box" style="background: #1A1D20; color: #cbd5e1; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+                        <p style="color: #cbd5e1;">
+                            <i class="fa-solid fa-circle-play" style="color: var(--accent-gold); margin-right: 0.35rem;"></i> <strong>Dominio Contractual Global:</strong> Aspectos clave de la administración de contratos estándar internacionales y prevención temprana de controversias.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             5. MÓDULO DE MATRÍCULA Y PASARELAS DE PAGO (CTA Destacado de Conversión)
+             ========================================================================== -->
+        <section class="content-section bg-alternate" id="matricula">
+            <div class="section-container">
+                
+                <div class="course-enrollment-card">
+                    
+                    <span class="enroll-badge">
+                        <i class="fa-solid fa-crown"></i> INSCRIPCIONES ABIERTAS • CAPACITACIÓN EJECUTIVA
+                    </span>
+
+                    <h2 class="enroll-title animate__animated animate__fadeInUp animate__delay-1s">ASEGURA TU VACANTE EN EL PROGRAMA FIDIC</h2>
+                    <p class="enroll-subtitle">
+                        Accede a formación especializada impartida por expertos legales y técnicos de referencia en megaproyectos de infraestructura.
+                    </p>
+
+                    <!-- Beneficios de la Matrícula -->
+                    <div class="enroll-perks-grid">
+                        <div class="enroll-perk-item">
+                            <div class="enroll-perk-icon">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                            </div>
+                            <span>Docente UK Society of Construction Law</span>
+                        </div>
+
+                        <div class="enroll-perk-item">
+                            <div class="enroll-perk-icon">
+                                <i class="fa-solid fa-file-contract"></i>
+                            </div>
+                            <span>Plantillas de Notificaciones y Cláusulas Particulares</span>
+                        </div>
+
+                        <div class="enroll-perk-item">
+                            <div class="enroll-perk-icon">
+                                <i class="fa-solid fa-certificate"></i>
+                            </div>
+                            <span>Diploma de Acreditación Internacional</span>
+                        </div>
+
+                        <div class="enroll-perk-item">
+                            <div class="enroll-perk-icon">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                            <span>Acceso a Red de Contactos &amp; Bolsa Corporativa</span>
+                        </div>
+                    </div>
+
+                    <!-- 4 Botones de Acción Personalizados por Plataforma -->
+                    <div class="payment-buttons-grid">
+                        
+                        <!-- 1. Botón WhatsApp -->
+                        <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=w_%20%20%20%20%20%20Buen%20d%C3%ADa,%20%C2%BFpodr%C3%ADan%20enviarme%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Contratos%20Internacionales%20FIDIC" target="_blank" rel="noopener noreferrer" class="btn-whatsapp payment-action-btn animate__animated animate__pulse animate__infinite" aria-label="Consultar información del curso de Contratos FIDIC por WhatsApp">
+                            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                        </a>
+
+                        <!-- 2. Botón Brochure / Ficha Técnica -->
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfgiYtCYfdwUwxU0i3J_o5belvS8esVzY4mo2l8q_k8HFJjPg/viewform" target="_blank" rel="noopener noreferrer" class="btn-outline payment-action-btn" aria-label="Descargar información y brochure del curso FIDIC">
+                            <i class="fas fa-file-pdf"></i> Info &amp; Brochure
+                        </a>
+
+                        <!-- 3. Botón Niubiz PagoLink -->
+                        <a href="https://pagolink.niubiz.com.pe/pagoseguro/QUALITYCONSULTINGSOLUTIONS/23082" target="_blank" rel="noopener noreferrer" class="btn-visanet payment-action-btn" aria-label="Pago Seguro con Niubiz PagoLink">
+                            <i class="fas fa-credit-card"></i> Pago Seguro Niubiz
+                        </a>
+
+                        <!-- 4. Botón PayPal Internacional -->
+                        <a href="https://www.paypal.com/paypalme/qualityconsulting/225" target="_blank" rel="noopener noreferrer" class="btn-paypal payment-action-btn" aria-label="Pagar mediante PayPal Internacional">
+                            <i class="fab fa-paypal"></i> Pagar con PayPal
+                        </a>
+
+                    </div>
+
+                    <!-- Barra de Seguridad y Confianza -->
+                    <div class="payment-trust-bar">
+                        <div class="payment-trust-item">
+                            <i class="fa-solid fa-lock"></i>
+                            <span>Plataforma con Encriptación SSL 256-bit</span>
+                        </div>
+                        <div class="payment-trust-item">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>Transacción 100% Segura y Verificada</span>
+                        </div>
+                        <div class="payment-trust-item">
+                            <i class="fa-solid fa-headset"></i>
+                            <span>Soporte Académico y Legal Permanente</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             6. CIERRE CORPORATIVO
+             ========================================================================== -->
+        <section class="cta-banner-section" id="contacto-final">
+            <div class="cta-container">
+                <div class="cta-box">
+                    <div class="cta-content">
+                        <span class="cta-tag"><i class="fa-solid fa-phone-volume"></i> Asesoría Ejecutiva Directa</span>
+                        <h3 class="animate__animated animate__fadeInUp animate__delay-1s">¿Deseas capacitación corporativa 'In-House' en Contratos FIDIC?</h3>
+                        <p>
+                            Diseñamos programas y talleres a la medida para empresas de ingeniería, constructoras, consorcios supervisores y entidades públicas.
+                        </p>
+                        
+                        <!-- Teléfono Visible Clickeable Requerido -->
+                        <div class="cta-phone-wrapper" style="margin-top: 1.25rem;">
+                            <a href="tel:+51993463118" class="cta-phone-link" aria-label="Llamar al +51 993 463 118">
+                                <i class="fa-solid fa-phone-volume"></i>
+                                <span>+51 993 463 118</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="cta-actions">
+                        <a href="contacto.html" class="btn btn-large btn-qcs-primary hvr-float-shadow">
+                            <i class="fa-solid fa-envelope"></i> Contacto Directo
+                        </a>
+                        <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=w_%20%20%20%20%20%20Buen%20d%C3%ADa,%20%C2%BFpodr%C3%ADan%20enviarme%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Contratos%20Internacionales%20FIDIC" target="_blank" rel="noopener noreferrer" class="btn btn-large btn-qcs-dark hvr-grow">
+                            <i class="fa-brands fa-whatsapp"></i> Chat WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================================================
+         FOOTER CORPORATIVO
+         ========================================================================== -->
+            <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                
+                <!-- Columna 1: Identidad Corporativa -->
+                <div class="footer-col brand-col">
+                    <div class="logo-badge d-flex align-items-center mb-3">
+                        <img src="img/Logo.png" alt="Quality Consulting Solutions Logo" width="44" height="44" class="d-inline-block align-text-top rounded-2 me-2 brand-logo animate__animated animate__bounceIn" style="object-fit: cover; width: 44px; height: 44px; ">
+                        <div class="logo-text-wrap">
+                            <span class="logo-title text-light">QUALITY</span>
+                            <span class="logo-sub">CONSULTING</span>
+                        </div>
+                    </div>
+                    <p class="footer-desc">
+                        Soluciones estratégicas en ingeniería, gestión de proyectos, PMO, homologación de proveedores y capacitación corporativa especializada.
+                    </p>
+                    <div class="footer-socials mt-3">
+                        <a href="https://pe.linkedin.com/in/omarsamaniego" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/qaqcconsulting" target="_blank" rel="noopener noreferrer" class="social-btn facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/channel/UCbCdXwbcl-uouYa6Y4_kY0A?view_as=subscriber" target="_blank" rel="noopener noreferrer" class="social-btn youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp animate__animated animate__pulse animate__infinite" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Enlaces RÃ¡pidos -->
+                <div class="footer-col links-col">
+                    <h4 class="footer-heading">Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+                        <li><a href="nosotros.html"><i class="fa-solid fa-angle-right"></i> Nosotros</a></li>
+                        <li><a href="index.html#consultoria"><i class="fa-solid fa-angle-right"></i> Consultoría</a></li>
+                        <li><a href="index.html#capacitacion"><i class="fa-solid fa-angle-right"></i> Capacitación</a></li>
+                        <li><a href="medios.html"><i class="fa-solid fa-angle-right"></i> Medios y Podcasts</a></li>
+                        <li><a href="clientes.html"><i class="fa-solid fa-angle-right"></i> Clientes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Contacto & Libro de Reclamaciones -->
+                <div class="footer-col contact-col">
+                    <h4 class="footer-heading">Contacto Oficial</h4>
+                    <p><i class="fa-solid fa-location-dot me-2 text-warning"></i> Av. Javier Prado 757, piso 10 Magdalena, Lima 17</p>
+                    <p><i class="fa-solid fa-envelope me-2 text-warning"></i> <a href="mailto:contacto@quality-consulting.org" class="text-light">contacto@quality-consulting.org</a></p>
+                    <p><i class="fa-solid fa-phone me-2 text-warning"></i> <a href="tel:+51993463118" class="text-light">+51 993 463 118</a></p>
+                    <div class="mt-3">
+                        <a href="contacto.html#libro-reclamaciones" class="btn btn-outline-warning btn-sm fw-bold d-inline-flex align-items-center rounded-pill px-3 py-2 btn-qcs-primary hvr-float-shadow">
+                            <i class="fas fa-book-open me-2"></i> Libro de Reclamaciones
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Quality Consulting Solutions. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script Principal -->
+        <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+<script src="script.js?v=2.2"></script>
+
+
+
+
+<!-- AOS init -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+  });
+</script>
+</body></html>

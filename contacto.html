@@ -1,0 +1,887 @@
+<!DOCTYPE html><html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto y Atención Corporativa | Quality Consulting Solutions</title>
+    <meta name="description" content="Ponte en contacto con Quality Consulting Solutions para consultas sobre servicios de consultoría en PMO, gestión de riesgos, capacitaciones in-house y peritajes forenses.">
+    
+        <!-- Favicon Oficial -->
+    <link rel="icon" type="image/png" href="img/Logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="img/Logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Open+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Hoja de estilos principal del sitio -->
+    <link rel="stylesheet" href="styles.css?v=2.2">
+
+    <!-- Estilos Especializados Executive Contact & Corporate Helpdesk -->
+    <style>
+        body {
+            background-color: var(--qcs-bg-light);
+            color: #1e293b;
+        }
+
+        /* ----------------------------------------------------
+           1. HERO SECTION (Executive Helpdesk Style)
+           ---------------------------------------------------- */
+        .contact-hero-banner {
+            position: relative;
+            padding: 190px 1.5rem 85px 1.5rem;
+            background: linear-gradient(145deg, #0F1113 0%, #1A1D20 50%, #24292E 100%);
+            color: #ffffff;
+            overflow: hidden;
+            border-bottom: 4px solid var(--accent-gold);
+        }
+
+        .contact-hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 85% 25%, rgba(229, 168, 19, 0.22) 0%, transparent 60%),
+                        radial-gradient(circle at 15% 80%, rgba(142, 146, 151, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .contact-hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 28px 28px;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .contact-hero-title {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+        }
+
+        .contact-hero-subtitle {
+            font-family: var(--font-body);
+            font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+            color: #e2e8f0;
+            max-width: 820px;
+            margin: 0 auto 2.5rem auto;
+            line-height: 1.7;
+        }
+
+        /* Hero Quick Channels Grid */
+        .hero-channel-card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 18px;
+            padding: 1.5rem 1.25rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .hero-channel-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.14);
+            border-color: var(--accent-gold);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .hero-channel-icon {
+            width: 52px;
+            height: 52px;
+            margin: 0 auto 1rem auto;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .hero-channel-name {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.35rem;
+        }
+
+        .hero-channel-desc {
+            font-size: 0.84rem;
+            color: #cbd5e1;
+            margin-bottom: 0.6rem;
+        }
+
+        /* ----------------------------------------------------
+           2. FORMULARIO & TARJETA DE SOPORTE (Layout 2 Col)
+           ---------------------------------------------------- */
+        .contact-form-card {
+            border: 1px solid #e2e8f0;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .contact-form-card:hover {
+            box-shadow: 0 20px 45px rgba(15, 17, 19, 0.2) !important;
+        }
+
+        .contact-form-title {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.65rem;
+            color: var(--qcs-dark-slate);
+            letter-spacing: -0.3px;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--qcs-yellow);
+            box-shadow: 0 0 0 0.25rem rgba(15, 17, 19, 0.2);
+        }
+
+        .input-group-text {
+            border-color: #dee2e6;
+        }
+
+        /* Tarjeta de Soporte y WhatsApp */
+        .support-info-card {
+            background: linear-gradient(145deg, #0F1113 0%, #1A1D20 60%, #1A1D20 100%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .support-info-card::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -30%;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .schedule-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            padding: 1.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 1.5rem 0;
+        }
+
+        .schedule-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            padding: 0.4rem 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+        }
+
+        .schedule-row:last-child {
+            border-bottom: none;
+        }
+
+        .social-pill-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 1.15rem;
+            transition: all var(--transition-fast);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .social-pill-btn.linkedin:hover { background: #0077b5; border-color: #0077b5; transform: translateY(-3px); }
+        .social-pill-btn.facebook:hover { background: #1877f2; border-color: #1877f2; transform: translateY(-3px); }
+        .social-pill-btn.youtube:hover { background: #ff0000; border-color: #ff0000; transform: translateY(-3px); }
+        .social-pill-btn.whatsapp:hover { background: #25d366; border-color: #25d366; transform: translateY(-3px); }
+
+        /* ----------------------------------------------------
+           3. MAPA & CIERRE CORPORATIVO
+           ---------------------------------------------------- */
+        .map-section-wrapper {
+            background: #ffffff;
+            border-radius: 24px;
+            border: 1px solid #e2e8f0;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+        }
+
+        .contact-cta-banner {
+            background: linear-gradient(145deg, #0F1113 0%, #1A1D20 50%, #24292E 100%);
+            border-radius: 24px;
+            padding: 3.5rem 2.5rem;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(15, 17, 19, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-cta-banner::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(229, 168, 19, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+    </style>
+
+    <!-- Animate.css (Efectos principales de entrada) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- AOS (Animate On Scroll para tarjetas y secciones) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <!-- Hover.css (Microinteracciones en botones y enlaces) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+</head>
+<body>
+
+    <!-- ==========================================================================
+         CONTENEDOR PRINCIPAL DEL HEADER (Bootstrap 5 Integrado)
+         ========================================================================== -->
+    <header class="main-header" id="mainHeader">
+        
+        <!-- Franja Superior: Logo, Título Central y Redes Sociales -->
+        <div class="header-top">
+            <div class="header-container top-container">
+                
+                <!-- Logo a la izquierda -->
+                <div class="header-logo">
+                    <a href="index.html" class="logo-link" aria-label="Quality Consulting Solutions Inicio">
+                        <div class="logo-badge d-flex align-items-center">
+                            <img src="img/Logo.png" alt="Quality Consulting Solutions Logo" width="44" height="44" class="d-inline-block align-text-top rounded-2 me-2 brand-logo animate__animated animate__bounceIn" style="object-fit: cover; width: 44px; height: 44px;">
+                            <div class="logo-text-wrap">
+                                <span class="logo-title">QUALITY</span>
+                                <span class="logo-sub">CONSULTING</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Título Centrado -->
+                <div class="header-center-title">
+                    <h1 class="animate__animated animate__fadeInDown">QUALITY CONSULTING SOLUTIONS</h1>
+                    <p class="tagline animate__animated animate__fadeInUp animate__delay-1s">Ingeniería • Gestión de Proyectos • Capacitación • Calidad</p>
+                </div>
+
+                <!-- Redes Sociales a la derecha & Botón Móvil -->
+                <div class="header-actions">
+                    <div class="social-networks" aria-label="Redes Sociales">
+                        <a href="https://pe.linkedin.com/in/omarsamaniego" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.facebook.com/qaqcconsulting" target="_blank" rel="noopener noreferrer" class="social-btn facebook" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCbCdXwbcl-uouYa6Y4_kY0A?view_as=subscriber" target="_blank" rel="noopener noreferrer" class="social-btn youtube" aria-label="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp animate__animated animate__pulse animate__infinite" aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+
+                    <!-- Botón Hamburguesa Nativo Bootstrap 5 para Mobile -->
+                    <button class="navbar-toggler mobile-toggle-btn" id="mobileToggleBtn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarQuality" aria-controls="navbarQuality" aria-expanded="false" aria-label="Abrir menú de navegación">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Barra de Navegación Principal Horizontal con Bootstrap 5 -->
+        <nav class="navbar navbar-expand-lg main-navbar p-0" id="mainNavbar" aria-label="Navegación principal">
+            <div class="header-container nav-container w-100">
+                <div class="collapse navbar-collapse justify-content-center" id="navbarQuality">
+                    <ul class="navbar-nav nav-menu" id="navMenu">
+
+                        <!-- HOME -->
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link hvr-underline-from-left">HOME</a>
+                        </li>
+
+                        <!-- NOSOTROS -->
+                        <li class="nav-item">
+                            <a href="nosotros.html" class="nav-link hvr-underline-from-left">NOSOTROS</a>
+                        </li>
+
+                        <!-- CONSULTORIA (Desplegable) -->
+                        <li class="nav-item dropdown">
+                            <a href="consultoria.html" class="nav-link dropdown-toggle hvr-underline-from-left" id="dropdownConsultoria" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                CONSULTORIA <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownConsultoria">
+                                <li><a href="gestion-de-pmo.html" class="dropdown-item">GESTION DE PMO</a></li>
+                                <li><a href="headhunting.html" class="dropdown-item">HEADHUNTING</a></li>
+                                <li><a href="gestion-de-riesgos.html" class="dropdown-item">GESTION DE RIESGOS</a></li>
+                                <li><a href="sindrome-del-90.html" class="dropdown-item">RIESGO DEL PLAZO</a></li>
+                                <li><a href="lego-serious-play.html" class="dropdown-item">LEGO SERIOUS PLAY</a></li>
+                                <li><a href="cronograma-forense.html" class="dropdown-item">CRONOGRAMA-FORENSE</a></li>
+                                <li><a href="homologaciones.html" class="dropdown-item">HOMOLOGACIONES</a></li>
+                                <li><a href="gestion-de-la-calidad.html" class="dropdown-item">GESTION DE LA CALIDAD</a></li>
+                                <li><a href="permisologia.html" class="dropdown-item">PERMISOLOGIA</a></li>
+                                <li><a href="universidad-corporativa.html" class="dropdown-item">UNIVERSIDAD CORPORATIVA</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- CAPACITACION (Desplegable Extenso) -->
+                        <li class="nav-item dropdown dropdown-large">
+                            <a href="capacitacion.html" class="nav-link dropdown-toggle hvr-underline-from-left" id="dropdownCapacitacion" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                CAPACITACION <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownCapacitacion">
+                                <li><a href="lean-last-planner.html" class="dropdown-item">LEAN-LAST-PLANNER</a></li>
+                                <li><a href="riesgos-tecnicos.html" class="dropdown-item">RIESGOS TECNICOS</a></li>
+                                <li><a href="riesgos-pmi.html" class="dropdown-item">RIESGOS PMI</a></li>
+                                <li><a href="riesgos-cadena-produccion.html" class="dropdown-item">RIESGOS CADENA PRODUCCION</a></li>
+                                <li><a href="calidad-y-pmi.html" class="dropdown-item">CALIDAD Y PMI</a></li>
+                                <li><a href="costos.html" class="dropdown-item">COSTOS</a></li>
+                                <li><a href="nec.html" class="dropdown-item">NEC</a></li>
+                                <li><a href="fidic.html" class="dropdown-item">FIDIC</a></li>
+                                <li><a href="pmo.html" class="dropdown-item">PMO</a></li>
+                                <li><a href="gerencia-de-calidad.html" class="dropdown-item">GERENCIA DE CALIDAD</a></li>
+                                <li><a href="valor-ganado.html" class="dropdown-item">VALOR GANADO</a></li>
+                                <li><a href="bim-revit-architecture.html" class="dropdown-item">BIM REVIT ARCHITECTURE</a></li>
+                                <li><a href="iso-9001.html" class="dropdown-item">ISO 9001</a></li>
+                                <li><a href="oficina-tecnica.html" class="dropdown-item">OFICINA-TECNICA</a></li>
+                                <li><a href="herramientas.html" class="dropdown-item">HERRAMIENTAS</a></li>
+                                <li><a href="proyectos-pmi.html" class="dropdown-item">PROYECTOS PMI</a></li>
+                                <li><a href="contratos.html" class="dropdown-item">CONTRATOS</a></li>
+                                <li><a href="contratos-estado.html" class="dropdown-item">CONTRATOS-ESTADO</a></li>
+                                <li><a href="gruas-torre.html" class="dropdown-item">GRUAS TORRE</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- PRESS -->
+                        <li class="nav-item">
+                            <a href="press.html" class="nav-link hvr-underline-from-left">PRESS</a>
+                        </li>
+
+                        <!-- MEDIOS -->
+                        <li class="nav-item">
+                            <a href="medios.html" class="nav-link hvr-underline-from-left">MEDIOS</a>
+                        </li>
+
+                        <!-- CLIENTES -->
+                        <li class="nav-item">
+                            <a href="clientes.html" class="nav-link hvr-underline-from-left">CLIENTES</a>
+                        </li>
+
+                        <!-- MÁS... -->
+                        <li class="nav-item dropdown dropdown-more">
+                            <a href="javascript:void(0)" class="nav-link dropdown-toggle active hvr-underline-from-left" id="dropdownMas" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                MÁS... <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMas">
+                                <li class="dropdown-submenu">
+                                    <a href="investigacion.html" class="dropdown-item submenu-toggle">
+                                        <span>INVESTIGACION</span>
+                                        <i class="fa-solid fa-chevron-right submenu-arrow"></i>
+                                    </a>
+                                    <ul class="dropdown-menu-lateral">
+                                        <li><a href="encuestas-proyectos.html" class="dropdown-item">Encuestas-Proyectos</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contacto.html" class="dropdown-item active">CONTACTO</a></li>
+                                <li><a href="noticias.html" class="dropdown-item">NOTICIAS</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Overlay móvil -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+    </header>
+
+    <main>
+        <!-- ==========================================================================
+             1. ENCABEZADO HERO (Executive Helpdesk Style)
+             ========================================================================== -->
+        <section class="contact-hero-banner text-center">
+            <div class="contact-hero-pattern"></div>
+            <div class="container position-relative">
+                
+                <!-- Badge Superior Neón -->
+                <div class="d-inline-block mb-3">
+                    <span class="badge bg-light text-dark px-3 py-2 rounded-pill fw-bold mb-2 shadow-sm">
+                        <i class="fas fa-headset me-2"></i> ATENCIÓN Y COMUNICACIÓN DIRECTA
+                    </span>
+                </div>
+
+                <!-- Título Principal -->
+                <h1 class="contact-hero-title animate__animated animate__fadeInDown">QUEREMOS ESCUCHARTE</h1>
+
+                <!-- Subtítulo -->
+                <p class="contact-hero-subtitle">
+                    Ponte en contacto con nuestro equipo de especialistas. Estamos listos para atender tus consultas sobre consultoría, capacitaciones in-house o servicios técnicos.
+                </p>
+
+                <!-- Grid de 3 Tarjetas de Canales de Respuesta Rápida -->
+                <div class="row g-4 justify-content-center text-start">
+                    
+                    <!-- Canal 1: Teléfono Directo & WhatsApp -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="hero-channel-card">
+                            <div class="hero-channel-icon text-success">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <h3 class="hero-channel-name animate__animated animate__fadeInUp animate__delay-1s">Teléfono Directo &amp; WhatsApp</h3>
+                            <p class="hero-channel-desc">Llamadas e interacción inmediata</p>
+                            <a href="tel:+51993463118" class="text-white fw-bold d-inline-flex align-items-center gap-1">
+                                <i class="fab fa-whatsapp text-success me-2"></i> +51 993 463 118
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Canal 2: Correo Comercial -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="hero-channel-card">
+                            <div class="hero-channel-icon text-warning">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3 class="hero-channel-name animate__animated animate__fadeInUp animate__delay-1s">Correo Comercial</h3>
+                            <p class="hero-channel-desc">Solicitud de cotizaciones y propuestas</p>
+                            <a href="mailto:contacto@quality-consulting.org" class="text-white fw-bold d-inline-flex align-items-center gap-1">
+                                <i class="fas fa-envelope text-warning me-2"></i> contacto@quality-consulting.org
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Canal 3: Atención Presencial -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="hero-channel-card">
+                            <div class="hero-channel-icon text-warning">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3 class="hero-channel-name animate__animated animate__fadeInUp animate__delay-1s">Atención Presencial</h3>
+                            <p class="hero-channel-desc">Sede Central y Oficinas</p>
+                            <span class="text-white fw-bold d-inline-flex align-items-center gap-1" style="font-size: 0.92rem;">
+                                <i class="fas fa-map-marker-alt text-warning me-2"></i> Av. Javier Prado 757, piso 10 Magdalena, Lima 17
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             2. LAYOUT PRINCIPAL DE 2 COLUMNAS (Formulario + Card de Soporte)
+             ========================================================================== -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row g-4 justify-content-center">
+                    
+                    <!-- Columna Izquierda: Formulario de Contacto Flotante -->
+                    <div class="col-lg-7">
+                        <div class="contact-form-card shadow-lg rounded-4 p-4 p-md-5 bg-white h-100">
+                            
+                            <div class="mb-4">
+                                <span class="badge bg-warning-subtle text-dark fw-bold px-3 py-2 rounded-pill text-uppercase mb-2">
+                                    <i class="fa-solid fa-paper-plane me-1"></i> Formulario de Contacto
+                                </span>
+                                <h2 class="contact-form-title animate__animated animate__fadeInUp animate__delay-1s">ENVÍANOS TU CONSULTA</h2>
+                                <p class="text-muted small mb-0">
+                                    Los campos marcados con (<span class="text-danger">*</span>) son obligatorios.
+                                </p>
+                            </div>
+
+                            <!-- Contenedor para Alertas Dinámicas de Éxito / Error -->
+                            <div id="contactFormAlert" class="mb-3" style="display: none;"></div>
+
+                            <form id="contactForm" action="backend/send-contact.php" method="POST" novalidate>
+                                
+                                <!-- Campo Trampa Anti-Spam (Honeypot) - Invisible para usuarios -->
+                                <div style="display:none !important; visibility:hidden !important; position:absolute; left:-9999px;" aria-hidden="true">
+                                    <label for="_qcs_verification_hp">No complete este campo si es humano</label>
+                                    <input type="text" id="_qcs_verification_hp" name="_qcs_verification_hp" tabindex="-1" autocomplete="off">
+                                </div>
+
+                                <!-- Nombre y Apellido -->
+                                <div class="mb-3">
+                                    <label for="contactNombre" class="form-label fw-bold">Nombre y Apellido <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="fas fa-user text-muted"></i></span>
+                                        <input type="text" id="contactNombre" name="nombre" class="form-control" placeholder="Ej. Juan Pérez" required autocomplete="name">
+                                    </div>
+                                </div>
+
+                                <!-- Teléfono / WhatsApp -->
+                                <div class="mb-3">
+                                    <label for="contactTelefono" class="form-label fw-bold">Teléfono <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="fas fa-phone text-muted"></i></span>
+                                        <input type="tel" id="contactTelefono" name="telefono" class="form-control" placeholder="+51 999 999 999" required autocomplete="tel">
+                                    </div>
+                                </div>
+
+                                <!-- Empresa / Organización -->
+                                <div class="mb-3">
+                                    <label for="contactEmpresa" class="form-label fw-bold">Empresa <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="fas fa-building text-muted"></i></span>
+                                        <input type="text" id="contactEmpresa" name="empresa" class="form-control" placeholder="Nombre de tu empresa o institución" required autocomplete="organization">
+                                    </div>
+                                </div>
+
+                                <!-- Correo Electrónico -->
+                                <div class="mb-3">
+                                    <label for="contactEmail" class="form-label fw-bold">Correo electrónico <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="fas fa-envelope text-muted"></i></span>
+                                        <input type="email" id="contactEmail" name="email" class="form-control" placeholder="ejemplo@empresa.com" required autocomplete="email">
+                                    </div>
+                                </div>
+
+                                <!-- Consulta o Mensaje -->
+                                <div class="mb-3">
+                                    <label for="contactConsulta" class="form-label fw-bold">Consulta <span class="text-danger">*</span></label>
+                                    <textarea id="contactConsulta" name="consulta" class="form-control" rows="4" placeholder="Escribe aquí los detalles de tu consulta sobre cursos, consultorías o servicios..." required></textarea>
+                                </div>
+
+                                <!-- Botón de Envío -->
+                                <div class="mt-4">
+                                    <button type="submit" id="contactSubmitBtn" class="btn btn-lg w-100 py-3 fw-bold rounded-pill shadow btn-qcs-primary hvr-float-shadow" style="background-color: var(--qcs-yellow); color: var(--qcs-black); border-color: var(--qcs-yellow);">
+                                        <span class="btn-text"><i class="fas fa-paper-plane me-2"></i> ENVIAR CONSULTA</span>
+                                        <span class="btn-loading d-none"><i class="fas fa-spinner fa-spin me-2"></i> ENVIANDO...</span>
+                                    </button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha: Tarjeta de Contacto Directo & Redes Oficiales -->
+                    <div class="col-lg-5">
+                        <div class="support-info-card text-white rounded-4 p-4 p-md-5 shadow-lg d-flex flex-direction-column flex-column justify-content-between">
+                            
+                            <div>
+                                <span class="badge bg-success bg-opacity-25 text-success border border-success px-3 py-2 rounded-pill fw-bold mb-3">
+                                    <i class="fa-solid fa-bolt me-1"></i> ATENCIÓN INMEDIATA
+                                </span>
+                                
+                                <h3 class="fw-bold font-montserrat text-white mb-3 animate__animated animate__fadeInUp animate__delay-1s" style="font-size: 1.55rem;">
+                                    ¿Prefieres una respuesta al instante?
+                                </h3>
+                                
+                                <p class="text-light text-opacity-90 mb-4" style="line-height: 1.8;">
+                                    Escríbenos directamente por WhatsApp para coordinar reuniones, cotizaciones o resolver tus dudas en tiempo real.
+                                </p>
+
+                                <!-- Botón WhatsApp Oficial -->
+                                <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=Hola,%20deseo%20realizar%20una%20consulta%20desde%20la%20p%C3%A1gina%20de%20contacto" target="_blank" rel="noopener noreferrer" class="btn btn-success btn-lg w-100 py-3 my-3 fw-bold rounded-pill shadow btn-qcs-primary hvr-float-shadow">
+                                    <i class="fab fa-whatsapp me-2 fs-4 align-middle"></i> Chatear por WhatsApp
+                                </a>
+
+                                <!-- Horario de Atención Corporativa -->
+                                <div class="schedule-box">
+                                    <h4 class="fw-bold font-montserrat text-white mb-2 fs-6">
+                                        <i class="fa-regular fa-clock me-2 text-warning"></i> Horario de Atención Corporativa
+                                    </h4>
+                                    <div class="schedule-row">
+                                        <span class="text-light text-opacity-75">Lunes a Viernes:</span>
+                                        <span class="fw-bold text-white">8:00 am - 6:00 pm</span>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <span class="text-light text-opacity-75">Sábados:</span>
+                                        <span class="fw-bold text-white">9:00 am - 1:00 pm</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Redes Sociales Oficiales -->
+                            <div class="mt-4 pt-3 border-top border-white border-opacity-10">
+                                <p class="small text-light text-opacity-75 fw-bold mb-3 text-uppercase" style="letter-spacing: 1px;">
+                                    Conéctate con Nosotros
+                                </p>
+                                <div class="d-flex gap-3">
+                                    <a href="https://pe.linkedin.com/in/omarsamaniego" target="_blank" rel="noopener noreferrer" class="social-pill-btn linkedin" aria-label="LinkedIn">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="https://www.facebook.com/qaqcconsulting" target="_blank" rel="noopener noreferrer" class="social-pill-btn facebook" aria-label="Facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="https://www.youtube.com/channel/UCbCdXwbcl-uouYa6Y4_kY0A?view_as=subscriber" target="_blank" rel="noopener noreferrer" class="social-pill-btn youtube" aria-label="YouTube">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                    <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="social-pill-btn whatsapp animate__animated animate__pulse animate__infinite" aria-label="WhatsApp">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             3. MAPA GEOLOCALIZADO DE UBICACIÓN CENTRAL
+             ========================================================================== -->
+        <section class="pb-5">
+            <div class="container">
+                <div class="map-section-wrapper">
+                    
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+                        <div>
+                            <span class="badge bg-warning-subtle text-dark fw-bold px-3 py-2 rounded-pill text-uppercase mb-2">
+                                <i class="fa-solid fa-location-dot me-1"></i> Presencia en Lima
+                            </span>
+                            <h2 class="fw-extrabold font-montserrat text-dark fs-3 mb-0 animate__animated animate__fadeInUp animate__delay-1s" style="font-weight: 800;">
+                                NUESTRA UBICACIÓN
+                            </h2>
+                        </div>
+                        <div class="text-muted small">
+                            <i class="fa-solid fa-building me-1 text-dark"></i> Sede Central: Av. Javier Prado 757, piso 10, Magdalena del Mar, Lima 17
+                        </div>
+                    </div>
+
+                    <!-- Contenedor Responsive Ratio 21x9 -->
+                    <div class="ratio ratio-21x9 shadow-lg rounded-4 overflow-hidden my-4 border">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.353392348507!2d-77.0674558!3d-12.0911765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c907b22a0149%3A0xb3634ca3364f3316!2sAv.%20Javier%20Prado%20Oeste%20757%2C%20Magdalena%20del%20Mar%2015076!5e0!3m2!1ses!2spe!4v1700000000000!5m2!1ses!2spe" title="Ubicación de Quality Consulting Solutions en Av. Javier Prado 757, piso 10 Magdalena, Lima 17" loading="lazy" allowfullscreen=""></iframe>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             LIBRO DE RECLAMACIONES VIRTUAL (Normativa Indecopi Perú)
+             ========================================================================== -->
+        <section class="pb-5" id="libro-reclamaciones">
+            <div class="container">
+                <div class="bg-white rounded-4 border p-4 p-md-5 shadow-sm">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4 border-bottom pb-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="bg-warning bg-opacity-25 text-warning p-3 rounded-circle fs-3 text-dark">
+                                <i class="fas fa-book-open text-dark"></i>
+                            </div>
+                            <div>
+                                <span class="badge bg-dark text-white fw-bold px-3 py-1 rounded-pill mb-1">CONFORME A LEY N° 29571</span>
+                                <h3 class="fw-bold font-montserrat text-dark fs-4 mb-0 animate__animated animate__fadeInUp animate__delay-1s">LIBRO DE RECLAMACIONES VIRTUAL</h3>
+                            </div>
+                        </div>
+                        <div class="text-muted small">
+                            Razón Social: <strong>Quality Consulting Solutions</strong><br>
+                            Sede: <strong>Av. Javier Prado 757, piso 10 Magdalena, Lima 17</strong>
+                        </div>
+                    </div>
+
+                    <p class="text-muted small mb-4">
+                        Ponemos a su disposición nuestro Libro de Reclamaciones Virtual. De conformidad con lo establecido en el Código de Protección y Defensa del Consumidor, la formulación del reclamo no impide acudir a otras vías de solución de controversias ni es requisito previo para interponer una denuncia ante INDECOPI.
+                    </p>
+
+                    <!-- Contenedor para Alertas Dinámicas del Libro de Reclamaciones -->
+                    <div id="claimFormAlert" class="mb-3" style="display: none;"></div>
+
+                    <form id="claimForm" action="backend/submit-claim.php" method="POST" novalidate>
+                        
+                        <!-- Campo Trampa Anti-Spam (Honeypot) - Invisible para usuarios -->
+                        <div style="display:none !important; visibility:hidden !important; position:absolute; left:-9999px;" aria-hidden="true">
+                            <label for="_qcs_claim_hp">No complete este campo si es humano</label>
+                            <input type="text" id="_qcs_claim_hp" name="_qcs_verification_hp" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="claimNombre" class="form-label fw-bold small">Nombre y Apellido <span class="text-danger">*</span></label>
+                                <input type="text" id="claimNombre" name="nombre" class="form-control" placeholder="Nombre completo" required autocomplete="name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="claimDocumento" class="form-label fw-bold small">Documento de Identidad (DNI/CE/RUC) <span class="text-danger">*</span></label>
+                                <input type="text" id="claimDocumento" name="documento" class="form-control" placeholder="N° de documento" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="claimEmail" class="form-label fw-bold small">Correo Electrónico <span class="text-danger">*</span></label>
+                                <input type="email" id="claimEmail" name="email" class="form-control" placeholder="correo@ejemplo.com" required autocomplete="email">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="claimTelefono" class="form-label fw-bold small">Teléfono / WhatsApp <span class="text-danger">*</span></label>
+                                <input type="tel" id="claimTelefono" name="telefono" class="form-control" placeholder="+51 999 999 999" required autocomplete="tel">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="claimTipo" class="form-label fw-bold small">Tipo de Registro <span class="text-danger">*</span></label>
+                                <select id="claimTipo" name="tipo" class="form-select" required>
+                                    <option value="">Seleccione...</option>
+                                    <option value="queja">Queja (Malestar respecto a la atención)</option>
+                                    <option value="reclamo">Reclamo (Disconformidad con el servicio o producto)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="claimServicio" class="form-label fw-bold small">Servicio / Curso Contratado <span class="text-danger">*</span></label>
+                                <input type="text" id="claimServicio" name="servicio" class="form-control" placeholder="Nombre del curso o consultoría" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="claimDetalle" class="form-label fw-bold small">Detalle del Reclamo o Queja <span class="text-danger">*</span></label>
+                                <textarea id="claimDetalle" name="detalle" class="form-control" rows="4" placeholder="Describa claramente los hechos ocurridos..." required></textarea>
+                            </div>
+                            <div class="col-12 text-end">
+                                <button type="submit" id="claimSubmitBtn" class="btn btn-dark fw-bold rounded-pill px-4 py-2 btn-qcs-primary hvr-float-shadow">
+                                    <span class="btn-text"><i class="fas fa-paper-plane me-2"></i> Enviar Hoja de Reclamación</span>
+                                    <span class="btn-loading d-none"><i class="fas fa-spinner fa-spin me-2"></i> Procesando registro...</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             4. CIERRE CORPORATIVO
+             ========================================================================== -->
+        <section class="pb-5">
+            <div class="container">
+                <div class="contact-cta-banner">
+                    <div class="row align-items-center">
+                        
+                        <div class="col-lg-8 mb-4 mb-lg-0">
+                            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3 shadow-sm">
+                                <i class="fa-solid fa-layer-group me-1"></i> SERVICIOS INTEGRALES
+                            </span>
+                            <h2 class="fw-bold font-montserrat text-white mb-3 animate__animated animate__fadeInUp animate__delay-1s" style="font-size: clamp(1.6rem, 2.5vw, 2.2rem);">
+                                Conoce nuestras Soluciones en Consultoría y Capacitación
+                            </h2>
+                            <p class="text-light text-opacity-90 mb-0" style="font-size: 1.05rem; line-height: 1.8;">
+                                Explora nuestro catálogo de formación técnica especializada o solicita asesoría integral para la implementación de PMO, gestión de riesgos contractuales y auditorías de calidad ISO 9001.
+                            </p>
+                        </div>
+
+                        <div class="col-lg-4 text-lg-end text-center">
+                            <div class="d-flex flex-column gap-3 justify-content-center">
+                                <a href="gestion-de-pmo.html" class="btn btn-warning btn-lg px-4 py-3 fw-bold rounded-pill shadow-lg btn-qcs-primary hvr-float-shadow">
+                                    <i class="fa-solid fa-chart-pie me-2"></i> Ver Consultoría
+                                </a>
+                                <a href="lean-last-planner.html" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold rounded-pill btn-qcs-primary hvr-float-shadow">
+                                    <i class="fa-solid fa-graduation-cap me-2"></i> Ver Cursos y Capacitación
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================================================
+         FOOTER CORPORATIVO
+         ========================================================================== -->
+            <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                
+                <!-- Columna 1: Identidad Corporativa -->
+                <div class="footer-col brand-col">
+                    <div class="logo-badge d-flex align-items-center mb-3">
+                        <img src="img/Logo.png" alt="Quality Consulting Solutions Logo" width="44" height="44" class="d-inline-block align-text-top rounded-2 me-2 brand-logo animate__animated animate__bounceIn" style="object-fit: cover; width: 44px; height: 44px; ">
+                        <div class="logo-text-wrap">
+                            <span class="logo-title text-light">QUALITY</span>
+                            <span class="logo-sub">CONSULTING</span>
+                        </div>
+                    </div>
+                    <p class="footer-desc">
+                        Soluciones estratégicas en ingeniería, gestión de proyectos, PMO, homologación de proveedores y capacitación corporativa especializada.
+                    </p>
+                    <div class="footer-socials mt-3">
+                        <a href="https://pe.linkedin.com/in/omarsamaniego" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/qaqcconsulting" target="_blank" rel="noopener noreferrer" class="social-btn facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/channel/UCbCdXwbcl-uouYa6Y4_kY0A?view_as=subscriber" target="_blank" rel="noopener noreferrer" class="social-btn youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp animate__animated animate__pulse animate__infinite" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Enlaces RÃ¡pidos -->
+                <div class="footer-col links-col">
+                    <h4 class="footer-heading">Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+                        <li><a href="nosotros.html"><i class="fa-solid fa-angle-right"></i> Nosotros</a></li>
+                        <li><a href="index.html#consultoria"><i class="fa-solid fa-angle-right"></i> Consultoría</a></li>
+                        <li><a href="index.html#capacitacion"><i class="fa-solid fa-angle-right"></i> Capacitación</a></li>
+                        <li><a href="medios.html"><i class="fa-solid fa-angle-right"></i> Medios y Podcasts</a></li>
+                        <li><a href="clientes.html"><i class="fa-solid fa-angle-right"></i> Clientes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Contacto & Libro de Reclamaciones -->
+                <div class="footer-col contact-col">
+                    <h4 class="footer-heading">Contacto Oficial</h4>
+                    <p><i class="fa-solid fa-location-dot me-2 text-warning"></i> Av. Javier Prado 757, piso 10 Magdalena, Lima 17</p>
+                    <p><i class="fa-solid fa-envelope me-2 text-warning"></i> <a href="mailto:contacto@quality-consulting.org" class="text-light">contacto@quality-consulting.org</a></p>
+                    <p><i class="fa-solid fa-phone me-2 text-warning"></i> <a href="tel:+51993463118" class="text-light">+51 993 463 118</a></p>
+                    <div class="mt-3">
+                        <a href="contacto.html#libro-reclamaciones" class="btn btn-outline-warning btn-sm fw-bold d-inline-flex align-items-center rounded-pill px-3 py-2 btn-qcs-primary hvr-float-shadow">
+                            <i class="fas fa-book-open me-2"></i> Libro de Reclamaciones
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Quality Consulting Solutions. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script Principal del sitio -->
+    <script src="script.js?v=2.2"></script>
+
+
+
+
+<!-- AOS init -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+  });
+</script>
+</body></html>
