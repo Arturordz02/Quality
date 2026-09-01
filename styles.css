@@ -91,86 +91,22 @@ a, button, input, textarea, select, label, .btn, .nav-link, .dropdown-item, .inp
     }
 }
 
-/* Erradicar puntos muertos en botones: los hijos internos (iconos, spans) no deben bloquear el clic del contenedor */
-.btn *,
-button *,
-.social-btn *,
-.social-pill-btn *,
-.mobile-toggle-btn *,
-.btn-qcs-primary *,
-.btn-success *,
-.btn-warning *,
-.hero-channel-card * {
-    pointer-events: none !important;
-}
-
-/* Dimensiones mínimas y áreas táctiles generosas (48px mínimo según directrices de accesibilidad) */
-.btn,
-button.btn,
-a.btn,
-button[type="submit"] {
-    min-height: 48px !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    cursor: pointer !important;
-    user-select: none !important;
-    pointer-events: auto !important;
-}
-
-.btn-lg {
-    min-height: 54px !important;
-    padding: 0.95rem 1.75rem !important;
-}
-
-/* Reglas Globales de Formularios y Recuadros de Texto para Activación Inmediata en Toda la Superficie */
-.input-group {
-    position: relative !important;
-    z-index: 1 !important;
-    cursor: text !important;
-}
-
-.input-group > .form-control,
-.input-group > .form-select,
+/* Formularios Corporativos y Recuadros de Entrada (Estándar Limpio y Ágil) */
 .form-control,
-.form-select,
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="number"],
-input[type="password"] {
-    min-height: 52px !important;
-    padding: 0.85rem 1.15rem !important;
-    font-size: 0.98rem !important;
-    cursor: text !important;
-    user-select: text !important;
-    -webkit-user-select: text !important;
-    position: relative !important;
-    z-index: 2 !important;
-    pointer-events: auto !important;
+.form-select {
+    border-color: #e2e8f0;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.input-group > .input-group-text {
-    min-height: 52px !important;
-    padding: 0.85rem 1.15rem !important;
-    cursor: pointer !important;
-    user-select: none !important;
-    -webkit-user-select: none !important;
-    background-color: #f8fafc !important;
-}
-
-textarea.form-control,
-textarea {
-    min-height: 140px !important;
-    padding: 1rem 1.15rem !important;
-    font-size: 0.98rem !important;
-    cursor: text !important;
-    user-select: text !important;
-    -webkit-user-select: text !important;
-    position: relative !important;
-    z-index: 2 !important;
-    pointer-events: auto !important;
-    line-height: 1.6 !important;
+.input-group-text {
+    background-color: #f8fafc;
+    border-color: #e2e8f0;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
 }
 
 .form-control:focus,
