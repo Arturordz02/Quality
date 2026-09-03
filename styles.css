@@ -8051,3 +8051,130 @@ html, body {
         padding: 0.75rem 1rem !important;
     }
 }
+
+/* ==========================================================================
+   CARD FLOTANTE: TÉRMINOS Y CONDICIONES / PRIVACIDAD (Esquina Inferior Izquierda)
+   ========================================================================== */
+.qcs-terms-floating-card {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 9999;
+    max-width: 360px;
+    width: calc(100% - 48px);
+    background: rgba(15, 17, 19, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #ffffff;
+    border-radius: 18px;
+    border: 1px solid rgba(229, 168, 19, 0.35);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+    padding: 1.25rem 1.25rem 1rem 1.25rem;
+    font-family: var(--font-body, 'Open Sans', sans-serif);
+    animation: qcsTermsSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+@keyframes qcsTermsSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.qcs-terms-floating-card.hiding {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+}
+
+.qcs-terms-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #E5A813;
+    margin-bottom: 0.5rem;
+}
+
+.qcs-terms-body {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: #cbd5e1;
+    margin-bottom: 1rem;
+}
+
+.qcs-terms-body a {
+    color: #E5A813;
+    font-weight: 600;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.qcs-terms-body a:hover {
+    color: #ffffff;
+}
+
+.qcs-terms-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.qcs-terms-btn-accept {
+    flex: 1;
+    background: #E5A813;
+    color: #0F1113;
+    border: none;
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.qcs-terms-btn-accept:hover {
+    background: #f59e0b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(229, 168, 19, 0.35);
+}
+
+.qcs-terms-btn-reject {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.08);
+    color: #94a3b8;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.qcs-terms-btn-reject:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+    color: #fca5a5;
+}
+
+@media (max-width: 576px) {
+    .qcs-terms-floating-card {
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
+        max-width: none;
+        width: auto;
+    }
+}

@@ -507,4 +507,69 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    /* ----------------------------------------------------
+       7. BANNER FLOTANTE DE TÉRMINOS Y CONDICIONES (Esquina Inferior Izquierda)
+       ---------------------------------------------------- */
+    (function initTermsConsentBanner() {
+        const CONSENT_KEY = 'qcs_terms_and_privacy_accepted';
+        
+        // Si ya aceptó previamente, no volvemos a mostrar el card
+        if (localStorage.getItem(CONSENT_KEY) === 'true') {
+            return;
+        }
+
+        // Crear dinámicamente el card flotante
+        const termsCard = document.createElement('div');
+        termsCard.id = 'qcsTermsFloatingCard';
+        termsCard.className = 'qcs-terms-floating-card';
+        termsCard.setAttribute('role', 'dialog');
+        termsCard.setAttribute('aria-live', 'polite');
+        termsCard.setAttribute('aria-label', 'Consentimiento de Términos y Condiciones');
+
+        // Detectar si el enlace debe ser .html o ruta limpia MVC
+        const isHtmlExt = window.location.pathname.indexOf('.html') !== -1 || window.location.protocol === 'file:';
+        const termsUrl = isHtmlExt ? 'terminos-y-condiciones.html' : 'terminos-y-condiciones';
+
+        termsCard.innerHTML = `
+            <div class="qcs-terms-header">
+                <i class="fas fa-shield-halved"></i>
+                <span>Términos y Privacidad</span>
+            </div>
+            <div class="qcs-terms-body">
+                Al navegar en este sitio web, usted acepta nuestros 
+                <a href="${termsUrl}" target="_blank" rel="noopener">Términos y Condiciones</a> 
+                y el tratamiento de datos conforme a nuestra 
+                <a href="${termsUrl}#clausula-6" target="_blank" rel="noopener">Política de Privacidad</a>.
+            </div>
+            <div class="qcs-terms-actions">
+                <button type="button" id="qcsBtnAcceptTerms" class="qcs-terms-btn-accept">Aceptar</button>
+                <button type="button" id="qcsBtnRejectTerms" class="qcs-terms-btn-reject">Rechazar</button>
+            </div>
+        `;
+
+        document.body.appendChild(termsCard);
+
+        // Evento Aceptar
+        const btnAccept = document.getElementById('qcsBtnAcceptTerms');
+        if (btnAccept) {
+            btnAccept.addEventListener('click', () => {
+                localStorage.setItem(CONSENT_KEY, 'true');
+                termsCard.classList.add('hiding');
+                setTimeout(() => {
+                    if (termsCard.parentNode) {
+                        termsCard.parentNode.removeChild(termsCard);
+                    }
+                }, 350);
+            });
+        }
+
+        // Evento Rechazar (Abandona la página)
+        const btnReject = document.getElementById('qcsBtnRejectTerms');
+        if (btnReject) {
+            btnReject.addEventListener('click', () => {
+                window.location.href = 'https://www.google.com';
+            });
+        }
+    })();
 });
