@@ -2,29 +2,24 @@
 /**
  * QUALITY CONSULTING SOLUTIONS
  * Endpoint API: Procesamiento del Libro de Reclamaciones Virtual (Ley N° 29571)
+ * Optimizado con Resiliencia: Rate Limiting, Circuit Breaker y Graceful Degradation
  */
 
 define('QCS_BACKEND_ACCESS', true);
 
-// Cargar archivos del backend
-$configFile = __DIR__ . '/config.php';
-if (!file_exists($configFile)) {
-    http_response_code(500);
-    header('Content-Type: application/json; charset=UTF-8');
-    echo json_encode([
-        'success' => false,
-        'message' => 'Error de configuración: no se encontró el archivo config.php'
-    ], JSON_UNESCAPED_UNICODE);
-    exit;
-}
+$bootstrap = require __DIR__ . '/bootstrap.php';
+$config = $bootstrap['config'];
+$rateLimiter = $bootstrap['rateLimiter'];
+$dbCircuit = $bootstrap['dbCircuitBreaker'];
 
-$config = require $configFile;
-require_once __DIR__ . '/Security.php';
-require_once __DIR__ . '/Database.php';
 require_once __DIR__ . '/SmtpMailer.php';
 
 // Enviar cabeceras JSON y CORS
 Security::sendJsonHeaders($config);
+
+// Rate Limiting: Máximo 10 peticiones por minuto por IP
+$clientIp = Security::getClientIp($config);
+$rateLimiter->enforceOrBlock($clientIp . '_claim_submit', 10, 60);
 
 // Verificar método HTTP
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -93,8 +88,7 @@ if (!empty($errors)) {
     Security::jsonError('Por favor complete todos los campos obligatorios.', 422, $errors);
 }
 
-// 4. Generación de Código Único de Registro Correlativo/Aleatorio
-// Formato: QCS-LR-YYYYMM-XXXXX (Ej: QCS-LR-202608-E4B92)
+// 4. Generación de Código Único de Registro
 $uniqueSuffix = strtoupper(substr(md5(uniqid((string)mt_rand(), true)), 0, 5));
 $codigoReclamacion = 'QCS-LR-' . date('Ym') . '-' . $uniqueSuffix;
 
@@ -107,49 +101,107 @@ $cleanData = [
     'tipo'               => $tipo,
     'servicio'           => $servicio,
     'detalle'            => $detalle,
-    'ip_origen'          => Security::getClientIp(),
+    'ip_origen'          => $clientIp,
     'user_agent'         => Security::getUserAgent(),
 ];
 
-// 5. Guardar en Base de Datos MySQL (con Sentencias Preparadas)
-$savedInDb = Database::saveClaim($config, $cleanData);
+// 5. Persistencia Garantizada (MySQL con Circuit Breaker O Fallback Queue Verificado)
+$dbSaved = false;
+$fallbackSaved = false;
 
-// 6. Envío de Notificaciones por Correo (SMTP)
+if (!empty($config['database']['enabled'])) {
+    try {
+        $dbSaved = (bool)$dbCircuit->execute(
+            function () use ($config, $cleanData) {
+                $pdo = Database::getConnection($config);
+                if (!$pdo) {
+                    throw new \RuntimeException('No se pudo establecer conexión con MySQL: ' . (Database::getLastError() ?: 'Conexión nula'));
+                }
+                $saved = Database::saveClaim($config, $cleanData);
+                if (!$saved) {
+                    throw new \RuntimeException('No se pudo insertar la reclamación en MySQL: ' . (Database::getLastError() ?: 'Error en consulta'));
+                }
+                return true;
+            },
+            function (\Throwable $e) use ($cleanData, $codigoReclamacion, &$fallbackSaved) {
+                error_log('[QCS CircuitBreaker Claim Fallback Triggered] ' . $e->getMessage());
+                $res = FallbackQueue::save('claim', $cleanData, $codigoReclamacion);
+                $fallbackSaved = $res['success'];
+                return false;
+            }
+        );
+    } catch (\Throwable $e) {
+        error_log('[QCS Claim Persistence DB Failure] ' . $e->getMessage());
+        if (!$fallbackSaved) {
+            $res = FallbackQueue::save('claim', $cleanData, $codigoReclamacion);
+            $fallbackSaved = $res['success'];
+        }
+    }
+} else {
+    // Base de datos deshabilitada por configuración: persistir directamente en cola de contingencia
+    $res = FallbackQueue::save('claim', $cleanData, $codigoReclamacion);
+    $fallbackSaved = $res['success'];
+}
+
+$isPersisted = ($dbSaved || $fallbackSaved);
+
+// REQUISITOS 2, 3, 4 y 6:
+// Una reclamación solo puede considerarse registrada cuando exista persistencia real: MySQL O fallback_queue.
+// El envío de email NO debe ser considerado por sí solo como almacenamiento persistente.
+// Si fallan MySQL y fallback_queue, NO responder éxito, sino error controlado sin stack trace.
+if (!$isPersisted) {
+    Security::jsonError(
+        'No fue posible registrar su hoja de reclamación en este momento debido a un problema técnico temporal en nuestros sistemas de almacenamiento. Por favor, intente nuevamente o comuníquese a contacto@quality-consulting.org.',
+        503
+    );
+}
+
+// 6. Envío de Notificaciones por Correo con Retry Exponential Backoff (Notificación adicional)
 $mailer = new SmtpMailer($config);
 $adminRecipient = $config['mail']['claim_recipient'] ?? 'contacto@quality-consulting.org';
 $companyInfo = $config['company'] ?? [];
+$legalDays = $companyInfo['legal_response_days'] ?? 15;
 
-// A. Notificación para el Administrador de la Empresa
 $adminSubject = "[LIBRO RECLAMACIONES] Nuevo {$tipo}: {$codigoReclamacion} - {$nombre}";
 $adminBody = SmtpMailer::templateClaimAdminNotification($cleanData, $companyInfo);
-$adminMailSent = $mailer->send($adminRecipient, $adminSubject, $adminBody, $email);
 
-// B. Envío de Copia de Hoja de Reclamación al Usuario Reclamante
+$adminMailSent = false;
+try {
+    $adminMailSent = RetryHelper::retry(
+        function () use ($mailer, $adminRecipient, $adminSubject, $adminBody, $email) {
+            return $mailer->send($adminRecipient, $adminSubject, $adminBody, $email);
+        },
+        2, 150, 1000
+    );
+} catch (\Throwable $e) {
+    error_log('[QCS Claim Admin Mail Retry Error] ' . $e->getMessage());
+}
+
 $userMailSent = false;
 if (!empty($config['mail']['send_copy_to_claimant'])) {
     $userSubject = "Hoja de Reclamación Virtual N° {$codigoReclamacion} - Quality Consulting Solutions";
     $userBody = SmtpMailer::templateClaimCustomerReceipt($cleanData, $companyInfo);
-    $userMailSent = $mailer->send($email, $userSubject, $userBody);
-}
-
-// 7. Respuesta Estructurada
-$legalDays = $companyInfo['legal_response_days'] ?? 15;
-
-if ($adminMailSent || $savedInDb || $userMailSent) {
-    Security::jsonSuccess("Su registro en el Libro de Reclamaciones ha sido enviado con éxito. Se ha generado la Hoja de Reclamación N° {$codigoReclamacion}. Se le remitirá una respuesta formal al correo ingresado en un plazo máximo de {$legalDays} días hábiles conforme a ley.", [
-        'claim_code' => $codigoReclamacion,
-        'legal_days' => $legalDays,
-        'copy_sent'  => $userMailSent,
-        'db_saved'   => $savedInDb
-    ]);
-} else {
-    $errorDetail = $mailer->getLastError();
-    $debug = !empty($config['security']['debug']);
-
-    if ($debug) {
-        Security::jsonError('Error al procesar el registro del Libro de Reclamaciones: ' . $errorDetail, 500);
-    } else {
-        Security::jsonError('No fue posible procesar su registro en este momento. Por favor intente nuevamente o comuníquese a contacto@quality-consulting.org.', 500);
+    try {
+        $userMailSent = RetryHelper::retry(
+            function () use ($mailer, $email, $userSubject, $userBody) {
+                return $mailer->send($email, $userSubject, $userBody);
+            },
+            2, 150, 1000
+        );
+    } catch (\Throwable $e) {
+        error_log('[QCS Claim User Copy Mail Retry Error] ' . $e->getMessage());
     }
 }
 
+// 7. Respuesta Exitosa Confirmando Persistencia Real
+Security::jsonSuccess(
+    "Su registro en el Libro de Reclamaciones ha sido enviado con éxito. Se ha generado la Hoja de Reclamación N° {$codigoReclamacion}. Se le remitirá una respuesta formal al correo ingresado en un plazo máximo de {$legalDays} días hábiles conforme a ley.",
+    [
+        'claim_code'     => $codigoReclamacion,
+        'legal_days'     => $legalDays,
+        'db_saved'       => $dbSaved,
+        'fallback_saved' => $fallbackSaved,
+        'mail_sent'      => $adminMailSent,
+        'copy_sent'      => $userMailSent,
+    ]
+);

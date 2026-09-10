@@ -23,6 +23,22 @@ class SmtpMailer {
     }
 
     /**
+     * Retorna las opciones SSL calculadas para la conexión (usado para auditoría y verificación)
+     */
+    public function getSslContextOptions(): array {
+        $cfg = $this->config['mail'] ?? [];
+        $appEnv = strtolower((string)($this->config['app']['env'] ?? (getenv('APP_ENV') ?: 'production')));
+        $allowInsecureDev = ($appEnv === 'development') && !empty($cfg['allow_self_signed']);
+
+        return [
+            'verify_peer'       => !$allowInsecureDev,
+            'verify_peer_name'  => !$allowInsecureDev,
+            'allow_self_signed' => $allowInsecureDev,
+            'peer_name'         => $cfg['host'] ?? 'localhost',
+        ];
+    }
+
+    /**
      * Envía un correo electrónico en formato HTML
      */
     public function send(string $toEmail, string $subject, string $htmlBody, ?string $replyTo = null): bool {
@@ -52,21 +68,73 @@ class SmtpMailer {
         $password  = $cfg['password'] ?? '';
         $useAuth   = !empty($cfg['auth']);
 
+        // Detección y log controlado si faltan credenciales requeridas
+        if (empty($host)) {
+            $this->lastError = 'Servidor SMTP no configurado: falta SMTP_HOST en variables de entorno (.env).';
+            error_log('[QCS SMTP Warning] ' . $this->lastError);
+            return false;
+        }
+
+        if ($useAuth && (empty($username) || empty($password))) {
+            $this->lastError = 'Autenticación SMTP requerida pero falta SMTP_USER o SMTP_PASSWORD en variables de entorno (.env).';
+            error_log('[QCS SMTP Warning] ' . $this->lastError);
+            return false;
+        }
+
+        // 1. Determinar política estricta de validación SSL/TLS (Producción segura por defecto)
+        $appEnv = strtolower((string)($this->config['app']['env'] ?? (getenv('APP_ENV') ?: 'production')));
+
+        // La desactivación de verificación SOLO se permite en desarrollo ('development') y con flag explícito
+        $allowInsecureDev = ($appEnv === 'development') && !empty($cfg['allow_self_signed']);
+
+        $verifyPeer = !$allowInsecureDev;
+        $verifyPeerName = !$allowInsecureDev;
+        $allowSelfSigned = $allowInsecureDev;
+
+        $sslOptions = [
+            'verify_peer'       => $verifyPeer,
+            'verify_peer_name'  => $verifyPeerName,
+            'allow_self_signed' => $allowSelfSigned,
+            'peer_name'         => $host,
+        ];
+
+        // Habilitar protocolos criptográficos modernos (TLS 1.2 / TLS 1.3)
+        $cryptoMethod = STREAM_CRYPTO_METHOD_TLS_CLIENT;
+        if (defined('STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT')) {
+            $cryptoMethod |= STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT;
+        }
+        if (defined('STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT')) {
+            $cryptoMethod |= STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT;
+        }
+        $sslOptions['crypto_method'] = $cryptoMethod;
+
         $socketHost = ($encryption === 'ssl') ? "ssl://{$host}" : "tcp://{$host}";
 
         $context = stream_context_create([
-            'ssl' => [
-                'verify_peer' => false,
-                'verify_peer_name' => false,
-                'allow_self_signed' => true
-            ]
+            'ssl' => $sslOptions
         ]);
 
         $socket = @stream_socket_client($socketHost . ':' . $port, $errno, $errstr, $timeout, STREAM_CLIENT_CONNECT, $context);
 
         if (!$socket) {
-            $this->lastError = "No se pudo conectar al servidor SMTP ($host:$port): $errstr ($errno)";
-            error_log('[QCS SMTP Error] ' . $this->lastError);
+            // Detectar si el fallo fue por validación de certificado TLS/SSL
+            $isTlsError = false;
+            $lowerErr = strtolower((string)$errstr);
+            if (strpos($lowerErr, 'certificate') !== false ||
+                strpos($lowerErr, 'ssl') !== false ||
+                strpos($lowerErr, 'tls') !== false ||
+                strpos($lowerErr, 'verify') !== false ||
+                strpos($lowerErr, 'handshake') !== false) {
+                $isTlsError = true;
+            }
+
+            if ($isTlsError) {
+                $this->lastError = "Fallo de validación de certificado SSL/TLS con el servidor SMTP ({$host}).";
+                error_log("[QCS SMTP TLS Error] Validación de certificado rechazada para {$host}: {$errstr} ({$errno})");
+            } else {
+                $this->lastError = "No se pudo conectar al servidor SMTP ({$host}:{$port}): {$errstr} ({$errno})";
+                error_log("[QCS SMTP Error] Fallo de conexión con {$host}: {$errstr} ({$errno})");
+            }
             return false;
         }
 
@@ -78,29 +146,65 @@ class SmtpMailer {
             return false;
         }
 
-        // Enviar EHLO
+        // Enviar EHLO inicial
         $clientHost = $_SERVER['SERVER_NAME'] ?? 'localhost';
         $this->writeSocket($socket, "EHLO $clientHost\r\n");
         $response = $this->readSocket($socket);
 
-        // Si se usa TLS (STARTTLS en puerto 587)
-        if ($encryption === 'tls' || $port === 587) {
+        // 2. Si se usa TLS (STARTTLS en puerto 587 o encryption='tls')
+        $requiresStartTls = ($encryption === 'tls' || $port === 587);
+        $tlsEstablished = false;
+
+        if ($requiresStartTls) {
             $this->writeSocket($socket, "STARTTLS\r\n");
             $response = $this->readSocket($socket);
-            if ($this->checkResponse($response, '220')) {
-                if (!stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
-                    $this->lastError = "Fallo en la negociación TLS con el servidor SMTP";
-                    $this->closeSocket($socket);
-                    return false;
-                }
-                // Repetir EHLO tras STARTTLS
-                $this->writeSocket($socket, "EHLO $clientHost\r\n");
-                $response = $this->readSocket($socket);
+
+            // FAIL-CLOSED 1: Si el servidor no responde con código 220, abortar inmediatamente
+            if (!$this->checkResponse($response, '220')) {
+                $this->lastError = "El servidor SMTP ({$host}) rechazó STARTTLS. Conexión abortada por seguridad.";
+                error_log("[QCS SMTP TLS Error] Servidor SMTP ({$host}) rechazó comando STARTTLS. Respuesta recibida: " . trim((string)$response));
+                $this->closeSocket($socket);
+                return false;
+            }
+
+            // FAIL-CLOSED 2: Negociación criptográfica estricta sobre el socket
+            $cryptoOk = false;
+            try {
+                $cryptoOk = @stream_socket_enable_crypto($socket, true, $cryptoMethod);
+            } catch (\Throwable $e) {
+                $cryptoOk = false;
+                error_log("[QCS SMTP TLS Error] Excepción al habilitar criptografía TLS en {$host}: " . $e->getMessage());
+            }
+
+            if ($cryptoOk !== true) {
+                $this->lastError = "Fallo en la negociación TLS segura con el servidor SMTP ({$host}). Verifique la validez del certificado.";
+                error_log("[QCS SMTP TLS Error] Fallo en negociación TLS criptográfica con {$host}");
+                $this->closeSocket($socket);
+                return false;
+            }
+
+            $tlsEstablished = true;
+
+            // Repetir EHLO tras STARTTLS exitoso (RFC 3207 sección 4.2)
+            $this->writeSocket($socket, "EHLO $clientHost\r\n");
+            $response = $this->readSocket($socket);
+            if (!$this->checkResponse($response, '250')) {
+                $this->lastError = "Fallo en saludo EHLO post-TLS con el servidor SMTP ({$host}).";
+                error_log("[QCS SMTP TLS Error] Saludo EHLO post-TLS rechazado por {$host}");
+                $this->closeSocket($socket);
+                return false;
             }
         }
 
-        // Autenticación SMTP
+        // 3. Autenticación SMTP (FAIL-CLOSED: Si STARTTLS era requerido pero no se estableció, jamás autenticar)
         if ($useAuth) {
+            if ($requiresStartTls && !$tlsEstablished) {
+                $this->lastError = "Autenticación SMTP abortada: canal seguro TLS no establecido.";
+                error_log("[QCS SMTP Security Error] Intento de autenticación abortado: STARTTLS no establecido para {$host}");
+                $this->closeSocket($socket);
+                return false;
+            }
+
             $this->writeSocket($socket, "AUTH LOGIN\r\n");
             $response = $this->readSocket($socket);
             if (!$this->checkResponse($response, '334')) {
@@ -118,7 +222,8 @@ class SmtpMailer {
             $this->writeSocket($socket, base64_encode($password) . "\r\n");
             $response = $this->readSocket($socket);
             if (!$this->checkResponse($response, '235')) {
-                $this->lastError = "Error de autenticación SMTP. Verifique usuario y contraseña en backend/config.php";
+                $this->lastError = "Error de autenticación con el servidor SMTP.";
+                error_log("[QCS SMTP Warning] Autenticación rechazada por {$host} para usuario " . Security::sanitizeString($username, 50));
                 $this->closeSocket($socket);
                 return false;
             }
@@ -208,13 +313,20 @@ class SmtpMailer {
         return $success;
     }
 
-    private function writeSocket($socket, string $data): void {
-        fwrite($socket, $data);
+    private function writeSocket($socket, string $data): bool {
+        if (!is_resource($socket)) {
+            return false;
+        }
+        $written = @fwrite($socket, $data);
+        return ($written !== false);
     }
 
     private function readSocket($socket): string {
+        if (!is_resource($socket)) {
+            return '';
+        }
         $data = '';
-        while ($str = fgets($socket, 515)) {
+        while (!@feof($socket) && ($str = @fgets($socket, 515)) !== false) {
             $data .= $str;
             if (substr($str, 3, 1) === ' ') {
                 break;

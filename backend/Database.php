@@ -14,10 +14,19 @@ class Database {
     private static bool $initialized = false;
 
     /**
+     * Restablece el estado estático de la conexión (vital para reintentos y pruebas controladas)
+     */
+    public static function resetConnection(): void {
+        self::$pdo = null;
+        self::$initialized = false;
+        self::$lastError = null;
+    }
+
+    /**
      * Obtiene una instancia singleton de conexión PDO
      */
     public static function getConnection(array $config): ?PDO {
-        if (self::$initialized) {
+        if (self::$initialized && self::$pdo !== null) {
             return self::$pdo;
         }
 
@@ -26,15 +35,23 @@ class Database {
 
         if (empty($dbConfig['enabled'])) {
             // Base de datos deshabilitada en la configuración
+            self::$pdo = null;
             return null;
         }
 
-        $host = $dbConfig['host'] ?? '127.0.0.1';
+        $host = $dbConfig['host'] ?? '';
         $port = $dbConfig['port'] ?? 3306;
-        $dbName = $dbConfig['name'] ?? 'quality_web';
-        $user = $dbConfig['user'] ?? 'root';
+        $dbName = $dbConfig['name'] ?? '';
+        $user = $dbConfig['user'] ?? '';
         $pass = $dbConfig['password'] ?? '';
         $charset = $dbConfig['charset'] ?? 'utf8mb4';
+
+        if (empty($host) || empty($dbName) || empty($user)) {
+            self::$lastError = 'Configuración incompleta de base de datos: faltan DB_HOST, DB_NAME o DB_USER en variables de entorno (.env).';
+            error_log('[QCS DB Warning] ' . self::$lastError);
+            self::$pdo = null;
+            return null;
+        }
 
         $dsn = "mysql:host={$host};port={$port};dbname={$dbName};charset={$charset}";
 
@@ -47,7 +64,6 @@ class Database {
             ];
 
             self::$pdo = new PDO($dsn, $user, $pass, $options);
-            self::ensureTablesExist();
             return self::$pdo;
         } catch (PDOException $e) {
             self::$lastError = $e->getMessage();
@@ -58,14 +74,16 @@ class Database {
     }
 
     /**
-     * Garantiza la existencia de las tablas si la base de datos está conectada
+     * Utilidad para crear tablas si no existen (Uso exclusivo en instalación inicial o tests)
+     * NOTA: Nunca se ejecuta automáticamente durante las peticiones web normales para evitar overhead DDL.
      */
-    private static function ensureTablesExist(): void {
+    public static function ensureTablesExist(): void {
         if (!self::$pdo) return;
 
         try {
             $sqlContactos = "CREATE TABLE IF NOT EXISTS `contactos` (
                 `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                `queue_id` VARCHAR(64) NULL,
                 `nombre` VARCHAR(150) NOT NULL,
                 `telefono` VARCHAR(30) NOT NULL,
                 `empresa` VARCHAR(150) NOT NULL,
@@ -75,6 +93,8 @@ class Database {
                 `user_agent` VARCHAR(255) NULL,
                 `estado` ENUM('pendiente', 'atendido', 'archivado') DEFAULT 'pendiente',
                 `creado_el` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                UNIQUE KEY `uq_contactos_queue_id` (`queue_id`),
+                INDEX `idx_queue_id` (`queue_id`),
                 INDEX `idx_email` (`email`),
                 INDEX `idx_creado_el` (`creado_el`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
@@ -118,12 +138,14 @@ class Database {
         }
 
         try {
+            $queueId = $data['queue_id'] ?? null;
             $sql = "INSERT INTO `contactos` 
-                    (`nombre`, `telefono`, `empresa`, `email`, `consulta`, `ip_origen`, `user_agent`) 
-                    VALUES (:nombre, :telefono, :empresa, :email, :consulta, :ip_origen, :user_agent)";
+                    (`queue_id`, `nombre`, `telefono`, `empresa`, `email`, `consulta`, `ip_origen`, `user_agent`) 
+                    VALUES (:queue_id, :nombre, :telefono, :empresa, :email, :consulta, :ip_origen, :user_agent)";
             
             $stmt = $pdo->prepare($sql);
             return $stmt->execute([
+                ':queue_id'   => $queueId,
                 ':nombre'     => $data['nombre'],
                 ':telefono'   => $data['telefono'],
                 ':empresa'    => $data['empresa'],

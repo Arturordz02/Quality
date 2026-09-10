@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="small text-light text-opacity-75" style="font-size: 0.78rem;">Selecciona tu país de contacto:</span>
                 </div>
                 <div class="whatsapp-menu-body">
-                    <a href="https://api.whatsapp.com/send?phone=51993463118&text=Buen%20d%C3%ADa%20Quality%20Consulting,%20deseo%20informaci%C3%B3n%20de%20sus%20servicios/cursos" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
+                    <a href="https://api.whatsapp.com/send?phone=51993463118&text=Buen%20d%C3%ADa%20Quality%20Consulting%20Solutions,%20deseo%20informaci%C3%B3n%20de%20sus%20servicios/cursos" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
                         <span class="country-flag">🇵🇪</span>
                         <div class="country-info">
                             <span class="country-name">Perú (Central)</span>
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <i class="fas fa-chevron-right arrow-go"></i>
                     </a>
-                    <a href="https://api.whatsapp.com/send?phone=56990760986&text=Buen%20d%C3%ADa%20Quality%20Consulting,%20deseo%20informaci%C3%B3n%20de%20sus%20servicios/cursos" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
+                    <a href="https://api.whatsapp.com/send?phone=56990760986&text=Buen%20d%C3%ADa%20Quality%20Consulting%20Solutions,%20deseo%20informaci%C3%B3n%20de%20sus%20servicios/cursos" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
                         <span class="country-flag">🇨🇱</span>
                         <div class="country-info">
                             <span class="country-name">Chile</span>
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <i class="fas fa-chevron-right arrow-go"></i>
                     </a>
-                    <a href="https://api.whatsapp.com/send?phone=573152276029&text=Buen%20d%C3%ADa%20Quality%20Consulting,%20deseo%20informaci%C3%B3n%20de%20sus%20servicios/cursos" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
+                    <a href="https://api.whatsapp.com/send?phone=573152276029&text=Buen%20d%C3%ADa%20Quality%20Consulting%20Solutions,%20deseo%20informaci%C3%B3n%20de%20sus%20servicios/cursos" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
                         <span class="country-flag">🇪🇨</span>
                         <div class="country-info">
                             <span class="country-name">Ecuador</span>
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <i class="fas fa-chevron-right arrow-go"></i>
                     </a>
-                    <a href="https://api.whatsapp.com/send?phone=50768195911&text=Buen%20d%C3%ADa%20Quality%20Consulting,%20deseo%20informaci%C3%B3n%20de%20sus%20servicios/cursos" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
+                    <a href="https://api.whatsapp.com/send?phone=50768195911&text=Buen%20d%C3%ADa%20Quality%20Consulting%20Solutions,%20deseo%20informaci%C3%B3n%20de%20sus%20servicios/cursos" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
                         <span class="country-flag">🇵🇦</span>
                         <div class="country-info">
                             <span class="country-name">Panamá</span>
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <i class="fas fa-chevron-right arrow-go"></i>
                     </a>
-                    <a href="https://api.whatsapp.com/send?phone=525537208429&text=Buen%20d%C3%ADa%20Quality%20Consulting,%20deseo%20informaci%C3%B3n%20de%20sus%20servicios/cursos" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
+                    <a href="https://api.whatsapp.com/send?phone=525537208429&text=Buen%20d%C3%ADa%20Quality%20Consulting%20Solutions,%20deseo%20informaci%C3%B3n%20de%20sus%20servicios/cursos" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
                         <span class="country-flag">🇲🇽</span>
                         <div class="country-info">
                             <span class="country-name">México</span>
@@ -569,6 +569,43 @@ document.addEventListener('DOMContentLoaded', () => {
         if (btnReject) {
             btnReject.addEventListener('click', () => {
                 window.location.href = 'https://www.google.com';
+            });
+        }
+    })();
+
+    /* ----------------------------------------------------
+       8. OPTIMIZACIÓN DE RENDIMIENTO FRONTEND
+       - Lazy Loading nativo para imágenes fuera de pantalla
+       - Decodificación asíncrona de imágenes
+       - InstantClick / Prefetch en hover para enlaces internos
+       ---------------------------------------------------- */
+    (function initFrontendPerformanceBooster() {
+        // 1. Aplicar loading="lazy" y decoding="async" a todas las imágenes
+        const images = document.querySelectorAll('img:not([loading])');
+        images.forEach(img => {
+            // No diferir logos de cabecera ni imágenes above-the-fold inmediatas
+            if (!img.classList.contains('brand-logo') && !img.closest('.main-header')) {
+                img.setAttribute('loading', 'lazy');
+                img.setAttribute('decoding', 'async');
+            }
+        });
+
+        // 2. Prefetch inteligente de páginas internas al hacer hover en enlaces
+        if ('IntersectionObserver' in window) {
+            const prefetchedUrls = new Set();
+            const internalLinks = document.querySelectorAll('a[href$=".html"]');
+
+            internalLinks.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    const href = link.getAttribute('href');
+                    if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !prefetchedUrls.has(href)) {
+                        prefetchedUrls.add(href);
+                        const linkEl = document.createElement('link');
+                        linkEl.rel = 'prefetch';
+                        linkEl.href = href;
+                        document.head.appendChild(linkEl);
+                    }
+                }, { passive: true });
             });
         }
     })();

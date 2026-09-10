@@ -9,30 +9,76 @@ if (!defined('QCS_BACKEND_ACCESS')) {
 }
 
 class Security {
+    private static array $config = [];
 
     /**
-     * Configura los encabezados HTTP para respuestas JSON seguras y CORS
+     * Inicializa la configuración estática de seguridad
+     */
+    public static function init(array $config): void {
+        self::$config = $config;
+    }
+
+    /**
+     * Configura los encabezados HTTP para respuestas JSON seguras y CORS restringido.
+     * 
+     * Reglas de CORS:
+     * 1. No se utiliza el comodín '*' en endpoints que gestionan datos personales.
+     * 2. Si se recibe encabezado Origin, se valida contra la lista de orígenes autorizados.
+     * 3. Si el origen es legítimo, se envía Access-Control-Allow-Origin: <origin> y Vary: Origin.
+     * 4. Si el origen no está en la lista blanca, NO se envía Access-Control-Allow-Origin.
+     * 5. Las solicitudes preflight OPTIONS de orígenes desconocidos son rechazadas con 403.
      */
     public static function sendJsonHeaders(array $config = []): void {
-        $allowedOrigins = $config['security']['allowed_origins'] ?? ['*'];
-        $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+        $cfg = !empty($config) ? $config : self::$config;
+        $allowedOrigins = $cfg['security']['allowed_origins'] ?? [
+            'https://quality-consulting.org',
+            'https://www.quality-consulting.org',
+        ];
 
-        if (in_array('*', $allowedOrigins, true)) {
-            header('Access-Control-Allow-Origin: *');
-        } elseif ($origin && in_array($origin, $allowedOrigins, true)) {
-            header("Access-Control-Allow-Origin: $origin");
+        // Protección defensiva: Prohibir expresamente '*' en la lista de orígenes autorizados
+        $allowedOrigins = array_values(array_filter($allowedOrigins, static function ($origin) {
+            return $origin !== '*' && $origin !== '';
+        }));
+
+        $requestOrigin = $_SERVER['HTTP_ORIGIN'] ?? '';
+        $isOriginAllowed = false;
+
+        if ($requestOrigin !== '') {
+            $parsed = parse_url($requestOrigin);
+            $normalizedOrigin = ($parsed && isset($parsed['scheme'], $parsed['host']))
+                ? $parsed['scheme'] . '://' . $parsed['host'] . (isset($parsed['port']) ? ':' . $parsed['port'] : '')
+                : $requestOrigin;
+
+            if (in_array($requestOrigin, $allowedOrigins, true) || in_array($normalizedOrigin, $allowedOrigins, true)) {
+                $isOriginAllowed = true;
+                header("Access-Control-Allow-Origin: {$requestOrigin}");
+                header('Access-Control-Allow-Credentials: true');
+            }
+            header('Vary: Origin');
         }
 
-        header('Access-Control-Allow-Methods: POST, OPTIONS');
-        header('Access-Control-Allow-Headers: Content-Type, X-Requested-With');
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+        header('Access-Control-Allow-Headers: Content-Type, X-Requested-With, Accept, Authorization');
         header('Content-Type: application/json; charset=UTF-8');
         header('X-Content-Type-Options: nosniff');
         header('X-Frame-Options: SAMEORIGIN');
         header('X-XSS-Protection: 1; mode=block');
+        header('Referrer-Policy: strict-origin-when-cross-origin');
 
-        // Responder inmediatamente a peticiones preflight OPTIONS
+        // Manejo estricto de peticiones preflight OPTIONS
         if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-            http_response_code(200);
+            if ($requestOrigin !== '' && !$isOriginAllowed) {
+                http_response_code(403);
+                header('Content-Type: application/json; charset=UTF-8');
+                echo json_encode([
+                    'success' => false,
+                    'status'  => 403,
+                    'message' => 'CORS: Origen no autorizado.'
+                ], JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+            header('Access-Control-Max-Age: 86400');
+            http_response_code(204);
             exit;
         }
     }
@@ -110,20 +156,60 @@ class Security {
     }
 
     /**
-     * Obtiene la dirección IP del cliente de forma segura
+     * Obtiene la dirección IP del cliente de forma segura y confiable contra spoofing.
+     *
+     * Reglas de Rate Limiting y red:
+     * 1. No confía ciegamente en cabeceras enviadas por el cliente (X-Forwarded-For, etc.).
+     * 2. Por defecto utiliza estrictamente REMOTE_ADDR (adecuado para Apache/GoDaddy).
+     * 3. Solo evalúa cabeceras proxy cuando TRUST_PROXY_HEADERS=true y REMOTE_ADDR proviene
+     *    de un proxy confiable especificado en TRUSTED_PROXIES.
+     * 4. En caso contrario, se ignora cualquier cabecera de reenvío y se utiliza REMOTE_ADDR.
      */
-    public static function getClientIp(): string {
-        $ipKeys = ['HTTP_CF_CONNECTING_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_REAL_IP', 'REMOTE_ADDR'];
-        foreach ($ipKeys as $key) {
-            if (!empty($_SERVER[$key])) {
-                $ips = explode(',', $_SERVER[$key]);
-                $cleanIp = trim($ips[0]);
-                if (filter_var($cleanIp, FILTER_VALIDATE_IP)) {
-                    return $cleanIp;
+    public static function getClientIp(?array $config = null): string {
+        $cfg = $config ?? self::$config;
+        $trustProxy = !empty($cfg['security']['trust_proxy_headers']);
+        $trustedProxies = $cfg['security']['trusted_proxies'] ?? ['127.0.0.1', '::1'];
+
+        $remoteAddr = $_SERVER['REMOTE_ADDR'] ?? '';
+        $cleanRemoteAddr = filter_var($remoteAddr, FILTER_VALIDATE_IP) ? $remoteAddr : '127.0.0.1';
+
+        // Por defecto (GoDaddy / Apache directo): nunca confiar en cabeceras proxy enviadas por clientes
+        if (!$trustProxy) {
+            return $cleanRemoteAddr;
+        }
+
+        // Si se activó trust_proxy_headers, comprobar si el socket directo es un proxy confiable
+        $isFromTrustedProxy = in_array($cleanRemoteAddr, $trustedProxies, true);
+        if (!$isFromTrustedProxy) {
+            return $cleanRemoteAddr;
+        }
+
+        // Conexión legítima desde proxy confiable: extraer IP real del cliente
+        if (!empty($_SERVER['HTTP_CF_CONNECTING_IP'])) {
+            $cfIp = trim($_SERVER['HTTP_CF_CONNECTING_IP']);
+            if (filter_var($cfIp, FILTER_VALIDATE_IP)) {
+                return $cfIp;
+            }
+        }
+
+        if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ips = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+            foreach ($ips as $ip) {
+                $clean = trim($ip);
+                if (filter_var($clean, FILTER_VALIDATE_IP)) {
+                    return $clean;
                 }
             }
         }
-        return '0.0.0.0';
+
+        if (!empty($_SERVER['HTTP_X_REAL_IP'])) {
+            $realIp = trim($_SERVER['HTTP_X_REAL_IP']);
+            if (filter_var($realIp, FILTER_VALIDATE_IP)) {
+                return $realIp;
+            }
+        }
+
+        return $cleanRemoteAddr;
     }
 
     /**

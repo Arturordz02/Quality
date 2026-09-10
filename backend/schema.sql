@@ -9,6 +9,7 @@
 -- ------------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS `contactos` (
     `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `queue_id` VARCHAR(64) NULL,
     `nombre` VARCHAR(150) NOT NULL,
     `telefono` VARCHAR(30) NOT NULL,
     `empresa` VARCHAR(150) NOT NULL,
@@ -18,6 +19,8 @@ CREATE TABLE IF NOT EXISTS `contactos` (
     `user_agent` VARCHAR(255) NULL,
     `estado` ENUM('pendiente', 'atendido', 'archivado') DEFAULT 'pendiente',
     `creado_el` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY `uq_contactos_queue_id` (`queue_id`),
+    INDEX `idx_queue_id` (`queue_id`),
     INDEX `idx_email` (`email`),
     INDEX `idx_creado_el` (`creado_el`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Consultas recibidas desde el formulario web de contacto';

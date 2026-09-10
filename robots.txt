@@ -1,0 +1,11 @@
+# ==============================================================================
+# QUALITY CONSULTING SOLUTIONS - ROBOTS CONFIGURATION
+# ==============================================================================
+
+User-agent: *
+Allow: /
+Disallow: /backend/
+
+# Ubicación canónica del mapa del sitio XML
+Sitemap: https://quality-consulting.org/sitemap.xml
+

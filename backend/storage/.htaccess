@@ -1,0 +1,31 @@
+# ==============================================================================
+# QUALITY CONSULTING SOLUTIONS - PROTECCIÓN DE ALMACENAMIENTO (STORAGE)
+# Bloqueo total de acceso HTTP directo a archivos de contingencia, logs y caché.
+# Compatible con Apache 2.4 y versiones anteriores (Apache 2.2 / mod_access_compat)
+# ==============================================================================
+
+# 1. Deshabilitar Directory Listing y navegación de carpetas
+Options -Indexes -ExecCGI
+
+# 2. Bloqueo total de acceso web para Apache 2.4
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+
+# 3. Bloqueo total de acceso web para Apache 2.2 / compatibilidad heredada
+<IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+</IfModule>
+
+# 4. Regla estricta por coincidencia de archivos para prevenir cualquier descarga
+<FilesMatch ".*">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+</FilesMatch>
+

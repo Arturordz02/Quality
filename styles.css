@@ -255,15 +255,17 @@ img {
 .logo-text-wrap {
     display: flex;
     flex-direction: column;
+    white-space: nowrap;
 }
 
 .logo-title {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
+    font-size: 1.18rem;
     font-weight: 800;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     color: var(--primary-blue);
-    line-height: 1;
+    line-height: 1.1;
+    white-space: nowrap;
 }
 
 .logo-title.text-light {
@@ -273,9 +275,18 @@ img {
 .logo-sub {
     font-family: var(--font-heading);
     font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 2.5px;
+    font-weight: 700;
+    letter-spacing: 2px;
     color: var(--accent-gold);
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.header-logo .logo-sub {
+    font-size: 1.18rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    line-height: 1.1;
 }
 
 /* 3.2 Título Central */
@@ -6144,7 +6155,7 @@ img {
     }
     
     .header-logo .logo-sub {
-        font-size: 0.62rem;
+        font-size: 1.05rem;
     }
 
     .header-center-title {
@@ -7473,6 +7484,7 @@ img {
 .whatsapp-floating-widget.is-open .whatsapp-floating-menu {
     display: block !important; /* Solo existe en el layout al abrirse */
     pointer-events: auto !important;
+    z-index: 10005 !important;
     animation: whatsappMenuIn 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
@@ -7946,7 +7958,7 @@ html, body {
     }
 
     .header-logo .logo-sub {
-        font-size: 0.65rem !important;
+        font-size: 1.05rem !important;
     }
 
     .social-networks {
@@ -8033,6 +8045,16 @@ html, body {
 
 /* 5. Reglas para Pantallas Extra Pequeñas (<= 480px) */
 @media (max-width: 480px) {
+    .header-logo .logo-title {
+        font-size: 0.95rem !important;
+        letter-spacing: 0.5px !important;
+    }
+
+    .header-logo .logo-sub {
+        font-size: 0.95rem !important;
+        letter-spacing: 0.5px !important;
+    }
+
     .social-networks {
         display: none !important;
     }
@@ -8170,11 +8192,91 @@ html, body {
 }
 
 @media (max-width: 576px) {
+    /* En pantallas móviles (390px, 430px) la tarjeta se sitúa encima del botón flotante de WhatsApp */
     .qcs-terms-floating-card {
-        bottom: 15px;
-        left: 15px;
-        right: 15px;
+        bottom: 78px;
+        left: 12px;
+        right: 12px;
         max-width: none;
         width: auto;
+        padding: 0.95rem 1rem 0.85rem 1rem;
+        border-radius: 14px;
+    }
+
+    .qcs-terms-header {
+        font-size: 0.86rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .qcs-terms-body {
+        font-size: 0.77rem;
+        line-height: 1.4;
+        margin-bottom: 0.75rem;
+    }
+
+    .qcs-terms-actions {
+        gap: 0.5rem;
+    }
+
+    .qcs-terms-btn-accept,
+    .qcs-terms-btn-reject {
+        font-size: 0.76rem;
+        padding: 0.45rem 0.65rem;
+        min-height: 38px;
+    }
+}
+
+/* Pantallas extra compactas (320px, 375px) */
+@media (max-width: 375px) {
+    .header-logo .logo-title {
+        font-size: 0.85rem !important;
+        letter-spacing: 0.4px !important;
+    }
+
+    .header-logo .logo-sub {
+        font-size: 0.85rem !important;
+        letter-spacing: 0.4px !important;
+    }
+
+    .whatsapp-floating-widget {
+        bottom: 12px !important;
+        right: 12px !important;
+    }
+
+    .whatsapp-floating-btn {
+        width: 48px !important;
+        height: 48px !important;
+        font-size: 1.45rem !important;
+    }
+
+    .whatsapp-floating-menu {
+        width: calc(100vw - 24px) !important;
+        max-width: 295px !important;
+    }
+
+    .qcs-terms-floating-card {
+        bottom: 68px;
+        left: 8px;
+        right: 8px;
+        padding: 0.85rem 0.85rem 0.75rem 0.85rem;
+        border-radius: 12px;
+    }
+
+    .qcs-terms-header {
+        font-size: 0.82rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .qcs-terms-body {
+        font-size: 0.72rem;
+        line-height: 1.35;
+        margin-bottom: 0.6rem;
+    }
+
+    .qcs-terms-btn-accept,
+    .qcs-terms-btn-reject {
+        font-size: 0.72rem;
+        padding: 0.4rem 0.5rem;
+        min-height: 36px;
     }
 }
