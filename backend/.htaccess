@@ -1,0 +1,18 @@
+# ==============================================================================
+# QUALITY CONSULTING SOLUTIONS - SEGURIDAD Y RENDIMIENTO BACKEND
+# ==============================================================================
+
+# Denegar acceso directo a esquemas SQL, scripts de mantenimiento por navegador y logs
+<FilesMatch "\.(sql|log|cache|ini|sh)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Prohibir listado de directorios
+Options -Indexes
+
+# Compresión para respuestas JSON
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE application/json
+</IfModule>
+

@@ -1,0 +1,89 @@
+# ==============================================================================
+# QUALITY CONSULTING SOLUTIONS - .gitignore
+# ==============================================================================
+
+# 1. Variables de Entorno y Credenciales Sensibles
+.env
+.env.local
+.env.*
+!.env.example
+
+# 2. Control de Versiones y Entornos de Desarrollo
+.git/
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# 3. Archivos Comprimidos y Respaldos
+*.zip
+*.rar
+*.7z
+
+# 4. Almacenamiento Interno, Contingencia y Logs (mantener estructura con .gitkeep / index.php / .htaccess)
+storage/logs/*
+storage/cache/*
+storage/reports/*
+storage/outbox/*
+storage/sessions/*
+
+backend/storage/fallback_queue/*
+!backend/storage/fallback_queue/index.php
+!backend/storage/fallback_queue/.gitkeep
+
+backend/storage/logs/*
+!backend/storage/logs/index.php
+!backend/storage/logs/.gitkeep
+
+backend/storage/cache/*
+!backend/storage/cache/index.php
+!backend/storage/cache/.gitkeep
+
+backend/storage/rate_limits/*
+!backend/storage/rate_limits/index.php
+!backend/storage/rate_limits/.gitkeep
+
+backend/storage/circuit_breaker/*
+!backend/storage/circuit_breaker/index.php
+!backend/storage/circuit_breaker/.gitkeep
+
+backend/storage/rate_limits_test/
+backend/storage/test_cases_queue/
+backend/storage/test_logs/
+
+# 5. Logs y Archivos de Depuración
+*.log
+*.log.*
+*.gz
+error_log
+npm-debug.log*
+yarn-debug.log*
+
+# 6. Archivos Temporales y Copias de Seguridad
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+*.orig
+*~
+*.swp
+*.swo
+
+# 7. Archivos del Sistema Operativo
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini
+
+# 8. Dependencias y Builds (si se utilizaran)
+vendor/
+node_modules/

@@ -1,0 +1,1047 @@
+<!DOCTYPE html><html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prensa, Lanzamientos y Libros Oficiales | Quality Consulting Solutions</title>
+    <meta name="description" content="Descubre la serie de libros y publicaciones oficiales de Quality Consulting Solutions sobre Gestión de Riesgos Técnicos e ISO 9001 en la Construcción.">
+    <link rel="canonical" href="https://quality-consulting.org/press.html">
+
+    
+        <!-- Favicon Oficial -->
+    <link rel="icon" type="image/png" href="img/Logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="img/Logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Open+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Hoja de estilos principal del sitio -->
+
+    <!-- Estilos Especializados Editorial Showcase & Book Launch -->
+    <style>
+        body {
+            background-color: var(--qcs-bg-light);
+            color: #1e293b;
+        }
+
+        /* ----------------------------------------------------
+           1. HERO EDITORIAL & PRESS RELEASE
+           ---------------------------------------------------- */
+        .press-hero-banner {
+            position: relative;
+            padding: 190px 1.5rem 85px 1.5rem;
+            background: linear-gradient(145deg, #0F1113 0%, #1A1D20 50%, #24292E 100%);
+            color: #ffffff;
+            overflow: hidden;
+            border-bottom: 4px solid var(--accent-gold);
+        }
+
+        .press-hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 85% 25%, rgba(229, 168, 19, 0.22) 0%, transparent 55%),
+                        radial-gradient(circle at 15% 75%, rgba(15, 82, 186, 0.25) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .press-hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 28px 28px;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .press-hero-title {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+        }
+
+        .press-hero-subtitle {
+            font-family: var(--font-body);
+            font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+            color: #e2e8f0;
+            max-width: 820px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ----------------------------------------------------
+           2. EXECUTIVE PRESENTATION CARD
+           ---------------------------------------------------- */
+        .executive-presentation-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            border: 2px solid transparent;
+            background-image: linear-gradient(#ffffff, #ffffff), 
+                              linear-gradient(135deg, var(--accent-gold) 0%, #1A1D20 100%);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            box-shadow: 0 20px 45px rgba(15, 17, 19, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .executive-presentation-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px rgba(15, 17, 19, 0.2);
+        }
+
+        .executive-quote-icon {
+            position: absolute;
+            top: -10px;
+            right: 25px;
+            font-size: 6rem;
+            color: rgba(197, 155, 39, 0.1);
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .executive-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #1A1D20;
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+        }
+
+        .editorial-feature-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1.1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-family: var(--font-heading);
+            background: #F4F5F7;
+            color: var(--qcs-dark-slate);
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+
+        .editorial-feature-pill:hover {
+            background: #1A1D20;
+            color: #ffffff;
+            border-color: var(--qcs-yellow);
+        }
+
+        /* ----------------------------------------------------
+           3. BOOK DISPLAY SHOWCASE (3D Glassmorphism Cards)
+           ---------------------------------------------------- */
+        .book-showcase-card {
+            background: #ffffff;
+            border-radius: 24px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 15px 35px rgba(15, 35, 60, 0.08);
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .book-showcase-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(15, 17, 19, 0.2);
+            border-color: rgba(197, 155, 39, 0.5);
+        }
+
+        .book-card-header {
+            padding: 1.75rem 2rem 1.25rem 2rem;
+            border-bottom: 1px solid #F4F5F7;
+            position: relative;
+        }
+
+        .book-vol-badge {
+            display: inline-block;
+            font-family: var(--font-heading);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.4rem 0.9rem;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+        }
+
+        .badge-vol-1 {
+            background: linear-gradient(135deg, #C9910D, #E5A813);
+            color: #0F1113;
+            box-shadow: 0 4px 12px rgba(229, 168, 19, 0.25);
+        }
+
+        .badge-vol-2 {
+            background: linear-gradient(135deg, #1A1D20, #24292E);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(15, 17, 19, 0.2);
+        }
+
+        .book-title {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.35rem;
+            color: #0F1113;
+            line-height: 1.35;
+            margin-bottom: 0.35rem;
+        }
+
+        .book-author {
+            font-size: 0.88rem;
+            color: #64748b;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .book-visual-wrapper {
+            background: linear-gradient(180deg, #F4F5F7 0%, #F4F5F7 100%);
+            padding: 2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .book-visual-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 10%;
+            right: 10%;
+            height: 30px;
+            background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.25) 0%, transparent 70%);
+            filter: blur(8px);
+            z-index: 1;
+        }
+
+        .book-cover-img {
+            max-height: 380px;
+            width: auto;
+            border-radius: 12px;
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .book-showcase-card:hover .book-cover-img {
+            transform: scale(1.03) translateY(-4px);
+        }
+
+        .book-card-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .book-description {
+            font-size: 0.98rem;
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .book-highlights-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.75rem 0;
+        }
+
+        .book-highlights-list li {
+            font-size: 0.9rem;
+            color: #334155;
+            padding: 0.45rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .book-highlights-list li:last-child {
+            border-bottom: none;
+        }
+
+        .book-highlights-list li i {
+            color: var(--accent-gold);
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+
+        /* ----------------------------------------------------
+           4. MULTIMEDIA CONFERENCES & VIDEOS
+           ---------------------------------------------------- */
+        .press-media-section {
+            background: linear-gradient(135deg, #0F1113 0%, #1A1D20 100%);
+            color: #ffffff;
+            position: relative;
+            padding: 5rem 0;
+        }
+
+        .press-media-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 10% 20%, rgba(239, 68, 68, 0.12) 0%, transparent 50%),
+                        radial-gradient(circle at 90% 80%, rgba(229, 168, 19, 0.14) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .video-box-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .video-box-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+        }
+
+        .video-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            font-size: 0.75rem;
+            font-weight: 800;
+            font-family: var(--font-heading);
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            border: 1px solid rgba(239, 68, 68, 0.35);
+            margin-bottom: 0.75rem;
+        }
+
+        .video-card-title {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-card-desc {
+            font-size: 0.88rem;
+            color: #cbd5e1;
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        /* ----------------------------------------------------
+           5. BANNER REDIRECCIÓN A ARTÍCULOS (MEDIOS.HTML)
+           ---------------------------------------------------- */
+        .media-hub-redirect-banner {
+            background: linear-gradient(135deg, #0F1113 0%, #0F1113 50%, #1A1D20 100%);
+            border-radius: 24px;
+            padding: 3.5rem 2.5rem;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(15, 17, 19, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .media-hub-redirect-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .media-hub-redirect-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -10%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(197, 155, 39, 0.18) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .topics-tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .topic-pill {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: #e2e8f0;
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* ----------------------------------------------------
+           6. LLAMADO A LA ACCIÓN FINAL CORPORATIVO
+           ---------------------------------------------------- */
+        .cta-final-box {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .cta-icon-badge {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.25rem auto;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1A1D20, #0F1113);
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 20px rgba(15, 17, 19, 0.2);
+        }
+    </style>
+
+    <!-- Animate.css (Efectos principales de entrada) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- AOS (Animate On Scroll para tarjetas y secciones) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="styles.css?v=3.2">
+</head>
+<body>
+
+    <!-- ==========================================================================
+         CONTENEDOR PRINCIPAL DEL HEADER (Bootstrap 5 Integrado)
+         ========================================================================== -->
+    <header class="main-header" id="mainHeader">
+        
+        <!-- Franja Superior: Logo, Título Central y Redes Sociales -->
+        <div class="header-top">
+            <div class="header-container top-container">
+                
+                <!-- Logo a la izquierda -->
+                <div class="header-logo">
+                    <a href="index.html" class="logo-link" aria-label="Quality Consulting Solutions Inicio">
+                        <div class="logo-badge d-flex align-items-center">
+                            <img src="img/Logo.png" alt="Quality Consulting Solutions Logo" width="44" height="44" class="d-inline-block align-text-top rounded-2 me-2 brand-logo animate__animated animate__bounceIn" style="object-fit: cover; width: 44px; height: 44px;">
+                            <div class="logo-text-wrap">
+                                <span class="logo-title">QUALITY CONSULTING</span>
+                                <span class="logo-sub">SOLUTIONS</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Título Centrado -->
+                <div class="header-center-title">
+                    <h1 class="animate__animated animate__fadeInDown">QUALITY CONSULTING SOLUTIONS</h1>
+                    <p class="tagline animate__animated animate__fadeInUp animate__delay-1s">Ingeniería • Gestión de Proyectos • Capacitación • Calidad</p>
+                </div>
+
+                <!-- Redes Sociales a la derecha & Botón Móvil -->
+                <div class="header-actions">
+                    <div class="social-networks" aria-label="Redes Sociales">
+                        <a href="https://pe.linkedin.com/in/omarsamaniego" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.facebook.com/qaqcconsulting" target="_blank" rel="noopener noreferrer" class="social-btn facebook" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCbCdXwbcl-uouYa6Y4_kY0A?view_as=subscriber" target="_blank" rel="noopener noreferrer" class="social-btn youtube" aria-label="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp animate__animated animate__pulse animate__infinite" aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+
+                    <!-- Botón Hamburguesa Nativo Bootstrap 5 para Mobile -->
+                    <button class="navbar-toggler mobile-toggle-btn" id="mobileToggleBtn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarQuality" aria-controls="navbarQuality" aria-expanded="false" aria-label="Abrir menú de navegación">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Barra de Navegación Principal Horizontal con Bootstrap 5 -->
+        <nav class="navbar navbar-expand-lg main-navbar p-0" id="mainNavbar" aria-label="Navegación principal">
+            <div class="header-container nav-container w-100">
+                <div class="collapse navbar-collapse justify-content-center" id="navbarQuality">
+                    <ul class="navbar-nav nav-menu" id="navMenu">
+
+                        <!-- HOME -->
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">HOME</a>
+                        </li>
+
+                        <!-- NOSOTROS -->
+                        <li class="nav-item">
+                            <a href="nosotros.html" class="nav-link">NOSOTROS</a>
+                        </li>
+
+                        <!-- CONSULTORIA (Desplegable) -->
+                        <li class="nav-item dropdown">
+                            <a href="consultoria.html" class="nav-link dropdown-toggle" id="dropdownConsultoria" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                CONSULTORIA <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownConsultoria">
+                                <li><a href="gestion-de-pmo.html" class="dropdown-item">GESTION DE PMO</a></li>
+                                <li><a href="headhunting.html" class="dropdown-item">HEADHUNTING</a></li>
+                                <li><a href="gestion-de-riesgos.html" class="dropdown-item">GESTION DE RIESGOS</a></li>
+                                <li><a href="sindrome-del-90.html" class="dropdown-item">RIESGO DEL PLAZO</a></li>
+                                <li><a href="lego-serious-play.html" class="dropdown-item">LEGO SERIOUS PLAY</a></li>
+                                <li><a href="cronograma-forense.html" class="dropdown-item">CRONOGRAMA-FORENSE</a></li>
+                                <li><a href="homologaciones.html" class="dropdown-item">HOMOLOGACIONES</a></li>
+                                <li><a href="gestion-de-la-calidad.html" class="dropdown-item">GESTION DE LA CALIDAD</a></li>
+                                <li><a href="permisologia.html" class="dropdown-item">PERMISOLOGIA</a></li>
+                                <li><a href="universidad-corporativa.html" class="dropdown-item">UNIVERSIDAD CORPORATIVA</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- CAPACITACION (Desplegable Extenso) -->
+                        <li class="nav-item dropdown dropdown-large">
+                            <a href="capacitacion.html" class="nav-link dropdown-toggle" id="dropdownCapacitacion" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                CAPACITACION <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownCapacitacion">
+                                <li><a href="lean-last-planner.html" class="dropdown-item">LEAN-LAST-PLANNER</a></li>
+                                <li><a href="riesgos-tecnicos.html" class="dropdown-item">RIESGOS TECNICOS</a></li>
+                                <li><a href="riesgos-pmi.html" class="dropdown-item">RIESGOS PMI</a></li>
+                                <li><a href="riesgos-cadena-produccion.html" class="dropdown-item">RIESGOS CADENA PRODUCCION</a></li>
+                                <li><a href="calidad-y-pmi.html" class="dropdown-item">CALIDAD Y PMI</a></li>
+                                <li><a href="costos.html" class="dropdown-item">COSTOS</a></li>
+                                <li><a href="nec.html" class="dropdown-item">NEC</a></li>
+                                <li><a href="fidic.html" class="dropdown-item">FIDIC</a></li>
+                                <li><a href="pmo.html" class="dropdown-item">PMO</a></li>
+                                <li><a href="gerencia-de-calidad.html" class="dropdown-item">GERENCIA DE CALIDAD</a></li>
+                                <li><a href="valor-ganado.html" class="dropdown-item">VALOR GANADO</a></li>
+                                <li><a href="bim-revit-architecture.html" class="dropdown-item">BIM REVIT ARCHITECTURE</a></li>
+                                <li><a href="iso-9001.html" class="dropdown-item">ISO 9001</a></li>
+                                <li><a href="oficina-tecnica.html" class="dropdown-item">OFICINA-TECNICA</a></li>
+                                <li><a href="herramientas.html" class="dropdown-item">HERRAMIENTAS</a></li>
+                                <li><a href="proyectos-pmi.html" class="dropdown-item">PROYECTOS PMI</a></li>
+                                <li><a href="contratos.html" class="dropdown-item">CONTRATOS</a></li>
+                                <li><a href="contratos-estado.html" class="dropdown-item">CONTRATOS-ESTADO</a></li>
+                                <li><a href="gruas-torre.html" class="dropdown-item">GRUAS TORRE</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- PRESS -->
+                        <li class="nav-item">
+                            <a href="press.html" class="nav-link active">PRESS</a>
+                        </li>
+
+                        <!-- MEDIOS -->
+                        <li class="nav-item">
+                            <a href="medios.html" class="nav-link">MEDIOS</a>
+                        </li>
+
+                        <!-- CLIENTES -->
+                        <li class="nav-item">
+                            <a href="clientes.html" class="nav-link">CLIENTES</a>
+                        </li>
+
+                        <!-- MÁS... -->
+                        <li class="nav-item dropdown dropdown-more">
+                            <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="dropdownMas" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                MÁS... <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMas">
+                                <li class="dropdown-submenu">
+                                    <a href="investigacion.html" class="dropdown-item submenu-toggle">
+                                        <span>INVESTIGACION</span>
+                                        <i class="fa-solid fa-chevron-right submenu-arrow"></i>
+                                    </a>
+                                    <ul class="dropdown-menu-lateral">
+                                        <li><a href="encuestas-proyectos.html" class="dropdown-item">Encuestas-Proyectos</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contacto.html" class="dropdown-item">CONTACTO</a></li>
+                                <li><a href="noticias.html" class="dropdown-item">NOTICIAS</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Overlay móvil -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+    </header>
+
+    <main>
+        <!-- ==========================================================================
+             1. HERO SECTION (Editorial & Press Release Style)
+             ========================================================================== -->
+        <section class="press-hero-banner text-center">
+            <div class="press-hero-pattern"></div>
+            <div class="container position-relative">
+                
+                <!-- Badge Superior Neón -->
+                <div class="d-inline-block mb-3">
+                    <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-2 shadow-sm">
+                        <i class="fas fa-book-open me-2"></i> LANZAMIENTOS &amp; PUBLICACIONES EDITORIALES
+                    </span>
+                </div>
+
+                <!-- Título Principal -->
+                <h1 class="press-hero-title animate__animated animate__fadeInDown">PUBLICACIONES Y LIBROS OFICIALES</h1>
+
+                <!-- Subtítulo -->
+                <p class="press-hero-subtitle">
+                    Descubre la serie de publicaciones especializadas en gestión de la construcción e ISO 9001 desarrolladas por Quality Consulting Solutions.
+                </p>
+
+                <!-- Micro-detalles editoriales -->
+                <div class="d-flex justify-content-center flex-wrap gap-3 mt-4">
+                    <span class="editorial-feature-pill">
+                        <i class="fa-solid fa-pen-fancy text-warning"></i> Omar A. Samaniego (Autor)
+                    </span>
+                    <span class="editorial-feature-pill">
+                        <i class="fa-solid fa-award text-warning"></i> Aporte Técnico al Sector
+                    </span>
+                    <span class="editorial-feature-pill">
+                        <i class="fa-solid fa-users text-warning"></i> Club de Lectura Técnico
+                    </span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             2. MENSAJE DE PRESENTACIÓN DE LANZAMIENTOS
+             ========================================================================== -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-11">
+                        <div class="executive-presentation-card">
+                            <i class="fa-solid fa-quote-right executive-quote-icon"></i>
+                            <div class="row align-items-center">
+                                <div class="col-md-2 text-center mb-3 mb-md-0">
+                                    <div class="d-inline-flex p-3 rounded-circle bg-warning bg-opacity-25 text-warning border border-warning shadow-sm">
+                                        <i class="fa-solid fa-feather-pointed fa-2x text-dark"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <h4 class="fw-bold mb-2 text-dark font-montserrat" style="color: var(--qcs-dark-slate);">
+                                        Nota Editorial de Lanzamiento
+                                    </h4>
+                                    <p class="executive-text mb-0">
+                                        "Quality Consulting Solutions presenta sus dos primeros libros que forman parte de una serie dedicada a la gestión de la construcción, marcando así una pauta diferenciadora y contribuidora en la industria. Los invitamos a conocer más sobre estas publicaciones e inscribirse para formar parte de nuestro futuro club de lectura."
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             3. SECCIÓN NUESTROS LIBROS (Display Showcase de 2 Columnas)
+             ========================================================================== -->
+        <section class="pb-5 pt-2">
+            <div class="container">
+                
+                <div class="text-center mb-5">
+                    <span class="badge bg-warning-subtle text-dark fw-bold px-3 py-2 rounded-pill text-uppercase mb-2">
+                        <i class="fa-solid fa-book-bookmark me-1"></i> Catálogo Editorial
+                    </span>
+                    <h2 class="fw-extrabold font-montserrat text-dark display-6 mb-2 animate__animated animate__fadeInUp animate__delay-1s" style="font-weight: 800;">
+                        NUESTROS LIBROS
+                    </h2>
+                    <p class="text-muted mx-auto" style="max-width: 680px;">
+                        Material bibliográfico de alto rigor técnico, diseñado como guía de referencia indispensable para profesionales, residentes de obra, auditores y directores de proyectos.
+                    </p>
+                </div>
+
+                <div class="row g-4 justify-content-center">
+                    
+                    <!-- LIBRO 1: Gestión de Riesgos en la Construcción -->
+                    <div class="col-lg-6">
+                        <div class="book-showcase-card">
+                            
+                            <!-- Header de Tarjeta -->
+                            <div class="book-card-header">
+                                <span class="book-vol-badge badge-vol-1">
+                                    SERIE EDITORIAL QCS - VOL. 1
+                                </span>
+                                <h3 class="book-title animate__animated animate__fadeInUp animate__delay-1s">
+                                    LIBRO DE GESTIÓN DE RIESGOS EN LA CONSTRUCCIÓN
+                                </h3>
+                                <div class="book-author">
+                                    <i class="fa-solid fa-user-tie text-warning"></i>
+                                    <span>Ing. Omar A. Samaniego, PMP®, PMI-RMP®</span>
+                                </div>
+                            </div>
+
+                            <!-- Showcase Visual de Portada 3D -->
+                            <div class="book-visual-wrapper">
+                                <img src="img/imgpress.png" alt="Libro de Gestión de Riesgos Técnicos en la Construcción - 1ra Edición" class="book-cover-img" loading="lazy">
+                            </div>
+
+                            <!-- Cuerpo y Contenido -->
+                            <div class="book-card-body">
+                                <div>
+                                    <p class="book-description">
+                                        Estrategias, metodologías y lecciones aprendidas para la identificación y tratamiento de incertidumbres en obras.
+                                    </p>
+
+                                    <ul class="book-highlights-list">
+                                        <li>
+                                            <i class="fa-solid fa-check-circle"></i>
+                                            <span>Casos de construcción e industrias afines con análisis paso a paso.</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa-solid fa-check-circle"></i>
+                                            <span>Referencias a autores relevantes y estándares internacionales del PMI®.</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa-solid fa-check-circle"></i>
+                                            <span>Revisión de conceptos y terminología en su contexto técnico original.</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa-solid fa-check-circle"></i>
+                                            <span>Indicadores y nuevos planteamientos prácticos para mitigar contingencias.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Botón Oficial Google Forms -->
+                                <div class="mt-3">
+                                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScf5GuKgjVvBmo9CdJ7feivDoKpDgV7IcIvcA7VAnrDtBTcYg/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-warning btn-lg w-100 my-2 fw-bold shadow-sm btn-qcs-primary">
+                                        <i class="fas fa-file-alt me-2"></i> +INFO LIBRO RIESGOS
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- LIBRO 2: ISO 9001 en la Construcción e Infraestructura -->
+                    <div class="col-lg-6">
+                        <div class="book-showcase-card">
+                            
+                            <!-- Header de Tarjeta -->
+                            <div class="book-card-header">
+                                <span class="book-vol-badge badge-vol-2">
+                                    SERIE EDITORIAL QCS - VOL. 2
+                                </span>
+                                <h3 class="book-title animate__animated animate__fadeInUp animate__delay-1s">
+                                    LIBRO ISO 9001 PARA LA CONSTRUCCIÓN
+                                </h3>
+                                <div class="book-author">
+                                    <i class="fa-solid fa-user-tie text-dark"></i>
+                                    <span>Ing. Omar A. Samaniego, PMP®, PMI-RMP®</span>
+                                </div>
+                            </div>
+
+                            <!-- Showcase Visual de Portada 3D -->
+                            <div class="book-visual-wrapper">
+                                <img src="img/imgpress2.png" alt="Libro ISO 9001 para la Construcción - Quality Consulting Solutions" class="book-cover-img" loading="lazy">
+                            </div>
+
+                            <!-- Cuerpo y Contenido -->
+                            <div class="book-card-body">
+                                <div>
+                                    <p class="book-description">
+                                        Guía práctica para la aplicación de la norma ISO 9001:2015 en empresas del sector construcción e infraestructura.
+                                    </p>
+
+                                    <ul class="book-highlights-list">
+                                        <li>
+                                            <i class="fa-solid fa-check-circle"></i>
+                                            <span>Interpretación en función a los conceptos de gestión de la calidad en obra.</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa-solid fa-check-circle"></i>
+                                            <span>Revisión de conceptos en base a significados precisos en su idioma de origen.</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa-solid fa-check-circle"></i>
+                                            <span>Ejemplos reales aplicados al quehacer y dinámicas de proyectos de ingeniería.</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa-solid fa-check-circle"></i>
+                                            <span>Incorporación de aportes de autores célebres (Crosby, Deming, Juran).</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Botón Oficial Google Forms -->
+                                <div class="mt-3">
+                                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfmw8-ESgWSsNGZ_cM0M2t72m704VggdDiYbH3zH2b3RyY8PQ/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-lg w-100 my-2 fw-bold shadow-sm btn-qcs-primary" style="background-color: var(--qcs-yellow); color: var(--qcs-black); border-color: var(--qcs-yellow);">
+                                        <i class="fas fa-file-alt me-2"></i> +INFO LIBRO ISO 9001
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             4. SHOWCASE MULTIMEDIA (Videos Promocionales de Lanzamiento)
+             ========================================================================== -->
+        <section class="press-media-section">
+            <div class="container position-relative">
+                
+                <div class="text-center mb-5">
+                    <span class="badge bg-danger-subtle text-danger fw-bold px-3 py-2 rounded-pill text-uppercase mb-2">
+                        <i class="fa-brands fa-youtube me-1"></i> Sesiones &amp; Transmisiones
+                    </span>
+                    <h2 class="fw-extrabold font-montserrat text-white display-6 mb-2 animate__animated animate__fadeInUp animate__delay-1s" style="font-weight: 800;">
+                        PRESENTACIONES Y CONFERENCIAS DE LOS LIBROS
+                    </h2>
+                    <p class="text-light text-opacity-75 mx-auto" style="max-width: 720px;">
+                        Mira las ponencias, charlas técnicas y transmisiones de lanzamiento donde se profundiza en las metodologías, casos reales y aportes clave de cada publicación.
+                    </p>
+                </div>
+
+                <div class="row g-4 justify-content-center">
+                    
+                    <!-- Video 1 -->
+                    <div class="col-lg-6">
+                        <div class="video-box-card">
+                            <span class="video-tag">
+                                <i class="fa-solid fa-circle-play"></i> CONFERENCIA TÉCNICA 1
+                            </span>
+                            <h4 class="video-card-title">
+                                Lanzamiento y Presentación Editorial - Sesión 1
+                            </h4>
+                            <p class="video-card-desc">
+                                Conferencia magistral sobre los fundamentos de gestión de riesgos e incertidumbre en proyectos de infraestructura.
+                            </p>
+                            <div class="ratio ratio-16x9 shadow-lg rounded-4 overflow-hidden mb-4">
+                                <iframe src="https://www.youtube.com/embed/HFaVJy083Vo" title="Presentación de Libros Quality Consulting Solutions - Video 1" loading="lazy" allowfullscreen=""></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div class="col-lg-6">
+                        <div class="video-box-card">
+                            <span class="video-tag">
+                                <i class="fa-solid fa-circle-play"></i> CONFERENCIA TÉCNICA 2
+                            </span>
+                            <h4 class="video-card-title">
+                                Lanzamiento y Presentación Editorial - Sesión 2
+                            </h4>
+                            <p class="video-card-desc">
+                                Análisis práctico sobre la aplicación de normas de calidad ISO 9001 e integración con procesos constructivos.
+                            </p>
+                            <div class="ratio ratio-16x9 shadow-lg rounded-4 overflow-hidden mb-4">
+                                <iframe src="https://www.youtube.com/embed/v6BPe0MwRdM" title="Presentación de Libros Quality Consulting Solutions - Video 2" loading="lazy" allowfullscreen=""></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             5. BANNER PROMOCIONAL DE REDIRECCIÓN A ARTÍCULOS (medios.html)
+             ========================================================================== -->
+        <section class="py-5 my-2">
+            <div class="container">
+                <div class="media-hub-redirect-banner">
+                    <div class="row align-items-center">
+                        
+                        <div class="col-lg-8 mb-4 mb-lg-0">
+                            <span class="badge bg-success bg-opacity-25 text-success border border-success px-3 py-2 rounded-pill fw-bold mb-3">
+                                <i class="fa-solid fa-newspaper me-1"></i> ECOSISTEMA DE CONTENIDOS
+                            </span>
+                            <h2 class="fw-bold font-montserrat text-white mb-3 animate__animated animate__fadeInUp animate__delay-1s" style="font-size: clamp(1.6rem, 2.5vw, 2.3rem);">
+                                ARTÍCULOS Y PUBLICACIONES ESPECIALIZADAS
+                            </h2>
+                            <p class="text-light text-opacity-90 mb-3" style="font-size: 1.05rem; line-height: 1.8;">
+                                Explora nuestra colección completa de artículos sobre Control de Proyectos, Philip Crosby, ISO 9001, Gestión de Proveedores y Enfoque al Cliente.
+                            </p>
+                            
+                            <!-- Tags de temas -->
+                            <div class="topics-tag-cloud">
+                                <span class="topic-pill"><i class="fa-brands fa-spotify text-success me-1"></i> Podcasts Oficiales</span>
+                                <span class="topic-pill"><i class="fa-brands fa-linkedin text-warning me-1"></i> Artículos LinkedIn</span>
+                                <span class="topic-pill"><i class="fa-solid fa-chart-line text-warning me-1"></i> Control de Proyectos</span>
+                                <span class="topic-pill"><i class="fa-solid fa-check-double text-light me-1"></i> Cero Defectos (Crosby)</span>
+                                <span class="topic-pill"><i class="fa-solid fa-handshake text-success me-1"></i> Relación con Clientes</span>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 text-lg-end text-center">
+                            <a href="medios.html" class="btn btn-success btn-lg px-4 py-3 fw-bold rounded-pill shadow-lg btn-qcs-primary">
+                                <i class="fas fa-newspaper me-2"></i> ¡Mira nuestros Artículos y Podcasts en Medios!
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             6. LLAMADO A LA ACCIÓN FINAL (Contacto Corporativo)
+             ========================================================================== -->
+        <section class="pb-5 pt-2" id="contacto">
+            <div class="container">
+                <div class="cta-final-box">
+                    <div class="cta-icon-badge">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                    </div>
+                    <h3 class="fw-bold font-montserrat text-dark mb-2 animate__animated animate__fadeInUp animate__delay-1s">
+                        ¿Consultas sobre Adquisición de Libros o Capacitación In-House?
+                    </h3>
+                    <p class="text-muted mx-auto mb-4" style="max-width: 680px; font-size: 1.02rem;">
+                        Ponte en contacto con nuestro equipo comercial y académico para coordinar compras corporativas, sesiones magistrales para tu empresa o inscripciones a nuestros programas.
+                    </p>
+                    <div class="d-flex justify-content-center flex-wrap gap-3">
+                        <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="btn btn-warning btn-lg px-4 py-2 fw-bold rounded-pill shadow-sm animate__animated animate__pulse animate__infinite btn-qcs-primary">
+                            <i class="fa-brands fa-whatsapp me-2"></i> Contactar por WhatsApp
+                        </a>
+                        <a href="mailto:contacto@qualityconsulting.com" class="btn btn-qcs-dark btn-lg px-4 py-2 fw-bold rounded-pill btn-qcs-primary" style="border-color: var(--qcs-yellow); color: var(--qcs-dark-slate);">
+                            <i class="fa-solid fa-envelope me-2"></i> Enviar Correo Corporativo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================================================
+         FOOTER CORPORATIVO
+         ========================================================================== -->
+            <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                
+                <!-- Columna 1: Identidad Corporativa -->
+                <div class="footer-col brand-col">
+                    <div class="logo-badge d-flex align-items-center mb-3">
+                        <img src="img/Logo.png" alt="Quality Consulting Solutions Logo" width="44" height="44" class="d-inline-block align-text-top rounded-2 me-2 brand-logo animate__animated animate__bounceIn" style="object-fit: cover; width: 44px; height: 44px; ">
+                        <div class="logo-text-wrap">
+                            <span class="logo-title text-light">QUALITY CONSULTING</span>
+                            <span class="logo-sub">SOLUTIONS</span>
+                        </div>
+                    </div>
+                    <p class="footer-desc">
+                        Soluciones estratégicas en ingeniería, gestión de proyectos, PMO, homologación de proveedores y capacitación corporativa especializada.
+                    </p>
+                    <div class="footer-socials mt-3">
+                        <a href="https://pe.linkedin.com/in/omarsamaniego" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/qaqcconsulting" target="_blank" rel="noopener noreferrer" class="social-btn facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/channel/UCbCdXwbcl-uouYa6Y4_kY0A?view_as=subscriber" target="_blank" rel="noopener noreferrer" class="social-btn youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp animate__animated animate__pulse animate__infinite" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Enlaces RÃ¡pidos -->
+                <div class="footer-col links-col">
+                    <h4 class="footer-heading">Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+                        <li><a href="nosotros.html"><i class="fa-solid fa-angle-right"></i> Nosotros</a></li>
+                        <li><a href="index.html#consultoria"><i class="fa-solid fa-angle-right"></i> Consultoría</a></li>
+                        <li><a href="index.html#capacitacion"><i class="fa-solid fa-angle-right"></i> Capacitación</a></li>
+                        <li><a href="medios.html"><i class="fa-solid fa-angle-right"></i> Medios y Podcasts</a></li>
+                        <li><a href="clientes.html"><i class="fa-solid fa-angle-right"></i> Clientes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Contacto & Libro de Reclamaciones -->
+                <div class="footer-col contact-col">
+                    <h4 class="footer-heading">Contacto Oficial</h4>
+                    <p><i class="fa-solid fa-location-dot me-2 text-warning"></i> Av. Javier Prado 757, piso 10 Magdalena, Lima 17</p>
+                    <p><i class="fa-solid fa-envelope me-2 text-warning"></i> <a href="mailto:contacto@quality-consulting.org" class="text-light">contacto@quality-consulting.org</a></p>
+                    <p><i class="fa-solid fa-phone me-2 text-warning"></i> <a href="tel:+51993463118" class="text-light">+51 993 463 118</a></p>
+                    <div class="mt-3">
+                        <a href="libro-de-reclamaciones.html" class="btn btn-outline-warning btn-sm fw-bold d-inline-flex align-items-center rounded-pill px-3 py-2 btn-qcs-dark">
+                            <i class="fas fa-book-open me-2 text-warning"></i> Libro de Reclamaciones
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Quality Consulting Solutions. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script Principal del sitio -->
+    <script src="script.js?v=3.2"></script>
+
+
+
+
+<!-- AOS init -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+  });
+</script>
+</body></html>

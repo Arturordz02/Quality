@@ -1,0 +1,956 @@
+<?php
+/**
+ * QUALITY CONSULTING SOLUTIONS - ARQUITECTURA MVC
+ * Vista de P?gina: Herramientas de Calidad para la Infraestructura y Construcci?n
+ * Archivo: app/Views/pages/herramientas.php
+ */
+
+declare(strict_types=1);
+?>
+<style>
+        body {
+            background-color: #F4F5F7;
+            color: #1e293b;
+        }
+
+        /* Hero Quality Analytics & Data Flow Style */
+        .analytics-hero-banner {
+            position: relative;
+            padding: 190px 1.5rem 85px 1.5rem;
+            background: linear-gradient(135deg, #0F1113 0%, #0F1113 45%, #1A1D20 100%);
+            color: #ffffff;
+            overflow: hidden;
+            border-bottom: 3px solid #E5A813;
+        }
+
+        .analytics-hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(229, 168, 19, 0.25) 0%, transparent 60%),
+                        radial-gradient(circle at 15% 85%, rgba(142, 146, 151, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .analytics-hero-card {
+            background: rgba(13, 43, 69, 0.75);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(229, 168, 19, 0.25);
+            border-radius: 14px;
+            padding: 1.35rem 1.15rem;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            text-align: center;
+        }
+
+        .analytics-hero-card:hover {
+            transform: translateY(-5px);
+            border-color: #E5A813;
+            box-shadow: 0 16px 36px rgba(229, 168, 19, 0.25);
+            background: rgba(20, 61, 89, 0.85);
+        }
+
+        .analytics-hero-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(229, 168, 19, 0.25);
+            color: #E5A813;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            margin: 0 auto 0.85rem auto;
+            border: 1px solid rgba(229, 168, 19, 0.25);
+        }
+
+        .analytics-hero-card-title {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 0.35rem;
+        }
+
+        .analytics-hero-card-desc {
+            font-size: 0.84rem;
+            color: #cbd5e1;
+            margin: 0;
+            line-height: 1.45;
+        }
+
+        /* Card Docente Especialista en Calidad */
+        .analytics-docente-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-top: 4px solid #C9910D;
+            border-radius: 16px;
+            padding: 2.25rem;
+            height: 100%;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+        }
+
+        .analytics-docente-card:hover {
+            border-top-color: var(--accent-gold);
+            box-shadow: var(--shadow-md);
+        }
+
+        .docente-avatar-analytics {
+            width: 76px;
+            height: 76px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #C9910D, #C9910D);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #ffffff;
+            border: 2px solid #E5A813;
+            box-shadow: 0 4px 16px rgba(8, 145, 178, 0.25);
+            flex-shrink: 0;
+        }
+
+        /* Diagrama de Flujo Conceptual de Datos */
+        .data-flow-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            padding: 1.15rem 1rem;
+            background: #F4F5F7;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .data-flow-step {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-family: var(--font-heading);
+            font-size: 0.84rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            background: #ffffff;
+            padding: 0.45rem 0.75rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+        }
+
+        .data-flow-arrow {
+            color: #C9910D;
+            font-size: 1rem;
+            font-weight: 900;
+        }
+
+        /* Grid de 4 Módulos de Calidad */
+        .analytics-modules-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 992px) {
+            .analytics-modules-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .analytics-modules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .analytics-module-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 1.6rem 1.25rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .analytics-module-card:hover {
+            transform: translateY(-5px);
+            border-color: #C9910D;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .analytics-module-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.1rem;
+        }
+
+        .analytics-num-badge {
+            background: linear-gradient(135deg, #C9910D, #E5A813);
+            color: #ffffff;
+            font-family: var(--font-heading);
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .analytics-module-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: rgba(8, 145, 178, 0.1);
+            color: #C9910D;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            transition: all var(--transition-fast);
+        }
+
+        .analytics-module-card:hover .analytics-module-icon {
+            background: #C9910D;
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        .analytics-module-title {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 0.45rem;
+        }
+
+        .analytics-module-desc {
+            font-size: 0.86rem;
+            color: #475569;
+            line-height: 1.55;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        /* Sección Exclusiva: Flujo de 6 Pasos (De los Datos a la Toma de Decisiones) */
+        .decision-flow-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1rem;
+        }
+
+        @media (max-width: 992px) {
+            .decision-flow-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .decision-flow-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .decision-flow-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-top: 3px solid #C9910D;
+            border-radius: 12px;
+            padding: 1.35rem 1rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-fast);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .decision-flow-card:hover {
+            transform: translateY(-4px);
+            border-top-color: var(--accent-gold);
+            box-shadow: var(--shadow-md);
+        }
+
+        .decision-flow-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(8, 145, 178, 0.12);
+            color: #C9910D;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 0.82rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .decision-flow-title {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            line-height: 1.3;
+            margin: 0;
+        }
+
+        /* Características y Beneficios */
+        .methodology-step-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem 1rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            height: 100%;
+        }
+
+        .benefit-badge-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 1.6rem 1.25rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-fast);
+            height: 100%;
+        }
+
+        .benefit-badge-card:hover {
+            border-color: #C9910D;
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .benefit-badge-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(8, 145, 178, 0.12);
+            color: #C9910D;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin: 0 auto 0.85rem auto;
+            border: 1px solid rgba(8, 145, 178, 0.3);
+        }
+
+        /* Showcase Multimedia Video Card */
+        .analytics-video-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .analytics-video-card:hover {
+            transform: translateY(-5px);
+            border-color: #C9910D;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .analytics-video-header {
+            background: #0F1113;
+            padding: 0.85rem 1.15rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .analytics-video-caption {
+            padding: 1.1rem;
+            font-size: 0.86rem;
+            color: #475569;
+            margin: 0;
+            line-height: 1.45;
+        }
+
+        /* Enrollment Card */
+        .analytics-enrollment-card {
+            background: #ffffff;
+            border: 2px solid rgba(8, 145, 178, 0.35);
+            border-radius: 20px;
+            padding: 3rem 2.25rem;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+
+        .btn-analytics-action {
+            border-radius: 10px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            padding: 0.9rem 1.25rem;
+            transition: all var(--transition-normal);
+        }
+
+        .btn-analytics-action:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        </style>
+
+<main class="page-content">
+
+        <!-- ==========================================================================
+             1. ENCABEZADO HERO ESTILIZADO (Quality Analytics & Data Flow Style)
+             ========================================================================== -->
+        <section class="analytics-hero-banner">
+            <div class="container text-center position-relative" style="z-index: 2;">
+                
+                <!-- Badge Neón Superior Requerido -->
+                <div class="mb-3">
+                    <span class="badge bg-warning text-dark text-dark px-3 py-2 rounded-pill fw-bold mb-2 shadow-sm">
+                        <i class="fas fa-tools me-2"></i> GESTIÓN DE CALIDAD &amp; CONSTRUCCIÓN
+                    </span>
+                </div>
+
+                <h1 class="display-5 fw-extrabold text-white text-uppercase tracking-wide mb-3 animate__animated animate__fadeInDown" style="font-family: var(--font-heading); font-weight: 800;">
+                    HERRAMIENTAS DE CALIDAD PARA LA INFRAESTRUCTURA Y CONSTRUCCIÓN
+                </h1>
+
+                <p class="lead text-light opacity-90 mx-auto mb-4" style="max-width: 860px; font-size: 1.15rem; color: #e2e8f0;">
+                    Curso taller orientado a la aplicación práctica de herramientas de gestión de la calidad para analizar información, identificar oportunidades de mejora y tomar mejores decisiones en proyectos de infraestructura y construcción.
+                </p>
+
+                <!-- Grid de 3 Tarjetas de Valor Ejecutivo dentro del Hero -->
+                <div class="row g-3 justify-content-center mt-2">
+                    
+                    <!-- Tarjeta 1: Enfoque Práctico -->
+                    <div class="col-12 col-md-4">
+                        <div class="analytics-hero-card">
+                            <div class="analytics-hero-icon"><i class="fas fa-chart-line"></i></div>
+                            <div class="analytics-hero-card-title">Enfoque Práctico</div>
+                            <p class="analytics-hero-card-desc">Aplicación de herramientas mediante conceptos, ejemplos, información real y ejercicios de análisis.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 2: Aplicación en Proyectos -->
+                    <div class="col-12 col-md-4">
+                        <div class="analytics-hero-card">
+                            <div class="analytics-hero-icon"><i class="fas fa-hard-hat"></i></div>
+                            <div class="analytics-hero-card-title">Aplicación en Proyectos</div>
+                            <p class="analytics-hero-card-desc">Trabajo con casos reales y con información proporcionada por los propios participantes.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 3: Desarrollo Profesional -->
+                    <div class="col-12 col-md-4">
+                        <div class="analytics-hero-card">
+                            <div class="analytics-hero-icon"><i class="fas fa-award"></i></div>
+                            <div class="analytics-hero-card-title">Desarrollo Profesional</div>
+                            <p class="analytics-hero-card-desc">Incluye Diploma + Ingreso a Bolsa de Trabajo + Beneficios como Ex-alumno.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             2. PERFIL DEL DOCENTE Y OBJETIVO GENERAL (Layout 2 Columnas Responsive)
+             ========================================================================== -->
+        <section class="py-5" id="perfil-objetivo">
+            <div class="container py-3">
+                
+                <div class="row g-4 align-items-stretch">
+                    
+                    <!-- Columna Izquierda: Card del Docente Destacado -->
+                    <div class="col-12 col-lg-5">
+                        <div class="analytics-docente-card d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="docente-avatar-analytics overflow-hidden rounded-circle shadow-sm" style="width: 72px; height: 72px; border: 2px solid rgba(229, 168, 19, 0.4); display: inline-block;"><picture><source srcset="img/Omar_Samaniego.webp" type="image/webp"><img src="img/Omar_Samaniego.png" alt="Ing. Omar Samaniego" style="width: 100%; height: 100%; object-fit: cover; object-position: top;"></picture></div>
+                                    <div>
+                                        <span class="badge bg-warning-subtle text-dark fw-bold text-uppercase px-2 py-1 rounded">
+                                            <i class="fa-solid fa-chalkboard-user me-1"></i> Docente Principal
+                                        </span>
+                                        <h3 class="fw-bold mb-0 text-dark mt-1 animate__animated animate__fadeInUp animate__delay-1s" style="font-family: var(--font-heading); color: var(--primary-blue); font-size: 1.3rem;">
+                                            ING. OMAR A. SAMANIEGO
+                                        </h3>
+                                    </div>
+                                </div>
+
+                                <!-- Credenciales / Badges Requeridos -->
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="badge bg-dark text-warning border border-warning-subtle"><i class="fa-solid fa-graduation-cap me-1"></i> Ing. Civil</span>
+                                    <span class="badge bg-dark"><i class="fa-solid fa-award text-warning me-1"></i> PMP®</span>
+                                    <span class="badge bg-warning text-dark text-dark"><i class="fa-solid fa-shield-halved me-1"></i> PMI-RMP®</span>
+                                    <span class="badge bg-secondary"><i class="fa-solid fa-check-double me-1"></i> IRCA</span>
+                                    <span class="badge bg-success"><i class="fa-solid fa-medal me-1"></i> LSS Black Belt</span>
+                                </div>
+
+                                <!-- Bio / Experiencia Requerida -->
+                                <ul class="list-unstyled mb-0 text-secondary" style="font-size: 0.92rem; line-height: 1.6;">
+                                    <li class="mb-2"><i class="fa-solid fa-check text-warning me-2"></i> Profesional con más de 20 años de experiencia en Gestión de la Calidad dentro del sector construcción, en empresas líderes del Perú y del extranjero.</li>
+                                    <li><i class="fa-solid fa-check text-warning me-2"></i> Cuenta con experiencia docente de posgrado y participación activa como ponente en prestigiosos congresos profesionales del sector.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha: Objetivo General + Flujo Conceptual -->
+                    <div class="col-12 col-lg-7">
+                        <div class="analytics-docente-card d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <span class="badge bg-warning-subtle text-warning-emphasis fw-bold text-uppercase px-2 py-1 rounded">
+                                        <i class="fa-solid fa-bullseye me-1"></i> Propósito &amp; Visión Operativa
+                                    </span>
+                                </div>
+
+                                <h3 class="fw-bold mb-3 animate__animated animate__fadeInUp animate__delay-1s" style="font-family: var(--font-heading); color: var(--primary-blue);">
+                                    OBJETIVO DEL CURSO
+                                </h3>
+
+                                <p class="text-secondary mb-3" style="font-size: 0.95rem; line-height: 1.65;">
+                                    Capacitar a los participantes en el dominio y aplicación de herramientas analíticas de calidad, estructurando información cuantitativa y cualitativa para identificar causas raíz, evaluar desviaciones en obra y sustentar decisiones estratégicas de mejora continua.
+                                </p>
+                            </div>
+
+                            <!-- Esquema de Flujo Conceptual de Datos Requerido -->
+                            <div>
+                                <h6 class="fw-bold text-uppercase small text-secondary mb-2">
+                                    <i class="fa-solid fa-diagram-project text-warning me-1"></i> Flujo Conceptual del Dato a la Decisión
+                                </h6>
+                                <div class="data-flow-row">
+                                    <div class="data-flow-step"><i class="fa-solid fa-database text-dark"></i> DATOS</div>
+                                    <span class="data-flow-arrow">➔</span>
+                                    <div class="data-flow-step"><i class="fa-solid fa-magnifying-glass-chart text-warning"></i> ANÁLISIS</div>
+                                    <span class="data-flow-arrow">➔</span>
+                                    <div class="data-flow-step"><i class="fa-solid fa-toolbox text-success"></i> HERRAMIENTAS</div>
+                                    <span class="data-flow-arrow">➔</span>
+                                    <div class="data-flow-step"><i class="fa-solid fa-file-invoice text-warning"></i> INFORMACIÓN</div>
+                                    <span class="data-flow-arrow">➔</span>
+                                    <div class="data-flow-step"><i class="fa-solid fa-gavel text-danger"></i> DECISIONES</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             3. CONTENIDOS DEL CURSO - GRID MODULAR (4 Módulos de Calidad)
+             ========================================================================== -->
+        <section class="py-5 bg-white border-top border-bottom" id="temario">
+            <div class="container py-3">
+                
+                <div class="text-center mb-5">
+                    <span class="badge bg-warning-subtle text-dark px-3 py-2 rounded-pill fw-bold text-uppercase mb-2 shadow-sm">
+                        <i class="fa-solid fa-boxes-stacked me-1"></i> Malla Curricular
+                    </span>
+                    <h2 class="fw-extrabold text-uppercase text-dark animate__animated animate__fadeInUp animate__delay-1s" style="font-family: var(--font-heading); color: var(--primary-blue);">
+                        CONTENIDOS DEL CURSO
+                    </h2>
+                    <div class="title-underline mx-auto" style="background: #C9910D;"></div>
+                    <p class="text-secondary mx-auto mt-3" style="max-width: 780px;">
+                        Herramientas para analizar, controlar y mejorar la gestión de la calidad en proyectos de infraestructura y construcción.
+                    </p>
+                </div>
+
+                <!-- Grid de 4 Módulos -->
+                <div class="analytics-modules-grid">
+                    
+                    <!-- 01. Las Siete Herramientas -->
+                    <div class="analytics-module-card">
+                        <div class="analytics-module-header">
+                            <span class="analytics-num-badge">01</span>
+                            <div class="analytics-module-icon"><i class="fas fa-toolbox"></i></div>
+                        </div>
+                        <h3 class="analytics-module-title animate__animated animate__fadeInUp animate__delay-1s">01. Las Siete Herramientas de la Calidad</h3>
+                        <p class="analytics-module-desc">Introducción y aplicación de las herramientas tradicionales utilizadas para analizar información y apoyar la mejora de la calidad.</p>
+                    </div>
+
+                    <!-- 02. Herramientas de Gestión -->
+                    <div class="analytics-module-card">
+                        <div class="analytics-module-header">
+                            <span class="analytics-num-badge">02</span>
+                            <div class="analytics-module-icon"><i class="fas fa-cogs"></i></div>
+                        </div>
+                        <h3 class="analytics-module-title animate__animated animate__fadeInUp animate__delay-1s">02. Herramientas de Gestión de la Calidad</h3>
+                        <p class="analytics-module-desc">Aplicación de herramientas orientadas a organizar, analizar y gestionar información relacionada con la calidad del proyecto.</p>
+                    </div>
+
+                    <!-- 03. Indicadores de Gestión -->
+                    <div class="analytics-module-card">
+                        <div class="analytics-module-header">
+                            <span class="analytics-num-badge">03</span>
+                            <div class="analytics-module-icon"><i class="fas fa-chart-bar"></i></div>
+                        </div>
+                        <h3 class="analytics-module-title animate__animated animate__fadeInUp animate__delay-1s">03. Indicadores de Gestión de la Calidad</h3>
+                        <p class="analytics-module-desc">Uso de indicadores para generar información útil que facilite el seguimiento, análisis y toma de decisiones.</p>
+                    </div>
+
+                    <!-- 04. Taller de Aplicación -->
+                    <div class="analytics-module-card">
+                        <div class="analytics-module-header">
+                            <span class="analytics-num-badge">04</span>
+                            <div class="analytics-module-icon"><i class="fas fa-laptop-code"></i></div>
+                        </div>
+                        <h3 class="analytics-module-title animate__animated animate__fadeInUp animate__delay-1s">04. Taller de Aplicación</h3>
+                        <p class="analytics-module-desc">Aplicación práctica de los conceptos y herramientas desarrollados durante el programa mediante casos y ejercicios reales.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             4. FLUJO VISUAL DE GESTIÓN DE CALIDAD (Sección Exclusiva)
+             ========================================================================== -->
+        <section class="py-5" style="background-color: var(--qcs-bg-light);" id="flujo-calidad">
+            <div class="container py-3">
+                
+                <div class="text-center mb-5">
+                    <span class="badge bg-dark text-warning border border-warning-subtle text-white px-3 py-2 rounded-pill fw-bold text-uppercase mb-2 shadow-sm">
+                        <i class="fa-solid fa-arrow-progress me-1"></i> Secuencia Operativa
+                    </span>
+                    <h2 class="fw-extrabold text-uppercase text-dark animate__animated animate__fadeInUp animate__delay-1s" style="font-family: var(--font-heading); color: var(--primary-blue);">
+                        DE LOS DATOS A LA TOMA DE DECISIONES
+                    </h2>
+                    <div class="title-underline mx-auto"></div>
+                    <p class="text-secondary mx-auto mt-3" style="max-width: 760px;">
+                        Ruta metodológica estructurada para transformar los registros e inspecciones de campo en valor estratégico y mejora continua.
+                    </p>
+                </div>
+
+                <!-- Grid de 6 Tarjetas de Línea de Flujo -->
+                <div class="decision-flow-grid">
+                    
+                    <!-- Paso 1 -->
+                    <div class="decision-flow-card">
+                        <div class="decision-flow-num">1</div>
+                        <h5 class="decision-flow-title">Recolección de Información</h5>
+                    </div>
+
+                    <!-- Paso 2 -->
+                    <div class="decision-flow-card">
+                        <div class="decision-flow-num">2</div>
+                        <h5 class="decision-flow-title">Aplicación de Herramientas</h5>
+                    </div>
+
+                    <!-- Paso 3 -->
+                    <div class="decision-flow-card">
+                        <div class="decision-flow-num">3</div>
+                        <h5 class="decision-flow-title">Análisis de Información</h5>
+                    </div>
+
+                    <!-- Paso 4 -->
+                    <div class="decision-flow-card">
+                        <div class="decision-flow-num">4</div>
+                        <h5 class="decision-flow-title">Medición de Indicadores</h5>
+                    </div>
+
+                    <!-- Paso 5 -->
+                    <div class="decision-flow-card">
+                        <div class="decision-flow-num">5</div>
+                        <h5 class="decision-flow-title">Toma de Decisiones</h5>
+                    </div>
+
+                    <!-- Paso 6 -->
+                    <div class="decision-flow-card">
+                        <div class="decision-flow-num">6</div>
+                        <h5 class="decision-flow-title">Mejora Continua</h5>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             5. CARACTERÍSTICAS Y BENEFICIOS DEL CURSO
+             ========================================================================== -->
+        <section class="py-5 bg-white border-top border-bottom" id="metodologia-beneficios">
+            <div class="container py-3">
+                
+                <!-- Metodología en 4 Pasos -->
+                <div class="text-center mb-4">
+                    <span class="badge bg-secondary-subtle text-secondary px-3 py-2 rounded-pill fw-bold text-uppercase mb-2">
+                        <i class="fa-solid fa-graduation-cap me-1"></i> Aprendizaje Práctico
+                    </span>
+                    <h3 class="fw-bold text-uppercase text-dark animate__animated animate__fadeInUp animate__delay-1s" style="font-family: var(--font-heading); color: var(--primary-blue);">
+                        METODOLOGÍA DEL PROGRAMA
+                    </h3>
+                </div>
+
+                <div class="row g-3 mb-5 justify-content-center">
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="methodology-step-card">
+                            <div class="fw-bold text-warning mb-1">Paso 01</div>
+                            <h6 class="fw-bold mb-1">Conceptos y Ejemplos</h6>
+                            <p class="small text-secondary mb-0">Fundamentos teóricos y estadísticos aplicados a obra.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="methodology-step-card">
+                            <div class="fw-bold text-warning mb-1">Paso 02</div>
+                            <h6 class="fw-bold mb-1">Casos Reales</h6>
+                            <p class="small text-secondary mb-0">Análisis de problemáticas en obras de infraestructura.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="methodology-step-card">
+                            <div class="fw-bold text-warning mb-1">Paso 03</div>
+                            <h6 class="fw-bold mb-1">Datos de Participantes</h6>
+                            <p class="small text-secondary mb-0">Procesamiento y diagnóstico con información de los alumnos.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="methodology-step-card">
+                            <div class="fw-bold text-warning mb-1">Paso 04</div>
+                            <h6 class="fw-bold mb-1">Proyecto de Aplicación</h6>
+                            <p class="small text-secondary mb-0">Desarrollo guiado de un plan de análisis de calidad.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 Tarjetas de Beneficios -->
+                <div class="row g-4 justify-content-center">
+                    <div class="col-12 col-md-4">
+                        <div class="benefit-badge-card">
+                            <div class="benefit-badge-icon"><i class="fas fa-certificate"></i></div>
+                            <h5 class="fw-bold mb-2">Diploma de Acreditación</h5>
+                            <p class="text-secondary small mb-0">Incluye Diploma al completar el programa de acuerdo con las condiciones académicas establecidas.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="benefit-badge-card">
+                            <div class="benefit-badge-icon"><i class="fas fa-briefcase"></i></div>
+                            <h5 class="fw-bold mb-2">Bolsa de Trabajo</h5>
+                            <p class="text-secondary small mb-0">Ingreso directo a la Bolsa de Trabajo de Quality Consulting Solutions para ofertas del sector.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="benefit-badge-card">
+                            <div class="benefit-badge-icon"><i class="fas fa-user-graduate"></i></div>
+                            <h5 class="fw-bold mb-2">Descuento Ex-alumno</h5>
+                            <p class="text-secondary small mb-0">Acceso a beneficios y tarifas especiales para ex-alumnos en futuras capacitaciones.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             6. SHOWCASE MULTIMEDIA - 2 VIDEOS DE YOUTUBE ORIGINALES
+             ========================================================================== -->
+        <section class="py-5" id="videos-herramientas">
+            <div class="container py-3">
+                
+                <div class="text-center mb-5">
+                    <span class="badge bg-danger text-white px-3 py-2 rounded-pill fw-bold text-uppercase mb-2 shadow-sm">
+                        <i class="fa-brands fa-youtube me-1"></i> Sesiones Técnicas
+                    </span>
+                    <h2 class="fw-extrabold text-uppercase text-dark animate__animated animate__fadeInUp animate__delay-1s" style="font-family: var(--font-heading); color: var(--primary-blue);">
+                        CONTENIDOS Y PRESENTACIONES SOBRE GESTIÓN DE CALIDAD
+                    </h2>
+                    <div class="title-underline mx-auto" style="background: #ef4444;"></div>
+                    <p class="text-secondary mx-auto mt-3" style="max-width: 760px;">
+                        Conoce contenido relacionado con las herramientas y enfoques utilizados en la gestión de la calidad.
+                    </p>
+                </div>
+
+                <div class="row g-4 justify-content-center">
+                    
+                    <!-- Video 1 -->
+                    <div class="col-12 col-lg-6">
+                        <div class="analytics-video-card h-100 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="analytics-video-header">
+                                    <span><i class="fa-solid fa-play text-danger me-2"></i> Herramientas de Calidad - Video 1</span>
+                                    <span class="badge bg-dark text-warning">HD</span>
+                                </div>
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/R14q41qY6Ek" title="Herramientas de Calidad - Quality Consulting Solutions - Video 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy">
+                                    </iframe>
+                                </div>
+                            </div>
+                            <p class="analytics-video-caption">
+                                <i class="fa-solid fa-chart-pie text-warning me-1"></i> <strong>Análisis y Control:</strong> Aplicación de las 7 herramientas básicas y diagramas de causa-efecto en obra.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div class="col-12 col-lg-6">
+                        <div class="analytics-video-card h-100 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="analytics-video-header">
+                                    <span><i class="fa-solid fa-play text-danger me-2"></i> Herramientas de Calidad - Video 2</span>
+                                    <span class="badge bg-dark text-warning">HD</span>
+                                </div>
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/bdrgLpOMGJo" title="Herramientas de Calidad - Quality Consulting Solutions - Video 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy">
+                                    </iframe>
+                                </div>
+                            </div>
+                            <p class="analytics-video-caption">
+                                <i class="fa-solid fa-chart-line text-warning me-1"></i> <strong>Indicadores de Gestión:</strong> Medición del desempeño técnico y toma de decisiones basada en datos reales.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             7. SECCIÓN DE INSCRIPCIÓN Y PASARELAS DE PAGO (CTA Principal)
+             ========================================================================== -->
+        <section class="py-5 bg-light border-top" id="matricula">
+            <div class="container py-3">
+                
+                <div class="analytics-enrollment-card">
+                    
+                    <span class="badge bg-warning text-dark text-dark px-3 py-2 rounded-pill fw-bold text-uppercase mb-3 shadow-sm">
+                        <i class="fa-solid fa-bolt me-1"></i> VACANTES DISPONIBLES • INICIO INMEDIATO
+                    </span>
+
+                    <h2 class="display-6 fw-extrabold text-uppercase mb-2 animate__animated animate__fadeInUp animate__delay-1s" style="font-family: var(--font-heading); color: var(--primary-blue);">
+                        MATRICÚLATE EN EL CURSO DE HERRAMIENTAS DE CALIDAD
+                    </h2>
+                    <p class="text-secondary mx-auto mb-4" style="max-width: 740px;">
+                        Elige tu canal preferido para solicitar asesoría técnica personalizada, descargar el brochure con la malla completa o formalizar tu inscripción online de forma segura.
+                    </p>
+
+                    <!-- Beneficios Rápidos de Matrícula -->
+                    <div class="row g-3 mb-4 text-start justify-content-center">
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="p-3 rounded-3 border bg-white">
+                                <i class="fa-solid fa-circle-play text-warning me-2"></i> <span class="small text-dark fw-bold">Clases Grabadas 100% Online</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="p-3 rounded-3 border bg-white">
+                                <i class="fa-solid fa-cloud-arrow-down text-warning me-2"></i> <span class="small text-dark fw-bold">Grabaciones HD 24/7 sin Límite</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="p-3 rounded-3 border bg-white">
+                                <i class="fa-solid fa-certificate text-warning me-2"></i> <span class="small text-dark fw-bold">Diploma de Acreditación Oficial</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="p-3 rounded-3 border bg-white">
+                                <i class="fa-solid fa-briefcase text-warning me-2"></i> <span class="small text-dark fw-bold">Bolsa de Trabajo Exclusiva</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4 Botones Oficiales de Matrícula y Pasarelas -->
+                    <div class="row g-3 justify-content-center">
+                        
+                        <!-- 1. WhatsApp -->
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=Buen%20d%C3%ADa,%20%C2%BFpodr%C3%ADan%20enviarme%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Herramientas%20de%20Calidad%20para%20la%20Infraestructura%20y%20Construcci%C3%B3n?" target="_blank" rel="noopener noreferrer" class="btn btn-success btn-lg w-100 my-1 btn-analytics-action btn-qcs-primary" aria-label="Consultar información del curso por WhatsApp">
+                                <i class="fab fa-whatsapp me-2"></i> Consultar por WhatsApp
+                            </a>
+                        </div>
+
+                        <!-- 2. Brochure / Ficha Técnica -->
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1ATgxDthu3xdZiO9cynEzAH_v8HcOLYkyPHj8v4DSEkTNHA/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-qcs-dark btn-lg w-100 my-1 btn-analytics-action btn-qcs-primary" aria-label="Descargar información y brochure del curso">
+                                <i class="fas fa-file-pdf me-2"></i> Info &amp; Brochure
+                            </a>
+                        </div>
+
+                        <!-- 3. Niubiz / VisaNet -->
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <a href="https://www.visanetlink.pe/pagoseguro/QUALITYCONSULTINGSOLUTIONS/58214" target="_blank" rel="noopener noreferrer" class="btn btn-lg w-100 my-1 btn-analytics-action btn-qcs-primary" aria-label="Pago Seguro con Niubiz y Visa">
+                                <i class="fas fa-credit-card me-2"></i> Pago Seguro Niubiz / Visa
+                            </a>
+                        </div>
+
+                        <!-- 4. PayPal Internacional -->
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <a href="https://www.paypal.com/paypalme/qualityconsulting/240" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg w-100 my-1 btn-analytics-action btn-qcs-primary" aria-label="Pagar mediante PayPal">
+                                <i class="fab fa-paypal me-2"></i> Pagar con PayPal
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <!-- Barra de Seguridad y Confianza -->
+                    <div class="payment-trust-bar mt-4 pt-3 border-top">
+                        <div class="payment-trust-item">
+                            <i class="fa-solid fa-lock text-warning"></i>
+                            <span>Plataforma con Encriptación SSL 256-bit</span>
+                        </div>
+                        <div class="payment-trust-item">
+                            <i class="fa-solid fa-shield-halved text-warning"></i>
+                            <span>Transacción 100% Segura y Verificada</span>
+                        </div>
+                        <div class="payment-trust-item">
+                            <i class="fa-solid fa-headset text-warning"></i>
+                            <span>Soporte Académico y Técnico Permanente</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             8. LLAMADO A LA ACCIÓN FINAL (Contacto Corporativo)
+             ========================================================================== -->
+        <section class="cta-banner-section" id="contacto-final">
+            <div class="cta-container">
+                <div class="cta-box">
+                    <div class="cta-content">
+                        <span class="cta-tag"><i class="fa-solid fa-chart-simple"></i> Análisis y Control de Calidad</span>
+                        <h3 class="animate__animated animate__fadeInUp animate__delay-1s">Convierte la información de calidad en mejores decisiones para tus proyectos</h3>
+                        <p>
+                            Fortalece tus conocimientos sobre herramientas, indicadores y gestión de la calidad aplicados a infraestructura y construcción.
+                        </p>
+                        
+                        <!-- Teléfono Visible Clickeable Requerido -->
+                        <div class="cta-phone-wrapper" style="margin-top: 1.25rem;">
+                            <a href="tel:+51993463118" class="cta-phone-link" aria-label="Llamar al +51 993 463 118">
+                                <i class="fa-solid fa-phone-volume"></i>
+                                <span>+51 993 463 118</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="cta-actions">
+                        <a href="/contacto" class="btn btn-large btn-qcs-primary">
+                            <i class="fa-solid fa-envelope"></i> Contacto Directo
+                        </a>
+                        <a href="/#capacitacion" class="btn btn-outline-light btn-large btn-qcs-primary" style="border: 2px solid #ffffff; color: #ffffff;">
+                            <i class="fa-solid fa-graduation-cap"></i> Ver más capacitaciones
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>

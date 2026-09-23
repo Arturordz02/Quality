@@ -1,0 +1,582 @@
+<!DOCTYPE html><html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investigación y Colaboración con Stanford University | Quality Consulting Solutions</title>
+    <meta name="description" content="Colaboración en investigación de vanguardia entre Quality Consulting Solutions y el CIFE de Stanford University en BIM LOD 400, Last Planner e indicadores predictivos.">
+    <link rel="canonical" href="https://quality-consulting.org/investigacion.html">
+
+    
+        <!-- Favicon Oficial -->
+    <link rel="icon" type="image/png" href="img/Logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="img/Logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;family=Open+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Hoja de estilos principal -->
+        <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Animate.css (Efectos principales de entrada) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- AOS (Animate On Scroll para tarjetas y secciones) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="styles.css?v=3.2">
+</head>
+<body>
+
+    <!-- ==========================================================================
+         1. HEADER CORPORATIVO (Misma estructura de navegación)
+         ========================================================================== -->
+        <!-- ==========================================================================
+         CONTENEDOR PRINCIPAL DEL HEADER (Bootstrap 5 Integrado)
+         ========================================================================== -->
+    <header class="main-header" id="mainHeader">
+        
+        <!-- Franja Superior: Logo, Título Central y Redes Sociales -->
+        <div class="header-top">
+            <div class="header-container top-container">
+                
+                <!-- Logo a la izquierda -->
+                <div class="header-logo">
+                    <a href="index.html" class="logo-link" aria-label="Quality Consulting Solutions Inicio">
+                        <div class="logo-badge d-flex align-items-center">
+                            <img src="img/Logo.png" alt="Quality Consulting Solutions Logo" width="44" height="44" class="d-inline-block align-text-top rounded-2 me-2 brand-logo animate__animated animate__bounceIn" style="object-fit: cover; width: 44px; height: 44px;">
+                            <div class="logo-text-wrap">
+                                <span class="logo-title">QUALITY CONSULTING</span>
+                                <span class="logo-sub">SOLUTIONS</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Título Centrado -->
+                <div class="header-center-title">
+                    <h1 class="animate__animated animate__fadeInDown">QUALITY CONSULTING SOLUTIONS</h1>
+                    <p class="tagline animate__animated animate__fadeInUp animate__delay-1s">Ingeniería • Gestión de Proyectos • Capacitación • Calidad</p>
+                </div>
+
+                <!-- Redes Sociales a la derecha & Botón Móvil -->
+                <div class="header-actions">
+                    <div class="social-networks" aria-label="Redes Sociales">
+                        <a href="https://pe.linkedin.com/in/omarsamaniego" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.facebook.com/qaqcconsulting" target="_blank" rel="noopener noreferrer" class="social-btn facebook" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCbCdXwbcl-uouYa6Y4_kY0A?view_as=subscriber" target="_blank" rel="noopener noreferrer" class="social-btn youtube" aria-label="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp animate__animated animate__pulse animate__infinite" aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+
+                    <!-- Botón Hamburguesa Nativo Bootstrap 5 para Mobile -->
+                    <button class="navbar-toggler mobile-toggle-btn" id="mobileToggleBtn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarQuality" aria-controls="navbarQuality" aria-expanded="false" aria-label="Abrir menú de navegación">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Barra de Navegación Principal Horizontal con Bootstrap 5 -->
+        <nav class="navbar navbar-expand-lg main-navbar p-0" id="mainNavbar" aria-label="Navegación principal">
+            <div class="header-container nav-container w-100">
+                <div class="collapse navbar-collapse justify-content-center" id="navbarQuality">
+                    <ul class="navbar-nav nav-menu" id="navMenu">
+
+                        <!-- HOME -->
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">HOME</a>
+                        </li>
+
+                        <!-- NOSOTROS -->
+                        <li class="nav-item">
+                            <a href="nosotros.html" class="nav-link">NOSOTROS</a>
+                        </li>
+
+                        <!-- CONSULTORIA (Desplegable) -->
+                        <li class="nav-item dropdown">
+                            <a href="consultoria.html" class="nav-link dropdown-toggle" id="dropdownConsultoria" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                CONSULTORIA <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownConsultoria">
+                                <li><a href="gestion-de-pmo.html" class="dropdown-item">GESTION DE PMO</a></li>
+                                <li><a href="headhunting.html" class="dropdown-item">HEADHUNTING</a></li>
+                                <li><a href="gestion-de-riesgos.html" class="dropdown-item">GESTION DE RIESGOS</a></li>
+                                <li><a href="sindrome-del-90.html" class="dropdown-item">RIESGO DEL PLAZO</a></li>
+                                <li><a href="lego-serious-play.html" class="dropdown-item">LEGO SERIOUS PLAY</a></li>
+                                <li><a href="cronograma-forense.html" class="dropdown-item">CRONOGRAMA-FORENSE</a></li>
+                                <li><a href="homologaciones.html" class="dropdown-item">HOMOLOGACIONES</a></li>
+                                <li><a href="gestion-de-la-calidad.html" class="dropdown-item">GESTION DE LA CALIDAD</a></li>
+                                <li><a href="permisologia.html" class="dropdown-item">PERMISOLOGIA</a></li>
+                                <li><a href="universidad-corporativa.html" class="dropdown-item">UNIVERSIDAD CORPORATIVA</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- CAPACITACION (Desplegable Extenso) -->
+                        <li class="nav-item dropdown dropdown-large">
+                            <a href="capacitacion.html" class="nav-link dropdown-toggle" id="dropdownCapacitacion" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                CAPACITACION <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownCapacitacion">
+                                <li><a href="lean-last-planner.html" class="dropdown-item">LEAN-LAST-PLANNER</a></li>
+                                <li><a href="riesgos-tecnicos.html" class="dropdown-item">RIESGOS TECNICOS</a></li>
+                                <li><a href="riesgos-pmi.html" class="dropdown-item">RIESGOS PMI</a></li>
+                                <li><a href="riesgos-cadena-produccion.html" class="dropdown-item">RIESGOS CADENA PRODUCCION</a></li>
+                                <li><a href="calidad-y-pmi.html" class="dropdown-item">CALIDAD Y PMI</a></li>
+                                <li><a href="costos.html" class="dropdown-item">COSTOS</a></li>
+                                <li><a href="nec.html" class="dropdown-item">NEC</a></li>
+                                <li><a href="fidic.html" class="dropdown-item">FIDIC</a></li>
+                                <li><a href="pmo.html" class="dropdown-item">PMO</a></li>
+                                <li><a href="gerencia-de-calidad.html" class="dropdown-item">GERENCIA DE CALIDAD</a></li>
+                                <li><a href="valor-ganado.html" class="dropdown-item">VALOR GANADO</a></li>
+                                <li><a href="bim-revit-architecture.html" class="dropdown-item">BIM REVIT ARCHITECTURE</a></li>
+                                <li><a href="iso-9001.html" class="dropdown-item">ISO 9001</a></li>
+                                <li><a href="oficina-tecnica.html" class="dropdown-item">OFICINA-TECNICA</a></li>
+                                <li><a href="herramientas.html" class="dropdown-item">HERRAMIENTAS</a></li>
+                                <li><a href="proyectos-pmi.html" class="dropdown-item">PROYECTOS PMI</a></li>
+                                <li><a href="contratos.html" class="dropdown-item">CONTRATOS</a></li>
+                                <li><a href="contratos-estado.html" class="dropdown-item">CONTRATOS-ESTADO</a></li>
+                                <li><a href="gruas-torre.html" class="dropdown-item">GRUAS TORRE</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- PRESS -->
+                        <li class="nav-item">
+                            <a href="press.html" class="nav-link">PRESS</a>
+                        </li>
+
+                        <!-- MEDIOS -->
+                        <li class="nav-item">
+                            <a href="medios.html" class="nav-link">MEDIOS</a>
+                        </li>
+
+                        <!-- CLIENTES -->
+                        <li class="nav-item">
+                            <a href="clientes.html" class="nav-link">CLIENTES</a>
+                        </li>
+
+                        <!-- MÁS... -->
+                        <li class="nav-item dropdown dropdown-more">
+                            <a href="javascript:void(0)" class="nav-link dropdown-toggle active" id="dropdownMas" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                MÁS... <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMas">
+                                <li class="dropdown-submenu">
+                                    <a href="investigacion.html" class="dropdown-item submenu-toggle active">
+                                        <span>INVESTIGACION</span>
+                                        <i class="fa-solid fa-chevron-right submenu-arrow"></i>
+                                    </a>
+                                    <ul class="dropdown-menu-lateral">
+                                        <li><a href="encuestas-proyectos.html" class="dropdown-item">Encuestas-Proyectos</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contacto.html" class="dropdown-item">CONTACTO</a></li>
+                                <li><a href="noticias.html" class="dropdown-item">NOTICIAS</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Overlay móvil -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+    </header>
+
+    <main class="page-content">
+
+        <!-- ==========================================================================
+             2. BANNER PRINCIPAL / ENCABEZADO DE LA PÁGINA
+             ========================================================================== -->
+        <section class="page-banner">
+            <div class="page-banner-bg banner-research-bg"></div>
+            <div class="page-banner-overlay"></div>
+            <div class="page-banner-container">
+
+
+                <div class="page-title-wrap">
+                    <span class="section-tag"><i class="fa-solid fa-microscope"></i> Vanguardia Científica &amp; BIM</span>
+                    <h1 class="page-main-title animate__animated animate__fadeInDown">Investigación y Colaboración con Stanford University</h1>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="intro-card">
+                    <p class="intro-text animate__animated animate__fadeInUp animate__delay-1s">
+                        Innovación técnica y rigor metodológico: Conozca las investigaciones científicas, publicaciones conjuntas y proyectos piloto desarrollados por <strong>Quality Consulting Solutions</strong> en estrecha alianza con el <strong>Center for Integrated Facility Engineering (CIFE) de Stanford University</strong>.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             3. SECCIÓN 1: STANFORD UNIVERSITY
+             ========================================================================== -->
+        <section class="content-section section-stanford" id="stanford-cife">
+            <div class="section-container">
+                
+                <div class="grid-split-layout research-split-layout">
+                    
+                    <!-- Columna Izquierda: Imagen Clickeable de CIFE Stanford -->
+                    <div class="split-image-col">
+                        <div class="image-card-wrapper research-media-wrapper">
+                            <!-- ================================================================= -->
+                            <!-- Reemplazar imagen por la captura/banner de CIFE Stanford           -->
+                            <!-- Recomendado: img/stanford_cife_orig.jpg                           -->
+                            <!-- ================================================================= -->
+                            <a href="https://cife.stanford.edu/" target="_blank" rel="noopener noreferrer" class="cife-image-link" aria-label="Visitar el sitio oficial del Centro de Ingeniería Integrada para Instalaciones (CIFE) de Stanford University">
+                                <div class="image-container research-image-container">
+                                    <img src="img/INV1.png" alt="Stanford CIFE - Center for Integrated Facility Engineering" class="section-image research-image" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&amp;w=600&amp;auto=format&amp;fit=crop';" loading="lazy" width="600" height="380">
+                                    <div class="image-badge-tag badge-red">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Visitar CIFE Stanford
+                                    </div>
+                                    <div class="hover-overlay-hint">
+                                        <span><i class="fa-solid fa-globe"></i> cife.stanford.edu</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="image-caption">
+                                <p><i class="fa-solid fa-building-columns"></i> Center for Integrated Facility Engineering (CIFE) - Stanford University.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha: Texto Explicativo -->
+                    <div class="split-text-col">
+                        <div class="section-header-compact">
+                            <span class="sub-badge">Alianza Académica Internacional</span>
+                            <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">STANFORD UNIVERSITY</h2>
+                            <div class="heading-line"></div>
+                        </div>
+
+                        <p class="paragraph-text paragraph-lead">
+                            Quality Consulting Solutions con sus más de 7 años en el mercado es la única empresa en el medio que lleva a cabo colaboraciones con el Centro de Ingeniería Integrada para Instalaciones (CIFE) de la Universidad de Stanford (TOP 5 a nivel mundial).
+                        </p>
+
+                        <div class="stanford-highlights-pills">
+                            <div class="highlight-pill">
+                                <i class="fa-solid fa-ranking-star"></i>
+                                <span>Universidad TOP 5 Global</span>
+                            </div>
+                            <div class="highlight-pill">
+                                <i class="fa-solid fa-award"></i>
+                                <span>Única Empresa Colaboradora en el Medio</span>
+                            </div>
+                            <div class="highlight-pill">
+                                <i class="fa-solid fa-cubes"></i>
+                                <span>Investigación en BIM LOD 400</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             BANNER CLICKEABLE INTERMEDIO 1
+             ========================================================================== -->
+        <div class="banner-anuncio-container">
+            <div class="header-container">
+                <a href="index.html#capacitacion" class="banner-anuncio" aria-label="Anuncio: Capacitaciones Quality Consulting Solutions">
+                    <span class="anuncio-icon-wrap"><i class="fa-solid fa-bullhorn"></i></span>
+                    <span class="anuncio-text">ANUNCIO : CAPACITACIONES - QUALITY CONSULTING SOLUTIONS</span>
+                    <span class="anuncio-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- ==========================================================================
+             4. SECCIÓN 2: COLABORACIÓN 2019
+             ========================================================================== -->
+        <section class="content-section section-collab-2019 bg-alternate" id="colaboracion-2019">
+            <div class="section-container">
+                
+                <div class="grid-split-layout research-split-layout">
+                    
+                    <!-- Columna Izquierda: 2 Videos de YouTube con Containers Responsive 16:9 -->
+                    <div class="split-image-col videos-stack-col">
+                        
+                        <!-- Video 1 -->
+                        <div class="responsive-video-box">
+                            <div class="video-container-16-9">
+                                <iframe src="https://www.youtube.com/embed/FjK7U4N5pLg" title="Colaboración 2019 CIFE Stanford &amp; Quality Consulting Solutions - Video 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                            <div class="video-box-caption">
+                                <span><i class="fa-brands fa-youtube"></i> Video 1: Monitoreo y Dashboard BIM</span>
+                            </div>
+                        </div>
+
+                        <!-- Video 2 -->
+                        <div class="responsive-video-box">
+                            <div class="video-container-16-9">
+                                <iframe src="https://www.youtube.com/embed/aHzNinSWCFI" title="Colaboración 2019 CIFE Stanford &amp; Quality Consulting Solutions - Video 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                            <div class="video-box-caption">
+                                <span><i class="fa-brands fa-youtube"></i> Video 2: Implementación en Proyecto Las Begonias</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Columna Derecha: Texto Explicativo -->
+                    <div class="split-text-col">
+                        <div class="section-header-compact">
+                            <span class="sub-badge">Investigación Aplicada en Campo</span>
+                            <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">COLABORACIÓN 2019</h2>
+                            <div class="heading-line"></div>
+                        </div>
+
+                        <p class="paragraph-text">
+                            El junio de 2019 se llevó la segunda colaboración de Quality Consulting Solutions con el CIFE - Stanford, en esta oportunidad la investigación añadió un panel de monitoreo (dashboard; segundo 39 del video de 2:34 min).
+                        </p>
+
+                        <p class="paragraph-text">
+                            Se seleccionó un proyecto de oficinas en el distrito de San Isidro, la zona financiera de Lima - Perú. Se contó con la participación de Cosapi s.a., una de las más grandes constructoras del medio, quienes abrieron las puertas de su proyecto Las Begonias.
+                        </p>
+
+                        <p class="paragraph-text">
+                            Se trabajaron dos partidas (trades): muros de albañilería y tubería eléctrica (conduit). El modelado fue de LOD 400 (Level of Detail). Con un modelado BIM a ese detalle se puede tener alrededor del 95% de aproximación de los metrados (cantidades) de obra al contabilizar todos los elementos.
+                        </p>
+
+                        <p class="paragraph-text">
+                            Asimismo, y como propuesta de Quality Consulting Solutions, se hizo una lectura sobre un nuevo indicador complementario al PPC (Percent Plan Complete), que tiene que ver con la lectura de "compleción de actividad a la primera" (BAPa)...
+                        </p>
+
+                        <p class="paragraph-text">
+                            Se hizo una corrida del BAPa (PPC+) y se obtuvo que independiente del PPC el valor de este nuevo indicador era de alrededor del 25% para la semana.
+                        </p>
+
+                        <!-- Botón de llamada a la acción hacia el video del nuevo indicador -->
+                        <div class="btn-action-wrapper">
+                            <a href="https://www.youtube.com/watch?v=LvC_sDi1VSk" target="_blank" rel="noopener noreferrer" class="btn-saber-mas" aria-label="Ver video explicativo sobre el nuevo indicador BAPa en YouTube">
+                                <i class="fa-brands fa-youtube"></i> Para saber más sobre el nuevo indicador click aquí <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             SEGUNDO BANNER CLICKEABLE INTERMEDIO 2
+             ========================================================================== -->
+        <div class="banner-anuncio-container">
+            <div class="header-container">
+                <a href="index.html#capacitacion" class="banner-anuncio" aria-label="Anuncio: Capacitaciones Quality Consulting Solutions">
+                    <span class="anuncio-icon-wrap"><i class="fa-solid fa-bullhorn"></i></span>
+                    <span class="anuncio-text">ANUNCIO : CAPACITACIONES - QUALITY CONSULTING SOLUTIONS</span>
+                    <span class="anuncio-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- ==========================================================================
+             5. SECCIÓN 3: COLABORACIÓN 2018
+             ========================================================================== -->
+        <section class="content-section section-collab-2018" id="colaboracion-2018">
+            <div class="section-container">
+                
+                <div class="grid-split-layout research-split-layout">
+                    
+                    <!-- Columna Izquierda: Multimedia (Imagen + Video 3) -->
+                    <div class="split-image-col videos-stack-col">
+                        
+                        <!-- Imagen Colaboración 2018 -->
+                        <div class="image-card-wrapper research-media-wrapper">
+                            <!-- ============================================================================ -->
+                            <!-- Colocar IMAGEN con el nombre "icon-stanford-2_orig" dentro de la carpeta /img/ -->
+                            <!-- ============================================================================ -->
+                            <div class="image-container research-image-container">
+                                <img src="img/cife.png" alt="Colaboración 2018 Stanford CIFE y Quality Consulting Solutions" class="section-image research-image" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&amp;w=600&amp;auto=format&amp;fit=crop';" loading="lazy" width="600" height="340">
+                                <div class="image-badge-tag">
+                                    <i class="fa-solid fa-award"></i> Hitos BIM Perú 2018
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 3 -->
+                        <div class="responsive-video-box">
+                            <div class="video-container-16-9">
+                                <iframe src="https://www.youtube.com/embed/O1dpihyo2eU" title="Colaboración 2018 CIFE Stanford &amp; Quality Consulting Solutions - Video 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                            <div class="video-box-caption">
+                                <span><i class="fa-brands fa-youtube"></i> Video 3: Primera Investigación BIM Stanford en Perú</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Columna Derecha: Texto Explicativo con Viñetas -->
+                    <div class="split-text-col">
+                        <div class="section-header-compact">
+                            <span class="sub-badge">Pioneros en Tecnología BIM</span>
+                            <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">COLABORACIÓN 2018</h2>
+                            <div class="heading-line"></div>
+                        </div>
+
+                        <p class="paragraph-text paragraph-lead">
+                            El año 2018 se llevó a cabo la primera colaboración con el CIFE, logrando tres importantes hitos en nuestro país en materia de BIM (Building Information Modeling) en el sector construcción e inmobiliario:
+                        </p>
+
+                        <!-- Lista con viñetas de hitos históricos -->
+                        <div class="hitos-checklist-wrap">
+                            <ul class="hitos-checklist">
+                                <li>
+                                    <div class="hito-icon-badge"><i class="fa-solid fa-check"></i></div>
+                                    <div class="hito-text">
+                                        <strong>Se logró implementar la primera Sala BIM a pie de Obra.</strong>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="hito-icon-badge"><i class="fa-solid fa-check"></i></div>
+                                    <div class="hito-text">
+                                        <strong>Se logró implementar el primer entorno BIM interactivo con personal capataz e ingenieros.</strong>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="hito-icon-badge"><i class="fa-solid fa-check"></i></div>
+                                    <div class="hito-text">
+                                        <strong>Se logró la primera investigación en BIM en Perú por una universidad del prestigio de Stanford University.</strong>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Párrafos de Cierre -->
+                        <p class="paragraph-text">
+                            Nuestra Colaboración consistió en dar apoyo de soporte y coordinación para que un doctorando de dicha universidad visite nuestro país y lleve a cabo parte de su investigación doctoral en un proyecto de construcción donde se modelara en LOD 400...
+                        </p>
+
+                        <p class="paragraph-text">
+                            Todo eso fue posible gracias a la sólida red de contactos que mantenemos en Quality Consulting Solutions y a la confianza lograda con el CIFE - Stanford.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             6. BANNER DE CONTACTO / CALL TO ACTION
+             ========================================================================== -->
+        <section class="cta-banner-section">
+            <div class="cta-container">
+                <div class="cta-box">
+                    <div class="cta-content">
+                        <span class="cta-tag">Innovación y Metodología Aplicada</span>
+                        <h3 class="animate__animated animate__fadeInUp animate__delay-1s">¿Desea implementar metodologías de nivel Stanford en sus proyectos?</h3>
+                        <p>Integre soluciones avanzadas de BIM LOD 400, Last Planner y analítica predictiva con nuestro equipo consultor.</p>
+                    </div>
+                    <div class="cta-actions">
+                        <a href="contacto.html" class="btn btn-large btn-qcs-primary">
+                            <i class="fa-solid fa-envelope"></i> Solicitar Asesoría Técnica
+                        </a>
+                        <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-large animate__animated animate__pulse animate__infinite btn-qcs-primary">
+                            <i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================================================
+         7. FOOTER CORPORATIVO
+         ========================================================================== -->
+            <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                
+                <!-- Columna 1: Identidad Corporativa -->
+                <div class="footer-col brand-col">
+                    <div class="logo-badge d-flex align-items-center mb-3">
+                        <img src="img/Logo.png" alt="Quality Consulting Solutions Logo" width="44" height="44" class="d-inline-block align-text-top rounded-2 me-2 brand-logo animate__animated animate__bounceIn" style="object-fit: cover; width: 44px; height: 44px; ">
+                        <div class="logo-text-wrap">
+                            <span class="logo-title text-light">QUALITY CONSULTING</span>
+                            <span class="logo-sub">SOLUTIONS</span>
+                        </div>
+                    </div>
+                    <p class="footer-desc">
+                        Soluciones estratégicas en ingeniería, gestión de proyectos, PMO, homologación de proveedores y capacitación corporativa especializada.
+                    </p>
+                    <div class="footer-socials mt-3">
+                        <a href="https://pe.linkedin.com/in/omarsamaniego" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/qaqcconsulting" target="_blank" rel="noopener noreferrer" class="social-btn facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/channel/UCbCdXwbcl-uouYa6Y4_kY0A?view_as=subscriber" target="_blank" rel="noopener noreferrer" class="social-btn youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp animate__animated animate__pulse animate__infinite" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Enlaces RÃ¡pidos -->
+                <div class="footer-col links-col">
+                    <h4 class="footer-heading">Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+                        <li><a href="nosotros.html"><i class="fa-solid fa-angle-right"></i> Nosotros</a></li>
+                        <li><a href="index.html#consultoria"><i class="fa-solid fa-angle-right"></i> Consultoría</a></li>
+                        <li><a href="index.html#capacitacion"><i class="fa-solid fa-angle-right"></i> Capacitación</a></li>
+                        <li><a href="medios.html"><i class="fa-solid fa-angle-right"></i> Medios y Podcasts</a></li>
+                        <li><a href="clientes.html"><i class="fa-solid fa-angle-right"></i> Clientes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Contacto & Libro de Reclamaciones -->
+                <div class="footer-col contact-col">
+                    <h4 class="footer-heading">Contacto Oficial</h4>
+                    <p><i class="fa-solid fa-location-dot me-2 text-warning"></i> Av. Javier Prado 757, piso 10 Magdalena, Lima 17</p>
+                    <p><i class="fa-solid fa-envelope me-2 text-warning"></i> <a href="mailto:contacto@quality-consulting.org" class="text-light">contacto@quality-consulting.org</a></p>
+                    <p><i class="fa-solid fa-phone me-2 text-warning"></i> <a href="tel:+51993463118" class="text-light">+51 993 463 118</a></p>
+                    <div class="mt-3">
+                        <a href="libro-de-reclamaciones.html" class="btn btn-outline-warning btn-sm fw-bold d-inline-flex align-items-center rounded-pill px-3 py-2 btn-qcs-dark">
+                            <i class="fas fa-book-open me-2 text-warning"></i> Libro de Reclamaciones
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Quality Consulting Solutions. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script Principal -->
+        <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+<script src="script.js?v=3.2"></script>
+
+
+<!-- AOS init -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+  });
+</script>
+</body></html>
