@@ -269,15 +269,15 @@ declare(strict_types=1);
                         <div class="value-guarantee-card rounded-4 border-start border-4 border-warning" data-aos="fade-right">
                             <div class="value-icon"><i class="fa-solid fa-circle-play text-dark"></i></div>
                             <h4 class="fw-bold font-montserrat fs-6 text-dark">Clases Grabadas 100% Online</h4>
-                            <p class="small text-muted mb-0">Grabaciones de alta definición dictadas por consultores y especialistas sénior.</p>
+                            <p class="small text-muted mb-0">Acceso inmediato a las clases y disponible 24/7.</p>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6">
                         <div class="value-guarantee-card rounded-4 border-start border-4 border-warning" data-aos="fade-up">
                             <div class="value-icon"><i class="fa-solid fa-cloud-arrow-down text-success"></i></div>
-                            <h4 class="fw-bold font-montserrat fs-6 text-dark">Grabaciones 24/7</h4>
-                            <p class="small text-muted mb-0">Acceso ilimitado a las clases y materiales didácticos en el aula virtual.</p>
+                            <h4 class="fw-bold font-montserrat fs-6 text-dark">Acceso 24/7</h4>
+                            <p class="small text-muted mb-0">Acceso inmediato a las clases y disponible 24/7.</p>
                         </div>
                     </div>
 

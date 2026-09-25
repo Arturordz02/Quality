@@ -26,10 +26,10 @@ $activePage = $activePage ?? '';
                     <a href="/nosotros" class="nav-link<?= $activePage === 'nosotros' ? ' active' : '' ?>">NOSOTROS</a>
                 </li>
 
-                <!-- CONSULTORIA (Desplegable) -->
+                <!-- ASESORÍA (Desplegable) -->
                 <li class="nav-item dropdown">
                     <a href="/consultoria" class="nav-link dropdown-toggle<?= $activePage === 'consultoria' ? ' active' : '' ?>" id="dropdownConsultoria" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                        CONSULTORIA <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                        ASESORÍA <i class="fa-solid fa-chevron-down arrow-icon"></i>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownConsultoria">
                         <li><a href="/gestion-de-pmo" class="dropdown-item">GESTION DE PMO</a></li>

@@ -9,7 +9,7 @@
 declare(strict_types=1);
 
 $phone = $phone ?? '51993463118';
-$message = $message ?? 'Hola, deseo solicitar información sobre los servicios de Quality Consulting Solutions.';
+$message = $message ?? 'Hola, deseo solicitar información sobre las capacitaciones, cursos y asesoría de Quality Consulting Solutions.';
 $url = 'https://wa.me/' . urlencode((string)$phone) . '?text=' . urlencode((string)$message);
 ?>
 <!-- Botón Flotante de WhatsApp Corporativo -->

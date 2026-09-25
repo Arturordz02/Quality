@@ -319,7 +319,7 @@ declare(strict_types=1);
                 <!-- Badge Neón Superior Requerido -->
                 <div class="mb-3">
                     <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-2 shadow-sm">
-                        <i class="fas fa-file-contract me-2"></i> PRÓXIMO INICIO | GESTIÓN CONTRACTUAL
+                        <i class="fas fa-file-contract me-2"></i> CURSO ESPECIALIZADO | GESTIÓN CONTRACTUAL
                     </span>
                 </div>
 
@@ -339,7 +339,7 @@ declare(strict_types=1);
                         <div class="contract-hero-card">
                             <div class="contract-hero-icon"><i class="fas fa-circle-play"></i></div>
                             <div class="contract-hero-card-title">Modalidad Grabada Online</div>
-                            <p class="contract-hero-card-desc">Clases grabadas 100% online en alta definición + Acceso 24/7 a tu propio ritmo.</p>
+                            <p class="contract-hero-card-desc">Clases grabadas 100% online con acceso disponible 24/7.</p>
                         </div>
                     </div>
 
@@ -590,7 +590,7 @@ declare(strict_types=1);
                     <div class="col-12 col-sm-6 col-lg-3">
                         <div class="contract-modalidad-card">
                             <div class="fw-bold text-dark mb-1"><i class="fas fa-circle-play me-1"></i> Clases Grabadas Online</div>
-                            <p class="small text-secondary mb-0">Acceso inmediato a grabaciones en alta definición.</p>
+                            <p class="small text-secondary mb-0">Acceso inmediato a las clases y disponible 24/7.</p>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-lg-3">
@@ -681,7 +681,7 @@ declare(strict_types=1);
                 <div class="contract-enrollment-card">
                     
                     <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold text-uppercase mb-3 shadow-sm">
-                        <i class="fa-solid fa-bolt me-1"></i> PRÓXIMO INICIO • VACANTES LIMITADAS
+                        <i class="fa-solid fa-bolt me-1"></i> PROGRAMA ESPECIALIZADO • CLASES GRABADAS
                     </span>
 
                     <h2 class="display-6 fw-extrabold text-uppercase mb-2 animate__animated animate__fadeInUp animate__delay-1s" style="font-family: var(--font-heading); color: var(--primary-blue);">

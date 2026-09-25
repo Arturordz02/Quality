@@ -1,7 +1,7 @@
 <?php
 /**
  * QUALITY CONSULTING SOLUTIONS - ARQUITECTURA MVC
- * Vista de P?gina: Enfoque PMI de la Gesti?n de la Calidad
+ * Vista de Página: Enfoque PMI de la Gestión de la Calidad
  * Archivo: app/Views/pages/calidad-y-pmi.php
  */
 
@@ -43,7 +43,7 @@ declare(strict_types=1);
                         </div>
                         <div class="hero-feature-content">
                             <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Modalidad Grabada Online</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Clases grabadas 100% online en alta definición + Acceso 24/7 a tu propio ritmo.</p>
+                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Clases grabadas 100% online con acceso disponible 24/7.</p>
                         </div>
                     </div>
 
@@ -333,7 +333,7 @@ declare(strict_types=1);
                             <div class="enroll-perk-icon">
                                 <i class="fa-solid fa-circle-play"></i>
                             </div>
-                            <span>Clases Grabadas Online + Acceso Ilimitado 24/7</span>
+                            <span>Clases Grabadas Online + Acceso disponible 24/7</span>
                         </div>
 
                         <div class="enroll-perk-item">

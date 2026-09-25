@@ -831,7 +831,7 @@ declare(strict_types=1);
                 <div class="analytics-enrollment-card">
                     
                     <span class="badge bg-warning text-dark text-dark px-3 py-2 rounded-pill fw-bold text-uppercase mb-3 shadow-sm">
-                        <i class="fa-solid fa-bolt me-1"></i> VACANTES DISPONIBLES • INICIO INMEDIATO
+                        <i class="fa-solid fa-bolt me-1"></i> CURSO ESPECIALIZADO • MODALIDAD ONLINE
                     </span>
 
                     <h2 class="display-6 fw-extrabold text-uppercase mb-2 animate__animated animate__fadeInUp animate__delay-1s" style="font-family: var(--font-heading); color: var(--primary-blue);">

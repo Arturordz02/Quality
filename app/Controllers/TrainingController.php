@@ -173,7 +173,7 @@ class TrainingController extends Controller
     {
         $data = [
             'title'           => 'Capacitación: ISO 9001:2015 para la Infraestructura y Construcción | Quality Consulting Solutions',
-            'metaDescription' => 'Curso especializado en interpretación e implementación de la norma ISO 9001:2015 en obras de infraestructura y construcción. Ciclo PHVA, auditorías y gestión de riesgos.',
+            'metaDescription' => 'Curso especializado en interpretación y aplicación de la norma ISO 9001:2015 en obras. Ciclo PHVA, control de no conformidades y gestión de riesgos.',
             'canonical'       => 'https://quality-consulting.org/iso-9001',
             'activePage'      => 'capacitacion',
         ];
@@ -308,7 +308,7 @@ class TrainingController extends Controller
     {
         $data = [
             'title'           => 'Universidad Corporativa & Formación Empresarial | Quality Consulting Solutions',
-            'metaDescription' => 'Diseño y estructuración de Universidades Corporativas, mallas formativas a medida, gestión del conocimiento y docencia ejecutiva de alto nivel por Quality Consulting Solutions.',
+            'metaDescription' => 'Asesoría especializada para orientar el diseño de academias corporativas, mallas formativas y programas de capacitación in-house para empresas.',
             'canonical'       => 'https://quality-consulting.org/universidad-corporativa',
             'activePage'      => 'capacitacion',
         ];

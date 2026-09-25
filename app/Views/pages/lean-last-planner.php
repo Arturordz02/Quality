@@ -41,7 +41,7 @@ declare(strict_types=1);
                         </div>
                         <div class="hero-feature-content">
                             <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Duración</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">16 horas netas de clases grabadas 100% online en alta definición.</p>
+                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">16 horas de clases grabadas online con acceso disponible 24/7.</p>
                         </div>
                     </div>
 
@@ -332,7 +332,7 @@ declare(strict_types=1);
                 <div class="course-enrollment-card">
                     
                     <span class="enroll-badge">
-                        <i class="fa-solid fa-bolt"></i> INSCRIPCIONES ABIERTAS • VACANTES LIMITADAS
+                        <i class="fa-solid fa-bolt"></i> CURSO ESPECIALIZADO • CLASES GRABADAS
                     </span>
                     
                     <h2 class="enroll-title animate__animated animate__fadeInUp animate__delay-1s">MATRICÚLATE EN EL CURSO ESPECIALIZADO</h2>

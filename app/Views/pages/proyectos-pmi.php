@@ -1,7 +1,7 @@
 <?php
 /**
  * QUALITY CONSULTING SOLUTIONS - ARQUITECTURA MVC
- * Vista de P?gina: Gesti?n de Proyectos con el Enfoque PMI
+ * Vista de Página: Gestión de Proyectos con el Enfoque PMI
  * Archivo: app/Views/pages/proyectos-pmi.php
  */
 
@@ -394,7 +394,7 @@ declare(strict_types=1);
                         <div class="pmi-hero-card">
                             <div class="pmi-hero-icon"><i class="fas fa-circle-play"></i></div>
                             <div class="pmi-hero-card-title">Modalidad Grabada Online</div>
-                            <p class="pmi-hero-card-desc">Clases grabadas 100% online en alta definición y acceso ilimitado a las lecciones las 24 horas.</p>
+                            <p class="pmi-hero-card-desc">Clases grabadas 100% online con acceso disponible 24/7.</p>
                         </div>
                     </div>
 
@@ -711,13 +711,13 @@ declare(strict_types=1);
                     <div class="col-12 col-sm-6 col-lg-3">
                         <div class="pmi-modalidad-card">
                             <div class="fw-bold text-dark mb-1"><i class="fas fa-circle-play me-1"></i> Clases Grabadas Online</div>
-                            <p class="small text-secondary mb-0">Acceso inmediato a grabaciones en alta definición.</p>
+                            <p class="small text-secondary mb-0">Acceso inmediato a las clases y disponible 24/7.</p>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-lg-3">
                         <div class="pmi-modalidad-card">
                             <div class="fw-bold text-dark mb-1"><i class="fas fa-clock-rotate-left me-1"></i> Grabaciones 24/7</div>
-                            <p class="small text-secondary mb-0">Acceso a las sesiones grabadas sin límite de tiempo.</p>
+                            <p class="small text-secondary mb-0">Acceso a las sesiones grabadas disponible 24/7.</p>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-lg-3">
@@ -809,7 +809,7 @@ declare(strict_types=1);
                 <div class="pmi-enrollment-card">
                     
                     <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold text-uppercase mb-3 shadow-sm">
-                        <i class="fa-solid fa-bolt me-1"></i> VACANTES DISPONIBLES • INICIO INMEDIATO
+                        <i class="fa-solid fa-bolt me-1"></i> CURSO ESPECIALIZADO • MODALIDAD ONLINE
                     </span>
 
                     <h2 class="display-6 fw-extrabold text-uppercase mb-2 animate__animated animate__fadeInUp animate__delay-1s" style="font-family: var(--font-heading); color: var(--primary-blue);">
@@ -828,7 +828,7 @@ declare(strict_types=1);
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="p-3 rounded-3 border bg-white">
-                                <i class="fa-solid fa-cloud-arrow-down text-dark me-2"></i> <span class="small text-dark fw-bold">Grabaciones HD 24/7 sin Límite</span>
+                                <i class="fa-solid fa-cloud-arrow-down text-dark me-2"></i> <span class="small text-dark fw-bold">Acceso a Grabaciones HD 24/7</span>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3">

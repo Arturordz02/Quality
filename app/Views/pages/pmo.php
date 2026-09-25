@@ -153,7 +153,7 @@ declare(strict_types=1);
                         </div>
                         <div class="hero-feature-content">
                             <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Modalidad Grabada Online</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Clases grabadas 100% online en alta definición + Acceso 24/7 a tu propio ritmo.</p>
+                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Clases grabadas 100% online con acceso disponible 24/7.</p>
                         </div>
                     </div>
 
@@ -248,7 +248,7 @@ declare(strict_types=1);
                             Presentar a los participantes los aspectos fundamentales que componen la Gestión de una Oficina de Dirección de Proyectos (PMO), brindando consejos prácticos, estructuras de implementación y metodologías útiles para sus respectivas organizaciones.
                         </p>
 
-                        <!-- Contenedor para Imagen de Gobernanza y PMO -->
+                        <!-- Contenedor para Imagen de Gestión de Proyectos y PMO -->
                         <div class="course-img-preview-box" style="margin-top: 1.25rem; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-md); border: 1px solid var(--border-color);">
                             <!-- Imagen conceptual sobre gestión de PMO y portafolios -->
                             <img src="img/gpmo1.png" alt="Gestión de PMO, Portafolios y Proyectos" class="course-img-preview" loading="lazy" style="width: 100%; height: 260px; object-fit: cover; display: block;">
@@ -450,7 +450,7 @@ declare(strict_types=1);
                 <div class="course-enrollment-card">
                     
                     <span class="enroll-badge">
-                        <i class="fa-solid fa-bolt"></i> INSCRIPCIONES ABIERTAS • VACANTES LIMITADAS
+                        <i class="fa-solid fa-bolt"></i> PROGRAMA ESPECIALIZADO • CLASES GRABADAS
                     </span>
 
                     <h2 class="enroll-title animate__animated animate__fadeInUp animate__delay-1s">MATRICÚLATE EN EL CURSO DE GESTIÓN DE LA PMO</h2>

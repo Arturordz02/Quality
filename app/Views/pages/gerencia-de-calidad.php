@@ -1,7 +1,7 @@
 <?php
 /**
  * QUALITY CONSULTING SOLUTIONS - ARQUITECTURA MVC
- * Vista de P?gina: Gerencia de la Calidad para la Infraestructura y Construcci?n
+ * Vista de Página: Gerencia de la Calidad para la Infraestructura y Construcción
  * Archivo: app/Views/pages/gerencia-de-calidad.php
  */
 
@@ -20,7 +20,7 @@ declare(strict_types=1);
                 <!-- Badge Superior Requerido -->
                 <div class="page-title-wrap">
                     <span class="course-badge-upcoming">
-                        <i class="fas fa-clock"></i> PRÓXIMO INICIO | GERENCIA Y CONTROL TÉCNICO
+                        <i class="fas fa-clock"></i> PROGRAMA ESPECIALIZADO | GERENCIA Y CONTROL TÉCNICO
                     </span>
                     <h1 class="page-main-title animate__animated animate__fadeInDown">GERENCIA DE LA CALIDAD PARA LA INFRAESTRUCTURA Y CONSTRUCCIÓN</h1>
                     <div class="title-underline"></div>
@@ -43,7 +43,7 @@ declare(strict_types=1);
                         </div>
                         <div class="hero-feature-content">
                             <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Modalidad Grabada Online</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Clases grabadas 100% online en alta definición + Acceso 24/7 a tu propio ritmo.</p>
+                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Clases grabadas 100% online con acceso disponible 24/7.</p>
                         </div>
                     </div>
 
@@ -360,7 +360,7 @@ declare(strict_types=1);
                 <div class="course-enrollment-card">
                     
                     <span class="enroll-badge">
-                        <i class="fa-solid fa-bolt"></i> PRÓXIMO INICIO • VACANTES LIMITADAS
+                        <i class="fa-solid fa-bolt"></i> FORMACIÓN APLICADA • CLASES GRABADAS
                     </span>
 
                     <h2 class="enroll-title animate__animated animate__fadeInUp animate__delay-1s">MATRICÚLATE EN EL CURSO DE GERENCIA DE CALIDAD</h2>
@@ -452,10 +452,10 @@ declare(strict_types=1);
             <div class="cta-container">
                 <div class="cta-box">
                     <div class="cta-content">
-                        <span class="cta-tag"><i class="fa-solid fa-certificate"></i> Asesoría de Calidad en Obra</span>
+                        <span class="cta-tag"><i class="fa-solid fa-certificate"></i> Capacitación y Asesoría en Calidad</span>
                         <h3 class="animate__animated animate__fadeInUp animate__delay-1s">Eleva el estándar técnico y la gestión de calidad en tus obras</h3>
                         <p>
-                            Diseñamos programas 'In-House' e implementamos sistemas integrados de gestión de calidad a la medida de los requerimientos de tu organización y proyectos.
+                            Programas de capacitación aplicada 'In-House' y asesoría técnica especializada para orientar la gestión de calidad a la medida de tu organización y proyectos.
                         </p>
                         
                         <!-- Teléfono Visible Clickeable Requerido -->

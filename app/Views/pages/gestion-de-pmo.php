@@ -1,7 +1,7 @@
 <?php
 /**
  * QUALITY CONSULTING SOLUTIONS - ARQUITECTURA MVC
- * Vista de P?gina: Gesti?n de la PMO y Proyectos
+ * Vista de Página: Gestión de la PMO y Proyectos
  * Archivo: app/Views/pages/gestion-de-pmo.php
  */
 
@@ -27,7 +27,7 @@ declare(strict_types=1);
                 <!-- Párrafo de Introducción Requerido -->
                 <div class="intro-card">
                     <p class="intro-text animate__animated animate__fadeInUp animate__delay-1s">
-                        Desarrollamos la PMO (Project Management Office) de tu Organización o Proyecto, para ello integramos las diferentes áreas de conocimiento del project management, como son la gestión del alcance, costo, plazo, calidad, recursos, gestión del conocimiento entre otros. Asimismo, integramos el sistema de gestión de tu organización con el de tus contratistas o clientes para que dispongan de un sistema de gestión de proyecto integrado que sea manejado por la PMO.
+                        Asesoría especializada para orientar el diseño, adopción y consolidación de Oficinas de Gestión de Proyectos (PMO) en organizaciones y proyectos de construcción, integrando las áreas de conocimiento del project management: alcance, costo, plazo, calidad, riesgos y gobernanza, fortaleciendo las capacidades del equipo interno.
                     </p>
                 </div>
 
@@ -51,7 +51,7 @@ declare(strict_types=1);
                         </div>
 
                         <p class="paragraph-text">
-                            Desarrollamos la PMO al nivel que sea requerido por tu organización, es decir a nivel de gestor de estándares, a nivel de gestor de proyecto, o a nivel estratégico. Para este fin compilamos los estándares que dispones, elaboramos los mismos o los integramos con los de tus key stakeholders. Brindamos soporte y juicio experto para la adquisición de soluciones informáticas para la administración de procesos de la PMO. Creemos firmemente que la estandarización es para mejorar, no para burocratizar el desempeño de la organización.
+                            Brindamos asesoría especializada para orientar la estructuración de la PMO al nivel requerido por tu organización: a nivel de gestor de estándares, gestor de proyectos o nivel estratégico. Acompañamos en el ordenamiento de estándares, transferencia metodológica e integración con tus stakeholders clave. Brindamos soporte técnico y juicio experto para evaluar soluciones informáticas de administración de proyectos, con un enfoque práctico y no burocrático.
                         </p>
 
                         <!-- Tarjetas de los 3 Niveles de Desarrollo de la PMO -->
@@ -160,7 +160,7 @@ declare(strict_types=1);
                         </p>
 
                         <p class="paragraph-text">
-                            Subsecuentemente, desarrollamos la implementación, y acompañamiento respectivo, verificamos los entregables evaluando el costo-beneficio de los mismos. Eventualmente planteamos los ajustes requeridos para continuar con el ciclo hasta que la PMO sea sostenible por sí misma en la organización.
+                            Subsecuentemente, brindamos acompañamiento y asesoría para orientar la adopción gradual de procesos y evaluamos los entregables según costo-beneficio. Planteamos los ajustes metodológicos requeridos para fortalecer las capacidades internas hasta que la PMO sea sostenible por sí misma en la organización.
                         </p>
 
                         <!-- Card destacado: Control Riguroso del Plazo -->
@@ -171,7 +171,7 @@ declare(strict_types=1);
                             <div class="methodology-card-content">
                                 <h4 class="methodology-card-title">Control Riguroso del Plazo</h4>
                                 <p class="methodology-card-desc">
-                                    Asimismo, implementamos nuestra metodología única para la evaluación del cumplimiento del plazo <a href="/sindrome-del-90" class="link-sindrome-90">(prevención del síndrome del 90%)</a>, metodología que ha sido expuesta en importantes foros como en la <a href="/investigacion" class="link-stanford">Universidad de Stanford</a>.
+                                    Asimismo, transferimos y aplicamos nuestra metodología única para la evaluación del cumplimiento del plazo <a href="/sindrome-del-90" class="link-sindrome-90">(prevención del síndrome del 90%)</a>, metodología que ha sido expuesta en importantes foros como en la <a href="/investigacion" class="link-stanford">Universidad de Stanford</a>.
                                 </p>
                             </div>
                         </div>
@@ -215,12 +215,12 @@ declare(strict_types=1);
                     <div class="split-text-col">
                         <div class="section-header-compact">
                             <span class="sub-badge">Diagnóstico &amp; Madurez</span>
-                            <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">AUDITORÍA DE ÁREAS Y VENDORES</h2>
+                            <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">EVALUACIÓN Y MADUREZ DE ÁREAS Y PROVEEDORES</h2>
                             <div class="heading-line"></div>
                         </div>
 
                         <p class="paragraph-text">
-                            Evaluamos la madurez del sistema de gestión de proyectos de la organización o sus vendores, para ello verificamos el nivel de sistematización de áreas de la organización, mediante la determinación del nivel de estandarización así como el aporte de esta a la cadena de valor para esto se revisan sus entregables, gestión de los requerimientos, indicadores, entre otros.
+                            Asesoramos en la evaluación de la madurez del sistema de gestión de proyectos de la organización y sus proveedores, brindando criterios técnicos para diagnosticar el nivel de sistematización, estandarización y aporte a la cadena de valor, analizando entregables, indicadores y requerimientos.
                         </p>
 
                         <!-- Tarjetas de Criterios de Auditoría -->

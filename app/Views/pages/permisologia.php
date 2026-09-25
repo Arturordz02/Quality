@@ -1,7 +1,7 @@
 <?php
 /**
  * QUALITY CONSULTING SOLUTIONS - ARQUITECTURA MVC
- * Vista de P?gina: Permisolog?a, Licencias y Autorizaciones de Obra
+ * Vista de Página: Permisología, Licencias y Autorizaciones de Obra
  * Archivo: app/Views/pages/permisologia.php
  */
 
@@ -18,7 +18,7 @@ declare(strict_types=1);
             <div class="page-banner-container">
                 
                 <div class="page-title-wrap">
-                    <span class="section-tag"><i class="fa-solid fa-file-contract"></i> Gestión de Autorizaciones &amp; Licencias</span>
+                    <span class="section-tag"><i class="fa-solid fa-file-contract"></i> Asesoría en Autorizaciones &amp; Licencias</span>
                     <h1 class="page-main-title animate__animated animate__fadeInDown">PERMISOLOGÍA</h1>
                     <div class="title-underline"></div>
                 </div>
@@ -26,7 +26,7 @@ declare(strict_types=1);
                 <!-- Subtítulo / Párrafo Requerido -->
                 <div class="intro-card">
                     <p class="intro-text animate__animated animate__fadeInUp animate__delay-1s">
-                        Gestionamos la obtención de autorizaciones y permisos para que puedas iniciar tu proyecto de manera confiable y dentro de plazos adecuados.
+                        Asesoría especializada para orientar la planificación, requisitos normativos y ruta crítica de autorizaciones y permisos en proyectos de construcción, facilitando que tu equipo gestione el inicio oportuno y confiable de la obra.
                     </p>
                 </div>
 
@@ -90,7 +90,7 @@ declare(strict_types=1);
                         </p>
 
                         <p class="paragraph-text">
-                            En Quality Consulting Solutions aseguramos la conformidad técnica y legal de tus expedientes para garantizar el cumplimiento riguroso de fiscalizaciones municipales, sectoriales y urbanísticas, evitando paralizaciones de obra y sobrecostos por sanciones administrativas.
+                            En Quality Consulting Solutions brindamos asesoría técnica especializada para orientar la conformidad técnica y legal de tus expedientes, facilitando el cumplimiento riguroso de fiscalizaciones municipales, sectoriales y urbanísticas, previniendo paralizaciones y sobrecostos.
                         </p>
 
                         <!-- Diagrama de flujo simplificado mediante badges -->

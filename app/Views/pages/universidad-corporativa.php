@@ -1,7 +1,7 @@
 <?php
 /**
  * QUALITY CONSULTING SOLUTIONS - ARQUITECTURA MVC
- * Vista de P?gina: Universidad Corporativa & Formaci?n Empresarial
+ * Vista de Página: Universidad Corporativa & Formación Empresarial
  * Archivo: app/Views/pages/universidad-corporativa.php
  */
 
@@ -26,7 +26,7 @@ declare(strict_types=1);
                 <!-- Subtítulo / Párrafo Requerido -->
                 <div class="intro-card">
                     <p class="intro-text animate__animated animate__fadeInUp animate__delay-1s">
-                        Creamos y estructuramos una universidad corporativa a la medida de las necesidades, capacidades y objetivos estratégicos de tu organización.
+                        Asesoría especializada para orientar el diseño y estructuración de academias corporativas y mallas formativas a la medida de las necesidades y objetivos de tu organización.
                     </p>
                 </div>
 

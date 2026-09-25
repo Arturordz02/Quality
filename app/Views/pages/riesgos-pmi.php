@@ -43,7 +43,7 @@ declare(strict_types=1);
                         </div>
                         <div class="hero-feature-content">
                             <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Modalidad Grabada Online</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Clases grabadas 100% online en alta definición + Acceso 24/7 a tu propio ritmo.</p>
+                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Clases grabadas 100% online con acceso disponible 24/7.</p>
                         </div>
                     </div>
 
@@ -349,7 +349,7 @@ declare(strict_types=1);
                 <div class="course-enrollment-card">
                     
                     <span class="enroll-badge">
-                        <i class="fa-solid fa-bolt"></i> PRONTO INICIO • VACANTES PREFERENCIALES
+                        <i class="fa-solid fa-bolt"></i> CURSO ESPECIALIZADO • CLASES GRABADAS
                     </span>
                     
                     <h2 class="enroll-title animate__animated animate__fadeInUp animate__delay-1s">ASEGURA TU VACANTE EN EL PROGRAMA</h2>

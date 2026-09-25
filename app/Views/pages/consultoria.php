@@ -1,7 +1,7 @@
 <?php
 /**
  * QUALITY CONSULTING SOLUTIONS - ARQUITECTURA MVC
- * Vista de P?gina: Consultor?a T?cnica y Gesti?n de Proyectos
+ * Vista de Página: Asesoría Especializada y Gestión de Proyectos
  * Archivo: app/Views/pages/consultoria.php
  */
 
@@ -182,18 +182,18 @@ declare(strict_types=1);
                 <!-- Badge Superior -->
                 <div class="d-inline-block mb-3">
                     <span class="badge bg-light text-dark px-3 py-2 rounded-pill fw-bold mb-2 shadow-sm">
-                        <i class="fas fa-briefcase me-2"></i> SERVICIOS DE CONSULTORÍA TÉCNICA
+                        <i class="fas fa-briefcase me-2"></i> ASESORÍA ESPECIALIZADA
                     </span>
                 </div>
 
                 <!-- Título Principal -->
                 <h1 class="consulting-hero-title animate__animated animate__fadeInDown">
-                    SOLUCIONES ESTRATÉGICAS EN GESTIÓN DE PROYECTOS Y CALIDAD
+                    ASESORÍA TÉCNICA Y FORMATIVA EN GESTIÓN DE PROYECTOS Y CALIDAD
                 </h1>
 
                 <!-- Subtítulo / Párrafo Introductorio -->
                 <p class="consulting-hero-subtitle">
-                    Acompañamos a las organizaciones del sector construcción, infraestructura y minería en la optimización de sus procesos, diseño de sistemas de calidad, auditorías técnicas y gestión de riesgos para garantizar el éxito de sus inversiones.
+                    Acompañamos y orientamos a profesionales y organizaciones del sector construcción, infraestructura y minería mediante asesoría especializada, transferencia de metodologías y programas de capacitación aplicada.
                 </p>
 
                 <!-- Micro-badges -->
@@ -226,7 +226,7 @@ declare(strict_types=1);
                         ÁREAS CLAVE DE INTERVENCIÓN
                     </h2>
                     <p class="text-muted mx-auto" style="max-width: 700px;">
-                        Diagnósticos rigurosos, implementación de estándares y acompañamiento en obra para mitigar riesgos y elevar el desempeño de tus proyectos.
+                        Diagnósticos metodológicos, transferencia de estándares y acompañamiento técnico para orientar y elevar el desempeño de tus proyectos.
                     </p>
                 </div>
 
@@ -245,7 +245,7 @@ declare(strict_types=1);
                                 <div>
                                     <h3 class="consulting-card-title animate__animated animate__fadeInUp animate__delay-1s">Gestión de la Calidad e ISO 9001</h3>
                                     <p class="consulting-card-desc">
-                                        Implementación de planes de calidad, auditorías de soporte para certificación y control no conformidades para elevar el estándar de ejecución técnica en obra.
+                                        Formación especializada en gestión de la calidad, ISO 9001, planes de calidad y control de no conformidades, orientada a profesionales del sector construcción.
                                     </p>
                                 </div>
                                 <div>
@@ -257,20 +257,20 @@ declare(strict_types=1);
                         </div>
                     </div>
 
-                    <!-- Eje 2: Gobernanza de Proyectos & PMO -->
+                    <!-- Eje 2: Gestión de Proyectos & PMO -->
                     <div class="col-lg-6 col-md-6">
                         <div class="consulting-card rounded-4 border-start border-4 border-warning" data-aos="fade-up">
                             <div class="consulting-card-img-wrap">
-                                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Gobernanza de Proyectos y PMO" class="consulting-card-img" loading="lazy">
+                                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Gestión de Proyectos y PMO" class="consulting-card-img" loading="lazy">
                                 <div class="consulting-card-icon-badge">
                                     <i class="fas fa-sitemap text-success fs-2"></i>
                                 </div>
                             </div>
                             <div class="consulting-card-body">
                                 <div>
-                                    <h3 class="consulting-card-title animate__animated animate__fadeInUp animate__delay-1s">Gobernanza de Proyectos &amp; PMO</h3>
+                                    <h3 class="consulting-card-title animate__animated animate__fadeInUp animate__delay-1s">GESTIÓN DE PROYECTOS &amp; PMO</h3>
                                     <p class="consulting-card-desc">
-                                        Estructuración de Oficinas de Gestión de Proyectos, alineación estratégica y gestión de portafolios para garantizar el control de costes y plazos en megaobras.
+                                        Formación especializada en gestión de PMO, planificación y control de proyectos, gestión de portafolios y KPIs, con herramientas y metodologías aplicadas al sector construcción.
                                     </p>
                                 </div>
                                 <div>
@@ -295,7 +295,7 @@ declare(strict_types=1);
                                 <div>
                                     <h3 class="consulting-card-title animate__animated animate__fadeInUp animate__delay-1s">Gestión de Riesgos &amp; Cronogramas</h3>
                                     <p class="consulting-card-desc">
-                                        Identificación, análisis cualitativo/cuantitativo y tratamiento de incertidumbres en contratos. Aplicación de la Curva de Liberación® y peritajes forenses.
+                                        Entrenamiento y asesoría en análisis de riesgos contractuales, aplicación de la Curva de Liberación® y técnicas de análisis forense de cronogramas.
                                     </p>
                                 </div>
                                 <div>
@@ -318,9 +318,9 @@ declare(strict_types=1);
                             </div>
                             <div class="consulting-card-body">
                                 <div>
-                                    <h3 class="consulting-card-title animate__animated animate__fadeInUp animate__delay-1s">Homologación &amp; Auditoría de Proveedores</h3>
+                                    <h3 class="consulting-card-title animate__animated animate__fadeInUp animate__delay-1s">Homologación de Proveedores</h3>
                                     <p class="consulting-card-desc">
-                                        Evaluación técnica de la cadena de suministro para proyectos de construcción, garantizando proveedores calificados y cumplimiento normativo.
+                                        Asesoría técnica para orientar y preparar a empresas proveedoras en el cumplimiento de estándares, matrices de homologación y requisitos de clientes.
                                     </p>
                                 </div>
                                 <div>
@@ -350,10 +350,10 @@ declare(strict_types=1);
                                 <i class="fa-solid fa-headset me-1"></i> ATENCIÓN TÉCNICA
                             </span>
                             <h2 class="fw-bold font-montserrat text-white mb-3 animate__animated animate__fadeInUp animate__delay-1s" style="font-size: clamp(1.6rem, 2.5vw, 2.3rem);">
-                                Solicita una propuesta de consultoría para tu empresa
+                                Solicita una propuesta de asesoría técnica para tu empresa
                             </h2>
                             <p class="text-light text-opacity-90 mb-3" style="font-size: 1.05rem; line-height: 1.8;">
-                                Diseñamos planes de intervención técnica y auditoría adaptados a los retos específicos de tus proyectos de infraestructura.
+                                Diseñamos programas de formación in-house y asesoría técnica especializada adaptados a los retos específicos de tus proyectos de infraestructura.
                             </p>
                             <div class="d-flex flex-wrap gap-4 text-light">
                                 <div>

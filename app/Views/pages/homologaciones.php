@@ -1,7 +1,7 @@
 <?php
 /**
  * QUALITY CONSULTING SOLUTIONS - ARQUITECTURA MVC
- * Vista de P?gina: Preparaci?n para Homologaci?n de Proveedores
+ * Vista de Página: Preparación para Homologación de Proveedores
  * Archivo: app/Views/pages/homologaciones.php
  */
 
@@ -116,7 +116,7 @@ declare(strict_types=1);
                         </div>
 
                         <p class="paragraph-text" style="font-size: 0.92rem; color: #475569;">
-                            En Quality Consulting Solutions estructuramos, ordenamos y validamos previamente cada requisito para asegurar que tu empresa alcance el máximo puntaje de calificación ante entidades auditoras como SGS, Bureau Veritas, Hodelpe, AENOR, entre otras.
+                            En Quality Consulting Solutions brindamos asesoría técnica especializada para orientar y preparar a tu empresa en la comprensión, ordenamiento y cumplimiento de los requisitos exigidos por entidades evaluadoras como SGS, Bureau Veritas, Hodelpe, AENOR, entre otras.
                         </p>
                     </div>
 
@@ -129,11 +129,11 @@ declare(strict_types=1);
                                     <img src="img/homo1.png" alt="Preparación para Homologación de Proveedores" class="section-image" loading="lazy" width="600" height="400">
                                 </picture>
                                 <div class="image-badge-tag badge-gold">
-                                    <i class="fa-solid fa-shield-check"></i> Calificación Garantizada
+                                    <i class="fa-solid fa-shield-check"></i> Preparación Especializada
                                 </div>
                             </div>
                             <div class="image-caption-box">
-                                <p><strong>Auditoría de Proveedores:</strong> Validación exhaustiva de capacidades técnicas, operativas, financieras y de seguridad para acceder a licitaciones corporativas.</p>
+                                <p><strong>Homologación de Proveedores:</strong> Orientación técnica en capacidades operativas, financieras, de seguridad y calidad para afrontar procesos de evaluación corporativos.</p>
                             </div>
                         </div>
                     </div>
@@ -394,7 +394,7 @@ declare(strict_types=1);
                     <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">NUESTRO PROCESO DE PREPARACIÓN</h2>
                     <div class="heading-line center-line"></div>
                     <p class="section-subtitle-text">
-                        Acompañamos a tu organización a través de un roadmap secuencial de 5 etapas especializadas para asegurar una auditoría con el 100% de conformidad.
+                        Acompañamos y orientamos a tu organización a través de un roadmap secuencial de 5 etapas especializadas para preparar la evaluación con altos estándares de conformidad.
                     </p>
                 </div>
 
@@ -506,7 +506,7 @@ declare(strict_types=1);
                             </div>
                             <h4 class="stepper-card-title">Acompañamiento en Auditoría</h4>
                             <p class="stepper-card-desc">
-                                Soporte y asesoría técnica directa durante la jornada de evaluación ante los auditores externos para garantizar el máximo puntaje.
+                                Soporte y asesoría técnica para orientar la jornada de evaluación ante entidades evaluadoras y resolver observaciones con solvencia técnica.
                             </p>
                             <div class="stepper-deliverable-pill">
                                 <i class="fa-solid fa-circle-check"></i> Homologación Aprobada
@@ -527,10 +527,10 @@ declare(strict_types=1);
             <div class="cta-container">
                 <div class="cta-box">
                     <div class="cta-content">
-                        <span class="cta-tag"><i class="fa-solid fa-shield-halved"></i> Calificación Asegurada</span>
+                        <span class="cta-tag"><i class="fa-solid fa-shield-halved"></i> Asesoría Especializada</span>
                         <h3 class="animate__animated animate__fadeInUp animate__delay-1s">Prepárate para tu proceso de homologación</h3>
                         <p class="cta-subtext">
-                            Obtén la máxima calificación en tu auditoría de homologación y consolida a tu empresa como proveedor preferente en los proyectos más importantes.
+                            Prepárate técnicamente para tu proceso de evaluación y consolida a tu empresa como proveedor competitivo en los proyectos más importantes.
                         </p>
                         
                         <!-- Teléfono Visible Clickeable -->

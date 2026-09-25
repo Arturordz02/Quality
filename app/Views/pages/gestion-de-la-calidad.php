@@ -1,7 +1,7 @@
 <?php
 /**
  * QUALITY CONSULTING SOLUTIONS - ARQUITECTURA MVC
- * Vista de P?gina: Gesti?n de la Calidad en Proyectos
+ * Vista de Página: Gestión de la Calidad en Proyectos
  * Archivo: app/Views/pages/gestion-de-la-calidad.php
  */
 
@@ -49,7 +49,7 @@ declare(strict_types=1);
                             <i class="fa-solid fa-clipboard-check"></i>
                         </div>
                         <div class="hero-feature-content">
-                            <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">AUDITORÍA TÉCNICA EN OBRA</h3>
+                            <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">PAUTAS DE AUDITORÍA Y CONTROL</h3>
                             <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Evaluación de trazabilidad, no conformidades y gestión.</p>
                         </div>
                     </div>
@@ -86,11 +86,11 @@ declare(strict_types=1);
                         </div>
 
                         <p class="paragraph-text paragraph-lead">
-                            En Quality Consulting Solutions evaluamos y estructuramos la estandarización de los procesos constructivos y de ingeniería para reducir drásticamente la dispersión y variabilidad de los resultados en obra.
+                            En Quality Consulting Solutions brindamos asesoría técnica y capacitación aplicada para orientar la estandarización de procesos constructivos y de ingeniería, fortaleciendo el desempeño en obra.
                         </p>
 
                         <p class="paragraph-text">
-                            Nuestro enfoque se centra en dotar a los equipos de herramientas de aseguramiento y control que sean verdaderamente prácticas, eliminando la sobrecarga burocrática y garantizando que cada entregable cumpla con las especificaciones técnicas desde la primera vez.
+                            Nuestro enfoque se centra en dotar a los equipos de herramientas de aseguramiento y control que sean verdaderamente prácticas, eliminando la sobrecarga burocrática y promoviendo que cada entregable cumpla con las especificaciones técnicas desde la primera vez.
                         </p>
 
                         <!-- Badge / Caja Destacada Obligatoria -->
@@ -172,16 +172,16 @@ declare(strict_types=1);
                     <div class="split-text-col">
                         <div class="section-header-compact">
                             <span class="sub-badge">Control en Campo &amp; Trazabilidad</span>
-                            <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">AUDITORÍA DE LA GESTIÓN DE LA CALIDAD</h2>
+                            <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">ASESORÍA EN GESTIÓN DE LA CALIDAD</h2>
                             <div class="heading-line"></div>
                         </div>
 
                         <p class="paragraph-text paragraph-lead">
-                            Realizamos auditorías técnicas especializadas directamente en obra para diagnosticar el estado real del sistema de calidad, verificando la trazabilidad de materiales, ensayos de laboratorio y liberación de frentes de trabajo.
+                            Brindamos asesoría especializada para orientar a los equipos en la implementación de protocolos de calidad, pautas de auditoría interna y verificación documental, asegurando la trazabilidad de materiales, ensayos y liberación de frentes de trabajo.
                         </p>
 
                         <p class="paragraph-text">
-                            Examinamos las causas de las no conformidades recurrentes y evaluamos el grado de cumplimiento de los protocolos contractuales para prevenir contingencias durante la recepción de la obra.
+                            Orientamos en el análisis de causas de las no conformidades recurrentes y facilitamos herramientas para evaluar el grado de cumplimiento de los protocolos contractuales, previniendo contingencias durante la recepción de la obra.
                         </p>
 
                         <!-- Banner de Alerta Estilizado Obligatorio -->
@@ -223,11 +223,11 @@ declare(strict_types=1);
                                     <img src="img/gesCa1.png" alt="Inspección de seguridad y control de calidad en obra" class="section-image" loading="lazy" width="600" height="400">
                                 </picture>
                                 <div class="image-badge-tag badge-gold">
-                                    <i class="fa-solid fa-clipboard-check"></i> Auditoría Técnica
+                                    <i class="fa-solid fa-clipboard-check"></i> Protocolos de Calidad
                                 </div>
                             </div>
                             <div class="image-caption-box">
-                                <p><strong>Auditoría en Campo:</strong> Verificación rigurosa de protocolos de liberación, trazabilidad de concreto, aceros e instalaciones en obra.</p>
+                                <p><strong>Control de Calidad:</strong> Orientación técnica en protocolos de liberación, trazabilidad de concreto, aceros e instalaciones en obra.</p>
                             </div>
                         </div>
                     </div>
@@ -254,7 +254,7 @@ declare(strict_types=1);
                         </div>
 
                         <p class="paragraph-text paragraph-lead">
-                            Corregir el síntoma no evita que el error se repita. Aplicamos metodologías estructuradas de análisis de causa raíz (Ishikawa, 5 Porqués) para identificar el origen sistémico de los defectos constructivos.
+                            Corregir el síntoma no evita que el error se repita. Promovemos metodologías estructuradas de análisis de causa raíz (Ishikawa, 5 Porqués) para identificar el origen sistémico de los defectos constructivos.
                         </p>
 
                         <!-- Flujo Causa Raíz mediante Badges Interactivos -->
@@ -462,9 +462,9 @@ declare(strict_types=1);
                             <i class="fa-solid fa-clipboard-check"></i>
                         </div>
                         <div class="pillar-content">
-                            <h4 class="pillar-title">2. Auditoría Técnica</h4>
+                            <h4 class="pillar-title">2. Pautas de Auditoría Interna</h4>
                             <p class="pillar-desc">
-                                Evaluación independiente en campo del estado real de la calidad, trazabilidad de materiales, cierre oportuno de observaciones y preparación del dossier final.
+                                Orientación y criterios metodológicos para evaluar el estado de la calidad, trazabilidad de materiales, cierre oportuno de observaciones y preparación del dossier final.
                             </p>
                         </div>
                     </div>
@@ -507,7 +507,7 @@ declare(strict_types=1);
             <div class="cta-container">
                 <div class="cta-box">
                     <div class="cta-content">
-                        <span class="cta-tag"><i class="fa-solid fa-shield-halved"></i> Calidad Garantizada</span>
+                        <span class="cta-tag"><i class="fa-solid fa-shield-halved"></i> Asesoría Especializada</span>
                         <h3 class="animate__animated animate__fadeInUp animate__delay-1s">Mejora la gestión de la calidad de tus proyectos</h3>
                         <p class="cta-subtext">
                             Estandariza tus procesos, asegura la trazabilidad en obra y elimina sobrecostos por retrabajos con el acompañamiento de nuestros especialistas senior.

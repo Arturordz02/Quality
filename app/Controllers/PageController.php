@@ -22,8 +22,8 @@ class PageController extends Controller
     public function home(): void
     {
         $data = [
-            'title'           => 'Quality Consulting Solutions | Ingeniería, Gestión de Proyectos, Capacitación y Calidad',
-            'metaDescription' => 'Transformamos la Gestión de Proyectos, Riesgos y Calidad en la Industria de la Construcción e Infraestructura. Consultoría técnica y programas de capacitación ejecutiva.',
+            'title'           => 'Quality Consulting Solutions | Formación Especializada, PMO y Calidad',
+            'metaDescription' => 'Formación especializada en gestión de proyectos, PMO y calidad para profesionales del sector construcción, infraestructura y minería. Capacitaciones y asesoría técnica.',
             'canonical'       => 'https://quality-consulting.org/',
             'activePage'      => 'home',
         ];
@@ -38,7 +38,7 @@ class PageController extends Controller
     {
         $data = [
             'title'           => 'Nosotros | Quiénes Somos - Quality Consulting Solutions',
-            'metaDescription' => 'Conoce a Quality Consulting Solutions: excelencia técnica, liderazgo en gestión de proyectos, consultoría especializada, aseguramiento de la calidad y capacitación ejecutiva.',
+            'metaDescription' => 'Conoce a Quality Consulting Solutions: excelencia formativa, desarrollo de competencias, cursos de especialización y asesoría técnica para el sector construcción.',
             'canonical'       => 'https://quality-consulting.org/nosotros',
             'activePage'      => 'nosotros',
         ];
@@ -53,7 +53,7 @@ class PageController extends Controller
     {
         $data = [
             'title'           => 'Nuestros Clientes | Quality Consulting Solutions',
-            'metaDescription' => 'Conoce a las empresas líderes del sector construcción, ingeniería y minería que confían en los servicios de consultoría, auditoría y capacitación de Quality Consulting Solutions.',
+            'metaDescription' => 'Conoce a las empresas y profesionales del sector construcción, ingeniería y minería que han participado en capacitaciones y asesorías de Quality Consulting Solutions.',
             'canonical'       => 'https://quality-consulting.org/clientes',
             'activePage'      => 'clientes',
         ];
@@ -85,7 +85,7 @@ class PageController extends Controller
     {
         $data = [
             'title'           => 'Contacto y Atención Corporativa | Quality Consulting Solutions',
-            'metaDescription' => 'Ponte en contacto con Quality Consulting Solutions para consultas sobre servicios de consultoría en PMO, gestión de riesgos, capacitaciones in-house y peritajes forenses.',
+            'metaDescription' => 'Ponte en contacto con Quality Consulting Solutions para consultas sobre cursos de especialización, capacitaciones in-house y asesoría técnica en gestión de proyectos.',
             'canonical'       => 'https://quality-consulting.org/contacto',
             'activePage'      => 'contacto',
         ];

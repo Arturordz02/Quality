@@ -231,7 +231,7 @@ declare(strict_types=1);
             </h1>
 
             <p class="lead text-light opacity-90 mx-auto mb-4" style="max-width: 860px; font-size: 1.15rem; color: #e2e8f0;">
-                Agradecemos a las empresas líderes del sector construcción, ingeniería y minería por confiar en nuestros servicios y respaldar nuestra excelencia técnica.
+                Agradecemos a las empresas líderes del sector construcción, ingeniería y minería por confiar en nuestros programas de capacitación y asesoría técnica especializada.
             </p>
 
             <!-- Grid de 3 Tarjetas de Pilares de Valor en el Hero -->
@@ -450,7 +450,7 @@ declare(strict_types=1);
                     <span class="cta-tag"><i class="fa-solid fa-handshake"></i> Alianzas Estratégicas</span>
                     <h3 class="animate__animated animate__fadeInUp animate__delay-1s">¿Listo para elevar el estándar técnico de tus proyectos?</h3>
                     <p>
-                        Conversa con nuestro equipo sobre consultoría, auditoría, homologación o capacitación a la medida de tu organización.
+                        Conversa con nuestro equipo sobre programas de capacitación in-house, cursos especializados y asesoría técnica a la medida de tu organización.
                     </p>
                     
                     <!-- Teléfono Visible Clickeable Requerido -->
@@ -466,8 +466,8 @@ declare(strict_types=1);
                     <a href="/contacto" class="btn btn-large btn-qcs-primary">
                         <i class="fa-solid fa-envelope"></i> Solicitar propuesta corporativa
                     </a>
-                    <a href="/#consultoria" class="btn btn-outline-light btn-large btn-qcs-primary" style="border: 2px solid #ffffff; color: #ffffff;">
-                        <i class="fa-solid fa-briefcase"></i> Ver servicios de consultoría
+                    <a href="/consultoria" class="btn btn-outline-light btn-large btn-qcs-primary" style="border: 2px solid #ffffff; color: #ffffff;">
+                        <i class="fa-solid fa-briefcase"></i> Ver asesoría especializada
                     </a>
                 </div>
             </div>

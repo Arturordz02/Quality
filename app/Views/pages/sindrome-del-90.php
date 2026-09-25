@@ -130,7 +130,7 @@ declare(strict_types=1);
                     <span class="sub-badge">Fases de Implementación</span>
                     <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">Etapas de Nuestra Metodología</h2>
                     <div class="heading-line center-line"></div>
-                    <p class="section-subtitle-text">Un proceso estructurado, predictivo y fundamentado en ingeniería de precisión para garantizar la fecha de entrega de su proyecto.</p>
+                    <p class="section-subtitle-text">Un proceso estructurado, predictivo y fundamentado en ingeniería para optimizar el control y previsibilidad en la fecha de entrega de su proyecto.</p>
                 </div>
 
                 <!-- Grid de 4 Bloques / Etapas -->
@@ -405,7 +405,7 @@ declare(strict_types=1);
             <div class="cta-container">
                 <div class="cta-box">
                     <div class="cta-content">
-                        <span class="cta-tag"><i class="fa-solid fa-bolt"></i> Garantía de Entrega</span>
+                        <span class="cta-tag"><i class="fa-solid fa-bolt"></i> Previsibilidad de Plazos</span>
                         <h3 class="animate__animated animate__fadeInUp animate__delay-1s">¿Su proyecto está próximo al 90% y requiere asegurar su fecha de entrega?</h3>
                         <p>Aplique la Curva de Liberación ® y prevenga sobrecostos por penalidades y extensiones de plazo.</p>
                         

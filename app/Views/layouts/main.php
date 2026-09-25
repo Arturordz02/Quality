@@ -9,8 +9,8 @@
 
 declare(strict_types=1);
 
-$pageTitle = $title ?? 'Quality Consulting Solutions | Ingeniería, PMO y Calidad';
-$description = $metaDescription ?? 'Soluciones integrales en ingeniería, gestión de proyectos, PMO, homologación de proveedores y capacitación corporativa especializada.';
+$pageTitle = $title ?? 'Quality Consulting Solutions | Capacitación y Asesoría en PMO y Calidad';
+$description = $metaDescription ?? 'Capacitaciones, cursos especializados y asesoría técnica en gestión de proyectos, PMO y calidad para profesionales del sector construcción.';
 $canonicalUrl = $canonical ?? '';
 $activePage = $activePage ?? '';
 $showFloat = $showWhatsAppFloat ?? true;

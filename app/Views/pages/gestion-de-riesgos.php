@@ -1,7 +1,7 @@
 <?php
 /**
  * QUALITY CONSULTING SOLUTIONS - ARQUITECTURA MVC
- * Vista de P?gina: Gesti?n del Riesgo
+ * Vista de Página: Gestión del Riesgo
  * Archivo: app/Views/pages/gestion-de-riesgos.php
  */
 
@@ -20,7 +20,7 @@ declare(strict_types=1);
 
 
                 <div class="page-title-wrap">
-                    <span class="section-tag"><i class="fa-solid fa-shield-halved"></i> Consultoría Estratégica</span>
+                    <span class="section-tag"><i class="fa-solid fa-shield-halved"></i> Asesoría Especializada</span>
                     <h1 class="page-main-title animate__animated animate__fadeInDown">GESTIÓN DEL RIESGO</h1>
                     <div class="title-underline"></div>
                 </div>
@@ -28,7 +28,7 @@ declare(strict_types=1);
                 <!-- Subtítulo / Párrafo Requerido -->
                 <div class="intro-card intro-card-highlight">
                     <p class="intro-text animate__animated animate__fadeInUp animate__delay-1s">
-                        <strong>Identificación, análisis, respuesta y monitoreo estratégico</strong> de riesgos en proyectos de ingeniería y construcción para maximizar la predictibilidad, proteger el margen y garantizar el cumplimiento de objetivos.
+                        <strong>Identificación, análisis, respuesta y monitoreo estratégico</strong> de riesgos en proyectos de ingeniería y construcción para maximizar la predictibilidad, proteger el margen y alcanzar el cumplimiento de objetivos.
                     </p>
                 </div>
 
@@ -401,7 +401,7 @@ declare(strict_types=1);
                     <span class="sub-badge">Marcos Normativos Internacionales</span>
                     <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">ESTÁNDARES Y MARCOS DE TRABAJO</h2>
                     <div class="heading-line center-line"></div>
-                    <p class="section-subtitle-text">Garantizamos metodologías alineadas a los organismos internacionales líderes en gestión y gobernanza de proyectos.</p>
+                    <p class="section-subtitle-text">Metodologías fundamentadas en los estándares de los principales organismos internacionales líderes en gestión y gobernanza de proyectos.</p>
                 </div>
 
                 <!-- Grid de 2 Tarjetas de Estándares -->
@@ -427,7 +427,7 @@ declare(strict_types=1);
                                 </picture>
                             </div>
                             <p class="standard-desc">
-                                Aplicamos los lineamientos del <em>Practice Standard for Project Risk Management</em> del PMI, estructurando planes de gestión cuantitativos y cualitativos para cada ciclo de vida del proyecto.
+                                Capacitamos y asesoramos bajo los lineamientos del <em>Practice Standard for Project Risk Management</em> del PMI, orientando el desarrollo de planes de gestión cuantitativos y cualitativos para cada ciclo de vida del proyecto.
                             </p>
                         </div>
                     </div>
@@ -452,7 +452,7 @@ declare(strict_types=1);
                                 </picture>
                             </div>
                             <p class="standard-desc">
-                                Implementamos la arquitectura de gobernanza de la norma ISO 31000, integrando el marco de gestión de riesgos en la cultura corporativa y en la toma de decisiones directivas.
+                                Asesoría técnica y capacitación para orientar la adopción de las directrices ISO 31000, fortaleciendo el marco de gestión de riesgos y la toma de decisiones en proyectos.
                             </p>
                         </div>
                     </div>

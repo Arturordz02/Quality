@@ -277,7 +277,7 @@ declare(strict_types=1);
                     <!-- Badge Neón -->
                     <div>
                         <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3 animate__animated animate__fadeInDown shadow-sm">
-                            <i class="fas fa-building me-2"></i> LIDERAZGO EN CONSULTORÍA &amp; CAPACITACIÓN TÉCNICA
+                            <i class="fas fa-graduation-cap me-2"></i> CAPACITACIÓN Y ASESORÍA ESPECIALIZADA
                         </span>
                     </div>
 
@@ -288,7 +288,7 @@ declare(strict_types=1);
 
                     <!-- Subtítulo -->
                     <p class="animate__animated animate__fadeInUp animate__delay-1s text-light text-opacity-90 lead mb-4 mx-auto" style="max-width: 880px; font-size: 1.15rem; line-height: 1.8;">
-                        Somos Quality Consulting Solutions, una firma dedicada a conectar la experiencia técnica de alto nivel con soluciones prácticas para profesionales y organizaciones.
+                        Somos Quality Consulting Solutions, una firma especializada en capacitación, cursos de especialización y asesoría técnica para profesionales y organizaciones del sector construcción.
                     </p>
 
                     <!-- Botones de Acción -->
@@ -297,7 +297,7 @@ declare(strict_types=1);
                             <i class="fa-solid fa-compass me-2"></i> Conoce Nuestro Propósito
                         </a>
                         <a href="/contacto" class="btn btn-qcs-dark px-4 py-3 rounded-pill fw-bold">
-                            <i class="fa-solid fa-envelope me-2"></i> Contactar Consultoría
+                            <i class="fa-solid fa-envelope me-2"></i> Contactar Asesoría
                         </a>
                     </div>
 
@@ -565,7 +565,7 @@ declare(strict_types=1);
                             Eleva el Rendimiento y la Calidad de tus Proyectos
                         </h2>
                         <p class="text-light text-opacity-90 mb-3" style="font-size: 1.05rem; line-height: 1.8;">
-                            Diseñamos programas de capacitación in-company y servicios de consultoría técnica ajustados a las metas operativas y estratégicas de tu organización.
+                            Diseñamos programas de capacitación in-company y asesoría técnica especializada ajustados a las metas operativas y estratégicas de tu organización.
                         </p>
                         <div class="d-flex flex-wrap gap-4 text-light pt-2">
                             <div>

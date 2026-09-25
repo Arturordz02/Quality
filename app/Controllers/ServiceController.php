@@ -22,8 +22,8 @@ class ServiceController extends Controller
     public function consultoria(): void
     {
         $data = [
-            'title'           => 'Servicios de Consultoría Técnica y Gestión de Proyectos | Quality Consulting Solutions',
-            'metaDescription' => 'Acompañamos a las organizaciones del sector construcción, infraestructura y minería en la optimización de procesos, PMO, auditorías ISO 9001 y gestión de riesgos.',
+            'title'           => 'Asesoría Especializada y Formación en Gestión de Proyectos | Quality Consulting Solutions',
+            'metaDescription' => 'Asesoría especializada para orientar a profesionales y organizaciones en gestión de PMO, directrices ISO 9001 y metodologías de gestión de riesgos.',
             'canonical'       => 'https://quality-consulting.org/consultoria',
             'activePage'      => 'consultoria',
         ];
@@ -38,7 +38,7 @@ class ServiceController extends Controller
     {
         $data = [
             'title'           => 'Gestión de la Calidad en Proyectos de Ingeniería y Construcción | Quality Consulting Solutions',
-            'metaDescription' => 'Servicios integrales de Gestión de la Calidad, estandarización, auditoría técnica en obra, mejora continua y control de defectología postventa por Quality Consulting Solutions.',
+            'metaDescription' => 'Asesoría y formación especializada en Gestión de la Calidad, ISO 9001, planes de calidad y control de no conformidades para el sector construcción.',
             'canonical'       => 'https://quality-consulting.org/gestion-de-la-calidad',
             'activePage'      => 'consultoria',
         ];
@@ -53,7 +53,7 @@ class ServiceController extends Controller
     {
         $data = [
             'title'           => 'Gestión de la PMO y Proyectos | Quality Consulting Solutions',
-            'metaDescription' => 'Desarrollo de PMO, metodología de gestión de proyectos, ciclo PHVA y auditoría de áreas y vendors por Quality Consulting Solutions.',
+            'metaDescription' => 'Asesoría técnica y capacitación especializada en gestión de PMO, planificación y control de proyectos, gestión de portafolios y KPIs.',
             'canonical'       => 'https://quality-consulting.org/gestion-de-pmo',
             'activePage'      => 'consultoria',
         ];
@@ -68,7 +68,7 @@ class ServiceController extends Controller
     {
         $data = [
             'title'           => 'Gestión del Riesgo | Quality Consulting Solutions',
-            'metaDescription' => 'Identificación, análisis, respuesta y monitoreo estratégico de riesgos técnicos en proyectos de ingeniería y construcción por Quality Consulting Solutions.',
+            'metaDescription' => 'Capacitación y asesoría técnica en metodologías de gestión de riesgos, Curva de Liberación® y análisis de incertidumbres para la construcción.',
             'canonical'       => 'https://quality-consulting.org/gestion-de-riesgos',
             'activePage'      => 'consultoria',
         ];
@@ -82,8 +82,8 @@ class ServiceController extends Controller
     public function cronogramaForense(): void
     {
         $data = [
-            'title'           => 'Análisis Forense del Cronograma | Collapse As-Built & Ruta Crítica (CPM) | Quality Consulting Solutions',
-            'metaDescription' => 'Servicio de Análisis Forense del Cronograma y metodología Collapse As-Built para evaluación técnica de retrasos, impactos en ruta crítica (CPM) y deslinde de responsabilidades.',
+            'title'           => 'Metodología y Análisis Forense del Cronograma | Ruta Crítica (CPM) | Quality Consulting Solutions',
+            'metaDescription' => 'Metodología, capacitación y asesoría técnica en análisis forense de cronogramas y evaluación técnica de demoras en proyectos de infraestructura.',
             'canonical'       => 'https://quality-consulting.org/cronograma-forense',
             'activePage'      => 'consultoria',
         ];
@@ -98,7 +98,7 @@ class ServiceController extends Controller
     {
         $data = [
             'title'           => 'Preparación para Homologación de Proveedores | Quality Consulting Solutions',
-            'metaDescription' => 'Asesoría integral y preparación para la auditoría de homologación de proveedores en construcción, ingeniería y actividades afines por Quality Consulting Solutions.',
+            'metaDescription' => 'Asesoría técnica y preparación formativa para la homologación de proveedores en construcción e ingeniería ante entidades evaluadoras.',
             'canonical'       => 'https://quality-consulting.org/homologaciones',
             'activePage'      => 'consultoria',
         ];
@@ -143,7 +143,7 @@ class ServiceController extends Controller
     {
         $data = [
             'title'           => 'Permisología, Licencias y Autorizaciones de Obra | Quality Consulting Solutions',
-            'metaDescription' => 'Gestión integral de permisos, licencias de edificación, habilitaciones urbanas, opiniones favorables y saneamiento físico-legal por Quality Consulting Solutions.',
+            'metaDescription' => 'Asesoría técnica y orientación especializada en la ruta crítica y requisitos normativos de permisos y licencias para proyectos de construcción.',
             'canonical'       => 'https://quality-consulting.org/permisologia',
             'activePage'      => 'consultoria',
         ];
@@ -158,7 +158,7 @@ class ServiceController extends Controller
     {
         $data = [
             'title'           => 'Evaluación del Riesgo del Cumplimiento del Plazo | Síndrome del 90% | Quality Consulting Solutions',
-            'metaDescription' => 'Metodología única de Curva de Liberación ® para la evaluación del riesgo de cumplimiento del plazo y prevención del Síndrome del 90% por Quality Consulting Solutions.',
+            'metaDescription' => 'Metodología analítica de la Curva de Liberación ® para la evaluación del riesgo de cumplimiento del plazo y prevención del Síndrome del 90%.',
             'canonical'       => 'https://quality-consulting.org/sindrome-del-90',
             'activePage'      => 'consultoria',
         ];

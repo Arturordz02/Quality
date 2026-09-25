@@ -257,7 +257,7 @@ declare(strict_types=1);
 
                 <!-- Subtítulo -->
                 <p class="contact-hero-subtitle">
-                    Ponte en contacto con nuestro equipo de especialistas. Estamos listos para atender tus consultas sobre consultoría, capacitaciones in-house o servicios técnicos.
+                    Ponte en contacto con nuestro equipo de especialistas. Estamos listos para atender tus consultas sobre cursos, programas de capacitación in-house y asesoría técnica especializada.
                 </p>
 
                 <!-- Grid de 3 Tarjetas de Canales de Respuesta Rápida -->
@@ -381,7 +381,7 @@ declare(strict_types=1);
                                 <!-- Consulta o Mensaje -->
                                 <div class="mb-3">
                                     <label for="contactConsulta" class="form-label fw-bold small text-secondary">Consulta o Mensaje <span class="text-danger">*</span></label>
-                                    <textarea id="contactConsulta" name="consulta" class="form-control" rows="4" placeholder="Escribe aquí los detalles de tu consulta sobre cursos, consultorías o servicios..." required></textarea>
+                                    <textarea id="contactConsulta" name="consulta" class="form-control" rows="4" placeholder="Escribe aquí los detalles de tu consulta sobre cursos, capacitaciones in-house o asesoría técnica..." required></textarea>
                                 </div>
 
                                 <!-- Botón de Envío -->
@@ -505,20 +505,20 @@ declare(strict_types=1);
                         
                         <div class="col-lg-8 mb-4 mb-lg-0">
                             <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3 shadow-sm">
-                                <i class="fa-solid fa-layer-group me-1"></i> SERVICIOS INTEGRALES
+                                <i class="fa-solid fa-layer-group me-1"></i> CAPACITACIÓN Y ASESORÍA
                             </span>
                             <h2 class="fw-bold font-montserrat text-white mb-3 animate__animated animate__fadeInUp animate__delay-1s" style="font-size: clamp(1.6rem, 2.5vw, 2.2rem);">
-                                Conoce nuestras Soluciones en Consultoría y Capacitación
+                                Conoce nuestras Soluciones en Formación y Asesoría Especializada
                             </h2>
                             <p class="text-light text-opacity-90 mb-0" style="font-size: 1.05rem; line-height: 1.8;">
-                                Explora nuestro catálogo de formación técnica especializada o solicita asesoría integral para la implementación de PMO, gestión de riesgos contractuales y auditorías de calidad ISO 9001.
+                                Explora nuestro catálogo de formación técnica especializada o solicita asesoría especializada para orientar la gestión de PMO, directrices ISO 9001 y gestión de riesgos contractuales.
                             </p>
                         </div>
 
                         <div class="col-lg-4 text-lg-end text-center">
                             <div class="d-flex flex-column gap-3 justify-content-center">
                                 <a href="/gestion-de-pmo" class="btn btn-warning btn-lg px-4 py-3 fw-bold rounded-pill shadow-lg btn-qcs-primary">
-                                    <i class="fa-solid fa-chart-pie me-2"></i> Ver Consultoría
+                                    <i class="fa-solid fa-chart-pie me-2"></i> Ver Asesoría Especializada
                                 </a>
                                 <a href="/lean-last-planner" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold rounded-pill btn-qcs-primary">
                                     <i class="fa-solid fa-graduation-cap me-2"></i> Ver Cursos y Capacitación

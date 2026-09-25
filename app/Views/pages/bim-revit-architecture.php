@@ -1,7 +1,7 @@
 <?php
 /**
  * QUALITY CONSULTING SOLUTIONS - ARQUITECTURA MVC
- * Vista de P?gina: Modelamiento y Dise?o BIM con Autodesk Revit Architecture
+ * Vista de Página: Modelamiento y Diseño BIM con Autodesk Revit Architecture
  * Archivo: app/Views/pages/bim-revit-architecture.php
  */
 
@@ -638,7 +638,7 @@ declare(strict_types=1);
                 <div class="bim-enrollment-card">
                     
                     <span class="badge bg-warning text-dark text-dark px-3 py-2 rounded-pill fw-bold text-uppercase mb-3 shadow-sm">
-                        <i class="fa-solid fa-bolt me-1"></i> INSCRIPCIONES ABIERTAS • VACANTES LIMITADAS
+                        <i class="fa-solid fa-bolt me-1"></i> CURSO ESPECIALIZADO • MODALIDAD ONLINE
                     </span>
 
                     <h2 class="display-6 fw-extrabold text-white text-uppercase mb-2 animate__animated animate__fadeInUp animate__delay-1s" style="font-family: var(--font-heading);">
@@ -657,7 +657,7 @@ declare(strict_types=1);
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="p-3 rounded-3 border border-secondary border-opacity-25" style="background: rgba(255, 255, 255, 0.03);">
-                                <i class="fa-solid fa-cloud-arrow-down text-warning me-2"></i> <span class="small text-light">Grabaciones HD 24/7 sin Límite</span>
+                                <i class="fa-solid fa-cloud-arrow-down text-warning me-2"></i> <span class="small text-light">Acceso a Grabaciones HD 24/7</span>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3">
@@ -733,10 +733,10 @@ declare(strict_types=1);
             <div class="cta-container">
                 <div class="cta-box">
                     <div class="cta-content">
-                        <span class="cta-tag"><i class="fa-solid fa-cube"></i> Consultoría e Implementación BIM</span>
+                        <span class="cta-tag"><i class="fa-solid fa-cube"></i> Capacitación y Asesoría BIM</span>
                         <h3 class="animate__animated animate__fadeInUp animate__delay-1s">Transforma la gestión de proyectos con metodología BIM y VDC</h3>
                         <p>
-                            Implementamos estándares BIM para empresas de arquitectura, ingeniería y construcción, optimizando tiempos de diseño y reduciendo sobrecostos en obra.
+                            Programas de capacitación especializada y asesoría técnica para orientar la adopción de estándares BIM en empresas de arquitectura, ingeniería y construcción.
                         </p>
                         
                         <!-- Teléfono Visible Clickeable Requerido -->

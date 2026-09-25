@@ -1,7 +1,7 @@
 <?php
 /**
  * QUALITY CONSULTING SOLUTIONS - ARQUITECTURA MVC
- * Vista de P?gina: Avance de Obra con el M?todo del Valor Ganado (EVM)
+ * Vista de Página: Avance de Obra con el Método del Valor Ganado (EVM)
  * Archivo: app/Views/pages/valor-ganado.php
  */
 
@@ -513,7 +513,7 @@ declare(strict_types=1);
                 <div class="course-enrollment-card">
                     
                     <span class="enroll-badge">
-                        <i class="fa-solid fa-bolt"></i> INSCRIPCIONES ABIERTAS • VACANTES LIMITADAS
+                        <i class="fa-solid fa-bolt"></i> CURSO ESPECIALIZADO • CLASES GRABADAS
                     </span>
 
                     <h2 class="enroll-title animate__animated animate__fadeInUp animate__delay-1s">MATRICÚLATE EN EL CURSO DE VALOR GANADO</h2>
@@ -534,7 +534,7 @@ declare(strict_types=1);
                             <div class="enroll-perk-icon">
                                 <i class="fa-solid fa-cloud-arrow-down"></i>
                             </div>
-                            <span>Acceso a Grabaciones HD 24/7 sin Límite</span>
+                            <span>Acceso a Grabaciones HD 24/7</span>
                         </div>
 
                         <div class="enroll-perk-item">
@@ -613,10 +613,10 @@ declare(strict_types=1);
             <div class="cta-container">
                 <div class="cta-box">
                     <div class="cta-content">
-                        <span class="cta-tag"><i class="fa-solid fa-chart-line"></i> Control de Proyectos de Alto Impacto</span>
+                        <span class="cta-tag"><i class="fa-solid fa-chart-line"></i> Capacitación en Control de Proyectos</span>
                         <h3 class="animate__animated animate__fadeInUp animate__delay-1s">Optimiza el control de costos y cronogramas en tus proyectos</h3>
                         <p>
-                            Diseñamos programas de formación a la medida e implementamos sistemas de medición del Valor Ganado para empresas consultoras y constructoras.
+                            Programas de formación especializada a la medida y asesoría técnica para orientar la aplicación del método del Valor Ganado en empresas consultoras y constructoras.
                         </p>
                         
                         <!-- Teléfono Visible Clickeable Requerido -->

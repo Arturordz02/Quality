@@ -412,7 +412,7 @@ declare(strict_types=1);
                 <div class="course-enrollment-card">
                     
                     <span class="enroll-badge">
-                        <i class="fa-solid fa-bolt"></i> PRONTO INICIO • VACANTES LIMITADAS
+                        <i class="fa-solid fa-bolt"></i> PROGRAMA ESPECIALIZADO • MODALIDAD ONLINE
                     </span>
 
                     <div style="text-align: center;">

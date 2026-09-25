@@ -1,7 +1,7 @@
 <?php
 /**
  * QUALITY CONSULTING SOLUTIONS - ARQUITECTURA MVC
- * Vista de P?gina: ISO 9001:2015 para la Infraestructura y Construcci?n
+ * Vista de Página: ISO 9001:2015 para la Infraestructura y Construcción
  * Archivo: app/Views/pages/iso-9001.php
  */
 
@@ -281,7 +281,7 @@ declare(strict_types=1);
                 <!-- Badge Superior Neón Requerido -->
                 <div class="mb-3">
                     <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-2 shadow-sm">
-                        <i class="fas fa-certificate me-2"></i> PRONTO INICIO | INCLUYE LIBRO FÍSICO / DIGITAL
+                        <i class="fas fa-certificate me-2"></i> PROGRAMA ESPECIALIZADO | INCLUYE LIBRO
                     </span>
                 </div>
 
@@ -310,7 +310,7 @@ declare(strict_types=1);
                         <div class="iso-benefit-card">
                             <div class="iso-benefit-icon"><i class="fa-solid fa-circle-play"></i></div>
                             <div class="iso-benefit-title">MODALIDAD GRABADA ONLINE</div>
-                            <p class="iso-benefit-desc">Clases grabadas 100% online en alta definición con acceso disponible 24/7.</p>
+                            <p class="iso-benefit-desc">Acceso inmediato a las clases y disponible 24/7.</p>
                         </div>
                     </div>
 
@@ -596,7 +596,7 @@ declare(strict_types=1);
                 <div class="iso-enrollment-card">
                     
                     <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold text-uppercase mb-3 shadow-sm">
-                        <i class="fa-solid fa-bolt me-1"></i> PRONTO INICIO • VACANTES LIMITADAS
+                        <i class="fa-solid fa-bolt me-1"></i> CAPACITACIÓN ESPECIALIZADA • CLASES GRABADAS
                     </span>
 
                     <h2 class="display-6 fw-extrabold text-uppercase mb-2 animate__animated animate__fadeInUp animate__delay-1s" style="font-family: var(--font-heading); color: #1A1D20;">
@@ -620,7 +620,7 @@ declare(strict_types=1);
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="p-3 rounded-3 border bg-light">
-                                <i class="fa-solid fa-cloud-arrow-down text-success me-2"></i> <span class="small text-dark fw-bold">Grabaciones HD 24/7 sin Límite</span>
+                                <i class="fa-solid fa-cloud-arrow-down text-success me-2"></i> <span class="small text-dark fw-bold">Acceso a Grabaciones HD 24/7</span>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3">
@@ -691,10 +691,10 @@ declare(strict_types=1);
             <div class="cta-container">
                 <div class="cta-box">
                     <div class="cta-content">
-                        <span class="cta-tag"><i class="fa-solid fa-certificate"></i> Consultoría e Implementación ISO</span>
-                        <h3 class="animate__animated animate__fadeInUp animate__delay-1s">Implementa sistemas de gestión de calidad auditables y de alto impacto</h3>
+                        <span class="cta-tag"><i class="fa-solid fa-certificate"></i> Capacitación y Asesoría ISO</span>
+                        <h3 class="animate__animated animate__fadeInUp animate__delay-1s">Fortalece tus sistemas de gestión de calidad auditables y de alto impacto</h3>
                         <p>
-                            Diseñamos e implementamos sistemas de gestión de la calidad bajo la norma ISO 9001:2015 para empresas constructoras, consultoras e industriales.
+                            Programas de capacitación especializada y asesoría técnica para orientar la adopción de la norma ISO 9001:2015 en empresas constructoras, consultoras e industriales.
                         </p>
                         
                         <!-- Teléfono Visible Clickeable Requerido -->

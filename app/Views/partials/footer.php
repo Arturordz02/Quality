@@ -30,7 +30,7 @@ $year = $currentYear ?? date('Y');
                     </div>
                 </div>
                 <p class="footer-desc">
-                    Soluciones estratégicas en ingeniería, gestión de proyectos, PMO, homologación de proveedores y capacitación corporativa especializada.
+                    Programas de capacitación especializada, cursos y asesoría técnica en gestión de proyectos, calidad y PMO para profesionales del sector construcción.
                 </p>
                 <div class="footer-socials mt-3">
                     <a href="https://pe.linkedin.com/in/omarsamaniego" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -46,7 +46,7 @@ $year = $currentYear ?? date('Y');
                 <ul class="footer-links">
                     <li><a href="/"><i class="fa-solid fa-angle-right"></i> Home</a></li>
                     <li><a href="/nosotros"><i class="fa-solid fa-angle-right"></i> Nosotros</a></li>
-                    <li><a href="/consultoria"><i class="fa-solid fa-angle-right"></i> Consultoría</a></li>
+                    <li><a href="/consultoria"><i class="fa-solid fa-angle-right"></i> Asesoría</a></li>
                     <li><a href="/capacitacion"><i class="fa-solid fa-angle-right"></i> Capacitación</a></li>
                     <li><a href="/medios"><i class="fa-solid fa-angle-right"></i> Medios y Podcasts</a></li>
                     <li><a href="/clientes"><i class="fa-solid fa-angle-right"></i> Clientes</a></li>

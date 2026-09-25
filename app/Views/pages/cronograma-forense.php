@@ -1,7 +1,7 @@
 <?php
 /**
  * QUALITY CONSULTING SOLUTIONS - ARQUITECTURA MVC
- * Vista de P?gina: An?lisis Forense del Cronograma
+ * Vista de Página: Análisis Forense del Cronograma
  * Archivo: app/Views/pages/cronograma-forense.php
  */
 
@@ -18,7 +18,7 @@ declare(strict_types=1);
             <div class="page-banner-container">
                 
                 <div class="page-title-wrap">
-                    <span class="section-tag"><i class="fa-solid fa-scale-balanced"></i> Consultoría Forense &amp; Claims</span>
+                    <span class="section-tag"><i class="fa-solid fa-scale-balanced"></i> Asesoría Técnica &amp; Claims</span>
                     <h1 class="page-main-title animate__animated animate__fadeInDown">ANÁLISIS FORENSE DEL CRONOGRAMA</h1>
                     <div class="title-underline"></div>
                 </div>
@@ -80,13 +80,13 @@ declare(strict_types=1);
                     <!-- Columna Izquierda: Texto Explicativo -->
                     <div class="split-text-col">
                         <div class="section-header-compact">
-                            <span class="sub-badge">Peritaje Técnico de Controversias</span>
-                            <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">PERITAJE Y ANÁLISIS FORENSE DEL CRONOGRAMA</h2>
+                            <span class="sub-badge">Análisis de Demoras y Controversias</span>
+                            <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">METODOLOGÍA Y ANÁLISIS FORENSE DEL CRONOGRAMA</h2>
                             <div class="heading-line"></div>
                         </div>
 
                         <p class="paragraph-text paragraph-lead">
-                            El servicio de <strong>Análisis Forense del Cronograma</strong> de Quality Consulting Solutions permite determinar con exactitud técnica las responsabilidades de las partes respecto a los retrasos ocurridos en la ejecución de la obra o proyecto, utilizando la probada metodología <strong>Collapse As-Built</strong>.
+                            El servicio de asesoría y capacitación en <strong>Análisis Forense del Cronograma</strong> de Quality Consulting Solutions orienta a los equipos técnicos en la evaluación rigurosa de retrasos ocurridos en proyectos, utilizando la metodología <strong>Collapse As-Built</strong>.
                         </p>
 
                         <p class="paragraph-text">
@@ -94,7 +94,7 @@ declare(strict_types=1);
                         </p>
 
                         <p class="paragraph-text">
-                            Nuestros informes periciales entregan conclusiones cuantificables y transparentes con un alto estándar probatorio, constituyendo el soporte técnico idóneo para resolver controversias, sustentar solicitudes de ampliación de plazo o defender posiciones ante juntas de resolución de disputas (DAB), arbitrajes y tribunales.
+                            Nuestra asesoría técnica y metodológica entrega criterios cuantificables y transparentes con un alto estándar analítico, constituyendo el soporte idóneo para orientar la resolución de controversias, sustentar solicitudes de ampliación de plazo y fundamentar técnicamente expedientes ante juntas de resolución de disputas (DAB) o instancias contractuales.
                         </p>
 
                         <!-- Puntos destacados de rigor -->
@@ -109,7 +109,7 @@ declare(strict_types=1);
                             <div class="pmo-card">
                                 <div class="pmo-card-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
                                 <div class="pmo-card-body">
-                                    <h4 class="pmo-card-title">Objetividad Pericial</h4>
+                                    <h4 class="pmo-card-title">Rigor Metodológico</h4>
                                     <p class="pmo-card-desc">Modelado numérico independiente sin supuestos teóricos subjetivos ni sesgos contractuales.</p>
                                 </div>
                             </div>
@@ -467,7 +467,7 @@ declare(strict_types=1);
                             <i class="fa-solid fa-file-invoice-dollar"></i>
                         </div>
                         <h4 class="app-card-title">Sustento en Reclamos</h4>
-                        <p class="app-card-desc">Formulación y fundamentación de expedientes periciales de reclamo (claims) para solicitudes de ampliación de plazo y mayores gastos generales.</p>
+                        <p class="app-card-desc">Orientación técnica y fundamentación metodológica para expedientes de reclamo (claims) en solicitudes de ampliación de plazo y mayores gastos generales.</p>
                     </div>
 
                     <!-- Tarjeta 4 -->
@@ -476,7 +476,7 @@ declare(strict_types=1);
                             <i class="fa-solid fa-handshake-angle"></i>
                         </div>
                         <h4 class="app-card-title">Respaldo en Conciliación</h4>
-                        <p class="app-card-desc">Soporte pericial y asesoría experta en mesas de trato directo, Juntas de Resolución de Disputas (DAB), audiencias de conciliación y tribunales arbitrales.</p>
+                        <p class="app-card-desc">Asesoría especializada y acompañamiento técnico en mesas de trato directo, Juntas de Resolución de Disputas (DAB) y análisis contractual.</p>
                     </div>
 
                 </div>
@@ -491,10 +491,10 @@ declare(strict_types=1);
             <div class="cta-container">
                 <div class="cta-box">
                     <div class="cta-content">
-                        <span class="cta-tag"><i class="fa-solid fa-shield-halved"></i> Peritaje Especializado</span>
+                        <span class="cta-tag"><i class="fa-solid fa-shield-halved"></i> Asesoría Especializada</span>
                         <h3 class="animate__animated animate__fadeInUp animate__delay-1s">Analiza técnicamente los retrasos de tu proyecto</h3>
                         <p class="cta-subtext">
-                            Obtén un informe pericial objetivo basado en la metodología Collapse As-Built y protege los intereses contractuales de tu organización.
+                            Capacita a tu equipo o accede a asesoría técnica especializada basada en la metodología Collapse As-Built para fundamentar análisis de demoras contractuales.
                         </p>
                         
                         <!-- Teléfono Visible Clickeable -->

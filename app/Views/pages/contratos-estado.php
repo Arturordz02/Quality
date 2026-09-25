@@ -658,7 +658,7 @@ declare(strict_types=1);
                     <div class="col-12 col-sm-6 col-lg-3">
                         <div class="procurement-modalidad-card">
                             <div class="fw-bold text-dark mb-1"><i class="fas fa-circle-play me-1"></i> Clases Grabadas Online</div>
-                            <p class="small text-secondary mb-0">Acceso inmediato a grabaciones en alta definición.</p>
+                            <p class="small text-secondary mb-0">Acceso inmediato a las clases y disponible 24/7.</p>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-lg-3">
@@ -749,7 +749,7 @@ declare(strict_types=1);
                 <div class="procurement-enrollment-card">
                     
                     <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold text-uppercase mb-3 shadow-sm">
-                        <i class="fa-solid fa-bolt me-1"></i> VACANTES DISPONIBLES • INICIO INMEDIATO
+                        <i class="fa-solid fa-bolt me-1"></i> CAPACITACIÓN ESPECIALIZADA • MODALIDAD ONLINE
                     </span>
 
                     <h2 class="display-6 fw-extrabold text-uppercase mb-2 animate__animated animate__fadeInUp animate__delay-1s" style="font-family: var(--font-heading); color: var(--primary-blue);">
