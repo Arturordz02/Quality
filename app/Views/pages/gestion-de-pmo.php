@@ -20,7 +20,7 @@ declare(strict_types=1);
 
                 <div class="page-title-wrap">
                     <span class="section-tag"><i class="fa-solid fa-sitemap"></i> Servicio Especializado</span>
-                    <h1 class="page-main-title animate__animated animate__fadeInDown">GESTIÓN DE LA PMO Y PROYECTOS</h1>
+                    <h1 class="page-main-title animate__animated animate__fadeInDown">GESTIÓN DE PROYECTOS & PMO</h1>
                     <div class="title-underline"></div>
                 </div>
 

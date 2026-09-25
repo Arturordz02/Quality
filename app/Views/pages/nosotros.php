@@ -522,7 +522,7 @@ declare(strict_types=1);
                             <i class="fa-solid fa-certificate"></i>
                         </div>
                         <div>
-                            <h4 class="fw-bold font-montserrat fs-6 text-dark mb-1">Acreditación y Respaldo Ejecutivo</h4>
+                            <h4 class="fw-bold font-montserrat fs-6 text-dark mb-1">Respaldo Ejecutivo y Formación Especializada</h4>
                             <p class="text-secondary mb-0 small" style="line-height: 1.65;">
                                 Programas alineados a las mejores prácticas globales de PMI®, ISO 9001, Lean Construction Institute y VDC Stanford University.
                             </p>

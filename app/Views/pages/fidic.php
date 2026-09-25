@@ -758,7 +758,7 @@ declare(strict_types=1);
 
                     <h2 class="enroll-title animate__animated animate__fadeInUp animate__delay-1s">ASEGURA TU VACANTE EN EL PROGRAMA FIDIC</h2>
                     <p class="enroll-subtitle">
-                        Accede a formación especializada impartida por expertos legales y técnicos de referencia en megaproyectos de infraestructura.
+                        Accede a formación especializada impartida por expertos legales y técnicos de referencia en megaproyectos de infraestructura. Modalidad grabada 100% online. Acceso inmediato a las clases y disponible 24/7.
                     </p>
 
                     <!-- Beneficios de la Matrícula -->
@@ -781,14 +781,14 @@ declare(strict_types=1);
                             <div class="enroll-perk-icon">
                                 <i class="fa-solid fa-certificate"></i>
                             </div>
-                            <span>Diploma de Acreditación Internacional</span>
+                            <span>Incluye Diploma.</span>
                         </div>
 
                         <div class="enroll-perk-item">
                             <div class="enroll-perk-icon">
                                 <i class="fa-solid fa-briefcase"></i>
                             </div>
-                            <span>Acceso a Red de Contactos &amp; Bolsa Corporativa</span>
+                            <span>Acceso inmediato a las clases y disponible 24/7.</span>
                         </div>
                     </div>
 

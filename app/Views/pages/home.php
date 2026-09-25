@@ -740,7 +740,7 @@ body {
                     <div class="col-lg-3 col-md-6">
                         <div class="value-guarantee-card rounded-4 border-start border-4 border-warning" data-aos="fade-right">
                             <div class="value-icon"><i class="fa-solid fa-certificate text-warning"></i></div>
-                            <h4 class="fw-bold font-montserrat fs-6 text-dark">Diploma de Acreditación</h4>
+                            <h4 class="fw-bold font-montserrat fs-6 text-dark">Diploma</h4>
                             <p class="small text-muted mb-0">Certificado oficial con horas académicas y código único de validación.</p>
                         </div>
                     </div>
@@ -759,7 +759,7 @@ body {
                 <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
                     <div>
                         <h3 class="fw-bold font-montserrat text-dark fs-4 mb-0 animate__animated animate__fadeInUp animate__delay-1s">Cursos Ejecutivos Más Destacados</h3>
-                        <p class="text-muted small mb-0">Programas con apertura de inscripciones y certificación internacional</p>
+                        <p class="text-muted small mb-0">Programas con apertura de inscripciones y diploma</p>
                     </div>
                     <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill font-montserrat fw-semibold">
                         <i class="fa-solid fa-layer-group text-dark me-1"></i> +16 Cursos Disponibles
@@ -798,7 +798,7 @@ body {
                             </div>
                             <div class="course-card-body">
                                 <div>
-                                    <h4 class="course-card-title">Gestión de la PMO</h4>
+                                    <h4 class="course-card-title">GESTIÓN DE PROYECTOS & PMO</h4>
                                     <p class="course-card-desc">Diseño, implementación y gobernanza de Oficinas de Gestión de Proyectos en empresas de ingeniería.</p>
                                     <div class="course-instructor"><i class="fa-solid fa-user-tie text-success"></i> Expertos en PMO</div>
                                 </div>

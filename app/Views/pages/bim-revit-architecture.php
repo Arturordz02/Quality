@@ -657,12 +657,12 @@ declare(strict_types=1);
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="p-3 rounded-3 border border-secondary border-opacity-25" style="background: rgba(255, 255, 255, 0.03);">
-                                <i class="fa-solid fa-cloud-arrow-down text-warning me-2"></i> <span class="small text-light">Acceso a Grabaciones HD 24/7</span>
+                                <i class="fa-solid fa-cloud-arrow-down text-warning me-2"></i> <span class="small text-light">Acceso inmediato a las clases y disponible 24/7.</span>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="p-3 rounded-3 border border-secondary border-opacity-25" style="background: rgba(255, 255, 255, 0.03);">
-                                <i class="fa-solid fa-certificate text-warning me-2"></i> <span class="small text-light">Diploma de Acreditación Oficial</span>
+                                <i class="fa-solid fa-certificate text-warning me-2"></i> <span class="small text-light">Incluye Diploma.</span>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3">

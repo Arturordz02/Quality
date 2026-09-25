@@ -43,7 +43,7 @@ declare(strict_types=1);
                         </div>
                         <div class="hero-feature-content">
                             <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Modalidad Grabada Online</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Clases grabadas 100% online con acceso disponible 24/7.</p>
+                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Modalidad grabada 100% online. Acceso inmediato a las clases y disponible 24/7.</p>
                         </div>
                     </div>
 
@@ -64,8 +64,8 @@ declare(strict_types=1);
                             <i class="fa-solid fa-stamp"></i>
                         </div>
                         <div class="hero-feature-content">
-                            <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Acreditación Profesional</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Incluye Diploma de Acreditación + Ingreso a Bolsa de Trabajo + Descuentos de Ex-alumno.</p>
+                            <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Diploma y Beneficios</h3>
+                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Incluye Diploma + Ingreso a Bolsa de Trabajo + Descuentos de Ex-alumno.</p>
                         </div>
                     </div>
 
@@ -330,7 +330,7 @@ declare(strict_types=1);
                             <div class="enroll-perk-icon">
                                 <i class="fa-solid fa-certificate"></i>
                             </div>
-                            <span>Diploma de Acreditación Oficial</span>
+                            <span>Incluye Diploma.</span>
                         </div>
 
                         <div class="enroll-perk-item">

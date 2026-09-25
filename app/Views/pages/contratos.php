@@ -339,7 +339,7 @@ declare(strict_types=1);
                         <div class="contract-hero-card">
                             <div class="contract-hero-icon"><i class="fas fa-circle-play"></i></div>
                             <div class="contract-hero-card-title">Modalidad Grabada Online</div>
-                            <p class="contract-hero-card-desc">Clases grabadas 100% online con acceso disponible 24/7.</p>
+                            <p class="contract-hero-card-desc">Modalidad grabada 100% online. Acceso inmediato a las clases y disponible 24/7.</p>
                         </div>
                     </div>
 
@@ -356,7 +356,7 @@ declare(strict_types=1);
                     <div class="col-12 col-md-4">
                         <div class="contract-hero-card">
                             <div class="contract-hero-icon"><i class="fas fa-award"></i></div>
-                            <div class="contract-hero-card-title">Acreditación Oficial</div>
+                            <div class="contract-hero-card-title">Diploma y Beneficios</div>
                             <p class="contract-hero-card-desc">Incluye Diploma Físico + Ingreso a Bolsa de Trabajo + Descuentos como Ex-alumno.</p>
                         </div>
                     </div>
@@ -619,7 +619,7 @@ declare(strict_types=1);
                         <div class="benefit-badge-card">
                             <div class="benefit-badge-icon"><i class="fas fa-certificate"></i></div>
                             <h5 class="fw-bold mb-2">Diploma Físico</h5>
-                            <p class="text-secondary small mb-0">Incluye Diploma físico de acreditación al finalizar el programa de forma satisfactoria.</p>
+                            <p class="text-secondary small mb-0">Incluye Diploma físico al finalizar el programa de forma satisfactoria.</p>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
@@ -705,12 +705,12 @@ declare(strict_types=1);
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="p-3 rounded-3 border bg-white">
-                                <i class="fa-solid fa-certificate text-dark me-2"></i> <span class="small text-dark fw-bold">Diploma Físico Oficial</span>
+                                <i class="fa-solid fa-certificate text-dark me-2"></i> <span class="small text-dark fw-bold">Incluye Diploma físico.</span>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="p-3 rounded-3 border bg-white">
-                                <i class="fa-solid fa-briefcase text-dark me-2"></i> <span class="small text-dark fw-bold">Bolsa de Trabajo Exclusiva</span>
+                                <i class="fa-solid fa-briefcase text-dark me-2"></i> <span class="small text-dark fw-bold">Ingreso a bolsa de trabajo.</span>
                             </div>
                         </div>
                     </div>

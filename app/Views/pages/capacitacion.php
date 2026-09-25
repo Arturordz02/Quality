@@ -284,7 +284,7 @@ declare(strict_types=1);
                     <div class="col-lg-3 col-md-6">
                         <div class="value-guarantee-card rounded-4 border-start border-4 border-warning" data-aos="fade-left">
                             <div class="value-icon"><i class="fa-solid fa-certificate text-warning"></i></div>
-                            <h4 class="fw-bold font-montserrat fs-6 text-dark">Diploma de Acreditación</h4>
+                            <h4 class="fw-bold font-montserrat fs-6 text-dark">Diploma</h4>
                             <p class="small text-muted mb-0">Certificado oficial con horas académicas y código único de validación.</p>
                         </div>
                     </div>
@@ -356,9 +356,9 @@ declare(strict_types=1);
                             </div>
                             <div class="course-card-body">
                                 <div>
-                                    <h3 class="course-card-title animate__animated animate__fadeInUp animate__delay-1s">Gestión de la PMO</h3>
+                                    <h3 class="course-card-title animate__animated animate__fadeInUp animate__delay-1s">GESTIÓN DE PROYECTOS & PMO</h3>
                                     <p class="course-card-desc">Diseño, implementación y gobernanza de Oficinas de Gestión de Proyectos en empresas de ingeniería.</p>
-                                    <div class="course-instructor"><i class="fa-solid fa-user-tie text-success"></i> Expertos en Gobernanza PMO</div>
+                                    <div class="course-instructor"><i class="fa-solid fa-user-tie text-success"></i> Docente Especialista en PMO</div>
                                 </div>
                                 <div>
                                     <a href="/pmo" class="btn btn-sm w-100 py-2 fw-bold rounded-pill btn-qcs-primary" style="background-color: var(--qcs-yellow); color: var(--qcs-black); border-color: var(--qcs-yellow);">Ver Programa Completo <i class="fas fa-arrow-right ms-1"></i></a>

@@ -215,7 +215,7 @@ declare(strict_types=1);
                                     <i class="fa-solid fa-network-wired"></i>
                                 </div>
                                 <div class="value-list-content">
-                                    <h5>Red de Contactos y Networking de Alto Nivel</h5>
+                                    <h5>Red de contactos de alto nivel</h5>
                                     <p>Acceso a una comunidad estratégica de especialistas y referentes que enriquecen el intercambio profesional.</p>
                                 </div>
                             </li>
@@ -315,7 +315,7 @@ declare(strict_types=1);
                             ¡Impulsa el talento de tu equipo con un 5% de descuento exclusivo!
                         </h3>
                         <p class="promo-discount-desc">
-                            Inscríbete haciendo CLICK en alguno de los cursos y obtén un <strong>5% de descuento</strong>. Nos contactaremos contigo cuando inicie el programa. Toma nota de la fecha de lanzamiento.
+                            Inscríbete haciendo CLICK en alguno de los cursos y obtén un <strong>5% de descuento</strong>. Nos contactaremos contigo para coordinar el acceso a los programas seleccionados.
                         </p>
                     </div>
 

@@ -327,8 +327,8 @@ declare(strict_types=1);
                     <div class="col-12 col-sm-6 col-lg-3">
                         <div class="iso-benefit-card">
                             <div class="iso-benefit-icon"><i class="fa-solid fa-award"></i></div>
-                            <div class="iso-benefit-title">ACREDITACIÓN OFICIAL</div>
-                            <p class="iso-benefit-desc">Diploma de acreditación + Acceso a Bolsa de Trabajo + Descuentos de Ex-alumno.</p>
+                            <div class="iso-benefit-title">DIPLOMA Y BENEFICIOS</div>
+                            <p class="iso-benefit-desc">Incluye Diploma + ¡Libro Incluido! + Ingreso a Bolsa de Trabajo + Descuentos de Ex-alumno.</p>
                         </div>
                     </div>
 
@@ -620,12 +620,12 @@ declare(strict_types=1);
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="p-3 rounded-3 border bg-light">
-                                <i class="fa-solid fa-cloud-arrow-down text-success me-2"></i> <span class="small text-dark fw-bold">Acceso a Grabaciones HD 24/7</span>
+                                <i class="fa-solid fa-cloud-arrow-down text-success me-2"></i> <span class="small text-dark fw-bold">Acceso inmediato a las clases y disponible 24/7.</span>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="p-3 rounded-3 border bg-light">
-                                <i class="fa-solid fa-certificate text-success me-2"></i> <span class="small text-dark fw-bold">Diploma de Acreditación Oficial</span>
+                                <i class="fa-solid fa-certificate text-success me-2"></i> <span class="small text-dark fw-bold">Incluye Diploma.</span>
                             </div>
                         </div>
                     </div>

@@ -32,7 +32,7 @@ $activePage = $activePage ?? '';
                         ASESORÍA <i class="fa-solid fa-chevron-down arrow-icon"></i>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownConsultoria">
-                        <li><a href="/gestion-de-pmo" class="dropdown-item">GESTION DE PMO</a></li>
+                        <li><a href="/gestion-de-pmo" class="dropdown-item">GESTIÓN DE PROYECTOS & PMO</a></li>
                         <li><a href="/headhunting" class="dropdown-item">HEADHUNTING</a></li>
                         <li><a href="/gestion-de-riesgos" class="dropdown-item">GESTION DE RIESGOS</a></li>
                         <li><a href="/riesgo-del-plazo" class="dropdown-item">RIESGO DEL PLAZO</a></li>

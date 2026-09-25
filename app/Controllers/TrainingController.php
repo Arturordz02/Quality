@@ -23,7 +23,7 @@ class TrainingController extends Controller
     {
         $data = [
             'title'           => 'Capacitación Ejecutiva y Programas de Especialización | Quality Consulting Solutions',
-            'metaDescription' => 'Programas de especialización profesional en Dirección de Proyectos, Contratos FIDIC, Gestión de Calidad, BIM, PMO y Valor Ganado. Cursos 100% online con grabaciones en alta definición y certificación.',
+            'metaDescription' => 'Cursos de capacitación especializada, grabados y 100% online, dirigidos a profesionales del sector construcción, con acceso inmediato a las clases y disponible 24/7.',
             'canonical'       => 'https://quality-consulting.org/capacitacion',
             'activePage'      => 'capacitacion',
         ];
@@ -337,8 +337,8 @@ class TrainingController extends Controller
     public function pmo(): void
     {
         $data = [
-            'title'           => 'Capacitación: Gestión de la PMO | Quality Consulting Solutions',
-            'metaDescription' => 'Curso de capacitación especializada en Gestión de la PMO (Project Management Office). Domina la alineación estratégica, gobernanza y gestión de portafolios, programas y proyectos.',
+            'title'           => 'GESTIÓN DE PROYECTOS & PMO | Quality Consulting Solutions',
+            'metaDescription' => 'Curso de capacitación especializada en Gestión de Proyectos & PMO. Domina la alineación estratégica y gestión de portafolios, programas y proyectos.',
             'canonical'       => 'https://quality-consulting.org/pmo',
             'activePage'      => 'capacitacion',
         ];

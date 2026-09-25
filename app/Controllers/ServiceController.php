@@ -52,7 +52,7 @@ class ServiceController extends Controller
     public function gestionPmo(): void
     {
         $data = [
-            'title'           => 'Gestión de la PMO y Proyectos | Quality Consulting Solutions',
+            'title'           => 'GESTIÓN DE PROYECTOS & PMO | Quality Consulting Solutions',
             'metaDescription' => 'Asesoría técnica y capacitación especializada en gestión de PMO, planificación y control de proyectos, gestión de portafolios y KPIs.',
             'canonical'       => 'https://quality-consulting.org/gestion-de-pmo',
             'activePage'      => 'consultoria',

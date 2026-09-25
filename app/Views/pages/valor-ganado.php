@@ -534,14 +534,14 @@ declare(strict_types=1);
                             <div class="enroll-perk-icon">
                                 <i class="fa-solid fa-cloud-arrow-down"></i>
                             </div>
-                            <span>Acceso a Grabaciones HD 24/7</span>
+                            <span>Acceso inmediato a las clases y disponible 24/7.</span>
                         </div>
 
                         <div class="enroll-perk-item">
                             <div class="enroll-perk-icon">
                                 <i class="fa-solid fa-certificate"></i>
                             </div>
-                            <span>Diploma de Acreditación Oficial</span>
+                            <span>Incluye Diploma.</span>
                         </div>
 
                         <div class="enroll-perk-item">

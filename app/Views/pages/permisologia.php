@@ -121,7 +121,7 @@ declare(strict_types=1);
                         </div>
 
                         <p class="paragraph-text" style="font-size: 0.92rem; color: #475569;">
-                            Articulamos ágilmente con cada autoridad involucrada para asegurar que los permisos se obtengan en los plazos planificados, protegiendo la ruta crítica de tu inversión.
+                            Orientamos técnicamente la articulación ante cada autoridad involucrada para facilitar el cumplimiento normativo en los plazos planificados, protegiendo la ruta crítica de tu inversión.
                         </p>
                     </div>
 

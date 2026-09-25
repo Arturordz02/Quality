@@ -457,7 +457,7 @@ declare(strict_types=1);
                         <div class="analytics-hero-card">
                             <div class="analytics-hero-icon"><i class="fas fa-award"></i></div>
                             <div class="analytics-hero-card-title">Desarrollo Profesional</div>
-                            <p class="analytics-hero-card-desc">Incluye Diploma + Ingreso a Bolsa de Trabajo + Beneficios como Ex-alumno.</p>
+                            <p class="analytics-hero-card-desc">Incluye Diploma + Ingreso a Bolsa de Trabajo + Descuentos de Ex-alumno.</p>
                         </div>
                     </div>
 
@@ -735,7 +735,7 @@ declare(strict_types=1);
                     <div class="col-12 col-md-4">
                         <div class="benefit-badge-card">
                             <div class="benefit-badge-icon"><i class="fas fa-certificate"></i></div>
-                            <h5 class="fw-bold mb-2">Diploma de Acreditación</h5>
+                            <h5 class="fw-bold mb-2">Diploma</h5>
                             <p class="text-secondary small mb-0">Incluye Diploma al completar el programa de acuerdo con las condiciones académicas establecidas.</p>
                         </div>
                     </div>
@@ -845,22 +845,22 @@ declare(strict_types=1);
                     <div class="row g-3 mb-4 text-start justify-content-center">
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="p-3 rounded-3 border bg-white">
-                                <i class="fa-solid fa-circle-play text-warning me-2"></i> <span class="small text-dark fw-bold">Clases Grabadas 100% Online</span>
+                                <i class="fa-solid fa-circle-play text-warning me-2"></i> <span class="small text-dark fw-bold">Modalidad grabada 100% online.</span>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="p-3 rounded-3 border bg-white">
-                                <i class="fa-solid fa-cloud-arrow-down text-warning me-2"></i> <span class="small text-dark fw-bold">Grabaciones HD 24/7 sin Límite</span>
+                                <i class="fa-solid fa-cloud-arrow-down text-warning me-2"></i> <span class="small text-dark fw-bold">Acceso inmediato a las clases y disponible 24/7.</span>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="p-3 rounded-3 border bg-white">
-                                <i class="fa-solid fa-certificate text-warning me-2"></i> <span class="small text-dark fw-bold">Diploma de Acreditación Oficial</span>
+                                <i class="fa-solid fa-certificate text-warning me-2"></i> <span class="small text-dark fw-bold">Incluye Diploma.</span>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="p-3 rounded-3 border bg-white">
-                                <i class="fa-solid fa-briefcase text-warning me-2"></i> <span class="small text-dark fw-bold">Bolsa de Trabajo Exclusiva</span>
+                                <i class="fa-solid fa-briefcase text-warning me-2"></i> <span class="small text-dark fw-bold">Ingreso a bolsa de trabajo.</span>
                             </div>
                         </div>
                     </div>

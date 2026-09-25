@@ -394,7 +394,7 @@ declare(strict_types=1);
                         <div class="pmi-hero-card">
                             <div class="pmi-hero-icon"><i class="fas fa-circle-play"></i></div>
                             <div class="pmi-hero-card-title">Modalidad Grabada Online</div>
-                            <p class="pmi-hero-card-desc">Clases grabadas 100% online con acceso disponible 24/7.</p>
+                            <p class="pmi-hero-card-desc">Modalidad grabada 100% online. Acceso inmediato a las clases y disponible 24/7.</p>
                         </div>
                     </div>
 
@@ -828,17 +828,17 @@ declare(strict_types=1);
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="p-3 rounded-3 border bg-white">
-                                <i class="fa-solid fa-cloud-arrow-down text-dark me-2"></i> <span class="small text-dark fw-bold">Acceso a Grabaciones HD 24/7</span>
+                                <i class="fa-solid fa-cloud-arrow-down text-dark me-2"></i> <span class="small text-dark fw-bold">Acceso inmediato a las clases y disponible 24/7.</span>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="p-3 rounded-3 border bg-white">
-                                <i class="fa-solid fa-certificate text-dark me-2"></i> <span class="small text-dark fw-bold">Diploma de Acreditación Oficial</span>
+                                <i class="fa-solid fa-certificate text-dark me-2"></i> <span class="small text-dark fw-bold">Incluye Diploma.</span>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="p-3 rounded-3 border bg-white">
-                                <i class="fa-solid fa-briefcase text-dark me-2"></i> <span class="small text-dark fw-bold">Bolsa de Trabajo Exclusiva</span>
+                                <i class="fa-solid fa-briefcase text-dark me-2"></i> <span class="small text-dark fw-bold">Ingreso a bolsa de trabajo.</span>
                             </div>
                         </div>
                     </div>

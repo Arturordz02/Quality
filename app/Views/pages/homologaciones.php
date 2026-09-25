@@ -90,7 +90,7 @@ declare(strict_types=1);
                         </p>
 
                         <p class="paragraph-text">
-                            Este procedimiento busca garantizar que el proveedor cuente con los estándares necesarios para ejecutar servicios o suministrar bienes con los más altos niveles de calidad, solvencia financiera, seguridad laboral, gestión ambiental y cumplimiento legal.
+                            Este procedimiento busca verificar que el proveedor cuente con los estándares necesarios para ejecutar servicios o suministrar bienes con los más altos niveles de calidad, solvencia financiera, seguridad laboral, gestión ambiental y cumplimiento legal.
                         </p>
 
                         <!-- Diagrama de flujo simplificado mediante badges -->
@@ -116,7 +116,7 @@ declare(strict_types=1);
                         </div>
 
                         <p class="paragraph-text" style="font-size: 0.92rem; color: #475569;">
-                            En Quality Consulting Solutions brindamos asesoría técnica especializada para orientar y preparar a tu empresa en la comprensión, ordenamiento y cumplimiento de los requisitos exigidos por entidades evaluadoras como SGS, Bureau Veritas, Hodelpe, AENOR, entre otras.
+                            En Quality Consulting Solutions brindamos asesoría técnica especializada para orientar y preparar previamente los expedientes y requisitos técnicos, operativos y de seguridad de su empresa ante procesos de homologación.
                         </p>
                     </div>
 
@@ -334,11 +334,11 @@ declare(strict_types=1);
                         </p>
 
                         <p class="paragraph-text">
-                            Comprendemos la terminología técnica, la dinámica real de las obras y los estándares contractuales más exigentes. Nuestros consultores senior cuentan con amplia experiencia en la estructuración de expedientes para las principales entidades homologadoras del país (SGS, Bureau Veritas, Hodelpe, Mega, AENOR, etc.).
+                            Comprendemos la terminología técnica, la dinámica real de las obras y los estándares contractuales más exigentes. Nuestros consultores senior cuentan con amplia experiencia en la estructuración y preparación técnica de expedientes para las entidades evaluadoras y homologadoras.
                         </p>
 
                         <p class="paragraph-text">
-                            No solo te ayudamos a obtener el certificado de homologación con la máxima calificación (categoría A / sobresaliente), sino que dejamos implementados procedimientos y registros útiles que elevan la productividad y la seguridad de tu operación.
+                            Brindamos asesoría técnica y preparación formativa para que su organización comprenda, ordene y sustente adecuadamente los requisitos solicitados por las entidades evaluadoras, implementando procedimientos y registros útiles que elevan la productividad y la seguridad de tu operación.
                         </p>
 
                         <!-- Puntos clave de valor -->
@@ -346,8 +346,8 @@ declare(strict_types=1);
                             <div class="pmo-card">
                                 <div class="pmo-card-icon"><i class="fa-solid fa-bullseye"></i></div>
                                 <div class="pmo-card-body">
-                                    <h4 class="pmo-card-title">Máxima Calificación</h4>
-                                    <p class="pmo-card-desc">Optimizamos cada sección del cuestionario para superar el 95% de puntuación en auditoría.</p>
+                                    <h4 class="pmo-card-title">Preparación Integral</h4>
+                                    <p class="pmo-card-desc">Orientamos la estructuración técnica de cada sección del cuestionario y sustento documental ante las entidades evaluadoras.</p>
                                 </div>
                             </div>
                             <div class="pmo-card">
@@ -373,7 +373,7 @@ declare(strict_types=1);
                                 </div>
                             </div>
                             <div class="image-caption-box">
-                                <p><strong>Supervisión en Campo:</strong> Consultores con experiencia directa en obra, garantizando que la documentación refleje la realidad operativa de tus proyectos.</p>
+                                <p><strong>Supervisión en Campo:</strong> Consultores con experiencia directa en obra, orientando una rigurosa estructuración técnica de la documentación que refleje la realidad operativa de tus proyectos.</p>
                             </div>
                         </div>
                     </div>

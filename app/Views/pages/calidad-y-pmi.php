@@ -43,7 +43,7 @@ declare(strict_types=1);
                         </div>
                         <div class="hero-feature-content">
                             <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Modalidad Grabada Online</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Clases grabadas 100% online con acceso disponible 24/7.</p>
+                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Modalidad grabada 100% online. Acceso inmediato a las clases y disponible 24/7.</p>
                         </div>
                     </div>
 
@@ -64,8 +64,8 @@ declare(strict_types=1);
                             <i class="fa-solid fa-stamp"></i>
                         </div>
                         <div class="hero-feature-content">
-                            <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Acreditación Profesional</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Incluye Diploma Físico de acreditación + Ingreso a Bolsa de Trabajo + Descuentos de Ex-alumno.</p>
+                            <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Diploma y Beneficios</h3>
+                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Incluye Diploma físico + Ingreso a Bolsa de Trabajo + Descuentos de Ex-alumno.</p>
                         </div>
                     </div>
 
@@ -333,14 +333,14 @@ declare(strict_types=1);
                             <div class="enroll-perk-icon">
                                 <i class="fa-solid fa-circle-play"></i>
                             </div>
-                            <span>Clases Grabadas Online + Acceso disponible 24/7</span>
+                            <span>Acceso inmediato a las clases y disponible 24/7.</span>
                         </div>
 
                         <div class="enroll-perk-item">
                             <div class="enroll-perk-icon">
                                 <i class="fa-solid fa-graduation-cap"></i>
                             </div>
-                            <span>Diploma Físico de Acreditación Oficial</span>
+                            <span>Incluye Diploma físico.</span>
                         </div>
 
                         <div class="enroll-perk-item">
@@ -402,7 +402,7 @@ declare(strict_types=1);
                         <span class="cta-tag"><i class="fa-solid fa-award"></i> Estándar de Excelencia</span>
                         <h3 class="animate__animated animate__fadeInUp animate__delay-1s">Eleva el estándar de calidad en tus proyectos</h3>
                         <p>
-                            Contáctanos hoy mismo para asegurar tu vacante preferencial, coordinar capacitaciones in-house corporativas o resolver cualquier duda sobre la certificación.
+                            Contáctanos hoy mismo para asegurar tu vacante preferencial, coordinar capacitaciones in-house corporativas o resolver cualquier duda sobre el diploma físico.
                         </p>
                         
                         <!-- Teléfono Visible Clickeable Requerido -->
