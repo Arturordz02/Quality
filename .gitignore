@@ -73,6 +73,7 @@ yarn-debug.log*
 *~
 *.swp
 *.swo
+scratch/
 
 # 7. Archivos del Sistema Operativo
 .DS_Store
