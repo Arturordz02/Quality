@@ -293,8 +293,8 @@ declare(strict_types=1);
                 <div class="cta-box">
                     <div class="cta-content">
                         <span class="cta-tag">Innovación y Metodología Aplicada</span>
-                        <h3 class="animate__animated animate__fadeInUp animate__delay-1s">¿Desea implementar metodologías de nivel Stanford en sus proyectos?</h3>
-                        <p>Integre soluciones avanzadas de BIM LOD 400, Last Planner y analítica predictiva con nuestro equipo consultor.</p>
+                        <h3 class="animate__animated animate__fadeInUp animate__delay-1s">¿Desea capacitar a su equipo en metodologías de vanguardia para sus proyectos?</h3>
+                        <p>Capacitación y asesoría técnica en metodologías avanzadas de BIM LOD 400, Last Planner y analítica aplicada a proyectos.</p>
                     </div>
                     <div class="cta-actions">
                         <a href="/contacto" class="btn btn-large btn-qcs-primary">

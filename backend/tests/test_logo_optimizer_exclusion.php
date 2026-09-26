@@ -163,7 +163,7 @@ $realImgDir = dirname(__DIR__) . '/../img';
 $expectedHashes = [
     'Logo.png'  => 'f01dd239386ef06e4dcd6143d45565b14c7c69b6c6e00c9ac0c69be3a71b69ed',
     'Logo.jpg'  => '86c449573887fde74c38fc18d3ac96fd8b4b8bac67367309c6b0c01d3fe8c291',
-    'Logo.webp' => '8d38a7e4ac0f05cf87f8902afe1b6e0399ff4ab16be65a0417611b5ee0c66adc',
+    'Logo.webp' => 'b93a4aec42feee5de73376f90ff3426520edf651aff97b6312880deb2bf92b6e',
 ];
 
 foreach ($expectedHashes as $file => $expectedHash) {

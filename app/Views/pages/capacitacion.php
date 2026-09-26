@@ -449,7 +449,7 @@ declare(strict_types=1);
                             <div class="course-card-body">
                                 <div>
                                     <h3 class="course-card-title animate__animated animate__fadeInUp animate__delay-1s">ISO 9001:2015 para la Construcción</h3>
-                                    <p class="course-card-desc">Implementación y auditoría interna de sistemas de gestión de calidad en obras y oficinas centrales.</p>
+                                    <p class="course-card-desc">Formación en implementación y auditoría interna de sistemas de gestión de calidad en obras y oficinas centrales.</p>
                                     <div class="course-instructor"><i class="fa-solid fa-user-tie text-warning"></i> Auditores ISO 9001</div>
                                 </div>
                                 <div>

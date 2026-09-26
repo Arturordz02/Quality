@@ -468,11 +468,11 @@ body {
 
                 <!-- Botones CTA -->
                 <div class="d-flex justify-content-center flex-wrap gap-3">
-                    <a href="/consultoria" class="btn btn-qcs-primary btn-lg fw-bold rounded-pill shadow">
-                        <i class="fas fa-briefcase me-2"></i> Ver Asesoría Especializada
-                    </a>
-                    <a href="/capacitacion" class="btn btn-qcs-dark btn-lg fw-bold rounded-pill shadow">
+                    <a href="/capacitacion" class="btn btn-qcs-primary btn-lg fw-bold rounded-pill shadow">
                         <i class="fas fa-graduation-cap me-2"></i> Cursos &amp; Capacitaciones
+                    </a>
+                    <a href="/consultoria" class="btn btn-qcs-dark btn-lg fw-bold rounded-pill shadow">
+                        <i class="fas fa-briefcase me-2"></i> Ver Asesoría Especializada
                     </a>
                 </div>
 

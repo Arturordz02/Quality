@@ -54,7 +54,7 @@ declare(strict_types=1);
                         </div>
                         <div class="hero-feature-content">
                             <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Acceso Multiplataforma</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">PC, Laptop, Tablet y Celular (Video HD y plataforma online 24/7).</p>
+                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">PC, Laptop, Tablet y Celular (Video HD disponibles 24/7).</p>
                         </div>
                     </div>
 

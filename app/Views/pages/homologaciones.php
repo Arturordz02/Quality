@@ -338,7 +338,7 @@ declare(strict_types=1);
                         </p>
 
                         <p class="paragraph-text">
-                            Brindamos asesoría técnica y preparación formativa para que su organización comprenda, ordene y sustente adecuadamente los requisitos solicitados por las entidades evaluadoras, implementando procedimientos y registros útiles que elevan la productividad y la seguridad de tu operación.
+                            Brindamos asesoría técnica y preparación formativa para que su organización comprenda, ordene y sustente adecuadamente los requisitos solicitados por las entidades evaluadoras, facilitando pautas y registros útiles que elevan la productividad y la seguridad de su operación.
                         </p>
 
                         <!-- Puntos clave de valor -->
