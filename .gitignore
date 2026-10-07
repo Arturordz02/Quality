@@ -1,0 +1,29 @@
+# Entornos y Credenciales
+.env
+*.env
+!.env.example
+private_app/.env
+!private_app/.env.example
+
+# Logs y Temporales
+*.log
+logs/
+tmp/
+temp/
+
+# IDEs y Editores
+.vscode/
+.idea/
+*.suo
+*.user
+*.ntvs*
+*.njsproj
+*.sln
+.agents/
+
+# Sistema Operativo
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store

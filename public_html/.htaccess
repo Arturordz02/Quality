@@ -1,0 +1,157 @@
+# ==============================================================================
+# QUALITY CONSULTING SOLUTIONS - CONFIGURACIÓN DE PRODUCCIÓN GODADDY / CPANEL
+# ==============================================================================
+
+# 1. COMPRESIÓN HTTP (GZIP / DEFLATE)
+<IfModule mod_deflate.c>
+    <IfModule mod_filter.c>
+        AddOutputFilterByType DEFLATE text/plain
+        AddOutputFilterByType DEFLATE text/html
+        AddOutputFilterByType DEFLATE text/xml
+        AddOutputFilterByType DEFLATE text/css
+        AddOutputFilterByType DEFLATE text/javascript
+        AddOutputFilterByType DEFLATE application/xml
+        AddOutputFilterByType DEFLATE application/xhtml+xml
+        AddOutputFilterByType DEFLATE application/rss+xml
+        AddOutputFilterByType DEFLATE application/javascript
+        AddOutputFilterByType DEFLATE application/x-javascript
+        AddOutputFilterByType DEFLATE application/json
+        AddOutputFilterByType DEFLATE image/svg+xml
+        AddOutputFilterByType DEFLATE image/x-icon
+    </IfModule>
+</IfModule>
+
+# 2. POLÍTICA DE CACHÉ EN NAVEGADOR
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+
+    # Assets estáticos: 1 año
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+
+    # Estilos y scripts
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+
+    # Documentos dinámicos
+    ExpiresByType text/html "access plus 0 seconds"
+    ExpiresByType application/json "access plus 0 seconds"
+</IfModule>
+
+# 3. CABECERAS DE SEGURIDAD
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    <FilesMatch "\.(ico|jpe?g|png|gif|webp|svg|css|js)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+</IfModule>
+
+# 4. PROTECCIÓN DE ARCHIVOS CRÍTICOS Y PRIVADOS
+<FilesMatch "^\.env">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "(^\.git|^#.*#|\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|sw[op]|cache|md|yml|yaml)|~)$">
+    Require all denied
+</FilesMatch>
+
+# Bloquear acceso web a cualquier intento hacia private_app
+<IfModule mod_alias.c>
+    RedirectMatch 403 (?i)^.*private_app.*$
+</IfModule>
+
+ServerSignature Off
+
+# 5. NEGOCIACIÓN DE CONTENIDO WEBP AUTOMÁTICA (CON PRESERVACIÓN DE LOGO.PNG)
+<IfModule mod_mime.c>
+    AddType image/webp .webp
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Bloquear acceso a private_app
+    RewriteCond %{REQUEST_URI} private_app [NC]
+    RewriteRule ^ - [F,L]
+
+    # Preservar Logo.png con canal alfa/transparencia intacta
+    RewriteCond %{REQUEST_URI} Logo\.png$ [NC]
+    RewriteRule \.png$ - [L]
+
+    # Si el cliente no soporta WebP, entregar imagen original
+    RewriteCond %{HTTP_ACCEPT} !image/webp
+    RewriteRule \.(jpe?g|png)$ - [L]
+
+    # Si el cliente soporta WebP y el archivo .webp existe
+    RewriteCond %{DOCUMENT_ROOT}/$1.webp -f
+    RewriteRule ^(.+)\.(jpe?g|png)$ $1.webp [T=image/webp,E=accept:1,L]
+
+    RewriteCond %{REQUEST_FILENAME} ^(.+)\.(jpe?g|png)$ [NC]
+    RewriteCond %1.webp -f
+    RewriteRule ^(.+)\.(jpe?g|png)$ $1.webp [T=image/webp,E=accept:1,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header append Vary Accept env=REDIRECT_accept
+    <FilesMatch "\.(jpe?g|png)$">
+        Header append Vary Accept
+    </FilesMatch>
+</IfModule>
+
+# 6. PÁGINA 404 DE CONTINGENCIA
+ErrorDocument 404 /404.html
+
+# 7. REDIRECCIÓN HTTPS (OPCIONAL PARA ACTIVAR EN PRODUCCIÓN)
+<IfModule mod_rewrite.c>
+    # RewriteCond %{HTTPS} off
+    # RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# 8. ENRUTAMIENTO MVC Y NORMALIZACIÓN SEO 301
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # 8.1 Exclusión de proxies de backend autorizados y assets estáticos
+    RewriteCond %{REQUEST_URI} ^/(backend|img|css|js|fonts|assets)/ [NC]
+    RewriteRule ^ - [L]
+
+    # 8.2 Normalización SEO 301: index.html a raíz limpia /
+    RewriteCond %{THE_REQUEST} /index\.html[\s?] [NC]
+    RewriteRule ^index\.html$ / [R=301,L,NE,QSD]
+
+    # 8.3 Normalización SEO 301: Redirigir antiguas URLs .html hacia sus rutas limpias MVC
+    RewriteCond %{THE_REQUEST} \.html[\s?] [NC]
+    RewriteCond %{REQUEST_URI} !index\.html$ [NC]
+    RewriteCond %{REQUEST_URI} !404\.html$ [NC]
+    RewriteRule ^(bim-revit-architecture|calidad-y-pmi|capacitacion|clientes|consultoria|contacto|contratos-estado|contratos|costos|cronograma-forense|encuestas-proyectos|evaluacion-habilidades|fidic|gerencia-de-calidad|gestion-de-la-calidad|gestion-de-pmo|gestion-de-riesgos|gruas-torre|headhunting|herramientas|homologaciones|investigacion|iso-9001|lean-last-planner|lego-serious-play|libro-de-reclamaciones|medios|nec|nosotros|noticias|oficina-tecnica|permisologia|pmo|press|proyectos-pmi|riesgo-del-plazo|riesgos-cadena-produccion|riesgos-pmi|riesgos-tecnicos|sindrome-del-90|terminos-y-condiciones|universidad-corporativa|valor-ganado)\.html$ /$1 [R=301,L,QSA]
+
+    # 8.4 Enrutamiento raíz hacia Front Controller
+    RewriteRule ^$ index.php [L]
+
+    # 8.5 Preservar archivos y directorios físicos existentes (styles.css, script.js, robots.txt, etc.)
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # 8.6 Despacho de todas las rutas limpias al Front Controller MVC
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+

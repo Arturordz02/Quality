@@ -1,0 +1,30 @@
+==============================================================================
+QUALITY CONSULTING SOLUTIONS - INSTRUCCIONES DE BASE DE DATOS PARA CPANEL
+==============================================================================
+
+Para desplegar la base de datos de Quality Consulting Solutions en GoDaddy / cPanel:
+
+1. CREACIÓN DE BASE DE DATOS Y USUARIO EN CPANEL:
+   - Ingresa a cPanel -> "Bases de datos MySQL".
+   - Crea una nueva base de datos (ejemplo: usuario_quality_web).
+   - Crea un nuevo usuario de base de datos con contraseña robusta.
+   - Asigna el usuario a la base de datos otorgando "TODOS LOS PRIVILEGIOS" (ALL PRIVILEGES).
+
+2. IMPORTACIÓN DE ESQUEMAS EN PHPMYADMIN:
+   - Abre "phpMyAdmin" desde cPanel.
+   - Selecciona la base de datos recién creada en el panel izquierdo.
+   - Haz clic en la pestaña "Importar".
+   - Importa en el siguiente orden estricto:
+     a) schema.sql
+        (Crea las tablas del sistema: contactos, reclamaciones, etc.)
+     b) schema_soft_skills.sql
+        (Crea las tablas y catálogo del módulo de evaluación de habilidades)
+     c) migrations/001_add_queue_id_contactos.sql
+        (Añade campos de auditoría y cola de contingencia para formularios)
+
+3. CONFIGURACIÓN EN EL SERVIDOR:
+   - Coloca los datos de conexión (DB_NAME, DB_USER, DB_PASSWORD, DB_HOST=localhost)
+     en tu archivo seguro privado 'private_app/.env' o 'private_app/env.php'.
+   - Asegúrate de configurar DB_ENABLED=true en el archivo de entorno.
+==============================================================================
+
