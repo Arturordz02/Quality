@@ -641,6 +641,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const formFeedback = document.getElementById('modalFormFeedback');
         const submitBtn = document.getElementById('modalSubmitBtn');
 
+        // Bloqueo y restauración de scroll global al abrir o cerrar modales
+        document.addEventListener('show.bs.modal', () => {
+            document.documentElement.classList.add('modal-open');
+            document.body.classList.add('modal-open');
+            document.documentElement.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden';
+        });
+
+        document.addEventListener('hidden.bs.modal', () => {
+            if (!document.querySelector('.modal.show')) {
+                document.documentElement.classList.remove('modal-open');
+                document.body.classList.remove('modal-open');
+                document.documentElement.style.overflow = '';
+                document.body.style.overflow = '';
+            }
+        });
+
         // Al abrir el modal, capturar el servicio/curso del botón activador
         infoModalEl.addEventListener('show.bs.modal', (event) => {
             const button = event.relatedTarget;
@@ -686,10 +703,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                if (submitBtn) {
-                    submitBtn.disabled = true;
-                    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Enviando...';
-                }
+                const btnText = submitBtn ? submitBtn.querySelector('.btn-text') : null;
+                const btnLoading = submitBtn ? submitBtn.querySelector('.btn-loading') : null;
+
+                if (submitBtn) submitBtn.disabled = true;
+                if (btnText) btnText.classList.add('d-none');
+                if (btnLoading) btnLoading.classList.remove('d-none');
 
                 const formData = new FormData(modalForm);
 
@@ -707,7 +726,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (response.ok && (result.success !== false)) {
                         if (formFeedback) {
                             formFeedback.className = 'alert alert-success py-2 px-3 small mb-3';
-                            formFeedback.innerHTML = '<i class="fa-solid fa-circle-check me-2"></i><strong>¡Solicitud enviada con éxito!</strong> Un asesor te contactará a la brevedad.';
+                            formFeedback.innerHTML = '<i class="fa-solid fa-circle-check me-2"></i><strong>¡Solicitud enviada con éxito!</strong> Un asesor se comunicará contigo a la brevedad.';
                         }
                         modalForm.reset();
                         modalForm.classList.remove('was-validated');
@@ -718,7 +737,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                         }, 2500);
                     } else {
-                        throw new Error(result.error || result.message || 'Error al procesar la solicitud.');
+                        const errorMsg = (result.errors && Object.values(result.errors).join('<br>')) || result.error || result.message || 'Error al procesar la solicitud.';
+                        throw new Error(errorMsg);
                     }
                 } catch (error) {
                     if (formFeedback) {
@@ -726,10 +746,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         formFeedback.innerHTML = `<i class="fa-solid fa-triangle-exclamation me-2"></i>${error.message || 'Ocurrió un error. Por favor comunícate por WhatsApp.'}`;
                     }
                 } finally {
-                    if (submitBtn) {
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane me-2"></i> Enviar Solicitud';
-                    }
+                    if (submitBtn) submitBtn.disabled = false;
+                    if (btnText) btnText.classList.remove('d-none');
+                    if (btnLoading) btnLoading.classList.add('d-none');
                 }
             });
         }

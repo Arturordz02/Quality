@@ -36,14 +36,14 @@ declare(strict_types=1);
                 <!-- Grid de 3 Tarjetas de Características Destacadas dentro del Hero -->
                 <div class="hero-cards-grid">
                     
-                    <!-- Tarjeta 1: Duración & Modalidad -->
+                    <!-- Tarjeta 1: Modalidad -->
                     <div class="hero-feature-card">
                         <div class="hero-feature-icon">
-                            <i class="fa-solid fa-circle-play"></i>
+                            <i class="fa-solid fa-graduation-cap"></i>
                         </div>
                         <div class="hero-feature-content">
-                            <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Duración &amp; Modalidad</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">16 horas netas en modalidad grabada 100% online. Acceso inmediato a las clases y disponible 24/7.</p>
+                            <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Capacitaciones Grabadas y En Vivo</h3>
+                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Aprende a tu ritmo con clases grabadas o consulta disponibilidad para sesiones en vivo con nuestros especialistas.</p>
                         </div>
                     </div>
 

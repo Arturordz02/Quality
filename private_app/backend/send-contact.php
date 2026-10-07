@@ -38,7 +38,7 @@ if (!empty($rawBody)) {
 
 // 1. Verificación Anti-Spam (Honeypot)
 $honeypotField = $config['security']['honeypot_field'] ?? '_qcs_verification_hp';
-if (!Security::verifyHoneypot($inputData, $honeypotField)) {
+if (!Security::verifyHoneypot($inputData, $honeypotField) || !Security::verifyHoneypot($inputData, '_qcs_modal_verification_hp')) {
     Security::jsonSuccess('¡Gracias por comunicarte con Quality Consulting Solutions! Tu mensaje ha sido recibido.');
 }
 
@@ -47,7 +47,14 @@ $nombre   = Security::sanitizeString($inputData['nombre'] ?? '', 120);
 $telefono = Security::sanitizeString($inputData['telefono'] ?? '', 30);
 $empresa  = Security::sanitizeString($inputData['empresa'] ?? '', 120);
 $email    = Security::sanitizeEmail($inputData['email'] ?? '');
-$consulta = Security::sanitizeMultiline($inputData['consulta'] ?? '', 4000);
+$programa = Security::sanitizeString($inputData['programa'] ?? '', 150);
+$rawConsulta = Security::sanitizeMultiline($inputData['consulta'] ?? ($inputData['mensaje'] ?? ''), 4000);
+
+if (!empty($programa) && !str_contains($rawConsulta, '[Programa de Interés:')) {
+    $consulta = "[Programa de Interés: {$programa}]\n" . $rawConsulta;
+} else {
+    $consulta = $rawConsulta;
+}
 
 $errors = [];
 
