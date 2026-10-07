@@ -275,22 +275,14 @@ declare(strict_types=1);
                         <span class="cta-tag"><i class="fa-solid fa-bolt"></i> Long List de Cortesía</span>
                         <h3 class="animate__animated animate__fadeInUp animate__delay-1s">¿Necesitas encontrar al profesional adecuado para tu proyecto?</h3>
                         <p class="cta-subtext">"Envíanos tu requerimiento y te daremos un long list de cortesía."</p>
-                        
-                        <!-- Teléfono Visible Clickeable -->
-                        <div class="cta-phone-wrapper">
-                            <a href="tel:+51993463118" class="cta-phone-link" aria-label="Llamar al +51 993 463 118">
-                                <i class="fa-solid fa-phone-volume"></i>
-                                <span>+51 993 463 118</span>
-                            </a>
-                        </div>
                     </div>
 
                     <div class="cta-actions">
-                        <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="btn btn-large animate__animated animate__pulse animate__infinite btn-qcs-primary">
-                            <i class="fa-brands fa-whatsapp"></i> Solicitar información
-                        </a>
-                        <a href="/contacto" class="btn btn-large btn-qcs-dark">
-                            <i class="fa-solid fa-envelope"></i> Enviar Requerimiento
+                        <button type="button" class="btn btn-large btn-qcs-primary" data-bs-toggle="modal" data-bs-target="#modalSolicitarInfo" data-service="Headhunting & Búsqueda Ejecutiva">
+                            <i class="fa-solid fa-file-signature"></i> Enviar Requerimiento
+                        </button>
+                        <a href="https://wa.me/51993463118?text=Hola,%20deseo%20solicitar%20un%20Long%20List%20de%20cortes%C3%ADa%20para%20Headhunting" target="_blank" rel="noopener noreferrer" class="btn btn-large btn-qcs-dark">
+                            <i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp
                         </a>
                     </div>
                 </div>

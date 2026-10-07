@@ -420,21 +420,13 @@ declare(strict_types=1);
                         <p class="cta-subtext">
                             Estandariza el conocimiento crítico de tu organización, potencia las capacidades de tus ingenieros y asegura la excelencia operativa en tus proyectos.
                         </p>
-                        
-                        <!-- Teléfono Visible Clickeable -->
-                        <div class="cta-phone-wrapper">
-                            <a href="tel:+51993463118" class="cta-phone-link" aria-label="Llamar al +51 993 463 118">
-                                <i class="fa-solid fa-phone-volume"></i>
-                                <span>+51 993 463 118</span>
-                            </a>
-                        </div>
                     </div>
 
                     <div class="cta-actions">
-                        <a href="/contacto" class="btn btn-large btn-qcs-primary">
-                            <i class="fa-solid fa-clipboard-check"></i> Solicitar asesoría
-                        </a>
-                        <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="btn btn-large animate__animated animate__pulse animate__infinite btn-qcs-dark">
+                        <button type="button" class="btn btn-large btn-qcs-primary" data-bs-toggle="modal" data-bs-target="#modalSolicitarInfo" data-service="Universidad Corporativa">
+                            <i class="fa-solid fa-clipboard-check"></i> Solicitar Asesoría
+                        </button>
+                        <a href="https://wa.me/51993463118?text=Hola,%20deseo%20solicitar%20asesor%C3%ADa%20en%20Universidad%20Corporativa" target="_blank" rel="noopener noreferrer" class="btn btn-large btn-qcs-dark">
                             <i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp
                         </a>
                     </div>

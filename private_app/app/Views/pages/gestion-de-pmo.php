@@ -288,11 +288,11 @@ declare(strict_types=1);
                         <p>Nuestros especialistas están listos para orientar a su organización en el fortalecimiento y la gobernanza de proyectos.</p>
                     </div>
                     <div class="cta-actions">
-                        <a href="/contacto" class="btn btn-large btn-qcs-primary">
-                            <i class="fa-solid fa-envelope"></i> Contactar a un Especialista
-                        </a>
-                        <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-large animate__animated animate__pulse animate__infinite btn-qcs-primary">
-                            <i class="fa-brands fa-whatsapp"></i> WhatsApp Directo
+                        <button type="button" class="btn btn-large btn-qcs-primary" data-bs-toggle="modal" data-bs-target="#modalSolicitarInfo" data-service="Adopción y Gobernanza de PMO">
+                            <i class="fa-solid fa-clipboard-check"></i> Solicitar Asesoría
+                        </button>
+                        <a href="https://wa.me/51993463118?text=Hola,%20deseo%20solicitar%20asesor%C3%ADa%20en%20Gobernanza%20y%20Gesti%C3%B3n%20de%20PMO" target="_blank" rel="noopener noreferrer" class="btn btn-large btn-qcs-dark">
+                            <i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp
                         </a>
                     </div>
                 </div>
