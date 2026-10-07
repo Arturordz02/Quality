@@ -197,21 +197,6 @@ class TrainingController extends Controller
     }
 
     /**
-     * Taller / Metodología: LEGO® SERIOUS PLAY®.
-     */
-    public function legoSeriousPlay(): void
-    {
-        $data = [
-            'title'           => 'LEGO® SERIOUS PLAY® | Quality Consulting Solutions',
-            'metaDescription' => 'Metodología corporativa LEGO® SERIOUS PLAY® para facilitar la comunicación, resolución de problemas, generación de ideas y toma de decisiones estratégicas en equipos.',
-            'canonical'       => 'https://quality-consulting.org/lego-serious-play',
-            'activePage'      => 'capacitacion',
-        ];
-
-        $this->render('pages/lego-serious-play', $data, 'main');
-    }
-
-    /**
      * Curso: Contratos Colaborativos NEC.
      */
     public function nec(): void

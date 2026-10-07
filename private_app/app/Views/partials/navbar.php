@@ -36,10 +36,8 @@ $activePage = $activePage ?? '';
                         <li><a href="/headhunting" class="dropdown-item">HEADHUNTING</a></li>
                         <li><a href="/gestion-de-riesgos" class="dropdown-item">GESTION DE RIESGOS</a></li>
                         <li><a href="/riesgo-del-plazo" class="dropdown-item">RIESGO DEL PLAZO</a></li>
-                        <li><a href="/lego-serious-play" class="dropdown-item">LEGO SERIOUS PLAY</a></li>
                         <li><a href="/cronograma-forense" class="dropdown-item">CRONOGRAMA-FORENSE</a></li>
                         <li><a href="/gestion-de-la-calidad" class="dropdown-item">GESTION DE LA CALIDAD</a></li>
-                        <li><a href="/permisologia" class="dropdown-item">PERMISOLOGIA</a></li>
                         <li><a href="/universidad-corporativa" class="dropdown-item">UNIVERSIDAD CORPORATIVA</a></li>
                     </ul>
                 </li>

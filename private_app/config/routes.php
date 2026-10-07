@@ -80,7 +80,6 @@ return function (Router $router, array $config): void {
     $router->get('/cronograma-forense', [ServiceController::class, 'cronogramaForense']);
     $router->get('/headhunting', [ServiceController::class, 'headhunting']);
     $router->get('/oficina-tecnica', [ServiceController::class, 'oficinaTecnica']);
-    $router->get('/permisologia', [ServiceController::class, 'permisologia']);
     $router->get('/sindrome-del-90', [ServiceController::class, 'sindromeDel90']);
 
     /**
@@ -98,7 +97,6 @@ return function (Router $router, array $config): void {
     $router->get('/herramientas', [TrainingController::class, 'herramientas']);
     $router->get('/iso-9001', [TrainingController::class, 'iso9001']);
     $router->get('/lean-last-planner', [TrainingController::class, 'leanLastPlanner']);
-    $router->get('/lego-serious-play', [TrainingController::class, 'legoSeriousPlay']);
     $router->get('/nec', [TrainingController::class, 'nec']);
     $router->get('/pmo', [TrainingController::class, 'pmo']);
     $router->get('/proyectos-pmi', [TrainingController::class, 'proyectosPmi']);

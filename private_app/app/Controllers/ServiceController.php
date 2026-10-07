@@ -122,21 +122,6 @@ class ServiceController extends Controller
     }
 
     /**
-     * Servicio: Permisología, Licencias y Autorizaciones de Obra.
-     */
-    public function permisologia(): void
-    {
-        $data = [
-            'title'           => 'Permisología, Licencias y Autorizaciones de Obra | Quality Consulting Solutions',
-            'metaDescription' => 'Asesoría técnica y orientación especializada en la ruta crítica y requisitos normativos de permisos y licencias para proyectos de construcción.',
-            'canonical'       => 'https://quality-consulting.org/permisologia',
-            'activePage'      => 'consultoria',
-        ];
-
-        $this->render('pages/permisologia', $data, 'main');
-    }
-
-    /**
      * Servicio / Metodología: Evaluación del Riesgo del Cumplimiento del Plazo (Síndrome del 90%).
      */
     public function sindromeDel90(): void
