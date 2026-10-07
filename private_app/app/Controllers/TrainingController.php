@@ -232,10 +232,10 @@ class TrainingController extends Controller
     public function riesgoDelPlazo(): void
     {
         $data = [
-            'title'           => 'Riesgo del Plazo | Quality Consulting Solutions',
-            'metaDescription' => 'Evaluación del síndrome del 90% y gestión de restricciones para proyectar la fecha de completación en proyectos de construcción.',
+            'title'           => 'Evaluación del Riesgo del Cumplimiento del Plazo | Quality Consulting Solutions',
+            'metaDescription' => 'Evaluación del síndrome del 90% y metodología de la Curva de Liberación para el control del plazo y prevención de demoras en proyectos.',
             'canonical'       => 'https://quality-consulting.org/riesgo-del-plazo',
-            'activePage'      => 'capacitacion',
+            'activePage'      => 'consultoria',
         ];
 
         $this->render('pages/riesgo-del-plazo', $data, 'main');
