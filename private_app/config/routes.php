@@ -78,7 +78,6 @@ return function (Router $router, array $config): void {
     $router->get('/gestion-de-pmo', [ServiceController::class, 'gestionPmo']);
     $router->get('/gestion-de-riesgos', [ServiceController::class, 'gestionRiesgos']);
     $router->get('/cronograma-forense', [ServiceController::class, 'cronogramaForense']);
-    $router->get('/homologaciones', [ServiceController::class, 'homologaciones']);
     $router->get('/headhunting', [ServiceController::class, 'headhunting']);
     $router->get('/oficina-tecnica', [ServiceController::class, 'oficinaTecnica']);
     $router->get('/permisologia', [ServiceController::class, 'permisologia']);

@@ -92,21 +92,6 @@ class ServiceController extends Controller
     }
 
     /**
-     * Servicio: Preparación para Homologación de Proveedores.
-     */
-    public function homologaciones(): void
-    {
-        $data = [
-            'title'           => 'Preparación para Homologación de Proveedores | Quality Consulting Solutions',
-            'metaDescription' => 'Asesoría técnica y preparación formativa para la homologación de proveedores en construcción e ingeniería ante entidades evaluadoras.',
-            'canonical'       => 'https://quality-consulting.org/homologaciones',
-            'activePage'      => 'consultoria',
-        ];
-
-        $this->render('pages/homologaciones', $data, 'main');
-    }
-
-    /**
      * Servicio: Headhunting Especializado para el Sector Construcción.
      */
     public function headhunting(): void
