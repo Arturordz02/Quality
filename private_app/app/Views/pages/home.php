@@ -14,87 +14,47 @@ body {
         }
 
         /* ----------------------------------------------------
-           1. HERO PRINCIPAL DE ALTO IMPACTO (Home)
+           1. HERO PRINCIPAL PANORÁMICO DE ALTO IMPACTO (Home)
            ---------------------------------------------------- */
         .home-hero-section {
             position: relative;
-            padding: 210px 1.5rem 110px 1.5rem;
-            background: linear-gradient(145deg, #0F1113 0%, #1A1D20 50%, #24292E 100%);
-            color: #ffffff;
-            overflow: hidden;
-            border-bottom: 4px solid var(--accent-gold);
-        }
-
-        .home-hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 85% 25%, rgba(229, 168, 19, 0.22) 0%, transparent 60%),
-                        radial-gradient(circle at 15% 80%, rgba(142, 146, 151, 0.15) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        .home-hero-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-            background-size: 28px 28px;
-            opacity: 0.65;
-            pointer-events: none;
-        }
-
-        .home-hero-badge {
-            display: inline-flex;
+            min-height: 86vh;
+            display: flex;
             align-items: center;
-            gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1.25rem;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            font-family: var(--font-heading);
-            margin-bottom: 1.5rem;
-        }
-
-        .home-hero-section {
-            position: relative;
-            padding: 210px 1.5rem 125px 1.5rem;
+            justify-content: center;
+            padding: 195px 1.5rem 105px 1.5rem;
             background-color: #07090A;
             color: #ffffff;
             overflow: hidden;
             border-bottom: 4px solid var(--accent-gold, #E5A813);
         }
 
-        /* Capa de imagen fotográfica de fondo con claridad cinematográfica */
+        /* Capa de imagen fotográfica de fondo en alta definición y sin bloqueos */
         .home-hero-bg-layer {
             position: absolute;
             inset: 0;
             background-image: url('img/Hero-Quality-Consulting.webp');
             background-size: cover;
-            background-position: center 40%;
+            background-position: center 38%;
             background-repeat: no-repeat;
-            filter: brightness(0.72) saturate(1.2) contrast(1.06);
-            transform: scale(1.02);
+            filter: brightness(0.92) contrast(1.08) saturate(1.12);
+            transform: scale(1.01);
             pointer-events: none;
             z-index: 1;
+            transition: transform 10s ease-out;
         }
 
-        /* Capa de degradado y viñeta suave */
+        /* Gradiente cinemático inteligente: Oscuro en extremos y cristalino al centro */
         .home-hero-overlay {
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at center 45%, rgba(7, 9, 10, 0.25) 0%, rgba(7, 9, 10, 0.65) 65%, #07090A 100%),
-                        linear-gradient(180deg, rgba(7, 9, 10, 0.8) 0%, rgba(15, 20, 25, 0.2) 40%, rgba(7, 9, 10, 0.85) 100%);
+            background: linear-gradient(180deg, 
+                rgba(7, 9, 10, 0.78) 0%, 
+                rgba(7, 9, 10, 0.22) 32%, 
+                rgba(7, 9, 10, 0.28) 65%, 
+                rgba(7, 9, 10, 0.88) 100%
+            ),
+            radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0) 0%, rgba(7, 9, 10, 0.45) 100%);
             pointer-events: none;
             z-index: 2;
         }
@@ -104,147 +64,138 @@ body {
             inset: 0;
             background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
             background-size: 32px 32px;
-            opacity: 0.35;
+            opacity: 0.25;
             pointer-events: none;
             z-index: 3;
         }
 
-        /* Tarjeta Central Glassmorphic con difuminado detrás del texto */
-        .home-hero-glass-box {
-            background: linear-gradient(135deg, rgba(14, 18, 22, 0.76) 0%, rgba(8, 11, 14, 0.84) 100%);
-            backdrop-filter: blur(16px) saturate(150%);
-            -webkit-backdrop-filter: blur(16px) saturate(150%);
-            border: 1px solid rgba(229, 168, 19, 0.35);
-            border-radius: 28px;
-            padding: 3.5rem 3.5rem;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), 0 0 50px rgba(229, 168, 19, 0.14), inset 0 1px 2px rgba(255, 255, 255, 0.2);
-            max-width: 1240px;
+        /* Contenedor Flotante Abierto y Elegante */
+        .home-hero-content-wrap {
+            max-width: 1060px;
             margin: 0 auto;
             position: relative;
             z-index: 10;
         }
 
-        /* Halo de luz dorada difuminada detrás del texto */
-        .home-hero-glow-halo {
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 85%;
-            height: 75%;
-            background: radial-gradient(ellipse, rgba(229, 168, 19, 0.22) 0%, rgba(229, 168, 19, 0.06) 45%, transparent 75%);
-            filter: blur(40px);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        @media (max-width: 991.98px) {
-            .home-hero-glass-box {
-                padding: 2.75rem 1.75rem;
-            }
-        }
-
-        @media (max-width: 767.98px) {
-            .home-hero-glass-box {
-                padding: 2.25rem 1.25rem;
-                border-radius: 20px;
-            }
-        }
-
+        /* Badge Superior Glass con punto de pulso */
         .home-hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            background: rgba(229, 168, 19, 0.18);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            gap: 0.6rem;
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             color: #ffffff;
-            border: 1px solid rgba(229, 168, 19, 0.5);
-            padding: 0.55rem 1.35rem;
-            border-radius: 30px;
-            font-size: 0.85rem;
+            border: 1px solid rgba(229, 168, 19, 0.45);
+            padding: 0.55rem 1.4rem;
+            border-radius: 50px;
+            font-size: 0.84rem;
             font-weight: 700;
             font-family: var(--font-heading);
-            margin-bottom: 1.25rem;
-            box-shadow: 0 4px 15px rgba(229, 168, 19, 0.2);
+            margin-bottom: 1.35rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(229, 168, 19, 0.15);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            position: relative;
-            z-index: 1;
+            letter-spacing: 0.6px;
+        }
+
+        .badge-pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--accent-gold, #E5A813);
+            box-shadow: 0 0 10px var(--accent-gold, #E5A813);
+            display: inline-block;
+            animation: pulseGlow 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
         }
 
         .home-hero-title {
             font-family: var(--font-heading);
             font-weight: 900;
-            font-size: clamp(2.3rem, 4.8vw, 3.8rem);
+            font-size: clamp(2.3rem, 4.8vw, 3.85rem);
             letter-spacing: -0.5px;
             color: #ffffff;
             line-height: 1.15;
             margin-bottom: 1.25rem;
-            text-shadow: 0 4px 25px rgba(0, 0, 0, 0.8);
-            position: relative;
-            z-index: 1;
+            text-shadow: 0 4px 25px rgba(0, 0, 0, 0.9), 0 2px 8px rgba(0, 0, 0, 0.85);
         }
 
-        .hero-title-highlight {
-            background: linear-gradient(135deg, #ffffff 25%, var(--accent-gold, #E5A813) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .home-hero-quote-container {
-            position: relative;
+        /* Cápsula de la Cita con Glassmorfismo Ultraligero */
+        .home-hero-quote-box {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.75rem;
-            background: rgba(0, 0, 0, 0.38);
+            background: rgba(15, 17, 19, 0.55);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(229, 168, 19, 0.25);
+            border: 1px solid rgba(229, 168, 19, 0.35);
             border-radius: 50px;
-            padding: 0.85rem 2rem;
-            margin: 0 auto 1.5rem auto;
-            max-width: 1080px;
-            z-index: 1;
+            padding: 0.75rem 2rem;
+            margin: 0 auto 1.4rem auto;
+            max-width: 980px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
         }
 
         @media (max-width: 767.98px) {
-            .home-hero-quote-container {
-                border-radius: 16px;
-                padding: 1rem 1.25rem;
+            .home-hero-quote-box {
+                border-radius: 18px;
+                padding: 0.85rem 1.25rem;
                 flex-direction: column;
                 gap: 0.4rem;
             }
         }
 
-        .quote-decor-left, .quote-decor-right {
+        .quote-icon {
             color: var(--accent-gold, #E5A813);
-            font-size: 1.1rem;
+            font-size: 1rem;
             opacity: 0.9;
         }
 
-        .home-hero-quote {
+        .home-hero-quote-text {
             font-family: var(--font-heading);
             font-weight: 600;
             font-style: italic;
             color: #fef08a;
-            font-size: clamp(0.98rem, 1.7vw, 1.22rem);
+            font-size: clamp(0.95rem, 1.6vw, 1.18rem);
             line-height: 1.5;
             margin: 0;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
         }
 
         .home-hero-subtitle {
             font-family: var(--font-body);
-            font-size: clamp(1.02rem, 1.45vw, 1.18rem);
-            color: #e2e8f0;
-            max-width: 1100px;
+            font-size: clamp(1.02rem, 1.4vw, 1.15rem);
+            color: #f1f5f9;
+            max-width: 920px;
             margin: 0 auto 2.25rem auto;
             line-height: 1.75;
-            position: relative;
-            z-index: 1;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+            text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9);
+        }
+
+        /* Micro-tags de áreas clave */
+        .hero-tag-pill {
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 30px;
+            padding: 0.4rem 1.1rem;
+            font-size: 0.82rem;
+            color: #e2e8f0;
+            font-weight: 600;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .hero-tag-pill:hover {
+            border-color: var(--accent-gold, #E5A813);
+            transform: translateY(-2px);
+            color: #ffffff;
         }
 
         .btn-qcs-hero-primary {
@@ -252,48 +203,52 @@ body {
             color: #0F1113 !important;
             font-weight: 800;
             border: none;
-            box-shadow: 0 8px 25px rgba(229, 168, 19, 0.45);
+            box-shadow: 0 8px 30px rgba(229, 168, 19, 0.5);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .btn-qcs-hero-primary:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 14px 35px rgba(229, 168, 19, 0.65);
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 14px 40px rgba(229, 168, 19, 0.7);
             color: #000000 !important;
         }
 
         .btn-qcs-hero-secondary {
-            background: rgba(15, 23, 42, 0.85);
+            background: rgba(15, 23, 42, 0.75);
             color: #ffffff !important;
-            border: 1.5px solid rgba(229, 168, 19, 0.5);
+            border: 1.5px solid rgba(229, 168, 19, 0.55);
             font-weight: 700;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
         }
 
         .btn-qcs-hero-secondary:hover {
-            background: rgba(229, 168, 19, 0.2);
+            background: rgba(229, 168, 19, 0.25);
             border-color: var(--accent-gold);
             transform: translateY(-3px);
             color: #ffffff !important;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
         }
 
         .btn-qcs-hero-outline {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.1);
             color: #ffffff !important;
-            border: 1.5px solid rgba(255, 255, 255, 0.65);
+            border: 1.5px solid rgba(255, 255, 255, 0.6);
             font-weight: 700;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
         }
 
         .btn-qcs-hero-outline:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.25);
             border-color: #ffffff;
             transform: translateY(-3px);
             color: #ffffff !important;
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.25);
         }
 
         /* ----------------------------------------------------
@@ -662,47 +617,56 @@ body {
             <div class="home-hero-bg-layer"></div>
             <div class="home-hero-overlay"></div>
             <div class="home-hero-pattern"></div>
+            
             <div class="container position-relative" style="z-index: 25;">
                 
-                <!-- Tarjeta Central de Cristal con Difuminado de Alta Gama -->
-                <div class="home-hero-glass-box animate__animated animate__fadeIn">
+                <div class="home-hero-content-wrap animate__animated animate__fadeIn">
                     
-                    <!-- Halo difuminado detrás del texto -->
-                    <div class="home-hero-glow-halo"></div>
-
-                    <!-- Badge Superior -->
-                    <div class="d-inline-block">
-                        <span class="home-hero-badge shadow-sm">
-                            <i class="fa-solid fa-graduation-cap text-warning"></i> CAPACITACIÓN Y ASESORÍA ESPECIALIZADA
+                    <!-- Badge Superior Elegante con efecto Glass y Neon Amber -->
+                    <div class="d-inline-flex align-items-center mb-3">
+                        <span class="home-hero-badge shadow">
+                            <span class="badge-pulse-dot"></span>
+                            <span>CAPACITACIÓN Y ASESORÍA ESPECIALIZADA EN INGENIERÍA</span>
                         </span>
                     </div>
 
-                    <!-- Headline Principal -->
+                    <!-- Headline Principal Majestuoso -->
                     <h1 class="home-hero-title animate__animated animate__fadeInDown">
                         QUALITY CONSULTING SOLUTIONS
                     </h1>
 
-                    <!-- Cita Central Auténtica -->
-                    <p class="home-hero-quote">
-                        "Para mejorar la calidad de las cosas que hacen las personas, debemos mejorar la calidad de las personas que hacen las cosas"
-                    </p>
+                    <!-- Cita Emblemática en Cápsula Glassmórfica Transparente -->
+                    <div class="home-hero-quote-box">
+                        <i class="fa-solid fa-quote-left quote-icon me-2"></i>
+                        <span class="home-hero-quote-text">
+                            Para mejorar la calidad de las cosas que hacen las personas, debemos mejorar la calidad de las personas que hacen las cosas
+                        </span>
+                        <i class="fa-solid fa-quote-right quote-icon ms-2"></i>
+                    </div>
 
-                    <!-- Texto Descriptivo Original -->
+                    <!-- Párrafo Descriptivo Ejecutivo -->
                     <p class="home-hero-subtitle">
-                        La calidad es el grado en el que un conjunto de características inherentes satisfacen los requerimientos, y para ser sostenible requiere de un sistema de gestión que cale en la organización, de tal modo que cree una cultura de calidad. En QUALITY CONSULTING SOLUTIONS creemos que la gestión de la calidad es un tema estratégico de toda organización en búsqueda de la excelencia y sostenibilidad.
+                        La calidad es un tema estratégico para alcanzar la excelencia y sostenibilidad. Impulsamos a profesionales y organizaciones del sector construcción e infraestructura mediante metodologías aplicadas y asesoría técnica de alto nivel.
                     </p>
 
-                    <!-- Botones CTA: CONSULTORÍA, CAPACITACIÓN, MEDIOS -->
-                    <div class="d-flex justify-content-center flex-wrap gap-2 gap-md-3 position-relative" style="z-index: 2;">
-                        <a href="/consultoria" class="btn btn-qcs-hero-secondary btn-lg rounded-pill px-4 py-3">
+                    <!-- Botones CTA de Alto Impacto -->
+                    <div class="d-flex justify-content-center flex-wrap gap-2 gap-md-3 mb-4 position-relative" style="z-index: 2;">
+                        <a href="/consultoria" class="btn btn-qcs-hero-secondary btn-lg rounded-pill px-4 py-3 shadow">
                             <i class="fas fa-briefcase me-2 text-warning"></i> CONSULTORÍA
                         </a>
-                        <a href="/capacitacion" class="btn btn-qcs-hero-primary btn-lg rounded-pill px-4 py-3">
+                        <a href="/capacitacion" class="btn btn-qcs-hero-primary btn-lg rounded-pill px-4 py-3 shadow-lg">
                             <i class="fas fa-graduation-cap me-2"></i> CAPACITACIÓN
                         </a>
-                        <a href="/medios" class="btn btn-qcs-hero-outline btn-lg rounded-pill px-4 py-3">
-                            <i class="fas fa-podcast me-2 text-warning"></i> MEDIOS
+                        <a href="/medios" class="btn btn-qcs-hero-outline btn-lg rounded-pill px-4 py-3 shadow">
+                            <i class="fas fa-podcast me-2 text-warning"></i> MEDIOS Y PODCASTS
                         </a>
+                    </div>
+
+                    <!-- Micro-Pills de Especialidades -->
+                    <div class="home-hero-tags-row d-flex justify-content-center flex-wrap gap-2 gap-md-3 pt-2">
+                        <span class="hero-tag-pill"><i class="fa-solid fa-circle-check text-warning me-1"></i> Metodología PMBOK® &amp; Ágil</span>
+                        <span class="hero-tag-pill"><i class="fa-solid fa-shield-halved text-warning me-1"></i> Sistemas ISO 9001</span>
+                        <span class="hero-tag-pill"><i class="fa-solid fa-cubes text-warning me-1"></i> BIM &amp; Contratos NEC / FIDIC</span>
                     </div>
 
                 </div>
