@@ -843,34 +843,27 @@ declare(strict_types=1);
                         </div>
                     </div>
 
-                    <!-- 4 Botones Oficiales de Matrícula y Pasarelas -->
+                    <!-- Botones de Acción y Solicitud de Información -->
                     <div class="row g-3 justify-content-center">
                         
                         <!-- 1. WhatsApp -->
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=Buen%20d%C3%ADa,%20%C2%BFpodr%C3%ADan%20enviarme%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Gesti%C3%B3n%20de%20Proyectos%20con%20el%20Enfoque%20PMI?" target="_blank" rel="noopener noreferrer" class="btn btn-success btn-lg w-100 my-1 btn-pmi-action btn-qcs-primary" aria-label="Consultar información del curso por WhatsApp">
+                        <div class="col-12 col-md-4">
+                            <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=Buen%20d%C3%ADa,%20deseo%20solicitar%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Gesti%C3%B3n%20de%20Proyectos%20PMI" target="_blank" rel="noopener noreferrer" class="btn btn-success btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Consultar información del curso por WhatsApp">
                                 <i class="fab fa-whatsapp me-2"></i> Consultar por WhatsApp
                             </a>
                         </div>
 
-                        <!-- 2. Brochure / Ficha Técnica (Google Drive) -->
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://drive.google.com/drive/folders/0B8Qvdc3EQkEBQ3F6MEplelBvUVE" target="_blank" rel="noopener noreferrer" class="btn btn-qcs-dark btn-lg w-100 my-1 btn-pmi-action btn-qcs-primary" aria-label="Descargar información y brochure del curso en Google Drive">
+                        <!-- 2. Botón Modal Solicitar Información -->
+                        <div class="col-12 col-md-4">
+                            <button type="button" class="btn btn-warning text-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" data-bs-toggle="modal" data-bs-target="#modalSolicitarInfo" data-service="Dirección de Proyectos con Enfoque PMI">
+                                <i class="fa-solid fa-headset me-2"></i> Solicitar Información
+                            </button>
+                        </div>
+
+                        <!-- 3. Brochure / Ficha Técnica (Google Drive) -->
+                        <div class="col-12 col-md-4">
+                            <a href="https://drive.google.com/drive/folders/0B8Qvdc3EQkEBQ3F6MEplelBvUVE" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Descargar información y brochure del curso en Google Drive">
                                 <i class="fas fa-folder-open me-2"></i> Info &amp; Brochure en Drive
-                            </a>
-                        </div>
-
-                        <!-- 3. Niubiz / VisaNet -->
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://www.visanetlink.pe/pagoseguro/QUALITYCONSULTINGSOLUTIONS/54555" target="_blank" rel="noopener noreferrer" class="btn btn-lg w-100 my-1 btn-pmi-action btn-qcs-primary" aria-label="Pago Seguro con Niubiz y Visa">
-                                <i class="fas fa-credit-card me-2"></i> Pago Seguro Niubiz / Visa
-                            </a>
-                        </div>
-
-                        <!-- 4. PayPal Internacional -->
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://www.paypal.com/paypalme/qualityconsulting/150" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg w-100 my-1 btn-pmi-action btn-qcs-primary" aria-label="Pagar mediante PayPal">
-                                <i class="fab fa-paypal me-2"></i> Pagar con PayPal
                             </a>
                         </div>
 

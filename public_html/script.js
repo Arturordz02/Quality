@@ -624,4 +624,114 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     })();
+
+    /* ----------------------------------------------------
+       9. GESTIÓN DEL MODAL DE INFORMACIÓN Y ASESORÍA
+       - Autocompletado del nombre del curso / servicio
+       - Actualización dinámica del botón de WhatsApp
+       - Envío ágil con AJAX sin recargar página
+       ---------------------------------------------------- */
+    (function initInfoModalHandler() {
+        const infoModalEl = document.getElementById('modalSolicitarInfo');
+        if (!infoModalEl) return;
+
+        const inputPrograma = document.getElementById('modalInputPrograma');
+        const modalWhatsAppBtn = document.getElementById('modalWhatsAppBtn');
+        const modalForm = document.getElementById('modalInfoForm');
+        const formFeedback = document.getElementById('modalFormFeedback');
+        const submitBtn = document.getElementById('modalSubmitBtn');
+
+        // Al abrir el modal, capturar el servicio/curso del botón activador
+        infoModalEl.addEventListener('show.bs.modal', (event) => {
+            const button = event.relatedTarget;
+            let serviceName = '';
+
+            if (button) {
+                serviceName = button.getAttribute('data-service') || 
+                              button.getAttribute('data-course') || 
+                              button.getAttribute('data-programa') || '';
+            }
+
+            if (!serviceName) {
+                // Inferir del título de la página si es un curso o servicio
+                const pageHeading = document.querySelector('h1');
+                if (pageHeading) {
+                    serviceName = pageHeading.innerText.trim();
+                }
+            }
+
+            if (inputPrograma) {
+                inputPrograma.value = serviceName || 'Información General';
+            }
+
+            if (modalWhatsAppBtn) {
+                const queryText = encodeURIComponent(`Hola, deseo solicitar información sobre: ${serviceName || 'sus programas y asesoría'}.`);
+                modalWhatsAppBtn.href = `https://api.whatsapp.com/send?phone=51993463118&text=${queryText}`;
+            }
+
+            // Limpiar feedback anterior
+            if (formFeedback) {
+                formFeedback.className = 'd-none alert py-2 px-3 small mb-3';
+                formFeedback.innerHTML = '';
+            }
+        });
+
+        // Manejo de envío de formulario vía AJAX
+        if (modalForm) {
+            modalForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                if (!modalForm.checkValidity()) {
+                    modalForm.classList.add('was-validated');
+                    return;
+                }
+
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Enviando...';
+                }
+
+                const formData = new FormData(modalForm);
+
+                try {
+                    const response = await fetch(modalForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    const result = await response.json().catch(() => ({}));
+
+                    if (response.ok && (result.success !== false)) {
+                        if (formFeedback) {
+                            formFeedback.className = 'alert alert-success py-2 px-3 small mb-3';
+                            formFeedback.innerHTML = '<i class="fa-solid fa-circle-check me-2"></i><strong>¡Solicitud enviada con éxito!</strong> Un asesor te contactará a la brevedad.';
+                        }
+                        modalForm.reset();
+                        modalForm.classList.remove('was-validated');
+                        setTimeout(() => {
+                            if (typeof bootstrap !== 'undefined') {
+                                const modalInstance = bootstrap.Modal.getInstance(infoModalEl);
+                                if (modalInstance) modalInstance.hide();
+                            }
+                        }, 2500);
+                    } else {
+                        throw new Error(result.error || result.message || 'Error al procesar la solicitud.');
+                    }
+                } catch (error) {
+                    if (formFeedback) {
+                        formFeedback.className = 'alert alert-danger py-2 px-3 small mb-3';
+                        formFeedback.innerHTML = `<i class="fa-solid fa-triangle-exclamation me-2"></i>${error.message || 'Ocurrió un error. Por favor comunícate por WhatsApp.'}`;
+                    }
+                } finally {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane me-2"></i> Enviar Solicitud';
+                    }
+                }
+            });
+        }
+    })();
 });

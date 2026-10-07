@@ -959,7 +959,7 @@ body {
                         <div class="value-guarantee-card rounded-4 border-start border-4 border-warning" data-aos="fade-up">
                             <div class="value-icon"><i class="fa-solid fa-chalkboard-user text-dark"></i></div>
                             <h4 class="fw-bold font-montserrat fs-6 text-dark">Capacitaciones Grabadas y En Vivo</h4>
-                            <p class="small text-muted mb-0">Aprende a tu ritmo o participa en sesiones en vivo con nuestros especialistas.</p>
+                            <p class="small text-muted mb-0">Aprende a tu ritmo con clases grabadas o consulta disponibilidad para sesiones en vivo con nuestros especialistas.</p>
                         </div>
                     </div>
 

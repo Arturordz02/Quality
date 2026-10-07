@@ -784,33 +784,27 @@ declare(strict_types=1);
                     </div>
 
                     <!-- 4 Botones Oficiales de Matrícula y Pasarelas -->
+                    <!-- Botones de Acción y Solicitud de Información -->
                     <div class="row g-3 justify-content-center">
                         
                         <!-- 1. WhatsApp -->
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=Buen%20d%C3%ADa,%20deseo%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Gesti%C3%B3n%20de%20Adicionales%20y%20Ampliaci%C3%B3n%20del%20Plazo%20con%20el%20Estado" target="_blank" rel="noopener noreferrer" class="btn btn-success btn-lg w-100 my-1 btn-procurement-action btn-qcs-primary" aria-label="Consultar información del curso por WhatsApp">
+                        <div class="col-12 col-md-4">
+                            <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=Buen%20d%C3%ADa,%20deseo%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Gesti%C3%B3n%20de%20Adicionales%20y%20Ampliaci%C3%B3n%20del%20Plazo%20con%20el%20Estado" target="_blank" rel="noopener noreferrer" class="btn btn-success btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Consultar información del curso por WhatsApp">
                                 <i class="fab fa-whatsapp me-2"></i> Consultar por WhatsApp
                             </a>
                         </div>
 
-                        <!-- 2. Brochure / Ficha Técnica (Google Forms) -->
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdAnt9Kowdtr1YN0H1w1x7GI_Aprp7CuE5htHYPG3fdb-ie5w/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-qcs-dark btn-lg w-100 my-1 btn-procurement-action btn-qcs-primary" aria-label="Descargar más información y brochure del curso">
+                        <!-- 2. Botón Modal Solicitar Información -->
+                        <div class="col-12 col-md-4">
+                            <button type="button" class="btn btn-warning text-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" data-bs-toggle="modal" data-bs-target="#modalSolicitarInfo" data-service="Gestión de Adicionales y Ampliación de Plazo con el Estado">
+                                <i class="fa-solid fa-headset me-2"></i> Solicitar Información
+                            </button>
+                        </div>
+
+                        <!-- 3. Brochure / Ficha Técnica (Google Forms) -->
+                        <div class="col-12 col-md-4">
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdAnt9Kowdtr1YN0H1w1x7GI_Aprp7CuE5htHYPG3fdb-ie5w/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Descargar más información y brochure del curso">
                                 <i class="fas fa-file-pdf me-2"></i> Info &amp; Brochure
-                            </a>
-                        </div>
-
-                        <!-- 3. Niubiz / VisaNet -->
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://www.visanetlink.pe/pagoseguro/QUALITYCONSULTINGSOLUTIONS/58214" target="_blank" rel="noopener noreferrer" class="btn btn-lg w-100 my-1 btn-procurement-action btn-qcs-primary" aria-label="Pago Seguro con Niubiz y Visa">
-                                <i class="fas fa-credit-card me-2"></i> Pago Seguro Niubiz / Visa
-                            </a>
-                        </div>
-
-                        <!-- 4. PayPal Internacional -->
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://www.paypal.com/paypalme/qualityconsulting/240" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg w-100 my-1 btn-procurement-action btn-qcs-primary" aria-label="Pagar mediante PayPal">
-                                <i class="fab fa-paypal me-2"></i> Pagar con PayPal
                             </a>
                         </div>
 

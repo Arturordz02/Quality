@@ -371,28 +371,29 @@ declare(strict_types=1);
                         </div>
                     </div>
 
-                    <!-- 4 Botones de Acción y Pasarelas de Pago Requeridos -->
-                    <div class="payment-buttons-grid">
+                    <!-- Botones de Acción y Solicitud de Información -->
+                    <div class="row g-3 justify-content-center">
                         
-                        <!-- 1. Botón WhatsApp (Consultas e Información) -->
-                        <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=w_%20%20%20%20%20%20Buen%20d%C3%ADa,%20%C2%BFpodr%C3%ADan%20enviarme%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Lean%20Construction%20y%20Last%20Planner?" target="_blank" rel="noopener noreferrer" class="btn-whatsapp payment-action-btn animate__animated animate__pulse animate__infinite" aria-label="Consultar información del curso por WhatsApp">
-                            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
-                        </a>
+                        <!-- 1. Botón WhatsApp -->
+                        <div class="col-12 col-md-4">
+                            <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=Buen%20d%C3%ADa,%20deseo%20solicitar%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Lean%20Construction%20y%20Last%20Planner" target="_blank" rel="noopener noreferrer" class="btn btn-success btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Consultar información del curso por WhatsApp">
+                                <i class="fab fa-whatsapp me-2"></i> Consultar por WhatsApp
+                            </a>
+                        </div>
 
-                        <!-- 2. Botón Brochure / Ficha Técnica (Google Forms) -->
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSekNXgaxdDkfWDOySl5hgpy_0Cvi200zDyp1Bliz4DY_uQTaA/viewform" target="_blank" rel="noopener noreferrer" class="btn-outline payment-action-btn" aria-label="Descargar información y brochure del curso">
-                            <i class="fas fa-file-pdf"></i> Info &amp; Brochure
-                        </a>
+                        <!-- 2. Botón Modal Solicitar Información -->
+                        <div class="col-12 col-md-4">
+                            <button type="button" class="btn btn-warning text-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" data-bs-toggle="modal" data-bs-target="#modalSolicitarInfo" data-service="Lean Construction y Last Planner System">
+                                <i class="fa-solid fa-headset me-2"></i> Solicitar Información
+                            </button>
+                        </div>
 
-                        <!-- 3. Botón Pago Seguro VisaNet (Niubiz) -->
-                        <a href="https://www.visanetlink.pe/pagoseguro/QUALITYCONSULTINGSOLUTIONS/58214" target="_blank" rel="noopener noreferrer" class="btn-visanet payment-action-btn" aria-label="Pagar curso con VisaNet o Niubiz de forma segura">
-                            <i class="fas fa-credit-card"></i> Pago Seguro Niubiz/Visa
-                        </a>
-
-                        <!-- 4. Botón Pago PayPal (Internacional) -->
-                        <a href="https://www.paypal.com/paypalme/qualityconsulting/240" target="_blank" rel="noopener noreferrer" class="btn-paypal payment-action-btn" aria-label="Pagar curso mediante PayPal para inscripciones internacionales">
-                            <i class="fab fa-paypal"></i> Pagar con PayPal
-                        </a>
+                        <!-- 3. Botón Brochure / Ficha Técnica -->
+                        <div class="col-12 col-md-4">
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSekNXgaxdDkfWDOySl5hgpy_0Cvi200zDyp1Bliz4DY_uQTaA/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Descargar información y brochure del curso">
+                                <i class="fas fa-file-pdf me-2"></i> Info &amp; Brochure
+                            </a>
+                        </div>
 
                     </div>
 

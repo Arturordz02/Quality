@@ -73,6 +73,9 @@ $showFloat = $showWhatsAppFloat ?? true;
     <!-- Pie de Página Corporativo -->
     <?= $this->partial('footer') ?>
 
+    <!-- Modal Global de Solicitud de Información / Asesoría -->
+    <?= $this->partial('info_modal') ?>
+
     <!-- Widget Flotante de WhatsApp -->
     <?php if ($showFloat): ?>
         <?= $this->partial('whatsapp_float') ?>
