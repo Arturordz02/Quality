@@ -19,10 +19,13 @@ $orderId     = htmlspecialchars($orderId ?? '', ENT_QUOTES, 'UTF-8');
 $csrfToken   = htmlspecialchars($csrfToken ?? '', ENT_QUOTES, 'UTF-8');
 $hpField     = htmlspecialchars($honeypotField ?? '_qcs_verification_hp', ENT_QUOTES, 'UTF-8');
 
-$errors = $_SESSION['_qcs_form_errors'] ?? [];
-$old    = $_SESSION['_qcs_form_old'] ?? [];
-unset($_SESSION['_qcs_form_errors'], $_SESSION['_qcs_form_old']);
+$errors = isset($_SESSION['_qcs_form_errors']) ? $_SESSION['_qcs_form_errors'] : [];
+$old    = isset($_SESSION['_qcs_form_old']) ? $_SESSION['_qcs_form_old'] : [];
+if (isset($_SESSION)) {
+    unset($_SESSION['_qcs_form_errors'], $_SESSION['_qcs_form_old']);
+}
 ?>
+
 
 <main class="py-5 bg-dark text-light min-vh-100" style="background: radial-gradient(circle at top, #1E232A 0%, #111317 100%);">
     <div class="container py-4">

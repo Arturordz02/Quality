@@ -87,14 +87,21 @@ foreach ($pageFiles as $pageFile) {
     try {
         $html = $viewEngine->render($viewPath, $data, 'main');
         
-        // Ajustar enlaces relativos si es necesario para GitHub Pages (ej: href="/nosotros" o href="nosotros.html")
-        // Reemplazar href="/ruta" por "ruta.html" y href="/" por "index.html" para navegación estática perfecta
+        // Ajustar enlaces relativos para GitHub Pages
+        // 1. Mapear rutas dinámicas de pago a sus archivos estáticos compilados
+        $htmlTransformed = preg_replace('/href="\/pagar-primera-clase(?:\?[^"]*)?"/', 'href="checkout-primera-clase.html"', $html);
+        $htmlTransformed = preg_replace('/href="\/pago-cancelado(?:\?[^"]*)?"/', 'href="pago-cancelado.html"', $htmlTransformed);
+        $htmlTransformed = preg_replace('/href="\/registro-primera-clase(?:\?[^"]*)?"/', 'href="registro-primera-clase.html"', $htmlTransformed);
+        $htmlTransformed = preg_replace('/href="\/registro-exitoso(?:\?[^"]*)?"/', 'href="registro-exitoso.html"', $htmlTransformed);
+
+        // 2. Reemplazar href="/ruta" por "ruta.html" y href="/" por "index.html" para navegación estática
         $htmlTransformed = preg_replace_callback('/href="\/([a-zA-Z0-9\-_]+)"/', function($matches) {
             return 'href="' . $matches[1] . '.html"';
-        }, $html);
+        }, $htmlTransformed);
         $htmlTransformed = preg_replace('/href="\/"/', 'href="index.html"', $htmlTransformed);
         
         file_put_contents($targetFile, $htmlTransformed);
+
 
         // Si no es home, también crear carpeta con index.html para URLs limpias (ej: /nosotros/)
         if ($pageName !== 'home' && $pageName !== '404') {

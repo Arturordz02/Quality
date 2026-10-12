@@ -10,9 +10,14 @@
 
 declare(strict_types=1);
 
-$courseTitle = htmlspecialchars($course['title'] ?? 'Curso Especializado', ENT_QUOTES, 'UTF-8');
-$courseSlug  = htmlspecialchars($course['slug'] ?? 'bim-revit-architecture', ENT_QUOTES, 'UTF-8');
+$allCourses  = $allCourses ?? (class_exists(\App\Services\CourseCatalog::class) ? \App\Services\CourseCatalog::all() : []);
+$course      = $course ?? (!empty($allCourses) ? reset($allCourses) : ['title' => 'Curso Especializado', 'slug' => 'bim-revit-architecture']);
+$courseTitle  = htmlspecialchars($course['title'] ?? 'Curso Especializado', ENT_QUOTES, 'UTF-8');
+$courseSlug   = htmlspecialchars($course['slug'] ?? 'bim-revit-architecture', ENT_QUOTES, 'UTF-8');
+$isConfigured = !empty($isConfigured);
 ?>
+
+
 
 <main class="py-5 bg-dark text-light min-vh-100" style="background: radial-gradient(circle at top, #1E232A 0%, #111317 100%);">
     <div class="container py-4">
@@ -98,7 +103,7 @@ $courseSlug  = htmlspecialchars($course['slug'] ?? 'bim-revit-architecture', ENT
                         <a href="/<?= $courseSlug ?>" class="btn btn-outline-secondary btn-sm text-light">
                             <i class="fas fa-arrow-left me-1"></i> Ver temario completo del curso
                         </a>
-                        <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=Deseo%20informaci%C3%B3n%20sobre%20el%20curso%20completo%20de%20<?= urlencode($course['title']) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success btn-sm">
+                        <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=Deseo%20informaci%C3%B3n%20sobre%20el%20curso%20completo%20de%20<?= urlencode((string)($course['title'] ?? 'Curso Especializado')) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success btn-sm">
                             <i class="fab fa-whatsapp me-1"></i> Consultar curso completo
                         </a>
                     </div>
@@ -200,6 +205,12 @@ document.addEventListener("DOMContentLoaded", function() {
         statusMsg.classList.remove("d-none");
     }
 
+    const isStaticPreview = window.location.hostname.includes('github.io');
+    if (isStaticPreview) {
+        showStatus("Aviso de Entorno: Te encuentras en la previsualización estática de GitHub Pages. GitHub Pages no ejecuta PHP ni APIs del backend. Para procesar o validar transacciones en el servidor, despliega el sistema en un hosting PHP (GoDaddy / cPanel) o ejecútalo con el servidor local de PHP.", "warning");
+    }
+
+
     // Flujo PayPal oficial vía SDK cuando está disponible
     if (typeof paypal !== "undefined" && document.getElementById("paypal-button-container")) {
         paypal.Buttons({
@@ -270,8 +281,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const btnSimulate = document.getElementById("btnSimulatePayment");
     if (btnSimulate) {
         btnSimulate.addEventListener("click", function() {
+            if (isStaticPreview) {
+                showStatus("No es posible procesar pagos en GitHub Pages: Este entorno es una previsualización estática y no ejecuta el backend PHP para validar ni registrar la orden. Por favor, prueba este flujo en un servidor con PHP habilitado.", "danger");
+                return;
+            }
             showStatus("Simulando creación de orden de prueba de USD 10...", "info");
             fetch("/api/paypal/create-order", {
+
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
