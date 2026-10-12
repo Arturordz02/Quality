@@ -89,10 +89,9 @@ foreach ($pageFiles as $pageFile) {
         
         // Ajustar enlaces relativos para GitHub Pages
         // 1. Mapear rutas dinámicas de pago a sus archivos estáticos compilados
-        $htmlTransformed = preg_replace('/href="\/pagar-primera-clase(?:\?[^"]*)?"/', 'href="checkout-primera-clase.html"', $html);
-        $htmlTransformed = preg_replace('/href="\/pago-cancelado(?:\?[^"]*)?"/', 'href="pago-cancelado.html"', $htmlTransformed);
-        $htmlTransformed = preg_replace('/href="\/registro-primera-clase(?:\?[^"]*)?"/', 'href="registro-primera-clase.html"', $htmlTransformed);
-        $htmlTransformed = preg_replace('/href="\/registro-exitoso(?:\?[^"]*)?"/', 'href="registro-exitoso.html"', $htmlTransformed);
+        $htmlTransformed = preg_replace('/href="\/pago-cancelado(\?[^"]*)?"/', 'href="pago-cancelado.html$1"', $html);
+        $htmlTransformed = preg_replace('/href="\/registro-primera-clase(\?[^"]*)?"/', 'href="registro-primera-clase.html$1"', $htmlTransformed);
+        $htmlTransformed = preg_replace('/href="\/registro-exitoso(\?[^"]*)?"/', 'href="registro-exitoso.html$1"', $htmlTransformed);
 
         // 2. Reemplazar href="/ruta" por "ruta.html" y href="/" por "index.html" para navegación estática
         $htmlTransformed = preg_replace_callback('/href="\/([a-zA-Z0-9\-_]+)"/', function($matches) {

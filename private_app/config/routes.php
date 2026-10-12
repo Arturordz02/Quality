@@ -117,7 +117,6 @@ return function (Router $router, array $config): void {
     /**
      * RUTAS DE PASARELA PAYPAL (PRIMERA CLASE DEL CURSO - USD 10) Y REGISTRO
      */
-    $router->get('/pagar-primera-clase', [PaymentController::class, 'checkoutPrimeraClase']);
     $router->post('/api/paypal/create-order', [PaymentController::class, 'createPaypalOrder']);
     $router->post('/api/paypal/capture-order', [PaymentController::class, 'capturePaypalOrder']);
     $router->get('/registro-primera-clase', [PaymentController::class, 'registroPrimeraClase']);

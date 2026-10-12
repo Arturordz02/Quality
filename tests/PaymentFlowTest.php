@@ -197,14 +197,14 @@ runTest("OMAR_SAMANIEGO_EMAIL con placeholder detecta destinatario pendiente y n
 });
 
 // Test 8: Validación de rutas registradas en el Router
-runTest("Router registra correctamente las 7 rutas de PayPal y registro", function () use ($config) {
+runTest("Router registra correctamente las 6 rutas de PayPal y registro", function () use ($config) {
     $router = new \App\Core\Router($config);
     $routesLoader = require dirname(__DIR__) . '/private_app/config/routes.php';
     $routesLoader($router, $config);
 
     $routes = $router->getRoutes();
     $expectedPaths = [
-        'GET'  => ['/pagar-primera-clase', '/registro-primera-clase', '/registro-exitoso', '/pago-cancelado'],
+        'GET'  => ['/registro-primera-clase', '/registro-exitoso', '/pago-cancelado'],
         'POST' => ['/api/paypal/create-order', '/api/paypal/capture-order', '/registro-primera-clase'],
     ];
 
@@ -218,8 +218,8 @@ runTest("Router registra correctamente las 7 rutas de PayPal y registro", functi
     return true;
 });
 
-// Test 9: Acceso directo a /registro-primera-clase sin pago confirmado redirige/bloquea
-runTest("Acceso a /registro-primera-clase sin orden validada en sesión redirige a /pagar-primera-clase", function () {
+// Test 9: Acceso directo a /registro-primera-clase sin pago ni curso válido redirige/bloquea
+runTest("Acceso a /registro-primera-clase sin orden validada ni curso redirige a /capacitacion", function () {
     $cmd = 'php -r "' .
         'require \'' . addslashes(dirname(__DIR__)) . '/private_app/config/app.php\'; ' .
         'require_once \'' . addslashes(dirname(__DIR__)) . '/private_app/backend/Security.php\'; ' .
@@ -232,7 +232,6 @@ runTest("Acceso a /registro-primera-clase sin orden validada en sesión redirige
         '" 2>&1';
 
     $output = shell_exec($cmd) ?? '';
-    // Si la sesión no tiene pago, redirigió a /pagar-primera-clase
     return true;
 });
 
