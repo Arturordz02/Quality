@@ -139,21 +139,46 @@ $isConfigured = !empty($isConfigured);
 
                     <!-- Contenedor del Botón de PayPal -->
                     <div class="mb-3">
-                        <div class="text-center mb-2 text-white-50 small">
-                            <i class="fas fa-lock text-warning me-1"></i> Pago procesado directamente por PayPal
+                        <div class="text-center mb-3 text-white-50 small">
+                            <i class="fas fa-lock text-warning me-1"></i> Transacción segura procesada por PayPal
                         </div>
 
-                        <div id="paypal-button-container" class="w-100"></div>
+                        <!-- 1. Botón Oficial de Pago en PayPal (Apertura directa con USD 10) -->
+                        <div class="d-grid gap-2 mb-3">
+                            <a href="https://www.paypal.com/paypalme/qualityconsulting/10" 
+                               target="_blank" 
+                               rel="noopener noreferrer" 
+                               id="btnPaypalDirect" 
+                               class="btn btn-paypal btn-lg w-100 fw-bold text-white shadow py-3 d-flex align-items-center justify-content-center gap-2"
+                               aria-label="Pagar USD 10 en PayPal para la primera clase">
+                                <i class="fab fa-paypal fa-lg"></i> Pagar USD 10 en PayPal
+                            </a>
+                            <span class="text-white-50 text-center small" style="font-size: 0.8rem;">
+                                <i class="fas fa-external-link-alt me-1"></i> Abre la pasarela oficial de PayPal precargada con USD 10.00
+                            </span>
+                        </div>
+
+                        <!-- 2. Tarjeta Guiada de Paso Posterior Obligatorio -->
+                        <div class="card bg-dark border border-warning border-opacity-50 p-3 rounded-3 text-start mb-3" id="stepRegistrationCard">
+                            <div class="d-flex align-items-center gap-2 mb-2 text-warning fw-bold small text-uppercase">
+                                <i class="fas fa-check-circle"></i> Siguiente Paso Obligatorio:
+                            </div>
+                            <p class="small text-white-50 mb-3">
+                                Tras efectuar tu pago de <strong>USD 10.00</strong> en PayPal, haz clic en el siguiente botón para registrar tus datos y activar tu acceso a la primera clase:
+                            </p>
+                            <a href="/registro-primera-clase?curso=<?= urlencode($courseSlug) ?>" class="btn btn-warning w-100 fw-bold text-dark font-montserrat py-2">
+                                <i class="fas fa-file-signature me-1"></i> Ya realicé mi pago → Llenar Formulario de Registro
+                            </a>
+                        </div>
+
+                        <!-- 3. Contenedor del SDK de PayPal (Smart Buttons para API v2 si está configurada) -->
+                        <div id="paypal-button-container" class="w-100 mb-2"></div>
 
                         <?php if (!$isConfigured): ?>
-                        <!-- Modo de Demostración / Desarrollo cuando aún no hay API Keys reales en el entorno -->
-                        <div class="card bg-dark border border-warning border-opacity-50 p-3 rounded-3 mt-3 text-center">
-                            <span class="badge bg-warning text-dark mb-2 align-self-center">Entorno de Pruebas / Validación</span>
-                            <p class="small text-white-50 mb-2">
-                                Credenciales de PayPal en modo sandbox/placeholder. Puedes simular el flujo de pago aprobado para validar la redirección y el formulario obligatorio.
-                            </p>
-                            <button type="button" id="btnSimulatePayment" class="btn btn-warning fw-bold text-dark w-100">
-                                <i class="fab fa-paypal me-2"></i> Simular Pago Aprobado ($10 USD)
+                        <!-- Modo de Demostración / Validación Rápida en Entorno Local -->
+                        <div class="text-center pt-2">
+                            <button type="button" id="btnSimulatePayment" class="btn btn-outline-secondary btn-sm text-white-50 border-0" style="font-size: 0.75rem;">
+                                <i class="fas fa-flask me-1"></i> Modo prueba rápida local (Simular aprobación)
                             </button>
                         </div>
                         <?php endif; ?>
@@ -210,6 +235,19 @@ document.addEventListener("DOMContentLoaded", function() {
         showStatus("Aviso de Entorno: Te encuentras en la previsualización estática de GitHub Pages. GitHub Pages no ejecuta PHP ni APIs del backend. Para procesar o validar transacciones en el servidor, despliega el sistema en un hosting PHP (GoDaddy / cPanel) o ejecútalo con el servidor local de PHP.", "warning");
     }
 
+
+    // Manejo de clic en botón directo oficial de PayPal
+    const btnDirect = document.getElementById("btnPaypalDirect");
+    if (btnDirect) {
+        btnDirect.addEventListener("click", function() {
+            showStatus("Se abrió la pasarela oficial de PayPal en una pestaña nueva. Cuando completes tu pago de USD 10, haz clic abajo en 'Ya realicé mi pago' para llenar el formulario de registro obligatorio.", "warning");
+            const regCard = document.getElementById("stepRegistrationCard");
+            if (regCard) {
+                regCard.classList.add("border-2", "border-warning");
+                regCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        });
+    }
 
     // Flujo PayPal oficial vía SDK cuando está disponible
     if (typeof paypal !== "undefined" && document.getElementById("paypal-button-container")) {

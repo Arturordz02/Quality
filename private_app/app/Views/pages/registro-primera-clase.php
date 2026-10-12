@@ -24,6 +24,7 @@ $old    = isset($_SESSION['_qcs_form_old']) ? $_SESSION['_qcs_form_old'] : [];
 if (isset($_SESSION)) {
     unset($_SESSION['_qcs_form_errors'], $_SESSION['_qcs_form_old']);
 }
+$isVerifiedInSession = !empty($isVerifiedInSession);
 ?>
 
 
@@ -33,7 +34,8 @@ if (isset($_SESSION)) {
         <div class="row justify-content-center">
             <div class="col-12 col-lg-8 col-xl-7">
 
-                <!-- Tarjeta de Verificación Exitosa de PayPal -->
+                <?php if ($isVerifiedInSession): ?>
+                <!-- Tarjeta de Verificación Exitosa de PayPal (API / Sesión) -->
                 <div class="card bg-success bg-opacity-10 border border-success border-opacity-50 rounded-4 p-4 mb-4 text-center shadow-lg">
                     <div class="d-inline-flex justify-content-center align-items-center bg-success text-white rounded-circle mx-auto mb-3" style="width: 56px; height: 56px;">
                         <i class="fas fa-check fs-4"></i>
@@ -45,6 +47,20 @@ if (isset($_SESSION)) {
                         Código de Transacción Confirmado: <strong class="text-warning font-monospace"><?= $orderId ?></strong>
                     </p>
                 </div>
+                <?php else: ?>
+                <!-- Tarjeta de Registro Post-Pago PayPal (Enlace Oficial / PayPal.me) -->
+                <div class="card bg-warning bg-opacity-10 border border-warning border-opacity-50 rounded-4 p-4 mb-4 text-center shadow-lg">
+                    <div class="d-inline-flex justify-content-center align-items-center bg-warning text-dark rounded-circle mx-auto mb-3" style="width: 56px; height: 56px;">
+                        <i class="fab fa-paypal fs-4"></i>
+                    </div>
+                    <h1 class="h4 font-montserrat fw-bold text-white mb-1">
+                        Registro Obligatorio – Primera Clase (USD 10)
+                    </h1>
+                    <p class="small text-white-50 mb-0">
+                        Ingresa a continuación tus datos y el código de recibo / transacción que PayPal te proporcionó tras tu pago de <strong>USD 10.00</strong>.
+                    </p>
+                </div>
+                <?php endif; ?>
 
                 <!-- Formulario Obligatorio de Registro -->
                 <div class="card bg-secondary bg-opacity-10 border border-secondary border-opacity-25 rounded-4 p-4 p-md-5 shadow-lg">
@@ -89,23 +105,35 @@ if (isset($_SESSION)) {
                             <?php endif; ?>
                         </div>
 
-                        <!-- 2. Código de Transacción PayPal (Solo Lectura / Verificado en Backend) -->
+                        <!-- 2. Código de Transacción PayPal -->
                         <div class="mb-3">
                             <label for="paypal_order_id" class="form-label text-warning small fw-bold text-uppercase">
-                                <i class="fab fa-paypal me-1"></i> Código / Referencia PayPal Validado:
+                                <i class="fab fa-paypal me-1"></i> <?= $isVerifiedInSession ? 'Código / Referencia PayPal Validado:' : 'Código o Referencia de Transacción PayPal: *' ?>
                             </label>
-                            <div class="input-group">
-                                <span class="input-group-text bg-dark text-success border-secondary border-opacity-50">
-                                    <i class="fas fa-check-circle"></i>
-                                </span>
-                                <input type="text" id="paypal_order_id" name="paypal_order_id" class="form-control bg-dark text-white border-secondary border-opacity-50 font-monospace py-2" value="<?= htmlspecialchars($old['paypal_order_id'] ?? $orderId, ENT_QUOTES, 'UTF-8') ?>" readonly required>
-                            </div>
-                            <?php if (isset($errors['paypal_order_id'])): ?>
-                                <div class="text-danger small mt-1"><?= htmlspecialchars($errors['paypal_order_id'], ENT_QUOTES, 'UTF-8') ?></div>
+                            <?php if ($isVerifiedInSession): ?>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-dark text-success border-secondary border-opacity-50">
+                                        <i class="fas fa-check-circle"></i>
+                                    </span>
+                                    <input type="text" id="paypal_order_id" name="paypal_order_id" class="form-control bg-dark text-white border-secondary border-opacity-50 font-monospace py-2" value="<?= htmlspecialchars($old['paypal_order_id'] ?? $orderId, ENT_QUOTES, 'UTF-8') ?>" readonly required>
+                                </div>
+                                <div class="form-text text-white-50 small">
+                                    Esta referencia fue verificada en el servidor contra la API de PayPal por un monto de USD 10.00.
+                                </div>
+                            <?php else: ?>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-dark text-warning border-secondary border-opacity-50">
+                                        <i class="fab fa-paypal"></i>
+                                    </span>
+                                    <input type="text" id="paypal_order_id" name="paypal_order_id" class="form-control bg-dark text-white border-secondary border-opacity-50 font-monospace py-2 <?= isset($errors['paypal_order_id']) ? 'is-invalid' : '' ?>" placeholder="Ej: 8RG78291HX123456T o número de recibo de PayPal" value="<?= htmlspecialchars($old['paypal_order_id'] ?? $orderId, ENT_QUOTES, 'UTF-8') ?>" required minlength="6" maxlength="35">
+                                </div>
+                                <?php if (isset($errors['paypal_order_id'])): ?>
+                                    <div class="text-danger small mt-1"><?= htmlspecialchars($errors['paypal_order_id'], ENT_QUOTES, 'UTF-8') ?></div>
+                                <?php endif; ?>
+                                <div class="form-text text-white-50 small">
+                                    Ingresa el código o número de transacción de USD 10.00 generado por PayPal (aparece en tu comprobante o correo de PayPal).
+                                </div>
                             <?php endif; ?>
-                            <div class="form-text text-white-50 small">
-                                Esta referencia fue verificada en el servidor contra la API de PayPal por un monto de USD 10.00.
-                            </div>
                         </div>
 
                         <!-- 3. Nombres y Apellidos -->

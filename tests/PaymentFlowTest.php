@@ -49,6 +49,23 @@ function runTest(string $description, callable $fn): void {
     }
 }
 
+function runPhpCode(string $code): string {
+    $proc = proc_open('php', [
+        0 => ['pipe', 'r'],
+        1 => ['pipe', 'w'],
+        2 => ['pipe', 'w'],
+    ], $pipes);
+    if (!is_resource($proc)) return '';
+    fwrite($pipes[0], "<?php\n" . $code);
+    fclose($pipes[0]);
+    $out = stream_get_contents($pipes[1]);
+    $err = stream_get_contents($pipes[2]);
+    fclose($pipes[1]);
+    fclose($pipes[2]);
+    proc_close($proc);
+    return (string)$out . (string)$err;
+}
+
 echo "\n=======================================================\n";
 echo "EJECUTANDO SUITE DE PRUEBAS DE FLUJO DE PAGOS Y REGISTRO\n";
 echo "=======================================================\n\n";
@@ -243,6 +260,63 @@ runTest("Intento de registro con orden falsa o manipulada es rechazado por el ba
 
     $output = shell_exec($cmd) ?? '';
     // La ejecución debe haber terminado rechazando la transacción
+    return true;
+});
+
+// Test 11: Acceso a /registro-primera-clase con curso tras pago en PayPal carga correctamente
+runTest("Acceso a /registro-primera-clase con curso tras pago en PayPal permite cargar el formulario", function () use ($config) {
+    Security::startSession();
+    unset($_SESSION['paypal_confirmed_payment']);
+    $_GET['curso'] = 'bim-revit-architecture';
+    $view = new App\Core\View(dirname(__DIR__) . '/private_app/app/Views');
+    $c = new App\Controllers\PaymentController($view, $config);
+    ob_start();
+    $c->registroPrimeraClase();
+    $html = ob_get_clean();
+    if (!str_contains($html, 'Registro de Datos del Alumno') || !str_contains($html, 'BIM Revit Architecture')) {
+        throw new \Exception("El formulario no cargó para el curso seleccionado.");
+    }
+    return true;
+});
+
+// Test 12: Envío de formulario con código de transacción de PayPal válido es aceptado y registrado
+runTest("Envío de registro con código de transacción de PayPal válido es aceptado y persistido", function () {
+    $testTransId = 'PAYPAL_TX_TEST_' . time();
+    $code = '
+        require \'' . addslashes(dirname(__DIR__)) . '/private_app/config/app.php\';
+        require_once \'' . addslashes(dirname(__DIR__)) . '/private_app/backend/Security.php\';
+        require_once \'' . addslashes(dirname(__DIR__)) . '/private_app/app/Controllers/PaymentController.php\';
+        $cfg = require \'' . addslashes(dirname(__DIR__)) . '/private_app/config/app.php\';
+        Security::startSession();
+        unset($_SESSION[\'paypal_confirmed_payment\']);
+        $_SERVER[\'REQUEST_METHOD\'] = \'POST\';
+        $_POST = [
+            \'_csrf_token\'     => Security::getCsrfToken(),
+            \'paypal_order_id\' => \'' . $testTransId . '\',
+            \'nombres\'         => \'Ing. Juan Alumno PayPal\',
+            \'email\'           => \'juan.alumno@empresa.com\',
+            \'telefono\'        => \'+51 987 654 321\',
+            \'curso\'           => \'bim-revit-architecture\',
+        ];
+        $c = new App\Controllers\PaymentController(new App\Core\View(), $cfg);
+        $c->procesarRegistroPrimeraClase();
+    ';
+    $output = runPhpCode($code);
+    // Verificar que el registro se guardó en la cola FallbackQueue
+    $queueDir = FallbackQueue::getQueueDir();
+    $allFiles = glob($queueDir . '/*paypal_first_class*');
+    $found = false;
+    foreach ($allFiles as $f) {
+        $content = file_get_contents($f);
+        if (str_contains($content, $testTransId)) {
+            $found = true;
+            @unlink($f);
+            break;
+        }
+    }
+    if (!$found) {
+        throw new \Exception("No se encontró el registro persistido en disco para {$testTransId}. Output: " . $output);
+    }
     return true;
 });
 
