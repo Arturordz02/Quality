@@ -76,7 +76,6 @@
 
 ---
 
-## 2. Instrucciones para Restauración Futura
-Si la dirección solicita reintegrar las pasarelas directas:
-1. Copiar los enlaces del curso correspondiente.
-2. Insertar los botones de acción en el bloque CTA de la vista en `private_app/app/Views/pages/{nombre-curso}.php`.
+## 2. Estado de Integración en el Sitio Web
+- **PayPal:** Reintegrado en todas las vistas de cursos/capacitaciones (17 programas) con botón corporativo directo.
+- **Niubiz / VisaNet:** En resguardo y respaldo seguro según directriz (no activas en el sitio público).

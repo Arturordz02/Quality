@@ -672,27 +672,34 @@ declare(strict_types=1);
                         </div>
                     </div>
 
-                    <!-- Botones de Acción y Solicitud de Información -->
+                    <!-- Botones de Acción, Solicitud y Pago PayPal -->
                     <div class="row g-3 justify-content-center">
                         
                         <!-- 1. Botón WhatsApp -->
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-6 col-lg-3">
                             <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=Buen%20d%C3%ADa,%20deseo%20solicitar%20informaci%C3%B3n%20sobre%20el%20curso%20de%20BIM%20Revit%20Architecture" target="_blank" rel="noopener noreferrer" class="btn btn-success btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Consultar información del curso BIM Revit Architecture por WhatsApp">
                                 <i class="fab fa-whatsapp me-2"></i> Consultar por WhatsApp
                             </a>
                         </div>
 
                         <!-- 2. Botón Modal Solicitar Información -->
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-6 col-lg-3">
                             <button type="button" class="btn btn-warning text-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" data-bs-toggle="modal" data-bs-target="#modalSolicitarInfo" data-service="BIM Revit Architecture">
                                 <i class="fa-solid fa-headset me-2"></i> Solicitar Información
                             </button>
                         </div>
 
                         <!-- 3. Botón Brochure / Ficha Técnica -->
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-6 col-lg-3">
                             <a href="https://docs.google.com/forms/d/e/1FAIpQLSen65_jeSMSK7PYK7vwM_S0IR_XCdm-XBUiWWE4gqeKSPLLNw/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Descargar información y brochure del curso">
                                 <i class="fas fa-file-pdf me-2"></i> Info &amp; Brochure
+                            </a>
+                        </div>
+
+                        <!-- 4. Botón Pago PayPal (Internacional) -->
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <a href="https://www.paypal.com/paypalme/qualityconsulting/135" target="_blank" rel="noopener noreferrer" class="btn btn-paypal btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold text-white" aria-label="Pagar mediante PayPal Internacional">
+                                <i class="fab fa-paypal me-2"></i> Pagar con PayPal
                             </a>
                         </div>
 
