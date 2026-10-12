@@ -723,7 +723,7 @@ body {
                                 <div class="counter-icon-wrap">
                                     <i class="fa-solid fa-user-graduate"></i>
                                 </div>
-                                <div class="counter-number">+1,000</div>
+                                <div class="counter-number">+1,500</div>
                                 <div class="counter-label">Profesionales Capacitados</div>
                             </div>
                         </div>
