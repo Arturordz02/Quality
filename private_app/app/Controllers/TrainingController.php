@@ -22,13 +22,94 @@ class TrainingController extends Controller
     public function capacitacion(): void
     {
         $data = [
-            'title'           => 'Capacitación Ejecutiva y Programas de Especialización | Quality Consulting Solutions',
-            'metaDescription' => 'Programas de especialización profesional en Dirección de Proyectos, Contratos FIDIC, Gestión de Calidad, BIM, PMO y Valor Ganado. Cursos 100% online con grabaciones en alta definición y certificación.',
+            'title'           => 'Capacitación Ejecutiva y Catálogo Oficial de Cursos | Quality Consulting Solutions',
+            'metaDescription' => 'Catálogo completo de las 48 capacitaciones oficiales en Calidad, Riesgos, Contratos, Gestión de Proyectos y Oficina Técnica. Cursos grabados con acceso flexible y certificación.',
             'canonical'       => 'https://quality-consulting.org/capacitacion',
             'activePage'      => 'capacitacion',
+            'courses'         => \App\Services\CoursesCatalog::getAll(),
         ];
 
         $this->render('pages/capacitacion', $data, 'main');
+    }
+
+    /**
+     * Categoría: Gestión de la Calidad.
+     */
+    public function capacitacionCalidad(): void
+    {
+        $data = [
+            'title'           => 'Capacitación en Gestión de la Calidad | Quality Consulting Solutions',
+            'metaDescription' => 'Cursos, talleres y seminarios especializados en Gestión de la Calidad, ISO 9001, enfoque PMI y control de calidad en obra.',
+            'canonical'       => 'https://quality-consulting.org/capacitacion-calidad',
+            'activePage'      => 'capacitacion',
+            'category'        => \App\Services\CoursesCatalog::getCategoryData('calidad'),
+        ];
+
+        $this->render('pages/capacitacion-calidad', $data, 'main');
+    }
+
+    /**
+     * Categoría: Gestión de Riesgos.
+     */
+    public function capacitacionRiesgos(): void
+    {
+        $data = [
+            'title'           => 'Capacitación en Gestión de Riesgos | Quality Consulting Solutions',
+            'metaDescription' => 'Cursos especializados en gestión de riesgos técnicos en construcción, cadena de producción ISO 31000, simulación Monte Carlo y enfoque PMI.',
+            'canonical'       => 'https://quality-consulting.org/capacitacion-riesgos',
+            'activePage'      => 'capacitacion',
+            'category'        => \App\Services\CoursesCatalog::getCategoryData('riesgos'),
+        ];
+
+        $this->render('pages/capacitacion-riesgos', $data, 'main');
+    }
+
+    /**
+     * Categoría: Contratos y Gestión Contractual.
+     */
+    public function capacitacionContratos(): void
+    {
+        $data = [
+            'title'           => 'Capacitación en Contratos NEC, FIDIC y Estado | Quality Consulting Solutions',
+            'metaDescription' => 'Especialización en contratos colaborativos NEC 3 y 4, FIDIC, juntas de disputas (DAB) y contrataciones con el Estado.',
+            'canonical'       => 'https://quality-consulting.org/capacitacion-contratos',
+            'activePage'      => 'capacitacion',
+            'category'        => \App\Services\CoursesCatalog::getCategoryData('contratos'),
+        ];
+
+        $this->render('pages/capacitacion-contratos', $data, 'main');
+    }
+
+    /**
+     * Categoría: Gestión de Proyectos.
+     */
+    public function capacitacionGestionProyectos(): void
+    {
+        $data = [
+            'title'           => 'Capacitación en Gestión de Proyectos, PMO y Control de Obras | Quality Consulting Solutions',
+            'metaDescription' => 'Programas especializados en enfoque PMI, PMO, Lean Construction, Valor Ganado, Power BI y Primavera P6.',
+            'canonical'       => 'https://quality-consulting.org/capacitacion-gestion-de-proyectos',
+            'activePage'      => 'capacitacion',
+            'category'        => \App\Services\CoursesCatalog::getCategoryData('gestion-de-proyectos'),
+        ];
+
+        $this->render('pages/capacitacion-gestion-de-proyectos', $data, 'main');
+    }
+
+    /**
+     * Categoría: Oficina Técnica.
+     */
+    public function capacitacionOficinaTecnica(): void
+    {
+        $data = [
+            'title'           => 'Capacitación en Oficina Técnica de Obras | Quality Consulting Solutions',
+            'metaDescription' => 'Especialización en administración de oficina técnica en edificaciones, hospitales, obras viales y mineras.',
+            'canonical'       => 'https://quality-consulting.org/capacitacion-oficina-tecnica',
+            'activePage'      => 'capacitacion',
+            'category'        => \App\Services\CoursesCatalog::getCategoryData('oficina-tecnica'),
+        ];
+
+        $this->render('pages/capacitacion-oficina-tecnica', $data, 'main');
     }
 
     /**

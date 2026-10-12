@@ -753,4 +753,188 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     })();
+
+    /* --------------------------------------------------------------------------
+       16. CATÁLOGO GENERAL DE CAPACITACIONES: FILTROS, BUSCADOR Y MODAL
+       -------------------------------------------------------------------------- */
+    (function initTrainingCatalog() {
+        const catalogGrid = document.getElementById('catalogGrid');
+        if (!catalogGrid) return;
+
+        // Desactivar activamente cualquier atributo o clase de animación AOS dentro del catálogo
+        catalogGrid.querySelectorAll('[data-aos]').forEach(el => {
+            el.removeAttribute('data-aos');
+            el.classList.remove('aos-init', 'aos-animate');
+        });
+
+        const searchInput = document.getElementById('catalogSearchInput');
+        const clearSearchBtn = document.getElementById('catalogClearSearch');
+        const filterBtns = document.querySelectorAll('.catalog-filter-btn');
+        const resultsCountEl = document.getElementById('catalogResultsCount');
+        const resetFiltersBtn = document.getElementById('catalogResetFiltersBtn');
+        const emptyStateEl = document.getElementById('catalogEmptyState');
+        const emptyResetBtn = document.getElementById('catalogEmptyResetBtn');
+        const itemCols = catalogGrid.querySelectorAll('.catalog-item-col');
+        const totalItems = itemCols.length;
+
+        let activeCategory = 'todos';
+        let activeQuery = '';
+
+        // Función para normalizar texto eliminando tildes y diacríticos
+        function normalizeStr(text) {
+            return (text || '')
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase()
+                .trim();
+        }
+
+        // Ejecutar filtrado combinado de forma síncrona e inmediata
+        function applyFilter() {
+            let visibleCount = 0;
+
+            itemCols.forEach(col => {
+                const category = (col.getAttribute('data-category') || '').toLowerCase().trim();
+                const searchText = normalizeStr(col.getAttribute('data-search') || '');
+
+                const matchesCategory = (activeCategory === 'todos' || category === activeCategory);
+                const matchesQuery = (!activeQuery || searchText.includes(activeQuery));
+
+                if (matchesCategory && matchesQuery) {
+                    col.classList.remove('is-hidden');
+                    // Asegurar que la tarjeta interna esté inmediatamente visible sin opacidades residuales
+                    const card = col.querySelector('.course-card');
+                    if (card) {
+                        card.classList.remove('aos-init', 'aos-animate');
+                    }
+                    visibleCount++;
+                } else {
+                    col.classList.add('is-hidden');
+                }
+            });
+
+            // Actualizar contador de resultados
+            if (resultsCountEl) {
+                if (activeCategory === 'todos' && !activeQuery) {
+                    resultsCountEl.innerHTML = `Mostrando <strong>${visibleCount}</strong> de ${totalItems} capacitaciones`;
+                } else {
+                    resultsCountEl.innerHTML = `Mostrando <strong>${visibleCount}</strong> resultado${visibleCount === 1 ? '' : 's'} (de ${totalItems})`;
+                }
+            }
+
+            // Mostrar u ocultar botón de restablecer búsqueda
+            const isFiltered = (activeCategory !== 'todos' || activeQuery !== '');
+            if (resetFiltersBtn) {
+                resetFiltersBtn.classList.toggle('d-none', !isFiltered);
+            }
+
+            // Gestionar estado vacío
+            if (emptyStateEl) {
+                emptyStateEl.classList.toggle('d-none', visibleCount > 0);
+            }
+        }
+
+        // Resetear todos los filtros a estado inicial (Todos + buscador vacío)
+        function resetFilters() {
+            activeCategory = 'todos';
+            activeQuery = '';
+
+            if (searchInput) {
+                searchInput.value = '';
+            }
+            if (clearSearchBtn) {
+                clearSearchBtn.classList.add('d-none');
+            }
+
+            filterBtns.forEach(btn => {
+                const isAll = ((btn.getAttribute('data-category') || '').toLowerCase().trim() === 'todos');
+                btn.classList.toggle('active', isAll);
+            });
+
+            applyFilter();
+        }
+
+        // Eventos en botones de categoría
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetBtn = this.closest('.catalog-filter-btn') || this;
+                const newCat = (targetBtn.getAttribute('data-category') || 'todos').toLowerCase().trim();
+
+                filterBtns.forEach(b => b.classList.remove('active'));
+                targetBtn.classList.add('active');
+                activeCategory = newCat;
+                applyFilter();
+            });
+        });
+
+        // Eventos en el buscador
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                activeQuery = normalizeStr(this.value);
+                if (clearSearchBtn) {
+                    clearSearchBtn.classList.toggle('d-none', this.value.length === 0);
+                }
+                applyFilter();
+            });
+        }
+
+        // Botón limpiar búsqueda
+        if (clearSearchBtn) {
+            clearSearchBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (searchInput) {
+                    searchInput.value = '';
+                    searchInput.focus();
+                }
+                activeQuery = '';
+                this.classList.add('d-none');
+                applyFilter();
+            });
+        }
+
+        // Botones de restablecer búsqueda
+        if (resetFiltersBtn) {
+            resetFiltersBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                resetFilters();
+            });
+        }
+        if (emptyResetBtn) {
+            emptyResetBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                resetFilters();
+            });
+        }
+
+        // Inicializar estado inmediato
+        applyFilter();
+    })();
+
+    /* --------------------------------------------------------------------------
+       17. INTEGRACIÓN MODAL DE INFORMACIÓN CON CURSOS ESPECÍFICOS
+       -------------------------------------------------------------------------- */
+    (function initCourseModalBridge() {
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.btn-open-course-info');
+            if (!btn) return;
+
+            const courseTitle = btn.getAttribute('data-course-title') || 'Capacitación Especializada';
+            const courseCategory = btn.getAttribute('data-course-category') || 'Capacitación';
+
+            // Autocompletar campo en el formulario del modal
+            const programaInput = document.getElementById('modalInputPrograma');
+            if (programaInput) {
+                programaInput.value = `${courseTitle} (${courseCategory})`;
+            }
+
+            // Actualizar enlace directo de WhatsApp del modal
+            const modalWaBtn = document.getElementById('modalWhatsAppBtn');
+            if (modalWaBtn) {
+                const waText = encodeURIComponent(`Hola, deseo solicitar información sobre el curso: ${courseTitle}`);
+                modalWaBtn.href = `https://wa.me/51993463118?text=${waText}`;
+            }
+        });
+    })();
 });
+

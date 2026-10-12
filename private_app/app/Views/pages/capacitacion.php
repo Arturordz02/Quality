@@ -6,6 +6,8 @@
  */
 
 declare(strict_types=1);
+
+$courses = $courses ?? \App\Services\CoursesCatalog::getAll();
 ?>
 <style>
         body {
@@ -302,301 +304,143 @@ declare(strict_types=1);
         </section>
 
         <!-- ==========================================================================
-             3. CATÁLOGO COMPLETO DE CURSOS (Grid 3 Columnas)
+             3. CATÁLOGO GENERAL DE 48 CAPACITACIONES (Filtros, Buscador y Grilla)
              ========================================================================== -->
-        <section class="pb-5">
+        <section class="pb-5" id="catalogo">
             <div class="container">
                 
-                <div class="text-center mb-5">
-                    <span class="badge bg-warning-subtle text-dark fw-bold px-3 py-2 rounded-pill text-uppercase mb-2">
-                        <i class="fa-solid fa-book-open-reader me-1"></i> Especializaciones
+                <!-- Encabezado de la Sección del Catálogo -->
+                <div class="text-center mb-4">
+                    <span class="badge bg-warning-subtle text-dark fw-bold px-3 py-2 rounded-pill text-uppercase mb-2 font-montserrat">
+                        <i class="fa-solid fa-book-open-reader me-1"></i> Especializaciones Oficiales
                     </span>
-                    <h2 class="fw-extrabold font-montserrat text-dark display-6 mb-2 animate__animated animate__fadeInUp animate__delay-1s" style="font-weight: 800;">
-                        CATÁLOGO DE CURSOS EJECUTIVOS
+                    <h2 class="fw-extrabold font-montserrat text-dark display-6 mb-2" style="font-weight: 800;">
+                        CATÁLOGO OFICIAL DE CAPACITACIONES
                     </h2>
-                    <p class="text-muted mx-auto" style="max-width: 720px;">
-                        Selecciona el programa que necesitas para fortalecer tu perfil profesional o el rendimiento de tu equipo técnico.
+                    <p class="text-muted mx-auto" style="max-width: 760px;">
+                        Explora nuestros 48 programas, cursos, talleres y seminarios especializados para profesionales del sector construcción, infraestructura y minería.
                     </p>
                 </div>
 
-                <div class="row g-4">
+                <!-- Barra de Búsqueda y Filtros de Categoría -->
+                <div class="catalog-controls-card p-3 p-md-4 rounded-4 bg-white shadow-sm border mb-4">
                     
-                    <!-- 1. FIDIC -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-up">
-                            <div class="course-card-img-wrap">
-                                <span class="course-badge bg-dark text-warning border border-warning-subtle text-white">CONTRATOS</span>
-                                <picture>
-                                    <source srcset="img/Index-Contratos-Internacionales.webp" type="image/webp">
-                                    <img src="img/Index-Contratos-Internacionales.png" alt="Contratos Internacionales FIDIC" class="course-card-img" loading="lazy">
-                                </picture>
-                            </div>
-                            <div class="course-card-body">
-                                <div>
-                                    <h3 class="course-card-title animate__animated animate__fadeInUp animate__delay-1s">Contratos Internacionales FIDIC</h3>
-                                    <p class="course-card-desc">Administración de reclamos, cláusulas estándar y resolución de disputas en obras internacionales.</p>
-                                    <div class="course-instructor"><i class="fa-solid fa-user-tie text-dark"></i> Consultores Especialistas FIDIC</div>
-                                </div>
-                                <div>
-                                    <a href="/fidic" class="btn btn-sm w-100 py-2 fw-bold rounded-pill btn-qcs-primary" style="background-color: var(--qcs-yellow); color: var(--qcs-black); border-color: var(--qcs-yellow);">Ver Programa Completo <i class="fas fa-arrow-right ms-1"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                    <!-- Fila 1: Buscador en ancho completo -->
+                    <div class="catalog-search-wrap position-relative mb-3">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="catalogSearchInput" class="form-control catalog-search-input" placeholder="Buscar capacitaciones por título, especialidad o palabra clave..." aria-label="Buscar capacitaciones" autocomplete="off">
+                        <button type="button" id="catalogClearSearch" class="btn btn-clear-search d-none" aria-label="Limpiar búsqueda">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
                     </div>
 
-                    <!-- 2. PMO -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-left">
-                            <div class="course-card-img-wrap">
-                                <span class="course-badge bg-success text-white">PMO</span>
-                                <picture>
-                                    <source srcset="img/Index-GestionPMO.webp" type="image/webp">
-                                    <img src="img/Index-GestionPMO.png" alt="Gestión de la PMO" class="course-card-img" loading="lazy">
-                                </picture>
-                            </div>
-                            <div class="course-card-body">
-                                <div>
-                                    <h3 class="course-card-title animate__animated animate__fadeInUp animate__delay-1s">GESTIÓN DE PROYECTOS & PMO</h3>
-                                    <p class="course-card-desc">Diseño, implementación y gobernanza de Oficinas de Gestión de Proyectos en empresas de ingeniería.</p>
-                                    <div class="course-instructor"><i class="fa-solid fa-user-tie text-success"></i> Docente Especialista en PMO</div>
-                                </div>
-                                <div>
-                                    <a href="/pmo" class="btn btn-sm w-100 py-2 fw-bold rounded-pill btn-qcs-primary" style="background-color: var(--qcs-yellow); color: var(--qcs-black); border-color: var(--qcs-yellow);">Ver Programa Completo <i class="fas fa-arrow-right ms-1"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                    <!-- Fila 2: Filtros de Categoría Adaptables -->
+                    <div class="catalog-filter-bar d-flex flex-wrap gap-2 align-items-center mb-3">
+                        <button type="button" class="catalog-filter-btn active" data-category="todos">
+                            <span>Todos</span> <span class="badge rounded-pill ms-1">48</span>
+                        </button>
+                        <button type="button" class="catalog-filter-btn" data-category="calidad">
+                            <span>Calidad</span> <span class="badge rounded-pill ms-1">10</span>
+                        </button>
+                        <button type="button" class="catalog-filter-btn" data-category="riesgos">
+                            <span>Riesgos</span> <span class="badge rounded-pill ms-1">5</span>
+                        </button>
+                        <button type="button" class="catalog-filter-btn" data-category="contratos">
+                            <span>Contratos</span> <span class="badge rounded-pill ms-1">11</span>
+                        </button>
+                        <button type="button" class="catalog-filter-btn" data-category="gestion-de-proyectos">
+                            <span>Gestión de Proyectos</span> <span class="badge rounded-pill ms-1">18</span>
+                        </button>
+                        <button type="button" class="catalog-filter-btn" data-category="oficina-tecnica">
+                            <span>Oficina Técnica</span> <span class="badge rounded-pill ms-1">4</span>
+                        </button>
                     </div>
 
-                    <!-- 3. Gerencia de Calidad -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-right">
-                            <div class="course-card-img-wrap">
-                                <span class="course-badge bg-warning text-dark">CALIDAD</span>
-                                <picture>
-                                    <source srcset="img/Index-GerenciaCalidadObras.webp" type="image/webp">
-                                    <img src="img/Index-GerenciaCalidadObras.png" alt="Gerencia de la Calidad para la Infraestructura" class="course-card-img" loading="lazy">
-                                </picture>
-                            </div>
-                            <div class="course-card-body">
-                                <div>
-                                    <h3 class="course-card-title animate__animated animate__fadeInUp animate__delay-1s">Gerencia de la Calidad para la Infraestructura</h3>
-                                    <p class="course-card-desc">Control de aseguramiento, planes de inspección y ensayos (PIE) y auditorías en megaproyectos.</p>
-                                    <div class="course-instructor"><i class="fa-solid fa-user-tie text-warning"></i> Auditores Líderes IRCA</div>
-                                </div>
-                                <div>
-                                    <a href="/gerencia-de-calidad" class="btn btn-sm w-100 py-2 fw-bold rounded-pill btn-qcs-primary" style="background-color: var(--qcs-yellow); color: var(--qcs-black); border-color: var(--qcs-yellow);">Ver Programa Completo <i class="fas fa-arrow-right ms-1"></i></a>
-                                </div>
-                            </div>
+                    <!-- Fila 3: Contador debajo de los filtros y botón Restablecer búsqueda -->
+                    <div class="catalog-status-bar d-flex justify-content-between align-items-center flex-wrap gap-2 pt-2 border-top">
+                        <div id="catalogResultsCount" class="text-muted small fw-semibold">
+                            Mostrando <strong>48</strong> de 48 capacitaciones
                         </div>
+                        <button type="button" id="catalogResetFiltersBtn" class="btn btn-link btn-sm text-decoration-none text-danger p-0 d-none fw-semibold">
+                            <i class="fa-solid fa-arrow-rotate-left me-1"></i> Restablecer búsqueda
+                        </button>
                     </div>
 
-                    <!-- 4. Valor Ganado -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-up">
+                </div>
+
+                <!-- Grilla Adaptable de las 48 Capacitaciones -->
+                <div class="row g-4" id="catalogGrid">
+                    <?php foreach ($courses as $c): ?>
+                    <div class="col-lg-4 col-md-6 catalog-item-col" 
+                         data-category="<?= htmlspecialchars($c['category_slug'], ENT_QUOTES, 'UTF-8') ?>"
+                         data-type="<?= htmlspecialchars(strtolower($c['type']), ENT_QUOTES, 'UTF-8') ?>"
+                         data-number="<?= (int)$c['number'] ?>"
+                         data-search="<?= htmlspecialchars(strtolower($c['title'] . ' ' . $c['category'] . ' ' . $c['type'] . ' ' . $c['description']), ENT_QUOTES, 'UTF-8') ?>">
+                        
+                        <div class="course-card rounded-4 border-start border-4 border-warning h-100">
+                            
                             <div class="course-card-img-wrap">
-                                <span class="course-badge bg-warning text-dark text-dark">CONTROL</span>
+                                <span class="course-badge <?= $c['type'] === 'Seminario' ? 'bg-info text-dark' : ($c['type'] === 'Taller' ? 'bg-primary text-white' : 'bg-warning text-dark') ?>">
+                                    <?= strtoupper(htmlspecialchars($c['type'], ENT_QUOTES, 'UTF-8')) ?>
+                                </span>
                                 <picture>
-                                    <source srcset="img/Index_ValorGanado.webp" type="image/webp">
-                                    <img src="img/Index_ValorGanado.png" alt="Método del Valor Ganado (EVM)" class="course-card-img" loading="lazy">
+                                    <source srcset="<?= htmlspecialchars($c['image'], ENT_QUOTES, 'UTF-8') ?>" type="image/webp">
+                                    <img src="<?= htmlspecialchars($c['image_fallback'] ?? $c['image'], ENT_QUOTES, 'UTF-8') ?>" 
+                                         alt="<?= htmlspecialchars($c['title'], ENT_QUOTES, 'UTF-8') ?>" 
+                                         class="course-card-img" 
+                                         loading="lazy">
                                 </picture>
                             </div>
-                            <div class="course-card-body">
+
+                            <div class="course-card-body d-flex flex-column justify-content-between">
                                 <div>
-                                    <h3 class="course-card-title animate__animated animate__fadeInUp animate__delay-1s">Avance de Obra con Método del Valor Ganado</h3>
-                                    <p class="course-card-desc">Control de costo y cronograma mediante índices SPI, CPI y proyecciones EAC de alta precisión.</p>
-                                    <div class="course-instructor"><i class="fa-solid fa-user-tie text-warning"></i> Project Controls Specialists</div>
+                                    <div class="course-category-tag mb-2">
+                                        <i class="fa-solid fa-tag text-warning me-1"></i>
+                                        <span><?= htmlspecialchars($c['category'], ENT_QUOTES, 'UTF-8') ?></span>
+                                    </div>
+                                    <h3 class="course-card-title">
+                                        <?= htmlspecialchars($c['title'], ENT_QUOTES, 'UTF-8') ?>
+                                    </h3>
+                                    <p class="course-card-desc">
+                                        <?= htmlspecialchars($c['description'], ENT_QUOTES, 'UTF-8') ?>
+                                    </p>
                                 </div>
-                                <div>
-                                    <a href="/valor-ganado" class="btn btn-sm w-100 py-2 fw-bold rounded-pill btn-qcs-primary" style="background-color: var(--qcs-yellow); color: var(--qcs-black); border-color: var(--qcs-yellow);">Ver Programa Completo <i class="fas fa-arrow-right ms-1"></i></a>
+
+                                <div class="pt-3 border-top mt-auto">
+                                    <?php if (!empty($c['route'])): ?>
+                                    <a href="<?= htmlspecialchars($c['route'], ENT_QUOTES, 'UTF-8') ?>" class="btn btn-warning w-100 py-2 fw-bold rounded-pill text-dark btn-qcs-primary shadow-sm">
+                                        VER CAPACITACIÓN <i class="fa-solid fa-chevron-right ms-1"></i>
+                                    </a>
+                                    <?php else: ?>
+                                    <button type="button" class="btn btn-warning w-100 py-2 fw-bold rounded-pill text-dark btn-qcs-primary shadow-sm btn-open-course-info" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#modalSolicitarInfo" 
+                                            data-course-title="<?= htmlspecialchars($c['title'], ENT_QUOTES, 'UTF-8') ?>"
+                                            data-course-category="<?= htmlspecialchars($c['category'], ENT_QUOTES, 'UTF-8') ?>">
+                                        SOLICITAR INFORMACIÓN <i class="fa-solid fa-chevron-right ms-1"></i>
+                                    </button>
+                                    <?php endif; ?>
                                 </div>
+
                             </div>
                         </div>
-                    </div>
 
-                    <!-- 5. BIM Revit Architecture -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-left">
-                            <div class="course-card-img-wrap">
-                                <span class="course-badge bg-dark text-warning border border-warning-subtle text-white">BIM</span>
-                                <picture>
-                                    <source srcset="img/Index-BIMRevitArchitecture.webp" type="image/webp">
-                                    <img src="img/Index-BIMRevitArchitecture.png" alt="BIM Revit Architecture" class="course-card-img" loading="lazy">
-                                </picture>
-                            </div>
-                            <div class="course-card-body">
-                                <div>
-                                    <h3 class="course-card-title animate__animated animate__fadeInUp animate__delay-1s">BIM Revit Architecture</h3>
-                                    <p class="course-card-desc">Modelado 3D, coordinación de interferencias y estándares del Plan BIM Perú para proyectos de edificación.</p>
-                                    <div class="course-instructor"><i class="fa-solid fa-user-tie text-dark"></i> BIM Managers Certificados</div>
-                                </div>
-                                <div>
-                                    <a href="/bim-revit-architecture" class="btn btn-sm w-100 py-2 fw-bold rounded-pill btn-qcs-primary" style="background-color: var(--qcs-yellow); color: var(--qcs-black); border-color: var(--qcs-yellow);">Ver Programa Completo <i class="fas fa-arrow-right ms-1"></i></a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+                    <?php endforeach; ?>
+                </div>
 
-                    <!-- 6. ISO 9001:2015 -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-right">
-                            <div class="course-card-img-wrap">
-                                <span class="course-badge bg-warning text-dark">ISO</span>
-                                <picture>
-                                    <source srcset="img/ISO1.webp" type="image/webp">
-                                    <img src="img/ISO1.png" alt="ISO 9001:2015 para la Construcción" class="course-card-img" loading="lazy">
-                                </picture>
-                            </div>
-                            <div class="course-card-body">
-                                <div>
-                                    <h3 class="course-card-title animate__animated animate__fadeInUp animate__delay-1s">ISO 9001:2015 para la Construcción</h3>
-                                    <p class="course-card-desc">Formación en implementación y auditoría interna de sistemas de gestión de calidad en obras y oficinas centrales.</p>
-                                    <div class="course-instructor"><i class="fa-solid fa-user-tie text-warning"></i> Auditores ISO 9001</div>
-                                </div>
-                                <div>
-                                    <a href="/iso-9001" class="btn btn-sm w-100 py-2 fw-bold rounded-pill btn-qcs-primary" style="background-color: var(--qcs-yellow); color: var(--qcs-black); border-color: var(--qcs-yellow);">Ver Programa Completo <i class="fas fa-arrow-right ms-1"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Estado Sin Resultados (Empty State) -->
+                <div id="catalogEmptyState" class="text-center py-5 d-none">
+                    <div class="empty-state-icon text-muted mb-3">
+                        <i class="fa-solid fa-magnifying-glass-chart display-3 text-warning"></i>
                     </div>
-
-                    <!-- 7. Oficina Técnica -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-up">
-                            <div class="course-card-img-wrap">
-                                <span class="course-badge bg-secondary text-white">OFICINA TÉCNICA</span>
-                                <picture>
-                                    <source srcset="img/Index-OficinaTecnicaObras.webp" type="image/webp">
-                                    <img src="img/Index-OficinaTecnicaObras.png" alt="Oficina Técnica Obras Privadas y Públicas" class="course-card-img" loading="lazy">
-                                </picture>
-                            </div>
-                            <div class="course-card-body">
-                                <div>
-                                    <h3 class="course-card-title animate__animated animate__fadeInUp animate__delay-1s">Oficina Técnica Obras Privadas y Públicas</h3>
-                                    <p class="course-card-desc">Control documentario, valorizaciones, metrados, RFI y submittals en la administración de proyectos.</p>
-                                    <div class="course-instructor"><i class="fa-solid fa-user-tie text-secondary"></i> Jefes de Oficina Técnica</div>
-                                </div>
-                                <div>
-                                    <a href="/oficina-tecnica" class="btn btn-sm w-100 py-2 fw-bold rounded-pill btn-qcs-primary" style="background-color: var(--qcs-yellow); color: var(--qcs-black); border-color: var(--qcs-yellow);">Ver Programa Completo <i class="fas fa-arrow-right ms-1"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 8. Herramientas de Calidad -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-left">
-                            <div class="course-card-img-wrap">
-                                <span class="course-badge bg-warning text-dark text-dark">HERRAMIENTAS</span>
-                                <picture>
-                                    <source srcset="img/GERCA1.webp" type="image/webp">
-                                    <img src="img/GERCA1.png" alt="Herramientas de Calidad para la Construcción" class="course-card-img" loading="lazy">
-                                </picture>
-                            </div>
-                            <div class="course-card-body">
-                                <div>
-                                    <h3 class="course-card-title animate__animated animate__fadeInUp animate__delay-1s">Herramientas de Calidad para la Construcción</h3>
-                                    <p class="course-card-desc">Pareto, Ishikawa, 5 Porqués, matrices de no conformidades y control estadístico de procesos en obra.</p>
-                                    <div class="course-instructor"><i class="fa-solid fa-user-tie text-warning"></i> Especialistas Lean Six Sigma</div>
-                                </div>
-                                <div>
-                                    <a href="/herramientas" class="btn btn-sm w-100 py-2 fw-bold rounded-pill btn-qcs-primary" style="background-color: var(--qcs-yellow); color: var(--qcs-black); border-color: var(--qcs-yellow);">Ver Programa Completo <i class="fas fa-arrow-right ms-1"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 9. Proyectos PMI -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-right">
-                            <div class="course-card-img-wrap">
-                                <span class="course-badge bg-dark text-warning border border-warning-subtle text-white">PMI</span>
-                                <picture>
-                                    <source srcset="img/Index-RiesgosPMI.webp" type="image/webp">
-                                    <img src="img/Index-RiesgosPMI.png" alt="Gestión de Proyectos con Enfoque PMI" class="course-card-img" loading="lazy">
-                                </picture>
-                            </div>
-                            <div class="course-card-body">
-                                <div>
-                                    <h3 class="course-card-title animate__animated animate__fadeInUp animate__delay-1s">Gestión de Proyectos con Enfoque PMI</h3>
-                                    <p class="course-card-desc">Dirección estratégica basada en la Guía del PMBOK®: integración, alcance, tiempo, costo y riesgos.</p>
-                                    <div class="course-instructor"><i class="fa-solid fa-user-tie text-dark"></i> Project Management Professionals PMP®</div>
-                                </div>
-                                <div>
-                                    <a href="/proyectos-pmi" class="btn btn-sm w-100 py-2 fw-bold rounded-pill btn-qcs-primary" style="background-color: var(--qcs-yellow); color: var(--qcs-black); border-color: var(--qcs-yellow);">Ver Programa Completo <i class="fas fa-arrow-right ms-1"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 10. Contratos -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-up">
-                            <div class="course-card-img-wrap">
-                                <span class="course-badge bg-dark text-white">CONTRATOS</span>
-                                <picture>
-                                    <source srcset="img/nec1.webp" type="image/webp">
-                                    <img src="img/nec1.png" alt="Gestión Contractual en Construcción" class="course-card-img" loading="lazy">
-                                </picture>
-                            </div>
-                            <div class="course-card-body">
-                                <div>
-                                    <h3 class="course-card-title animate__animated animate__fadeInUp animate__delay-1s">Gestión Contractual en Construcción</h3>
-                                    <p class="course-card-desc">Estrategias legales y técnicas para la administración eficiente de contratos y mitigación de reclamos.</p>
-                                    <div class="course-instructor"><i class="fa-solid fa-user-tie text-dark"></i> Abogados &amp; Ingenieros Contractuales</div>
-                                </div>
-                                <div>
-                                    <a href="/contratos" class="btn btn-sm w-100 py-2 fw-bold rounded-pill btn-qcs-primary" style="background-color: var(--qcs-yellow); color: var(--qcs-black); border-color: var(--qcs-yellow);">Ver Programa Completo <i class="fas fa-arrow-right ms-1"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 11. Contratos Estado -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-left">
-                            <div class="course-card-img-wrap">
-                                <span class="course-badge bg-danger text-white">ESTADO</span>
-                                <picture>
-                                    <source srcset="img/Index-Contratos-Internacionales.webp" type="image/webp">
-                                    <img src="img/Index-Contratos-Internacionales.png" alt="Adicionales y Ampliaciones con el Estado" class="course-card-img" loading="lazy">
-                                </picture>
-                            </div>
-                            <div class="course-card-body">
-                                <div>
-                                    <h3 class="course-card-title animate__animated animate__fadeInUp animate__delay-1s">Adicionales y Ampliaciones con el Estado</h3>
-                                    <p class="course-card-desc">Sustentación técnica y normativa ante la Ley de Contrataciones del Estado (OSCE) y Contraloría.</p>
-                                    <div class="course-instructor"><i class="fa-solid fa-user-tie text-danger"></i> Peritos y Consultores en Obras Públicas</div>
-                                </div>
-                                <div>
-                                    <a href="/contratos-estado" class="btn btn-sm w-100 py-2 fw-bold rounded-pill btn-qcs-primary" style="background-color: var(--qcs-yellow); color: var(--qcs-black); border-color: var(--qcs-yellow);">Ver Programa Completo <i class="fas fa-arrow-right ms-1"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 12. Grúas Torre -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-right">
-                            <div class="course-card-img-wrap">
-                                <span class="course-badge bg-secondary text-white">EQUIPOS</span>
-                                <picture>
-                                    <source srcset="img/Index-OficinaTecnicaObras.webp" type="image/webp">
-                                    <img src="img/Index-OficinaTecnicaObras.png" alt="Estrategia y Planificación con Grúas Torre" class="course-card-img" loading="lazy">
-                                </picture>
-                            </div>
-                            <div class="course-card-body">
-                                <div>
-                                    <h3 class="course-card-title animate__animated animate__fadeInUp animate__delay-1s">Estrategia y Planificación con Grúas Torre</h3>
-                                    <p class="course-card-desc">Productividad, radio de giro, logística vertical, montaje seguro y dimensionamiento de izajes.</p>
-                                    <div class="course-instructor"><i class="fa-solid fa-user-tie text-secondary"></i> Ingenieros Mecánicos y de Producción</div>
-                                </div>
-                                <div>
-                                    <a href="/gruas-torre" class="btn btn-sm w-100 py-2 fw-bold rounded-pill btn-qcs-primary" style="background-color: var(--qcs-yellow); color: var(--qcs-black); border-color: var(--qcs-yellow);">Ver Programa Completo <i class="fas fa-arrow-right ms-1"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    <h4 class="fw-bold font-montserrat text-dark mb-2">No se encontraron capacitaciones</h4>
+                    <p class="text-muted small mx-auto mb-4" style="max-width: 500px;">
+                        No existen cursos que coincidan con los criterios de búsqueda o filtro seleccionados. Prueba buscando con otros términos o limpiando los filtros.
+                    </p>
+                    <button type="button" class="btn btn-warning btn-md px-4 py-2 rounded-pill fw-bold text-dark btn-qcs-primary" id="catalogEmptyResetBtn">
+                        <i class="fa-solid fa-arrow-rotate-left me-1"></i> Restablecer búsqueda
+                    </button>
                 </div>
 
             </div>
