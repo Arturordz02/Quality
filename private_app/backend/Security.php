@@ -248,5 +248,43 @@ class Security {
         echo json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
         exit;
     }
+
+    /**
+     * Inicia de forma segura la sesión PHP si aún no está activa.
+     */
+    public static function startSession(): void {
+        if (session_status() === PHP_SESSION_NONE) {
+            if (!headers_sent()) {
+                ini_set('session.use_strict_mode', '1');
+                ini_set('session.cookie_httponly', '1');
+                ini_set('session.cookie_samesite', 'Lax');
+            }
+            @session_start();
+        }
+    }
+
+
+    /**
+     * Genera u obtiene el token CSRF activo para la sesión actual.
+     */
+    public static function getCsrfToken(): string {
+        self::startSession();
+        if (empty($_SESSION['_qcs_csrf_token'])) {
+            $_SESSION['_qcs_csrf_token'] = bin2hex(random_bytes(32));
+        }
+        return $_SESSION['_qcs_csrf_token'];
+    }
+
+    /**
+     * Valida de forma estricta contra ataques CSRF usando hash_equals.
+     */
+    public static function validateCsrfToken(?string $token): bool {
+        self::startSession();
+        if (empty($_SESSION['_qcs_csrf_token']) || empty($token)) {
+            return false;
+        }
+        return hash_equals($_SESSION['_qcs_csrf_token'], (string)$token);
+    }
 }
+
 

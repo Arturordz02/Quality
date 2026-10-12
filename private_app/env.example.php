@@ -40,5 +40,17 @@ return [
     // Seguridad
     'HONEYPOT_FIELD'          => '_qcs_verification_hp',
     'CORS_ALLOWED_ORIGINS'    => 'https://quality-consulting.org,https://www.quality-consulting.org',
+
+    // Pasarela PayPal (Pago exclusivo: Primera clase del curso - USD 10)
+    'PAYPAL_MODE'             => 'sandbox',
+    'PAYPAL_CLIENT_ID'        => 'TU_PAYPAL_CLIENT_ID_AQUI',
+    'PAYPAL_CLIENT_SECRET'    => 'TU_PAYPAL_CLIENT_SECRET_AQUI',
+    'PAYPAL_CURRENCY'         => 'USD',
+    'PAYPAL_FIRST_CLASS_PRICE'=> '10.00',
+
+    // Destinatario de Coordinación Académica (Pendiente de confirmación)
+    // IMPORTANTE: Reemplazar este placeholder únicamente cuando la dirección confirme el correo oficial del Ing. Omar Samaniego.
+    'OMAR_SAMANIEGO_EMAIL'    => 'PLACEHOLDER_EMAIL_ING_OMAR_SAMANIEGO_PENDIENTE@ejemplo.com',
 ];
+
 

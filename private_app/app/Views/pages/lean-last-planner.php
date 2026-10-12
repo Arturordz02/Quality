@@ -395,14 +395,23 @@ declare(strict_types=1);
                             </a>
                         </div>
 
-                        <!-- 4. Botón Pago PayPal (Internacional) -->
+                        <!-- 4. Botón Pago PayPal (Primera Clase – USD 10) -->
                         <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://www.paypal.com/paypalme/qualityconsulting/240" target="_blank" rel="noopener noreferrer" class="btn btn-paypal btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold text-white" aria-label="Pagar curso mediante PayPal para inscripciones internacionales">
-                                <i class="fab fa-paypal me-2"></i> Pagar con PayPal
+                            <a href="/pagar-primera-clase?curso=lean-last-planner" class="btn btn-paypal btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold text-white" aria-label="Comprar primera clase del curso por USD 10 mediante PayPal">
+                                <i class="fab fa-paypal me-2"></i> Primera clase del curso – USD 10
                             </a>
                         </div>
 
+                        <!-- Nota explicativa de alcance exclusivo de USD 10 -->
+                        <div class="col-12 text-center text-lg-start mt-2">
+                            <p class="small text-warning mb-0">
+                                <i class="fas fa-info-circle me-1"></i>
+                                <strong>Nota importante:</strong> El pago de USD 10 corresponde únicamente a la <em>primera clase del curso</em>. No incluye el curso completo, matrícula total ni acceso al programa integral.
+                            </p>
+                        </div>
+
                     </div>
+
 
                     <!-- Barra de Confianza y Seguridad -->
                     <div class="payment-trust-bar">

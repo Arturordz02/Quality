@@ -176,5 +176,24 @@ return [
         ))))),
         'trust_proxy_headers'  => $envBool('TRUST_PROXY_HEADERS', false),
         'trusted_proxies'      => array_values(array_filter(array_map('trim', explode(',', (string)$env('TRUSTED_PROXIES', '127.0.0.1,::1'))))),
-    ]
+    ],
+
+    // --------------------------------------------------------------------------
+    // 5. PASARELA PAYPAL (PRIMERA CLASE DEL CURSO - USD 10)
+    // --------------------------------------------------------------------------
+    'paypal' => [
+        'mode'              => $env('PAYPAL_MODE', 'sandbox'),
+        'client_id'         => $env('PAYPAL_CLIENT_ID', ''),
+        'client_secret'     => $env('PAYPAL_CLIENT_SECRET', ''),
+        'currency'          => $env('PAYPAL_CURRENCY', 'USD'),
+        'first_class_price' => (float)$env('PAYPAL_FIRST_CLASS_PRICE', 10.00),
+    ],
+
+    // --------------------------------------------------------------------------
+    // 6. DESTINATARIOS DE NOTIFICACIONES ADMINISTRATIVAS
+    // --------------------------------------------------------------------------
+    'recipients' => [
+        'omar_samaniego' => $env('OMAR_SAMANIEGO_EMAIL', ''),
+    ],
 ];
+
