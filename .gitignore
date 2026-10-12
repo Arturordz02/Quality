@@ -11,6 +11,7 @@ logs/
 tmp/
 temp/
 _site/
+respaldos/
 *.zip
 
 # IDEs y Editores

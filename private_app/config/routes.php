@@ -88,6 +88,11 @@ return function (Router $router, array $config): void {
      * RUTAS DE CAPACITACIÓN Y PROGRAMAS DE ESPECIALIZACIÓN
      */
     $router->get('/capacitacion', [TrainingController::class, 'capacitacion']);
+    $router->get('/capacitacion-calidad', [TrainingController::class, 'capacitacionCalidad']);
+    $router->get('/capacitacion-riesgos', [TrainingController::class, 'capacitacionRiesgos']);
+    $router->get('/capacitacion-contratos', [TrainingController::class, 'capacitacionContratos']);
+    $router->get('/capacitacion-gestion-de-proyectos', [TrainingController::class, 'capacitacionGestionProyectos']);
+    $router->get('/capacitacion-oficina-tecnica', [TrainingController::class, 'capacitacionOficinaTecnica']);
     $router->get('/bim-revit-architecture', [TrainingController::class, 'bimRevitArchitecture']);
     $router->get('/calidad-y-pmi', [TrainingController::class, 'calidadPmi']);
     $router->get('/contratos', [TrainingController::class, 'contratos']);
