@@ -6726,14 +6726,15 @@ img {
 
 .btn-paypal {
     background: linear-gradient(135deg, #003087 0%, #0079c1 100%);
-    color: #ffffff;
+    color: #ffffff !important;
     box-shadow: 0 4px 15px rgba(0, 121, 193, 0.35);
     border: 1px solid #38bdf8;
 }
 
-.btn-paypal:hover {
+.btn-paypal:hover,
+.btn-paypal:focus {
     background: linear-gradient(135deg, #00457c 0%, #008cdd 100%);
-    color: #ffffff;
+    color: #ffffff !important;
     transform: translateY(-3px);
     box-shadow: 0 8px 24px rgba(0, 121, 193, 0.45);
 }
