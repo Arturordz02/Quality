@@ -603,3 +603,4 @@ class PaymentController extends Controller
 HTML;
     }
 }
+

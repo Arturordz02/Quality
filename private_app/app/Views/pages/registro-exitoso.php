@@ -114,3 +114,4 @@ $pendingVariable     = htmlspecialchars((string)($summary['pending_variable'] ??
 
     </div>
 </main>
+

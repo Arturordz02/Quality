@@ -140,3 +140,4 @@ class CourseCatalog
         return self::$courses[$normalized]['title'] ?? 'Curso Especializado de Construcción';
     }
 }
+

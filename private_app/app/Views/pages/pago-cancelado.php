@@ -66,3 +66,4 @@ $courseSlug  = htmlspecialchars($courseSlug ?? ($course['slug'] ?? 'bim-revit-ar
 
     </div>
 </main>
+
