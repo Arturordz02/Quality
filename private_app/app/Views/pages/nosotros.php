@@ -62,6 +62,47 @@ declare(strict_types=1);
         pointer-events: none;
     }
 
+    .nosotros-hero-badge {
+        display: inline-flex;
+        align-items: center;
+        background: rgba(229, 168, 19, 0.12);
+        border: 1px solid rgba(229, 168, 19, 0.35);
+        color: var(--qcs-yellow);
+        font-size: 0.84rem;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        padding: 0.5rem 1.25rem;
+        border-radius: 50px;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 4px 18px rgba(229, 168, 19, 0.15);
+        backdrop-filter: blur(8px);
+        transition: all 0.3s ease;
+    }
+
+    .nosotros-hero-badge:hover {
+        background: var(--qcs-yellow);
+        color: var(--qcs-black);
+        border-color: var(--qcs-yellow);
+        box-shadow: 0 6px 22px rgba(229, 168, 19, 0.35);
+        transform: translateY(-2px);
+    }
+
+    .text-gradient-gold {
+        background: linear-gradient(135deg, #FFD56B 0%, #E5A813 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+    }
+
+    .nosotros-hero-btn {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nosotros-hero-btn:hover {
+        transform: translateY(-3px);
+    }
+
     /* Tarjetas Flotantes de Misión, Visión y Valores */
     .floating-exec-card {
         background: #ffffff;
@@ -105,6 +146,18 @@ declare(strict_types=1);
         transform: rotate(6deg) scale(1.05);
     }
 
+    .exec-card-footer {
+        transition: color 0.3s ease;
+    }
+
+    .floating-exec-card:hover .exec-card-footer i {
+        transform: translateX(5px);
+    }
+
+    .exec-card-footer i {
+        transition: transform 0.3s ease;
+    }
+
     /* Sección de Métricas de Impacto */
     .stats-dark-strip {
         background: linear-gradient(135deg, #1a1d20 0%, #0f1113 100%);
@@ -128,14 +181,37 @@ declare(strict_types=1);
 
     .stat-item-box {
         text-align: center;
-        padding: 1rem;
+        padding: 1.25rem 0.75rem;
+        border-radius: 1rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: default;
     }
 
-    .stat-icon {
-        font-size: 2rem;
+    .stat-item-box:hover {
+        background: rgba(255, 255, 255, 0.04);
+        transform: translateY(-5px);
+    }
+
+    .stat-icon-wrap {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: rgba(229, 168, 19, 0.12);
+        border: 1px solid rgba(229, 168, 19, 0.25);
         color: var(--qcs-yellow);
-        margin-bottom: 0.75rem;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 0.9rem;
+        transition: all 0.3s ease;
+    }
+
+    .stat-item-box:hover .stat-icon-wrap {
+        background: var(--qcs-yellow);
+        color: var(--qcs-black);
+        transform: scale(1.1) rotate(4deg);
+        box-shadow: 0 6px 20px rgba(229, 168, 19, 0.35);
     }
 
     .stat-number {
@@ -161,32 +237,42 @@ declare(strict_types=1);
         display: flex;
         align-items: flex-start;
         gap: 1.25rem;
-        padding: 1.25rem;
-        border-radius: 1rem;
+        padding: 1.35rem;
+        border-radius: 1.1rem;
         background: #ffffff;
         border: 1px solid #e2e8f0;
         margin-bottom: 1.25rem;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-        transition: all 0.3s ease;
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .diff-feature-item:hover {
         transform: translateX(6px);
-        border-left: 4px solid var(--qcs-yellow);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+        border-left: 5px solid var(--qcs-yellow);
+        border-color: rgba(229, 168, 19, 0.4);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.07);
     }
 
     .diff-check-icon {
-        width: 42px;
-        height: 42px;
-        border-radius: 50%;
-        background: rgba(229, 168, 19, 0.15);
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        background: rgba(229, 168, 19, 0.12);
         color: var(--qcs-yellow);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.15rem;
+        font-size: 1.2rem;
         flex-shrink: 0;
+        border: 1px solid rgba(229, 168, 19, 0.25);
+        transition: all 0.3s ease;
+    }
+
+    .diff-feature-item:hover .diff-check-icon {
+        background: var(--qcs-yellow);
+        color: var(--qcs-black);
+        transform: scale(1.08) rotate(3deg);
+        box-shadow: 0 4px 15px rgba(229, 168, 19, 0.3);
     }
 
     /* Tarjeta de Liderazgo */
@@ -197,6 +283,13 @@ declare(strict_types=1);
         padding: 2.25rem;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         position: relative;
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .director-profile-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+        border-color: var(--qcs-yellow);
     }
 
     .director-img-container {
@@ -207,13 +300,36 @@ declare(strict_types=1);
         overflow: hidden;
         box-shadow: 0 8px 25px rgba(229, 168, 19, 0.25);
         margin: 0 auto 1.5rem auto;
+        transition: all 0.35s ease;
     }
 
-    .director-img-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: top;
+    .director-profile-card:hover .director-img-container {
+        transform: scale(1.05);
+        box-shadow: 0 12px 30px rgba(229, 168, 19, 0.38);
+    }
+
+    .director-cert-badge {
+        background: #1a1d20;
+        color: #f8fafc;
+        border: 1px solid rgba(229, 168, 19, 0.3);
+        padding: 0.35rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        transition: all 0.25s ease;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .director-cert-badge:hover {
+        background: var(--qcs-yellow);
+        color: var(--qcs-black);
+        border-color: var(--qcs-yellow);
+        transform: translateY(-2px);
+    }
+
+    .director-cert-badge:hover i {
+        color: var(--qcs-black) !important;
     }
 
     /* Banner CTA 2026 */
@@ -226,6 +342,11 @@ declare(strict_types=1);
         overflow: hidden;
         box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
         border: 1px solid rgba(229, 168, 19, 0.3);
+        transition: border-color 0.3s ease;
+    }
+
+    .exec-cta-banner:hover {
+        border-color: var(--qcs-yellow);
     }
 
     .exec-cta-banner::after {
@@ -239,24 +360,39 @@ declare(strict_types=1);
         pointer-events: none;
     }
 
+    .exec-cta-contact-link {
+        color: #ffffff;
+        font-weight: 700;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .exec-cta-contact-link:hover {
+        color: var(--qcs-yellow);
+        text-decoration: underline;
+    }
+
     .pilar-badge-pill {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
         background: #F4F5F7;
         color: #1e293b;
         font-size: 0.82rem;
         font-weight: 700;
-        padding: 0.4rem 0.85rem;
+        padding: 0.42rem 0.85rem;
         border-radius: 30px;
         margin-right: 0.4rem;
         margin-bottom: 0.5rem;
         border: 1px solid #e2e8f0;
-        transition: all 0.2s ease;
+        transition: all 0.25s ease;
     }
 
     .pilar-badge-pill:hover {
         background: var(--qcs-yellow);
         color: var(--qcs-black);
         border-color: var(--qcs-yellow);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(229, 168, 19, 0.25);
     }
 </style>
 
@@ -274,16 +410,16 @@ declare(strict_types=1);
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     
-                    <!-- Badge Neón -->
+                    <!-- Badge Neón Ejecutivo -->
                     <div>
-                        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3 animate__animated animate__fadeInDown shadow-sm">
-                            <i class="fas fa-graduation-cap me-2"></i> CAPACITACIÓN Y ASESORÍA ESPECIALIZADA
+                        <span class="nosotros-hero-badge animate__animated animate__fadeInDown">
+                            <i class="fa-solid fa-users me-2"></i> SOBRE NOSOTROS &bull; CAPACITACI&Oacute;N Y ASESOR&Iacute;A ESPECIALIZADA
                         </span>
                     </div>
 
                     <!-- Título Principal -->
                     <h1 class="animate__animated animate__fadeInDown fw-extrabold text-white mb-3" style="font-size: clamp(2rem, 3.8vw, 3.2rem); font-family: var(--font-heading); line-height: 1.25; font-weight: 800;">
-                        Impulsamos la Excelencia en la Gestión de Proyectos de Ingeniería y Construcción
+                        Impulsamos la <span class="text-gradient-gold">Excelencia</span> en la Gestión de Proyectos de Ingeniería y Construcción
                     </h1>
 
                     <!-- Subtítulo -->
@@ -293,10 +429,10 @@ declare(strict_types=1);
 
                     <!-- Botones de Acción -->
                     <div class="d-flex justify-content-center gap-3 flex-wrap pt-2">
-                        <a href="#mision-vision" class="btn btn-qcs-primary px-4 py-3 rounded-pill fw-bold">
+                        <a href="#mision-vision" class="btn btn-qcs-primary nosotros-hero-btn px-4 py-3 rounded-pill fw-bold">
                             <i class="fa-solid fa-compass me-2"></i> Conoce Nuestro Propósito
                         </a>
-                        <a href="/contacto" class="btn btn-qcs-dark px-4 py-3 rounded-pill fw-bold">
+                        <a href="/contacto" class="btn btn-qcs-dark nosotros-hero-btn px-4 py-3 rounded-pill fw-bold">
                             <i class="fa-solid fa-envelope me-2"></i> Contactar Asesoría
                         </a>
                     </div>
@@ -326,7 +462,7 @@ declare(strict_types=1);
                                 Capacitar y asesorar a profesionales y empresas con metodologías avanzadas de gestión, ingeniería de costos, control contractual y BIM para elevar los estándares de la industria.
                             </p>
                         </div>
-                        <div class="pt-3 border-top border-light-subtle d-flex align-items-center text-warning fw-bold small">
+                        <div class="pt-3 border-top border-light-subtle d-flex align-items-center text-warning fw-bold small exec-card-footer">
                             <span>Impacto Técnico Transformador</span>
                             <i class="fa-solid fa-arrow-right ms-auto"></i>
                         </div>
@@ -346,7 +482,7 @@ declare(strict_types=1);
                                 Ser reconocidos como el centro de consultoría y capacitación técnica referente en el país, destacado por la calidad de nuestra plana docente y la efectividad de nuestras soluciones.
                             </p>
                         </div>
-                        <div class="pt-3 border-top border-light-subtle d-flex align-items-center text-warning fw-bold small">
+                        <div class="pt-3 border-top border-light-subtle d-flex align-items-center text-warning fw-bold small exec-card-footer">
                             <span>Liderazgo &amp; Reconocimiento</span>
                             <i class="fa-solid fa-arrow-right ms-auto"></i>
                         </div>
@@ -372,7 +508,7 @@ declare(strict_types=1);
                                 <span class="pilar-badge-pill"><i class="fa-solid fa-check text-warning me-1"></i> Integridad y Transparencia</span>
                             </div>
                         </div>
-                        <div class="pt-3 border-top border-light-subtle d-flex align-items-center text-warning fw-bold small mt-3">
+                        <div class="pt-3 border-top border-light-subtle d-flex align-items-center text-warning fw-bold small mt-3 exec-card-footer">
                             <span>Cultura de Calidad Total</span>
                             <i class="fa-solid fa-arrow-right ms-auto"></i>
                         </div>
@@ -394,7 +530,7 @@ declare(strict_types=1);
                     <!-- Métrica 1 -->
                     <div class="col-lg-3 col-6 border-end border-white border-opacity-10">
                         <div class="stat-item-box">
-                            <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                            <div class="stat-icon-wrap"><i class="fa-solid fa-calendar-check"></i></div>
                             <div class="stat-number">+25</div>
                             <div class="stat-label">Años de Experiencia Combinada</div>
                         </div>
@@ -403,7 +539,7 @@ declare(strict_types=1);
                     <!-- Métrica 2 -->
                     <div class="col-lg-3 col-6 border-end border-white border-opacity-10">
                         <div class="stat-item-box">
-                            <div class="stat-icon"><i class="fa-solid fa-user-graduate"></i></div>
+                            <div class="stat-icon-wrap"><i class="fa-solid fa-user-graduate"></i></div>
                             <div class="stat-number">+1,500</div>
                             <div class="stat-label">Profesionales Capacitados</div>
                         </div>
@@ -412,7 +548,7 @@ declare(strict_types=1);
                     <!-- Métrica 3 -->
                     <div class="col-lg-3 col-6 border-end border-white border-opacity-10">
                         <div class="stat-item-box">
-                            <div class="stat-icon"><i class="fa-solid fa-hard-hat"></i></div>
+                            <div class="stat-icon-wrap"><i class="fa-solid fa-hard-hat"></i></div>
                             <div class="stat-number">100%</div>
                             <div class="stat-label">Casuística Real Aplicada a Obras</div>
                         </div>
@@ -421,7 +557,7 @@ declare(strict_types=1);
                     <!-- Métrica 4 -->
                     <div class="col-lg-3 col-6">
                         <div class="stat-item-box">
-                            <div class="stat-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                            <div class="stat-icon-wrap"><i class="fa-solid fa-diagram-project"></i></div>
                             <div class="stat-number">+10</div>
                             <div class="stat-label">Programas Especializados Activos</div>
                         </div>
@@ -467,20 +603,20 @@ declare(strict_types=1);
                         
                         <!-- Badges de Certificaciones -->
                         <div class="d-flex flex-wrap justify-content-center gap-2 mb-3">
-                            <span class="badge bg-dark"><i class="fa-solid fa-id-card text-warning me-1"></i> CIP</span>
-                            <span class="badge bg-dark"><i class="fa-solid fa-award text-warning me-1"></i> PMP®</span>
-                            <span class="badge bg-dark"><i class="fa-solid fa-shield-halved text-warning me-1"></i> PMI-RMP®</span>
-                            <span class="badge bg-dark"><i class="fa-solid fa-certificate text-warning me-1"></i> IRCA</span>
-                            <span class="badge bg-dark"><i class="fa-solid fa-medal text-warning me-1"></i> LSS Black Belt</span>
+                            <span class="director-cert-badge"><i class="fa-solid fa-id-card text-warning me-1"></i> CIP</span>
+                            <span class="director-cert-badge"><i class="fa-solid fa-award text-warning me-1"></i> PMP®</span>
+                            <span class="director-cert-badge"><i class="fa-solid fa-shield-halved text-warning me-1"></i> PMI-RMP®</span>
+                            <span class="director-cert-badge"><i class="fa-solid fa-certificate text-warning me-1"></i> IRCA</span>
+                            <span class="director-cert-badge"><i class="fa-solid fa-medal text-warning me-1"></i> LSS Black Belt</span>
                         </div>
 
                         <p class="text-secondary text-start small mb-3" style="line-height: 1.7;">
                             Más de 20 años de experiencia en Gestión de la Calidad, PMO y Riesgos en el sector construcción. Autor de publicaciones especializadas, docente de posgrado y conferencista internacional.
                         </p>
 
-                        <div class="p-3 rounded-3 bg-light border border-light-subtle text-start">
+                        <div class="p-3 rounded-3 text-start" style="background: rgba(229, 168, 19, 0.08); border: 1px solid rgba(229, 168, 19, 0.25);">
                             <div class="d-flex align-items-center gap-2 text-dark small fw-bold">
-                                <i class="fa-solid fa-check-circle text-warning fs-5"></i>
+                                <i class="fa-solid fa-circle-check text-warning fs-5"></i>
                                 <span>Garantía de rigor técnico y aplicabilidad directa en campo.</span>
                             </div>
                         </div>
@@ -570,11 +706,11 @@ declare(strict_types=1);
                         <div class="d-flex flex-wrap gap-4 text-light pt-2">
                             <div>
                                 <i class="fa-solid fa-phone text-warning me-2"></i>
-                                Atención Inmediata: <a href="tel:+51993463118" class="text-white fw-bold">+51 993 463 118</a>
+                                Atención Inmediata: <a href="tel:+51993463118" class="exec-cta-contact-link">+51 993 463 118</a>
                             </div>
                             <div>
                                 <i class="fa-solid fa-envelope text-warning me-2"></i>
-                                Correo: <a href="mailto:contacto@quality-consulting.org" class="text-white fw-bold">contacto@quality-consulting.org</a>
+                                Correo: <a href="mailto:contacto@quality-consulting.org" class="exec-cta-contact-link">contacto@quality-consulting.org</a>
                             </div>
                         </div>
                     </div>
