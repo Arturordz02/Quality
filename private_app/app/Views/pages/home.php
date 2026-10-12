@@ -276,6 +276,32 @@ body {
             text-align: center;
             padding: 0.75rem 1rem;
             border-right: 1px solid #e2e8f0;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: default;
+        }
+
+        .counter-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .counter-icon-wrap {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(229, 168, 19, 0.12);
+            color: var(--accent-gold, #E5A813);
+            margin-bottom: 0.65rem;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .counter-card:hover .counter-icon-wrap {
+            background: var(--accent-gold, #E5A813);
+            color: #0F1113;
+            transform: scale(1.1);
         }
 
         .counter-card:last-child {
@@ -684,6 +710,9 @@ body {
                         
                         <div class="col-lg-3 col-6">
                             <div class="counter-card">
+                                <div class="counter-icon-wrap">
+                                    <i class="fa-solid fa-award"></i>
+                                </div>
                                 <div class="counter-number">+20</div>
                                 <div class="counter-label">Años de Experiencia</div>
                             </div>
@@ -691,6 +720,9 @@ body {
 
                         <div class="col-lg-3 col-6">
                             <div class="counter-card">
+                                <div class="counter-icon-wrap">
+                                    <i class="fa-solid fa-user-graduate"></i>
+                                </div>
                                 <div class="counter-number">+1,000</div>
                                 <div class="counter-label">Profesionales Capacitados</div>
                             </div>
@@ -698,6 +730,9 @@ body {
 
                         <div class="col-lg-3 col-6">
                             <div class="counter-card">
+                                <div class="counter-icon-wrap">
+                                    <i class="fa-solid fa-building"></i>
+                                </div>
                                 <div class="counter-number">+50</div>
                                 <div class="counter-label">Empresas Atendidas</div>
                             </div>
@@ -705,6 +740,9 @@ body {
 
                         <div class="col-lg-3 col-6">
                             <div class="counter-card">
+                                <div class="counter-icon-wrap">
+                                    <i class="fa-solid fa-certificate"></i>
+                                </div>
                                 <div class="counter-number" style="font-size: 1.85rem; color: #E5A813;">ISO • PMO • BIM</div>
                                 <div class="counter-label">Estándares Internacionales</div>
                             </div>
