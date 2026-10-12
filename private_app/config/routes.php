@@ -18,10 +18,12 @@ use App\Core\Router;
 use App\Core\View;
 use App\Controllers\LegalController;
 use App\Controllers\PageController;
+use App\Controllers\PaymentController;
 use App\Controllers\ServiceController;
 use App\Controllers\TrainingController;
 
 return function (Router $router, array $config): void {
+
 
     /**
      * RUTA DE DIAGNÓSTICO Y SALUD DEL ENTORNO MVC
@@ -108,7 +110,19 @@ return function (Router $router, array $config): void {
     $router->get('/valor-ganado', [TrainingController::class, 'valorGanado']);
 
     /**
+     * RUTAS DE PASARELA PAYPAL (PRIMERA CLASE DEL CURSO - USD 10) Y REGISTRO
+     */
+    $router->get('/pagar-primera-clase', [PaymentController::class, 'checkoutPrimeraClase']);
+    $router->post('/api/paypal/create-order', [PaymentController::class, 'createPaypalOrder']);
+    $router->post('/api/paypal/capture-order', [PaymentController::class, 'capturePaypalOrder']);
+    $router->get('/registro-primera-clase', [PaymentController::class, 'registroPrimeraClase']);
+    $router->post('/registro-primera-clase', [PaymentController::class, 'procesarRegistroPrimeraClase']);
+    $router->get('/registro-exitoso', [PaymentController::class, 'registroExitoso']);
+    $router->get('/pago-cancelado', [PaymentController::class, 'pagoCancelado']);
+
+    /**
      * MANEJADOR DE ERROR 404 PERSONALIZADO
+
      * Cuando una ruta MVC no exista, renderiza la vista institucional 404.
      */
     $router->setNotFoundHandler(function () use ($config) {

@@ -70,6 +70,15 @@ class Router
     }
 
     /**
+     * Retorna la tabla de rutas registradas.
+     */
+    public function getRoutes(): array
+    {
+        return $this->routes;
+    }
+
+
+    /**
      * Establece una función de retorno personalizada cuando una ruta no es encontrada.
      */
     public function setNotFoundHandler(callable $handler): self

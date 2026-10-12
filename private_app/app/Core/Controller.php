@@ -56,23 +56,29 @@ abstract class Controller
      */
     protected function json(array $data, int $statusCode = 200): void
     {
-        http_response_code($statusCode);
-        header('Content-Type: application/json; charset=utf-8');
-        header('X-Content-Type-Options: nosniff');
+        if (!headers_sent()) {
+            http_response_code($statusCode);
+            header('Content-Type: application/json; charset=utf-8');
+            header('X-Content-Type-Options: nosniff');
+        }
 
         echo json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         exit;
     }
+
 
     /**
      * Redirige al navegador a una URL específica.
      */
     protected function redirect(string $url, int $statusCode = 302): void
     {
-        http_response_code($statusCode);
-        header("Location: {$url}");
+        if (!headers_sent()) {
+            http_response_code($statusCode);
+            header("Location: {$url}");
+        }
         exit;
     }
+
 
     /**
      * Retorna el método HTTP de la petición actual (GET, POST, etc.).

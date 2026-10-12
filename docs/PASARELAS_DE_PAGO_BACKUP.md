@@ -77,5 +77,6 @@
 ---
 
 ## 2. Estado de Integración en el Sitio Web
-- **PayPal:** Reintegrado en todas las vistas de cursos/capacitaciones (17 programas) con botón corporativo directo.
-- **Niubiz / VisaNet:** En resguardo y respaldo seguro según directriz (no activas en el sitio público).
+- **Niubiz / VisaNet:** Retirado definitivamente de toda la web pública (vistas, hojas de estilo CSS, controladores y rutas). Sus referencias quedan exclusivamente en este documento histórico de contingencia y resguardo institucional.
+- **PayPal:** Restringido y enfocado exclusivamente a la compra de la primera clase introductoria de cada curso por **USD 10.00**. No se presenta ni ofrece como pago del curso completo, matrícula total ni acceso integral. El flujo cuenta con validación obligatoria en backend mediante la API REST v2 de PayPal y redirección forzosa al formulario de registro del alumno.
+
