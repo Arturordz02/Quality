@@ -101,7 +101,8 @@ $course = [
             'text'  => 'Ingreso a la base de datos laboral de Quality Consulting Solutions.',
         ],
     ],
-    'pdu_text'             => 'Explicación oficial del brochure sobre las 16 PDU (dejar en "" si el curso no otorga PDU).',
+    'pdu_title'            => 'Unidades de desarrollo profesional (16 PDU)', // Dinámico según cada brochure (ej. 'Unidades de desarrollo profesional (6 PDU)'). Dejar en '' si no otorga PDU.
+    'pdu_text'             => 'Explicación oficial del brochure sobre las PDU (dejar en "" si el curso no otorga PDU).',
     'brochure_url'         => 'brochures/calidad/archivo-del-brochure.pdf',
     'brochure_download'    => 'Nombre-Descarga-Amigable.pdf',
     'brochure_thumb'       => 'img/brochures/portada-real-extraida-del-pdf.png',
@@ -194,9 +195,9 @@ $course = [
 - **Bloques abiertos de beneficios:** Sin bordes de tarjeta ni cajas que compitan con el temario. Cada elemento (`.qcs-cd-benefit-open-item`) presenta un círculo claro (`.qcs-cd-benefit-circle-icon`) con ícono dorado, título corto en negrita (`.qcs-cd-benefit-open-title`) y descripción fiel al brochure (`.qcs-cd-benefit-open-desc`).
   - **Regla editorial:** *«Ingreso a la base de datos laboral de Quality Consulting Solutions»* se titula **«Bolsa laboral»** y conserva su texto exacto sin prometer empleo ni vacantes garantizadas.
 - **Franja oscura de PDU (`.qcs-cd-pdu-dark-bar`):**
-  - Se renderiza únicamente cuando `$course['pdu_text']` tiene contenido.
-  - Título fijo: **«Unidades de desarrollo profesional (16 PDU)»** (nunca presentarlo como «Acreditación institucional PMI»).
-  - Conserva la explicación completa del brochure sobre categoría CCR y horas netas.
+  - Se renderiza únicamente cuando `$course['pdu_text']` o `$course['pdu_title']` tiene contenido. Si el curso no otorga PDU, el bloque completo no se muestra.
+  - Título dinámico configurado en `$course['pdu_title']` (por ejemplo: **«Unidades de desarrollo profesional (16 PDU)»** o **«Unidades de desarrollo profesional (6 PDU)»** según cada brochure; nunca presentarlo como «Acreditación institucional PMI»).
+  - Conserva la explicación completa del brochure sobre categoría CCR y horas netas en `$course['pdu_text']`.
 - **Tarjeta de Brochure Integrada (`.qcs-cd-brochure-integrated-card`, `#brochure-curso`):**
   - Ubicada dentro del bloque marfil, inmediatamente debajo de la franja de PDU. Es el **único** bloque de brochure en toda la página.
   - Muestra la **miniatura real de la primera página del PDF** (`.qcs-cd-brochure-thumb-img`, proporción `893 / 1148`, carga inmediata sin `loading="lazy"`), textos **«Consulta el brochure»**, *«Revisa el programa completo del curso.»*, nota *«Consulta la disponibilidad y las condiciones actuales.»*, y los botones **«Ver PDF»** (`target="_blank"`) y **«Descargar PDF»** (`download`).
