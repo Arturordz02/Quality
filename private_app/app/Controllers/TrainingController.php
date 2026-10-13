@@ -128,18 +128,33 @@ class TrainingController extends Controller
     }
 
     /**
-     * Curso: Dirección de la Calidad con el Enfoque PMI® para la Construcción.
+     * Curso: Enfoque PMI de la Gestión de la Calidad.
      */
     public function calidadPmi(): void
     {
         $data = [
-            'title'           => 'Dirección de la Calidad con el Enfoque PMI® para la Construcción | Quality Consulting Solutions',
-            'metaDescription' => 'Curso especializado en dirección de la calidad bajo la Guía del PMBOK® y estándares del PMI® aplicado a proyectos de construcción e infraestructura.',
+            'title'           => 'Capacitación: Enfoque PMI de la Gestión de la Calidad | Quality Consulting Solutions',
+            'metaDescription' => 'Curso de alta especialización en gestión de la calidad bajo la Sección 8 de la Guía del PMBOK® aplicado a la construcción e ingeniería civil.',
             'canonical'       => 'https://quality-consulting.org/calidad-y-pmi',
             'activePage'      => 'capacitacion',
         ];
 
         $this->render('pages/calidad-y-pmi', $data, 'main');
+    }
+
+    /**
+     * Curso: Dirección de la Calidad con el Enfoque PMI® para la Construcción.
+     */
+    public function direccionCalidadEnfoquePmi(): void
+    {
+        $data = [
+            'title'           => 'Dirección de la Calidad con el Enfoque PMI® para la Construcción | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en dirección de la calidad bajo la Guía del PMBOK® y estándares del PMI® aplicado a proyectos de construcción e infraestructura.',
+            'canonical'       => 'https://quality-consulting.org/direccion-calidad-enfoque-pmi',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/direccion-calidad-enfoque-pmi', $data, 'main');
     }
 
     /**

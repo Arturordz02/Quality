@@ -81,9 +81,9 @@ class CoursesCatalog
                 'category'      => 'Calidad',
                 'category_slug' => 'calidad',
                 'type'          => 'Curso',
-                'image'         => 'img/capmi1.webp',
-                'image_fallback'=> 'img/capmi1.png',
-                'route'         => '/calidad-y-pmi',
+                'image'         => 'img/capacitaciones/direccion-calidad-enfoque-pmi.webp',
+                'image_fallback'=> 'img/capacitaciones/direccion-calidad-enfoque-pmi.png',
+                'route'         => '/direccion-calidad-enfoque-pmi',
                 'brochure'      => 'brochures/calidad/direccion-calidad-enfoque-pmi.pdf',
                 'description'   => 'Alineamiento de los estándares del PMBOK® (6ta y 7ma Edición) y la Guía de Grupos de Procesos con la ejecución, aseguramiento y control en obra.'
             ],
