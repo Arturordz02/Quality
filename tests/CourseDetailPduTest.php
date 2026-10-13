@@ -145,6 +145,20 @@ runTest('Cursos aprobados de 16 PDU conservan "16 PDU" en sus páginas', functio
     return true;
 });
 
+// Caso 7: _site/herramientas.html y herramientas.php no contienen "6 horas netas"
+runTest('herramientas.php y _site/herramientas.html no contienen "6 horas netas"', function(): bool {
+    $phpPath = dirname(__DIR__) . '/private_app/app/Views/pages/herramientas.php';
+    $htmlPath = dirname(__DIR__) . '/_site/herramientas.html';
+    $phpContent = file_get_contents($phpPath);
+    $htmlContent = file_exists($htmlPath) ? file_get_contents($htmlPath) : '';
+    if ($phpContent === false) {
+        return false;
+    }
+    $hasInPhp = stripos($phpContent, '6 horas netas') !== false;
+    $hasInHtml = ($htmlContent !== '') ? (stripos($htmlContent, '6 horas netas') !== false) : false;
+    return (!$hasInPhp && !$hasInHtml);
+});
+
 echo "\n-------------------------------------------------------\n";
 echo "RESULTADOS: {$passedTests} de {$totalTests} pruebas pasadas con éxito.\n";
 echo "-------------------------------------------------------\n\n";

@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 $course = [
     // 1. Hero Banner
-    'hero_badge'          => 'ÁREA DE GESTIÓN DE LA CALIDAD • 6 HORAS NETAS • 06 PDU',
+    'hero_badge'          => 'ÁREA DE GESTIÓN DE LA CALIDAD • 06 PDU',
     'hero_badge_icon'     => 'fa-solid fa-toolbox',
     'title'               => 'TALLER DE HERRAMIENTAS DE GESTIÓN DE CALIDAD EN LA CONSTRUCCIÓN + USO DE INTELIGENCIA ARTIFICIAL',
     'summary'             => 'Aplicación de herramientas colaborativas para realizar la gestión de calidad aplicada a la construcción a través del análisis y el diagnóstico. Se incluirá el uso de la Inteligencia Artificial.',
@@ -23,7 +23,7 @@ $course = [
         ],
         [
             'icon'  => 'fa-solid fa-award',
-            'title' => '06 PDU & 6 HORAS',
+            'title' => '06 PDU',
             'desc'  => '06 PDU (Professional Development Unit) Categoría PMI® CCR : General Education Third-Party Provider.',
         ],
         [
@@ -142,7 +142,7 @@ $course = [
         ],
     ],
     'pdu_title'           => 'Unidades de desarrollo profesional (6 PDU)',
-    'pdu_text'            => '06 PDU (Professional Development Unit) Categoría PMI® CCR : General Education Third-Party Provider. The PMI Talent Triangle®. Duración total: 6 horas netas.',
+    'pdu_text'            => '06 PDU (Professional Development Unit) Categoría PMI® CCR: General Education Third-Party Provider. The PMI Talent Triangle®.',
     'brochure_url'        => 'brochures/calidad/taller-herramientas-gestion-calidad.pdf',
     'brochure_download'   => 'Brochure-Taller-Herramientas-Gestion-Calidad.pdf',
     'brochure_thumb'      => 'img/brochures/portada-taller-herramientas-calidad.png',
