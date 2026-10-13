@@ -426,4 +426,50 @@ class TrainingController extends Controller
 
         $this->render('pages/pmo', $data, 'main');
     }
+
+    /**
+     * Seminario: Método de la Curva de Completion para Evitar el Síndrome del 90%.
+     */
+    public function sindromeDel90(): void
+    {
+        $data = [
+            'title'           => 'Seminario: Método de la Curva de Completion (Síndrome del 90%) | Quality Consulting Solutions',
+            'metaDescription' => 'Seminario especializado en el Método de la Curva de Completion adoptado por INACAL (Guía GP 151) para evitar el Síndrome del 90% y asegurar el cierre de proyectos.',
+            'canonical'       => 'https://quality-consulting.org/sindrome-del-90',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/sindrome-del-90', $data, 'main');
+    }
+
+    /**
+     * Seminario: Cambios en la ISO 9001:2026.
+     */
+    public function seminarioIso90012026(): void
+    {
+        $data = [
+            'title'           => 'Seminario: Cambios en la ISO 9001:2026 | Quality Consulting Solutions',
+            'metaDescription' => 'Seminario especializado en los cambios previstos, evolución y criterios de interpretación técnica de la ISO 9001:2026 aplicados al sector construcción.',
+            'canonical'       => 'https://quality-consulting.org/seminario-iso-9001-2026',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/seminario-iso-9001-2026', $data, 'main');
+    }
+
+    /**
+     * Seminario: Indicadores Avanzados de Calidad en la Construcción.
+     */
+    public function indicadoresDeCalidad(): void
+    {
+        $data = [
+            'title'           => 'Seminario: Indicadores Avanzados de Calidad en la Construcción | Quality Consulting Solutions',
+            'metaDescription' => 'Seminario especializado en diseño e interpretación de KPIs avanzados de calidad en obra: métricas de completion (Q6, Q6\', WIP), Last Planner® y modelado estocástico.',
+            'canonical'       => 'https://quality-consulting.org/indicadores-de-calidad',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/indicadores-de-calidad', $data, 'main');
+    }
 }
+

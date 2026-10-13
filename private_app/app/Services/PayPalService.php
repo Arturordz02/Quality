@@ -28,9 +28,17 @@ class PayPalService
         $this->config = $config;
         $paypalCfg = $config['paypal'] ?? [];
 
-        $this->mode = (string)($paypalCfg['mode'] ?? getenv('PAYPAL_MODE') ?: 'sandbox');
-        $this->clientId = (string)($paypalCfg['client_id'] ?? getenv('PAYPAL_CLIENT_ID') ?: '');
-        $this->clientSecret = (string)($paypalCfg['client_secret'] ?? getenv('PAYPAL_CLIENT_SECRET') ?: '');
+        $this->mode = strtolower((string)($paypalCfg['mode'] ?? getenv('PAYPAL_MODE') ?: 'sandbox'));
+        
+        // Resolución separada para Sandbox vs Live
+        if ($this->mode === 'sandbox') {
+            $this->clientId = (string)($paypalCfg['sandbox_client_id'] ?: ($paypalCfg['client_id'] ?: getenv('PAYPAL_SANDBOX_CLIENT_ID') ?: getenv('PAYPAL_CLIENT_ID') ?: ''));
+            $this->clientSecret = (string)($paypalCfg['sandbox_client_secret'] ?: ($paypalCfg['client_secret'] ?: getenv('PAYPAL_SANDBOX_CLIENT_SECRET') ?: getenv('PAYPAL_CLIENT_SECRET') ?: ''));
+        } else {
+            $this->clientId = (string)($paypalCfg['client_id'] ?? getenv('PAYPAL_CLIENT_ID') ?: '');
+            $this->clientSecret = (string)($paypalCfg['client_secret'] ?? getenv('PAYPAL_CLIENT_SECRET') ?: '');
+        }
+
         $this->currency = (string)($paypalCfg['currency'] ?? getenv('PAYPAL_CURRENCY') ?: 'USD');
         $this->price = (float)($paypalCfg['first_class_price'] ?? getenv('PAYPAL_FIRST_CLASS_PRICE') ?: 10.00);
 
@@ -223,13 +231,15 @@ class PayPalService
         if (!$this->isConfigured()) {
             $isDev = ($this->config['app']['env'] ?? getenv('APP_ENV') ?: 'production') === 'development';
             if ($isDev && str_starts_with($orderId, 'TEST_ORDER_')) {
+                $mockCaptureId = 'TEST_CAPTURE_' . substr($orderId, 11);
                 return [
-                    'success'  => true,
-                    'order_id' => $orderId,
-                    'status'   => 'COMPLETED',
-                    'amount'   => $this->price,
-                    'currency' => $this->currency,
-                    'mock'     => true,
+                    'success'    => true,
+                    'order_id'   => $orderId,
+                    'capture_id' => $mockCaptureId,
+                    'status'     => 'COMPLETED',
+                    'amount'     => $this->price,
+                    'currency'   => $this->currency,
+                    'mock'       => true,
                 ];
             }
             return [
@@ -276,48 +286,174 @@ class PayPalService
 
         $data = json_decode((string)$response, true);
         $status = $data['status'] ?? '';
+        $captures = $data['purchase_units'][0]['payments']['captures'] ?? [];
+        $captureItem = $captures[0] ?? [];
+        $captureId = $captureItem['id'] ?? '';
+        $amount = (float)($captureItem['amount']['value'] ?? $this->price);
+        $currency = $captureItem['amount']['currency_code'] ?? $this->currency;
 
         return [
-            'success'  => ($status === 'COMPLETED'),
-            'order_id' => $data['id'] ?? $orderId,
-            'status'   => $status,
-            'raw'      => $data,
+            'success'    => ($status === 'COMPLETED'),
+            'order_id'   => $data['id'] ?? $orderId,
+            'capture_id' => $captureId,
+            'status'     => $status,
+            'amount'     => $amount,
+            'currency'   => $currency,
+            'raw'        => $data,
         ];
     }
 
     /**
-     * Valida de manera estricta en el backend que una orden de PayPal exista,
-     * esté en estado COMPLETED, en moneda USD y por el importe exacto de USD 10.00.
+     * Verifica si una transacción, orden o captura de PayPal ya fue utilizada en un registro previo.
      */
-    public function verifyOrder(string $orderId, float $expectedAmount = 10.00, string $expectedCurrency = 'USD'): array
+    public static function isTransactionAlreadyUsed(string $identifier): bool
     {
+        $cleanId = trim($identifier);
+        if (empty($cleanId)) {
+            return false;
+        }
+
+        $backendDir = dirname(__DIR__, 2) . '/backend';
+        $queueDir = $backendDir . '/storage/fallback_queue';
+
+        if (is_dir($queueDir)) {
+            // 1. Comprobación directa por nombre de archivo estándar de la cola
+            $safeId = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $cleanId);
+            $directFile = $queueDir . '/paypal_first_class_' . $safeId . '.json';
+            if (file_exists($directFile) && filesize($directFile) > 0) {
+                return true;
+            }
+
+            // 2. Escaneo de archivos json de la cola por coincidencia de paypal_order_id o paypal_capture_id
+            $files = glob($queueDir . '/paypal_first_class_*.json');
+            if ($files) {
+                foreach ($files as $file) {
+                    if (!is_file($file)) continue;
+                    $content = @file_get_contents($file);
+                    if ($content && (str_contains($content, '"paypal_order_id"') || str_contains($content, '"paypal_capture_id"'))) {
+                        $decoded = json_decode($content, true);
+                        $data = $decoded['data'] ?? $decoded;
+                        $savedOrderId = $data['paypal_order_id'] ?? $decoded['id'] ?? '';
+                        $savedCaptureId = $data['paypal_capture_id'] ?? '';
+                        if (strcasecmp((string)$savedOrderId, $cleanId) === 0 || 
+                            (!empty($savedCaptureId) && strcasecmp((string)$savedCaptureId, $cleanId) === 0)) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+
+        // 3. Comprobación en base de datos MySQL si está activa
+        if (class_exists(\Database::class, false)) {
+            try {
+                $db = \Database::getInstance();
+                $pdo = $db->getConnection();
+                if ($pdo) {
+                    $stmt = $pdo->prepare("SELECT id FROM `paypal_first_class_registrations` 
+                        WHERE `paypal_order_id` = :id1 OR `paypal_capture_id` = :id2 LIMIT 1");
+                    $stmt->execute([':id1' => $cleanId, ':id2' => $cleanId]);
+                    if ($stmt->fetch()) {
+                        return true;
+                    }
+                }
+            } catch (\Throwable $e) {
+                // Silencioso, fallback a comprobación en cola
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Valida de manera estricta en el backend que una orden de PayPal exista,
+     * esté en estado COMPLETED, en moneda USD, por el importe exacto de USD 10.00,
+     * hacia la cuenta receptora de Quality, asociada al curso correspondiente y no reutilizada.
+     */
+    public function verifyOrder(
+        string $orderId,
+        float $expectedAmount = 10.00,
+        string $expectedCurrency = 'USD',
+        string $expectedCourse = ''
+    ): array {
         $cleanOrderId = trim($orderId);
         if (empty($cleanOrderId)) {
             return ['valid' => false, 'error' => 'Código de orden de PayPal no proporcionado.'];
         }
 
-        // Mock en desarrollo
-        if (!$this->isConfigured()) {
-            $isDev = ($this->config['app']['env'] ?? getenv('APP_ENV') ?: 'production') === 'development';
-            if ($isDev && str_starts_with($cleanOrderId, 'TEST_ORDER_')) {
-                return [
-                    'valid'    => true,
-                    'order_id' => $cleanOrderId,
-                    'status'   => 'COMPLETED',
-                    'amount'   => 10.00,
-                    'currency' => 'USD',
-                    'mock'     => true,
-                ];
-            }
+        // 1. Verificación de Transacción no utilizada previamente
+        if (self::isTransactionAlreadyUsed($cleanOrderId)) {
             return [
                 'valid' => false,
-                'error' => 'Credenciales de PayPal pendientes de configuración en el servidor.',
+                'error' => "El código de transacción {$cleanOrderId} ya fue utilizado en un registro previo. No se permiten registros duplicados con el mismo pago.",
+                'code'  => 'TRANSACTION_ALREADY_USED',
             ];
         }
 
+        $isDev = ($this->config['app']['env'] ?? getenv('APP_ENV') ?: 'production') === 'development';
+
+        // 2. Manejo controlado para entorno de desarrollo / pruebas automáticas
+        if (!$this->isConfigured()) {
+            if ($isDev && str_starts_with($cleanOrderId, 'TEST_ORDER_')) {
+                // Simulación determinista de casos de prueba
+                if (str_contains($cleanOrderId, 'NOT_COMPLETED')) {
+                    return [
+                        'valid' => false,
+                        'error' => 'El estado de la orden en PayPal es PENDING, no COMPLETED.',
+                        'status'=> 'PENDING',
+                    ];
+                }
+                if (str_contains($cleanOrderId, 'WRONG_AMT')) {
+                    return [
+                        'valid' => false,
+                        'error' => 'El monto del pago no corresponde a la primera clase (USD 10.00).',
+                    ];
+                }
+                if (str_contains($cleanOrderId, 'WRONG_CURR')) {
+                    return [
+                        'valid' => false,
+                        'error' => 'La moneda del pago no es USD.',
+                    ];
+                }
+                if (str_contains($cleanOrderId, 'WRONG_RECEIVER')) {
+                    return [
+                        'valid' => false,
+                        'error' => 'La cuenta receptora del pago no corresponde a Quality Consulting Solutions.',
+                    ];
+                }
+                if (str_contains($cleanOrderId, 'WRONG_COURSE')) {
+                    return [
+                        'valid' => false,
+                        'error' => 'La transacción no corresponde a la capacitación seleccionada.',
+                    ];
+                }
+
+                $mockCaptureId = 'TEST_CAPTURE_' . substr($cleanOrderId, 11);
+
+                return [
+                    'valid'        => true,
+                    'order_id'     => $cleanOrderId,
+                    'capture_id'   => $mockCaptureId,
+                    'status'       => 'COMPLETED',
+                    'amount'       => 10.00,
+                    'currency'     => 'USD',
+                    'receiver'     => 'comercial@quality-consulting.org',
+                    'course_slug'  => $expectedCourse,
+                    'mock'         => true,
+                ];
+            }
+
+            return [
+                'valid'        => false,
+                'error'        => 'Credenciales de PayPal pendientes de configuración en el servidor privado (.env / env.php). La verificación automática en línea requiere configurar PAYPAL_CLIENT_ID y PAYPAL_CLIENT_SECRET.',
+                'unconfigured' => true,
+            ];
+        }
+
+        // 3. Consulta en vivo a la API REST v2 de PayPal
         $accessToken = $this->getAccessToken();
         if (!$accessToken) {
-            return ['valid' => false, 'error' => 'Fallo al autenticar contra la API de PayPal.'];
+            return ['valid' => false, 'error' => 'Fallo de autenticación con el servidor de PayPal.'];
         }
 
         $ch = curl_init("{$this->apiBaseUrl}/v2/checkout/orders/{$cleanOrderId}");
@@ -345,24 +481,25 @@ class PayPalService
         $data = json_decode((string)$response, true);
         $status = $data['status'] ?? '';
 
+        // A. Estado de pago completado
         if ($status !== 'COMPLETED') {
             return [
                 'valid' => false,
-                'error' => "El estado de la orden en PayPal no es 'COMPLETED' (Estado actual: {$status}).",
+                'error' => "El estado del pago en PayPal no es 'COMPLETED' (Estado actual: {$status}).",
                 'status' => $status,
             ];
         }
 
-        // Validar importe y moneda en purchase_units
         $units = $data['purchase_units'] ?? [];
         if (empty($units)) {
-            return ['valid' => false, 'error' => 'La orden no contiene unidades de compra.'];
+            return ['valid' => false, 'error' => 'La orden no contiene unidades de compra en PayPal.'];
         }
 
         $unit = $units[0];
         $currency = $unit['amount']['currency_code'] ?? '';
         $amount = (float)($unit['amount']['value'] ?? 0.0);
 
+        // B. Moneda USD
         if (strtoupper($currency) !== strtoupper($expectedCurrency)) {
             return [
                 'valid' => false,
@@ -370,6 +507,7 @@ class PayPalService
             ];
         }
 
+        // C. Importe exacto de US$ 10.00
         if (abs($amount - $expectedAmount) > 0.01) {
             return [
                 'valid' => false,
@@ -377,13 +515,74 @@ class PayPalService
             ];
         }
 
+        // D. Cuenta receptora configurada de Quality (Diferenciando Sandbox y Live)
+        $isSandbox = ($this->mode === 'sandbox');
+        $configuredReceiver = strtolower((string)($this->config['paypal']['receiver_email'] ?? 'comercial@quality-consulting.org'));
+        $sandboxReceiver = strtolower((string)($this->config['paypal']['sandbox_receiver_email'] ?? ''));
+        $payeeEmail = strtolower((string)($unit['payee']['email_address'] ?? ''));
+
+        if (!$isSandbox) {
+            // En producción: comprobación estricta contra la cuenta comercial confirmada
+            if (!empty($configuredReceiver) && !empty($payeeEmail) && $payeeEmail !== $configuredReceiver) {
+                $allowedReceivers = [$configuredReceiver, 'comercial@quality-consulting.org', 'contacto@quality-consulting.org'];
+                if (!in_array($payeeEmail, $allowedReceivers, true)) {
+                    return [
+                        'valid' => false,
+                        'error' => "La cuenta receptora ({$payeeEmail}) no coincide con la cuenta oficial de Quality Consulting Solutions.",
+                    ];
+                }
+            }
+        } else {
+            // En sandbox: si se configuró un receptor sandbox específico, validarlo
+            if (!empty($sandboxReceiver) && !empty($payeeEmail) && $payeeEmail !== $sandboxReceiver) {
+                return [
+                    'valid' => false,
+                    'error' => "La cuenta receptora sandbox ({$payeeEmail}) no coincide con la cuenta de prueba configurada ({$sandboxReceiver}).",
+                ];
+            }
+        }
+
+        // E. Capacitación y compra asociada
+        if (!empty($expectedCourse)) {
+            $customId = (string)($unit['custom_id'] ?? '');
+            $referenceId = (string)($unit['reference_id'] ?? '');
+            $desc = (string)($unit['description'] ?? '');
+            $matchedCourse = str_contains($customId, $expectedCourse) ||
+                             str_contains($referenceId, $expectedCourse) ||
+                             str_contains(strtolower($desc), strtolower($expectedCourse));
+
+            // Si la orden traía un curso diferente expresamente registrado
+            if (!empty($customId) && str_starts_with($customId, 'FIRST_CLASS_') && !str_contains($customId, $expectedCourse)) {
+                return [
+                    'valid' => false,
+                    'error' => "El pago registrado en PayPal corresponde a otra capacitación y no a la seleccionada.",
+                ];
+            }
+        }
+
+        // F. Extracción del Capture ID y verificación de no reutilización de la captura
+        $captures = $unit['payments']['captures'] ?? [];
+        $captureItem = $captures[0] ?? [];
+        $captureId = $captureItem['id'] ?? '';
+
+        if (!empty($captureId) && self::isTransactionAlreadyUsed($captureId)) {
+            return [
+                'valid' => false,
+                'error' => "El código de captura {$captureId} ya fue registrado previamente en el sistema.",
+                'code'  => 'TRANSACTION_ALREADY_USED',
+            ];
+        }
+
         return [
-            'valid'    => true,
-            'order_id' => $data['id'] ?? $cleanOrderId,
-            'status'   => $status,
-            'amount'   => $amount,
-            'currency' => $currency,
-            'raw'      => $data,
+            'valid'        => true,
+            'order_id'     => $data['id'] ?? $cleanOrderId,
+            'capture_id'   => $captureId,
+            'status'       => $status,
+            'amount'       => $amount,
+            'currency'     => $currency,
+            'receiver'     => $payeeEmail ?: $configuredReceiver,
+            'course_slug'  => $expectedCourse,
+            'raw'          => $data,
         ];
     }
 }

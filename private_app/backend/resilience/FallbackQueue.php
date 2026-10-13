@@ -146,5 +146,65 @@ class FallbackQueue {
         clearstatcache(true, $filePath);
         return file_exists($filePath) && ((int)filesize($filePath) > 0);
     }
+
+    /**
+     * Adquiere un bloqueo atómico exclusivo sobre una transacción de PayPal
+     * para evitar registros concurrentes duplicados ante solicitudes simultáneas.
+     *
+     * @param string $orderId ID de orden o captura de PayPal
+     * @return bool True si el bloqueo fue adquirido con éxito; False si ya está bloqueado o registrado.
+     */
+    public static function acquireTransactionLock(string $orderId): bool {
+        $cleanId = trim($orderId);
+        if (empty($cleanId)) {
+            return false;
+        }
+
+        $queueDir = self::getQueueDir();
+        if (!is_dir($queueDir)) {
+            @mkdir($queueDir, 0755, true);
+        }
+
+        $safeId = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $cleanId);
+        $finalFile = $queueDir . '/paypal_first_class_' . $safeId . '.json';
+        if (file_exists($finalFile) && filesize($finalFile) > 0) {
+            return false; // Ya fue registrado formalmente
+        }
+
+        $lockFile = $queueDir . '/.lock_' . $safeId;
+
+        // Si el archivo de lock existe y tiene más de 45 segundos, se considera huérfano y se limpia
+        if (file_exists($lockFile) && (time() - filemtime($lockFile)) > 45) {
+            @unlink($lockFile);
+        }
+
+        // Intento de creación atómica exclusiva con 'x' (falla inmediatamente si el archivo ya existe)
+        $fp = @fopen($lockFile, 'x');
+        if ($fp === false) {
+            return false; // Otra solicitud concurrente tiene el lock
+        }
+
+        fwrite($fp, (string)time());
+        fclose($fp);
+        return true;
+    }
+
+    /**
+     * Libera el bloqueo atómico exclusivo sobre una transacción.
+     *
+     * @param string $orderId ID de orden o captura de PayPal
+     */
+    public static function releaseTransactionLock(string $orderId): void {
+        $cleanId = trim($orderId);
+        if (empty($cleanId)) {
+            return;
+        }
+
+        $safeId = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $cleanId);
+        $lockFile = self::getQueueDir() . '/.lock_' . $safeId;
+        if (file_exists($lockFile)) {
+            @unlink($lockFile);
+        }
+    }
 }
 

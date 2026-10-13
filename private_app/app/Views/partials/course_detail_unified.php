@@ -34,9 +34,7 @@ $syllabus          = $course['syllabus'] ?? [];
 $docente           = $course['docente'] ?? [];
 $benefits          = $course['benefits'] ?? [];
 $pduText           = $course['pdu_text'] ?? '';
-$brochureUrl       = $course['brochure_url'] ?? '';
-$brochureDownload  = $course['brochure_download'] ?? 'Brochure-Curso-Quality.pdf';
-$brochureThumb     = $course['brochure_thumb'] ?? '';
+$pduHeading        = $course['pdu_heading'] ?? 'Unidades de desarrollo profesional (16 PDU)';
 $enrollBgImage     = $course['enroll_bg_image'] ?? '';
 $whatsappUrl       = $course['whatsapp_url'] ?? 'https://wa.me/51993463118';
 $modalServiceTitle = $course['modal_service'] ?? $title;
@@ -306,7 +304,7 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
     </section>
 
     <!-- ==========================================================================
-         4. BENEFICIOS Y MATERIALES + FRANJA PDU + BROCHURE INTEGRADO
+         4. BENEFICIOS Y MATERIALES + FRANJA PDU
          ========================================================================== -->
     <section class="qcs-cd-section qcs-cd-section--ivory" id="beneficios-materiales">
         <div class="container">
@@ -344,53 +342,8 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
                 </div>
                 <div class="qcs-cd-pdu-divider" aria-hidden="true"></div>
                 <div class="qcs-cd-pdu-copy">
-                    <h3 class="qcs-cd-pdu-dark-heading">Unidades de desarrollo profesional (16 PDU)</h3>
+                    <h3 class="qcs-cd-pdu-dark-heading"><?= htmlspecialchars($pduHeading, ENT_QUOTES, 'UTF-8') ?></h3>
                     <p class="qcs-cd-pdu-dark-text mb-0"><?= $pduText ?></p>
-                </div>
-            </div>
-            <?php endif; ?>
-
-            <!-- Tarjeta horizontal compacta del Brochure integrada dentro del bloque de beneficios -->
-            <?php if (!empty($brochureUrl)): ?>
-            <div class="qcs-cd-brochure-integrated-card mx-auto" id="brochure-curso">
-                <div class="qcs-cd-brochure-left">
-                    <?php if (!empty($brochureThumb)): ?>
-                    <a href="<?= htmlspecialchars($brochureUrl, ENT_QUOTES, 'UTF-8') ?>"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="qcs-cd-brochure-thumb-link"
-                       aria-label="Ver PDF del brochure: <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?>">
-                        <img src="<?= htmlspecialchars($brochureThumb, ENT_QUOTES, 'UTF-8') ?>"
-                             alt="Portada del brochure oficial: <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?>"
-                             class="qcs-cd-brochure-thumb-img"
-                             width="893"
-                             height="1148">
-                    </a>
-                    <?php else: ?>
-                    <div class="qcs-cd-brochure-icon" aria-hidden="true">
-                        <i class="fa-regular fa-file-lines"></i>
-                    </div>
-                    <?php endif; ?>
-
-                    <div class="qcs-cd-brochure-copy">
-                        <h3 class="qcs-cd-brochure-title">Consulta el brochure</h3>
-                        <p class="qcs-cd-brochure-text">Revisa el programa completo del curso.</p>
-                        <p class="qcs-cd-brochure-note">Consulta la disponibilidad y las condiciones actuales.</p>
-                    </div>
-                </div>
-
-                <div class="qcs-cd-brochure-actions">
-                    <a href="<?= htmlspecialchars($brochureUrl, ENT_QUOTES, 'UTF-8') ?>"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="btn qcs-cd-btn-brochure-dark">
-                        <i class="fa-regular fa-file-lines me-2" aria-hidden="true"></i>Ver PDF
-                    </a>
-                    <a href="<?= htmlspecialchars($brochureUrl, ENT_QUOTES, 'UTF-8') ?>"
-                       download="<?= htmlspecialchars($brochureDownload, ENT_QUOTES, 'UTF-8') ?>"
-                       class="btn qcs-cd-btn-brochure-gold-outline">
-                        <i class="fa-solid fa-download me-2" aria-hidden="true"></i>Descargar PDF
-                    </a>
                 </div>
             </div>
             <?php endif; ?>
@@ -446,9 +399,10 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
                             </div>
 
                             <div class="qcs-cd-fc-btn-col">
-                                <a href="/pagar-primera-clase?curso=<?= htmlspecialchars($paypalSlug, ENT_QUOTES, 'UTF-8') ?>"
-                                   class="btn qcs-cd-btn-paypal-fc"
-                                   aria-label="Pagar primera clase del curso por US$ 10 mediante PayPal">
+                                <a href="/registro-primera-clase?curso=<?= htmlspecialchars($paypalSlug, ENT_QUOTES, 'UTF-8') ?>"
+                                   class="btn qcs-cd-btn-paypal-fc btn-paypal-first-class"
+                                   data-course-slug="<?= htmlspecialchars($paypalSlug, ENT_QUOTES, 'UTF-8') ?>"
+                                   aria-label="Pagar primera clase de <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?> por US$ 10 mediante PayPal">
                                     <i class="fab fa-paypal me-2" aria-hidden="true"></i>Pagar primera clase
                                 </a>
                             </div>

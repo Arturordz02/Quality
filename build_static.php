@@ -34,10 +34,12 @@ function copyDirectory(string $src, string $dst): void {
     @mkdir($dst, 0777, true);
     while (false !== ($file = readdir($dir))) {
         if (($file != '.') && ($file != '..')) {
+            // Evitar carpetas de backend, storage y brochures en despliegue estático
+            if ($file === 'backend' || $file === 'brochures' || $file === 'storage') {
+                continue;
+            }
             if (is_dir($src . '/' . $file)) {
-                if ($file !== 'backend') { // Evitar scripts de backend en estático
-                    copyDirectory($src . '/' . $file, $dst . '/' . $file);
-                }
+                copyDirectory($src . '/' . $file, $dst . '/' . $file);
             } else {
                 if (!str_ends_with($file, '.php') && !str_ends_with($file, '.htaccess')) {
                     copy($src . '/' . $file, $dst . '/' . $file);
@@ -92,6 +94,7 @@ foreach ($pageFiles as $pageFile) {
         $htmlTransformed = preg_replace('/href="\/pago-cancelado(\?[^"]*)?"/', 'href="pago-cancelado.html$1"', $html);
         $htmlTransformed = preg_replace('/href="\/registro-primera-clase(\?[^"]*)?"/', 'href="registro-primera-clase.html$1"', $htmlTransformed);
         $htmlTransformed = preg_replace('/href="\/registro-exitoso(\?[^"]*)?"/', 'href="registro-exitoso.html$1"', $htmlTransformed);
+        $htmlTransformed = preg_replace('/href="\/pagar-primera-clase(\?[^"]*)?"/', 'href="registro-primera-clase.html$1"', $htmlTransformed);
 
         // 2. Reemplazar href="/ruta" por "ruta.html" y href="/" por "index.html" para navegación estática
         $htmlTransformed = preg_replace_callback('/href="\/([a-zA-Z0-9\-_]+)"/', function($matches) {
@@ -116,6 +119,14 @@ foreach ($pageFiles as $pageFile) {
         echo "  [ERROR] Falló {$pageName}: " . $e->getMessage() . "\n";
     }
 }
+
+// 3. Fallback de redirección estática de compatibilidad para pagar-primera-clase
+$compatRedirect = '<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Redirigiendo al formulario de primera clase...</title><script>var p=window.location.search;window.location.replace("registro-primera-clase.html"+p);</script><noscript><meta http-equiv="refresh" content="0;url=registro-primera-clase.html"></noscript></head><body><p>Redirigiendo a <a href="registro-primera-clase.html">registro</a>...</p></body></html>';
+file_put_contents($outputDir . '/pagar-primera-clase.html', $compatRedirect);
+if (!is_dir($outputDir . '/pagar-primera-clase')) {
+    mkdir($outputDir . '/pagar-primera-clase', 0777, true);
+}
+file_put_contents($outputDir . '/pagar-primera-clase/index.html', '<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Redirigiendo...</title><script>var p=window.location.search;window.location.replace("../registro-primera-clase.html"+p);</script><noscript><meta http-equiv="refresh" content="0;url=../registro-primera-clase.html"></noscript></head><body><p>Redirigiendo a <a href="../registro-primera-clase.html">registro</a>...</p></body></html>');
 
 // Asegurar 404.html en la raíz de output
 if (file_exists($publicHtmlDir . '/404.html') && !file_exists($outputDir . '/404.html')) {

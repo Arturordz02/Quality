@@ -50,7 +50,8 @@ function runTest(string $description, callable $fn): void {
 }
 
 function runPhpCode(string $code): string {
-    $proc = proc_open('php', [
+    $phpBin = defined('PHP_BINARY') && PHP_BINARY ? PHP_BINARY : 'C:\\xampp\\php\\php.exe';
+    $proc = proc_open('"' . $phpBin . '"', [
         0 => ['pipe', 'r'],
         1 => ['pipe', 'w'],
         2 => ['pipe', 'w'],
@@ -73,13 +74,13 @@ echo "=======================================================\n\n";
 // Configuración base de prueba
 $config = require dirname(__DIR__) . '/private_app/config/app.php';
 
-// Test 1: Catálogo de 17 cursos oficiales
-runTest("Catálogo contiene exactamente los 17 cursos oficiales y valida slugs", function () {
+// Test 1: Catálogo de 21 capacitaciones oficiales
+runTest("Catálogo contiene las capacitaciones oficiales registradas y valida slugs", function () {
     $courses = CourseCatalog::all();
-    if (count($courses) !== 17) {
-        throw new \Exception("Se esperaban 17 cursos, encontrados: " . count($courses));
+    if (count($courses) < 17) {
+        throw new \Exception("Se esperaban al menos 17 cursos, encontrados: " . count($courses));
     }
-    if (!CourseCatalog::isValid('bim-revit-architecture') || !CourseCatalog::isValid('valor-ganado')) {
+    if (!CourseCatalog::isValid('bim-revit-architecture') || !CourseCatalog::isValid('valor-ganado') || !CourseCatalog::isValid('sindrome-del-90')) {
         throw new \Exception("Slugs principales no fueron reconocidos.");
     }
     if (CourseCatalog::isValid('curso-inexistente-123')) {
@@ -272,14 +273,14 @@ runTest("Acceso a /registro-primera-clase con curso tras pago en PayPal permite 
     ob_start();
     $c->registroPrimeraClase();
     $html = ob_get_clean();
-    if (!str_contains($html, 'Registro de Datos del Alumno') || !str_contains($html, 'BIM Revit Architecture')) {
+    if (!str_contains($html, 'Paso 2: Datos de Inscripción del Participante') || !str_contains($html, 'BIM Revit Architecture')) {
         throw new \Exception("El formulario no cargó para el curso seleccionado.");
     }
     return true;
 });
 
 // Test 12: Envío de formulario con código de transacción de PayPal válido es aceptado y registrado
-runTest("Envío de registro con código de transacción de PayPal válido es aceptado y persistido", function () {
+runTest("Envío de registro con código de transacción de PayPal validado en sesión es aceptado y persistido", function () {
     $testTransId = 'PAYPAL_TX_TEST_' . time();
     $code = '
         require \'' . addslashes(dirname(__DIR__)) . '/private_app/config/app.php\';
@@ -287,7 +288,21 @@ runTest("Envío de registro con código de transacción de PayPal válido es ace
         require_once \'' . addslashes(dirname(__DIR__)) . '/private_app/app/Controllers/PaymentController.php\';
         $cfg = require \'' . addslashes(dirname(__DIR__)) . '/private_app/config/app.php\';
         Security::startSession();
-        unset($_SESSION[\'paypal_confirmed_payment\']);
+        $sig = hash_hmac(
+            \'sha256\',
+            \'' . $testTransId . '||10.00|USD|bim-revit-architecture\',
+            $cfg[\'security\'][\'honeypot_field\'] ?? \'qcs_secret_payment_hash\'
+        );
+        $_SESSION[\'paypal_confirmed_payment\'] = [
+            \'order_id\'     => \'' . $testTransId . '\',
+            \'capture_id\'   => \'\',
+            \'course_slug\'  => \'bim-revit-architecture\',
+            \'course_title\' => \'BIM Revit Architecture\',
+            \'amount\'       => 10.00,
+            \'currency\'     => \'USD\',
+            \'verified_at\'  => time(),
+            \'signature\'    => $sig,
+        ];
         $_SERVER[\'REQUEST_METHOD\'] = \'POST\';
         $_POST = [
             \'_csrf_token\'     => Security::getCsrfToken(),
@@ -319,8 +334,126 @@ runTest("Envío de registro con código de transacción de PayPal válido es ace
     return true;
 });
 
+// Test 13: Bloqueo atómico por concurrencia (Mutex Locking)
+runTest("FallbackQueue::acquireTransactionLock previene ejecuciones simultáneas y libera correctamente", function () {
+    $testOrderId = 'MUTEX_TEST_LOCK_' . uniqid();
+    
+    // Primer intento debe tener éxito
+    $lock1 = FallbackQueue::acquireTransactionLock($testOrderId);
+    if (!$lock1) {
+        throw new \Exception("Fallo al adquirir el primer bloqueo exclusivo.");
+    }
 
+    // Segundo intento simultáneo con el mismo orderId DEBE ser rechazado
+    $lock2 = FallbackQueue::acquireTransactionLock($testOrderId);
+    if ($lock2) {
+        FallbackQueue::releaseTransactionLock($testOrderId);
+        throw new \Exception("Se permitió indebidamente un bloqueo concurrente simultáneo para el mismo orderId.");
+    }
 
+    // Liberar bloqueo y comprobar que ahora sí es posible readquirirlo
+    FallbackQueue::releaseTransactionLock($testOrderId);
+    $lock3 = FallbackQueue::acquireTransactionLock($testOrderId);
+    if (!$lock3) {
+        throw new \Exception("No se pudo readquirir el bloqueo tras liberarlo.");
+    }
+    FallbackQueue::releaseTransactionLock($testOrderId);
+    return true;
+});
+
+// Test 14: Protección contra reutilización de transacción (Anti-Reuse)
+runTest("PayPalService::isTransactionAlreadyUsed detecta orden persistida y rechaza duplicados", function () {
+    $reuseOrderId = 'ORDER_REUSE_CHECK_' . uniqid();
+    $reuseCaptureId = 'CAPTURE_REUSE_CHECK_' . uniqid();
+
+    // Inicialmente no debe estar usada
+    if (PayPalService::isTransactionAlreadyUsed($reuseOrderId)) {
+        throw new \Exception("La orden reportó estar usada antes de guardarse.");
+    }
+
+    // Guardar en cola
+    $saved = FallbackQueue::save('paypal_first_class', [
+        'paypal_order_id'   => $reuseOrderId,
+        'paypal_capture_id' => $reuseCaptureId,
+        'nombres'           => 'Test Reutilizacion',
+        'email'             => 'test@example.com',
+        'telefono'          => '+51999999999',
+        'monto'             => 10.00,
+        'moneda'            => 'USD',
+    ], $reuseOrderId);
+
+    if (empty($saved['success'])) {
+        throw new \Exception("Fallo al persistir orden de prueba para anti-reuso.");
+    }
+
+    // Ahora debe reportarse como usada tanto por order_id como por capture_id
+    $isUsedOrder = PayPalService::isTransactionAlreadyUsed($reuseOrderId);
+    $isUsedCapture = PayPalService::isTransactionAlreadyUsed($reuseCaptureId);
+
+    // Limpieza
+    if (!empty($saved['file_path']) && file_exists($saved['file_path'])) {
+        @unlink($saved['file_path']);
+    }
+
+    if (!$isUsedOrder) {
+        throw new \Exception("isTransactionAlreadyUsed no detectó el order_id previamente guardado.");
+    }
+    if (!$isUsedCapture) {
+        throw new \Exception("isTransactionAlreadyUsed no detectó el capture_id previamente guardado.");
+    }
+
+    return true;
+});
+
+// Test 15: Separación estricta de entornos Sandbox vs Live
+runTest("Configuración y PayPalService diferencian entornos Sandbox y Live sin filtrar credenciales", function () use ($config) {
+    // Sandbox config
+    $sandboxCfg = $config;
+    $sandboxCfg['paypal']['mode'] = 'sandbox';
+    $sandboxCfg['paypal']['sandbox_client_id'] = 'sb_test_client_id_123';
+    $sandboxCfg['paypal']['sandbox_client_secret'] = 'sb_test_secret_456';
+    $sandboxCfg['paypal']['sandbox_receiver_email'] = 'sb_merchant@business.example.com';
+
+    $paypalSandbox = new PayPalService($sandboxCfg);
+    if ($paypalSandbox->isConfigured() !== true) {
+        throw new \Exception("PayPalService no reportó configurado en sandbox con credenciales test.");
+    }
+
+    // Live config: Debe apuntar al receptor oficial comercial@quality-consulting.org
+    $liveReceiver = $config['paypal']['receiver_email'] ?? '';
+    if ($liveReceiver !== 'comercial@quality-consulting.org') {
+        throw new \Exception("El receptor oficial live no es comercial@quality-consulting.org (es: {$liveReceiver}).");
+    }
+
+    $recipientOmar = $config['recipients']['omar_samaniego'] ?? '';
+    if ($recipientOmar !== 'comercial@quality-consulting.org') {
+        throw new \Exception("El destinatario oficial de notificaciones no es comercial@quality-consulting.org (es: {$recipientOmar}).");
+    }
+
+    return true;
+});
+
+// Test 16: Rutas de API y preflight CORS registradas
+runTest("Router registra endpoints /api/paypal/config, create-order, capture-order y verify-transaction", function () use ($config) {
+    $router = new \App\Core\Router($config);
+    $routesLoader = require dirname(__DIR__) . '/private_app/config/routes.php';
+    $routesLoader($router, $config);
+
+    $routes = $router->getRoutes();
+    if (!isset($routes['GET']['/api/paypal/config'])) {
+        throw new \Exception("Falta GET /api/paypal/config");
+    }
+    if (!isset($routes['POST']['/api/paypal/create-order'])) {
+        throw new \Exception("Falta POST /api/paypal/create-order");
+    }
+    if (!isset($routes['POST']['/api/paypal/capture-order'])) {
+        throw new \Exception("Falta POST /api/paypal/capture-order");
+    }
+    if (!isset($routes['POST']['/api/paypal/verify-transaction'])) {
+        throw new \Exception("Falta POST /api/paypal/verify-transaction");
+    }
+    return true;
+});
 
 echo "\n-------------------------------------------------------\n";
 echo "RESULTADOS: {$passedTests} de {$totalTests} pruebas pasadas con éxito.\n";

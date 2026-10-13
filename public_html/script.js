@@ -938,27 +938,34 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
 
     /* ----------------------------------------------------
-       18. FLUJO DIRECTO PAYPAL (PRIMERA CLASE USD 10) -> FORMULARIO DE REGISTRO
-       - Al hacer clic en el botón "PayPal", se abre la pasarela oficial de PayPal en nueva pestaña
-         y la pestaña actual redirige automáticamente al formulario obligatorio del curso específico.
+       18. NAVEGACIÓN A REGISTRO DE PRIMERA CLASE (PAYPAL US$ 10)
+       - Dirige al usuario al flujo oficial de pago y verificación previa al formulario
        ---------------------------------------------------- */
     (function initPaypalFirstClassHandler() {
         const paypalButtons = document.querySelectorAll('.btn-paypal-first-class');
         if (!paypalButtons.length) return;
 
         paypalButtons.forEach((btn) => {
-            btn.addEventListener('click', function () {
+            btn.addEventListener('click', function (e) {
                 const courseSlug = this.getAttribute('data-course-slug') || '';
-                const isStatic = window.location.pathname.endsWith('.html') || window.location.hostname.includes('github.io');
-                const baseRegUrl = isStatic ? 'registro-primera-clase.html' : '/registro-primera-clase';
+                const isGitHubPages = window.location.hostname.includes('github.io');
+                const isStatic = window.location.pathname.endsWith('.html') || isGitHubPages;
+
+                let baseRegUrl = '/registro-primera-clase';
+                if (isGitHubPages) {
+                    const pathParts = window.location.pathname.split('/').filter(Boolean);
+                    const repoPrefix = (pathParts.length > 0 && !pathParts[0].includes('.')) ? '/' + pathParts[0] : '';
+                    baseRegUrl = repoPrefix + '/registro-primera-clase.html';
+                } else if (isStatic) {
+                    baseRegUrl = 'registro-primera-clase.html';
+                }
+
                 const targetUrl = courseSlug
                     ? `${baseRegUrl}?curso=${encodeURIComponent(courseSlug)}`
                     : baseRegUrl;
 
-                // Permitir que el navegador abra la pestaña de PayPal (target="_blank") y derivar la ventana actual al formulario
-                setTimeout(() => {
-                    window.location.href = targetUrl;
-                }, 400);
+                e.preventDefault();
+                window.location.href = targetUrl;
             });
         });
     })();

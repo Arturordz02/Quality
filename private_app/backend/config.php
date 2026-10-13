@@ -170,30 +170,35 @@ return [
         'debug'                => $envBool('APP_DEBUG', false),
         'allowed_origins'      => array_values(array_filter(array_map('trim', explode(',', (string)$env(
             'CORS_ALLOWED_ORIGINS',
-            ($env('APP_ENV', 'production') === 'development')
-                ? 'https://quality-consulting.org,https://www.quality-consulting.org,http://localhost:8089,http://127.0.0.1:8089,http://localhost,http://127.0.0.1'
-                : 'https://quality-consulting.org,https://www.quality-consulting.org'
+            'https://quality-consulting.org,https://www.quality-consulting.org,https://arturordz02.github.io,http://localhost:8000,http://127.0.0.1:8000,http://localhost:8089,http://127.0.0.1:8089'
         ))))),
         'trust_proxy_headers'  => $envBool('TRUST_PROXY_HEADERS', false),
         'trusted_proxies'      => array_values(array_filter(array_map('trim', explode(',', (string)$env('TRUSTED_PROXIES', '127.0.0.1,::1'))))),
     ],
 
     // --------------------------------------------------------------------------
-    // 5. PASARELA PAYPAL (PRIMERA CLASE DEL CURSO - USD 10)
+    // 5. PASARELA PAYPAL (CHECKOUT SERVER-TO-SERVER - PRIMERA CLASE USD 10)
     // --------------------------------------------------------------------------
     'paypal' => [
-        'mode'              => $env('PAYPAL_MODE', 'sandbox'),
-        'client_id'         => $env('PAYPAL_CLIENT_ID', ''),
-        'client_secret'     => $env('PAYPAL_CLIENT_SECRET', ''),
-        'currency'          => $env('PAYPAL_CURRENCY', 'USD'),
-        'first_class_price' => (float)$env('PAYPAL_FIRST_CLASS_PRICE', 10.00),
+        'mode'                   => strtolower((string)$env('PAYPAL_MODE', 'sandbox')),
+        'client_id'              => $env('PAYPAL_CLIENT_ID', ''),
+        'client_secret'          => $env('PAYPAL_CLIENT_SECRET', ''),
+        // Sandbox específico opcional (fallback al general)
+        'sandbox_client_id'      => $env('PAYPAL_SANDBOX_CLIENT_ID', ''),
+        'sandbox_client_secret'  => $env('PAYPAL_SANDBOX_CLIENT_SECRET', ''),
+        'sandbox_receiver_email' => $env('PAYPAL_SANDBOX_RECEIVER_EMAIL', ''),
+        // Producción oficial confirmada
+        'receiver_email'         => $env('PAYPAL_RECEIVER_EMAIL', 'comercial@quality-consulting.org'),
+        'currency'               => $env('PAYPAL_CURRENCY', 'USD'),
+        'first_class_price'      => (float)$env('PAYPAL_FIRST_CLASS_PRICE', 10.00),
     ],
 
     // --------------------------------------------------------------------------
     // 6. DESTINATARIOS DE NOTIFICACIONES ADMINISTRATIVAS
     // --------------------------------------------------------------------------
     'recipients' => [
-        'omar_samaniego' => $env('OMAR_SAMANIEGO_EMAIL', ''),
+        // Destinatario oficial confirmado de coordinación comercial (Ing. Omar Samaniego)
+        'omar_samaniego' => $env('OMAR_SAMANIEGO_EMAIL', 'comercial@quality-consulting.org'),
     ],
 ];
 

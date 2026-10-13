@@ -882,10 +882,10 @@ declare(strict_types=1);
                             </button>
                         </div>
 
-                        <!-- 3. Brochure / Ficha Técnica -->
+                        <!-- 3. Formulario de Contacto / Registro de Interés -->
                         <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1ATgxDthu3xdZiO9cynEzAH_v8HcOLYkyPHj8v4DSEkTNHA/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Descargar información y brochure del curso">
-                                <i class="fas fa-file-pdf me-2"></i> Info &amp; Brochure
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1ATgxDthu3xdZiO9cynEzAH_v8HcOLYkyPHj8v4DSEkTNHA/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Solicitar más información del curso">
+                                <i class="fas fa-clipboard-list me-2"></i> Solicitar Información
                             </a>
                         </div>
 

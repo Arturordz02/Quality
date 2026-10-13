@@ -82,7 +82,6 @@ return function (Router $router, array $config): void {
     $router->get('/cronograma-forense', [ServiceController::class, 'cronogramaForense']);
     $router->get('/headhunting', [ServiceController::class, 'headhunting']);
     $router->get('/oficina-tecnica', [ServiceController::class, 'oficinaTecnica']);
-    $router->get('/sindrome-del-90', [ServiceController::class, 'sindromeDel90']);
 
     /**
      * RUTAS DE CAPACITACIÓN Y PROGRAMAS DE ESPECIALIZACIÓN
@@ -114,12 +113,27 @@ return function (Router $router, array $config): void {
     $router->get('/riesgos-tecnicos', [TrainingController::class, 'riesgosTecnicos']);
     $router->get('/universidad-corporativa', [TrainingController::class, 'universidadCorporativa']);
     $router->get('/valor-ganado', [TrainingController::class, 'valorGanado']);
+    $router->get('/sindrome-del-90', [TrainingController::class, 'sindromeDel90']);
+    $router->get('/seminario-iso-9001-2026', [TrainingController::class, 'seminarioIso90012026']);
+    $router->get('/indicadores-de-calidad', [TrainingController::class, 'indicadoresDeCalidad']);
 
     /**
      * RUTAS DE PASARELA PAYPAL (PRIMERA CLASE DEL CURSO - USD 10) Y REGISTRO
      */
+    $router->get('/pagar-primera-clase', function() {
+        $curso = (string)($_GET['curso'] ?? '');
+        $redirectUrl = '/registro-primera-clase' . ($curso !== '' ? '?curso=' . urlencode($curso) : '');
+        header('Location: ' . $redirectUrl, true, 302);
+        exit;
+    });
+    $router->get('/api/paypal/config', [PaymentController::class, 'getPaypalConfig']);
+    $router->addRoute('OPTIONS', '/api/paypal/config', [PaymentController::class, 'optionsPreflight']);
+    $router->addRoute('OPTIONS', '/api/paypal/create-order', [PaymentController::class, 'optionsPreflight']);
+    $router->addRoute('OPTIONS', '/api/paypal/capture-order', [PaymentController::class, 'optionsPreflight']);
+    $router->addRoute('OPTIONS', '/api/paypal/verify-transaction', [PaymentController::class, 'optionsPreflight']);
     $router->post('/api/paypal/create-order', [PaymentController::class, 'createPaypalOrder']);
     $router->post('/api/paypal/capture-order', [PaymentController::class, 'capturePaypalOrder']);
+    $router->post('/api/paypal/verify-transaction', [PaymentController::class, 'verifyTransaction']);
     $router->get('/registro-primera-clase', [PaymentController::class, 'registroPrimeraClase']);
     $router->post('/registro-primera-clase', [PaymentController::class, 'procesarRegistroPrimeraClase']);
     $router->get('/registro-exitoso', [PaymentController::class, 'registroExitoso']);
