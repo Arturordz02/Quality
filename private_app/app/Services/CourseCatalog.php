@@ -50,7 +50,7 @@ class CourseCatalog
         ],
         'herramientas' => [
             'slug'  => 'herramientas',
-            'title' => 'Herramientas de Calidad en Construcción',
+            'title' => 'Taller de Herramientas de Gestión de Calidad en la Construcción',
             'url'   => '/herramientas',
         ],
         'iso-9001' => [
