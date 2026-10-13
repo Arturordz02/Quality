@@ -131,6 +131,7 @@ runTest('Cursos aprobados de 16 PDU conservan "16 PDU" en sus páginas', functio
         'gerencia-de-calidad.html',
         'iso-9001.html',
         'control-de-calidad-en-tuneleria.html',
+        'direccion-calidad-enfoque-pmi.html',
     ];
     foreach ($courses as $file) {
         $path = dirname(__DIR__) . '/_site/' . $file;

@@ -13,6 +13,8 @@ Este documento registra la arquitectura, estructura de datos, clases CSS, recurs
 1. **Gerencia de la Calidad en la Construcción** (`/gerencia-de-calidad`)
 2. **ISO 9001 para la Construcción usando IA** (`/iso-9001`)
 3. **Control de Calidad en Tunelería** (`/control-de-calidad-en-tuneleria`)
+4. **Taller de Herramientas de Gestión de Calidad en la Construcción + uso de IA** (`/herramientas`)
+5. **Dirección de la Calidad con el Enfoque PMI® para la Construcción** (`/calidad-y-pmi`)
 
 Cualquier integración futura de nuevos brochures deberá reutilizar esta plantilla y sus reglas sin rediseñar la interfaz ni inventar contenidos no respaldados por el documento oficial de cada curso.
 
@@ -25,6 +27,8 @@ Cualquier integración futura de nuevos brochures deberá reutilizar esta planti
   - `private_app/app/Views/pages/gerencia-de-calidad.php`
   - `private_app/app/Views/pages/iso-9001.php`
   - `private_app/app/Views/pages/control-de-calidad-en-tuneleria.php`
+  - `private_app/app/Views/pages/herramientas.php`
+  - `private_app/app/Views/pages/calidad-y-pmi.php`
 - **Controlador:** `private_app/app/Controllers/TrainingController.php`
 - **Repositorio centralizado del catálogo (48 cursos):** `private_app/app/Services/CoursesCatalog.php`
 - **Layout maestro:** `private_app/app/Views/layouts/main.php`

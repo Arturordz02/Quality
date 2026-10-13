@@ -77,14 +77,15 @@ class CoursesCatalog
             ],
             [
                 'number'        => 5,
-                'title'         => 'DIRECCIÓN DE LA CALIDAD CON EL ENFOQUE PMI',
+                'title'         => 'DIRECCIÓN DE LA CALIDAD CON EL ENFOQUE PMI® PARA LA CONSTRUCCIÓN',
                 'category'      => 'Calidad',
                 'category_slug' => 'calidad',
                 'type'          => 'Curso',
-                'image'         => 'img/capmi1.webp',
-                'image_fallback'=> 'img/capmi1.png',
-                'route'         => '/calidad-y-pmi',
-                'description'   => 'Liderazgo estratégico y aseguramiento de la calidad en proyectos de infraestructura según la Guía del PMBOK®.'
+                'image'         => 'img/capacitaciones/direccion-calidad-enfoque-pmi.webp',
+                'image_fallback'=> 'img/capacitaciones/direccion-calidad-enfoque-pmi.png',
+                'route'         => '/direccion-calidad-enfoque-pmi',
+                'brochure'      => 'brochures/calidad/direccion-calidad-enfoque-pmi.pdf',
+                'description'   => 'Alineamiento de los estándares del PMBOK® (6ta y 7ma Edición) y la Guía de Grupos de Procesos con la ejecución, aseguramiento y control en obra.'
             ],
             [
                 'number'        => 6,

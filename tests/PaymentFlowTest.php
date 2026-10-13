@@ -73,13 +73,13 @@ echo "=======================================================\n\n";
 // Configuración base de prueba
 $config = require dirname(__DIR__) . '/private_app/config/app.php';
 
-// Test 1: Catálogo de 17 cursos oficiales
-runTest("Catálogo contiene exactamente los 17 cursos oficiales y valida slugs", function () {
+// Test 1: Catálogo de 18 cursos oficiales
+runTest("Catálogo contiene exactamente los 18 cursos oficiales y valida slugs", function () {
     $courses = CourseCatalog::all();
-    if (count($courses) !== 17) {
-        throw new \Exception("Se esperaban 17 cursos, encontrados: " . count($courses));
+    if (count($courses) !== 18) {
+        throw new \Exception("Se esperaban 18 cursos, encontrados: " . count($courses));
     }
-    if (!CourseCatalog::isValid('bim-revit-architecture') || !CourseCatalog::isValid('valor-ganado')) {
+    if (!CourseCatalog::isValid('bim-revit-architecture') || !CourseCatalog::isValid('valor-ganado') || !CourseCatalog::isValid('direccion-calidad-enfoque-pmi')) {
         throw new \Exception("Slugs principales no fueron reconocidos.");
     }
     if (CourseCatalog::isValid('curso-inexistente-123')) {

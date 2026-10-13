@@ -40,6 +40,7 @@ $brochureDownload  = $course['brochure_download'] ?? 'Brochure-Curso-Quality.pdf
 $brochureThumb     = $course['brochure_thumb'] ?? '';
 $enrollBgImage     = $course['enroll_bg_image'] ?? '';
 $whatsappUrl       = $course['whatsapp_url'] ?? 'https://wa.me/51993463118';
+$whatsappBtnText   = $course['whatsapp_btn_text'] ?? 'Solicitar información por WhatsApp';
 $modalServiceTitle = $course['modal_service'] ?? $title;
 $paypalSlug        = $course['paypal_slug'] ?? '';
 $videos            = $course['videos'] ?? [];
@@ -435,13 +436,13 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
                             <i class="fa-solid fa-headset me-2" aria-hidden="true"></i>Solicitar información
                         </button>
 
-                        <!-- 2. Botón secundario: Consultar por WhatsApp -->
+                        <!-- 2. Botón secundario: WhatsApp -->
                         <a href="<?= htmlspecialchars($whatsappUrl, ENT_QUOTES, 'UTF-8') ?>"
                            target="_blank"
                            rel="noopener noreferrer"
                            class="btn qcs-cd-btn-enroll-whatsapp w-100"
-                           aria-label="Consultar información de <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?> por WhatsApp">
-                            <i class="fab fa-whatsapp qcs-whatsapp-icon me-2" aria-hidden="true"></i>Consultar por WhatsApp
+                           aria-label="<?= htmlspecialchars($whatsappBtnText, ENT_QUOTES, 'UTF-8') ?> sobre <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?>">
+                            <i class="fab fa-whatsapp qcs-whatsapp-icon me-2" aria-hidden="true"></i><?= htmlspecialchars($whatsappBtnText, ENT_QUOTES, 'UTF-8') ?>
                         </a>
 
                         <!-- 3. Subbloque diferenciado para la primera clase (US$ 10 + PayPal) -->
