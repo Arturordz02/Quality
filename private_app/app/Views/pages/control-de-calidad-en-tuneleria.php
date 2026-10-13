@@ -119,6 +119,7 @@ $course = [
             'text'  => 'Acceso vía internet a la grabación del curso luego de finalizado (4 semanas).',
         ],
     ],
+    'pdu_title'           => 'Unidades de desarrollo profesional (16 PDU)',
     'pdu_text'            => 'Si tienes certificación del PMI®, este curso te brinda 16 PDU (<em>Professional Development Unit</em>) para mantener tu certificación vigente. Categoría PMI® CCR: <em>General Education (Third-Party Provider – The PMI Talent Triangle®)</em>. Duración total: <strong>16 horas netas</strong>.',
     'brochure_url'        => 'brochures/calidad/control-de-calidad-en-tuneleria.pdf',
     'brochure_download'   => 'Brochure-Control-de-Calidad-en-Tuneleria.pdf',

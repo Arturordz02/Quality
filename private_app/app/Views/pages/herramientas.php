@@ -141,6 +141,7 @@ $course = [
             'text'  => 'Ingreso a sesiones virtuales de contenidos exclusivos sin costo.',
         ],
     ],
+    'pdu_title'           => 'Unidades de desarrollo profesional (6 PDU)',
     'pdu_text'            => '06 PDU (Professional Development Unit) Categoría PMI® CCR : General Education Third-Party Provider. The PMI Talent Triangle®. Duración total: 6 horas netas.',
     'brochure_url'        => 'brochures/calidad/taller-herramientas-gestion-calidad.pdf',
     'brochure_download'   => 'Brochure-Taller-Herramientas-Gestion-Calidad.pdf',

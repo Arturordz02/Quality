@@ -8,7 +8,7 @@
  * 1. Banner Hero centrado (fondo oscuro con degradado dorado, etiqueta, título, resumen y tarjetas informativas)
  * 2. Objetivo del curso y Perfil docente (2 columnas alineadas arriba en escritorio, apiladas en móvil)
  * 3. Temario del curso (acordeón desplegable enriquecido con indicador oscuro/dorado e ícono temático)
- * 4. Beneficios y materiales + Unidades de desarrollo profesional (16 PDU)
+ * 4. Beneficios y materiales + Unidades de desarrollo profesional (PDU dinámico)
  * 5. Brochure del curso (bloque único y discreto con "Ver PDF" y "Descargar PDF")
  * 6. Información e inscripción (WhatsApp, Modal Solicitar Información y PayPal Primera Clase)
  * 7. Sección opcional de videos cuando el curso cuenta con conferencias disponibles
@@ -33,6 +33,7 @@ $syllabusIntro     = $course['syllabus_intro'] ?? '';
 $syllabus          = $course['syllabus'] ?? [];
 $docente           = $course['docente'] ?? [];
 $benefits          = $course['benefits'] ?? [];
+$pduTitle          = $course['pdu_title'] ?? '';
 $pduText           = $course['pdu_text'] ?? '';
 $brochureUrl       = $course['brochure_url'] ?? '';
 $brochureDownload  = $course['brochure_download'] ?? 'Brochure-Curso-Quality.pdf';
@@ -336,16 +337,22 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
                 <?php endforeach; ?>
             </div>
 
-            <!-- Franja oscura con acentos dorados para Unidades de desarrollo profesional (16 PDU) -->
-            <?php if (!empty($pduText)): ?>
+            <!-- Franja oscura con acentos dorados para Unidades de desarrollo profesional (PDU dinámico) -->
+            <?php if (!empty($pduText) || !empty($pduTitle)): ?>
             <div class="qcs-cd-pdu-dark-bar mx-auto">
                 <div class="qcs-cd-pdu-medal" aria-hidden="true">
                     <i class="fa-solid fa-award"></i>
                 </div>
                 <div class="qcs-cd-pdu-divider" aria-hidden="true"></div>
                 <div class="qcs-cd-pdu-copy">
-                    <h3 class="qcs-cd-pdu-dark-heading">Unidades de desarrollo profesional (16 PDU)</h3>
+                    <?php if (!empty($pduTitle)): ?>
+                    <h3 class="qcs-cd-pdu-dark-heading"><?= htmlspecialchars($pduTitle, ENT_QUOTES, 'UTF-8') ?></h3>
+                    <?php else: ?>
+                    <h3 class="qcs-cd-pdu-dark-heading">Unidades de desarrollo profesional</h3>
+                    <?php endif; ?>
+                    <?php if (!empty($pduText)): ?>
                     <p class="qcs-cd-pdu-dark-text mb-0"><?= $pduText ?></p>
+                    <?php endif; ?>
                 </div>
             </div>
             <?php endif; ?>
