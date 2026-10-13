@@ -97,6 +97,7 @@ return function (Router $router, array $config): void {
     $router->get('/calidad-y-pmi', [TrainingController::class, 'calidadPmi']);
     $router->get('/contratos', [TrainingController::class, 'contratos']);
     $router->get('/contratos-estado', [TrainingController::class, 'contratosEstado']);
+    $router->get('/control-de-calidad-en-tuneleria', [TrainingController::class, 'controlCalidadTuneleria']);
     $router->get('/costos', [TrainingController::class, 'costos']);
     $router->get('/fidic', [TrainingController::class, 'fidic']);
     $router->get('/gerencia-de-calidad', [TrainingController::class, 'gerenciaCalidad']);

@@ -455,3 +455,12 @@ En caso de requerir suspender el funcionamiento del enrutamiento MVC de manera i
 
 ### Paso 3: Aislamiento del Código MVC
 - Dado que todo el código nuevo de la migración se encuentra confinado exclusivamente dentro de `app/`, `config/` y `public/`, no existe ningún impacto residual en las carpetas preexistentes (`backend/`, `css/`, `js/`, `img/`).
+
+---
+
+## 13. Diseño Aprobado de Páginas de Detalle de Capacitaciones
+
+La especificación visual, estructura de datos (`$course`), clases CSS, rutas de recursos (PDFs, portadas reales e imágenes de tarjetas) y lista de verificación para integrar futuros cursos con brochure se encuentran documentadas en:
+
+- [`docs/diseno-aprobado-capacitaciones.md`](../../docs/diseno-aprobado-capacitaciones.md) — **Guía oficial de la plantilla unificada `app/Views/partials/course_detail_unified.php` y catálogo `app/Services/CoursesCatalog.php`**.
+

@@ -173,6 +173,21 @@ class TrainingController extends Controller
     }
 
     /**
+     * Curso: Control de Calidad en Tunelería.
+     */
+    public function controlCalidadTuneleria(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Control de Calidad en Tunelería | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Control de Calidad en Tunelería. Control de calidad en el diseño y proceso constructivo de túneles y cavernas: concreto lanzado, pernería, soporte, revestimiento y maquinaria.',
+            'canonical'       => 'https://quality-consulting.org/control-de-calidad-en-tuneleria',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/control-de-calidad-en-tuneleria', $data, 'main');
+    }
+
+    /**
      * Curso: Estrategias y Conceptos de Costos en Edificaciones.
      */
     public function costos(): void
@@ -203,13 +218,13 @@ class TrainingController extends Controller
     }
 
     /**
-     * Curso: Gerencia de la Calidad para la Infraestructura y Construcción.
+     * Curso: Gerencia de la Calidad en la Construcción.
      */
     public function gerenciaCalidad(): void
     {
         $data = [
-            'title'           => 'Capacitación: Gerencia de la Calidad para la Infraestructura y Construcción | Quality Consulting Solutions',
-            'metaDescription' => 'Curso de capacitación especializada en Gerencia de la Calidad para la Infraestructura y Construcción. Domina la norma ISO 9001, Project Management y herramientas de gestión de calidad en obra.',
+            'title'           => 'Capacitación: Gerencia de la Calidad en la Construcción | Quality Consulting Solutions',
+            'metaDescription' => 'Curso de Gerencia de la Calidad Aplicada a la Construcción con usos de IA e indicadores avanzados (determinísticos, estocásticos y mixtos). Docente: Ing. Omar A. Samaniego.',
             'canonical'       => 'https://quality-consulting.org/gerencia-de-calidad',
             'activePage'      => 'capacitacion',
         ];
@@ -248,13 +263,13 @@ class TrainingController extends Controller
     }
 
     /**
-     * Curso: ISO 9001:2015 para la Infraestructura y Construcción.
+     * Curso: ISO 9001 para la Construcción usando IA.
      */
     public function iso9001(): void
     {
         $data = [
-            'title'           => 'Capacitación: ISO 9001:2015 para la Infraestructura y Construcción | Quality Consulting Solutions',
-            'metaDescription' => 'Curso especializado en interpretación y aplicación de la norma ISO 9001:2015 en obras. Ciclo PHVA, control de no conformidades y gestión de riesgos.',
+            'title'           => 'Capacitación: ISO 9001 para la Construcción usando IA | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en ISO 9001 para la Construcción usando IA. Incluye libro oficial del Ing. Omar A. Samaniego y análisis de cláusulas aplicadas a proyectos.',
             'canonical'       => 'https://quality-consulting.org/iso-9001',
             'activePage'      => 'capacitacion',
         ];
