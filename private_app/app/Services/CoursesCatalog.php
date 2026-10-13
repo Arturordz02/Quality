@@ -74,25 +74,27 @@ class CoursesCatalog
             ],
             [
                 'number'        => 5,
-                'title'         => 'DIRECCIÓN DE LA CALIDAD CON EL ENFOQUE PMI',
+                'title'         => 'DIRECCIÓN DE LA CALIDAD CON EL ENFOQUE PMI® PARA LA CONSTRUCCIÓN',
                 'category'      => 'Calidad',
                 'category_slug' => 'calidad',
                 'type'          => 'Curso',
-                'image'         => 'img/capmi1.webp',
-                'image_fallback'=> 'img/capmi1.png',
-                'route'         => '/calidad-y-pmi',
-                'description'   => 'Liderazgo estratégico y aseguramiento de la calidad en proyectos de infraestructura según la Guía del PMBOK®.'
+                'image'         => 'img/capacitaciones/direccion-calidad-enfoque-pmi.webp',
+                'image_fallback'=> 'img/capacitaciones/direccion-calidad-enfoque-pmi.png',
+                'route'         => '/direccion-calidad-enfoque-pmi',
+                'brochure'      => 'brochures/calidad/direccion-calidad-enfoque-pmi.pdf',
+                'description'   => 'Alineamiento de los estándares del PMBOK® (6ta y 7ma Edición) y la Guía de Grupos de Procesos con la ejecución, aseguramiento y control en obra.'
             ],
             [
                 'number'        => 6,
-                'title'         => 'TALLER HERRAMIENTAS DE GESTIÓN DE LA CALIDAD',
+                'title'         => 'TALLER DE HERRAMIENTAS DE GESTIÓN DE CALIDAD EN LA CONSTRUCCIÓN + USO DE INTELIGENCIA ARTIFICIAL',
                 'category'      => 'Calidad',
                 'category_slug' => 'calidad',
                 'type'          => 'Taller',
-                'image'         => 'img/GERCA1.webp',
-                'image_fallback'=> 'img/GERCA1.png',
+                'image'         => 'img/capacitaciones/taller-herramientas-gestion-calidad.webp',
+                'image_fallback'=> 'img/capacitaciones/taller-herramientas-gestion-calidad.png',
                 'route'         => '/herramientas',
-                'description'   => 'Aplicación práctica de las 7 herramientas de calidad, Pareto, Ishikawa, 5S y control estadístico en obra.'
+                'brochure'      => 'brochures/calidad/taller-herramientas-gestion-calidad.pdf',
+                'description'   => 'Herramientas colaborativas de análisis y diagnóstico: Ishikawa, diagrama de afinidad, Pareto (se brindará una base de datos), control estadístico, indicadores Last Planner y uso de Inteligencia Artificial.'
             ],
             [
                 'number'        => 7,

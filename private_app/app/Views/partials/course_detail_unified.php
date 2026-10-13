@@ -8,7 +8,7 @@
  * 1. Banner Hero centrado (fondo oscuro con degradado dorado, etiqueta, título, resumen y tarjetas informativas)
  * 2. Objetivo del curso y Perfil docente (2 columnas alineadas arriba en escritorio, apiladas en móvil)
  * 3. Temario del curso (acordeón desplegable enriquecido con indicador oscuro/dorado e ícono temático)
- * 4. Beneficios y materiales + Unidades de desarrollo profesional (16 PDU)
+ * 4. Beneficios y materiales + Unidades de desarrollo profesional (PDU dinámico)
  * 5. Brochure del curso (bloque único y discreto con "Ver PDF" y "Descargar PDF")
  * 6. Información e inscripción (WhatsApp, Modal Solicitar Información y PayPal Primera Clase)
  * 7. Sección opcional de videos cuando el curso cuenta con conferencias disponibles
@@ -33,10 +33,18 @@ $syllabusIntro     = $course['syllabus_intro'] ?? '';
 $syllabus          = $course['syllabus'] ?? [];
 $docente           = $course['docente'] ?? [];
 $benefits          = $course['benefits'] ?? [];
-$pduText           = $course['pdu_text'] ?? '';
-$pduHeading        = $course['pdu_heading'] ?? 'Unidades de desarrollo profesional (16 PDU)';
+$pduTitle = trim((string)($course['pdu_title'] ?? ''));
+$pduText = $course['pdu_text'] ?? '';
+$pduHeading = trim((string)($course['pdu_heading'] ?? ''));
+
+if ($pduHeading === '') {
+    $pduHeading = $pduTitle !== ''
+        ? $pduTitle
+        : 'Unidades de desarrollo profesional';
+}
 $enrollBgImage     = $course['enroll_bg_image'] ?? '';
 $whatsappUrl       = $course['whatsapp_url'] ?? 'https://wa.me/51993463118';
+$whatsappBtnText   = $course['whatsapp_btn_text'] ?? 'Solicitar información por WhatsApp';
 $modalServiceTitle = $course['modal_service'] ?? $title;
 $paypalSlug        = $course['paypal_slug'] ?? '';
 $videos            = $course['videos'] ?? [];
@@ -334,8 +342,8 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
                 <?php endforeach; ?>
             </div>
 
-            <!-- Franja oscura con acentos dorados para Unidades de desarrollo profesional (16 PDU) -->
-            <?php if (!empty($pduText)): ?>
+            <!-- Franja oscura con acentos dorados para Unidades de desarrollo profesional (PDU dinámico) -->
+            <?php if (!empty($pduText) || !empty($pduTitle)): ?>
             <div class="qcs-cd-pdu-dark-bar mx-auto">
                 <div class="qcs-cd-pdu-medal" aria-hidden="true">
                     <i class="fa-solid fa-award"></i>
@@ -343,7 +351,9 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
                 <div class="qcs-cd-pdu-divider" aria-hidden="true"></div>
                 <div class="qcs-cd-pdu-copy">
                     <h3 class="qcs-cd-pdu-dark-heading"><?= htmlspecialchars($pduHeading, ENT_QUOTES, 'UTF-8') ?></h3>
+                    <?php if (!empty($pduText)): ?>
                     <p class="qcs-cd-pdu-dark-text mb-0"><?= $pduText ?></p>
+                    <?php endif; ?>
                 </div>
             </div>
             <?php endif; ?>
@@ -381,13 +391,13 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
                             <i class="fa-solid fa-headset me-2" aria-hidden="true"></i>Solicitar información
                         </button>
 
-                        <!-- 2. Botón secundario: Consultar por WhatsApp -->
+                        <!-- 2. Botón secundario: WhatsApp -->
                         <a href="<?= htmlspecialchars($whatsappUrl, ENT_QUOTES, 'UTF-8') ?>"
                            target="_blank"
                            rel="noopener noreferrer"
                            class="btn qcs-cd-btn-enroll-whatsapp w-100"
-                           aria-label="Consultar información de <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?> por WhatsApp">
-                            <i class="fab fa-whatsapp qcs-whatsapp-icon me-2" aria-hidden="true"></i>Consultar por WhatsApp
+                           aria-label="<?= htmlspecialchars($whatsappBtnText, ENT_QUOTES, 'UTF-8') ?> sobre <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?>">
+                            <i class="fab fa-whatsapp qcs-whatsapp-icon me-2" aria-hidden="true"></i><?= htmlspecialchars($whatsappBtnText, ENT_QUOTES, 'UTF-8') ?>
                         </a>
 
                         <!-- 3. Subbloque diferenciado para la primera clase (US$ 10 + PayPal) -->

@@ -13,6 +13,8 @@ Este documento registra la arquitectura, estructura de datos, clases CSS, recurs
 1. **Gerencia de la Calidad en la Construcción** (`/gerencia-de-calidad`)
 2. **ISO 9001 para la Construcción usando IA** (`/iso-9001`)
 3. **Control de Calidad en Tunelería** (`/control-de-calidad-en-tuneleria`)
+4. **Taller de Herramientas de Gestión de Calidad en la Construcción + uso de IA** (`/herramientas`)
+5. **Dirección de la Calidad con el Enfoque PMI® para la Construcción** (`/calidad-y-pmi`)
 
 Cualquier integración futura de nuevos brochures deberá reutilizar esta plantilla y sus reglas sin rediseñar la interfaz ni inventar contenidos no respaldados por el documento oficial de cada curso.
 
@@ -25,6 +27,8 @@ Cualquier integración futura de nuevos brochures deberá reutilizar esta planti
   - `private_app/app/Views/pages/gerencia-de-calidad.php`
   - `private_app/app/Views/pages/iso-9001.php`
   - `private_app/app/Views/pages/control-de-calidad-en-tuneleria.php`
+  - `private_app/app/Views/pages/herramientas.php`
+  - `private_app/app/Views/pages/calidad-y-pmi.php`
 - **Controlador:** `private_app/app/Controllers/TrainingController.php`
 - **Repositorio centralizado del catálogo (48 cursos):** `private_app/app/Services/CoursesCatalog.php`
 - **Layout maestro:** `private_app/app/Views/layouts/main.php`
@@ -101,8 +105,9 @@ $course = [
             'text'  => 'Ingreso a la base de datos laboral de Quality Consulting Solutions.',
         ],
     ],
-    'pdu_heading'          => 'Unidades de desarrollo profesional (16 PDU)', // Opcional (04 PDU, 06 PDU, etc.)
-    'pdu_text'             => 'Explicación oficial del brochure sobre las PDU (dejar en "" si el curso no otorga PDU).',
+    'pdu_heading' => 'Unidades de desarrollo profesional (6 PDU)', // Ejemplo: usar el valor oficial de cada capacitación.
+    'pdu_title'   => '', // Alternativa cuando pdu_heading está vacío.
+    'pdu_text'    => 'Explicación oficial de las PDU. Dejar estos campos vacíos si no corresponde.',
 
     // 6. Información e inscripción
     'enroll_bg_image'      => 'img/ISO1.webp', // Opcional: imagen temática para el lado izquierdo del panel oscuro ('' usa solo el degradado)
@@ -186,31 +191,43 @@ $course = [
   3. Título del módulo en negrita (`.qcs-cd-syllabus-title`) y píldora opcional de cláusula normativa (`.qcs-cd-syllabus-clause`).
   4. Flecha circular derecha (`.qcs-cd-syllabus-chevron`) que gira `180deg` al abrirse.
 
-### 5.4 Beneficios y Materiales + Franja Oscura PDU + Brochure Integrado (`#beneficios-materiales`)
+### 5.4 Beneficios y Materiales + Franja Oscura PDU  (`#beneficios-materiales`)
 - **Fondo marfil cálido:** `.qcs-cd-section--ivory`.
 - **Encabezado centrado:** Etiqueta dorada `ALCANCE DEL PROGRAMA` (`.qcs-cd-ivory-eyebrow`), título **«Beneficios y materiales»** y subrayado dorado.
 - **Bloques abiertos de beneficios:** Sin bordes de tarjeta ni cajas que compitan con el temario. Cada elemento (`.qcs-cd-benefit-open-item`) presenta un círculo claro (`.qcs-cd-benefit-circle-icon`) con ícono dorado, título corto en negrita (`.qcs-cd-benefit-open-title`) y descripción fiel al brochure (`.qcs-cd-benefit-open-desc`).
   - **Regla editorial:** *«Ingreso a la base de datos laboral de Quality Consulting Solutions»* se titula **«Bolsa laboral»** y conserva su texto exacto sin prometer empleo ni vacantes garantizadas.
 - **Franja oscura de PDU (`.qcs-cd-pdu-dark-bar`):**
-  - Se renderiza únicamente cuando `$course['pdu_text']` tiene contenido.
-  - Título fijo: **«Unidades de desarrollo profesional (16 PDU)»** (nunca presentarlo como «Acreditación institucional PMI»).
-  - Conserva la explicación completa del brochure sobre categoría CCR y horas netas.
-- **Retiro de Visualización y Descarga de Brochures:**
-  - Por disposición directiva, los brochures técnicos se utilizan exclusivamente como fuentes internas de consulta y **no se publican ni se ofrecen para descarga en la web**.
-  - La tarjeta de brochure (`.qcs-cd-brochure-integrated-card`, `#brochure-curso`) y los botones asociados («Ver PDF», «Descargar PDF», «Info & Brochure») han sido **retirados de todas las páginas de capacitación**.
-  - La sección marfil finaliza de forma limpia y equilibrada tras los bloques de beneficios y la franja de PDU, conservando el espaciado y márgenes armónicos sin huecos vacíos.
-  - Beneficios documentados como «Entrega de material digital» o «Libro oficial incluido» se mantienen 100% intactos en la grilla de beneficios.
+  - Se renderiza cuando `pdu_text` o `pdu_title` tiene contenido.
+  - El título utiliza `pdu_heading`; si está vacío, utiliza `pdu_title`. Si ambos están vacíos, muestra «Unidades de desarrollo profesional».
+  - La cantidad de PDU corresponde a cada capacitación; no se asignan automáticamente 16 PDU ni se presenta como «Acreditación institucional PMI».
+  - Conserva la explicación oficial sobre categoría CCR y duración en `pdu_text`.
+- **Retiro de visualización y descarga de brochures:**
+  - Los brochures se utilizan exclusivamente como fuentes internas y no se publican ni se ofrecen para descarga.
+  - Se retiran las tarjetas, miniaturas, visores y botones «Ver PDF», «Descargar PDF» e «Info & Brochure».
+  - Los documentos originales y sus portadas se conservan en almacenamiento privado, fuera del contenido público y del despliegue.
+  - La sección marfil conserva un espaciado equilibrado, sin huecos.
+  - Se mantienen los beneficios documentados, como material digital o libro incluido.
 
 ### 5.5 Información e Inscripción (`#informacion-inscripcion`)
+
 - Panel oscuro amplio con bordes redondeados y degradado carbón/dorado (`.qcs-cd-enroll-panel`).
-- Si el curso define `'enroll_bg_image'`, la clase `.qcs-cd-enroll-panel--has-bg` proyecta esa imagen temática en la mitad izquierda con superposición oscura gradual para garantizar el contraste del texto blanco. Si no existe una imagen adecuada para el curso, se deja `''` y el panel muestra el degradado institucional sin repetir fotos de otros cursos ni inventar fondos.
+- Si el curso define `enroll_bg_image`, la clase `.qcs-cd-enroll-panel--has-bg` muestra esa imagen temática en la mitad izquierda con superposición oscura. Si no existe una imagen adecuada, se deja `''` y se utiliza el degradado institucional.
 - **Columna izquierda:** Píldora `CAPACITACIÓN ESPECIALIZADA`, título blanco **«Información e inscripción»**, texto de orientación y línea de acento dorada.
 - **Columna derecha:**
-  1. Botón principal dorado **«Solicitar información»** (abre `#modalSolicitarInfo` con `data-service`).
-  2. Botón secundario **«Consultar por WhatsApp»** con borde claro e ícono verde de WhatsApp.
-  3. Subbloque diferenciado (`.qcs-cd-first-class-box`) con etiqueta `PRIMERA CLASE`, precio `US$ 10`, botón azul PayPal **«Pagar primera clase»** (`.btn.qcs-cd-btn-paypal-fc.btn-paypal-first-class` con enlace oficial a `https://www.paypal.com/paypalme/qualityconsulting/10` y `data-course-slug="slug-del-curso"`), junto a la nota explícita:
-     > *«US$10 únicamente por la primera clase. No incluye el curso completo.»*
-- **Debajo del panel (fuera de la tarjeta oscura):** Enlaces discretos centrados **«Volver al Área de Calidad»** (`/capacitacion-calidad`) y **«Ver catálogo general»** (`/capacitacion`).
+  1. Botón principal dorado **«Solicitar información»**, que abre `#modalSolicitarInfo` con `data-service`.
+  2. Botón secundario de WhatsApp con borde claro e ícono verde. Su texto puede configurarse mediante `whatsapp_btn_text`.
+  3. Cuando `paypal_slug` tiene contenido, se muestra el subbloque `.qcs-cd-first-class-box` con etiqueta `PRIMERA CLASE`, precio `US$10` y botón azul **«Pagar primera clase»** (`.btn.qcs-cd-btn-paypal-fc.btn-paypal-first-class`), conservando `data-course-slug`.
+
+- El botón conduce a la página de registro de primera clase con el identificador de la capacitación:
+  - **PHP MVC:** `/registro-primera-clase?curso={slug}`.
+  - **Versión estática:** `/Quality/registro-primera-clase.html?curso={slug}` para el despliegue actual en GitHub Pages.
+- El pago se realiza mediante PayPal Checkout cuando el backend y las credenciales están configurados. No se utiliza PayPal.Me en este flujo.
+- El formulario de datos se habilita después de verificar el pago desde el servidor. Sin backend disponible, se informa que la compra en línea no está habilitada y se ofrecen los canales de contacto, sin simular pagos ni registros exitosos.
+- Se mantiene visible la aclaración:
+  > «US$10 únicamente por la primera clase. No incluye el curso completo.»
+- El precio del curso completo se consulta mediante los canales de contacto.
+- **Debajo del panel:** Enlaces centrados **«Volver al Área de Calidad»** (`/capacitacion-calidad`) y **«Ver catálogo general»** (`/capacitacion`), adaptados al prefijo y formato del despliegue estático.
+- No se muestran botones, portadas ni enlaces de visualización o descarga de brochures.
 
 ### 5.6 Sección Opcional de Videos (`#videos-curso`)
 - Solo se renderiza si `!empty($course['videos'])`.

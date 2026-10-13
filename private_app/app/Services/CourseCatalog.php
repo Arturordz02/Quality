@@ -38,6 +38,11 @@ class CourseCatalog
             'title' => 'Costos y Presupuestos en Edificaciones',
             'url'   => '/costos',
         ],
+        'direccion-calidad-enfoque-pmi' => [
+            'slug'  => 'direccion-calidad-enfoque-pmi',
+            'title' => 'Dirección de la Calidad con el Enfoque PMI® para la Construcción',
+            'url'   => '/direccion-calidad-enfoque-pmi',
+        ],
         'fidic' => [
             'slug'  => 'fidic',
             'title' => 'Contratos FIDIC en Infraestructura y Construcción',
@@ -55,7 +60,7 @@ class CourseCatalog
         ],
         'herramientas' => [
             'slug'  => 'herramientas',
-            'title' => 'Herramientas de Calidad en Construcción',
+            'title' => 'Taller de Herramientas de Gestión de Calidad en la Construcción',
             'url'   => '/herramientas',
         ],
         'indicadores-de-calidad' => [

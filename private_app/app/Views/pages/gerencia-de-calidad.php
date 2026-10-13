@@ -144,6 +144,7 @@ $course = [
             'text'  => 'Acceso vía internet a la grabación del curso luego de finalizado (4 semanas).',
         ],
     ],
+    'pdu_title'           => 'Unidades de desarrollo profesional (16 PDU)',
     'pdu_text'            => 'Si tienes certificación del PMI®, este curso te brinda 16 PDU (<em>Professional Development Unit</em>) para mantener tu certificación vigente. Categoría PMI® CCR: <em>General Education (Third-Party Provider – The PMI Talent Triangle®)</em>. Duración total: <strong>16 horas netas</strong>.',
     'enroll_bg_image'     => 'img/Index-GerenciaCalidadObras.webp',
     'whatsapp_url'        => 'https://api.whatsapp.com/send?phone=51993463118&text=Buen%20d%C3%ADa,%20deseo%20solicitar%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Gerencia%20de%20la%20Calidad%20en%20la%20Construcci%C3%B3n',

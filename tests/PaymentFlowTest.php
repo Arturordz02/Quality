@@ -74,18 +74,31 @@ echo "=======================================================\n\n";
 // Configuración base de prueba
 $config = require dirname(__DIR__) . '/private_app/config/app.php';
 
-// Test 1: Catálogo de 21 capacitaciones oficiales
-runTest("Catálogo contiene las capacitaciones oficiales registradas y valida slugs", function () {
-    $courses = CourseCatalog::all();
-    if (count($courses) < 17) {
-        throw new \Exception("Se esperaban al menos 17 cursos, encontrados: " . count($courses));
+// Test 1: Cursos requeridos de ambas ramas y rechazo de slugs inválidos.
+runTest("Catálogo reconoce los cursos requeridos de ambas ramas", function () {
+    $requiredSlugs = [
+        'bim-revit-architecture',
+        'valor-ganado',
+        'gerencia-de-calidad',
+        'iso-9001',
+        'control-de-calidad-en-tuneleria',
+        'sindrome-del-90',
+        'seminario-iso-9001-2026',
+        'indicadores-de-calidad',
+        'direccion-calidad-enfoque-pmi',
+        'herramientas',
+    ];
+
+    foreach ($requiredSlugs as $slug) {
+        if (!CourseCatalog::isValid($slug)) {
+            throw new \Exception("Curso requerido no reconocido: " . $slug);
+        }
     }
-    if (!CourseCatalog::isValid('bim-revit-architecture') || !CourseCatalog::isValid('valor-ganado') || !CourseCatalog::isValid('sindrome-del-90')) {
-        throw new \Exception("Slugs principales no fueron reconocidos.");
-    }
+
     if (CourseCatalog::isValid('curso-inexistente-123')) {
-        throw new \Exception("Slug inexistente fue aceptado indebidamente.");
+        throw new \Exception("Slug inexistente aceptado indebidamente.");
     }
+
     return true;
 });
 

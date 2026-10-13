@@ -26,20 +26,9 @@ $activePage = $activePage ?? '';
                     <a href="/nosotros" class="nav-link<?= $activePage === 'nosotros' ? ' active' : '' ?>">NOSOTROS</a>
                 </li>
 
-                <!-- ASESORÍA (Desplegable) -->
-                <li class="nav-item dropdown">
-                    <a href="/consultoria" class="nav-link dropdown-toggle<?= $activePage === 'consultoria' ? ' active' : '' ?>" id="dropdownConsultoria" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                        ASESORÍA <i class="fa-solid fa-chevron-down arrow-icon"></i>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownConsultoria">
-                        <li><a href="/gestion-de-pmo" class="dropdown-item">GESTIÓN DE PROYECTOS & PMO</a></li>
-                        <li><a href="/headhunting" class="dropdown-item">HEADHUNTING</a></li>
-                        <li><a href="/gestion-de-riesgos" class="dropdown-item">GESTION DE RIESGOS</a></li>
-                        <li><a href="/riesgo-del-plazo" class="dropdown-item">RIESGO DEL PLAZO</a></li>
-                        <li><a href="/cronograma-forense" class="dropdown-item">CRONOGRAMA-FORENSE</a></li>
-                        <li><a href="/gestion-de-la-calidad" class="dropdown-item">GESTION DE LA CALIDAD</a></li>
-                        <li><a href="/universidad-corporativa" class="dropdown-item">UNIVERSIDAD CORPORATIVA</a></li>
-                    </ul>
+                <!-- ASESORÍA -->
+                <li class="nav-item">
+                    <a href="/consultoria" class="nav-link<?= $activePage === 'consultoria' ? ' active' : '' ?>">ASESORÍA</a>
                 </li>
 
                 <!-- CAPACITACION (Desplegable) -->

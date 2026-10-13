@@ -6210,7 +6210,12 @@ img {
    ========================================================================== */
 
 /* Badge Superior de Curso */
+.page-banner .course-badge,
+.page-title-wrap .course-badge,
 .course-badge {
+    position: relative;
+    top: auto;
+    left: auto;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -8498,7 +8503,7 @@ html, body {
     transform: scale(1.08);
 }
 
-.course-badge {
+.course-card .course-badge {
     position: absolute;
     top: 1rem;
     left: 1rem;

@@ -143,6 +143,21 @@ class TrainingController extends Controller
     }
 
     /**
+     * Curso: Dirección de la Calidad con el Enfoque PMI® para la Construcción.
+     */
+    public function direccionCalidadEnfoquePmi(): void
+    {
+        $data = [
+            'title'           => 'Dirección de la Calidad con el Enfoque PMI® para la Construcción | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en dirección de la calidad bajo la Guía del PMBOK® y estándares del PMI® aplicado a proyectos de construcción e infraestructura.',
+            'canonical'       => 'https://quality-consulting.org/direccion-calidad-enfoque-pmi',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/direccion-calidad-enfoque-pmi', $data, 'main');
+    }
+
+    /**
      * Curso: Gestión Contractual en Proyectos de Construcción.
      */
     public function contratos(): void
@@ -248,13 +263,13 @@ class TrainingController extends Controller
     }
 
     /**
-     * Curso: Herramientas de Calidad para la Infraestructura y Construcción.
+     * Taller: Herramientas de Gestión de Calidad en la Construcción + uso de IA.
      */
     public function herramientas(): void
     {
         $data = [
-            'title'           => 'Capacitación: Herramientas de Calidad para la Infraestructura y Construcción | Quality Consulting Solutions',
-            'metaDescription' => 'Curso taller de herramientas de gestión de la calidad para proyectos de infraestructura y construcción. Las 7 herramientas clásicas, indicadores y toma de decisiones basada en datos.',
+            'title'           => 'Taller de Herramientas de Gestión de Calidad en la Construcción + uso de Inteligencia Artificial | Quality Consulting Solutions',
+            'metaDescription' => 'Taller especializado en herramientas de gestión de la calidad aplicada a la construcción con uso de IA. Diagramas de Pareto, Ishikawa, afinidad, control estadístico, indicadores Last Planner y 6 PDU.',
             'canonical'       => 'https://quality-consulting.org/herramientas',
             'activePage'      => 'capacitacion',
         ];
