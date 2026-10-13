@@ -34,10 +34,11 @@ class CoursesCatalog
                 'category'      => 'Calidad',
                 'category_slug' => 'calidad',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-GerenciaCalidadObras.webp',
-                'image_fallback'=> 'img/Index-GerenciaCalidadObras.png',
+                'image'         => 'img/capacitaciones/gerencia-de-la-calidad-construccion.webp',
+                'image_fallback'=> 'img/capacitaciones/gerencia-de-la-calidad-construccion.png',
                 'route'         => '/gerencia-de-calidad',
-                'description'   => 'Planificación, aseguramiento y control de la calidad en obras, planes de inspección y ensayos (PIE).'
+                'brochure'      => 'brochures/calidad/gerencia-de-la-calidad-en-la-construccion.pdf',
+                'description'   => 'Visión integrada y práctica de la gestión de la calidad: PPI, costos de calidad, nuevos indicadores determinísticos/estocásticos, Last Planner® System e Inteligencia Artificial.'
             ],
             [
                 'number'        => 2,
@@ -45,10 +46,11 @@ class CoursesCatalog
                 'category'      => 'Calidad',
                 'category_slug' => 'calidad',
                 'type'          => 'Curso',
-                'image'         => 'img/ISO1.webp',
-                'image_fallback'=> 'img/ISO1.png',
+                'image'         => 'img/capacitaciones/iso-9001-construccion-usando-ia.webp',
+                'image_fallback'=> 'img/capacitaciones/iso-9001-construccion-usando-ia.png',
                 'route'         => '/iso-9001',
-                'description'   => 'Implementación y auditoría de la norma ISO 9001:2015 potenciada con herramientas de Inteligencia Artificial.'
+                'brochure'      => 'brochures/calidad/iso-9001-para-la-construccion-usando-ia.pdf',
+                'description'   => 'Criterios prácticos de las cláusulas ISO 9001 asociadas a casos de aplicación en construcción, usos de IA e incluye el libro oficial del curso.'
             ],
             [
                 'number'        => 3,
@@ -67,10 +69,11 @@ class CoursesCatalog
                 'category'      => 'Calidad',
                 'category_slug' => 'calidad',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-GerenciaCalidadObras.webp',
-                'image_fallback'=> 'img/Index-GerenciaCalidadObras.png',
-                'route'         => null,
-                'description'   => 'Criterios técnicos, ensayos geotécnicos y protocolos de control de calidad en excavación y sostenimiento de túneles.'
+                'image'         => 'img/capacitaciones/control-de-calidad-en-tuneleria.webp',
+                'image_fallback'=> 'img/capacitaciones/control-de-calidad-en-tuneleria.png',
+                'route'         => '/control-de-calidad-en-tuneleria',
+                'brochure'      => 'brochures/calidad/control-de-calidad-en-tuneleria.pdf',
+                'description'   => 'Control de calidad en el diseño y proceso constructivo de túneles y cavernas: concreto lanzado, pernos de anclaje, soporte, revestimiento y maquinaria.'
             ],
             [
                 'number'        => 5,

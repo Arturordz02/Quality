@@ -8725,3 +8725,1322 @@ html, body {
     opacity: 0.85;
 }
 
+/* ==========================================================================
+   16. PLANTILLA UNIFICADA DE DETALLE DE CAPACITACIÓN (.qcs-course-detail)
+   Basada en la referencia visual aprobada de ISO 9001
+   ========================================================================== */
+.qcs-course-detail {
+    font-family: var(--font-body, 'Open Sans', sans-serif);
+    color: #1e293b;
+    background-color: #F4F5F7;
+    text-align: left;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.qcs-course-detail *,
+.qcs-course-detail *::before,
+.qcs-course-detail *::after {
+    box-sizing: border-box;
+}
+
+.qcs-course-detail p,
+.qcs-course-detail li,
+.qcs-course-detail dd {
+    text-align: left;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+/* 16.1 HERO BANNER (COMPOSICIÓN DE REFERENCIA ISO 9001) */
+.qcs-iso-hero-banner {
+    position: relative;
+    padding: 185px 1.25rem 75px 1.25rem;
+    background: linear-gradient(135deg, #0F1113 0%, #1A1D20 45%, #1A1D20 100%);
+    color: #ffffff;
+    border-bottom: 2px solid rgba(229, 168, 19, 0.45);
+}
+
+.qcs-iso-hero-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(229, 168, 19, 0.18) 0%, transparent 60%),
+                radial-gradient(circle at 15% 85%, rgba(142, 146, 151, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.qcs-iso-hero-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    white-space: normal;
+    text-align: center !important;
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.78rem;
+    letter-spacing: 0.4px;
+    line-height: 1.4;
+    max-width: 100%;
+}
+
+.qcs-iso-hero-title {
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: clamp(1.85rem, 3.4vw, 2.75rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    text-align: center !important;
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.qcs-iso-hero-summary {
+    font-family: var(--font-body, 'Open Sans', sans-serif);
+    font-size: 1.12rem;
+    line-height: 1.65;
+    color: #e2e8f0;
+    max-width: 860px;
+    text-align: center !important;
+}
+
+/* Tarjetas informativas debajo del resumen en el Hero */
+.qcs-iso-benefit-card {
+    background: rgba(26, 29, 32, 0.78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(229, 168, 19, 0.38);
+    border-radius: 14px;
+    padding: 1.3rem 1.05rem;
+    height: 100%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    text-align: center !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.qcs-iso-benefit-card:hover {
+    transform: translateY(-4px);
+    border-color: #E5A813;
+    box-shadow: 0 16px 34px rgba(229, 168, 19, 0.22);
+    background: rgba(26, 29, 32, 0.92);
+}
+
+.qcs-iso-benefit-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(229, 168, 19, 0.16);
+    color: #fef08a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin: 0 auto 0.75rem auto;
+    border: 1px solid rgba(229, 168, 19, 0.45);
+    flex-shrink: 0;
+}
+
+.qcs-iso-benefit-title {
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 0.35rem;
+    line-height: 1.3;
+    text-align: center !important;
+}
+
+.qcs-iso-benefit-desc {
+    font-size: 0.82rem;
+    color: #cbd5e1;
+    margin: 0;
+    line-height: 1.45;
+    text-align: center !important;
+}
+
+/* 16.2 SECCIONES Y ENCABEZADOS COMUNES BASADOS EN ISO 9001 */
+.qcs-cd-section {
+    padding: 3.5rem 0;
+}
+
+.qcs-cd-section--compact {
+    padding: 2.25rem 0;
+}
+
+.qcs-iso-section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: #1A1D20;
+    color: #fef08a;
+    border: 1px solid rgba(229, 168, 19, 0.45);
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    padding: 0.4rem 0.95rem;
+    border-radius: 50px;
+    box-shadow: 0 2px 8px rgba(15, 17, 19, 0.08);
+}
+
+.qcs-iso-section-title {
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 800;
+    line-height: 1.25;
+    color: #1A1D20;
+    margin: 0;
+    text-align: center !important;
+}
+
+.qcs-iso-title-underline {
+    width: 68px;
+    height: 4px;
+    background: linear-gradient(90deg, #E5A813 0%, #fbbf24 100%);
+    border-radius: 2px;
+    margin-top: 0.65rem;
+}
+
+.qcs-iso-section-subtitle {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: #475569;
+    max-width: 780px;
+    text-align: center !important;
+}
+
+/* 16.3 TARJETAS DE OBJETIVO DEL CURSO Y PERFIL DOCENTE (2 COLUMNAS) */
+.qcs-iso-audit-card {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-top: 4px solid #1A1D20;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 6px 22px rgba(15, 17, 19, 0.06);
+    transition: border-top-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.qcs-iso-audit-card:hover {
+    border-top-color: #E5A813;
+    box-shadow: 0 12px 30px rgba(15, 17, 19, 0.09);
+}
+
+.qcs-iso-sub-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #9a6b00;
+    background: rgba(229, 168, 19, 0.14);
+    border: 1px solid rgba(229, 168, 19, 0.35);
+    padding: 0.28rem 0.75rem;
+    border-radius: 50px;
+}
+
+.qcs-iso-card-heading {
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: clamp(1.35rem, 2vw, 1.6rem);
+    font-weight: 800;
+    color: #1A1D20;
+    margin: 0.2rem 0 0 0;
+    line-height: 1.25;
+}
+
+.qcs-iso-heading-line {
+    width: 52px;
+    height: 3.5px;
+    background-color: #E5A813;
+    border-radius: 2px;
+    margin-top: 0.5rem;
+}
+
+.qcs-iso-body-text {
+    font-size: 0.96rem;
+    line-height: 1.7;
+    color: #334155;
+}
+
+.qcs-iso-objective-media {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #cbd5e1;
+    background-color: #f8fafc;
+    box-shadow: 0 4px 14px rgba(15, 17, 19, 0.05);
+}
+
+.qcs-iso-objective-img {
+    width: 100%;
+    max-height: 230px;
+    object-fit: cover;
+    display: block;
+}
+
+.qcs-iso-scope-box {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #E5A813;
+    border-radius: 10px;
+    padding: 1.05rem 1.25rem;
+}
+
+.qcs-iso-scope-title {
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: #1A1D20;
+    margin-bottom: 0.55rem;
+}
+
+.qcs-iso-scope-list {
+    padding-left: 1.15rem;
+    font-size: 0.89rem;
+    line-height: 1.6;
+    color: #475569;
+}
+
+.qcs-iso-scope-list li {
+    margin-bottom: 0.35rem;
+}
+
+.qcs-iso-scope-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Identidad Docente dentro de la tarjeta */
+.qcs-iso-docente-identity-row {
+    display: flex;
+    align-items: center;
+    gap: 1.15rem;
+}
+
+.qcs-iso-auditor-seal {
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    background: #1A1D20;
+    border: 3px solid #E5A813;
+    box-shadow: 0 4px 16px rgba(26, 29, 32, 0.2);
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.qcs-iso-auditor-seal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+}
+
+.qcs-iso-docente-title-wrap {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.qcs-iso-exp-badge {
+    display: inline-block;
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: #1A1D20;
+    background-color: #fef08a;
+    border: 1px solid rgba(229, 168, 19, 0.5);
+    padding: 0.2rem 0.65rem;
+    border-radius: 6px;
+}
+
+.qcs-iso-docente-name {
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #1A1D20;
+    line-height: 1.25;
+}
+
+.qcs-iso-cred-pill {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    padding: 0.28rem 0.7rem;
+    border-radius: 6px;
+}
+
+.qcs-iso-docente-list {
+    padding-left: 1.2rem;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: #475569;
+}
+
+.qcs-iso-docente-list li {
+    margin-bottom: 0.4rem;
+}
+
+.qcs-iso-docente-list li:last-child {
+    margin-bottom: 0;
+}
+
+.qcs-cd-bio-details {
+    margin-top: 0.85rem;
+    border-top: 1px dashed #cbd5e1;
+    padding-top: 0.85rem;
+}
+
+.qcs-cd-bio-toggle {
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: #1A1D20;
+    cursor: pointer;
+    padding: 0.42rem 0.85rem;
+    border-radius: 8px;
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    transition: all 0.2s ease;
+}
+
+.qcs-cd-bio-toggle::-webkit-details-marker {
+    display: none;
+}
+
+.qcs-cd-bio-toggle:hover {
+    border-color: #E5A813;
+    background-color: rgba(229, 168, 19, 0.12);
+}
+
+.qcs-cd-bio-details[open] .qcs-cd-bio-toggle i {
+    transform: rotate(180deg);
+}
+
+.qcs-cd-bio-expanded {
+    margin-top: 0.9rem;
+}
+
+.qcs-iso-recognition-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #E5A813;
+    border-radius: 8px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* 16.4 TEMARIO DEL CURSO (ACORDEÓN DESPLEGABLE ENRIQUECIDO) */
+.qcs-cd-syllabus-accordion {
+    max-width: 980px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.qcs-cd-syllabus-item {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid #1A1D20;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(15, 17, 19, 0.04);
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.qcs-cd-syllabus-item:hover {
+    border-color: #94a3b8;
+    border-left-color: #E5A813;
+    box-shadow: 0 6px 16px rgba(15, 17, 19, 0.07);
+}
+
+.qcs-cd-syllabus-item[open] {
+    border-color: rgba(229, 168, 19, 0.65);
+    border-left: 5px solid #E5A813;
+    box-shadow: 0 8px 24px rgba(15, 17, 19, 0.08);
+}
+
+.qcs-cd-syllabus-summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    user-select: none;
+    background-color: #ffffff;
+    transition: background-color 0.18s ease;
+}
+
+.qcs-cd-syllabus-summary::-webkit-details-marker {
+    display: none;
+}
+
+.qcs-cd-syllabus-summary:hover {
+    background-color: #f8fafc;
+}
+
+.qcs-cd-syllabus-item[open] .qcs-cd-syllabus-summary {
+    background: linear-gradient(90deg, rgba(229, 168, 19, 0.1) 0%, rgba(248, 250, 252, 0.6) 100%);
+    border-bottom: 1px solid rgba(229, 168, 19, 0.28);
+}
+
+.qcs-cd-syllabus-summary:focus-visible {
+    outline: 2px solid #E5A813;
+    outline-offset: -2px;
+}
+
+.qcs-cd-syllabus-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    height: 36px;
+    padding: 0 0.5rem;
+    border-radius: 8px;
+    background-color: #1A1D20;
+    color: #E5A813;
+    border: 1px solid rgba(229, 168, 19, 0.45);
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.84rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(15, 17, 19, 0.15);
+}
+
+.qcs-cd-syllabus-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background-color: rgba(229, 168, 19, 0.14);
+    color: #9a6b00;
+    font-size: 0.92rem;
+    flex-shrink: 0;
+}
+
+.qcs-cd-syllabus-item[open] .qcs-cd-syllabus-icon {
+    background-color: #E5A813;
+    color: #0F1113;
+}
+
+.qcs-cd-syllabus-heading-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.qcs-cd-syllabus-title {
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.98rem;
+    font-weight: 700;
+    line-height: 1.38;
+    color: #1A1D20;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.qcs-cd-syllabus-item[open] .qcs-cd-syllabus-title {
+    font-weight: 800;
+    color: #0F1113;
+}
+
+.qcs-cd-syllabus-clause {
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #1A1D20;
+    background-color: #fef9c3;
+    border: 1px solid rgba(229, 168, 19, 0.55);
+    padding: 0.24rem 0.68rem;
+    border-radius: 50px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.qcs-cd-syllabus-chevron {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #f1f5f9;
+    color: #475569;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    transition: transform 0.22s ease, background-color 0.22s ease, color 0.22s ease;
+    flex-shrink: 0;
+}
+
+.qcs-cd-syllabus-item[open] .qcs-cd-syllabus-chevron {
+    transform: rotate(180deg);
+    background-color: #1A1D20;
+    color: #E5A813;
+}
+
+.qcs-cd-syllabus-body {
+    padding: 1.15rem 1.4rem 1.25rem 1.4rem;
+    font-size: 0.94rem;
+    line-height: 1.68;
+    color: #334155;
+    background-color: #ffffff;
+}
+
+.qcs-cd-syllabus-body p {
+    margin: 0 0 0.65rem 0;
+}
+
+.qcs-cd-syllabus-body p:last-child {
+    margin-bottom: 0;
+}
+
+.qcs-cd-syllabus-subhead {
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.84rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: #1A1D20;
+    margin: 0.75rem 0 0.45rem 0 !important;
+    padding-left: 0.6rem;
+    border-left: 3px solid #E5A813;
+}
+
+.qcs-cd-syllabus-subhead:first-child {
+    margin-top: 0 !important;
+}
+
+.qcs-cd-syllabus-body ul {
+    margin: 0 0 0.5rem 0;
+    padding-left: 1.25rem;
+}
+
+.qcs-cd-syllabus-body ul:last-child {
+    margin-bottom: 0;
+}
+
+.qcs-cd-syllabus-body li {
+    margin-bottom: 0.38rem;
+}
+
+.qcs-cd-syllabus-body li:last-child {
+    margin-bottom: 0;
+}
+
+/* 16.5 BENEFICIOS Y MATERIALES (FONDO MARFIL, BLOQUES ABIERTOS, FRANJA OSCURA PDU) */
+.qcs-cd-section--ivory {
+    background: linear-gradient(180deg, #FCF9F2 0%, #F7EFE0 100%);
+    border-top: 1px solid rgba(229, 168, 19, 0.22);
+    border-bottom: 1px solid rgba(229, 168, 19, 0.22);
+}
+
+.qcs-cd-ivory-eyebrow {
+    display: block;
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #C48B0C;
+    margin-bottom: 0.3rem;
+}
+
+.qcs-cd-benefits-open-row {
+    max-width: 1020px;
+}
+
+.qcs-cd-benefit-open-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.35rem 0.25rem;
+    width: 100%;
+}
+
+.qcs-cd-benefit-circle-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background-color: #F8E9C4;
+    color: #C98A09;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    flex-shrink: 0;
+}
+
+.qcs-cd-benefit-open-body {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.qcs-cd-benefit-open-title {
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 1.02rem;
+    font-weight: 800;
+    color: #0F1113;
+    margin: 0 0 0.22rem 0;
+    line-height: 1.3;
+}
+
+.qcs-cd-benefit-open-desc {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #475569;
+}
+
+/* Franja oscura de PDU con acentos dorados */
+.qcs-cd-pdu-dark-bar {
+    max-width: 1020px;
+    margin-top: 2.25rem;
+    background: linear-gradient(90deg, #16191D 0%, #20252B 100%);
+    border: 1px solid rgba(229, 168, 19, 0.32);
+    border-radius: 12px;
+    padding: 1.15rem 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    box-shadow: 0 8px 20px rgba(15, 17, 19, 0.12);
+}
+
+.qcs-cd-pdu-medal {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: #E5A813;
+    color: #0F1113;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.qcs-cd-pdu-divider {
+    width: 1px;
+    align-self: stretch;
+    min-height: 38px;
+    background-color: rgba(255, 255, 255, 0.22);
+    flex-shrink: 0;
+}
+
+.qcs-cd-pdu-copy {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.qcs-cd-pdu-dark-heading {
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 1rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 0.22rem 0;
+    line-height: 1.3;
+}
+
+.qcs-cd-pdu-dark-text {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: #cbd5e1;
+}
+
+/* 16.6 TARJETA COMPACTA DEL BROCHURE INTEGRADA EN EL BLOQUE DE BENEFICIOS */
+.qcs-cd-brochure-integrated-card {
+    max-width: 1020px;
+    margin-top: 1.25rem;
+    background-color: #ffffff;
+    border: 1.5px solid rgba(229, 168, 19, 0.55);
+    border-radius: 14px;
+    padding: 1.25rem 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    box-shadow: 0 8px 24px rgba(15, 17, 19, 0.05);
+}
+
+.qcs-cd-brochure-left {
+    display: flex;
+    align-items: center;
+    gap: 1.35rem;
+    min-width: 0;
+}
+
+.qcs-cd-brochure-thumb-link {
+    display: block;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 6px 16px rgba(15, 17, 19, 0.14);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: #ffffff;
+}
+
+.qcs-cd-brochure-thumb-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(15, 17, 19, 0.2);
+}
+
+.qcs-cd-brochure-thumb-img {
+    width: 92px;
+    height: auto;
+    aspect-ratio: 893 / 1148;
+    object-fit: contain;
+    display: block;
+    background-color: #ffffff;
+}
+
+.qcs-cd-brochure-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background-color: #1A1D20;
+    color: #E5A813;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.qcs-cd-brochure-copy {
+    min-width: 0;
+}
+
+.qcs-cd-brochure-title {
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #0F1113;
+    margin: 0 0 0.2rem 0;
+    line-height: 1.25;
+}
+
+.qcs-cd-brochure-text {
+    font-size: 0.95rem;
+    color: #334155;
+    margin: 0 0 0.2rem 0;
+    line-height: 1.45;
+}
+
+.qcs-cd-brochure-note {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.qcs-cd-brochure-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.qcs-cd-btn-brochure-dark {
+    background-color: #16191D !important;
+    color: #ffffff !important;
+    border: 1.5px solid #16191D !important;
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.88rem;
+    font-weight: 700;
+    padding: 0.68rem 1.35rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.qcs-cd-btn-brochure-dark:hover {
+    background-color: #0F1113 !important;
+    color: #E5A813 !important;
+}
+
+.qcs-cd-btn-brochure-gold-outline {
+    background-color: #ffffff !important;
+    color: #0F1113 !important;
+    border: 1.5px solid #E5A813 !important;
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.88rem;
+    font-weight: 700;
+    padding: 0.68rem 1.35rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.qcs-cd-btn-brochure-gold-outline i {
+    color: #D4940A;
+}
+
+.qcs-cd-btn-brochure-gold-outline:hover {
+    background-color: #FCF9F2 !important;
+    border-color: #C9910D !important;
+}
+
+/* 16.7 INFORMACIÓN E INSCRIPCIÓN (PANEL CARBÓN CON DEGRADADO DORADO Y 2 COLUMNAS) */
+.qcs-cd-section--enroll-wrap {
+    background-color: #ffffff;
+    padding: 3rem 0;
+}
+
+.qcs-cd-enroll-panel {
+    max-width: 1020px;
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    background: radial-gradient(circle at 92% 50%, rgba(229, 168, 19, 0.24) 0%, transparent 55%),
+                linear-gradient(135deg, #121518 0%, #1A1E23 62%, #292214 100%);
+    border: 1px solid rgba(229, 168, 19, 0.32);
+    box-shadow: 0 16px 38px rgba(15, 17, 19, 0.16);
+    padding: 2.5rem 2.25rem;
+    color: #ffffff;
+}
+
+.qcs-cd-enroll-panel--has-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 52%;
+    background-image: var(--qcs-enroll-bg);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.26;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.qcs-cd-enroll-panel--has-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(18, 21, 24, 0.68) 0%, rgba(24, 28, 33, 0.94) 44%, rgba(26, 30, 35, 0.98) 70%, rgba(41, 34, 20, 0.92) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.qcs-cd-enroll-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 0.92fr 1.08fr;
+    gap: 2.25rem;
+    align-items: center;
+}
+
+.qcs-cd-enroll-left {
+    padding-right: 1.5rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.qcs-cd-enroll-pill {
+    display: inline-block;
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #fbbf24;
+    background: rgba(229, 168, 19, 0.12);
+    border: 1px solid rgba(229, 168, 19, 0.55);
+    padding: 0.3rem 0.85rem;
+    border-radius: 50px;
+    margin-bottom: 0.85rem;
+}
+
+.qcs-cd-enroll-heading {
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: clamp(1.65rem, 2.5vw, 2.15rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+    margin: 0 0 0.75rem 0;
+}
+
+.qcs-cd-enroll-lead {
+    font-size: 1rem;
+    line-height: 1.55;
+    color: #cbd5e1;
+    margin: 0 0 1.1rem 0;
+}
+
+.qcs-cd-enroll-accent-line {
+    width: 44px;
+    height: 3px;
+    background-color: #E5A813;
+    border-radius: 2px;
+}
+
+.qcs-cd-enroll-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.qcs-cd-btn-enroll-primary {
+    background-color: #E5A813 !important;
+    color: #0F1113 !important;
+    border: 1.5px solid #E5A813 !important;
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.95rem;
+    font-weight: 800;
+    padding: 0.78rem 1.25rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.qcs-cd-btn-enroll-primary:hover {
+    background-color: #f5b82e !important;
+    border-color: #f5b82e !important;
+    color: #0F1113 !important;
+}
+
+.qcs-cd-btn-enroll-whatsapp {
+    background-color: rgba(15, 17, 19, 0.55) !important;
+    color: #ffffff !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.65) !important;
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.78rem 1.25rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.qcs-cd-btn-enroll-whatsapp:hover {
+    background-color: rgba(25, 135, 84, 0.22) !important;
+    border-color: #22c55e !important;
+    color: #ffffff !important;
+}
+
+.qcs-whatsapp-icon {
+    color: #22c55e;
+    font-size: 1.15rem;
+    vertical-align: -1px;
+}
+
+/* Subbloque diferenciado para la primera clase */
+.qcs-cd-first-class-box {
+    margin-top: 0.2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.qcs-cd-fc-price-col {
+    display: flex;
+    flex-direction: column;
+    padding-right: 0.9rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.16);
+    white-space: nowrap;
+}
+
+.qcs-cd-fc-label {
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #cbd5e1;
+    text-transform: uppercase;
+}
+
+.qcs-cd-fc-amount {
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.15;
+}
+
+.qcs-cd-btn-paypal-fc {
+    background-color: #0d6efd !important;
+    color: #ffffff !important;
+    border: none !important;
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.84rem;
+    font-weight: 700;
+    padding: 0.62rem 1rem;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+.qcs-cd-btn-paypal-fc:hover {
+    background-color: #0b5ed7 !important;
+    color: #ffffff !important;
+}
+
+.qcs-cd-fc-note {
+    font-size: 0.76rem;
+    line-height: 1.38;
+    color: #cbd5e1;
+}
+
+/* Enlaces discretos debajo del panel */
+.qcs-cd-enroll-footer-links {
+    max-width: 1020px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 1.35rem;
+}
+
+.qcs-cd-link-sep {
+    color: #cbd5e1;
+    font-weight: 400;
+}
+
+.qcs-cd-back-link {
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: #475569;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.15s ease;
+}
+
+.qcs-cd-back-link:hover {
+    color: #0F1113;
+}
+
+/* 16.8 SECCIÓN OPCIONAL DE VIDEOS Y CONFERENCIAS */
+.qcs-iso-video-card {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(15, 17, 19, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.qcs-iso-video-card:hover {
+    transform: translateY(-4px);
+    border-color: #1A1D20;
+    box-shadow: 0 12px 26px rgba(15, 17, 19, 0.1);
+}
+
+.qcs-iso-video-header {
+    background: #1A1D20;
+    padding: 0.8rem 1.15rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.qcs-iso-video-caption {
+    padding: 1rem 1.15rem;
+    font-size: 0.86rem;
+    color: #475569;
+    margin: 0;
+    line-height: 1.5;
+    background-color: #f8fafc;
+}
+
+/* 16.9 RESPONSIVE MÓVIL Y TABLET (360px, 390px, 768px, 991px) */
+@media (max-width: 991.98px) {
+    .qcs-iso-hero-banner {
+        padding: 140px 1rem 55px 1rem;
+    }
+
+    .qcs-cd-section {
+        padding: 2.75rem 0;
+    }
+
+    .qcs-cd-enroll-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .qcs-cd-enroll-left {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        padding-bottom: 1.25rem;
+    }
+
+    .qcs-cd-enroll-panel--has-bg::before {
+        width: 100%;
+        height: 45%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .qcs-iso-hero-banner {
+        padding: 120px 0.75rem 45px 0.75rem;
+    }
+
+    .qcs-iso-hero-title {
+        font-size: 1.55rem;
+    }
+
+    .qcs-iso-hero-summary {
+        font-size: 0.98rem;
+    }
+
+    .qcs-cd-section {
+        padding: 2.25rem 0;
+    }
+
+    .qcs-iso-audit-card {
+        padding: 1.4rem 1.2rem;
+    }
+
+    .qcs-cd-pdu-dark-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1.15rem 1.25rem;
+    }
+
+    .qcs-cd-pdu-divider {
+        display: none;
+    }
+
+    .qcs-cd-brochure-integrated-card {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1.25rem;
+        gap: 1.15rem;
+    }
+
+    .qcs-cd-brochure-left {
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .qcs-cd-brochure-thumb-img {
+        width: 80px;
+    }
+
+    .qcs-cd-brochure-title {
+        font-size: 1.18rem;
+    }
+
+    .qcs-cd-brochure-actions {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .qcs-cd-brochure-actions .btn {
+        flex: 1 1 135px;
+        text-align: center;
+    }
+
+    .qcs-cd-enroll-panel {
+        padding: 1.65rem 1.25rem;
+    }
+
+    .qcs-cd-first-class-box {
+        grid-template-columns: 1fr;
+        gap: 0.65rem;
+    }
+
+    .qcs-cd-fc-price-col {
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        padding-bottom: 0.5rem;
+    }
+
+    .qcs-cd-btn-paypal-fc {
+        width: 100%;
+    }
+
+    .qcs-cd-syllabus-summary {
+        align-items: flex-start;
+        gap: 0.65rem;
+        padding: 0.9rem 1rem;
+    }
+
+    .qcs-cd-syllabus-heading-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
+    }
+
+    .qcs-cd-syllabus-clause {
+        white-space: normal;
+    }
+
+    .qcs-cd-syllabus-body {
+        padding: 1rem 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .qcs-iso-hero-banner {
+        padding: 108px 0.5rem 38px 0.5rem;
+    }
+
+    .qcs-iso-hero-title {
+        font-size: 1.38rem;
+    }
+
+    .qcs-iso-docente-identity-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .qcs-cd-syllabus-icon {
+        display: none;
+    }
+
+    .qcs-cd-enroll-footer-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .qcs-cd-link-sep {
+        display: none;
+    }
+}
+
+
+
+
