@@ -36,7 +36,7 @@ $course = [
         [
             'icon'  => 'fa-solid fa-user-check',
             'title' => 'CONSULTORÍA Y BENEFICIOS',
-            'desc'  => 'Consultoría de 1 hora durante el curso, diploma digital de Quality Consulting Solutions y acceso a bolsa laboral.',
+            'desc'  => 'Consultoría de 1 hora durante el curso, diploma digital e ingreso a la base de datos laboral de Quality Consulting Solutions.',
         ],
     ],
 
@@ -71,7 +71,7 @@ $course = [
         ],
     ],
 
-    // 4. Perfil docente (Ing. Omar Samaniego - Páginas 1, 4 y 5 del brochure)
+    // 4. Perfil docente (Ing. Omar Samaniego - Páginas 1 y 4 del brochure)
     'docente'             => [
         'photo'          => 'img/Omar_Samaniego.png',
         'photo_webp'     => 'img/Omar_Samaniego.webp',
@@ -90,7 +90,6 @@ $course = [
             '<strong>Catedrático Universitario:</strong> Universidad Peruana de Ciencias Aplicadas (UPC - Postgrado), MDI PUCP - Universidad Politécnica de Madrid (Catedrático de dirección de la calidad), Universidad de Lima (Ingeniería Civil e Ingeniería Industrial) e Instituto para la Calidad.',
             '<strong>Expositor Internacional:</strong> Techsuyo en Stanford University (2017), Congreso Global del PMI (Washington D.C., 2010) y Congreso Regional del PMI (Lima - Perú, 2008).',
             '<strong>Liderazgo y Publicaciones:</strong> Presidente del Comité de la Calidad de Capeco, Columnista en Revista El Constructivo y Miembro Directivo de ASQ Perú LMC.',
-            '<strong>Colaboración con Stanford:</strong> Acuerdo institucional con el Centro de Ingeniería para Instalaciones Integradas (CIFE) de Stanford University dando soporte a investigación en 2018 y 2019.',
         ],
         'recognition'    => 'Contribuidor registrado de la 6ta y 7ma Edición de la Guía del PMBOK® y del Estándar de Gestión de Riesgos del PMI® (2019 / 2024). Autor de libros especializados en construcción.',
     ],
@@ -99,7 +98,7 @@ $course = [
     'benefits'            => [
         [
             'icon'  => 'fa-solid fa-briefcase',
-            'title' => 'Bolsa laboral',
+            'title' => 'Base de datos laboral',
             'text'  => 'Ingreso a la base de datos laboral de Quality Consulting Solutions.',
         ],
         [
@@ -143,6 +142,7 @@ $course = [
     // 7. Información e inscripción (Página 3 del brochure)
     'enroll_bg_image'     => 'img/capacitaciones/direccion-calidad-enfoque-pmi.webp',
     'whatsapp_url'        => 'https://api.whatsapp.com/send?phone=51993463118&text=Buen%20d%C3%ADa,%20deseo%20solicitar%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Direcci%C3%B3n%20de%20la%20Calidad%20con%20Enfoque%20PMI',
+    'whatsapp_btn_text'   => 'Solicitar información por WhatsApp',
     'modal_service'       => 'Dirección de la Calidad con el Enfoque PMI® para la Construcción',
     'paypal_slug'         => 'direccion-calidad-enfoque-pmi',
     'videos'              => [],
