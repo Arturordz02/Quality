@@ -1,431 +1,160 @@
 <?php
 /**
  * QUALITY CONSULTING SOLUTIONS - ARQUITECTURA MVC
- * Vista de Página: Evaluación del Riesgo del Cumplimiento del Plazo (Síndrome del 90%)
- * Archivo: app/Views/pages/sindrome-del-90.php
+ * Vista de Detalle: Seminario Método de la Curva de Completion para Evitar el Síndrome del 90%
+ * Archivo: private_app/app/Views/pages/sindrome-del-90.php
+ * Plantilla base compartida: app/Views/partials/course_detail_unified.php
  */
 
 declare(strict_types=1);
-?>
-<main class="page-content">
-<!-- ==========================================================================
-             2. BANNER PRINCIPAL / ENCABEZADO DE LA PÁGINA
-             ========================================================================== -->
-        <section class="page-banner">
-            <div class="page-banner-bg banner-sindrome-bg"></div>
-            <div class="page-banner-overlay"></div>
-            <div class="page-banner-container">
 
+$course = [
+    // 1. Hero Banner
+    'hero_badge'      => 'SEMINARIO EN VIVO • VIRTUAL TIEMPO REAL',
+    'hero_badge_icon' => 'fa-solid fa-chart-line',
+    'title'           => 'MÉTODO DE LA CURVA DE COMPLETION PARA EVITAR EL SÍNDROME DEL 90%',
+    'summary'         => 'Metodología predictiva adoptada por INACAL (Guía Peruana GP 151) para estimar con precisión matemática la fecha de compleción del proyecto, diferenciar avance físico vs. compleción de entregables y prevenir desviaciones críticas en la entrega final de obras.',
+    'hero_cards'      => [
+        [
+            'icon'  => 'fa-solid fa-book-bookmark',
+            'title' => 'GUÍA PERUANA GP 151',
+            'desc'  => 'Método de evaluación de compleción adoptado por INACAL y publicado para el sector construcción.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-scale-unbalanced',
+            'title' => 'AVANCE VS. COMPLETION',
+            'desc'  => 'Diferenciación conceptual y práctica para no interpretar como casi terminado un proyecto con saldo crítico.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-award',
+            'title' => '04 PDU OFICIALES',
+            'desc'  => 'Horas de desarrollo profesional categoría PMI® CCR dentro del Technical Project Management.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-laptop',
+            'title' => 'VIRTUAL TIEMPO REAL',
+            'desc'  => 'Seminario ágil interactivo con matrices de calidad y plantillas de cálculo de aplicación directa.',
+        ],
+    ],
 
-                <div class="page-title-wrap">
-                    <span class="section-tag"><i class="fa-solid fa-clock-rotate-left"></i> Metodología Exclusiva</span>
-                    <h1 class="page-main-title animate__animated animate__fadeInDown">EVALUACIÓN DEL RIESGO DEL CUMPLIMIENTO DEL PLAZO</h1>
-                    <div class="title-underline"></div>
-                </div>
+    // 2. Objetivo del curso
+    'objective'            => 'Presentar el <strong>Método de la Curva de Completion</strong> adoptado por el Instituto Nacional de Calidad (INACAL) y publicado en la <strong>Guía Peruana GP 151</strong> para estimar de manera confiable la fecha real de compleción del proyecto. Proporcionar criterios para diferenciar conceptual y prácticamente la medición del avance físico porcentual frente a la medición objetiva de la compleción de entregables, evitando que el último 10% del proyecto consuma demoras desproporcionadas en el cierre.',
+    'objective_image'      => '',
+    'objective_image_webp' => '',
+    'objective_image_alt'  => 'Curva de Completion y control predictivo del plazo en construcción',
+    'objective_highlights' => [
+        'Diferenciación cuantitativa entre avance financiero/físico y compleción real de entregables.',
+        'Metodología adoptada por INACAL y el International Group for Lean Construction (IGLC).',
+        'Validada y presentada en foros internacionales: PMI Global Congress en Washington D.C., Techsuyo en Stanford University y Congreso Lean Construction en México.',
+        'Herramientas prácticas: Matriz de Calidad, curvas de liberación y plantillas simplificadas de seguimiento.',
+    ],
 
-                <!-- Párrafo descriptivo superior -->
-                <div class="intro-card intro-card-highlight">
-                    <p class="intro-text animate__animated animate__fadeInUp animate__delay-1s">
-                        ¿Le suele ocurrir que estando más allá del 90% de avance del proyecto, ese saldo suele demorar más de lo previsto? Ese estadío se denomina el <strong>Síndrome del 90%</strong>. No se preocupe, <strong>Quality Consulting Solutions</strong> posee una metodología única para evaluar el riesgo de cumplimiento del plazo de su proyecto a través de la <strong>Curva de Liberación ®</strong>, método que ha sido expuesto en congresos nacionales e internacionales, como PMI® Global Congress - Washington D.C., <a href="/investigacion" class="link-stanford">Techsuyo at Stanford University</a> y Lean Construction México.
-                    </p>
-                </div>
+    // 3. Temario del curso
+    'syllabus_intro'       => 'Estructura técnica y práctica orientada al control estricto de entregables, matrices de calidad y curvas de liberación:',
+    'syllabus'             => [
+        [
+            'title'   => 'Presentación de la Guía Peruana GP 151 e Introducción al Síndrome del 90%',
+            'icon'    => 'fa-solid fa-book-open',
+            'content' => '<p>Marco técnico y antecedentes de la Guía Peruana GP 151 adoptada por INACAL para la evaluación de la compleción en proyectos de construcción. Diagnóstico del Síndrome del 90%: causas raíz por las cuales el avance porcentual reportado no refleja el saldo pendiente de liberación y cómo identificarlo oportunamente.</p>',
+        ],
+        [
+            'title'   => 'Método estándar - Matriz de Calidad y Curva de Completion',
+            'icon'    => 'fa-solid fa-table-cells',
+            'content' => '<p>Estructuración de la Matriz de Calidad para el mapeo individualizado de entregables. Metodología de modelado y construcción de la Curva de Completion frente a la curva de avance tradicional. Determinación del límite superior de compleción y detección temprana de desfases operacionales.</p>',
+        ],
+        [
+            'title'   => 'Método simplificado - Plantilla de cálculo y control de entregables',
+            'icon'    => 'fa-solid fa-file-excel',
+            'content' => '<p>Aplicación de la plantilla simplificada para construcciones provisionales, obras preliminares y partidas críticas de arquitectura e instalaciones. Formulación de los indicadores EV, Q3 y Q3\' para la cuantificación objetiva del progreso y estado de pruebas.</p>',
+        ],
+        [
+            'title'   => 'Análisis de restricciones de liberación y toma de decisiones',
+            'icon'    => 'fa-solid fa-filter-circle-xmark',
+            'content' => '<p>Identificación sistemática de cuellos de botella en inspecciones, pruebas funcionales y comisionamiento. Gestión preventiva de restricciones para blindar la fecha contractual de entrega, mitigando sobrecostos por gastos generales extendidos y penalidades por retraso.</p>',
+        ],
+    ],
 
-                <!-- Badges de Métricas / Respaldo -->
-                <div class="hero-stats-badges">
-                    <div class="hero-stat-badge">
-                        <i class="fa-solid fa-triangle-exclamation"></i>
-                        <span>+90% Zona Crítica de Desviación</span>
-                    </div>
-                    <div class="hero-stat-badge badge-gold-stat">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <span>Curva de Liberación ®</span>
-                    </div>
-                    <div class="hero-stat-badge">
-                        <i class="fa-solid fa-building-columns"></i>
-                        <span>Stanford &amp; PMI Validado</span>
-                    </div>
-                </div>
+    // 4. Perfil docente
+    'docente'              => [
+        'photo'          => 'img/Omar_Samaniego.png',
+        'photo_webp'     => 'img/Omar_Samaniego.webp',
+        'name'           => 'Ing. Omar A. Samaniego',
+        'experience_tag' => '+25 años de experiencia',
+        'credentials'    => [
+            'Master',
+            'NECA',
+            'VDC - Stanford',
+            'PMP®',
+            'PMI-RMP®',
+            'LSS Black Belt',
+        ],
+        'summary'        => 'Profesional con más de 25 años de experiencia en Gestión de la Calidad en el Sector Construcción en empresas líderes en el Perú y el extranjero. Experiencia en principales corporaciones de infraestructura, ponente en congresos internacionales de primer nivel y docente de postgrado en universidades de prestigio. Contribuidor registrado de estándares fundacionales del Project Management Institute (PMI®).',
+        'highlights'     => [
+            '<strong>Gleeds:</strong> Risk & Quality Mgr.',
+            '<strong>Graña y Montero:</strong> Jefe Corporativo del Área de Calidad de GyM.',
+            '<strong>Buenaventura Ingenieros:</strong> Gerente de Proyectos.',
+            '<strong>Cosapi:</strong> Jefe de Calidad.',
+            '<strong>Bechtel:</strong> Líder de Calidad Electromecánico.',
+        ],
+        'full_bio_items' => [
+            '<strong>Universidad Peruana de Ciencias Aplicadas (UPC):</strong> Catedrático de Postgrado.',
+            '<strong>MDI Centrum:</strong> Catedrático de Gestión de la Calidad.',
+            '<strong>PMI Global Congress, Washington D.C. 2010:</strong> Expositor de la metodología.',
+            '<strong>Techsuyo at Stanford University:</strong> Ponente sobre prevención del Síndrome del 90%.',
+            '<strong>Congreso Lean Construction México:</strong> Disertante sobre curvas de liberación.',
+            '<strong>Comité de la Calidad de CAPECO:</strong> Presidente.',
+            '<strong>Revistas Técnicas:</strong> Columnista en Construcción e Industria (CAPECO) y El Constructivo.',
+            '<strong>ASQ Perú:</strong> LMC executive board member.',
+        ],
+        'recognition'    => 'Metodología adoptada oficialmente por el Instituto Nacional de Calidad (INACAL) bajo la Guía Peruana GP 151 y expuesta en Stanford University.',
+    ],
 
-            </div>
-        </section>
+    // 5. Beneficios y materiales
+    'benefits'             => [
+        [
+            'icon'  => 'fa-solid fa-briefcase',
+            'title' => 'Bolsa laboral',
+            'text'  => 'Ingreso a la base de datos laboral de Quality Consulting Solutions.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-tag',
+            'title' => 'Alerta temprana de descuentos',
+            'text'  => 'Tarifas preferenciales de descuento para futuros cursos y seminarios especializados.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-file-excel',
+            'title' => 'Formatos y plantillas digitales',
+            'text'  => 'Acceso a material digital del seminario, matriz de calidad y formatos de cálculo en línea.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-certificate',
+            'title' => 'Diploma digital oficial',
+            'text'  => 'Certificado digital de participación emitido a nombre de Quality Consulting Solutions.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-users',
+            'title' => 'Sesiones exclusivas',
+            'text'  => 'Ingreso a sesiones virtuales de contenidos técnicos complementarios sin costo adicional.',
+        ],
+    ],
+    'pdu_heading'          => 'Unidades de desarrollo profesional (04 PDU)',
+    'pdu_text'             => '04 PDU (Professional Development Unit) categoría PMI® CCR: General Education Third-Party Provider. Technical Project Management dentro del PMI Talent Triangle®. Válidas para mantener activas las certificaciones del Project Management Institute.',
 
-        <!-- ==========================================================================
-             3. SECCIÓN: ¿QUÉ ES EL SÍNDROME DEL 90%? (Split 2 Columnas)
-             ========================================================================== -->
-        <section class="content-section section-sindrome-intro" id="que-es-sindrome">
-            <div class="section-container">
-                
-                <div class="grid-split-layout">
-                    
-                    <!-- Columna Izquierda: Explicación y Cards de Problemática -->
-                    <div class="split-text-col">
-                        <div class="section-header-compact">
-                            <span class="sub-badge">El Desafío Crítico en la Construcción</span>
-                            <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">¿POR QUÉ EL ÚLTIMO 10% TOMA EL 90% DEL ESFUERZO?</h2>
-                            <div class="heading-line"></div>
-                        </div>
+    // 6. Información e inscripción
+    'enroll_bg_image'      => '',
+    'whatsapp_url'         => 'https://api.whatsapp.com/send?phone=51993463118&text=' . urlencode('Hola Quality Consulting Solutions, deseo información sobre el Seminario Método de la Curva de Completion para Evitar el Síndrome del 90%.'),
+    'modal_service'        => 'Seminario Completion - Evita el Síndrome del 90%',
+    'paypal_slug'          => 'sindrome-del-90',
 
-                        <p class="paragraph-text paragraph-lead">
-                            En proyectos de ingeniería y construcción, el avance físico reportado suele progresar con aparente normalidad hasta alcanzar aproximadamente el 90%. A partir de ese punto, el saldo restante tiende a demorar de manera desproporcionada.
-                        </p>
+    // 7. Video de conferencia
+    'videos'               => [
+        [
+            'header'    => 'Techsuyo at Stanford University',
+            'embed_url' => 'https://www.youtube.com/embed/Pxe6RP_J9Ek',
+            'title'     => 'Conferencia sobre Prevención del Síndrome del 90% en Stanford University',
+            'caption'   => '<strong>Conferencia Magistral:</strong> Exposición de la metodología de la Curva de Liberación y prevención del Síndrome del 90% presentada en Techsuyo, Stanford University.',
+        ],
+    ],
+];
 
-                        <p class="paragraph-text">
-                            Esto ocurre porque el avance financiero o porcentual tradicional oculta la acumulación de restricciones no liberadas en partidas críticas de acabado, pruebas, comisionamiento y trámites de entrega.
-                        </p>
-
-                        <!-- Cards de Problemáticas del Síndrome del 90% -->
-                        <div class="pmo-levels-grid">
-                            <div class="pmo-card">
-                                <div class="pmo-card-icon"><i class="fa-solid fa-chart-pie"></i></div>
-                                <div class="pmo-card-body">
-                                    <h4 class="pmo-card-title">Falsa Sensación de Avance</h4>
-                                    <p class="pmo-card-desc">El porcentaje monetario acumulado no refleja el estado real de liberaciones operativas en terreno.</p>
-                                </div>
-                            </div>
-                            <div class="pmo-card">
-                                <div class="pmo-card-icon"><i class="fa-solid fa-filter-circle-xmark"></i></div>
-                                <div class="pmo-card-body">
-                                    <h4 class="pmo-card-title">Concentración de Restricciones</h4>
-                                    <p class="pmo-card-desc">El último 10% acumula interferencias no resueltas de ingeniería, proveedores y subcontratistas.</p>
-                                </div>
-                            </div>
-                            <div class="pmo-card">
-                                <div class="pmo-card-icon"><i class="fa-solid fa-money-bill-trend-up"></i></div>
-                                <div class="pmo-card-body">
-                                    <h4 class="pmo-card-title">Impacto en Costos y Penalidades</h4>
-                                    <p class="pmo-card-desc">Las extensiones de plazo erosionan el margen operativo por penalidades y gastos generales extendidos.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Columna Derecha: Tarjeta Visual de la Solución (Curva de Liberación) -->
-                    <div class="split-image-col">
-                        <div class="image-card-wrapper">
-                            <div class="image-container">
-                                <img src="img/s901.png" alt="Curva de Liberación y control del plazo en proyectos" class="section-image" loading="lazy" width="600" height="400">
-                                <div class="image-badge-tag badge-gold">
-                                    <i class="fa-solid fa-chart-area"></i> Curva de Liberación ®
-                                </div>
-                            </div>
-                            <div class="image-caption">
-                                <p><i class="fa-solid fa-circle-check"></i> Modelado matemático predictivo que determina con precisión la fecha real de compleción.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-             4. ETAPAS DEL SERVICIO (Grid 2x2 de Cards Elevados con Estilo Moderno)
-             ========================================================================== -->
-        <section class="content-section section-stages bg-alternate" id="etapas-servicio">
-            <div class="section-container">
-                
-                <div class="section-header-center">
-                    <span class="sub-badge">Fases de Implementación</span>
-                    <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">Etapas de Nuestra Metodología</h2>
-                    <div class="heading-line center-line"></div>
-                    <p class="section-subtitle-text">Un proceso estructurado, predictivo y fundamentado en ingeniería para optimizar el control y previsibilidad en la fecha de entrega de su proyecto.</p>
-                </div>
-
-                <!-- Grid de 4 Bloques / Etapas -->
-                <div class="stages-grid">
-                    
-                    <!-- ETAPA 1: REVISIÓN DEL ALCANCE -->
-                    <div class="stage-card">
-                        <div class="stage-card-header">
-                            <div class="stage-number">01</div>
-                            <div class="stage-title-wrap">
-                                <span class="stage-tag">Fase Inicial</span>
-                                <h3 class="stage-title animate__animated animate__fadeInUp animate__delay-1s">REVISIÓN DEL ALCANCE</h3>
-                            </div>
-                        </div>
-                        <div class="stage-card-body">
-                            <ul class="stage-checklist">
-                                <li>
-                                    <i class="fa-solid fa-circle-check"></i>
-                                    <span>Revisión integral del Alcance del Proyecto y líneas base.</span>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-circle-check"></i>
-                                    <span>Análisis de reportes de avance y cronogramas vigentes.</span>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-circle-check"></i>
-                                    <span>Evaluación de informes recientes y estado contractual.</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="stage-card-footer">
-                            <span class="footer-badge"><i class="fa-solid fa-folder-open"></i> Diagnóstico de Entrada</span>
-                        </div>
-                    </div>
-
-                    <!-- ETAPA 2: MATRIZ DE RESTRICCIONES -->
-                    <div class="stage-card">
-                        <div class="stage-card-header">
-                            <div class="stage-number">02</div>
-                            <div class="stage-title-wrap">
-                                <span class="stage-tag">Análisis Crítico</span>
-                                <h3 class="stage-title animate__animated animate__fadeInUp animate__delay-1s">MATRIZ DE RESTRICCIONES</h3>
-                            </div>
-                        </div>
-                        <div class="stage-card-body">
-                            <ul class="stage-checklist">
-                                <li>
-                                    <i class="fa-solid fa-circle-check"></i>
-                                    <span>Aplicación de la Matriz de Restricciones para partidas críticas.</span>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-circle-check"></i>
-                                    <span>Registro, tipificación y priorización de restricciones operativas.</span>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-circle-check"></i>
-                                    <span>Jerarquización por impacto directo en la ruta crítica.</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="stage-card-footer">
-                            <span class="footer-badge"><i class="fa-solid fa-filter-circle-xmark"></i> Mapeo de Cuellos de Botella</span>
-                        </div>
-                    </div>
-
-                    <!-- ETAPA 3: EVALUACIÓN SÍNDROME DEL 90% (Card Destacado) -->
-                    <div class="stage-card highlight-card">
-                        <div class="stage-card-header">
-                            <div class="stage-number">03</div>
-                            <div class="stage-title-wrap">
-                                <span class="stage-tag stage-tag-gold">Núcleo Analítico</span>
-                                <h3 class="stage-title animate__animated animate__fadeInUp animate__delay-1s">EVALUACIÓN SÍNDROME DEL 90%</h3>
-                            </div>
-                        </div>
-                        <div class="stage-card-body">
-                            <ul class="stage-checklist">
-                                <li>
-                                    <i class="fa-solid fa-circle-check"></i>
-                                    <span>Ordenamiento y depuración cuantitativa de datos de avance.</span>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-circle-check"></i>
-                                    <span>Elaboración de las Curvas de Liberación General del proyecto.</span>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-circle-check"></i>
-                                    <span>Modelado de Curvas de Liberación para partidas críticas individuales.</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="stage-card-footer">
-                            <span class="footer-badge badge-gold"><i class="fa-solid fa-chart-area"></i> Curva de Liberación ®</span>
-                        </div>
-                    </div>
-
-                    <!-- ETAPA 4: INFORME TÉCNICO Y RECOMENDACIONES -->
-                    <div class="stage-card">
-                        <div class="stage-card-header">
-                            <div class="stage-number">04</div>
-                            <div class="stage-title-wrap">
-                                <span class="stage-tag">Entrega Estratégica</span>
-                                <h3 class="stage-title animate__animated animate__fadeInUp animate__delay-1s">INFORME TÉCNICO Y RECOMENDACIONES</h3>
-                            </div>
-                        </div>
-                        <div class="stage-card-body">
-                            <ul class="stage-checklist">
-                                <li>
-                                    <i class="fa-solid fa-circle-check"></i>
-                                    <span>Registro de hallazgos relevantes de gabinete y terreno.</span>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-circle-check"></i>
-                                    <span>Proyección matemática exacta de la fecha de compleción.</span>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-circle-check"></i>
-                                    <span>Estimación del inicio del síndrome y plan de choque recomendado.</span>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-circle-check"></i>
-                                    <span>Conclusiones ejecutivas y recomendaciones de acción inmediata.</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="stage-card-footer">
-                            <span class="footer-badge"><i class="fa-solid fa-file-signature"></i> Dictamen Predictivo</span>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-             5. BENEFICIOS Y VALOR DEL SERVICIO (Grid de 4 Tarjetas Rápidas)
-             ========================================================================== -->
-        <section class="content-section section-benefits" id="beneficios">
-            <div class="section-container">
-                
-                <div class="section-header-center">
-                    <span class="sub-badge">Valor Estratégico</span>
-                    <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">BENEFICIOS DE LA EVALUACIÓN PREDICTIVA</h2>
-                    <div class="heading-line center-line"></div>
-                    <p class="section-subtitle-text">Garantice el retorno y la confiabilidad del cronograma con herramientas comprobadas en la industria.</p>
-                </div>
-
-                <div class="feature-grid">
-                    <div class="feature-card rounded-4 border-start border-4 border-warning" data-aos="fade-right">
-                        <div class="feature-icon"><i class="fa-solid fa-calendar-check"></i></div>
-                        <h4>Proyección Exacta de Término</h4>
-                        <p>Cálculo matemático fundamentado de la fecha real de término, anticipándose a desvíos no detectados por métodos convencionales.</p>
-                    </div>
-
-                    <div class="feature-card rounded-4 border-start border-4 border-warning" data-aos="fade-up">
-                        <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                        <h4>Mitigación de Penalidades</h4>
-                        <p>Reducción sustancial del riesgo de penalidades contractuales por mora y de sobrecostos por gastos generales extendidos.</p>
-                    </div>
-
-                    <div class="feature-card rounded-4 border-start border-4 border-warning" data-aos="fade-left">
-                        <div class="feature-icon"><i class="fa-solid fa-unlock-keyhole"></i></div>
-                        <h4>Desbloqueo de Restricciones</h4>
-                        <p>Identificación precisa de las partidas críticas que frenan el avance del proyecto y planes de acción inmediatos.</p>
-                    </div>
-
-                    <div class="feature-card rounded-4 border-start border-4 border-warning" data-aos="fade-right">
-                        <div class="feature-icon"><i class="fa-solid fa-landmark"></i></div>
-                        <h4>Respaldo de Nivel Internacional</h4>
-                        <p>Metodología validada en Stanford University, PMI Global Congress y foros de Lean Construction a nivel global.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-             6. SECCIÓN: ALGUNOS LUGARES DONDE SE PRESENTÓ LA METODOLOGÍA (Multimedia)
-             ========================================================================== -->
-        <section class="content-section section-presentations bg-alternate" id="presentaciones">
-            <div class="section-container">
-                
-                <div class="section-header-center">
-                    <span class="sub-badge">Respaldo y Difusión Internacional</span>
-                    <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">ALGUNOS LUGARES DONDE SE PRESENTÓ LA METODOLOGÍA</h2>
-                    <div class="heading-line center-line"></div>
-                    <p class="section-subtitle-text">Nuestra metodología de la Curva de Liberación ® ha sido validada y expuesta en los foros más prestigiosos de gestión e ingeniería.</p>
-                </div>
-
-                <!-- Grid de 3 Columnas Multimedia -->
-                <div class="presentations-grid">
-                    
-                    <!-- ================================================================= -->
-                    <!-- COLUMNA 1: PMI Global Congress, Washington D.C.                    -->
-                    <!-- ================================================================= -->
-                    <div class="presentation-card">
-                        <div class="presentation-media">
-                            <img src="img/10-pmi_orig.jpg" alt="PMI Global Congress, Washington D.C." class="presentation-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&amp;w=600&amp;auto=format&amp;fit=crop';" loading="lazy" width="600" height="380">
-                            <div class="presentation-badge"><i class="fa-solid fa-globe"></i> Congreso Global</div>
-                        </div>
-                        <div class="presentation-content">
-                            <span class="presentation-location"><i class="fa-solid fa-location-dot"></i> Washington D.C., USA</span>
-                            <h3 class="presentation-title animate__animated animate__fadeInUp animate__delay-1s">PMI Global Congress, Washington D.C.</h3>
-                            <p class="presentation-desc">Presentación internacional sobre metodologías predictivas para el control de plazos en proyectos de infraestructura compleja.</p>
-                        </div>
-                    </div>
-
-                    <!-- ================================================================= -->
-                    <!-- COLUMNA 2: Techsuyo at Stanford University (Video Interactivo)     -->
-                    <!-- ================================================================= -->
-                    <div class="presentation-card presentation-card-video">
-                        <div class="presentation-media video-media-wrapper">
-                            <img src="https://img.youtube.com/vi/Pxe6RP_J9Ek/hqdefault.jpg" alt="Video Conferencia Techsuyo at Stanford University" class="presentation-img video-thumbnail" loading="lazy" width="600" height="380">
-                            <a href="https://www.youtube.com/watch?v=Pxe6RP_J9Ek" target="_blank" rel="noopener noreferrer" class="video-overlay-play" aria-label="Reproducir video de la conferencia en Stanford University en YouTube">
-                                <div class="play-button-pulse">
-                                    <i class="fa-solid fa-play"></i>
-                                </div>
-                                <span class="video-cta-text">Ver Conferencia en YouTube</span>
-                            </a>
-                            <div class="presentation-badge badge-red"><i class="fa-brands fa-youtube"></i> Stanford University</div>
-                        </div>
-                        <div class="presentation-content">
-                            <span class="presentation-location"><i class="fa-solid fa-graduation-cap"></i> Stanford University, CA</span>
-                            <h3 class="presentation-title animate__animated animate__fadeInUp animate__delay-1s">Techsuyo at Stanford University</h3>
-                            <p class="presentation-desc">Exposición magistral en Stanford University sobre la prevención del Síndrome del 90% mediante la Curva de Liberación ®.</p>
-                            <a href="https://www.youtube.com/watch?v=Pxe6RP_J9Ek" target="_blank" rel="noopener noreferrer" class="btn-video-action">
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Conferencia Completa
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- ================================================================= -->
-                    <!-- COLUMNA 3: Congreso Lean Construction - México D.F.               -->
-                    <!-- ================================================================= -->
-                    <div class="presentation-card">
-                        <div class="presentation-media">
-                            <img src="img/19-lnx_orig.jpeg" alt="Congreso Lean Construction - México D.F." class="presentation-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&amp;w=600&amp;auto=format&amp;fit=crop';" loading="lazy" width="600" height="380">
-                            <div class="presentation-badge badge-gold"><i class="fa-solid fa-award"></i> Lean Construction</div>
-                        </div>
-                        <div class="presentation-content">
-                            <span class="presentation-location"><i class="fa-solid fa-location-dot"></i> Ciudad de México</span>
-                            <h3 class="presentation-title animate__animated animate__fadeInUp animate__delay-1s">Congreso Lean Construction - México D.F.</h3>
-                            <p class="presentation-desc">Disertación técnica sobre la integración de la metodología Last Planner con la gestión predictiva de partidas críticas.</p>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-             7. FRASE DESTACADA (Quote Banner)
-             ========================================================================== -->
-        <section class="quote-banner-section">
-            <div class="quote-container">
-                <div class="quote-card">
-                    <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
-                    <blockquote class="quote-text">
-                        “El 90% del proyecto suele ejecutarse en el 90% del tiempo; el 10% restante toma otro 90% si no se evalúa con la Curva de Liberación ®.”
-                    </blockquote>
-                    <div class="quote-divider"></div>
-                    <span class="quote-author">Quality Consulting Solutions • Metodología de Prevención de Plazo</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-             8. BANNER DE CONTACTO / CALL TO ACTION
-             ========================================================================== -->
-        <section class="cta-banner-section">
-            <div class="cta-container">
-                <div class="cta-box">
-                    <div class="cta-content">
-                        <span class="cta-tag"><i class="fa-solid fa-bolt"></i> Previsibilidad de Plazos</span>
-                        <h3 class="animate__animated animate__fadeInUp animate__delay-1s">¿Su proyecto está próximo al 90% y requiere asegurar su fecha de entrega?</h3>
-                        <p>Aplique la Curva de Liberación ® y prevenga sobrecostos por penalidades y extensiones de plazo.</p>
-                        
-                        <!-- Teléfono Visible Clickeable -->
-                        <div class="cta-phone-wrapper">
-                            <a href="tel:+51993463118" class="cta-phone-link" aria-label="Llamar al +51 993 463 118">
-                                <i class="fa-solid fa-phone-volume"></i>
-                                <span>+51 993 463 118</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="cta-actions">
-                        <a href="/contacto" class="btn btn-large btn-qcs-primary">
-                            <i class="fa-solid fa-envelope"></i> Solicitar Evaluación de Plazo
-                        </a>
-                        <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-large animate__animated animate__pulse animate__infinite btn-qcs-primary">
-                            <i class="fa-brands fa-whatsapp"></i> WhatsApp Especialista
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-</main>
+echo $this->partial('course_detail_unified', ['course' => $course]);

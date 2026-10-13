@@ -52,7 +52,7 @@ $showFloat = $showWhatsAppFloat ?? true;
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
     
     <!-- Hoja de estilos principal del sitio -->
-    <link rel="stylesheet" href="styles.css?v=3.5">
+    <link rel="stylesheet" href="styles.css?v=3.6">
 
     <!-- Estilos específicos de cada vista si se requieren -->
     <?= $extraStyles ?? '' ?>

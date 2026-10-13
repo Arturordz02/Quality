@@ -97,7 +97,7 @@ $course = [
         'recognition'    => 'Reconocimiento o mención destacada del brochure.', // Opcional
     ],
 
-    // 5. Beneficios y materiales + PDU + Brochure integrado
+    // 5. Beneficios y materiales + PDU (sin brochure público)
     'benefits'             => [
         [
             'icon'  => 'fa-solid fa-briefcase',
@@ -105,17 +105,15 @@ $course = [
             'text'  => 'Ingreso a la base de datos laboral de Quality Consulting Solutions.',
         ],
     ],
-    'pdu_title'            => 'Unidades de desarrollo profesional (16 PDU)', // Dinámico según cada brochure (ej. 'Unidades de desarrollo profesional (6 PDU)'). Dejar en '' si no otorga PDU.
-    'pdu_text'             => 'Explicación oficial del brochure sobre las PDU (dejar en "" si el curso no otorga PDU).',
-    'brochure_url'         => 'brochures/calidad/archivo-del-brochure.pdf',
-    'brochure_download'    => 'Nombre-Descarga-Amigable.pdf',
-    'brochure_thumb'       => 'img/brochures/portada-real-extraida-del-pdf.png',
+    'pdu_heading' => 'Unidades de desarrollo profesional (6 PDU)', // Ejemplo: usar el valor oficial de cada capacitación.
+    'pdu_title'   => '', // Alternativa cuando pdu_heading está vacío.
+    'pdu_text'    => 'Explicación oficial de las PDU. Dejar estos campos vacíos si no corresponde.',
 
     // 6. Información e inscripción
     'enroll_bg_image'      => 'img/ISO1.webp', // Opcional: imagen temática para el lado izquierdo del panel oscuro ('' usa solo el degradado)
     'whatsapp_url'         => 'https://api.whatsapp.com/send?phone=51993463118&text=...',
     'modal_service'        => 'Nombre del curso para el modal #modalSolicitarInfo',
-    'paypal_slug'          => 'slug-del-curso',
+    'paypal_slug'          => 'slug-del-curso', // Habilitado para los 6 cursos autorizados; vacío en los demás
 
     // 7. Sección opcional de videos y conferencias
     'videos'               => [ // Arreglo vacío [] si el curso no tiene videos asociados
@@ -193,29 +191,43 @@ $course = [
   3. Título del módulo en negrita (`.qcs-cd-syllabus-title`) y píldora opcional de cláusula normativa (`.qcs-cd-syllabus-clause`).
   4. Flecha circular derecha (`.qcs-cd-syllabus-chevron`) que gira `180deg` al abrirse.
 
-### 5.4 Beneficios y Materiales + Franja Oscura PDU + Brochure Integrado (`#beneficios-materiales`)
+### 5.4 Beneficios y Materiales + Franja Oscura PDU  (`#beneficios-materiales`)
 - **Fondo marfil cálido:** `.qcs-cd-section--ivory`.
 - **Encabezado centrado:** Etiqueta dorada `ALCANCE DEL PROGRAMA` (`.qcs-cd-ivory-eyebrow`), título **«Beneficios y materiales»** y subrayado dorado.
 - **Bloques abiertos de beneficios:** Sin bordes de tarjeta ni cajas que compitan con el temario. Cada elemento (`.qcs-cd-benefit-open-item`) presenta un círculo claro (`.qcs-cd-benefit-circle-icon`) con ícono dorado, título corto en negrita (`.qcs-cd-benefit-open-title`) y descripción fiel al brochure (`.qcs-cd-benefit-open-desc`).
   - **Regla editorial:** *«Ingreso a la base de datos laboral de Quality Consulting Solutions»* se titula **«Bolsa laboral»** y conserva su texto exacto sin prometer empleo ni vacantes garantizadas.
 - **Franja oscura de PDU (`.qcs-cd-pdu-dark-bar`):**
-  - Se renderiza únicamente cuando `$course['pdu_text']` o `$course['pdu_title']` tiene contenido. Si el curso no otorga PDU, el bloque completo no se muestra.
-  - Título dinámico configurado en `$course['pdu_title']` (por ejemplo: **«Unidades de desarrollo profesional (16 PDU)»** o **«Unidades de desarrollo profesional (6 PDU)»** según cada brochure; nunca presentarlo como «Acreditación institucional PMI»).
-  - Conserva la explicación completa del brochure sobre categoría CCR y horas netas en `$course['pdu_text']`.
-- **Tarjeta de Brochure Integrada (`.qcs-cd-brochure-integrated-card`, `#brochure-curso`):**
-  - Ubicada dentro del bloque marfil, inmediatamente debajo de la franja de PDU. Es el **único** bloque de brochure en toda la página.
-  - Muestra la **miniatura real de la primera página del PDF** (`.qcs-cd-brochure-thumb-img`, proporción `893 / 1148`, carga inmediata sin `loading="lazy"`), textos **«Consulta el brochure»**, *«Revisa el programa completo del curso.»*, nota *«Consulta la disponibilidad y las condiciones actuales.»*, y los botones **«Ver PDF»** (`target="_blank"`) y **«Descargar PDF»** (`download`).
+  - Se renderiza cuando `pdu_text` o `pdu_title` tiene contenido.
+  - El título utiliza `pdu_heading`; si está vacío, utiliza `pdu_title`. Si ambos están vacíos, muestra «Unidades de desarrollo profesional».
+  - La cantidad de PDU corresponde a cada capacitación; no se asignan automáticamente 16 PDU ni se presenta como «Acreditación institucional PMI».
+  - Conserva la explicación oficial sobre categoría CCR y duración en `pdu_text`.
+- **Retiro de visualización y descarga de brochures:**
+  - Los brochures se utilizan exclusivamente como fuentes internas y no se publican ni se ofrecen para descarga.
+  - Se retiran las tarjetas, miniaturas, visores y botones «Ver PDF», «Descargar PDF» e «Info & Brochure».
+  - Los documentos originales y sus portadas se conservan en almacenamiento privado, fuera del contenido público y del despliegue.
+  - La sección marfil conserva un espaciado equilibrado, sin huecos.
+  - Se mantienen los beneficios documentados, como material digital o libro incluido.
 
 ### 5.5 Información e Inscripción (`#informacion-inscripcion`)
+
 - Panel oscuro amplio con bordes redondeados y degradado carbón/dorado (`.qcs-cd-enroll-panel`).
-- Si el curso define `'enroll_bg_image'`, la clase `.qcs-cd-enroll-panel--has-bg` proyecta esa imagen temática en la mitad izquierda con superposición oscura gradual para garantizar el contraste del texto blanco. Si no existe una imagen adecuada para el curso, se deja `''` y el panel muestra el degradado institucional sin repetir fotos de otros cursos ni inventar fondos.
+- Si el curso define `enroll_bg_image`, la clase `.qcs-cd-enroll-panel--has-bg` muestra esa imagen temática en la mitad izquierda con superposición oscura. Si no existe una imagen adecuada, se deja `''` y se utiliza el degradado institucional.
 - **Columna izquierda:** Píldora `CAPACITACIÓN ESPECIALIZADA`, título blanco **«Información e inscripción»**, texto de orientación y línea de acento dorada.
 - **Columna derecha:**
-  1. Botón principal dorado **«Solicitar información»** (abre `#modalSolicitarInfo` con `data-service`).
-  2. Botón secundario **«Consultar por WhatsApp»** con borde claro e ícono verde de WhatsApp.
-  3. Subbloque diferenciado (`.qcs-cd-first-class-box`) con etiqueta `PRIMERA CLASE`, precio `US$ 10`, botón azul PayPal **«Pagar primera clase»** (`/pagar-primera-clase?curso=...`) y condición explícita:
-     > *«US$10 únicamente por la primera clase. No incluye el curso completo.»*
-- **Debajo del panel (fuera de la tarjeta oscura):** Enlaces discretos centrados **«Volver al Área de Calidad»** (`/capacitacion-calidad`) y **«Ver catálogo general»** (`/capacitacion`).
+  1. Botón principal dorado **«Solicitar información»**, que abre `#modalSolicitarInfo` con `data-service`.
+  2. Botón secundario de WhatsApp con borde claro e ícono verde. Su texto puede configurarse mediante `whatsapp_btn_text`.
+  3. Cuando `paypal_slug` tiene contenido, se muestra el subbloque `.qcs-cd-first-class-box` con etiqueta `PRIMERA CLASE`, precio `US$10` y botón azul **«Pagar primera clase»** (`.btn.qcs-cd-btn-paypal-fc.btn-paypal-first-class`), conservando `data-course-slug`.
+
+- El botón conduce a la página de registro de primera clase con el identificador de la capacitación:
+  - **PHP MVC:** `/registro-primera-clase?curso={slug}`.
+  - **Versión estática:** `/Quality/registro-primera-clase.html?curso={slug}` para el despliegue actual en GitHub Pages.
+- El pago se realiza mediante PayPal Checkout cuando el backend y las credenciales están configurados. No se utiliza PayPal.Me en este flujo.
+- El formulario de datos se habilita después de verificar el pago desde el servidor. Sin backend disponible, se informa que la compra en línea no está habilitada y se ofrecen los canales de contacto, sin simular pagos ni registros exitosos.
+- Se mantiene visible la aclaración:
+  > «US$10 únicamente por la primera clase. No incluye el curso completo.»
+- El precio del curso completo se consulta mediante los canales de contacto.
+- **Debajo del panel:** Enlaces centrados **«Volver al Área de Calidad»** (`/capacitacion-calidad`) y **«Ver catálogo general»** (`/capacitacion`), adaptados al prefijo y formato del despliegue estático.
+- No se muestran botones, portadas ni enlaces de visualización o descarga de brochures.
 
 ### 5.6 Sección Opcional de Videos (`#videos-curso`)
 - Solo se renderiza si `!empty($course['videos'])`.
@@ -223,41 +235,149 @@ $course = [
 
 ---
 
-## 6. Inventario de Recursos del Bloque 1 (Calidad)
+## 6. Inventario de Capacitaciones y Almacenamiento Privado
 
-| Curso | Ruta de Detalle | PDF Oficial (`public_html/`) | Miniatura Portada Real (`public_html/`) | Imagen de Tarjeta en Catálogo (`public_html/`) |
-| :--- | :--- | :--- | :--- | :--- |
-| **Gerencia de la Calidad en la Construcción** | `/gerencia-de-calidad` | `brochures/calidad/gerencia-de-la-calidad-en-la-construccion.pdf` | `img/brochures/portada-gerencia-de-la-calidad.png` | `img/capacitaciones/gerencia-de-la-calidad-construccion.webp` (`.png`) |
-| **ISO 9001 para la Construcción usando IA** | `/iso-9001` | `brochures/calidad/iso-9001-para-la-construccion-usando-ia.pdf` | `img/brochures/portada-iso-9001-construccion-ia.png` | `img/capacitaciones/iso-9001-construccion-usando-ia.webp` (`.png`) |
-| **Control de Calidad en Tunelería** | `/control-de-calidad-en-tuneleria` | `brochures/calidad/control-de-calidad-en-tuneleria.pdf` | `img/brochures/portada-control-calidad-tuneleria.png` | `img/capacitaciones/control-de-calidad-en-tuneleria.webp` (`.png`) |
+Los documentos originales (PDFs) y sus portadas extraídas han sido retirados de los directorios públicos (`public_html/` y `_site/`) y reubicados en el almacenamiento privado del servidor:
+- **Brochures técnicos privados:** `private_app/storage/brochures/calidad/`
+- **Portadas extraídas privadas:** `private_app/storage/brochures/portadas/`
+
+| N° | Capacitación en Catálogo | Ruta Web | Almacenamiento Privado del PDF | Bloque PayPal US$10 |
+|:--:|:---|:---:|:---|:---:|
+| **1** | **Gerencia de la Calidad en la Construcción** | `/gerencia-de-calidad` | `private_app/storage/brochures/calidad/gerencia-de-la-calidad-en-la-construccion.pdf` | **Habilitado** (`gerencia-de-calidad`) |
+| **2** | **ISO 9001 para la Construcción usando IA** | `/iso-9001` | `private_app/storage/brochures/calidad/iso-9001-para-la-construccion-usando-ia.pdf` | **Habilitado** (`iso-9001`) |
+| **4** | **Control de Calidad en Tunelería** | `/control-de-calidad-en-tuneleria` | `private_app/storage/brochures/calidad/control-de-calidad-en-tuneleria.pdf` | **Habilitado** (`control-de-calidad-en-tuneleria`) |
+| **8** | **Seminario Completion - Evita el Síndrome del 90%** | `/sindrome-del-90` | `private_app/storage/brochures/calidad/seminario-completion-sindrome-del-90.pdf` | **Habilitado** (`sindrome-del-90`) |
+| **9** | **Seminario ISO 9001:2026** | `/seminario-iso-9001-2026` | `private_app/storage/brochures/calidad/seminario-iso-9001-2026.pdf` | **Habilitado** (`seminario-iso-9001-2026`) |
+| **10** | **Seminario Indicadores Avanzados de Calidad** | `/indicadores-de-calidad` | `private_app/storage/brochures/calidad/indicadores-avanzados-de-calidad-en-la-construccion.pdf` | **Habilitado** (`indicadores-de-calidad`) |
+
+> [!IMPORTANT]
+> Los cursos #3 (*Calidad y PMI*), #5 (*Dirección de la Calidad Enfoque PMI*), #6 (*Herramientas de Calidad*) y #7 (*Seminario Ishikawa*) no forman parte de este lote autorizado para pasarela en línea y conservan su canal exclusivo de consulta mediante modal y WhatsApp.
 
 ---
 
-## 7. Procedimiento de Respaldo, Compilación Estática y Verificación
+## 7. Mecanismos de Privacidad y Exclusión del Despliegue
 
-1. **Respaldo previo obligatorio:**
-   - Antes de editar cualquier archivo, crear una carpeta con fecha en `respaldos/AAAA-MM-DD_nombre-descriptivo/` (fuera de `public_html/` y `_site/`).
-   - Copiar los archivos originales respetando sus rutas relativas e incluir un `README.md` con los comandos PowerShell de restauración.
-2. **Extracción de miniatura real de portada PDF:**
-   - Renderizar la página 1 del archivo PDF oficial a PNG en `public_html/img/brochures/` conservando su proporción original (usando `pdf.js` en navegador headless). Nunca usar portadas ilustrativas o genéricas.
-3. **Generación estática (`_site/`):**
-   - Ejecutar desde la raíz del proyecto:
+La privacidad de los documentos técnicos se garantiza en cuatro capas independientes:
+1. **Separación de raíz web:** `private_app/storage/` se encuentra un nivel por encima del DocumentRoot de producción (`public_html/`), haciéndolo inaccesible por el servidor web Apache de GoDaddy/cPanel.
+2. **Regla HTTP Apache (`private_app/.htaccess`):** Configurado con `Require all denied` (Apache 2.4+) y `Deny from all` (Apache 2.2-), bloqueando cualquier acceso directo por protocolo HTTP/HTTPS.
+3. **Exclusión en Git (`.gitignore`):** Se agregó la regla `private_app/storage/` para que los nuevos archivos privados no sean rastreados por Git.
+   > *Nota sobre historial:* Excluir archivos del seguimiento actual no altera ni reescribe el historial de commits anteriores de Git, los cuales preservan su registro histórico inalterado sin recurrir a reescrituras disruptivas.
+4. **Exclusión en compilador estático (`build_static.php`):** La función `copyDirectory()` descarta expresamente las carpetas `backend`, `storage` y `brochures`, asegurando que `_site/` nunca contenga copias públicas ni enlaces huérfanos a los PDFs.
+
+---
+
+## 8. Diagnóstico de Infraestructura y Hosting Disponible
+
+### 8.1 Diagnóstico Técnico del Dominio en Producción
+Se auditó la conectividad directa y cabeceras HTTP del dominio de producción mediante solicitudes cURL:
+```bash
+curl -i -s -L -k "https://quality-consulting.org/mvc-health"
+```
+**Hallazgos técnicos comprobados:**
+1. `https://quality-consulting.org` responde con redirección HTTP `301 Moved Permanently` hacia `https://www.quality-consulting.org/`.
+2. `https://www.quality-consulting.org/` se encuentra actualmente apuntando a través de Cloudflare hacia **Weebly** (`server: cloudflare`, cabecera `X-Host: blu25.sf2p.intern.weebly.net` y recursos de `cdn1.editmysite.com`).
+3. Al consultar cualquier ruta dinámica (como `/mvc-health` o `/registro-primera-clase`), Weebly responde con una página HTML genérica `404 Not Found` de Weebly.
+4. **Conclusión:** El dominio público `quality-consulting.org` no está apuntando todavía a un servidor Apache/cPanel con PHP 8+. La aplicación completa PHP MVC (`private_app/`, `public_html/`) reside en el repositorio local y compila páginas estáticas a `_site/` para la previsualización en GitHub Pages (`https://arturordz02.github.io/Quality/`).
+
+### 8.2 Requisitos y Datos Necesarios para el Despliegue del Backend PHP
+Para que el backend dinámico de pagos y correo opere en vivo bajo el dominio institucional, se requiere:
+1. **Apuntamiento DNS:** Configurar el registro `A` o `CNAME` en el panel de Cloudflare o DNS de `quality-consulting.org` hacia la dirección IP del servidor Apache/cPanel asignado.
+2. **Estructura de Directorios en cPanel:**
+   - La carpeta `private_app/` debe ubicarse en la raíz del usuario cPanel (`/home/usuario/private_app/`), fuera de `public_html/`.
+   - La carpeta `public_html/` del repositorio debe desplegarse en el DocumentRoot público (`/home/usuario/public_html/`).
+3. **Credenciales en `private_app/env.php`:**
+   - Credenciales SMTP activas (`SMTP_HOST`, `SMTP_PORT=465`, `SMTP_USER`, `SMTP_PASSWORD`).
+   - Credenciales de PayPal en modo producción (`PAYPAL_MODE=live`, `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET`).
+   - Receptor oficial: `PAYPAL_RECEIVER_EMAIL=comercial@quality-consulting.org` y `OMAR_SAMANIEGO_EMAIL=comercial@quality-consulting.org`.
+4. **Tarea Cron en cPanel:** Configurar la ejecución periódica cada 15 minutos:
+   ```bash
+   /usr/local/bin/php /home/usuario/private_app/backend/cron/process-fallback-queue.php >/dev/null 2>&1
+   ```
+
+---
+
+## 9. Arquitectura Oficial PayPal Checkout (Orders v2 vs PayPal.Me)
+
+### 9.1 Incompatibilidad Técnica de PayPal.Me con la API REST
+- Los enlaces o códigos de transacción generados mediante transferencias personales `PayPal.Me` corresponden a identificadores de billetera P2P.
+- **La API REST oficial de PayPal (`/v2/checkout/orders/{id}`) NO permite consultar, validar ni capturar transacciones de PayPal.Me**; responderá invariablemente con HTTP `404 Resource Not Found`.
+- Para una integración automatizada y segura en el backend, es imprescindible utilizar el estándar **PayPal Checkout Orders v2**.
+
+### 9.2 Implementación Oficial PayPal Orders v2 (Client + Server)
+1. **Inicialización dinámica en cliente (`registro-primera-clase.php`):**
+   - El cliente consulta `GET /api/paypal/config` (con cabeceras CORS y credenciales).
+   - Si la pasarela está configurada, inyecta dinámicamente el SDK oficial:
+     `https://www.paypal.com/sdk/js?client-id={client_id}&currency=USD&locale=es_PE`
+   - Si no está configurada (o en GitHub Pages estático sin `QCS_API_BASE_URL`), muestra limpiamente el bloque `#paypalUnconfiguredNotice` con botones directos de contacto a `comercial@quality-consulting.org` y WhatsApp institucional.
+2. **Creación de Orden Server-to-Server (`POST /api/paypal/create-order`):**
+   - El backend invoca `POST https://api-m.paypal.com/v2/checkout/orders` (o `api-m.sandbox.paypal.com`).
+   - Bloquea el importe estricto a **`USD 10.00`** con `intent: CAPTURE`.
+   - Vincula metadatos inviolables: `custom_id = FIRST_CLASS_{curso_slug}`, `reference_id = {curso_slug}` y descripción de primera clase.
+3. **Captura Server-to-Server (`POST /api/paypal/capture-order`):**
+   - El cliente aprueba en la ventana emergente de PayPal y envía el `orderID` al backend.
+   - El backend captura los fondos mediante `POST /v2/checkout/orders/{order_id}/capture`.
+   - Extrae tanto el **`order_id`** como el **`capture_id`** individual de la transacción.
+   - Valida que el receptor coincida con `comercial@quality-consulting.org` (en modo producción) o el vendedor asignado en sandbox.
+   - Genera una firma criptográfica de sesión (`HMAC-SHA256`) ligando la orden, captura, monto y slug del curso.
+   - Desbloquea los campos del formulario del Paso 2 en el navegador.
+
+### 9.3 Protección Atómica contra Concurrencia (Mutex Locking)
+Para evitar condiciones de carrera donde dos envíos simultáneos del formulario utilicen la misma orden de PayPal:
+1. `FallbackQueue::acquireTransactionLock(string $orderId): bool` implementa un candado atómico a nivel del sistema de archivos utilizando `fopen($lockFile, 'x')`.
+2. Si dos peticiones intentan procesar la misma transacción en el mismo milisegundo, la segunda falla inmediatamente con código `409 Conflict`.
+3. Cuenta con liberación automática ante bloqueos huérfanos con expiración configurable (45 segundos).
+4. El bloqueo se libera en el bloque `finally` tras la persistencia exitosa.
+
+### 9.4 Protección contra Reutilización de Transacciones (Anti-Reuse)
+- `PayPalService::isTransactionAlreadyUsed(string $id): bool` verifica tanto el `order_id` como el `capture_id`.
+- Busca en la base de datos MySQL (si está activa) y en todos los registros persistidos en `private_app/backend/storage/queue/`.
+- Cualquier intento posterior de reutilizar un código de pago genera un rechazo inmediato.
+
+---
+
+## 10. Persistencia, Notificaciones y Transparencia en la Entrega
+
+### 10.1 Registro Garantizado de 8 Campos Obligatorios
+El registro se guarda atómicamente en disco en `private_app/backend/storage/queue/` con los 8 datos obligatorios antes de reportar éxito al usuario:
+1. `nombres`: Nombres y apellidos completos del participante.
+2. `email`: Correo electrónico verificado del participante.
+3. `telefono`: Número de teléfono / WhatsApp con código de país.
+4. `curso_slug` / `curso_titulo`: Slug y título oficial del curso seleccionado.
+5. `concepto`: *«Primera clase del curso (no incluye el curso completo)»*.
+6. `paypal_order_id`: Identificador de la orden de PayPal Orders v2.
+7. `paypal_capture_id`: Identificador de captura de fondos en PayPal.
+8. `monto` / `moneda`: `10.00 USD`.
+
+### 10.2 Transparencia en el Estado de los Correos (No Declarar Entrega Falsa)
+- Si el servidor SMTP acepta el mensaje (código `250 OK`), el registro se marca como `mail_status = 'aceptado_por_servidor_smtp'`.
+- La aceptación por el servidor SMTP confirma que el servidor de salida admitió el mensaje para su transporte, no garantiza la recepción en la bandeja de entrada del usuario (la cual depende de filtros antispam del destinatario).
+- Si la conexión SMTP no está disponible o falla, el registro se marca como `mail_status = 'pendiente_en_cola'`.
+- El cron worker `private_app/backend/cron/process-fallback-queue.php` reintenta automáticamente el envío de correos pendientes sin duplicar aquellos ya aceptados.
+
+### 10.3 Destinatario Oficial Confirmado
+- Tanto la cuenta receptora de PayPal como el destinatario de notificaciones de coordinación comercial corresponden a:
+  `comercial@quality-consulting.org` (Ing. Omar Samaniego).
+
+---
+
+## 11. Procedimiento de Verificación Local y Compilación
+
+1. **Ejecución de la suite completa de pruebas automáticas (16 pruebas):**
+   ```powershell
+   & "C:\xampp\php\php.exe" tests/PaymentFlowTest.php
+   ```
+2. **Ejecución del cron worker de contingencia (Dry run):**
+   ```powershell
+   & "C:\xampp\php\php.exe" private_app/backend/cron/process-fallback-queue.php
+   ```
+3. **Compilación del sitio estático:**
+   ```powershell
+   & "C:\xampp\php\php.exe" build_static.php
+   ```
+4. **Verificación de seguridad en despliegue estático:**
+   - Cero archivos PDF en `public_html/` y `_site/`:
      ```powershell
-     & "C:\xampp\php\php.exe" build_static.php
+     Get-ChildItem -Path public_html, _site -Recurse -Filter "*.pdf"
      ```
-   - `build_static.php` copia los recursos de `public_html/` y compila todas las rutas MVC a archivos `.html` en `_site/`.
-4. **Verificación multi-dispositivo:**
-   - Comprobar en `1440px`, `768px`, `390px` y `360px` mediante emulación de métricas de dispositivo (CDP `Emulation.setDeviceMetricsOverride`) que `document.documentElement.scrollWidth <= document.documentElement.clientWidth` y que ningún elemento exceda `window.innerWidth`.
-
----
-
-## 8. Lista de Comprobación (Checklist) para Integrar Futuros Brochures
-
-- [ ] **1. Respaldo:** Crear carpeta `respaldos/AAAA-MM-DD_descripcion/` con copia de los archivos a modificar y su `README.md`.
-- [ ] **2. Archivo PDF intacto:** Copiar el PDF original sin alterarlo a `public_html/brochures/<area>/nombre-limpio-sin-espacios.pdf`.
-- [ ] **3. Portada real en miniatura:** Extraer la primera página real del PDF a `public_html/img/brochures/portada-<slug>.png` manteniendo su relación de aspecto.
-- [ ] **4. Extracción fiel de datos:** Revisar texto y páginas visuales del PDF para extraer título, resumen, objetivo, módulos del temario, perfil docente, beneficios y PDU sin inventar datos ni copiar fechas/precios de ediciones pasadas.
-- [ ] **5. Vista del curso:** Configurar el arreglo `$course` en `private_app/app/Views/pages/<slug>.php` e invocar `$this->partial('course_detail_unified', ['course' => $course])`.
-- [ ] **6. Ruta y controlador:** Verificar que la ruta esté registrada en `private_app/config/routes.php`, en `TrainingController.php`, en `build_static.php` y en el registro correspondiente de `CoursesCatalog.php`.
-- [ ] **7. Compilación y pruebas:** Incrementar versión de `styles.css?v=...` si hubo ajustes CSS, ejecutar `build_static.php` y verificar visual y funcionalmente en `1440px`, `768px`, `390px` y `360px`.
+   - Credenciales sensibles excluidas del control de versiones.
 

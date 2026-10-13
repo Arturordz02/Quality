@@ -16,20 +16,20 @@ $curso               = htmlspecialchars((string)($summary['curso_titulo'] ?? 'Cu
 $orderId             = htmlspecialchars((string)($summary['paypal_order_id'] ?? ''), ENT_QUOTES, 'UTF-8');
 $monto               = htmlspecialchars((string)($summary['monto'] ?? 'USD 10.00'), ENT_QUOTES, 'UTF-8');
 $recipientConfigured = !empty($summary['recipient_configured']);
+$mailSent            = !empty($summary['mail_sent']);
 $mailStatusNote      = htmlspecialchars((string)($summary['mail_status_note'] ?? ''), ENT_QUOTES, 'UTF-8');
-$pendingVariable     = htmlspecialchars((string)($summary['pending_variable'] ?? ''), ENT_QUOTES, 'UTF-8');
 ?>
 
-<main class="py-5 bg-dark text-light min-vh-100" style="background: radial-gradient(circle at top, #1E232A 0%, #111317 100%);">
-    <div class="container py-4">
+<main class="qcs-register-page bg-dark text-light min-vh-100">
+    <div class="container py-3">
 
         <div class="row justify-content-center">
             <div class="col-12 col-lg-8 col-xl-7">
 
                 <div class="card bg-secondary bg-opacity-10 border border-success border-opacity-50 rounded-4 p-4 p-md-5 text-center shadow-lg">
                     
-                    <div class="d-inline-flex justify-content-center align-items-center bg-success text-white rounded-circle mx-auto mb-4" style="width: 72px; height: 72px;">
-                        <i class="fas fa-check-circle fs-1"></i>
+                    <div class="qcs-register-badge-circle bg-success text-white">
+                        <i class="fas fa-check-circle fs-2"></i>
                     </div>
 
                     <span class="badge bg-success px-3 py-2 text-uppercase fw-bold mb-2 align-self-center">
@@ -63,7 +63,7 @@ $pendingVariable     = htmlspecialchars((string)($summary['pending_variable'] ??
                                 <strong class="text-success font-monospace"><?= $orderId ?></strong>
                             </li>
                             <li class="mb-2 d-flex justify-content-between">
-                                <span class="text-white-50">Monto pagado:</span>
+                                <span class="text-white-50">Monto verificado:</span>
                                 <strong class="text-success"><?= $monto ?></strong>
                             </li>
                             <li class="mb-2 d-flex justify-content-between">
@@ -77,23 +77,23 @@ $pendingVariable     = htmlspecialchars((string)($summary['pending_variable'] ??
                         </ul>
                     </div>
 
-                    <!-- Nota sobre Estado del Envío de Correo (Requisito Estricto: Transparencia) -->
-                    <?php if (!$recipientConfigured): ?>
-                    <div class="alert alert-secondary bg-dark text-start border-warning border-opacity-50 p-3 rounded-3 mb-4 small">
+                    <!-- Estado Transparente de la Notificación -->
+                    <?php if ($mailSent): ?>
+                    <div class="alert alert-success bg-dark text-start border-success border-opacity-50 p-3 rounded-3 mb-4 small text-white-50">
+                        <i class="fas fa-paper-plane text-success me-2"></i>
+                        Se ha generado y enviado la notificación formal a la coordinación comercial de Quality Consulting Solutions (<strong class="text-white">comercial@quality-consulting.org</strong>).
+                    </div>
+                    <?php else: ?>
+                    <div class="alert alert-warning bg-dark text-start border-warning border-opacity-50 p-3 rounded-3 mb-4 small">
                         <div class="d-flex align-items-start">
-                            <i class="fas fa-info-circle text-warning fs-5 me-2 mt-1"></i>
+                            <i class="fas fa-clock text-warning fs-5 me-2 mt-1"></i>
                             <div>
-                                <strong class="text-warning d-block mb-1">Aviso de Configuración Administrativa:</strong>
+                                <strong class="text-warning d-block mb-1">Estado de la Notificación: En Cola de Contingencia</strong>
                                 <span class="text-white-50">
-                                    El registro ha quedado persistido con éxito en la cola del servidor. El correo de coordinación académica del Ing. Omar Samaniego está pendiente de confirmación en el servidor (variable: <code class="text-warning"><?= $pendingVariable ?></code>). La recepción se verificará directamente por la coordinación técnica.
+                                    Tu inscripción se encuentra <strong>guardada con éxito</strong> en el sistema con orden <code class="text-warning"><?= $orderId ?></code>. La notificación por correo se encuentra en cola de procesamiento (<code class="text-warning">FallbackQueue</code>) y será despachada automáticamente. <strong>No necesitas realizar ningún pago adicional ni volver a enviar el formulario.</strong>
                                 </span>
                             </div>
                         </div>
-                    </div>
-                    <?php else: ?>
-                    <div class="alert alert-success bg-dark text-start border-success border-opacity-50 p-3 rounded-3 mb-4 small text-white-50">
-                        <i class="fas fa-paper-plane text-success me-2"></i>
-                        Se ha generado la notificación formal a la coordinación académica de Quality Consulting Solutions.
                     </div>
                     <?php endif; ?>
 

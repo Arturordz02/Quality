@@ -37,7 +37,6 @@ class CoursesCatalog
                 'image'         => 'img/capacitaciones/gerencia-de-la-calidad-construccion.webp',
                 'image_fallback'=> 'img/capacitaciones/gerencia-de-la-calidad-construccion.png',
                 'route'         => '/gerencia-de-calidad',
-                'brochure'      => 'brochures/calidad/gerencia-de-la-calidad-en-la-construccion.pdf',
                 'description'   => 'Visión integrada y práctica de la gestión de la calidad: PPI, costos de calidad, nuevos indicadores determinísticos/estocásticos, Last Planner® System e Inteligencia Artificial.'
             ],
             [
@@ -49,7 +48,6 @@ class CoursesCatalog
                 'image'         => 'img/capacitaciones/iso-9001-construccion-usando-ia.webp',
                 'image_fallback'=> 'img/capacitaciones/iso-9001-construccion-usando-ia.png',
                 'route'         => '/iso-9001',
-                'brochure'      => 'brochures/calidad/iso-9001-para-la-construccion-usando-ia.pdf',
                 'description'   => 'Criterios prácticos de las cláusulas ISO 9001 asociadas a casos de aplicación en construcción, usos de IA e incluye el libro oficial del curso.'
             ],
             [
@@ -72,7 +70,6 @@ class CoursesCatalog
                 'image'         => 'img/capacitaciones/control-de-calidad-en-tuneleria.webp',
                 'image_fallback'=> 'img/capacitaciones/control-de-calidad-en-tuneleria.png',
                 'route'         => '/control-de-calidad-en-tuneleria',
-                'brochure'      => 'brochures/calidad/control-de-calidad-en-tuneleria.pdf',
                 'description'   => 'Control de calidad en el diseño y proceso constructivo de túneles y cavernas: concreto lanzado, pernos de anclaje, soporte, revestimiento y maquinaria.'
             ],
             [
@@ -116,8 +113,8 @@ class CoursesCatalog
                 'category'      => 'Calidad',
                 'category_slug' => 'calidad',
                 'type'          => 'Seminario',
-                'image'         => 'img/s901.webp',
-                'image_fallback'=> 'img/s901.png',
+                'image'         => 'img/capacitaciones/seminario-completion-sindrome-del-90.webp',
+                'image_fallback'=> 'img/capacitaciones/seminario-completion-sindrome-del-90.png',
                 'route'         => '/sindrome-del-90',
                 'description'   => 'Estrategias de comisionamiento, punch list y cierre efectivo para evitar demoras en la entrega final de obras.'
             ],
@@ -127,9 +124,9 @@ class CoursesCatalog
                 'category'      => 'Calidad',
                 'category_slug' => 'calidad',
                 'type'          => 'Seminario',
-                'image'         => 'img/ISO1.webp',
-                'image_fallback'=> 'img/ISO1.png',
-                'route'         => '/iso-9001',
+                'image'         => 'img/capacitaciones/seminario-iso-9001-2026.webp',
+                'image_fallback'=> 'img/capacitaciones/seminario-iso-9001-2026.png',
+                'route'         => '/seminario-iso-9001-2026',
                 'description'   => 'Actualización y tendencias sobre la evolución y futura revisión del estándar internacional ISO 9001.'
             ],
             [
@@ -138,9 +135,9 @@ class CoursesCatalog
                 'category'      => 'Calidad',
                 'category_slug' => 'calidad',
                 'type'          => 'Seminario',
-                'image'         => 'img/gesCa1.webp',
-                'image_fallback'=> 'img/gesCa1.png',
-                'route'         => null,
+                'image'         => 'img/capacitaciones/indicadores-avanzados-calidad-construccion.webp',
+                'image_fallback'=> 'img/capacitaciones/indicadores-avanzados-calidad-construccion.png',
+                'route'         => '/indicadores-de-calidad',
                 'description'   => 'Diseño e interpretación de KPIs, métricas de desempeño y tableros de control de calidad para directivos.'
             ],
 

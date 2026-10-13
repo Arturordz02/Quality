@@ -48,6 +48,11 @@ class CourseCatalog
             'title' => 'Contratos FIDIC en Infraestructura y Construcción',
             'url'   => '/fidic',
         ],
+        'control-de-calidad-en-tuneleria' => [
+            'slug'  => 'control-de-calidad-en-tuneleria',
+            'title' => 'Control de Calidad en Tunelería',
+            'url'   => '/control-de-calidad-en-tuneleria',
+        ],
         'gerencia-de-calidad' => [
             'slug'  => 'gerencia-de-calidad',
             'title' => 'Gerencia de la Calidad en Construcción',
@@ -58,10 +63,25 @@ class CourseCatalog
             'title' => 'Taller de Herramientas de Gestión de Calidad en la Construcción',
             'url'   => '/herramientas',
         ],
+        'indicadores-de-calidad' => [
+            'slug'  => 'indicadores-de-calidad',
+            'title' => 'Seminario Indicadores Avanzados de Calidad en la Construcción',
+            'url'   => '/indicadores-de-calidad',
+        ],
         'iso-9001' => [
             'slug'  => 'iso-9001',
             'title' => 'Interpretación e Implementación de la Norma ISO 9001:2015',
             'url'   => '/iso-9001',
+        ],
+        'seminario-iso-9001-2026' => [
+            'slug'  => 'seminario-iso-9001-2026',
+            'title' => 'Seminario ISO 9001:2026',
+            'url'   => '/seminario-iso-9001-2026',
+        ],
+        'sindrome-del-90' => [
+            'slug'  => 'sindrome-del-90',
+            'title' => 'Seminario Completion - Evita el Síndrome del 90%',
+            'url'   => '/sindrome-del-90',
         ],
         'lean-last-planner' => [
             'slug'  => 'lean-last-planner',

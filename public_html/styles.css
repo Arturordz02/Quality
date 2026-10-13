@@ -10046,6 +10046,52 @@ html, body {
     }
 }
 
+/* ==========================================================================
+   17. PÁGINA DE REGISTRO POST-PAGO (.qcs-register-page)
+   Alineación del header fijo para evitar superposiciones con el menú
+   ========================================================================== */
+.qcs-register-page {
+    position: relative;
+    padding-top: 155px !important;
+    padding-bottom: 70px !important;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #1E232A 0%, #111317 100%) !important;
+    color: #ffffff;
+}
+
+.qcs-register-badge-circle {
+    width: 60px;
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 1rem auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 991.98px) {
+    .qcs-register-page {
+        padding-top: 105px !important;
+        padding-bottom: 50px !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .qcs-register-page {
+        padding-top: 95px !important;
+        padding-bottom: 45px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .qcs-register-page {
+        padding-top: 88px !important;
+        padding-bottom: 35px !important;
+    }
+}
+
+
 
 
 

@@ -185,6 +185,13 @@ foreach ($rawFiles as $filePath) {
                 $isDuplicate = $res['is_duplicate'];
                 break;
 
+            case 'paypal_first_class':
+                $paypalData = $payload['data'] ?? $payload;
+                $res = processPaypalFirstClassRegistration($pdo, $config, $paypalData);
+                $success = $res['success'];
+                $isDuplicate = $res['is_duplicate'];
+                break;
+
             default:
                 // Tipo desconocido
                 error_log("[QCS FallbackQueue Processor] Formato desconocido para {$fileName}");
@@ -254,11 +261,13 @@ function detectRecordType(string $fileName, array $payload): string {
         if ($type === 'contact') return 'contact';
         if ($type === 'claim') return 'claim';
         if (in_array($type, ['soft-skills', 'evaluation', 'eval'], true)) return 'soft-skills';
+        if ($type === 'paypal_first_class') return 'paypal_first_class';
     }
 
     if (str_starts_with($fileName, 'contact_')) return 'contact';
     if (str_starts_with($fileName, 'claim_')) return 'claim';
     if (str_starts_with($fileName, 'eval_') || isset($payload['report'])) return 'soft-skills';
+    if (str_starts_with($fileName, 'paypal_first_class_')) return 'paypal_first_class';
 
     return 'unknown';
 }
@@ -463,5 +472,110 @@ function ensureSoftSkillsCatalog(PDO $pdo): void {
         }
     } catch (\Throwable $e) {
         error_log('[QCS FallbackQueue Catalog Init Warning] ' . $e->getMessage());
+    }
+}
+
+/**
+ * Procesa un registro de inscripción de primera clase (PayPal USD 10) de forma idempotente en MySQL
+ */
+function processPaypalFirstClassRegistration(PDO $pdo, array $config, array $data): array {
+    $orderId = trim((string)($data['paypal_order_id'] ?? ''));
+    if (empty($orderId)) {
+        return ['success' => false, 'is_duplicate' => false];
+    }
+
+    $captureId = trim((string)($data['paypal_capture_id'] ?? ''));
+
+    // 1. Reintento de notificación de correo si estaba pendiente
+    if (empty($data['mail_sent'])) {
+        $omarEmail = (string)($config['recipients']['omar_samaniego'] ?? getenv('OMAR_SAMANIEGO_EMAIL') ?: 'comercial@quality-consulting.org');
+        if (!empty($omarEmail) && class_exists('SmtpMailer')) {
+            try {
+                $mailer = new SmtpMailer($config);
+                $courseTitle = $data['curso_titulo'] ?? 'Capacitación';
+                $nombres = $data['nombres'] ?? 'Alumno';
+                $subject = "Nueva Inscripción – Primera Clase (USD 10): {$courseTitle} - {$nombres}";
+                
+                $email = $data['email'] ?? '';
+                $telefono = $data['telefono'] ?? '';
+                $fecha = $data['fecha_registro'] ?? date('d/m/Y H:i:s');
+                
+                $bodyHtml = "<p>Notificación procesada desde la cola de contingencia:</p>"
+                    . "<ul>"
+                    . "<li><strong>Curso:</strong> " . htmlspecialchars($courseTitle, ENT_QUOTES, 'UTF-8') . "</li>"
+                    . "<li><strong>Alumno:</strong> " . htmlspecialchars($nombres, ENT_QUOTES, 'UTF-8') . "</li>"
+                    . "<li><strong>Email:</strong> " . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . "</li>"
+                    . "<li><strong>Teléfono:</strong> " . htmlspecialchars($telefono, ENT_QUOTES, 'UTF-8') . "</li>"
+                    . "<li><strong>Orden PayPal:</strong> " . htmlspecialchars($orderId, ENT_QUOTES, 'UTF-8') . "</li>"
+                    . "<li><strong>Captura PayPal:</strong> " . htmlspecialchars($captureId ?: 'N/A', ENT_QUOTES, 'UTF-8') . "</li>"
+                    . "<li><strong>Concepto:</strong> Primera clase del curso (no incluye el curso completo)</li>"
+                    . "<li><strong>Monto:</strong> USD 10.00</li>"
+                    . "<li><strong>Fecha de Registro:</strong> " . htmlspecialchars($fecha, ENT_QUOTES, 'UTF-8') . "</li>"
+                    . "</ul>";
+                    
+                if ($mailer->send($omarEmail, $subject, $bodyHtml, $email)) {
+                    $data['mail_sent'] = true;
+                    $data['mail_status'] = 'aceptado_por_servidor_smtp';
+                    $data['mail_sent_at'] = date('Y-m-d H:i:s');
+                }
+            } catch (\Throwable $mailErr) {
+                error_log('[QCS Fallback Retry Email Error] ' . $mailErr->getMessage());
+            }
+        }
+    }
+
+    try {
+        $pdo->exec("CREATE TABLE IF NOT EXISTS `paypal_first_class_registrations` (
+            `id` INT AUTO_INCREMENT PRIMARY KEY,
+            `paypal_order_id` VARCHAR(100) NOT NULL UNIQUE,
+            `paypal_capture_id` VARCHAR(100) NULL,
+            `nombres` VARCHAR(150) NOT NULL,
+            `email` VARCHAR(150) NOT NULL,
+            `telefono` VARCHAR(50) NOT NULL,
+            `curso_slug` VARCHAR(100) NOT NULL,
+            `curso_titulo` VARCHAR(255) NOT NULL,
+            `concepto` VARCHAR(255) NOT NULL,
+            `monto` DECIMAL(10,2) NOT NULL DEFAULT 10.00,
+            `moneda` VARCHAR(10) NOT NULL DEFAULT 'USD',
+            `fecha_registro` DATETIME NOT NULL,
+            `ip_origen` VARCHAR(45) NULL,
+            `user_agent` TEXT NULL,
+            `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            INDEX `idx_order_id` (`paypal_order_id`),
+            INDEX `idx_capture_id` (`paypal_capture_id`),
+            INDEX `idx_curso_slug` (`curso_slug`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+
+        $checkStmt = $pdo->prepare("SELECT id FROM `paypal_first_class_registrations` WHERE `paypal_order_id` = :order_id LIMIT 1");
+        $checkStmt->execute([':order_id' => $orderId]);
+        if ($checkStmt->fetch()) {
+            return ['success' => true, 'is_duplicate' => true];
+        }
+
+        $stmt = $pdo->prepare("INSERT INTO `paypal_first_class_registrations` 
+            (`paypal_order_id`, `paypal_capture_id`, `nombres`, `email`, `telefono`, `curso_slug`, `curso_titulo`, `concepto`, `monto`, `moneda`, `fecha_registro`, `ip_origen`, `user_agent`) 
+            VALUES 
+            (:order_id, :capture_id, :nombres, :email, :telefono, :curso_slug, :curso_titulo, :concepto, :monto, :moneda, :fecha_reg, :ip, :ua)");
+
+        $saved = $stmt->execute([
+            ':order_id'     => $orderId,
+            ':capture_id'   => $captureId ?: null,
+            ':nombres'      => $data['nombres'] ?? '',
+            ':email'        => $data['email'] ?? '',
+            ':telefono'     => $data['telefono'] ?? '',
+            ':curso_slug'   => $data['curso_slug'] ?? '',
+            ':curso_titulo' => $data['curso_titulo'] ?? '',
+            ':concepto'     => $data['concepto'] ?? 'Primera clase del curso (no incluye el curso completo)',
+            ':monto'        => (float)($data['monto'] ?? 10.00),
+            ':moneda'       => $data['moneda'] ?? 'USD',
+            ':fecha_reg'    => $data['fecha_registro'] ?? date('Y-m-d H:i:s'),
+            ':ip'           => $data['ip_origen'] ?? '127.0.0.1',
+            ':ua'           => $data['user_agent'] ?? 'QCS Fallback Cron Worker',
+        ]);
+
+        return ['success' => $saved, 'is_duplicate' => false];
+    } catch (\Throwable $e) {
+        error_log('[QCS Fallback Processor PayPal Error] ' . $e->getMessage());
+        return ['success' => false, 'is_duplicate' => false];
     }
 }

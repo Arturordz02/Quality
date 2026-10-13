@@ -143,16 +143,27 @@ $course = [
     ],
     'pdu_title'           => 'Unidades de desarrollo profesional (6 PDU)',
     'pdu_text'            => '06 PDU (Professional Development Unit) Categoría PMI® CCR: General Education Third-Party Provider. The PMI Talent Triangle®.',
-    'brochure_url'        => 'brochures/calidad/taller-herramientas-gestion-calidad.pdf',
-    'brochure_download'   => 'Brochure-Taller-Herramientas-Gestion-Calidad.pdf',
-    'brochure_thumb'      => 'img/brochures/portada-taller-herramientas-calidad.png',
+   
 
     // 6. Información e inscripción
     'enroll_bg_image'     => '',
     'whatsapp_url'        => 'https://api.whatsapp.com/send?phone=51993463118&text=Buen%20d%C3%ADa,%20deseo%20solicitar%20informaci%C3%B3n%20sobre%20el%20Taller%20de%20Herramientas%20de%20Gesti%C3%B3n%20de%20la%20Calidad',
     'modal_service'       => 'Taller de Herramientas de Gestión de Calidad en la Construcción',
     'paypal_slug'         => 'herramientas',
-    'videos'              => [],
+    'videos' => [
+                [
+                    'header'    => 'Herramientas de Calidad - Video 1',
+                    'embed_url' => 'https://www.youtube.com/embed/R14q41qY6Ek',
+                    'title'     => 'Herramientas de Calidad - Quality Consulting Solutions - Video 1',
+                    'caption'   => '<strong>Análisis y Control:</strong> Aplicación de las 7 herramientas básicas y diagramas de causa-efecto en obra.',
+                ],
+                [
+                    'header'    => 'Herramientas de Calidad - Video 2',
+                    'embed_url' => 'https://www.youtube.com/embed/bdrgLpOMGJo',
+                    'title'     => 'Herramientas de Calidad - Quality Consulting Solutions - Video 2',
+                    'caption'   => '<strong>Indicadores de Gestión:</strong> Medición del desempeño técnico y toma de decisiones basada en datos reales.',
+                ],
+            ],
 ];
 
 echo $this->partial('course_detail_unified', ['course' => $course]);
