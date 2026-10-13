@@ -88,7 +88,7 @@ class CoursesCatalog
             ],
             [
                 'number'        => 6,
-                'title'         => 'TALLER HERRAMIENTAS DE GESTIÓN DE LA CALIDAD',
+                'title'         => 'TALLER DE HERRAMIENTAS DE GESTIÓN DE CALIDAD EN LA CONSTRUCCIÓN + USO DE INTELIGENCIA ARTIFICIAL',
                 'category'      => 'Calidad',
                 'category_slug' => 'calidad',
                 'type'          => 'Taller',
@@ -96,7 +96,7 @@ class CoursesCatalog
                 'image_fallback'=> 'img/capacitaciones/taller-herramientas-gestion-calidad.png',
                 'route'         => '/herramientas',
                 'brochure'      => 'brochures/calidad/taller-herramientas-gestion-calidad.pdf',
-                'description'   => 'Herramientas colaborativas de análisis y diagnóstico en obra: Ishikawa, Pareto con base de datos, afinidad, control estadístico, indicadores Last Planner® y uso de Inteligencia Artificial.'
+                'description'   => 'Herramientas colaborativas de análisis y diagnóstico: Ishikawa, diagrama de afinidad, Pareto (se brindará una base de datos), control estadístico, indicadores Last Planner y uso de Inteligencia Artificial.'
             ],
             [
                 'number'        => 7,
