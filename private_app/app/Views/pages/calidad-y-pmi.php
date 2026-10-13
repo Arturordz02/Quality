@@ -1,429 +1,156 @@
 <?php
 /**
  * QUALITY CONSULTING SOLUTIONS - ARQUITECTURA MVC
- * Vista de Página: Enfoque PMI de la Gestión de la Calidad
+ * Vista de Página: Dirección de la Calidad con el Enfoque PMI® para la Construcción
  * Archivo: app/Views/pages/calidad-y-pmi.php
+ *
+ * Basado en la plantilla unificada aprobada: app/Views/partials/course_detail_unified.php
  */
 
 declare(strict_types=1);
-?>
-<main class="page-content">
 
-        <!-- ==========================================================================
-             1. SECCIÓN HERO / ENCABEZADO DEL CURSO (Hero Azul Corporativo)
-             ========================================================================== -->
-        <section class="page-banner banner-calidad-pmi">
-            <div class="page-banner-bg banner-calidad-pmi-bg"></div>
-            <div class="page-banner-overlay"></div>
-            <div class="page-banner-container">
-                
-                <!-- Badge Superior Requerido -->
-                <div class="page-title-wrap">
-                    <span class="course-badge">
-                        <i class="fas fa-award"></i> ESTÁNDAR PMBOK® SECCIÓN 8 | CALIDAD EN CONSTRUCCIÓN
-                    </span>
-                    <h1 class="page-main-title animate__animated animate__fadeInDown">ENFOQUE PMI DE LA GESTIÓN DE LA CALIDAD</h1>
-                    <div class="title-underline"></div>
-                </div>
+$course = [
+    // 1. Hero Banner
+    'hero_badge'          => 'ÁREA DE GESTIÓN DE LA CALIDAD • 15 HORAS NETAS • 16 PDU',
+    'hero_badge_icon'     => 'fa-solid fa-graduation-cap',
+    'title'               => 'DIRECCIÓN DE LA CALIDAD CON EL ENFOQUE PMI® PARA LA CONSTRUCCIÓN',
+    'summary'             => 'Contenidos y lineamientos de la dirección de la calidad con el enfoque PMI®, basado en la 6ta y 7ma Edición de la Guía del PMBOK® y la Guía Práctica de Grupos de Procesos, vinculando la gestión de proyectos con las operaciones en obra.',
+    'hero_cards'          => [
+        [
+            'icon'  => 'fa-solid fa-book-bookmark',
+            'title' => 'ESTÁNDARES PMI®',
+            'desc'  => 'Basado en la 6ta y 7ma Edición de la Guía del PMBOK® y la Guía Práctica de Grupos de Procesos (PMI 2022).',
+        ],
+        [
+            'icon'  => 'fa-solid fa-award',
+            'title' => '15 HORAS & 16 PDU',
+            'desc'  => 'Otorga 16 PDU para mantener tu certificación vigente (Categoría CCR – General Education Third-Party Provider).',
+        ],
+        [
+            'icon'  => 'fa-solid fa-list-check',
+            'title' => 'PPI & DEFECTOLOGÍA',
+            'desc'  => 'Plan de Puntos de Inspección, indicadores Last Planner, defectología, auditorías técnicas y panel Looker Studio.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-user-check',
+            'title' => 'CONSULTORÍA Y DIPLOMA',
+            'desc'  => 'Consultoría de 1 hora durante el curso, diploma digital de Quality Consulting Solutions y acceso a bolsa laboral.',
+        ],
+    ],
 
-                <!-- Subtítulo Requerido -->
-                <div class="intro-card">
-                    <p class="intro-text animate__animated animate__fadeInUp animate__delay-1s">
-                        Aprende a vincular la Sección 8 de la Guía del PMBOK® con la realidad operativa, control de campo y lecciones aprendidas en proyectos de construcción.
-                    </p>
-                </div>
+    // 2. Objetivo del curso
+    'objective'           => 'Presentar a los participantes los contenidos y lineamientos de la dirección de la calidad con el enfoque PMI®, basado en la 6ta y 7ma Edición de la Guía del PMBOK® y la NUEVA Guía Práctica de Grupos de Procesos (PMI 2022). Se presentará así un enfoque en la construcción, vinculando los términos usados en los proyectos con los empleados por los estándares del PMI® en su idioma original, lo que enriquece el significado de los términos y su aplicación real.',
+    'objective_image'     => 'img/capmi1.png',
+    'objective_image_webp'=> 'img/capmi1.webp',
+    'objective_image_alt' => 'Dirección de la Calidad con el Enfoque PMI® para la Construcción',
+    'objective_highlights'=> [
+        'Planificar la dirección de la calidad: propósito de la planificación, entregables, requerimientos, política de calidad y Plan de Puntos de Inspección (PPI).',
+        'Gestionar la calidad: dirección de la calidad como medio de ejecución, aseguramiento (assurance), listas de entregables, defectología y auditoría técnica.',
+        'Controlar la calidad: control de conformidad (ensure), matriz de calidad, mediciones y panel de control con Looker Studio en la nube de Google.',
+    ],
 
-                <!-- Grid de 3 Tarjetas de Valor Ejecutivo dentro del Hero -->
-                <div class="hero-cards-grid">
-                    
-                    <!-- Tarjeta 1: Modalidad Grabada Online -->
-                    <div class="hero-feature-card">
-                        <div class="hero-feature-icon">
-                            <i class="fa-solid fa-circle-play"></i>
-                        </div>
-                        <div class="hero-feature-content">
-                            <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Modalidad Grabada Online</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Modalidad grabada 100% online. Acceso inmediato a las clases y disponible 24/7.</p>
-                        </div>
-                    </div>
+    // 3. Temario del curso (3 procesos oficiales según el brochure)
+    'syllabus_intro'      => 'Estructura oficial del curso enfocada en los 3 procesos fundamentales de la dirección de la calidad según la Guía del PMBOK® y estándares del PMI®:',
+    'syllabus'            => [
+        [
+            'title'   => 'Planificar la Dirección de la Calidad del Proyecto',
+            'icon'    => 'fa-solid fa-compass-drafting',
+            'content' => '<p>El curso abordará las entradas y salidas de los procesos, así como los principios de la dirección de la calidad según el enfoque PMI®, presentando ejemplos de aplicación.</p><p class="qcs-cd-syllabus-subhead">Alcance del proceso:</p><p>En esta sección se presenta el propósito de la planificación y su relación con los entregables, requerimientos, política de la calidad, mediciones del aseguramiento de la calidad y listas de verificación. Se presentan las entradas, herramientas y técnicas, y salidas del proceso. Entre las entradas se considera el acta de constitución del proyecto, obteniendo subsecuentemente el plan de dirección de la calidad.</p><p class="qcs-cd-syllabus-subhead">Herramientas aplicadas:</p><ul><li>Plan de Puntos de Inspección (PPI).</li><li>Indicadores avanzados de calidad: restricciones, Last Planner System, calidad de la ejecución general y calidad general de la entrega de obra.</li></ul>',
+        ],
+        [
+            'title'   => 'Gestionar la Calidad del Proyecto',
+            'icon'    => 'fa-solid fa-clipboard-check',
+            'content' => '<p>Se presenta el proceso de la dirección de la calidad como medio de ejecución del plan de dirección de la calidad (auditorías y revisiones). Asimismo, se muestra la relación del aseguramiento (assurance) de la calidad con la gestión de riesgos.</p><p class="qcs-cd-syllabus-subhead">Herramientas y técnicas:</p><p>Se presentan las entradas, herramientas y técnicas (análisis de datos, toma de decisiones, representación de datos y métodos de mejora de la calidad) y salidas del proceso.</p><p class="qcs-cd-syllabus-subhead">Herramientas aplicadas:</p><ul><li>Lista de entregables.</li><li>Defectología y auditoría técnica.</li></ul>',
+        ],
+        [
+            'title'   => 'Controlar la Calidad del Proyecto',
+            'icon'    => 'fa-solid fa-chart-pie',
+            'content' => '<p>Se plantea la definición de control de la calidad y su relación con el aseguramiento (ensure) de la conformidad de las salidas de los procesos.</p><p class="qcs-cd-syllabus-subhead">Entradas, técnicas y salidas:</p><p>Se presentan las entradas, herramientas, técnicas y salidas del proceso: solicitudes de cambio, mediciones del control de la calidad, entregables verificados e información del desempeño del trabajo.</p><p class="qcs-cd-syllabus-subhead">Herramientas aplicadas:</p><ul><li>Matriz de calidad.</li><li>Panel de control con Looker Studio («¡el panel en la nube de Google!»).</li></ul>',
+        ],
+    ],
 
-                    <!-- Tarjeta 2: Flexibilidad Multiplataforma -->
-                    <div class="hero-feature-card">
-                        <div class="hero-feature-icon">
-                            <i class="fa-solid fa-laptop-code"></i>
-                        </div>
-                        <div class="hero-feature-content">
-                            <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Flexibilidad Multiplataforma</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Disponible desde PC, Laptop, Tablet y Celular (Video HD y Chat interactivo).</p>
-                        </div>
-                    </div>
+    // 4. Perfil docente (Ing. Omar Samaniego)
+    'docente'             => [
+        'photo'          => 'img/Omar_Samaniego.png',
+        'photo_webp'     => 'img/Omar_Samaniego.webp',
+        'name'           => 'Ing. Omar A. Samaniego',
+        'experience_tag' => '+25 años de experiencia',
+        'credentials'    => ['ING., MASTER', 'NEC4', 'VDC Stanford', 'PMP®', 'PMI-RMP®', 'LSS Black Belt'],
+        'summary'        => 'Profesional con más de 25 años de experiencia en el Sector Construcción en Gestión de Proyectos, Riesgos y Calidad en empresas líderes en el Perú y el extranjero. Experiencia docente en principales universidades, ponente en prestigiosos congresos, contribuidor registrado de estándares fundacionales del PMI® y autor de dos libros.',
+        'highlights'     => [
+            '<strong>Quality Consulting Solutions:</strong> Director.',
+            '<strong>Gleeds (UK):</strong> Quality & Risk Manager.',
+            '<strong>Graña y Montero:</strong> Jefe Corporativo del Área de Calidad de GyM.',
+            '<strong>Buenaventura Ingenieros:</strong> Gerente de Proyectos.',
+        ],
+        'full_bio_items' => [
+            '<strong>Cosapi:</strong> Jefe de Calidad | <strong>Bechtel:</strong> Líder de Calidad Electromecánico.',
+            '<strong>Catedrático Universitario:</strong> Universidad Peruana de Ciencias Aplicadas (UPC), MDI PUCP - Universidad Politécnica de Madrid (Catedrático de dirección de la calidad), Universidad de Lima e Instituto para la Calidad.',
+            '<strong>Expositor Internacional:</strong> Techsuyo en Stanford University (2017), Congreso Global del PMI (Washington D.C., 2010) y Congreso Regional del PMI (Lima, 2008).',
+            '<strong>Liderazgo y Publicaciones:</strong> Presidente del Comité de la Calidad de Capeco, Columnista en Revista El Constructivo y Miembro Directivo de ASQ Perú LMC.',
+            '<strong>Colaboración con Stanford:</strong> Acuerdo institucional con el Centro de Ingeniería para Instalaciones Integradas (CIFE) de Stanford University dando soporte a investigaciones nacionales en 2018 y 2019.',
+        ],
+        'recognition'    => 'Contribuidor registrado de la 6ta y 7ma Edición de la Guía del PMBOK® y del Estándar de Gestión de Riesgos del PMI® (2019 / 2024). Autor de los libros sobre ISO 9001 y Riesgos Técnicos en Construcción.',
+    ],
 
-                    <!-- Tarjeta 3: Acreditación Profesional -->
-                    <div class="hero-feature-card">
-                        <div class="hero-feature-icon">
-                            <i class="fa-solid fa-stamp"></i>
-                        </div>
-                        <div class="hero-feature-content">
-                            <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Diploma y Beneficios</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Incluye Diploma físico + Ingreso a Bolsa de Trabajo + Descuentos de Ex-alumno.</p>
-                        </div>
-                    </div>
+    // 5. Beneficios, PDU y Brochure
+    'benefits'            => [
+        [
+            'icon'  => 'fa-solid fa-briefcase',
+            'title' => 'Bolsa laboral',
+            'text'  => 'Ingreso a la base de datos laboral de Quality Consulting Solutions.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-percent',
+            'title' => 'Descuentos futuros',
+            'text'  => 'Descuento para futuros cursos con precios ordinarios.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-user-check',
+            'title' => 'Consultoría incluida',
+            'text'  => 'Consultoría de 1 hora de lunes a viernes en horario de 6pm – 8pm durante el periodo del curso.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-certificate',
+            'title' => 'Diploma digital',
+            'text'  => 'Diploma digital a nombre de Quality Consulting Solutions.',
+        ],
+        [
+            'icon'  => 'fa-regular fa-file-lines',
+            'title' => 'Material digital',
+            'text'  => 'Entrega de material digital.',
+        ],
+        [
+            'icon'  => 'fa-regular fa-circle-play',
+            'title' => 'Grabación del curso',
+            'text'  => 'Acceso vía internet a la grabación del curso luego de finalizado (4 semanas).',
+        ],
+    ],
+    'pdu_title'           => 'Unidades de desarrollo profesional (16 PDU)',
+    'pdu_text'            => 'Si tienes certificación del PMI®, este curso te brinda 16 PDU (<em>Professional Development Unit</em>) para mantener tu certificación vigente. Categoría PMI® CCR: <em>General Education (Third-Party Provider)</em>. Duración total: <strong>15 horas netas</strong>.',
+    'brochure_url'        => 'brochures/calidad/direccion-calidad-enfoque-pmi.pdf',
+    'brochure_download'   => 'Brochure-Direccion-Calidad-Enfoque-PMI.pdf',
+    'brochure_thumb'      => 'img/brochures/portada-direccion-calidad-enfoque-pmi.png',
 
-                </div>
+    // 6. Información e inscripción
+    'enroll_bg_image'     => 'img/capmi1.webp',
+    'whatsapp_url'        => 'https://api.whatsapp.com/send?phone=51993463118&text=Buen%20d%C3%ADa,%20deseo%20solicitar%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Direcci%C3%B3n%20de%20la%20Calidad%20con%20Enfoque%20PMI',
+    'modal_service'       => 'Dirección de la Calidad con el Enfoque PMI® para la Construcción',
+    'paypal_slug'         => 'calidad-y-pmi',
+    'videos'              => [
+        [
+            'header'    => 'Calidad PMI en Construcción - Parte 1',
+            'embed_url' => 'https://www.youtube.com/embed/hbwy_uESkzI',
+            'title'     => 'Enfoque PMI de la Gestión de la Calidad - Video 1',
+            'caption'   => '<strong>Sesión técnica:</strong> Articulación de los estándares del PMI con la realidad operativa de obra.',
+        ],
+        [
+            'header'    => 'Calidad PMI en Construcción - Parte 2',
+            'embed_url' => 'https://www.youtube.com/embed/w-hf9BtsF0Q',
+            'title'     => 'Enfoque PMI de la Gestión de la Calidad - Video 2',
+            'caption'   => '<strong>Aplicación práctica:</strong> Lecciones aprendidas en aseguramiento y control de calidad en proyectos.',
+        ],
+    ],
+];
 
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-             2. PERFIL DEL DOCENTE, OBJETIVO E IMAGEN TÉCNICA (Layout 2 Columnas)
-             ========================================================================== -->
-        <section class="content-section" id="perfil-objetivo">
-            <div class="section-container">
-                
-                <div class="grid-split-layout">
-                    
-                    <!-- Columna Izquierda: Perfil Docente Ejecutivo -->
-                    <div class="split-text-col">
-                        <div class="section-header-compact">
-                            <span class="sub-badge"><i class="fa-solid fa-user-graduate"></i> Experiencia &amp; Liderazgo Técnico</span>
-                            <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">DOCENTE DEL PROGRAMA</h2>
-                            <div class="heading-line"></div>
-                        </div>
-
-                        <!-- Tarjeta Técnica del Docente -->
-                        <div class="docente-card docente-pmi-highlight" style="margin-top: 1.25rem;">
-                            <div class="docente-avatar-box">
-                                <div class="docente-avatar"><picture><source srcset="img/Omar_Samaniego.webp" type="image/webp"><img src="img/Omar_Samaniego.png" alt="Ing. Omar Samaniego" class="rounded-circle shadow-sm" style="width: 100%; height: 100%; object-fit: cover; object-position: top;"></picture></div>
-                                <span class="docente-verified-badge" title="Docente Principal Colegiado y Certificado">
-                                    <i class="fa-solid fa-check"></i>
-                                </span>
-                            </div>
-                            <div class="docente-info">
-                                <span class="docente-tag">Docente Principal</span>
-                                <h3 class="docente-name animate__animated animate__fadeInUp animate__delay-1s">ING. OMAR SAMANIEGO</h3>
-                                
-                                <!-- Credenciales / Badges Requeridos -->
-                                <div class="docente-credentials-row">
-                                    <span class="credential-badge"><i class="fa-solid fa-id-card"></i> CIP</span>
-                                    <span class="credential-badge"><i class="fa-solid fa-award"></i> PMP®</span>
-                                    <span class="credential-badge"><i class="fa-solid fa-shield-halved"></i> PMI-RMP®</span>
-                                    <span class="credential-badge"><i class="fa-solid fa-certificate"></i> IRCA</span>
-                                    <span class="credential-badge"><i class="fa-solid fa-medal"></i> LSS Black Belt</span>
-                                </div>
-
-                                <!-- Bio / Logros Destacados Requeridos -->
-                                <p class="docente-profile">
-                                    Profesional con más de 20 años de experiencia en Gestión de la Calidad en el Sector Construcción en empresas líderes del Perú y el extranjero.
-                                </p>
-                                
-                                <div class="docente-recognition-card">
-                                    <i class="fa-solid fa-building-columns text-gold"></i>
-                                    <div class="docente-recognition-text">
-                                        Docente de postgrado en principales universidades del país y ponente en prestigiosos congresos del sector.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Columna Derecha: Objetivo General + Imagen de Ingeniería -->
-                    <div class="split-text-col">
-                        <div class="section-header-compact">
-                            <span class="sub-badge"><i class="fa-solid fa-bullseye"></i> Rigor Técnico y Aplicabilidad</span>
-                            <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">OBJETIVO DEL CURSO</h2>
-                            <div class="heading-line"></div>
-                        </div>
-
-                        <!-- Párrafo Explicativo Requerido -->
-                        <p class="paragraph-text paragraph-lead">
-                            Presentar los aspectos del PMBOK® Sección 8 (Gestión de la Calidad) con un enfoque directo en la construcción, vinculando los términos usados en obra y gabinete con los empleados por el estándar principal del PMI®. Identificar casos reales y compartir lecciones aprendidas donde se apliquen estos elementos de control.
-                        </p>
-
-                        <!-- Contenedor para Imagen de Control de Calidad en Obra -->
-                        <!-- Imagen conceptual sobre ingeniería civil y control de calidad -->
-                        <div class="course-img-preview-box">
-                            <picture>
-                                <source srcset="img/capmi1.webp" type="image/webp">
-                                <img src="img/capmi1.png" alt="Ingenieros revisando control de calidad y planos en obra" class="course-img-preview" loading="lazy">
-                            </picture>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-             3. CONTENIDOS DEL CURSO (Reflexiones y Ejes del PMBOK® - Grid de Tarjetas)
-             ========================================================================== -->
-        <section class="content-section bg-alternate" id="estructura-analitica">
-            <div class="section-container">
-                
-                <div class="section-header-center">
-                    <span class="sub-badge"><i class="fa-solid fa-book-open"></i> Sección 8 de la Guía del PMBOK®</span>
-                    <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">ESTRUCTURA CURRICULAR Y EJES ANALÍTICOS</h2>
-                    <div class="heading-line center-line"></div>
-                    <p class="section-subtitle-text">
-                        Un desglose reflexivo y pragmático para transformar los conceptos teóricos de calidad en herramientas de control de alto impacto para la obra.
-                    </p>
-                </div>
-
-                <div class="pmbok-grid-4">
-                    
-                    <!-- Tarjeta 1: Módulo Introductorio -->
-                    <div class="pmbok-card">
-                        <div class="pmbok-card-header">
-                            <span class="pmbok-step-badge">MÓDULO 01</span>
-                            <div class="pmbok-icon"><i class="fa-solid fa-compass-drafting"></i></div>
-                        </div>
-                        <span class="reflection-badge">Fundamentos &amp; Conceptos</span>
-                        <h4 class="pmbok-card-title">Módulo Introductorio</h4>
-                        <p class="pmbok-card-desc">
-                            Fundamentos de la gestión de la calidad aplicada a proyectos de construcción e ingeniería. Alineación entre requisitos contractuales, especificaciones técnicas y expectativas de los interesados.
-                        </p>
-                        <div class="reflection-question">
-                            <i class="fa-solid fa-circle-question text-gold"></i> <strong>Eje analítico:</strong> ¿Cómo integrar el estándar PMI® con las normativas técnicas nacionales e internacionales vigentes?
-                        </div>
-                    </div>
-
-                    <!-- Tarjeta 2: Planificar la Gestión de la Calidad -->
-                    <div class="pmbok-card">
-                        <div class="pmbok-card-header">
-                            <span class="pmbok-step-badge">MÓDULO 02</span>
-                            <div class="pmbok-icon"><i class="fa-solid fa-file-signature"></i></div>
-                        </div>
-                        <span class="reflection-badge">Planificación &amp; Costo-Beneficio</span>
-                        <h4 class="pmbok-card-title">Planificar la Gestión de la Calidad</h4>
-                        <p class="pmbok-card-desc">
-                            Criterios operativos y de gestión. Definición de métricas de calidad, planes de puntos de inspección (PPI) y análisis costo-beneficio de la documentación técnica.
-                        </p>
-                        <div class="reflection-question">
-                            <i class="fa-solid fa-circle-question text-gold"></i> <strong>Reflexión crítica:</strong> ¿Es cierto que a más registros de control es mejor? (Evaluación del costo de la no conformidad vs. sobre-documentación).
-                        </div>
-                    </div>
-
-                    <!-- Tarjeta 3: Gestionar la Calidad -->
-                    <div class="pmbok-card">
-                        <div class="pmbok-card-header">
-                            <span class="pmbok-step-badge">MÓDULO 03</span>
-                            <div class="pmbok-icon"><i class="fa-solid fa-gears"></i></div>
-                        </div>
-                        <span class="reflection-badge">Evolución del Estándar</span>
-                        <h4 class="pmbok-card-title">Gestionar la Calidad</h4>
-                        <p class="pmbok-card-desc">
-                            Traducción del plan de calidad en actividades y procesos constructivos ejecutables. Auditorías de calidad, diseño para la excelencia y optimización continua de procesos en campo.
-                        </p>
-                        <div class="reflection-question">
-                            <i class="fa-solid fa-circle-question text-gold"></i> <strong>Reflexión crítica:</strong> ¿Por qué el PMI® evolucionó del antiguo término "aseguramiento de la calidad" hacia "gestionar la calidad"? ¿Qué implica este cambio en proyectos reales?
-                        </div>
-                    </div>
-
-                    <!-- Tarjeta 4: Controlar la Calidad -->
-                    <div class="pmbok-card">
-                        <div class="pmbok-card-header">
-                            <span class="pmbok-step-badge">MÓDULO 04</span>
-                            <div class="pmbok-icon"><i class="fa-solid fa-clipboard-check"></i></div>
-                        </div>
-                        <span class="reflection-badge">Control &amp; Trazabilidad</span>
-                        <h4 class="pmbok-card-title">Controlar la Calidad</h4>
-                        <p class="pmbok-card-desc">
-                            Monitoreo y registro de los resultados de las actividades de calidad para evaluar el desempeño y garantizar que las entregas cumplan con la totalidad de los requisitos.
-                        </p>
-                        <div class="reflection-question">
-                            <i class="fa-solid fa-circle-question text-gold"></i> <strong>Reflexión crítica:</strong> ¿Qué entendemos por control en obra? ¿Es sinónimo únicamente de protocolos de pruebas o abarca la trazabilidad completa del proyecto?
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-             4. SECCIÓN MULTIMEDIA (2 Videos Promocionales de YouTube)
-             ========================================================================== -->
-        <section class="content-section" id="conferencias-videos">
-            <div class="section-container">
-                
-                <div class="section-header-center">
-                    <span class="sub-badge"><i class="fa-brands fa-youtube"></i> Masterclasses &amp; Sesiones Técnicas</span>
-                    <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">CONFERENCIAS Y PRESENTACIONES DEL CURSO</h2>
-                    <div class="heading-line center-line"></div>
-                    <p class="section-subtitle-text">
-                        Revisa ponencias y explicaciones especializadas sobre la aplicación del enfoque PMI en los procesos de calidad de proyectos de edificación e infraestructura.
-                    </p>
-                </div>
-
-                <!-- Grid Responsive de 2 Columnas para Videos -->
-                <div class="videos-promo-grid">
-                    
-                    <!-- Video 1 -->
-                    <div class="video-card-wrapper">
-                        <div class="video-header-bar">
-                            <span><i class="fa-brands fa-youtube text-danger"></i> Calidad PMI en Construcción - Parte 1</span>
-                            <span class="video-live-pill">
-                                <span class="video-live-dot"></span> HD 1080p
-                            </span>
-                        </div>
-                        <div class="video-responsive-container">
-                            <iframe src="https://www.youtube.com/embed/hbwy_uESkzI" title="Enfoque PMI de la Gestión de la Calidad - Video 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy">
-                            </iframe>
-                        </div>
-                        <div class="video-caption-box">
-                            <p>
-                                <i class="fa-solid fa-play-circle text-gold"></i> <strong>Fundamentos de la Sección 8:</strong> Vinculación del estándar PMBOK® con el control y ejecución en obra.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Video 2 -->
-                    <div class="video-card-wrapper">
-                        <div class="video-header-bar">
-                            <span><i class="fa-brands fa-youtube text-danger"></i> Calidad PMI en Construcción - Parte 2</span>
-                            <span class="video-live-pill">
-                                <span class="video-live-dot"></span> HD 1080p
-                            </span>
-                        </div>
-                        <div class="video-responsive-container">
-                            <iframe src="https://www.youtube.com/embed/w-hf9BtsF0Q" title="Enfoque PMI de la Gestión de la Calidad - Video 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy">
-                            </iframe>
-                        </div>
-                        <div class="video-caption-box">
-                            <p>
-                                <i class="fa-solid fa-play-circle text-gold"></i> <strong>Lecciones Aprendidas:</strong> Casos prácticos de aseguramiento, gestión y control de calidad en obra.
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-             5. SECCIÓN DE INSCRIPCIÓN Y PASARELAS DE PAGO (CTA Destacado)
-             ========================================================================== -->
-        <section class="content-section bg-alternate" id="matricula">
-            <div class="section-container">
-                
-                <div class="course-enrollment-card">
-                    
-                    <span class="enroll-badge">
-                        <i class="fa-solid fa-award"></i> PROGRAMA DE ALTA ESPECIALIZACIÓN
-                    </span>
-
-                    <h2 class="enroll-title animate__animated animate__fadeInUp animate__delay-1s">INSCRÍBETE Y DOMINA LA CALIDAD PMI EN OBRA</h2>
-                    <p class="enroll-subtitle">
-                        Obtén las herramientas metodológicas y criterios analíticos para liderar auditorías, optimizar protocolos y garantizar la conformidad técnica de tus proyectos.
-                    </p>
-
-                    <!-- Beneficios de la Matrícula -->
-                    <div class="enroll-perks-grid">
-                        <div class="enroll-perk-item">
-                            <div class="enroll-perk-icon">
-                                <i class="fa-solid fa-user-check"></i>
-                            </div>
-                            <span>Docente Contribuidor PMBOK® &amp; Auditor IRCA</span>
-                        </div>
-
-                        <div class="enroll-perk-item">
-                            <div class="enroll-perk-icon">
-                                <i class="fa-solid fa-circle-play"></i>
-                            </div>
-                            <span>Acceso inmediato a las clases y disponible 24/7.</span>
-                        </div>
-
-                        <div class="enroll-perk-item">
-                            <div class="enroll-perk-icon">
-                                <i class="fa-solid fa-graduation-cap"></i>
-                            </div>
-                            <span>Incluye Diploma físico.</span>
-                        </div>
-
-                        <div class="enroll-perk-item">
-                            <div class="enroll-perk-icon">
-                                <i class="fa-solid fa-tags"></i>
-                            </div>
-                            <span>Bolsa Laboral &amp; Descuentos de Ex-alumno</span>
-                        </div>
-                    </div>
-
-                    <!-- 3 Botones de Acción y Pasarelas de Pago Requeridos -->
-                    <div class="payment-buttons-grid-3">
-                        
-                        <!-- 1. Botón WhatsApp (Consultas Directas) -->
-                        <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=w_%20%20%20%20%20%20Buen%20d%C3%ADa,%20%C2%BFpodr%C3%ADan%20enviarme%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Enfoque%20PMI%20de%20la%20Gesti%C3%B3n%20de%20la%20Calidad?" target="_blank" rel="noopener noreferrer" class="btn-whatsapp payment-action-btn animate__animated animate__pulse animate__infinite" aria-label="Consultar información del curso de Calidad PMI por WhatsApp">
-                            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
-                        </a>
-
-                        <!-- 2. Botón Más Información / Brochure (Google Forms) -->
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdSFYYYkr_ucWEsF0YTmNt9FLQFzh1A8O0YkOLKyKay1vBGeg/viewform" target="_blank" rel="noopener noreferrer" class="btn-outline payment-action-btn" aria-label="Solicitar más información y brochure del curso en Google Forms">
-                            <i class="fas fa-file-pdf"></i> Solicitar Más Información
-                        </a>
-
-                        <!-- 3. Botón Comprar Ahora / Hotmart (Checkout Inmediato) -->
-                        <a href="https://pay.hotmart.com/A90717682C?bid=1787673008435" target="_blank" rel="noopener noreferrer" class="btn-hotmart payment-action-btn" aria-label="Inscribirse y pagar directamente en Hotmart">
-                            <i class="fas fa-shopping-cart"></i> Inscribirse / Comprar en Hotmart
-                        </a>
-
-                    </div>
-
-                    <!-- Barra de Confianza y Seguridad -->
-                    <div class="payment-trust-bar">
-                        <div class="payment-trust-item">
-                            <i class="fa-solid fa-lock"></i>
-                            <span>Pasarela Hotmart Certificada con SSL 256-bit</span>
-                        </div>
-                        <div class="payment-trust-item">
-                            <i class="fa-solid fa-shield-halved"></i>
-                            <span>Pago 100% Seguro y Acceso Inmediato</span>
-                        </div>
-                        <div class="payment-trust-item">
-                            <i class="fa-solid fa-headset"></i>
-                            <span>Soporte Académico y Técnico Permanente</span>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-             6. LLAMADO A LA ACCIÓN FINAL (Contacto Corporativo)
-             ========================================================================== -->
-        <section class="cta-banner-section" id="contacto-final">
-            <div class="cta-container">
-                <div class="cta-box">
-                    <div class="cta-content">
-                        <span class="cta-tag"><i class="fa-solid fa-award"></i> Estándar de Excelencia</span>
-                        <h3 class="animate__animated animate__fadeInUp animate__delay-1s">Eleva el estándar de calidad en tus proyectos</h3>
-                        <p>
-                            Contáctanos hoy mismo para asegurar tu vacante preferencial, coordinar capacitaciones in-house corporativas o resolver cualquier duda sobre el diploma físico.
-                        </p>
-                        
-                        <!-- Teléfono Visible Clickeable Requerido -->
-                        <div class="cta-phone-wrapper" style="margin-top: 1.25rem;">
-                            <a href="tel:+51993463118" class="cta-phone-link" aria-label="Llamar al +51 993 463 118">
-                                <i class="fa-solid fa-phone-volume"></i>
-                                <span>+51 993 463 118</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="cta-actions">
-                        <a href="/contacto" class="btn btn-large btn-qcs-primary">
-                            <i class="fa-solid fa-envelope"></i> Contacto Directo
-                        </a>
-                        <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=w_%20%20%20%20%20%20Buen%20d%C3%ADa,%20%C2%BFpodr%C3%ADan%20enviarme%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Enfoque%20PMI%20de%20la%20Gesti%C3%B3n%20de%20la%20Calidad?" target="_blank" rel="noopener noreferrer" class="btn btn-large btn-qcs-dark">
-                            <i class="fa-brands fa-whatsapp"></i> Chat WhatsApp
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
+echo $this->partial('course_detail_unified', ['course' => $course]);
