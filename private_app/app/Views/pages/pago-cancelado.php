@@ -45,8 +45,8 @@ $courseSlug  = htmlspecialchars($courseSlug ?? ($course['slug'] ?? 'bim-revit-ar
 
                     <!-- Acciones Disponibles -->
                     <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                        <a href="/pagar-primera-clase?curso=<?= urlencode($courseSlug) ?>" class="btn btn-warning btn-lg fw-bold text-dark font-montserrat">
-                            <i class="fab fa-paypal me-2"></i> Intentar Pagar Nuevamente ($10 USD)
+                        <a href="/<?= urlencode($courseSlug) ?>" class="btn btn-warning btn-lg fw-bold text-dark font-montserrat">
+                            <i class="fas fa-arrow-left me-2"></i> Volver al Curso
                         </a>
                         <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=Hola,%20tuve%20un%20inconveniente%20al%20intentar%20pagar%20la%20primera%20clase%20de%20<?= urlencode($courseTitle) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success btn-lg">
                             <i class="fab fa-whatsapp me-2"></i> Consultar por WhatsApp

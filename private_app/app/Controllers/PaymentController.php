@@ -54,45 +54,6 @@ class PaymentController extends Controller
     }
 
     /**
-     * VISTA: Checkout / Pago de la primera clase del curso (USD 10).
-     * GET /pagar-primera-clase?curso={slug}
-     */
-    public function checkoutPrimeraClase(): void
-    {
-        \Security::startSession();
-
-        $courseSlug = (string)($this->getQuery('curso', 'bim-revit-architecture'));
-        $course = CourseCatalog::find($courseSlug);
-
-        if (!$course) {
-            $allCourses = CourseCatalog::all();
-            $course = reset($allCourses);
-            $courseSlug = $course['slug'];
-        }
-
-        $csrfToken = \Security::getCsrfToken();
-        $allCourses = CourseCatalog::all();
-
-        $errorFlash = $_SESSION['_qcs_payment_error'] ?? null;
-        unset($_SESSION['_qcs_payment_error']);
-
-        $this->render('pages/checkout-primera-clase', [
-            'title'           => 'Primera clase del curso – USD 10 | Quality Consulting Solutions',
-            'metaDescription' => 'Adquiere la primera clase introductoria de cualquier curso especializado por USD 10 mediante PayPal.',
-            'activePage'      => 'capacitacion',
-            'course'          => $course,
-            'allCourses'      => $allCourses,
-            'csrfToken'       => $csrfToken,
-            'paypalClientId'  => $this->paypalService->getClientId(),
-            'paypalMode'      => $this->paypalService->getMode(),
-            'paypalCurrency'  => $this->paypalService->getCurrency(),
-            'firstClassPrice' => $this->paypalService->getPrice(),
-            'isConfigured'    => $this->paypalService->isConfigured(),
-            'errorFlash'      => $errorFlash,
-        ]);
-    }
-
-    /**
      * API: Crea una orden en PayPal v2 restringida a USD 10.00.
      * POST /api/paypal/create-order
      */
@@ -196,7 +157,7 @@ class PaymentController extends Controller
 
     /**
      * VISTA: Formulario Obligatorio post-pago de Primera Clase.
-     * GET /registro-primera-clase
+     * GET /registro-primera-clase?curso={slug}
      */
     public function registroPrimeraClase(): void
     {
@@ -208,15 +169,14 @@ class PaymentController extends Controller
         $isSessionValid = $this->isSessionPaymentValid($confirmedPayment);
 
         if (!$isSessionValid) {
-            // Si no hay orden validada en sesión, verificar si viene con curso seleccionado válido
+            // Si no hay orden validada en sesión, verificar si viene con curso seleccionado válido tras clic en PayPal
             if (!empty($courseSlug) && CourseCatalog::isValid($courseSlug)) {
                 $course = CourseCatalog::find($courseSlug);
                 $courseTitle = $course['title'];
                 $orderId = (string)($this->getQuery('order_id', ''));
                 $isVerifiedInSession = false;
             } else {
-                $_SESSION['_qcs_payment_error'] = 'Para acceder al registro de la primera clase, debes seleccionar un curso e iniciar el pago de USD 10 en PayPal.';
-                $this->redirect('/pagar-primera-clase');
+                $this->redirect('/capacitacion');
                 return;
             }
         } else {
@@ -252,7 +212,7 @@ class PaymentController extends Controller
         $this->enforceRateLimit('registration_submit', 10, 60);
 
         if ($this->getMethod() !== 'POST') {
-            $this->redirect('/pagar-primera-clase');
+            $this->redirect('/capacitacion');
             return;
         }
 
@@ -313,7 +273,7 @@ class PaymentController extends Controller
                 ], 422);
             }
             $_SESSION['_qcs_payment_error'] = 'La transacción de PayPal no pudo ser validada. No se aceptó el formulario.';
-            $this->redirect('/pagar-primera-clase');
+            $this->redirect('/pago-cancelado?curso=' . urlencode($cursoSlug));
             return;
         }
 

@@ -936,5 +936,31 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     })();
+
+    /* ----------------------------------------------------
+       18. FLUJO DIRECTO PAYPAL (PRIMERA CLASE USD 10) -> FORMULARIO DE REGISTRO
+       - Al hacer clic en el botón "PayPal", se abre la pasarela oficial de PayPal en nueva pestaña
+         y la pestaña actual redirige automáticamente al formulario obligatorio del curso específico.
+       ---------------------------------------------------- */
+    (function initPaypalFirstClassHandler() {
+        const paypalButtons = document.querySelectorAll('.btn-paypal-first-class');
+        if (!paypalButtons.length) return;
+
+        paypalButtons.forEach((btn) => {
+            btn.addEventListener('click', function () {
+                const courseSlug = this.getAttribute('data-course-slug') || '';
+                const isStatic = window.location.pathname.endsWith('.html') || window.location.hostname.includes('github.io');
+                const baseRegUrl = isStatic ? 'registro-primera-clase.html' : '/registro-primera-clase';
+                const targetUrl = courseSlug
+                    ? `${baseRegUrl}?curso=${encodeURIComponent(courseSlug)}`
+                    : baseRegUrl;
+
+                // Permitir que el navegador abra la pestaña de PayPal (target="_blank") y derivar la ventana actual al formulario
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 400);
+            });
+        });
+    })();
 });
 

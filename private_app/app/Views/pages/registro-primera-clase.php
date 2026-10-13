@@ -73,7 +73,7 @@ $isVerifiedInSession = !empty($isVerifiedInSession);
                             Registro de Datos del Alumno
                         </h2>
                         <p class="small text-white-50 mb-0">
-                            Completa la siguiente información para coordinar tu acceso a la primera clase de <strong><?= $courseTitle ?></strong>.
+                            Completa la siguiente información para coordinar tu acceso a la primera clase de <strong id="curso_nombre_badge"><?= $courseTitle ?></strong>.
                         </p>
                     </div>
 
@@ -93,13 +93,13 @@ $isVerifiedInSession = !empty($isVerifiedInSession);
                             <input type="text" name="<?= $hpField ?>" tabindex="-1" autocomplete="off" value="">
                         </div>
 
-                        <!-- 1. Curso Seleccionado (Solo Lectura) -->
+                        <!-- 1. Curso Seleccionado (Solo Lectura - Fijado al curso de origen) -->
                         <div class="mb-3">
                             <label for="curso_display" class="form-label text-warning small fw-bold text-uppercase">
                                 <i class="fas fa-book-open me-1"></i> Curso Seleccionado (Primera Clase):
                             </label>
                             <input type="text" id="curso_display" class="form-control bg-dark text-white border-secondary border-opacity-50 py-2 fs-6 fw-semibold" value="<?= $courseTitle ?>" readonly>
-                            <input type="hidden" name="curso" value="<?= $courseSlug ?>">
+                            <input type="hidden" id="curso_hidden" name="curso" value="<?= $courseSlug ?>">
                             <?php if (isset($errors['curso'])): ?>
                                 <div class="text-danger small mt-1"><?= htmlspecialchars($errors['curso'], ENT_QUOTES, 'UTF-8') ?></div>
                             <?php endif; ?>
@@ -187,10 +187,9 @@ $isVerifiedInSession = !empty($isVerifiedInSession);
                             <?php endif; ?>
                         </div>
 
-                        <!-- Recordatorio explícito del alcance -->
-                        <div class="alert alert-dark border-secondary border-opacity-25 small text-white-50 mb-4 p-3 rounded-3">
-                            <i class="fas fa-info-circle text-warning me-1"></i>
-                            <strong>Recordatorio:</strong> Tu registro queda asignado a la <em>primera clase del curso</em> por USD 10. Si deseas matricularte al programa integral o solicitar convalidación completa posterior, un asesor se comunicará contigo.
+                        <!-- Nota exclusiva del alcance -->
+                        <div class="alert alert-dark border-secondary border-opacity-25 small text-warning mb-4 p-3 rounded-3 text-center">
+                            <i class="fas fa-info-circle me-1"></i> Pago exclusivo de USD 10 por la primera clase del curso.
                         </div>
 
                         <!-- Botón de Envío -->
@@ -209,4 +208,50 @@ $isVerifiedInSession = !empty($isVerifiedInSession);
 
     </div>
 </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const coursesCatalog = {
+        'bim-revit-architecture': 'BIM Revit Architecture',
+        'contratos-estado': 'Contrataciones con el Estado y Ley 30225',
+        'contratos': 'Administración de Contratos de Construcción',
+        'costos': 'Costos y Presupuestos en Edificaciones',
+        'fidic': 'Contratos FIDIC en Infraestructura y Construcción',
+        'gerencia-de-calidad': 'Gerencia de la Calidad en Construcción',
+        'herramientas': 'Herramientas de Calidad en Construcción',
+        'iso-9001': 'Interpretación e Implementación de la Norma ISO 9001:2015',
+        'lean-last-planner': 'Lean Construction y Sistema Last Planner',
+        'nec': 'Contratos NEC3 y NEC4 en Infraestructura',
+        'oficina-tecnica': 'Gestión Integral de Oficina Técnica en Obras',
+        'pmo': 'Gestión e Implementación de PMO en Construcción',
+        'proyectos-pmi': 'Gestión de Proyectos bajo el Enfoque PMI / PMBOK',
+        'riesgos-cadena-produccion': 'Gestión de Riesgos en la Cadena de Producción',
+        'riesgos-pmi': 'Gestión de Riesgos bajo Estándares PMI',
+        'riesgos-tecnicos': 'Gestión de Riesgos Técnicos en Obras',
+        'valor-ganado': 'Gestión del Valor Ganado (EVM) en Construcción'
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const slug = (params.get('curso') || '').trim().toLowerCase();
+    const orderId = (params.get('order_id') || '').trim();
+
+    if (slug && coursesCatalog[slug]) {
+        const title = coursesCatalog[slug];
+        const displayEl = document.getElementById('curso_display');
+        const hiddenEl = document.getElementById('curso_hidden');
+        const badgeEl = document.getElementById('curso_nombre_badge');
+        if (displayEl) displayEl.value = title;
+        if (hiddenEl) hiddenEl.value = slug;
+        if (badgeEl) badgeEl.textContent = title;
+    }
+
+    if (orderId) {
+        const orderInput = document.getElementById('paypal_order_id');
+        if (orderInput && !orderInput.value) {
+            orderInput.value = orderId;
+        }
+    }
+});
+</script>
+
 
