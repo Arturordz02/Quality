@@ -19,7 +19,7 @@ declare(strict_types=1);
                 
                 <!-- Badge Superior Requerido -->
                 <div class="page-title-wrap">
-                    <span class="course-badge">
+                    <span class="course-badge" style="position: relative; top: auto; left: auto; display: inline-flex; margin-bottom: 1.25rem;">
                         <i class="fas fa-award"></i> ESTÁNDAR PMBOK® SECCIÓN 8 | CALIDAD EN CONSTRUCCIÓN
                     </span>
                     <h1 class="page-main-title animate__animated animate__fadeInDown">ENFOQUE PMI DE LA GESTIÓN DE LA CALIDAD</h1>
