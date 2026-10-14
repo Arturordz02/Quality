@@ -98,14 +98,14 @@ class CoursesCatalog
             ],
             [
                 'number'        => 7,
-                'title'         => 'SEMINARIO DIAGRAMA DE ISHIKAWA',
+                'title'         => 'CASOS DE APLICACIÓN DEL DIAGRAMA DE ISHIKAWA',
                 'category'      => 'Calidad',
                 'category_slug' => 'calidad',
                 'type'          => 'Seminario',
-                'image'         => 'img/GERCA1.webp',
-                'image_fallback'=> 'img/GERCA1.png',
-                'route'         => null,
-                'description'   => 'Análisis de causa raíz y resolución metódica de no conformidades mediante el diagrama causa-efecto.'
+                'image'         => 'img/capacitaciones/seminario-diagrama-ishikawa.webp',
+                'image_fallback'=> 'img/capacitaciones/seminario-diagrama-ishikawa.png',
+                'route'         => '/seminario-diagrama-ishikawa',
+                'description'   => 'Análisis de causa raíz, acción correctiva vs. corrección y resolución práctica de no conformidades mediante casos y talleres guiados.'
             ],
             [
                 'number'        => 8,

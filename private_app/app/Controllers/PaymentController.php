@@ -532,7 +532,10 @@ class PaymentController extends Controller
             }
 
             // 6. GESTIÓN DE NOTIFICACIÓN A COORDINACIÓN COMERCIAL (comercial@quality-consulting.org)
-            $omarEmail = (string)($this->config['recipients']['omar_samaniego'] ?? getenv('OMAR_SAMANIEGO_EMAIL') ?: 'comercial@quality-consulting.org');
+            $omarEmail = (string)($this->config['recipients']['payment_notification']
+                ?? $this->config['recipients']['omar_samaniego']
+                ?? getenv('PAYMENT_NOTIFICATION_EMAIL')
+                ?: (getenv('OMAR_SAMANIEGO_EMAIL') ?: 'comercial@quality-consulting.org'));
             $isRecipientConfigured = !empty($omarEmail) &&
                 !str_contains($omarEmail, 'PLACEHOLDER') &&
                 !str_contains($omarEmail, 'ejemplo.com') &&

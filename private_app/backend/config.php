@@ -198,7 +198,8 @@ return [
     // --------------------------------------------------------------------------
     'recipients' => [
         // Destinatario oficial confirmado de coordinación comercial (Ing. Omar Samaniego)
-        'omar_samaniego' => $env('OMAR_SAMANIEGO_EMAIL', 'comercial@quality-consulting.org'),
+        'payment_notification' => $env('PAYMENT_NOTIFICATION_EMAIL', $env('OMAR_SAMANIEGO_EMAIL', 'comercial@quality-consulting.org')),
+        'omar_samaniego'       => $env('PAYMENT_NOTIFICATION_EMAIL', $env('OMAR_SAMANIEGO_EMAIL', 'comercial@quality-consulting.org')),
     ],
 ];
 

@@ -117,6 +117,7 @@ return function (Router $router, array $config): void {
     $router->get('/sindrome-del-90', [TrainingController::class, 'sindromeDel90']);
     $router->get('/seminario-iso-9001-2026', [TrainingController::class, 'seminarioIso90012026']);
     $router->get('/indicadores-de-calidad', [TrainingController::class, 'indicadoresDeCalidad']);
+    $router->get('/seminario-diagrama-ishikawa', [TrainingController::class, 'seminarioDiagramaIshikawa']);
 
     /**
      * RUTAS DE PASARELA PAYPAL (PRIMERA CLASE DEL CURSO - USD 10) Y REGISTRO

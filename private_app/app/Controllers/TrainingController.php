@@ -486,5 +486,20 @@ class TrainingController extends Controller
 
         $this->render('pages/indicadores-de-calidad', $data, 'main');
     }
+
+    /**
+     * Seminario: Casos de Aplicación del Diagrama de Ishikawa.
+     */
+    public function seminarioDiagramaIshikawa(): void
+    {
+        $data = [
+            'title'           => 'Seminario: Casos de Aplicación del Diagrama de Ishikawa | Quality Consulting Solutions',
+            'metaDescription' => 'Seminario especializado en análisis de causa raíz, acción correctiva vs. corrección y resolución práctica de no conformidades mediante el Diagrama de Ishikawa.',
+            'canonical'       => 'https://quality-consulting.org/seminario-diagrama-ishikawa',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/seminario-diagrama-ishikawa', $data, 'main');
+    }
 }
 
