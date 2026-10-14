@@ -101,6 +101,7 @@ return function (Router $router, array $config): void {
     $router->get('/gestion-reclamos-nec-fidic', [TrainingController::class, 'gestionReclamosNecFidic']);
     $router->get('/junta-resolucion-disputas-dab', [TrainingController::class, 'juntaResolucionDisputasDab']);
     $router->get('/gestion-cambios-contratos-estado', [TrainingController::class, 'gestionCambiosContratosEstado']);
+    $router->get('/gestion-contractual-megaproyectos-mineros', [TrainingController::class, 'gestionContractualMegaproyectosMineros']);
     $router->get('/control-de-calidad-en-tuneleria', [TrainingController::class, 'controlCalidadTuneleria']);
     $router->get('/costos', [TrainingController::class, 'costos']);
     $router->get('/direccion-calidad-enfoque-pmi', [TrainingController::class, 'direccionCalidadEnfoquePmi']);

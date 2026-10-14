@@ -282,14 +282,14 @@ class CoursesCatalog
             ],
             [
                 'number'        => 23,
-                'title'         => 'CONTRATOS EN MEGAPROYECTOS DE CONSTRUCCIÓN',
+                'title'         => 'GESTIÓN CONTRACTUAL EN LOS MEGAPROYECTOS DE CONSTRUCCIÓN MINEROS',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-Contratos-Internacionales.webp',
-                'image_fallback'=> 'img/Index-Contratos-Internacionales.png',
-                'route'         => '/contratos',
-                'description'   => 'Gobernanza contractual, asignación de riesgos y marcos legales aplicados a megaproyectos de infraestructura.'
+                'image'         => 'img/capacitaciones/gestion-contractual-megaproyectos-mineros.webp',
+                'image_fallback'=> 'img/capacitaciones/gestion-contractual-megaproyectos-mineros.png',
+                'route'         => '/gestion-contractual-megaproyectos-mineros',
+                'description'   => 'Formación y administración integral de contratos de construcción mineros, técnicas de negociación, mitigación de riesgos y resolución de disputas.'
             ],
             [
                 'number'        => 24,
