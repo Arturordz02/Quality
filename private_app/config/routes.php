@@ -119,6 +119,7 @@ return function (Router $router, array $config): void {
     $router->get('/indicadores-de-calidad', [TrainingController::class, 'indicadoresDeCalidad']);
     $router->get('/seminario-diagrama-ishikawa', [TrainingController::class, 'seminarioDiagramaIshikawa']);
     $router->get('/oficina-tecnica-obras-viales', [TrainingController::class, 'oficinaTecnicaObrasViales']);
+    $router->get('/oficina-tecnica-hospitales-edificaciones', [TrainingController::class, 'oficinaTecnicaHospitalesEdificaciones']);
 
     /**
      * RUTAS DE PASARELA PAYPAL (PRIMERA CLASE DEL CURSO - USD 10) Y REGISTRO
