@@ -636,6 +636,22 @@ class TrainingController extends Controller
 
         $this->render('pages/gestion-cambios-contratos-estado', $data, 'main');
     }
+
+    /**
+     * Curso: Gestión Contractual en los Megaproyectos de Construcción Mineros.
+     */
+    public function gestionContractualMegaproyectosMineros(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Gestión Contractual en los Megaproyectos de Construcción Mineros | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Gestión Contractual en Megaproyectos Mineros: formación y negociación de contratos, supervisión del cumplimiento, administración de riesgos y cambios, resolución de disputas y cierre. 16 horas netas y 12 PDU.',
+            'canonical'       => 'https://quality-consulting.org/gestion-contractual-megaproyectos-mineros',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/gestion-contractual-megaproyectos-mineros', $data, 'main');
+    }
 }
+
 
 

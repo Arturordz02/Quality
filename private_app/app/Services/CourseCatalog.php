@@ -73,6 +73,11 @@ class CourseCatalog
             'title' => 'Gestión del Cambio en los Contratos con el Estado',
             'url'   => '/gestion-cambios-contratos-estado',
         ],
+        'gestion-contractual-megaproyectos-mineros' => [
+            'slug'  => 'gestion-contractual-megaproyectos-mineros',
+            'title' => 'Gestión Contractual en los Megaproyectos de Construcción Mineros',
+            'url'   => '/gestion-contractual-megaproyectos-mineros',
+        ],
         'gestion-reclamos-nec-fidic' => [
             'slug'  => 'gestion-reclamos-nec-fidic',
             'title' => 'Gestión de Reclamos en Contratos de Construcción y Contratos Colaborativos NEC y FIDIC',
