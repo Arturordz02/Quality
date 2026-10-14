@@ -58,6 +58,11 @@ class CourseCatalog
             'title' => 'Dirección de la Calidad con el Enfoque PMI® para la Construcción',
             'url'   => '/direccion-calidad-enfoque-pmi',
         ],
+        'eventos-compensables-alertas-tempranas-nec4' => [
+            'slug'  => 'eventos-compensables-alertas-tempranas-nec4',
+            'title' => 'Gestión de Eventos Compensables y Alertas Tempranas en Contratos NEC4',
+            'url'   => '/eventos-compensables-alertas-tempranas-nec4',
+        ],
         'fidic' => [
             'slug'  => 'fidic',
             'title' => 'Contratos FIDIC en Infraestructura y Construcción',

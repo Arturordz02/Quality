@@ -666,6 +666,21 @@ class TrainingController extends Controller
 
         $this->render('pages/contrato-nec4', $data, 'main');
     }
+
+    /**
+     * Curso: Gestión de Eventos Compensables y Alertas Tempranas en Contratos NEC4.
+     */
+    public function eventosCompensablesAlertasTempranasNec4(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Gestión de Eventos Compensables y Alertas Tempranas en Contratos NEC4 | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Gestión de Eventos Compensables y Alertas Tempranas en Contratos NEC4: cláusulas, Defined Costs, tiempos de presentación, sustento y escalamiento. 16 horas netas, 8 sesiones y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/eventos-compensables-alertas-tempranas-nec4',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/eventos-compensables-alertas-tempranas-nec4', $data, 'main');
+    }
 }
 
 
