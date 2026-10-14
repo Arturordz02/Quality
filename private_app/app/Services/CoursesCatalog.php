@@ -271,14 +271,14 @@ class CoursesCatalog
             ],
             [
                 'number'        => 22,
-                'title'         => 'GESTIÓN DE RECLAMOS EN CONTRATOS FIDIC Y NEC',
+                'title'         => 'GESTIÓN DE RECLAMOS EN CONTRATOS DE CONSTRUCCIÓN Y CONTRATOS COLABORATIVOS NEC Y FIDIC',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-Contratos-Internacionales.webp',
-                'image_fallback'=> 'img/Index-Contratos-Internacionales.png',
-                'route'         => '/contratos',
-                'description'   => 'Formulación, sustento técnico-económico y defensa de claims contractuales bajo estándares FIDIC y NEC.'
+                'image'         => 'img/capacitaciones/gestion-reclamos-nec-fidic.webp',
+                'image_fallback'=> 'img/capacitaciones/gestion-reclamos-nec-fidic.png',
+                'route'         => '/gestion-reclamos-nec-fidic',
+                'description'   => 'Estructura y formulación de claims bajo NEC y FIDIC: reclamos de plazo, demoras concurrentes, aceleración, daños, disruption, mitigación y análisis de cronograma.'
             ],
             [
                 'number'        => 23,
