@@ -87,6 +87,7 @@ runTest("Catálogo reconoce los cursos requeridos de ambas ramas", function () {
         'indicadores-de-calidad',
         'direccion-calidad-enfoque-pmi',
         'herramientas',
+        'oficina-tecnica-obras-viales',
     ];
 
     foreach ($requiredSlugs as $slug) {

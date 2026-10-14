@@ -103,6 +103,11 @@ class CourseCatalog
             'title' => 'Gestión Integral de Oficina Técnica en Obras',
             'url'   => '/oficina-tecnica',
         ],
+        'oficina-tecnica-obras-viales' => [
+            'slug'  => 'oficina-tecnica-obras-viales',
+            'title' => 'Oficina Técnica en Obras Viales',
+            'url'   => '/oficina-tecnica-obras-viales',
+        ],
         'pmo' => [
             'slug'  => 'pmo',
             'title' => 'Gestión e Implementación de PMO en Construcción',
