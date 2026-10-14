@@ -516,5 +516,20 @@ class TrainingController extends Controller
 
         $this->render('pages/oficina-tecnica-obras-viales', $data, 'main');
     }
+
+    /**
+     * Curso: Oficina Técnica en Edificaciones y Hospitales.
+     */
+    public function oficinaTecnicaHospitalesEdificaciones(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Oficina Técnica en Edificaciones y Hospitales | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Gestión de la Oficina Técnica en Edificaciones y Hospitales: alcance, plazo, costo, comunicaciones y procura. 16 horas netas y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/oficina-tecnica-hospitales-edificaciones',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/oficina-tecnica-hospitales-edificaciones', $data, 'main');
+    }
 }
 

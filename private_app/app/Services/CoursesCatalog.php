@@ -157,14 +157,14 @@ class CoursesCatalog
             ],
             [
                 'number'        => 12,
-                'title'         => 'OFICINA TÉCNICA EN HOSPITALES',
+                'title'         => 'OFICINA TÉCNICA EN EDIFICACIONES Y HOSPITALES',
                 'category'      => 'Oficina Técnica',
                 'category_slug' => 'oficina-tecnica',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-OficinaTecnicaObras.webp',
-                'image_fallback'=> 'img/Index-OficinaTecnicaObras.png',
-                'route'         => '/oficina-tecnica',
-                'description'   => 'Control técnico, instalaciones especiales y especificaciones biomédicas en infraestructura hospitalaria.'
+                'image'         => 'img/capacitaciones/oficina-tecnica-hospitales-edificaciones.webp',
+                'image_fallback'=> 'img/capacitaciones/oficina-tecnica-hospitales-edificaciones.png',
+                'route'         => '/oficina-tecnica-hospitales-edificaciones',
+                'description'   => 'Gestión de la oficina técnica en proyectos de edificaciones y hospitales: aspectos diferenciadores, criterios técnicos y equipamiento.'
             ],
             [
                 'number'        => 13,

@@ -108,6 +108,11 @@ class CourseCatalog
             'title' => 'Oficina Técnica en Obras Viales',
             'url'   => '/oficina-tecnica-obras-viales',
         ],
+        'oficina-tecnica-hospitales-edificaciones' => [
+            'slug'  => 'oficina-tecnica-hospitales-edificaciones',
+            'title' => 'Oficina Técnica en Edificaciones y Hospitales',
+            'url'   => '/oficina-tecnica-hospitales-edificaciones',
+        ],
         'pmo' => [
             'slug'  => 'pmo',
             'title' => 'Gestión e Implementación de PMO en Construcción',
