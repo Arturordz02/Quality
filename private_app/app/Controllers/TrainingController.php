@@ -531,5 +531,20 @@ class TrainingController extends Controller
 
         $this->render('pages/oficina-tecnica-hospitales-edificaciones', $data, 'main');
     }
+
+    /**
+     * Curso: Oficina Técnica en Infraestructura Minera (PADs, Presas de Relave, Geosintéticos).
+     */
+    public function oficinaTecnicaInfraestructuraMinera(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Oficina Técnica en Infraestructura Minera | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Gestión de la Oficina Técnica en Infraestructura Minera (PADs, presas de relave y geosintéticos): organización, alcance, procura, planificación y costos. 15 horas netas y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/oficina-tecnica-infraestructura-minera',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/oficina-tecnica-infraestructura-minera', $data, 'main');
+    }
 }
 
