@@ -696,6 +696,21 @@ class TrainingController extends Controller
 
         $this->render('pages/contratos-colaborativos-nec3-f', $data, 'main');
     }
+
+    /**
+     * Curso: Casos Prácticos de Contratos NEC3-F.
+     */
+    public function casosPracticosContratosNec3f(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Casos Prácticos de Contratos NEC3-F | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Casos Prácticos de Contratos NEC3-F: términos, obligaciones del contratista y del cliente, gestión de riesgos, alertas tempranas, eventos compensables y casuística real. 12 horas netas y 12 PDU.',
+            'canonical'       => 'https://quality-consulting.org/casos-practicos-contratos-nec3-f',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/casos-practicos-contratos-nec3-f', $data, 'main');
+    }
 }
 
 

@@ -23,6 +23,11 @@ class CourseCatalog
             'title' => 'BIM Revit Architecture',
             'url'   => '/bim-revit-architecture',
         ],
+        'casos-practicos-contratos-nec3-f' => [
+            'slug'  => 'casos-practicos-contratos-nec3-f',
+            'title' => 'Casos Prácticos de Contratos NEC3-F',
+            'url'   => '/casos-practicos-contratos-nec3-f',
+        ],
         'contratos-estado' => [
             'slug'  => 'contratos-estado',
             'title' => 'Contrataciones con el Estado y Ley 30225',
