@@ -88,8 +88,10 @@ $course = [
 
     // 4. Perfil docente (Ing. Martín Ortiz - Páginas 1 y 4 del documento oficial)
     'docente'             => [
-        'photo'          => '',
-        'photo_webp'     => '',
+        'photo'          => 'img/docentes/martin-ortiz.png',
+        'photo_webp'     => 'img/docentes/martin-ortiz.webp',
+        'photo_alt'      => 'Ing. Martín Ortiz, docente de Oficina Técnica en Obras Viales',
+        'alt'            => 'Ing. Martín Ortiz, docente de Oficina Técnica en Obras Viales',
         'name'           => 'Ing. Martín Ortiz',
         'experience_tag' => '+20 años de experiencia',
         'credentials'    => ['Ing. Civil', 'PMP®', 'Egresado UNI', 'Colegiado'],

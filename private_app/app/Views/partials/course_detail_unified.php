@@ -162,10 +162,11 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
                 <!-- Columna Derecha: Perfil docente -->
                 <div class="col-12 col-lg-6" id="perfil-docente">
                     <?php
-                    $hasPhoto        = !empty($docente['photo']);
-                    $docPhoto        = $docente['photo'] ?? '';
+                    $hasPhoto        = !empty($docente['photo']) || !empty($docente['photo_webp']);
+                    $docPhoto        = !empty($docente['photo']) ? $docente['photo'] : ($docente['photo_webp'] ?? '');
                     $docPhotoWebp    = $docente['photo_webp'] ?? '';
                     $docName         = $docente['name'] ?? '';
+                    $docAlt          = $docente['alt'] ?? ($docente['photo_alt'] ?? $docName);
                     $docExpTag       = $docente['experience_tag'] ?? '';
                     $docCredentials  = $docente['credentials'] ?? [];
                     $docSummary      = $docente['summary'] ?? '';
@@ -191,7 +192,7 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
                                     <source srcset="<?= htmlspecialchars($docPhotoWebp, ENT_QUOTES, 'UTF-8') ?>" type="image/webp">
                                     <?php endif; ?>
                                     <img src="<?= htmlspecialchars($docPhoto, ENT_QUOTES, 'UTF-8') ?>"
-                                         alt="<?= htmlspecialchars($docName, ENT_QUOTES, 'UTF-8') ?>"
+                                         alt="<?= htmlspecialchars($docAlt, ENT_QUOTES, 'UTF-8') ?>"
                                          loading="lazy">
                                 </picture>
                             </div>
