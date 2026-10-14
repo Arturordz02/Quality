@@ -621,5 +621,21 @@ class TrainingController extends Controller
 
         $this->render('pages/junta-resolucion-disputas-dab', $data, 'main');
     }
+
+    /**
+     * Curso: Gestión del Cambio en los Contratos con el Estado.
+     */
+    public function gestionCambiosContratosEstado(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Gestión del Cambio en los Contratos con el Estado | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Gestión del Cambio en los Contratos con el Estado: marco contractual, causales, ampliaciones de plazo, adicionales, deductivos, cronograma y solución de controversias. 16 horas netas y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/gestion-cambios-contratos-estado',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/gestion-cambios-contratos-estado', $data, 'main');
+    }
 }
+
 

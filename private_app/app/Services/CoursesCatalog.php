@@ -293,14 +293,14 @@ class CoursesCatalog
             ],
             [
                 'number'        => 24,
-                'title'         => 'GESTIÓN DEL CAMBIO EN CONTRATOS CON EL ESTADO',
+                'title'         => 'GESTIÓN DEL CAMBIO EN LOS CONTRATOS CON EL ESTADO',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-Contratos-Internacionales.webp',
-                'image_fallback'=> 'img/Index-Contratos-Internacionales.png',
-                'route'         => '/contratos-estado',
-                'description'   => 'Sustentación de adicionales de obra, deductivos y ampliaciones de plazo bajo la Ley de Contrataciones del Estado.'
+                'image'         => 'img/capacitaciones/gestion-cambios-contratos-estado.webp',
+                'image_fallback'=> 'img/capacitaciones/gestion-cambios-contratos-estado.png',
+                'route'         => '/gestion-cambios-contratos-estado',
+                'description'   => 'Marco principal de la gestión de contratos con el Estado, causales y lineamientos para gestionar cambios, ampliaciones, adicionales y solución de controversias.'
             ],
             [
                 'number'        => 25,

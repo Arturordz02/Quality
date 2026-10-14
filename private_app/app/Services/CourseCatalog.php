@@ -68,6 +68,11 @@ class CourseCatalog
             'title' => 'Gerencia de la Calidad en Construcción',
             'url'   => '/gerencia-de-calidad',
         ],
+        'gestion-cambios-contratos-estado' => [
+            'slug'  => 'gestion-cambios-contratos-estado',
+            'title' => 'Gestión del Cambio en los Contratos con el Estado',
+            'url'   => '/gestion-cambios-contratos-estado',
+        ],
         'gestion-reclamos-nec-fidic' => [
             'slug'  => 'gestion-reclamos-nec-fidic',
             'title' => 'Gestión de Reclamos en Contratos de Construcción y Contratos Colaborativos NEC y FIDIC',
