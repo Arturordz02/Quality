@@ -172,9 +172,9 @@ class CoursesCatalog
                 'category'      => 'Oficina Técnica',
                 'category_slug' => 'oficina-tecnica',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-OficinaTecnicaObras.webp',
-                'image_fallback'=> 'img/Index-OficinaTecnicaObras.png',
-                'route'         => '/oficina-tecnica',
+                'image'         => 'img/capacitaciones/oficina-tecnica-obras-viales.webp',
+                'image_fallback'=> 'img/capacitaciones/oficina-tecnica-obras-viales.png',
+                'route'         => '/oficina-tecnica-obras-viales',
                 'description'   => 'Administración técnica, movimientos de tierras, pavimentos y valorizaciones en carreteras y puentes.'
             ],
             [

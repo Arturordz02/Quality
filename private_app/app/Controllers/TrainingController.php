@@ -501,5 +501,20 @@ class TrainingController extends Controller
 
         $this->render('pages/seminario-diagrama-ishikawa', $data, 'main');
     }
+
+    /**
+     * Curso: Oficina Técnica en Obras Viales.
+     */
+    public function oficinaTecnicaObrasViales(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Oficina Técnica en Obras Viales | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Gestión de la Oficina Técnica en Obras Viales: integración, alcance, plazo, costo, comunicaciones y procura. 16 horas netas y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/oficina-tecnica-obras-viales',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/oficina-tecnica-obras-viales', $data, 'main');
+    }
 }
 
