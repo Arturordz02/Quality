@@ -681,6 +681,21 @@ class TrainingController extends Controller
 
         $this->render('pages/eventos-compensables-alertas-tempranas-nec4', $data, 'main');
     }
+
+    /**
+     * Curso: Contratos Colaborativos NEC3-F.
+     */
+    public function contratosColaborativosNec3f(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Contratos Colaborativos NEC3-F | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Contratos Colaborativos NEC3-F: Project Delivery System, distribución balanceada de riesgos, cláusulas clave, gestión del cambio y Last Planner® System. 14 horas netas y 14 PDU.',
+            'canonical'       => 'https://quality-consulting.org/contratos-colaborativos-nec3-f',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/contratos-colaborativos-nec3-f', $data, 'main');
+    }
 }
 
 

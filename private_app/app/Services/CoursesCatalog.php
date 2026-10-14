@@ -194,14 +194,14 @@ class CoursesCatalog
             // ==========================================
             [
                 'number'        => 15,
-                'title'         => 'CONTRATOS COLABORATIVOS NEC 3F',
+                'title'         => 'CONTRATOS COLABORATIVOS NEC3-F',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Curso',
-                'image'         => 'img/nec1.webp',
-                'image_fallback'=> 'img/nec1.png',
-                'route'         => '/nec',
-                'description'   => 'Estructura y cláusulas clave del contrato NEC3 Opción F para gerenciamiento de proyectos complejos.'
+                'image'         => 'img/capacitaciones/contratos-colaborativos-nec3-f.webp',
+                'image_fallback'=> 'img/capacitaciones/contratos-colaborativos-nec3-f.png',
+                'route'         => '/contratos-colaborativos-nec3-f',
+                'description'   => 'Marco integral de gestión contractual bajo el contrato colaborativo NEC3-F: Project Delivery System, distribución de riesgos, cláusulas clave y Last Planner®.'
             ],
             [
                 'number'        => 16,
