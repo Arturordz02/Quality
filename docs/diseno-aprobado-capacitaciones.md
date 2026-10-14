@@ -13,8 +13,14 @@ Este documento registra la arquitectura, estructura de datos, clases CSS, recurs
 1. **Gerencia de la Calidad en la Construcción** (`/gerencia-de-calidad`)
 2. **ISO 9001 para la Construcción usando IA** (`/iso-9001`)
 3. **Control de Calidad en Tunelería** (`/control-de-calidad-en-tuneleria`)
-4. **Taller de Herramientas de Gestión de Calidad en la Construcción + uso de IA** (`/herramientas`)
-5. **Dirección de la Calidad con el Enfoque PMI® para la Construcción** (`/calidad-y-pmi`)
+4. **Seminario Completion - Evita el Síndrome del 90%** (`/sindrome-del-90`)
+5. **Seminario ISO 9001:2026** (`/seminario-iso-9001-2026`)
+6. **Seminario Indicadores Avanzados de Calidad** (`/indicadores-de-calidad`)
+7. **Gestión de Riesgos Técnicos en la Construcción con el Nuevo Estándar del PMI® 2024** (`/riesgos-tecnicos`)
+8. **Gestión de Riesgos en Proyectos con el Enfoque PMI®** (`/riesgos-pmi`)
+9. **Gestión de Riesgos, Cambios y Reclamos en la Construcción** (`/gestion-de-riesgos`)
+10. **Riesgos en la Cadena de Producción de la Construcción ISO 31000 usando BIM** (`/riesgos-cadena-produccion`)
+11. **Análisis Cuantitativo de Riesgos del Costo y Cronograma con Simulación de Monte Carlo** (`/analisis-cuantitativo-riesgos`)
 
 Cualquier integración futura de nuevos brochures deberá reutilizar esta plantilla y sus reglas sin rediseñar la interfaz ni inventar contenidos no respaldados por el documento oficial de cada curso.
 
@@ -27,10 +33,17 @@ Cualquier integración futura de nuevos brochures deberá reutilizar esta planti
   - `private_app/app/Views/pages/gerencia-de-calidad.php`
   - `private_app/app/Views/pages/iso-9001.php`
   - `private_app/app/Views/pages/control-de-calidad-en-tuneleria.php`
-  - `private_app/app/Views/pages/herramientas.php`
-  - `private_app/app/Views/pages/calidad-y-pmi.php`
+  - `private_app/app/Views/pages/sindrome-del-90.php`
+  - `private_app/app/Views/pages/seminario-iso-9001-2026.php`
+  - `private_app/app/Views/pages/indicadores-de-calidad.php`
+  - `private_app/app/Views/pages/riesgos-tecnicos.php`
+  - `private_app/app/Views/pages/riesgos-pmi.php`
+  - `private_app/app/Views/pages/gestion-de-riesgos.php`
+  - `private_app/app/Views/pages/riesgos-cadena-produccion.php`
+  - `private_app/app/Views/pages/analisis-cuantitativo-riesgos.php`
 - **Controlador:** `private_app/app/Controllers/TrainingController.php`
 - **Repositorio centralizado del catálogo (48 cursos):** `private_app/app/Services/CoursesCatalog.php`
+- **Catálogo de validación de pagos (24 slugs):** `private_app/app/Services/CourseCatalog.php`
 - **Layout maestro:** `private_app/app/Views/layouts/main.php`
 
 Cada vista de curso define únicamente el arreglo asociativo `$course` con los datos reales extraídos de su brochure y delega el renderizado completo mediante:
@@ -113,7 +126,9 @@ $course = [
     'enroll_bg_image'      => 'img/ISO1.webp', // Opcional: imagen temática para el lado izquierdo del panel oscuro ('' usa solo el degradado)
     'whatsapp_url'         => 'https://api.whatsapp.com/send?phone=51993463118&text=...',
     'modal_service'        => 'Nombre del curso para el modal #modalSolicitarInfo',
-    'paypal_slug'          => 'slug-del-curso', // Habilitado para los 6 cursos autorizados; vacío en los demás
+    'paypal_slug'          => 'slug-del-curso', // Habilitado para los cursos autorizados con botón de primera clase
+    'area_back_url'        => '/capacitacion-riesgos', // Opcional: URL de retorno al área (por defecto '/capacitacion-calidad')
+    'area_back_title'      => 'Volver al Área de Riesgos', // Opcional: Texto del enlace de retorno
 
     // 7. Sección opcional de videos y conferencias
     'videos'               => [ // Arreglo vacío [] si el curso no tiene videos asociados
@@ -380,4 +395,84 @@ El registro se guarda atómicamente en disco en `private_app/backend/storage/que
      Get-ChildItem -Path public_html, _site -Recurse -Filter "*.pdf"
      ```
    - Credenciales sensibles excluidas del control de versiones.
+
+---
+
+## 12. Bloque 1 – Área de Gestión de Riesgos
+
+En octubre de 2026 se integró el primer bloque de tres capacitaciones del Área de Riesgos, adaptando sus brochures oficiales al diseño unificado:
+
+### 12.1 Mapeo de Capacitaciones y Documentos
+1. **Gestión de Riesgos Técnicos en la Construcción con el nuevo Estándar del PMI® 2024**
+   - **Registro catálogo:** Curso #26 (`/riesgos-tecnicos`).
+   - **Brochure privado:** `private_app/storage/brochures/riesgos/gestion-de-los-riesgos-tecnicos-en-la-construccion.pdf`.
+   - **Docente:** Ing. Omar A. Samaniego (+25 años, CIP, PMP®, PMI-RMP®, Stanford VDC, LSS Black Belt). Contribuidor de PMBOK® 7ma Ed. y Estándar PMI® 2024. Autor del libro «Gestión de los Riesgos Técnicos en la Construcción».
+   - **Foto:** `img/Omar_Samaniego.png` y `.webp`.
+   - **Carga académica:** 16 horas netas • 16 PDU ante el PMI® (The PMI Talent Triangle®).
+   - **Temario:** 6 procesos de gestión de riesgos + Taller práctico de Inteligencia Artificial aplicada.
+   - **Multimedia:** Conserva 2 sesiones técnicas en video (`i_SoabWi3uo`, `lMo47jd1z8w`).
+   - **Imagen de tarjeta:** `img/capacitaciones/gestion-de-riesgos-tecnicos-construccion.webp` (fallback `.png`).
+   - **Pasarela:** Botón de primera clase por US$10 (`paypal_slug => 'riesgos-tecnicos'`).
+
+2. **Gestión de Riesgos en Proyectos con el Enfoque PMI®**
+   - **Registro catálogo:** Curso #29 (`/riesgos-pmi`).
+   - **Brochure privado:** `private_app/storage/brochures/riesgos/gestion-de-riesgos-en-proyectos-enfoque-pmi.pdf`.
+   - **Docente:** Ing. Félix Valdez – Torero (+35 años, ING., PhD(c), MSc, PMP®). Fundador del Capítulo Peruano del PMI®, Contribuidor PMBOK® 6ta Ed., Presidente AACE International Perú, Miembro Consejo Directivo INACAL.
+   - **Foto:** `img/Feliz-Valdes-Torero.jpg` y `.webp`.
+   - **Carga académica:** 16 horas netas • 08 sesiones • 16 PDU ante el PMI®.
+   - **Temario:** 6 procesos estándar de riesgos (Planificar, Identificar, Analizar, Planificar Respuesta, Implementar Respuesta, Monitorear).
+   - **Imagen de tarjeta:** `img/capacitaciones/gestion-de-riesgos-enfoque-pmi.webp` (fallback `.png`).
+   - **Pasarela:** Botón de primera clase por US$10 (`paypal_slug => 'riesgos-pmi'`).
+
+3. **Gestión de Riesgos, Cambios y Reclamos en la Construcción**
+   - **Registro catálogo:** Curso #27 (`/gestion-de-riesgos`).
+   - **Brochure privado:** `private_app/storage/brochures/riesgos/gestion-de-riesgos-cambios-y-reclamos.pdf`.
+   - **Docente:** Ing. Víctor Viteri Valiente (+23 años, ING., MBA, PMP®, APEC). Project Management Director en CBRE Peru, ex Skanska, San Martín, Buenaventura y Graña y Montero.
+   - **Foto:** Variante aprobada sin foto (pastilla de experiencia y nombre ordenados sin recuadros vacíos).
+   - **Carga académica:** 14 horas netas • 14 PDU ante el PMI®.
+   - **Temario:** 8 ejes modulares (Portafolios/Programas, Sistema de Riesgos, Riesgos por Área, Gestión del Cambio, Cambio de Plazo, Cambio de Alcance, Cambio de Contrataciones, Reclamos y Disputas).
+   - **Imagen de tarjeta:** `img/capacitaciones/gestion-de-riesgos-cambios-y-reclamos.webp` (fallback `.png`).
+   - **Pasarela:** Botón de primera clase por US$10 (`paypal_slug => 'gestion-de-riesgos'`).
+
+### 12.2 Enlace de Retorno Dinámico
+- Para las capacitaciones de Riesgos, `$course['area_back_url'] = '/capacitacion-riesgos'` y `$course['area_back_title'] = 'Volver al Área de Riesgos'`, permitiendo navegación bidireccional consistente sin afectar los cursos de Calidad.
+
+---
+
+## 13. Bloque 2 – Área de Gestión de Riesgos
+
+En octubre de 2026 se completó el catálogo de 5 capacitaciones del Área de Riesgos con la integración de las dos últimas especializaciones respaldadas por sus brochures oficiales:
+
+### 13.1 Mapeo de Capacitaciones y Documentos
+1. **Riesgos en la Cadena de Producción de la Construcción ISO 31000 usando BIM**
+   - **Registro catálogo:** Curso #28 (`/riesgos-cadena-produccion`).
+   - **Brochure privado:** `private_app/storage/brochures/riesgos/iso-31000-riesgos-cadena-produccion.pdf`.
+   - **Docente:** Ing. Omar A. Samaniego (+25 años, CIP, PMP®, PMI-RMP®, NEC4, VDC - Stanford, LSS Black Belt). Contribuidor registrado del Estándar PMI® 2024 y PMBOK® 7ma Ed.
+   - **Foto:** `img/Omar_Samaniego.png` y `.webp`.
+   - **Carga académica:** 16 horas netas • 16 PDU ante el PMI® (CCR: General Education Third-Party Provider).
+   - **Temario:** 5 módulos normativos y operativos (Principios ISO 31000, Procesos de Cadena de Producción, Herramientas Técnicas ISO 31010/PMI, BIM Aplicado a Riesgos, Plan de Respuesta y Monitoreo).
+   - **Multimedia:** Conserva 2 sesiones técnicas en video (`ZtqdT9OiPzo`, `rMK0nn3LkRU`).
+   - **Imagen de tarjeta:** `img/capacitaciones/iso-31000-riesgos-cadena-produccion.webp` (fallback `.png`).
+   - **Pasarela:** Bloque de pago primera clase por US$10 (`paypal_slug => 'riesgos-cadena-produccion'`).
+
+2. **Análisis Cuantitativo de Riesgos del Costo y Cronograma con Simulación de Monte Carlo**
+   - **Registro catálogo:** Curso #30 (`/analisis-cuantitativo-riesgos`).
+   - **Ruta nueva dedicada:** `/analisis-cuantitativo-riesgos` (desacoplada de la ruta duplicada anterior).
+   - **Brochure privado:** `private_app/storage/brochures/riesgos/analisis-cuantitativo-de-riesgos.pdf`.
+   - **Docente:** Ing. Edwar Marcelo (+15 años, ING., PMP®, PMI-RMP®, PMI-SP®, ECCDA, PRINCE2®). Trayectoria en IDON, Asesores y Consultores TF, DISMET y VQ Ingeniería.
+   - **Foto:** Variante oficial aprobada sin foto (pastilla de experiencia y nombre ordenados armónicamente, sin recuadros vacíos ni avatares genéricos).
+   - **Carga académica:** 12 horas netas • 06 sesiones • 12 PDU ante el PMI® (The PMI Talent Triangle®).
+   - **Temario:** 3 módulos cuantitativos (Procesos de Gestión de Riesgos, Análisis Cuantitativo con Monte Carlo & Sensibilidad/Tornado, Reporte y Sustentación de Contingencias).
+   - **Imagen de tarjeta:** `img/capacitaciones/analisis-cuantitativo-riesgos-monte-carlo.webp` (fallback `.png`).
+   - **Pasarela:** Bloque de pago primera clase por US$10 (`paypal_slug => 'analisis-cuantitativo-riesgos'`).
+
+### 13.2 Estado Final del Área de Riesgos
+Con la conclusión de este bloque, el Área de Riesgos cuenta con sus **5 capacitaciones oficiales** plenamente integradas bajo el diseño unificado:
+1. Curso #26: Gestión de Riesgos Técnicos en la Construcción con el nuevo Estándar del PMI® 2024 (`/riesgos-tecnicos`)
+2. Curso #27: Gestión de Riesgos, Cambios y Reclamos en la Construcción (`/gestion-de-riesgos`)
+3. Curso #28: Riesgos en la Cadena de Producción de la Construcción ISO 31000 usando BIM (`/riesgos-cadena-produccion`)
+4. Curso #29: Gestión de Riesgos en Proyectos con el Enfoque PMI® (`/riesgos-pmi`)
+5. Curso #30: Análisis Cuantitativo de Riesgos del Costo y Cronograma con Simulación de Monte Carlo (`/analisis-cuantitativo-riesgos`)
+
+
 

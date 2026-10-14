@@ -178,19 +178,29 @@ class CourseCatalog
             'title' => 'Gestión de Proyectos bajo el Enfoque PMI / PMBOK',
             'url'   => '/proyectos-pmi',
         ],
+        'gestion-de-riesgos' => [
+            'slug'  => 'gestion-de-riesgos',
+            'title' => 'Gestión de Riesgos, Cambios y Reclamos en la Construcción',
+            'url'   => '/gestion-de-riesgos',
+        ],
         'riesgos-cadena-produccion' => [
             'slug'  => 'riesgos-cadena-produccion',
-            'title' => 'Gestión de Riesgos en la Cadena de Producción',
+            'title' => 'Riesgos en la Cadena de Producción de la Construcción ISO 31000 usando BIM',
             'url'   => '/riesgos-cadena-produccion',
+        ],
+        'analisis-cuantitativo-riesgos' => [
+            'slug'  => 'analisis-cuantitativo-riesgos',
+            'title' => 'Análisis Cuantitativo de Riesgos del Costo y Cronograma con Simulación de Monte Carlo',
+            'url'   => '/analisis-cuantitativo-riesgos',
         ],
         'riesgos-pmi' => [
             'slug'  => 'riesgos-pmi',
-            'title' => 'Gestión de Riesgos bajo Estándares PMI',
+            'title' => 'Gestión de Riesgos en Proyectos con el Enfoque PMI®',
             'url'   => '/riesgos-pmi',
         ],
         'riesgos-tecnicos' => [
             'slug'  => 'riesgos-tecnicos',
-            'title' => 'Gestión de Riesgos Técnicos en Obras',
+            'title' => 'Gestión de Riesgos Técnicos en la Construcción',
             'url'   => '/riesgos-tecnicos',
         ],
         'valor-ganado' => [

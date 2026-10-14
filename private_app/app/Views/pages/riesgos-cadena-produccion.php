@@ -1,556 +1,143 @@
 <?php
 /**
  * QUALITY CONSULTING SOLUTIONS - ARQUITECTURA MVC
- * Vista de P?gina: Riesgos de la Cadena de Producci?n de la Construcci?n
+ * Vista de Página: Riesgos en la Cadena de Producción de la Construcción ISO 31000 usando BIM (Diseño Unificado)
  * Archivo: app/Views/pages/riesgos-cadena-produccion.php
  */
 
 declare(strict_types=1);
-?>
-<main class="page-content">
 
-        <!-- ==========================================================================
-             1. SECCIÓN HERO / ENCABEZADO DEL CURSO (Hero Azul Corporativo)
-             ========================================================================== -->
-        <section class="page-banner banner-riesgos-cadena">
-            <div class="page-banner-bg banner-riesgos-cadena-bg"></div>
-            <div class="page-banner-overlay"></div>
-            <div class="page-banner-container">
-                
-                <!-- Badge Superior Requerido -->
-                <div class="page-title-wrap">
-                    <span class="course-badge-upcoming">
-                        <i class="fas fa-industry"></i> PRÓXIMAMENTE | ENFOQUE ISO 31000 &amp; ISO 31010
-                    </span>
-                    <h1 class="page-main-title animate__animated animate__fadeInDown">RIESGOS DE LA CADENA DE PRODUCCIÓN DE LA CONSTRUCCIÓN</h1>
-                    <div class="title-underline"></div>
-                </div>
-
-                <!-- Subtítulo Requerido -->
-                <div class="intro-card">
-                    <p class="intro-text animate__animated animate__fadeInUp animate__delay-1s">
-                        Aplica el enfoque de gestión de riesgos a la cadena de producción de proyectos mediante marcos ISO 31000 y herramientas de la ISO 31010.
-                    </p>
-                </div>
-
-                <!-- Grid de 3 Tarjetas de Características Destacadas dentro del Hero -->
-                <div class="hero-cards-grid">
-                    
-                    <!-- Tarjeta 1: Modalidad -->
-                    <div class="hero-feature-card">
-                        <div class="hero-feature-icon">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                        </div>
-                        <div class="hero-feature-content">
-                            <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Capacitaciones Grabadas y En Vivo</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Aprende a tu ritmo con clases grabadas o consulta disponibilidad para sesiones en vivo con nuestros especialistas.</p>
-                        </div>
-                    </div>
-
-                    <!-- Tarjeta 2: Acceso Multiplataforma -->
-                    <div class="hero-feature-card">
-                        <div class="hero-feature-icon">
-                            <i class="fa-solid fa-laptop-code"></i>
-                        </div>
-                        <div class="hero-feature-content">
-                            <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Acceso Multiplataforma</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">PC, Laptop, Tablet y Celular (Video HD disponibles 24/7).</p>
-                        </div>
-                    </div>
-
-                    <!-- Tarjeta 3: Beneficios -->
-                    <div class="hero-feature-card">
-                        <div class="hero-feature-icon">
-                            <i class="fa-solid fa-stamp"></i>
-                        </div>
-                        <div class="hero-feature-content">
-                            <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Beneficios</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Incluye Diploma + Ingreso a Bolsa de Trabajo + Descuentos de Ex-alumno.</p>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-             2. PERFIL DEL DOCENTE, OBJETIVO E IMAGEN CONCEPTUAL (Layout 2 Columnas)
-             ========================================================================== -->
-        <section class="content-section" id="perfil-objetivo">
-            <div class="section-container">
-                
-                <div class="grid-split-layout">
-                    
-                    <!-- Columna Izquierda: Perfil del Docente Destacado -->
-                    <div class="split-text-col">
-                        <div class="section-header-compact">
-                            <span class="sub-badge"><i class="fa-solid fa-user-graduate"></i> Excelencia Profesional &amp; Liderazgo</span>
-                            <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">DOCENTE DEL PROGRAMA</h2>
-                            <div class="heading-line"></div>
-                        </div>
-
-                        <!-- Tarjeta del Docente Destacado con Fondo Diferenciado -->
-                        <div class="docente-card docente-pmi-highlight" style="margin-top: 1.25rem;">
-                            <div class="docente-avatar-box">
-                                <div class="docente-avatar"><picture><source srcset="img/Omar_Samaniego.webp" type="image/webp"><img src="img/Omar_Samaniego.png" alt="Ing. Omar Samaniego" class="rounded-circle shadow-sm" style="width: 100%; height: 100%; object-fit: cover; object-position: top;"></picture></div>
-                                <span class="docente-verified-badge" title="Docente Principal Certificado">
-                                    <i class="fa-solid fa-check"></i>
-                                </span>
-                            </div>
-                            <div class="docente-info">
-                                <span class="docente-tag">Docente Principal</span>
-                                <h3 class="docente-name animate__animated animate__fadeInUp animate__delay-1s">ING. OMAR SAMANIEGO</h3>
-                                
-                                <!-- Credenciales / Badges Requeridos -->
-                                <div class="docente-credentials-row">
-                                    <span class="credential-badge"><i class="fa-solid fa-award"></i> PMP®</span>
-                                    <span class="credential-badge"><i class="fa-solid fa-shield-halved"></i> PMI-RMP®</span>
-                                    <span class="credential-badge"><i class="fa-solid fa-medal"></i> LSS Black Belt</span>
-                                </div>
-
-                                <!-- Bio / Logros Destacados Requeridos -->
-                                <p class="docente-profile">
-                                    Profesional con más de 20 años de experiencia en Gestión de la Calidad en el Sector Construcción en empresas líderes del Perú y el extranjero.
-                                </p>
-                                
-                                <div class="docente-recognition-card">
-                                    <i class="fa-solid fa-star text-gold"></i>
-                                    <div class="docente-recognition-text">
-                                        Contribuidor Registrado del Estándar de Gestión de Riesgos del PMI® y de la Guía del PMBOK®.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Columna Derecha: Objetivo del Curso + Imagen de Referencia -->
-                    <div class="split-text-col">
-                        <div class="section-header-compact">
-                            <span class="sub-badge"><i class="fa-solid fa-bullseye"></i> Enfoque Estratégico &amp; Logístico</span>
-                            <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">OBJETIVO DEL CURSO</h2>
-                            <div class="heading-line"></div>
-                        </div>
-
-                        <!-- Párrafo Explicativo Requerido -->
-                        <p class="paragraph-text paragraph-lead">
-                            Presentar el enfoque de Gestión de Riesgos aplicado directamente a la Cadena de Producción de los Proyectos de construcción, utilizando el marco de la norma ISO 31000 y herramientas cualitativas y cuantitativas basadas en la ISO 31010.
-                        </p>
-
-                        <!-- Contenedor para Imagen de Cadena de Producción -->
-                        <!-- Imagen conceptual sobre cadena de producción e ingeniería -->
-                        <div class="course-img-preview-box">
-                            <picture>
-                                <source srcset="img/caprodu1.webp" type="image/webp">
-                                <img src="img/caprodu1.png" alt="Cadena de producción y logística en construcción" class="course-img-preview" loading="lazy">
-                            </picture>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-             3. CONTENIDOS DEL CURSO (Estructura y Herramientas del Programa)
-             ========================================================================== -->
-        <section class="content-section bg-alternate" id="estructura-herramientas">
-            <div class="section-container">
-                
-                <div class="section-header-center">
-                    <span class="sub-badge"><i class="fa-solid fa-layer-group"></i> Estándares ISO 31000 &amp; ISO 31010</span>
-                    <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">ESTRUCTURA Y HERRAMIENTAS DEL PROGRAMA</h2>
-                    <div class="heading-line center-line"></div>
-                    <p class="section-subtitle-text">
-                        Un programa integral diseñado para identificar vulnerabilidades operativas, optimizar los suministros y blindar la continuidad de la obra.
-                    </p>
-                </div>
-
-                <div class="iso-blocks-container">
-                    
-                    <!-- BLOQUE 1: Marco Normativo ISO 31000 -->
-                    <div class="iso-block-section">
-                        <div class="iso-block-header">
-                            <h3 class="animate__animated animate__fadeInUp animate__delay-1s"><i class="fa-solid fa-book-bookmark text-gold"></i> Bloque 1: Marco Normativo y Proceso de Gestión de Riesgos (ISO 31000)</h3>
-                            <p>Directrices para la integración sistemática de la gestión del riesgo en la cadena de valor constructiva.</p>
-                        </div>
-
-                        <div class="iso-process-grid-8">
-                            
-                            <div class="pmbok-card">
-                                <div class="pmbok-card-header">
-                                    <span class="pmbok-step-badge">FASE 01</span>
-                                    <div class="pmbok-icon"><i class="fa-solid fa-compass"></i></div>
-                                </div>
-                                <h4 class="pmbok-card-title">Principios de Gestión</h4>
-                                <p class="pmbok-card-desc">Fundamentos de creación y protección del valor en la cadena productiva.</p>
-                            </div>
-
-                            <div class="pmbok-card">
-                                <div class="pmbok-card-header">
-                                    <span class="pmbok-step-badge">FASE 02</span>
-                                    <div class="pmbok-icon"><i class="fa-solid fa-cubes"></i></div>
-                                </div>
-                                <h4 class="pmbok-card-title">Marco de Referencia</h4>
-                                <p class="pmbok-card-desc">Liderazgo, diseño, implementación, evaluación y mejora continua en obra.</p>
-                            </div>
-
-                            <div class="pmbok-card">
-                                <div class="pmbok-card-header">
-                                    <span class="pmbok-step-badge">FASE 03</span>
-                                    <div class="pmbok-icon"><i class="fa-solid fa-crosshairs"></i></div>
-                                </div>
-                                <h4 class="pmbok-card-title">Alcance &amp; Contexto</h4>
-                                <p class="pmbok-card-desc">Definición de criterios de riesgo técnico, contractual y logístico.</p>
-                            </div>
-
-                            <div class="pmbok-card">
-                                <div class="pmbok-card-header">
-                                    <span class="pmbok-step-badge">FASE 04</span>
-                                    <div class="pmbok-icon"><i class="fa-solid fa-magnifying-glass-location"></i></div>
-                                </div>
-                                <h4 class="pmbok-card-title">Identificación de Riesgos</h4>
-                                <p class="pmbok-card-desc">Reconocimiento sistemático de fuentes de incertidumbre en la cadena de suministro.</p>
-                            </div>
-
-                            <div class="pmbok-card">
-                                <div class="pmbok-card-header">
-                                    <span class="pmbok-step-badge">FASE 05</span>
-                                    <div class="pmbok-icon"><i class="fa-solid fa-chart-simple"></i></div>
-                                </div>
-                                <h4 class="pmbok-card-title">Análisis de Riesgos</h4>
-                                <p class="pmbok-card-desc">Comprensión de causas, consecuencias, probabilidades e impactos operativos.</p>
-                            </div>
-
-                            <div class="pmbok-card">
-                                <div class="pmbok-card-header">
-                                    <span class="pmbok-step-badge">FASE 06</span>
-                                    <div class="pmbok-icon"><i class="fa-solid fa-scale-unbalanced"></i></div>
-                                </div>
-                                <h4 class="pmbok-card-title">Valoración de Riesgos</h4>
-                                <p class="pmbok-card-desc">Comparación de resultados con criterios de tolerancia para priorizar decisiones.</p>
-                            </div>
-
-                            <div class="pmbok-card">
-                                <div class="pmbok-card-header">
-                                    <span class="pmbok-step-badge">FASE 07</span>
-                                    <div class="pmbok-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                                </div>
-                                <h4 class="pmbok-card-title">Tratamiento del Riesgo</h4>
-                                <p class="pmbok-card-desc">Selección y ejecución de planes de contingencia y mitigación en producción.</p>
-                            </div>
-
-                            <div class="pmbok-card">
-                                <div class="pmbok-card-header">
-                                    <span class="pmbok-step-badge">FASE 08</span>
-                                    <div class="pmbok-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
-                                </div>
-                                <h4 class="pmbok-card-title">Seguimiento &amp; Revisión</h4>
-                                <p class="pmbok-card-desc">Auditoría, comunicación y monitoreo constante de los controles establecidos.</p>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- BLOQUE 2: Herramientas de Análisis ISO 31010 -->
-                    <div class="iso-block-section">
-                        <div class="iso-block-header">
-                            <h3 class="animate__animated animate__fadeInUp animate__delay-1s"><i class="fa-solid fa-toolbox text-gold"></i> Bloque 2: Herramientas de Análisis y Evaluación de Riesgos (ISO 31010)</h3>
-                            <p>10 técnicas prácticas aplicadas directamente a la cadena de suministro, subcontratación y procesos constructivos.</p>
-                        </div>
-
-                        <div class="tools-grid-10">
-                            
-                            <!-- Herramienta 1 -->
-                            <div class="tool-card">
-                                <div class="tool-icon"><i class="fa-solid fa-diagram-project"></i></div>
-                                <h4 class="tool-title">Diagrama de Afinidad</h4>
-                                <p class="tool-desc">Agrupación lógica de grandes volúmenes de datos e ideas de riesgo.</p>
-                            </div>
-
-                            <!-- Herramienta 2 -->
-                            <div class="tool-card">
-                                <div class="tool-icon"><i class="fa-solid fa-network-wired"></i></div>
-                                <h4 class="tool-title">Diagrama de Árbol</h4>
-                                <p class="tool-desc">Descomposición jerárquica de causas raíces y eventos secuenciales.</p>
-                            </div>
-
-                            <!-- Herramienta 3 -->
-                            <div class="tool-card">
-                                <div class="tool-icon"><i class="fa-solid fa-chart-column"></i></div>
-                                <h4 class="tool-title">Análisis de Pareto</h4>
-                                <p class="tool-desc">Identificación del 20% de factores que generan el 80% de los problemas en obra.</p>
-                            </div>
-
-                            <!-- Herramienta 4 -->
-                            <div class="tool-card">
-                                <div class="tool-icon"><i class="fa-solid fa-bezier-curve"></i></div>
-                                <h4 class="tool-title">Diagrama Bow Tie</h4>
-                                <p class="tool-desc">Visualización integrada de causas, evento central, barreras y consecuencias.</p>
-                            </div>
-
-                            <!-- Herramienta 5 -->
-                            <div class="tool-card">
-                                <div class="tool-icon"><i class="fa-solid fa-code-fork"></i></div>
-                                <h4 class="tool-title">Diagrama de Ishikawa</h4>
-                                <p class="tool-desc">Análisis Causa-Efecto (Causa Cero) para fallas de abastecimiento y calidad.</p>
-                            </div>
-
-                            <!-- Herramienta 6 -->
-                            <div class="tool-card">
-                                <div class="tool-icon"><i class="fa-solid fa-coins"></i></div>
-                                <h4 class="tool-title">Valor Monetario Esperado</h4>
-                                <p class="tool-desc">Cálculo del impacto financiero cuantitativo promedio frente a incertidumbres.</p>
-                            </div>
-
-                            <!-- Herramienta 7 -->
-                            <div class="tool-card">
-                                <div class="tool-icon"><i class="fa-solid fa-clipboard-list"></i></div>
-                                <h4 class="tool-title">Registro de Riesgos</h4>
-                                <p class="tool-desc">Estructuración del repositorio maestro de amenazas, respuestas y responsables.</p>
-                            </div>
-
-                            <!-- Herramienta 8 -->
-                            <div class="tool-card">
-                                <div class="tool-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
-                                <h4 class="tool-title">Mapa de Calor de Riesgos</h4>
-                                <p class="tool-desc">Matriz visual de criticidad para focalizar la atención de la gerencia.</p>
-                            </div>
-
-                            <!-- Herramienta 9 -->
-                            <div class="tool-card">
-                                <div class="tool-icon"><i class="fa-solid fa-table-cells"></i></div>
-                                <h4 class="tool-title">Matriz Probabilidad x Impacto</h4>
-                                <p class="tool-desc">Evaluación y ponderación cualitativa estandarizada de eventos de riesgo.</p>
-                            </div>
-
-                            <!-- Herramienta 10 -->
-                            <div class="tool-card">
-                                <div class="tool-icon"><i class="fa-solid fa-shield-virus"></i></div>
-                                <h4 class="tool-title">Plan de Respuestas</h4>
-                                <p class="tool-desc">Formulación de contingencias y acciones operativas de mitigación.</p>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-             4. SECCIÓN MULTIMEDIA (2 Videos Promocionales de YouTube)
-             ========================================================================== -->
-        <section class="content-section" id="multimedia-videos">
-            <div class="section-container">
-                
-                <div class="section-header-center">
-                    <span class="sub-badge"><i class="fa-brands fa-youtube"></i> Conferencias &amp; Cápsulas Informativas</span>
-                    <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">VIDEOS Y CONFERENCIAS DE LA CADENA DE PRODUCCIÓN</h2>
-                    <div class="heading-line center-line"></div>
-                    <p class="section-subtitle-text">
-                        Conoce las aplicaciones prácticas de la gestión de riesgos logísticos e industriales en proyectos de construcción de alta envergadura.
-                    </p>
-                </div>
-
-                <!-- Grid Responsive de 2 Columnas para Videos -->
-                <div class="videos-promo-grid">
-                    
-                    <!-- Video 1 -->
-                    <div class="video-card-wrapper">
-                        <div class="video-header-bar">
-                            <span><i class="fa-brands fa-youtube text-danger"></i> Cadena de Producción &amp; Riesgos - Sesión 1</span>
-                            <span class="video-live-pill">
-                                <span class="video-live-dot"></span> HD 1080p
-                            </span>
-                        </div>
-                        <div class="video-responsive-container">
-                            <iframe src="https://www.youtube.com/embed/ZtqdT9OiPzo" title="Riesgos de la Cadena de Producción - Video 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy">
-                            </iframe>
-                        </div>
-                        <div class="video-caption-box">
-                            <p>
-                                <i class="fa-solid fa-play-circle text-gold"></i> <strong>Cadena de Valor &amp; Suministros:</strong> Mapeo integral de riesgos en el aprovisionamiento y procesos de obra.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Video 2 -->
-                    <div class="video-card-wrapper">
-                        <div class="video-header-bar">
-                            <span><i class="fa-brands fa-youtube text-danger"></i> Cadena de Producción &amp; Riesgos - Sesión 2</span>
-                            <span class="video-live-pill">
-                                <span class="video-live-dot"></span> HD 1080p
-                            </span>
-                        </div>
-                        <div class="video-responsive-container">
-                            <iframe src="https://www.youtube.com/embed/rMK0nn3LkRU" title="Riesgos de la Cadena de Producción - Video 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy">
-                            </iframe>
-                        </div>
-                        <div class="video-caption-box">
-                            <p>
-                                <i class="fa-solid fa-play-circle text-gold"></i> <strong>Herramientas ISO 31010:</strong> Aplicación práctica de diagramas de causa-efecto y matrices de mitigación.
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-             5. SECCIÓN DE INSCRIPCIÓN Y PASARELAS DE PAGO (CTA Destacado)
-             ========================================================================== -->
-        <section class="content-section bg-alternate" id="inscripcion">
-            <div class="section-container">
-                
-                <div class="course-enrollment-card">
-                    
-                    <span class="enroll-badge">
-                        <i class="fa-solid fa-bolt"></i> PROGRAMA ESPECIALIZADO • MODALIDAD ONLINE
-                    </span>
-
-                    <div style="text-align: center;">
-                        <span class="promo-notice-pill">
-                            <i class="fa-solid fa-tags"></i> ¡Consulte por promociones y campañas de temporada!
-                        </span>
-                    </div>
-                    
-                    <h2 class="enroll-title animate__animated animate__fadeInUp animate__delay-1s">ASEGURA TU VACANTE EN EL PROGRAMA</h2>
-                    <p class="enroll-subtitle">
-                        Capacítate con especialistas en estándares internacionales de riesgo para la construcción y optimiza la productividad de tus operaciones.
-                    </p>
-
-                    <!-- Beneficios de la Matrícula -->
-                    <div class="enroll-perks-grid">
-                        <div class="enroll-perk-item">
-                            <div class="enroll-perk-icon">
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                            </div>
-                            <span>Docente Contribuidor PMBOK® &amp; Estándar PMI®</span>
-                        </div>
-
-                        <div class="enroll-perk-item">
-                            <div class="enroll-perk-icon">
-                                <i class="fa-solid fa-cloud-arrow-down"></i>
-                            </div>
-                            <span>Acceso inmediato a las clases y disponible 24/7.</span>
-                        </div>
-
-                        <div class="enroll-perk-item">
-                            <div class="enroll-perk-icon">
-                                <i class="fa-solid fa-certificate"></i>
-                            </div>
-                            <span>Incluye Diploma.</span>
-                        </div>
-
-                        <div class="enroll-perk-item">
-                            <div class="enroll-perk-icon">
-                                <i class="fa-solid fa-briefcase"></i>
-                            </div>
-                            <span>Bolsa de Trabajo &amp; Beneficios de Ex-alumno</span>
-                        </div>
-                    </div>
-
-                    <!-- Botones de Acción, Solicitud y Pago PayPal -->
-                    <div class="row g-3 justify-content-center">
-                        
-                        <!-- 1. Botón WhatsApp -->
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=Buen%20d%C3%ADa,%20deseo%20solicitar%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Riesgos%20de%20la%20Cadena%20de%20Producci%C3%B3n" target="_blank" rel="noopener noreferrer" class="btn btn-success btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Consultar información del curso de Riesgos de la Cadena de Producción por WhatsApp">
-                                <i class="fab fa-whatsapp me-2"></i> Consultar por WhatsApp
-                            </a>
-                        </div>
-
-                        <!-- 2. Botón Modal Solicitar Información -->
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <button type="button" class="btn btn-warning text-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" data-bs-toggle="modal" data-bs-target="#modalSolicitarInfo" data-service="Riesgos de la Cadena de Producción">
-                                <i class="fa-solid fa-headset me-2"></i> Solicitar Información
-                            </button>
-                        </div>
-
-                        <!-- 3. Botón Brochure / Ficha Técnica -->
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfcOqofW4iYhVaaTlqyZSbrc2YxQFAetqvY94GC7gWWRA4zdw/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Solicitar información y brochure del curso en Google Forms">
-                                <i class="fas fa-file-pdf me-2"></i> Info &amp; Brochure
-                            </a>
-                        </div>
-
-                        <!-- 4. Botón Pago PayPal (Primera Clase) -->
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://www.paypal.com/paypalme/qualityconsulting/10" target="_blank" rel="noopener noreferrer" class="btn btn-paypal btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold text-white btn-paypal-first-class" data-course-slug="riesgos-cadena-produccion" aria-label="Pagar primera clase con PayPal">
-                                <i class="fab fa-paypal me-2"></i> PayPal
-                            </a>
-                        </div>
-
-                        <!-- Nota explicativa de alcance exclusivo de USD 10 -->
-                        <div class="col-12 text-center text-lg-start mt-2">
-                            <p class="small text-warning mb-0">
-                                <i class="fas fa-info-circle me-1"></i> Pago exclusivo de USD 10 por la primera clase del curso.
-                            </p>
-                        </div>
-
-                    </div>
-
-
-                    <!-- Barra de Confianza y Seguridad -->
-                    <div class="payment-trust-bar">
-                        <div class="payment-trust-item">
-                            <i class="fa-solid fa-lock"></i>
-                            <span>Plataforma con Encriptación SSL 256-bit</span>
-                        </div>
-                        <div class="payment-trust-item">
-                            <i class="fa-solid fa-shield-halved"></i>
-                            <span>Transacción 100% Segura y Verificada</span>
-                        </div>
-                        <div class="payment-trust-item">
-                            <i class="fa-solid fa-headset"></i>
-                            <span>Soporte Académico y Administrativo Permanente</span>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-             6. LLAMADO A LA ACCIÓN FINAL (Contacto Corporativo)
-             ========================================================================== -->
-        <section class="cta-banner-section" id="contacto-final">
-            <div class="cta-container">
-                <div class="cta-box">
-                    <div class="cta-content">
-                        <span class="cta-tag"><i class="fa-solid fa-calendar-check"></i> Próxima Convocatoria</span>
-                        <h3 class="animate__animated animate__fadeInUp animate__delay-1s">Reserva tu vacante para la apertura</h3>
-                        <p>
-                            Contáctanos hoy mismo para asegurar tu vacante preferencial, resolver consultas curriculares o consultar por planes corporativos in-house para tu empresa.
-                        </p>
-                        
-                        <!-- Teléfono Visible Clickeable Requerido -->
-                        <div class="cta-phone-wrapper" style="margin-top: 1.25rem;">
-                            <a href="tel:+51993463118" class="cta-phone-link" aria-label="Llamar al +51 993 463 118">
-                                <i class="fa-solid fa-phone-volume"></i>
-                                <span>+51 993 463 118</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="cta-actions">
-                        <a href="/contacto" class="btn btn-large btn-qcs-primary">
-                            <i class="fa-solid fa-envelope"></i> Contacto Directo
-                        </a>
-                        <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=w_%20%20%20%20%20%20Buen%20d%C3%ADa,%20%C2%BFpodr%C3%ADan%20enviarme%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Riesgos%20de%20la%20Cadena%20de%20Producci%C3%B3n?" target="_blank" rel="noopener noreferrer" class="btn btn-large btn-qcs-dark">
-                            <i class="fa-brands fa-whatsapp"></i> Chat WhatsApp
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
+$course = [
+    'hero_badge'          => 'ESTÁNDAR ISO 31000 & HERRAMIENTAS ISO 31010 • ENFOQUE BIM • 16 HORAS',
+    'hero_badge_icon'     => 'fa-solid fa-industry',
+    'title'               => 'RIESGOS EN LA CADENA DE PRODUCCIÓN DE LA CONSTRUCCIÓN ISO 31000 USANDO BIM',
+    'summary'             => 'Aplica los principios y directrices de la norma ISO 31000 y herramientas de la ISO 31010 a lo largo de la cadena de producción en proyectos de construcción, integrando la metodología BIM para la toma de decisiones y control de contingencias.',
+    'hero_cards'          => [
+        [
+            'icon'  => 'fa-solid fa-network-wired',
+            'title' => 'CADENA DE PRODUCCIÓN',
+            'desc'  => 'Gestión integral de riesgos desde el abastecimiento, subcontratos y logística hasta la ejecución en obra.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-cube',
+            'title' => 'INTEGRACIÓN BIM',
+            'desc'  => 'Modelado de información de la construcción (BIM) aplicado a la identificación temprana y visualización de interferencias.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-award',
+            'title' => '16 HORAS & 16 PDU',
+            'desc'  => '16 PDU para el mantenimiento de credenciales PMI® (Categoría CCR: General Education Third-Party Provider).',
+        ],
+        [
+            'icon'  => 'fa-solid fa-screwdriver-wrench',
+            'title' => 'HERRAMIENTAS ISO 31010',
+            'desc'  => 'Aplicación de Diagramas Bow Tie, Árbol de Fallas, Matriz PxI, EMV y mapas de calor en proyectos.',
+        ],
+    ],
+    'objective'           => 'Presentar el vínculo de los procesos de la gestión de riesgos según el estándar internacional ISO 31000 y la norma técnica ISO 31010 con los aspectos prácticos de la cadena de producción en construcción. Brindar marcos sistemáticos para evaluar riesgos de proveedores, contratistas, logística y obra civil, complementando el análisis con entornos BIM.',
+    'objective_highlights'=> [
+        'Alineamiento riguroso a los principios, marco de referencia y procesos de la norma ISO 31000.',
+        'Implementación de técnicas de evaluación de riesgos según ISO 31010 (Bow Tie, Ishikawa, Pareto, Árbol de decisiones y EMV).',
+        'Integración de modelos BIM para detectar riesgos espaciales, temporales y constructivos en la cadena productiva.',
+        'Desarrollo de planes de contingencia y matrices de probabilidad e impacto para salvaguardar costos y cronogramas.',
+    ],
+    'syllabus_intro'      => 'El programa se estructura en 5 módulos especializados que abarcan desde los fundamentos normativos hasta la aplicación práctica de herramientas y BIM:',
+    'syllabus'            => [
+        [
+            'title'   => 'Principios y Marco de Referencia ISO 31000',
+            'icon'    => 'fa-solid fa-shield-halved',
+            'content' => '<p>Fundamentos de la gestión del riesgo según la ISO 31000: principios rectores, integración en el liderazgo organizacional, diseño del marco para la gestión del riesgo y mejora continua en organizaciones del sector construcción.</p>',
+        ],
+        [
+            'title'   => 'Proceso de Gestión del Riesgo en la Cadena de Producción',
+            'icon'    => 'fa-solid fa-diagram-project',
+            'content' => '<p>Alcance, contexto y criterios de evaluación. Identificación sistemática de riesgos en la cadena de abastecimiento, análisis de causas y consecuencias, valoración y tratamiento de riesgos operativos, contractuales y logísticos.</p>',
+        ],
+        [
+            'title'   => 'Herramientas Técnicas de Evaluación (ISO 31010 / PMI)',
+            'icon'    => 'fa-solid fa-toolbox',
+            'content' => '<p>Aplicación práctica de herramientas técnicas:</p><ul><li>Diagrama de afinidad y tormenta de ideas estructurada.</li><li>Árbol de fallas y árbol de eventos.</li><li>Diagrama de Pareto e Ishikawa causa-efecto.</li><li>Análisis Bow Tie aplicado a eventos críticos.</li><li>Valor Monetario Esperado (EMV), Matriz PxI y Mapas de Calor.</li></ul>',
+        ],
+        [
+            'title'   => 'Modelado BIM Aplicado a la Gestión de Riesgos',
+            'icon'    => 'fa-solid fa-cubes',
+            'content' => '<p>Uso de modelos BIM (Building Information Modeling) para la detección temprana de colisiones, simulación 4D de fases constructivas, visualización de riesgos de seguridad y control de interferencias en la cadena de montaje y suministros.</p>',
+        ],
+        [
+            'title'   => 'Plan de Respuesta, Monitoreo y Lecciones Aprendidas',
+            'icon'    => 'fa-solid fa-clipboard-check',
+            'content' => '<p>Formulación de planes de mitigación, contingencia y transferencia. Establecimiento de indicadores clave de riesgo (KRI), auditorías de control, registro dinámico y retroalimentación mediante lecciones aprendidas.</p>',
+        ],
+    ],
+    'docente'             => [
+        'name'            => 'Ing. Omar A. Samaniego',
+        'experience_tag'  => 'Más de 25 años de experiencia',
+        'photo'           => 'img/Omar_Samaniego.png',
+        'photo_webp'      => 'img/Omar_Samaniego.webp',
+        'credentials'     => ['CIP', 'PMP®', 'PMI-RMP®', 'NEC4', 'VDC - Stanford', 'LSS Black Belt'],
+        'summary'         => 'Profesional con más de 25 años de experiencia en el Sector Construcción en Gestión de Proyectos, Riesgos y Calidad en empresas líderes en el Perú y el extranjero. Director de Quality Consulting Solutions, docente de postgrado y ponente en congresos internacionales.',
+        'highlights'      => [
+            '<strong>Contribuidor Registrado</strong> del nuevo <strong>Estándar de Riesgos del PMI® 2024</strong> y de la <strong>Guía del PMBOK® 7ma Edición</strong>.',
+            'Autor de los libros <em>«Gestión de los Riesgos Técnicos en la Construcción»</em> e <em>«ISO 9001 para la Construcción»</em>.',
+            'Trayectoria de alta dirección: Ex Risk & Quality Manager en Gleeds (UK), Jefe Corporativo de Calidad en Graña y Montero (GyM), Gerente de Proyectos en Buenaventura Ingenieros y Jefe de Calidad en Cosapi.',
+            'Catedrático de postgrado en la Universidad Peruana de Ciencias Aplicadas (UPC), MDI PUCP - Universidad Politécnica de Madrid, Universidad de Lima e Instituto para la Calidad.',
+        ],
+        'recognition'     => 'Expositor en conferencias internacionales de Stanford University (Techsuyo, 2017), Global Congress PMI (Washington D.C., 2010) y Congreso Regional PMI Lima.',
+    ],
+    'benefits'            => [
+        [
+            'icon'  => 'fa-solid fa-network-wired',
+            'title' => 'Enfoque Integral en Cadena de Producción',
+            'text'  => 'Metodología aplicable a compras, subcontratación, logística y producción en obra civil.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-cube',
+            'title' => 'Entornos y Metodología BIM',
+            'text'  => 'Visualización y detección temprana de interferencias y riesgos con herramientas BIM.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-award',
+            'title' => '16 Horas & 16 PDU Oficiales',
+            'text'  => 'Acreditación oficial para el mantenimiento de credenciales PMI® bajo The PMI Talent Triangle®.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-certificate',
+            'title' => 'Diploma Digital Oficial',
+            'text'  => 'Diploma digital emitido a nombre de Quality Consulting Solutions.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-toolbox',
+            'title' => 'Plantillas y Matrices ISO 31010',
+            'text'  => 'Formatos editables de Bow Tie, matrices de probabilidad e impacto y mapas de calor.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-video',
+            'title' => 'Grabaciones y Bolsa de Trabajo',
+            'text'  => 'Acceso a grabaciones de clase durante 4 semanas e incorporación a nuestra bolsa de empleo.',
+        ],
+    ],
+    'pdu_title'           => 'Acreditación Oficial de 16 PDU ante el PMI®',
+    'pdu_text'            => 'Si tienes certificación del PMI® este curso te brinda <strong>16 PDU</strong> (Professional Development Unit) para mantener tu certificación según la descripción provista por el PMI®: <em>(Professional Development Unit) Categoría PMI® CCR: General Education Third-Party Provider. The PMI Talent Triangle®</em>.',
+    'whatsapp_url'        => 'https://wa.me/51993463118?text=' . rawurlencode('Buen día, deseo solicitar información sobre el curso de Riesgos en la Cadena de Producción de la Construcción ISO 31000 usando BIM'),
+    'whatsapp_btn_text'   => 'Solicitar información por WhatsApp',
+    'modal_service'       => 'Riesgos en la Cadena de Producción ISO 31000 usando BIM',
+    'paypal_slug'         => 'riesgos-cadena-produccion',
+    'area_back_url'       => '/capacitacion-riesgos',
+    'area_back_title'     => 'Volver al Área de Riesgos',
+    'videos'              => [
+        [
+            'header'    => 'Cadena de Producción & Riesgos - Sesión 1',
+            'embed_url' => 'https://www.youtube.com/embed/ZtqdT9OiPzo',
+            'title'     => 'Riesgos de la Cadena de Producción - Video 1',
+            'caption'   => '<strong>Cadena de Valor & Suministros:</strong> Mapeo integral de riesgos en el aprovisionamiento y procesos de obra.',
+        ],
+        [
+            'header'    => 'Cadena de Producción & Riesgos - Sesión 2',
+            'embed_url' => 'https://www.youtube.com/embed/rMK0nn3LkRU',
+            'title'     => 'Riesgos de la Cadena de Producción - Video 2',
+            'caption'   => '<strong>Herramientas ISO 31010:</strong> Aplicación práctica de diagramas de causa-efecto y matrices de mitigación.',
+        ],
+    ],
+];
+
+require __DIR__ . '/../partials/course_detail_unified.php';

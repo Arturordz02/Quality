@@ -337,9 +337,11 @@ document.addEventListener('DOMContentLoaded', function () {
         'oficina-tecnica': 'Gestión Integral de Oficina Técnica en Obras',
         'pmo': 'Gestión e Implementación de PMO en Construcción',
         'proyectos-pmi': 'Gestión de Proyectos bajo el Enfoque PMI / PMBOK',
-        'riesgos-cadena-produccion': 'Gestión de Riesgos en la Cadena de Producción',
-        'riesgos-pmi': 'Gestión de Riesgos bajo Estándares PMI',
-        'riesgos-tecnicos': 'Gestión de Riesgos Técnicos en Obras',
+        'gestion-de-riesgos': 'Gestión de Riesgos, Cambios y Reclamos en la Construcción',
+        'riesgos-cadena-produccion': 'Riesgos en la Cadena de Producción de la Construcción ISO 31000 usando BIM',
+        'analisis-cuantitativo-riesgos': 'Análisis Cuantitativo de Riesgos del Costo y Cronograma con Simulación de Monte Carlo',
+        'riesgos-pmi': 'Gestión de Riesgos en Proyectos con el Enfoque PMI®',
+        'riesgos-tecnicos': 'Gestión de Riesgos Técnicos en la Construcción',
         'valor-ganado': 'Gestión del Valor Ganado (EVM) en Construcción'
     };
 

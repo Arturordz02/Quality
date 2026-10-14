@@ -78,7 +78,6 @@ return function (Router $router, array $config): void {
     $router->get('/consultoria', [ServiceController::class, 'consultoria']);
     $router->get('/gestion-de-la-calidad', [ServiceController::class, 'gestionCalidad']);
     $router->get('/gestion-de-pmo', [ServiceController::class, 'gestionPmo']);
-    $router->get('/gestion-de-riesgos', [ServiceController::class, 'gestionRiesgos']);
     $router->get('/cronograma-forense', [ServiceController::class, 'cronogramaForense']);
     $router->get('/headhunting', [ServiceController::class, 'headhunting']);
     $router->get('/oficina-tecnica', [ServiceController::class, 'oficinaTecnica']);
@@ -117,8 +116,10 @@ return function (Router $router, array $config): void {
     $router->get('/nec', [TrainingController::class, 'nec']);
     $router->get('/pmo', [TrainingController::class, 'pmo']);
     $router->get('/proyectos-pmi', [TrainingController::class, 'proyectosPmi']);
+    $router->get('/gestion-de-riesgos', [TrainingController::class, 'gestionRiesgos']);
     $router->get('/riesgo-del-plazo', [TrainingController::class, 'riesgoDelPlazo']);
     $router->get('/riesgos-cadena-produccion', [TrainingController::class, 'riesgosCadenaProduccion']);
+    $router->get('/analisis-cuantitativo-riesgos', [TrainingController::class, 'analisisCuantitativoRiesgos']);
     $router->get('/riesgos-pmi', [TrainingController::class, 'riesgosPmi']);
     $router->get('/riesgos-tecnicos', [TrainingController::class, 'riesgosTecnicos']);
     $router->get('/universidad-corporativa', [TrainingController::class, 'universidadCorporativa']);
