@@ -249,14 +249,14 @@ class CoursesCatalog
             ],
             [
                 'number'        => 20,
-                'title'         => 'GESTIÓN DE EVENTOS COMPENSABLES Y ALERTAS NEC4',
+                'title'         => 'GESTIÓN DE EVENTOS COMPENSABLES Y ALERTAS TEMPRANAS EN CONTRATOS NEC4',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Curso',
-                'image'         => 'img/nec1.webp',
-                'image_fallback'=> 'img/nec1.png',
-                'route'         => '/nec',
-                'description'   => 'Procedimiento formal, plazos perentorios y cuantificación de eventos compensables y notificaciones de alerta.'
+                'image'         => 'img/capacitaciones/eventos-compensables-alertas-tempranas-nec4.webp',
+                'image_fallback'=> 'img/capacitaciones/eventos-compensables-alertas-tempranas-nec4.png',
+                'route'         => '/eventos-compensables-alertas-tempranas-nec4',
+                'description'   => 'Gestión de Eventos Compensables y Alertas Tempranas en NEC4: cláusulas, Defined Costs, tiempos de presentación, sustento y escalamiento.'
             ],
             [
                 'number'        => 21,
