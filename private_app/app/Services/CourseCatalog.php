@@ -28,10 +28,30 @@ class CourseCatalog
             'title' => 'Contrataciones con el Estado y Ley 30225',
             'url'   => '/contratos-estado',
         ],
+        'contrato-colaborativo-nec-3-4' => [
+            'slug'  => 'contrato-colaborativo-nec-3-4',
+            'title' => 'Contrato Colaborativo NEC 3/4',
+            'url'   => '/contrato-colaborativo-nec-3-4',
+        ],
+        'contrato-nec4' => [
+            'slug'  => 'contrato-nec4',
+            'title' => 'El Contrato de NEC4',
+            'url'   => '/contrato-nec4',
+        ],
         'contratos' => [
             'slug'  => 'contratos',
             'title' => 'Administración de Contratos de Construcción',
             'url'   => '/contratos',
+        ],
+        'contratos-colaborativos-nec3-f' => [
+            'slug'  => 'contratos-colaborativos-nec3-f',
+            'title' => 'Contratos Colaborativos NEC3-F',
+            'url'   => '/contratos-colaborativos-nec3-f',
+        ],
+        'contratos-fidic-epc-construccion' => [
+            'slug'  => 'contratos-fidic-epc-construccion',
+            'title' => 'Contratos FIDIC para Contratos EPC y Construcción',
+            'url'   => '/contratos-fidic-epc-construccion',
         ],
         'costos' => [
             'slug'  => 'costos',
@@ -42,6 +62,11 @@ class CourseCatalog
             'slug'  => 'direccion-calidad-enfoque-pmi',
             'title' => 'Dirección de la Calidad con el Enfoque PMI® para la Construcción',
             'url'   => '/direccion-calidad-enfoque-pmi',
+        ],
+        'eventos-compensables-alertas-tempranas-nec4' => [
+            'slug'  => 'eventos-compensables-alertas-tempranas-nec4',
+            'title' => 'Gestión de Eventos Compensables y Alertas Tempranas en Contratos NEC4',
+            'url'   => '/eventos-compensables-alertas-tempranas-nec4',
         ],
         'fidic' => [
             'slug'  => 'fidic',
@@ -57,6 +82,21 @@ class CourseCatalog
             'slug'  => 'gerencia-de-calidad',
             'title' => 'Gerencia de la Calidad en Construcción',
             'url'   => '/gerencia-de-calidad',
+        ],
+        'gestion-cambios-contratos-estado' => [
+            'slug'  => 'gestion-cambios-contratos-estado',
+            'title' => 'Gestión del Cambio en los Contratos con el Estado',
+            'url'   => '/gestion-cambios-contratos-estado',
+        ],
+        'gestion-contractual-megaproyectos-mineros' => [
+            'slug'  => 'gestion-contractual-megaproyectos-mineros',
+            'title' => 'Gestión Contractual en los Megaproyectos de Construcción Mineros',
+            'url'   => '/gestion-contractual-megaproyectos-mineros',
+        ],
+        'gestion-reclamos-nec-fidic' => [
+            'slug'  => 'gestion-reclamos-nec-fidic',
+            'title' => 'Gestión de Reclamos en Contratos de Construcción y Contratos Colaborativos NEC y FIDIC',
+            'url'   => '/gestion-reclamos-nec-fidic',
         ],
         'herramientas' => [
             'slug'  => 'herramientas',
@@ -83,6 +123,16 @@ class CourseCatalog
             'title' => 'Seminario Completion - Evita el Síndrome del 90%',
             'url'   => '/sindrome-del-90',
         ],
+        'seminario-diagrama-ishikawa' => [
+            'slug'  => 'seminario-diagrama-ishikawa',
+            'title' => 'Casos de Aplicación del Diagrama de Ishikawa',
+            'url'   => '/seminario-diagrama-ishikawa',
+        ],
+        'junta-resolucion-disputas-dab' => [
+            'slug'  => 'junta-resolucion-disputas-dab',
+            'title' => 'Claves para el Éxito en la Junta de Resolución de Disputas - JRD (DAB) de Obras',
+            'url'   => '/junta-resolucion-disputas-dab',
+        ],
         'lean-last-planner' => [
             'slug'  => 'lean-last-planner',
             'title' => 'Lean Construction y Sistema Last Planner',
@@ -97,6 +147,26 @@ class CourseCatalog
             'slug'  => 'oficina-tecnica',
             'title' => 'Gestión Integral de Oficina Técnica en Obras',
             'url'   => '/oficina-tecnica',
+        ],
+        'oficina-tecnica-obras-viales' => [
+            'slug'  => 'oficina-tecnica-obras-viales',
+            'title' => 'Oficina Técnica en Obras Viales',
+            'url'   => '/oficina-tecnica-obras-viales',
+        ],
+        'oficina-tecnica-hospitales-edificaciones' => [
+            'slug'  => 'oficina-tecnica-hospitales-edificaciones',
+            'title' => 'Oficina Técnica en Edificaciones y Hospitales',
+            'url'   => '/oficina-tecnica-hospitales-edificaciones',
+        ],
+        'oficina-tecnica-infraestructura-minera' => [
+            'slug'  => 'oficina-tecnica-infraestructura-minera',
+            'title' => 'Oficina Técnica en Infraestructura Minera (PADs, Presas de Relave, Geosintéticos)',
+            'url'   => '/oficina-tecnica-infraestructura-minera',
+        ],
+        'oficina-tecnica-edificaciones-panel-control' => [
+            'slug'  => 'oficina-tecnica-edificaciones-panel-control',
+            'title' => 'Oficina Técnica en Edificaciones + Panel de Control 100% Real Time',
+            'url'   => '/oficina-tecnica-edificaciones-panel-control',
         ],
         'pmo' => [
             'slug'  => 'pmo',

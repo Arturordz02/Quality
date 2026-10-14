@@ -98,14 +98,14 @@ class CoursesCatalog
             ],
             [
                 'number'        => 7,
-                'title'         => 'SEMINARIO DIAGRAMA DE ISHIKAWA',
+                'title'         => 'CASOS DE APLICACIÓN DEL DIAGRAMA DE ISHIKAWA',
                 'category'      => 'Calidad',
                 'category_slug' => 'calidad',
                 'type'          => 'Seminario',
-                'image'         => 'img/GERCA1.webp',
-                'image_fallback'=> 'img/GERCA1.png',
-                'route'         => null,
-                'description'   => 'Análisis de causa raíz y resolución metódica de no conformidades mediante el diagrama causa-efecto.'
+                'image'         => 'img/capacitaciones/seminario-diagrama-ishikawa.webp',
+                'image_fallback'=> 'img/capacitaciones/seminario-diagrama-ishikawa.png',
+                'route'         => '/seminario-diagrama-ishikawa',
+                'description'   => 'Análisis de causa raíz, acción correctiva vs. corrección y resolución práctica de no conformidades mediante casos y talleres guiados.'
             ],
             [
                 'number'        => 8,
@@ -146,25 +146,25 @@ class CoursesCatalog
             // ==========================================
             [
                 'number'        => 11,
-                'title'         => 'OFICINA TÉCNICA EN EDIFICACIONES',
+                'title'         => 'OFICINA TÉCNICA EN EDIFICACIONES + PANEL DE CONTROL 100% REAL TIME',
                 'category'      => 'Oficina Técnica',
                 'category_slug' => 'oficina-tecnica',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-OficinaTecnicaObras.webp',
-                'image_fallback'=> 'img/Index-OficinaTecnicaObras.png',
-                'route'         => '/oficina-tecnica',
-                'description'   => 'Gestión integral de oficina técnica en edificios residenciales y comerciales: metrados, RFI y submittals.'
+                'image'         => 'img/capacitaciones/oficina-tecnica-edificaciones-panel-control.webp',
+                'image_fallback'=> 'img/capacitaciones/oficina-tecnica-edificaciones-panel-control.png',
+                'route'         => '/oficina-tecnica-edificaciones-panel-control',
+                'description'   => 'Gestión de oficina técnica en edificaciones de envergadura con panel de control 100% en tiempo real vía cloud con Looker Studio.'
             ],
             [
                 'number'        => 12,
-                'title'         => 'OFICINA TÉCNICA EN HOSPITALES',
+                'title'         => 'OFICINA TÉCNICA EN EDIFICACIONES Y HOSPITALES',
                 'category'      => 'Oficina Técnica',
                 'category_slug' => 'oficina-tecnica',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-OficinaTecnicaObras.webp',
-                'image_fallback'=> 'img/Index-OficinaTecnicaObras.png',
-                'route'         => '/oficina-tecnica',
-                'description'   => 'Control técnico, instalaciones especiales y especificaciones biomédicas en infraestructura hospitalaria.'
+                'image'         => 'img/capacitaciones/oficina-tecnica-hospitales-edificaciones.webp',
+                'image_fallback'=> 'img/capacitaciones/oficina-tecnica-hospitales-edificaciones.png',
+                'route'         => '/oficina-tecnica-hospitales-edificaciones',
+                'description'   => 'Gestión de la oficina técnica en proyectos de edificaciones y hospitales: aspectos diferenciadores, criterios técnicos y equipamiento.'
             ],
             [
                 'number'        => 13,
@@ -172,21 +172,21 @@ class CoursesCatalog
                 'category'      => 'Oficina Técnica',
                 'category_slug' => 'oficina-tecnica',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-OficinaTecnicaObras.webp',
-                'image_fallback'=> 'img/Index-OficinaTecnicaObras.png',
-                'route'         => '/oficina-tecnica',
+                'image'         => 'img/capacitaciones/oficina-tecnica-obras-viales.webp',
+                'image_fallback'=> 'img/capacitaciones/oficina-tecnica-obras-viales.png',
+                'route'         => '/oficina-tecnica-obras-viales',
                 'description'   => 'Administración técnica, movimientos de tierras, pavimentos y valorizaciones en carreteras y puentes.'
             ],
             [
                 'number'        => 14,
-                'title'         => 'OFICINA TÉCNICA EN OBRAS MINERAS',
+                'title'         => 'OFICINA TÉCNICA EN INFRAESTRUCTURA MINERA (PADs, PRESAS DE RELAVE, GEOSINTÉTICOS)',
                 'category'      => 'Oficina Técnica',
                 'category_slug' => 'oficina-tecnica',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-OficinaTecnicaObras.webp',
-                'image_fallback'=> 'img/Index-OficinaTecnicaObras.png',
-                'route'         => '/oficina-tecnica',
-                'description'   => 'Gestión contractual, control de avance y estándares de alta exigencia en proyectos mineros y plantas.'
+                'image'         => 'img/capacitaciones/oficina-tecnica-infraestructura-minera.webp',
+                'image_fallback'=> 'img/capacitaciones/oficina-tecnica-infraestructura-minera.png',
+                'route'         => '/oficina-tecnica-infraestructura-minera',
+                'description'   => 'Gestión y estrategias de oficina técnica en proyectos de movimiento de tierras para infraestructura minera: PADs de lixiviación, presas de relave y geosintéticos.'
             ],
 
             // ==========================================
@@ -194,25 +194,25 @@ class CoursesCatalog
             // ==========================================
             [
                 'number'        => 15,
-                'title'         => 'CONTRATOS COLABORATIVOS NEC 3F',
+                'title'         => 'CONTRATOS COLABORATIVOS NEC3-F',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Curso',
-                'image'         => 'img/nec1.webp',
-                'image_fallback'=> 'img/nec1.png',
-                'route'         => '/nec',
-                'description'   => 'Estructura y cláusulas clave del contrato NEC3 Opción F para gerenciamiento de proyectos complejos.'
+                'image'         => 'img/capacitaciones/contratos-colaborativos-nec3-f.webp',
+                'image_fallback'=> 'img/capacitaciones/contratos-colaborativos-nec3-f.png',
+                'route'         => '/contratos-colaborativos-nec3-f',
+                'description'   => 'Marco integral de gestión contractual bajo el contrato colaborativo NEC3-F: Project Delivery System, distribución de riesgos, cláusulas clave y Last Planner®.'
             ],
             [
                 'number'        => 16,
-                'title'         => 'CONTRATOS COLABORATIVOS NEC 4',
+                'title'         => 'EL CONTRATO DE NEC4',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Curso',
-                'image'         => 'img/nec1.webp',
-                'image_fallback'=> 'img/nec1.png',
-                'route'         => '/nec',
-                'description'   => 'Novedades y mecanismos de colaboración del estándar NEC4: alertas tempranas y compensación.'
+                'image'         => 'img/capacitaciones/contrato-nec4.webp',
+                'image_fallback'=> 'img/capacitaciones/contrato-nec4.png',
+                'route'         => '/contrato-nec4',
+                'description'   => 'Cláusulas principales, opciones principales de la A a la F, resolución de disputas con cláusulas W y DAB, y cláusulas secundarias del contrato estándar NEC4.'
             ],
             [
                 'number'        => 17,
@@ -227,80 +227,80 @@ class CoursesCatalog
             ],
             [
                 'number'        => 18,
-                'title'         => 'JUNTA DE RESOLUCIÓN DE DISPUTAS (DAB) EN OBRAS',
+                'title'         => 'CLAVES PARA EL ÉXITO EN LA JUNTA DE RESOLUCIÓN DE DISPUTAS - JRD (DAB) DE OBRAS',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-Contratos-Internacionales.webp',
-                'image_fallback'=> 'img/Index-Contratos-Internacionales.png',
-                'route'         => '/contratos',
-                'description'   => 'Mecanismos de prevención y solución temprana de controversias con Dispute Adjudication Boards en infraestructura.'
+                'image'         => 'img/capacitaciones/junta-resolucion-disputas-dab.webp',
+                'image_fallback'=> 'img/capacitaciones/junta-resolucion-disputas-dab.png',
+                'route'         => '/junta-resolucion-disputas-dab',
+                'description'   => 'Prevención, asistencia y resolución temprana de controversias con Dispute Adjudication Boards en contratos NEC, FIDIC y regulación ICC.'
             ],
             [
                 'number'        => 19,
-                'title'         => 'CONTRATOS COLABORATIVOS NEC 3 Y 4',
+                'title'         => 'CONTRATO COLABORATIVO NEC 3/4',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Curso',
-                'image'         => 'img/nec1.webp',
-                'image_fallback'=> 'img/nec1.png',
-                'route'         => '/nec',
-                'description'   => 'Comparativa estratégica, lecciones aprendidas y mejores prácticas entre las versiones NEC3 y NEC4.'
+                'image'         => 'img/capacitaciones/contrato-colaborativo-nec-3-4.webp',
+                'image_fallback'=> 'img/capacitaciones/contrato-colaborativo-nec-3-4.png',
+                'route'         => '/contrato-colaborativo-nec-3-4',
+                'description'   => 'Bases de aplicación específica del Contrato NEC-3/4: cláusulas principales (10-90), Opción F, opciones secundarias y casuística de proyectos.'
             ],
             [
                 'number'        => 20,
-                'title'         => 'GESTIÓN DE EVENTOS COMPENSABLES Y ALERTAS NEC4',
+                'title'         => 'GESTIÓN DE EVENTOS COMPENSABLES Y ALERTAS TEMPRANAS EN CONTRATOS NEC4',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Curso',
-                'image'         => 'img/nec1.webp',
-                'image_fallback'=> 'img/nec1.png',
-                'route'         => '/nec',
-                'description'   => 'Procedimiento formal, plazos perentorios y cuantificación de eventos compensables y notificaciones de alerta.'
+                'image'         => 'img/capacitaciones/eventos-compensables-alertas-tempranas-nec4.webp',
+                'image_fallback'=> 'img/capacitaciones/eventos-compensables-alertas-tempranas-nec4.png',
+                'route'         => '/eventos-compensables-alertas-tempranas-nec4',
+                'description'   => 'Gestión de Eventos Compensables y Alertas Tempranas en NEC4: cláusulas, Defined Costs, tiempos de presentación, sustento y escalamiento.'
             ],
             [
                 'number'        => 21,
-                'title'         => 'CONTRATOS FIDIC PARA EPC Y CONSTRUCCIÓN',
+                'title'         => 'CONTRATOS FIDIC PARA CONTRATOS EPC Y CONSTRUCCIÓN',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-Contratos-Internacionales.webp',
-                'image_fallback'=> 'img/Index-Contratos-Internacionales.png',
-                'route'         => '/fidic',
-                'description'   => 'Administración de contratos FIDIC Libro Rojo, Amarillo y Plata (EPC/Turnkey) en grandes proyectos.'
+                'image'         => 'img/capacitaciones/contratos-fidic-epc-construccion.webp',
+                'image_fallback'=> 'img/capacitaciones/contratos-fidic-epc-construccion.png',
+                'route'         => '/contratos-fidic-epc-construccion',
+                'description'   => 'Rainbow Suite (Libro Rojo, Amarillo y Plata 1999 y 2017) para contratos EPC y de construcción: riesgos, reclamos y adecuación al derecho peruano.'
             ],
             [
                 'number'        => 22,
-                'title'         => 'GESTIÓN DE RECLAMOS EN CONTRATOS FIDIC Y NEC',
+                'title'         => 'GESTIÓN DE RECLAMOS EN CONTRATOS DE CONSTRUCCIÓN Y CONTRATOS COLABORATIVOS NEC Y FIDIC',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-Contratos-Internacionales.webp',
-                'image_fallback'=> 'img/Index-Contratos-Internacionales.png',
-                'route'         => '/contratos',
-                'description'   => 'Formulación, sustento técnico-económico y defensa de claims contractuales bajo estándares FIDIC y NEC.'
+                'image'         => 'img/capacitaciones/gestion-reclamos-nec-fidic.webp',
+                'image_fallback'=> 'img/capacitaciones/gestion-reclamos-nec-fidic.png',
+                'route'         => '/gestion-reclamos-nec-fidic',
+                'description'   => 'Estructura y formulación de claims bajo NEC y FIDIC: reclamos de plazo, demoras concurrentes, aceleración, daños, disruption, mitigación y análisis de cronograma.'
             ],
             [
                 'number'        => 23,
-                'title'         => 'CONTRATOS EN MEGAPROYECTOS DE CONSTRUCCIÓN',
+                'title'         => 'GESTIÓN CONTRACTUAL EN LOS MEGAPROYECTOS DE CONSTRUCCIÓN MINEROS',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-Contratos-Internacionales.webp',
-                'image_fallback'=> 'img/Index-Contratos-Internacionales.png',
-                'route'         => '/contratos',
-                'description'   => 'Gobernanza contractual, asignación de riesgos y marcos legales aplicados a megaproyectos de infraestructura.'
+                'image'         => 'img/capacitaciones/gestion-contractual-megaproyectos-mineros.webp',
+                'image_fallback'=> 'img/capacitaciones/gestion-contractual-megaproyectos-mineros.png',
+                'route'         => '/gestion-contractual-megaproyectos-mineros',
+                'description'   => 'Formación y administración integral de contratos de construcción mineros, técnicas de negociación, mitigación de riesgos y resolución de disputas.'
             ],
             [
                 'number'        => 24,
-                'title'         => 'GESTIÓN DEL CAMBIO EN CONTRATOS CON EL ESTADO',
+                'title'         => 'GESTIÓN DEL CAMBIO EN LOS CONTRATOS CON EL ESTADO',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-Contratos-Internacionales.webp',
-                'image_fallback'=> 'img/Index-Contratos-Internacionales.png',
-                'route'         => '/contratos-estado',
-                'description'   => 'Sustentación de adicionales de obra, deductivos y ampliaciones de plazo bajo la Ley de Contrataciones del Estado.'
+                'image'         => 'img/capacitaciones/gestion-cambios-contratos-estado.webp',
+                'image_fallback'=> 'img/capacitaciones/gestion-cambios-contratos-estado.png',
+                'route'         => '/gestion-cambios-contratos-estado',
+                'description'   => 'Marco principal de la gestión de contratos con el Estado, causales y lineamientos para gestionar cambios, ampliaciones, adicionales y solución de controversias.'
             ],
             [
                 'number'        => 25,

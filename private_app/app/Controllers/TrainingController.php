@@ -516,5 +516,217 @@ class TrainingController extends Controller
 
         $this->render('pages/indicadores-de-calidad', $data, 'main');
     }
+
+    /**
+     * Seminario: Casos de Aplicación del Diagrama de Ishikawa.
+     */
+    public function seminarioDiagramaIshikawa(): void
+    {
+        $data = [
+            'title'           => 'Seminario: Casos de Aplicación del Diagrama de Ishikawa | Quality Consulting Solutions',
+            'metaDescription' => 'Seminario especializado en análisis de causa raíz, acción correctiva vs. corrección y resolución práctica de no conformidades mediante el Diagrama de Ishikawa.',
+            'canonical'       => 'https://quality-consulting.org/seminario-diagrama-ishikawa',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/seminario-diagrama-ishikawa', $data, 'main');
+    }
+
+    /**
+     * Curso: Oficina Técnica en Obras Viales.
+     */
+    public function oficinaTecnicaObrasViales(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Oficina Técnica en Obras Viales | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Gestión de la Oficina Técnica en Obras Viales: integración, alcance, plazo, costo, comunicaciones y procura. 16 horas netas y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/oficina-tecnica-obras-viales',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/oficina-tecnica-obras-viales', $data, 'main');
+    }
+
+    /**
+     * Curso: Oficina Técnica en Edificaciones y Hospitales.
+     */
+    public function oficinaTecnicaHospitalesEdificaciones(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Oficina Técnica en Edificaciones y Hospitales | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Gestión de la Oficina Técnica en Edificaciones y Hospitales: alcance, plazo, costo, comunicaciones y procura. 16 horas netas y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/oficina-tecnica-hospitales-edificaciones',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/oficina-tecnica-hospitales-edificaciones', $data, 'main');
+    }
+
+    /**
+     * Curso: Oficina Técnica en Infraestructura Minera (PADs, Presas de Relave, Geosintéticos).
+     */
+    public function oficinaTecnicaInfraestructuraMinera(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Oficina Técnica en Infraestructura Minera | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Gestión de la Oficina Técnica en Infraestructura Minera (PADs, presas de relave y geosintéticos): organización, alcance, procura, planificación y costos. 15 horas netas y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/oficina-tecnica-infraestructura-minera',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/oficina-tecnica-infraestructura-minera', $data, 'main');
+    }
+
+    /**
+     * Curso: Oficina Técnica en Edificaciones + Panel de Control 100% Real Time.
+     */
+    public function oficinaTecnicaEdificacionesPanelControl(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Oficina Técnica en Edificaciones + Panel de Control 100% Real Time | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Gestión de la Oficina Técnica en Edificaciones con Panel de Control en tiempo real vía cloud con Looker Studio: ingeniería, procura, construcción y costos. 17 horas netas y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/oficina-tecnica-edificaciones-panel-control',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/oficina-tecnica-edificaciones-panel-control', $data, 'main');
+    }
+
+    /**
+     * Curso: Contrato Colaborativo NEC 3/4.
+     */
+    public function contratoColaborativoNec34(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Contrato Colaborativo NEC 3/4 | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Contrato Colaborativo NEC 3/4: cláusulas principales 10 a 90, Opción F, opciones secundarias y casuística práctica. 16 horas netas y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/contrato-colaborativo-nec-3-4',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/contrato-colaborativo-nec-3-4', $data, 'main');
+    }
+
+    /**
+     * Curso: Contratos FIDIC para Contratos EPC y Construcción.
+     */
+    public function contratosFidicEpcConstruccion(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Contratos FIDIC para Contratos EPC y Construcción | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Contratos FIDIC para EPC y Construcción: Rainbow Suite (Red, Yellow y Silver Books 1999 y 2017), gestión de riesgos, reclamos y adecuación al derecho peruano. 20 horas netas y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/contratos-fidic-epc-construccion',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/contratos-fidic-epc-construccion', $data, 'main');
+    }
+
+    /**
+     * Curso: Gestión de Reclamos en Contratos de Construcción y Contratos Colaborativos NEC y FIDIC.
+     */
+    public function gestionReclamosNecFidic(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Gestión de Reclamos en Contratos de Construcción y Contratos Colaborativos NEC y FIDIC | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Gestión de Reclamos en Contratos de Construcción y Contratos Colaborativos NEC y FIDIC: estructura del claim, ampliaciones de plazo, demoras concurrentes, aceleración, daños, disruption y análisis de cronograma. 23 horas netas y 23 PDU.',
+            'canonical'       => 'https://quality-consulting.org/gestion-reclamos-nec-fidic',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/gestion-reclamos-nec-fidic', $data, 'main');
+    }
+
+    /**
+     * Curso: Claves para el Éxito en la Junta de Resolución de Disputas - JRD (DAB) de Obras.
+     */
+    public function juntaResolucionDisputasDab(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Claves para el Éxito en la Junta de Resolución de Disputas - JRD (DAB) de Obras | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en la Junta de Resolución de Disputas (DAB): gobernanza, consulta informal, hoja de ruta, preguntas poderosas, regulación ICC y experiencias en contratos NEC y FIDIC. 16 horas netas y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/junta-resolucion-disputas-dab',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/junta-resolucion-disputas-dab', $data, 'main');
+    }
+
+    /**
+     * Curso: Gestión del Cambio en los Contratos con el Estado.
+     */
+    public function gestionCambiosContratosEstado(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Gestión del Cambio en los Contratos con el Estado | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Gestión del Cambio en los Contratos con el Estado: marco contractual, causales, ampliaciones de plazo, adicionales, deductivos, cronograma y solución de controversias. 16 horas netas y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/gestion-cambios-contratos-estado',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/gestion-cambios-contratos-estado', $data, 'main');
+    }
+
+    /**
+     * Curso: Gestión Contractual en los Megaproyectos de Construcción Mineros.
+     */
+    public function gestionContractualMegaproyectosMineros(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Gestión Contractual en los Megaproyectos de Construcción Mineros | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Gestión Contractual en Megaproyectos Mineros: formación y negociación de contratos, supervisión del cumplimiento, administración de riesgos y cambios, resolución de disputas y cierre. 16 horas netas y 12 PDU.',
+            'canonical'       => 'https://quality-consulting.org/gestion-contractual-megaproyectos-mineros',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/gestion-contractual-megaproyectos-mineros', $data, 'main');
+    }
+
+    /**
+     * Curso: El Contrato de NEC4.
+     */
+    public function contratoNec4(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: El Contrato de NEC4 | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en El Contrato de NEC4: cláusulas principales 10 a 80, opciones principales A a F, resolución y prevención de disputas con cláusulas W y DAB, y cláusulas secundarias. 14 horas netas y 14 PDU.',
+            'canonical'       => 'https://quality-consulting.org/contrato-nec4',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/contrato-nec4', $data, 'main');
+    }
+
+    /**
+     * Curso: Gestión de Eventos Compensables y Alertas Tempranas en Contratos NEC4.
+     */
+    public function eventosCompensablesAlertasTempranasNec4(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Gestión de Eventos Compensables y Alertas Tempranas en Contratos NEC4 | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Gestión de Eventos Compensables y Alertas Tempranas en Contratos NEC4: cláusulas, Defined Costs, tiempos de presentación, sustento y escalamiento. 16 horas netas, 8 sesiones y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/eventos-compensables-alertas-tempranas-nec4',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/eventos-compensables-alertas-tempranas-nec4', $data, 'main');
+    }
+
+    /**
+     * Curso: Contratos Colaborativos NEC3-F.
+     */
+    public function contratosColaborativosNec3f(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Contratos Colaborativos NEC3-F | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Contratos Colaborativos NEC3-F: Project Delivery System, distribución balanceada de riesgos, cláusulas clave, gestión del cambio y Last Planner® System. 14 horas netas y 14 PDU.',
+            'canonical'       => 'https://quality-consulting.org/contratos-colaborativos-nec3-f',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/contratos-colaborativos-nec3-f', $data, 'main');
+    }
 }
+
+
 

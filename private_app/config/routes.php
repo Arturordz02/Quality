@@ -95,6 +95,15 @@ return function (Router $router, array $config): void {
     $router->get('/calidad-y-pmi', [TrainingController::class, 'calidadPmi']);
     $router->get('/contratos', [TrainingController::class, 'contratos']);
     $router->get('/contratos-estado', [TrainingController::class, 'contratosEstado']);
+    $router->get('/contrato-colaborativo-nec-3-4', [TrainingController::class, 'contratoColaborativoNec34']);
+    $router->get('/contratos-fidic-epc-construccion', [TrainingController::class, 'contratosFidicEpcConstruccion']);
+    $router->get('/gestion-reclamos-nec-fidic', [TrainingController::class, 'gestionReclamosNecFidic']);
+    $router->get('/junta-resolucion-disputas-dab', [TrainingController::class, 'juntaResolucionDisputasDab']);
+    $router->get('/gestion-cambios-contratos-estado', [TrainingController::class, 'gestionCambiosContratosEstado']);
+    $router->get('/gestion-contractual-megaproyectos-mineros', [TrainingController::class, 'gestionContractualMegaproyectosMineros']);
+    $router->get('/contrato-nec4', [TrainingController::class, 'contratoNec4']);
+    $router->get('/eventos-compensables-alertas-tempranas-nec4', [TrainingController::class, 'eventosCompensablesAlertasTempranasNec4']);
+    $router->get('/contratos-colaborativos-nec3-f', [TrainingController::class, 'contratosColaborativosNec3f']);
     $router->get('/control-de-calidad-en-tuneleria', [TrainingController::class, 'controlCalidadTuneleria']);
     $router->get('/costos', [TrainingController::class, 'costos']);
     $router->get('/direccion-calidad-enfoque-pmi', [TrainingController::class, 'direccionCalidadEnfoquePmi']);
@@ -118,6 +127,11 @@ return function (Router $router, array $config): void {
     $router->get('/sindrome-del-90', [TrainingController::class, 'sindromeDel90']);
     $router->get('/seminario-iso-9001-2026', [TrainingController::class, 'seminarioIso90012026']);
     $router->get('/indicadores-de-calidad', [TrainingController::class, 'indicadoresDeCalidad']);
+    $router->get('/seminario-diagrama-ishikawa', [TrainingController::class, 'seminarioDiagramaIshikawa']);
+    $router->get('/oficina-tecnica-obras-viales', [TrainingController::class, 'oficinaTecnicaObrasViales']);
+    $router->get('/oficina-tecnica-hospitales-edificaciones', [TrainingController::class, 'oficinaTecnicaHospitalesEdificaciones']);
+    $router->get('/oficina-tecnica-infraestructura-minera', [TrainingController::class, 'oficinaTecnicaInfraestructuraMinera']);
+    $router->get('/oficina-tecnica-edificaciones-panel-control', [TrainingController::class, 'oficinaTecnicaEdificacionesPanelControl']);
 
     /**
      * RUTAS DE PASARELA PAYPAL (PRIMERA CLASE DEL CURSO - USD 10) Y REGISTRO

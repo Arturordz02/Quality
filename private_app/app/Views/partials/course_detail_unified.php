@@ -9,7 +9,6 @@
  * 2. Objetivo del curso y Perfil docente (2 columnas alineadas arriba en escritorio, apiladas en móvil)
  * 3. Temario del curso (acordeón desplegable enriquecido con indicador oscuro/dorado e ícono temático)
  * 4. Beneficios y materiales + Unidades de desarrollo profesional (PDU dinámico)
- * 5. Brochure del curso (bloque único y discreto con "Ver PDF" y "Descargar PDF")
  * 6. Información e inscripción (WhatsApp, Modal Solicitar Información y PayPal Primera Clase)
  * 7. Sección opcional de videos cuando el curso cuenta con conferencias disponibles
  */
@@ -47,9 +46,15 @@ $whatsappUrl       = $course['whatsapp_url'] ?? 'https://wa.me/51993463118';
 $whatsappBtnText   = $course['whatsapp_btn_text'] ?? 'Solicitar información por WhatsApp';
 $modalServiceTitle = $course['modal_service'] ?? $title;
 $paypalSlug        = $course['paypal_slug'] ?? '';
+$firstClassLabel   = $course['first_class_label'] ?? 'Primera clase del curso – USD 10';
 $videos            = $course['videos'] ?? [];
-$areaBackUrl       = $course['area_back_url'] ?? '/capacitacion-calidad';
-$areaBackTitle     = $course['area_back_title'] ?? 'Volver al Área de Calidad';
+$areaBackUrl = $course['area_back_url']
+    ?? $course['back_area_url']
+    ?? '/capacitacion-calidad';
+
+$areaBackTitle = $course['area_back_title']
+    ?? $course['back_area_title']
+    ?? 'Volver al Área de Calidad';
 
 $heroCardCount = count($heroCards);
 $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col-lg-3';
@@ -158,10 +163,11 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
                 <!-- Columna Derecha: Perfil docente -->
                 <div class="col-12 col-lg-6" id="perfil-docente">
                     <?php
-                    $hasPhoto        = !empty($docente['photo']);
-                    $docPhoto        = $docente['photo'] ?? '';
+                    $hasPhoto        = !empty($docente['photo']) || !empty($docente['photo_webp']);
+                    $docPhoto        = !empty($docente['photo']) ? $docente['photo'] : ($docente['photo_webp'] ?? '');
                     $docPhotoWebp    = $docente['photo_webp'] ?? '';
                     $docName         = $docente['name'] ?? '';
+                    $docAlt          = $docente['alt'] ?? ($docente['photo_alt'] ?? $docName);
                     $docExpTag       = $docente['experience_tag'] ?? '';
                     $docCredentials  = $docente['credentials'] ?? [];
                     $docSummary      = $docente['summary'] ?? '';
@@ -187,7 +193,7 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
                                     <source srcset="<?= htmlspecialchars($docPhotoWebp, ENT_QUOTES, 'UTF-8') ?>" type="image/webp">
                                     <?php endif; ?>
                                     <img src="<?= htmlspecialchars($docPhoto, ENT_QUOTES, 'UTF-8') ?>"
-                                         alt="<?= htmlspecialchars($docName, ENT_QUOTES, 'UTF-8') ?>"
+                                         alt="<?= htmlspecialchars($docAlt, ENT_QUOTES, 'UTF-8') ?>"
                                          loading="lazy">
                                 </picture>
                             </div>
@@ -360,6 +366,36 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
             </div>
             <?php endif; ?>
 
+                        <!-- Información de contacto integrada dentro del bloque de beneficios -->
+            <div class="qcs-cd-brochure-integrated-card qcs-cd-brochure-integrated-card--info mx-auto" id="contacto-curso">
+                <div class="qcs-cd-brochure-left">
+                    <div class="qcs-cd-brochure-icon" aria-hidden="true">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+                    <div class="qcs-cd-brochure-copy">
+                        <h3 class="qcs-cd-brochure-title">Información del programa</h3>
+                        <p class="qcs-cd-brochure-text mb-0">Para más información, disponibilidad y precios, contáctanos.</p>
+                    </div>
+                </div>
+
+                <div class="qcs-cd-brochure-actions">
+                    <button type="button"
+                            class="btn qcs-cd-btn-brochure-dark"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modalSolicitarInfo"
+                            data-service="<?= htmlspecialchars($modalServiceTitle, ENT_QUOTES, 'UTF-8') ?>">
+                        <i class="fa-solid fa-envelope me-2" aria-hidden="true"></i>Contáctanos
+                    </button>
+                    <a href="<?= htmlspecialchars($whatsappUrl, ENT_QUOTES, 'UTF-8') ?>"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn qcs-cd-btn-brochure-gold-outline"
+                       aria-label="Contactar por WhatsApp">
+                        <i class="fab fa-whatsapp me-2" aria-hidden="true"></i>WhatsApp
+                    </a>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -406,7 +442,7 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
                         <?php if (!empty($paypalSlug)): ?>
                         <div class="qcs-cd-first-class-box">
                             <div class="qcs-cd-fc-price-col">
-                                <span class="qcs-cd-fc-label">PRIMERA CLASE</span>
+                                <span class="qcs-cd-fc-label"><?= htmlspecialchars($firstClassLabel, ENT_QUOTES, 'UTF-8') ?></span>
                                 <span class="qcs-cd-fc-amount">US$ 10</span>
                             </div>
 
