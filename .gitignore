@@ -17,6 +17,8 @@ temp/
 _site/
 respaldos/
 *.zip
+private_app/backend/storage/*/*.json
+private_app/backend/storage/*/*.txt
 
 # Almacenamiento Privado de Documentos (No servidos públicamente)
 private_app/storage/

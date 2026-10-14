@@ -83,6 +83,11 @@ class CourseCatalog
             'title' => 'Seminario Completion - Evita el Síndrome del 90%',
             'url'   => '/sindrome-del-90',
         ],
+        'seminario-diagrama-ishikawa' => [
+            'slug'  => 'seminario-diagrama-ishikawa',
+            'title' => 'Casos de Aplicación del Diagrama de Ishikawa',
+            'url'   => '/seminario-diagrama-ishikawa',
+        ],
         'lean-last-planner' => [
             'slug'  => 'lean-last-planner',
             'title' => 'Lean Construction y Sistema Last Planner',

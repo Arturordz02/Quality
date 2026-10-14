@@ -47,6 +47,10 @@ $whatsappUrl       = $course['whatsapp_url'] ?? 'https://wa.me/51993463118';
 $whatsappBtnText   = $course['whatsapp_btn_text'] ?? 'Solicitar información por WhatsApp';
 $modalServiceTitle = $course['modal_service'] ?? $title;
 $paypalSlug        = $course['paypal_slug'] ?? '';
+$firstClassLabel   = $course['first_class_label'] ?? 'Primera clase del curso – USD 10';
+$brochureUrl       = $course['brochure_url'] ?? '';
+$brochureDownload  = $course['brochure_download'] ?? 'Brochure-Curso-Quality.pdf';
+$brochureThumb     = $course['brochure_thumb'] ?? '';
 $videos            = $course['videos'] ?? [];
 
 $heroCardCount = count($heroCards);
@@ -358,6 +362,80 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
             </div>
             <?php endif; ?>
 
+            <!-- Tarjeta horizontal compacta del Brochure o Información de Contacto integrada dentro del bloque de beneficios -->
+            <?php if (!empty($brochureUrl)): ?>
+            <div class="qcs-cd-brochure-integrated-card mx-auto" id="brochure-curso">
+                <div class="qcs-cd-brochure-left">
+                    <?php if (!empty($brochureThumb)): ?>
+                    <a href="<?= htmlspecialchars($brochureUrl, ENT_QUOTES, 'UTF-8') ?>"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="qcs-cd-brochure-thumb-link"
+                       aria-label="Ver PDF del brochure: <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?>">
+                        <img src="<?= htmlspecialchars($brochureThumb, ENT_QUOTES, 'UTF-8') ?>"
+                             alt="Portada del brochure oficial: <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?>"
+                             class="qcs-cd-brochure-thumb-img"
+                             width="893"
+                             height="1148">
+                    </a>
+                    <?php else: ?>
+                    <div class="qcs-cd-brochure-icon" aria-hidden="true">
+                        <i class="fa-regular fa-file-lines"></i>
+                    </div>
+                    <?php endif; ?>
+
+                    <div class="qcs-cd-brochure-copy">
+                        <h3 class="qcs-cd-brochure-title">Consulta el brochure</h3>
+                        <p class="qcs-cd-brochure-text">Revisa el programa completo del curso.</p>
+                        <p class="qcs-cd-brochure-note">Consulta la disponibilidad y las condiciones actuales.</p>
+                    </div>
+                </div>
+
+                <div class="qcs-cd-brochure-actions">
+                    <a href="<?= htmlspecialchars($brochureUrl, ENT_QUOTES, 'UTF-8') ?>"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn qcs-cd-btn-brochure-dark">
+                        <i class="fa-regular fa-file-lines me-2" aria-hidden="true"></i>Ver PDF
+                    </a>
+                    <a href="<?= htmlspecialchars($brochureUrl, ENT_QUOTES, 'UTF-8') ?>"
+                       download="<?= htmlspecialchars($brochureDownload, ENT_QUOTES, 'UTF-8') ?>"
+                       class="btn qcs-cd-btn-brochure-gold-outline">
+                        <i class="fa-solid fa-download me-2" aria-hidden="true"></i>Descargar PDF
+                    </a>
+                </div>
+            </div>
+            <?php else: ?>
+            <div class="qcs-cd-brochure-integrated-card qcs-cd-brochure-integrated-card--info mx-auto" id="contacto-curso">
+                <div class="qcs-cd-brochure-left">
+                    <div class="qcs-cd-brochure-icon" aria-hidden="true">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+                    <div class="qcs-cd-brochure-copy">
+                        <h3 class="qcs-cd-brochure-title">Información del programa</h3>
+                        <p class="qcs-cd-brochure-text mb-0">Para más información, disponibilidad y precios, contáctanos.</p>
+                    </div>
+                </div>
+
+                <div class="qcs-cd-brochure-actions">
+                    <button type="button"
+                            class="btn qcs-cd-btn-brochure-dark"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modalSolicitarInfo"
+                            data-service="<?= htmlspecialchars($modalServiceTitle, ENT_QUOTES, 'UTF-8') ?>">
+                        <i class="fa-solid fa-envelope me-2" aria-hidden="true"></i>Contáctanos
+                    </button>
+                    <a href="<?= htmlspecialchars($whatsappUrl, ENT_QUOTES, 'UTF-8') ?>"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn qcs-cd-btn-brochure-gold-outline"
+                       aria-label="Contactar por WhatsApp">
+                        <i class="fab fa-whatsapp me-2" aria-hidden="true"></i>WhatsApp
+                    </a>
+                </div>
+            </div>
+            <?php endif; ?>
+
         </div>
     </section>
 
@@ -404,7 +482,7 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
                         <?php if (!empty($paypalSlug)): ?>
                         <div class="qcs-cd-first-class-box">
                             <div class="qcs-cd-fc-price-col">
-                                <span class="qcs-cd-fc-label">PRIMERA CLASE</span>
+                                <span class="qcs-cd-fc-label"><?= htmlspecialchars($firstClassLabel, ENT_QUOTES, 'UTF-8') ?></span>
                                 <span class="qcs-cd-fc-amount">US$ 10</span>
                             </div>
 
