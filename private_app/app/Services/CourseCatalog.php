@@ -43,6 +43,11 @@ class CourseCatalog
             'title' => 'Administración de Contratos de Construcción',
             'url'   => '/contratos',
         ],
+        'contratos-colaborativos-nec3-f' => [
+            'slug'  => 'contratos-colaborativos-nec3-f',
+            'title' => 'Contratos Colaborativos NEC3-F',
+            'url'   => '/contratos-colaborativos-nec3-f',
+        ],
         'contratos-fidic-epc-construccion' => [
             'slug'  => 'contratos-fidic-epc-construccion',
             'title' => 'Contratos FIDIC para Contratos EPC y Construcción',
