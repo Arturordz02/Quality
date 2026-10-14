@@ -561,5 +561,20 @@ class TrainingController extends Controller
 
         $this->render('pages/oficina-tecnica-edificaciones-panel-control', $data, 'main');
     }
+
+    /**
+     * Curso: Contrato Colaborativo NEC 3/4.
+     */
+    public function contratoColaborativoNec34(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Contrato Colaborativo NEC 3/4 | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Contrato Colaborativo NEC 3/4: cláusulas principales 10 a 90, Opción F, opciones secundarias y casuística práctica. 16 horas netas y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/contrato-colaborativo-nec-3-4',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/contrato-colaborativo-nec-3-4', $data, 'main');
+    }
 }
 
