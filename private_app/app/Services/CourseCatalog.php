@@ -118,6 +118,11 @@ class CourseCatalog
             'title' => 'Oficina Técnica en Infraestructura Minera (PADs, Presas de Relave, Geosintéticos)',
             'url'   => '/oficina-tecnica-infraestructura-minera',
         ],
+        'oficina-tecnica-edificaciones-panel-control' => [
+            'slug'  => 'oficina-tecnica-edificaciones-panel-control',
+            'title' => 'Oficina Técnica en Edificaciones + Panel de Control 100% Real Time',
+            'url'   => '/oficina-tecnica-edificaciones-panel-control',
+        ],
         'pmo' => [
             'slug'  => 'pmo',
             'title' => 'Gestión e Implementación de PMO en Construcción',

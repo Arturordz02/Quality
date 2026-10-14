@@ -121,6 +121,7 @@ return function (Router $router, array $config): void {
     $router->get('/oficina-tecnica-obras-viales', [TrainingController::class, 'oficinaTecnicaObrasViales']);
     $router->get('/oficina-tecnica-hospitales-edificaciones', [TrainingController::class, 'oficinaTecnicaHospitalesEdificaciones']);
     $router->get('/oficina-tecnica-infraestructura-minera', [TrainingController::class, 'oficinaTecnicaInfraestructuraMinera']);
+    $router->get('/oficina-tecnica-edificaciones-panel-control', [TrainingController::class, 'oficinaTecnicaEdificacionesPanelControl']);
 
     /**
      * RUTAS DE PASARELA PAYPAL (PRIMERA CLASE DEL CURSO - USD 10) Y REGISTRO

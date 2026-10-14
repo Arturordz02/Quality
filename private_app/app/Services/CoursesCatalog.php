@@ -146,14 +146,14 @@ class CoursesCatalog
             // ==========================================
             [
                 'number'        => 11,
-                'title'         => 'OFICINA TÉCNICA EN EDIFICACIONES',
+                'title'         => 'OFICINA TÉCNICA EN EDIFICACIONES + PANEL DE CONTROL 100% REAL TIME',
                 'category'      => 'Oficina Técnica',
                 'category_slug' => 'oficina-tecnica',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-OficinaTecnicaObras.webp',
-                'image_fallback'=> 'img/Index-OficinaTecnicaObras.png',
-                'route'         => '/oficina-tecnica',
-                'description'   => 'Gestión integral de oficina técnica en edificios residenciales y comerciales: metrados, RFI y submittals.'
+                'image'         => 'img/capacitaciones/oficina-tecnica-edificaciones-panel-control.webp',
+                'image_fallback'=> 'img/capacitaciones/oficina-tecnica-edificaciones-panel-control.png',
+                'route'         => '/oficina-tecnica-edificaciones-panel-control',
+                'description'   => 'Gestión de oficina técnica en edificaciones de envergadura con panel de control 100% en tiempo real vía cloud con Looker Studio.'
             ],
             [
                 'number'        => 12,

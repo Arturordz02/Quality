@@ -546,5 +546,20 @@ class TrainingController extends Controller
 
         $this->render('pages/oficina-tecnica-infraestructura-minera', $data, 'main');
     }
+
+    /**
+     * Curso: Oficina Técnica en Edificaciones + Panel de Control 100% Real Time.
+     */
+    public function oficinaTecnicaEdificacionesPanelControl(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Oficina Técnica en Edificaciones + Panel de Control 100% Real Time | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Gestión de la Oficina Técnica en Edificaciones con Panel de Control en tiempo real vía cloud con Looker Studio: ingeniería, procura, construcción y costos. 17 horas netas y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/oficina-tecnica-edificaciones-panel-control',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/oficina-tecnica-edificaciones-panel-control', $data, 'main');
+    }
 }
 
