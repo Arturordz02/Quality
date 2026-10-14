@@ -28,6 +28,11 @@ class CourseCatalog
             'title' => 'Contrataciones con el Estado y Ley 30225',
             'url'   => '/contratos-estado',
         ],
+        'contrato-colaborativo-nec-3-4' => [
+            'slug'  => 'contrato-colaborativo-nec-3-4',
+            'title' => 'Contrato Colaborativo NEC 3/4',
+            'url'   => '/contrato-colaborativo-nec-3-4',
+        ],
         'contratos' => [
             'slug'  => 'contratos',
             'title' => 'Administración de Contratos de Construcción',

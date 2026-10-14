@@ -238,14 +238,14 @@ class CoursesCatalog
             ],
             [
                 'number'        => 19,
-                'title'         => 'CONTRATOS COLABORATIVOS NEC 3 Y 4',
+                'title'         => 'CONTRATO COLABORATIVO NEC 3/4',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Curso',
-                'image'         => 'img/nec1.webp',
-                'image_fallback'=> 'img/nec1.png',
-                'route'         => '/nec',
-                'description'   => 'Comparativa estratégica, lecciones aprendidas y mejores prácticas entre las versiones NEC3 y NEC4.'
+                'image'         => 'img/capacitaciones/contrato-colaborativo-nec-3-4.webp',
+                'image_fallback'=> 'img/capacitaciones/contrato-colaborativo-nec-3-4.png',
+                'route'         => '/contrato-colaborativo-nec-3-4',
+                'description'   => 'Bases de aplicación específica del Contrato NEC-3/4: cláusulas principales (10-90), Opción F, opciones secundarias y casuística de proyectos.'
             ],
             [
                 'number'        => 20,
