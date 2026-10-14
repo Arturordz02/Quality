@@ -48,6 +48,8 @@ $whatsappBtnText   = $course['whatsapp_btn_text'] ?? 'Solicitar información por
 $modalServiceTitle = $course['modal_service'] ?? $title;
 $paypalSlug        = $course['paypal_slug'] ?? '';
 $videos            = $course['videos'] ?? [];
+$areaBackUrl       = $course['area_back_url'] ?? '/capacitacion-calidad';
+$areaBackTitle     = $course['area_back_title'] ?? 'Volver al Área de Calidad';
 
 $heroCardCount = count($heroCards);
 $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col-lg-3';
@@ -429,8 +431,8 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
 
             <!-- Enlaces discretos debajo del panel -->
             <div class="qcs-cd-enroll-footer-links mx-auto">
-                <a href="/capacitacion-calidad" class="qcs-cd-back-link">
-                    <i class="fa-solid fa-arrow-left me-1" aria-hidden="true"></i>Volver al Área de Calidad
+                <a href="<?= htmlspecialchars($areaBackUrl, ENT_QUOTES, 'UTF-8') ?>" class="qcs-cd-back-link">
+                    <i class="fa-solid fa-arrow-left me-1" aria-hidden="true"></i><?= htmlspecialchars($areaBackTitle, ENT_QUOTES, 'UTF-8') ?>
                 </a>
                 <span class="qcs-cd-link-sep" aria-hidden="true">|</span>
                 <a href="/capacitacion" class="qcs-cd-back-link">

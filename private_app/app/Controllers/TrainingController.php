@@ -353,13 +353,13 @@ class TrainingController extends Controller
     }
 
     /**
-     * Curso: Riesgos de la Cadena de Producción de la Construcción.
+     * Curso: Riesgos en la Cadena de Producción de la Construcción ISO 31000 usando BIM.
      */
     public function riesgosCadenaProduccion(): void
     {
         $data = [
-            'title'           => 'Capacitación: Riesgos de la Cadena de Producción de la Construcción | Quality Consulting Solutions',
-            'metaDescription' => 'Curso especializado en gestión de riesgos en la cadena de producción de la construcción con marcos ISO 31000 y herramientas prácticas ISO 31010.',
+            'title'           => 'Riesgos en la Cadena de Producción de la Construcción ISO 31000 usando BIM | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en gestión de riesgos en la cadena de producción de la construcción con el estándar ISO 31000, herramientas ISO 31010 y entornos BIM.',
             'canonical'       => 'https://quality-consulting.org/riesgos-cadena-produccion',
             'activePage'      => 'capacitacion',
         ];
@@ -368,7 +368,37 @@ class TrainingController extends Controller
     }
 
     /**
-     * Curso: Gestión de Riesgos con el Enfoque PMI.
+     * Curso: Análisis Cuantitativo de Riesgos del Costo y Cronograma con Simulación de Monte Carlo.
+     */
+    public function analisisCuantitativoRiesgos(): void
+    {
+        $data = [
+            'title'           => 'Análisis Cuantitativo de Riesgos del Costo y Cronograma con Simulación de Monte Carlo | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en modelado probabilístico, simulación de Monte Carlo, diagramas de tornado y estimación de reservas de contingencia en construcción.',
+            'canonical'       => 'https://quality-consulting.org/analisis-cuantitativo-riesgos',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/analisis-cuantitativo-riesgos', $data, 'main');
+    }
+
+    /**
+     * Curso: Gestión de Riesgos, Cambios y Reclamos en la Construcción.
+     */
+    public function gestionRiesgos(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Gestión de Riesgos, Cambios y Reclamos en la Construcción | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Gestión de Riesgos, Cambios y Reclamos en el Plazo y Alcance en la Construcción. Impartido por el Ing. Víctor Viteri Valiente.',
+            'canonical'       => 'https://quality-consulting.org/gestion-de-riesgos',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/gestion-de-riesgos', $data, 'main');
+    }
+
+    /**
+     * Curso: Gestión de Riesgos en Proyectos con el Enfoque PMI®.
      */
     public function riesgosPmi(): void
     {

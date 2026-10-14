@@ -1,488 +1,153 @@
 <?php
 /**
  * QUALITY CONSULTING SOLUTIONS - ARQUITECTURA MVC
- * Vista de P?gina: Gesti?n de Riesgos T?cnicos de la Construcci?n
+ * Vista de Página: Gestión de Riesgos Técnicos en la Construcción (Diseño Unificado)
  * Archivo: app/Views/pages/riesgos-tecnicos.php
  */
 
 declare(strict_types=1);
-?>
-<main class="page-content">
 
-        <!-- ==========================================================================
-             1. SECCIÓN HERO / ENCABEZADO DEL CURSO (Hero Azul Corporativo)
-             ========================================================================== -->
-        <section class="page-banner banner-riesgos-tecnicos">
-            <div class="page-banner-bg banner-riesgos-tecnicos-bg"></div>
-            <div class="page-banner-overlay"></div>
-            <div class="page-banner-container">
-                
-                <!-- Badge Superior Requerido -->
-                <div class="page-title-wrap">
-                    <span class="course-badge-upcoming">
-                        <i class="fas fa-clock"></i> FORMACIÓN APLICADA | CAPACITACIÓN ESPECIALIZADA
-                    </span>
-                    <h1 class="page-main-title animate__animated animate__fadeInDown">GESTIÓN DE RIESGOS TÉCNICOS DE LA CONSTRUCCIÓN</h1>
-                    <div class="title-underline"></div>
-                </div>
+$course = [
+    'hero_badge'          => 'NUEVO ESTÁNDAR DE RIESGOS PMI® 2024 • INCLUYE USOS AI • 16 HORAS NETAS',
+    'hero_badge_icon'     => 'fa-solid fa-shield-halved',
+    'title'               => 'GESTIÓN DE RIESGOS TÉCNICOS EN LA CONSTRUCCIÓN CON EL NUEVO ESTÁNDAR DEL PMI® 2024',
+    'summary'             => 'Presenta el vínculo directo de los procesos de gestión de riesgos según el nuevo Estándar de Riesgos PMI® 2024 con la realidad práctica y lecciones aprendidas en obra. Incluye taller de Inteligencia Artificial aplicada, panel de control en la nube y entrega del libro de autoría del docente.',
+    'hero_cards'          => [
+        [
+            'icon'  => 'fa-solid fa-book',
+            'title' => 'LIBRO DE ESPECIALIDAD',
+            'desc'  => 'Incluye el libro «Gestión de los Riesgos Técnicos en la Construcción» de autoría del Ing. Omar Samaniego.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-robot',
+            'title' => 'INTELIGENCIA ARTIFICIAL',
+            'desc'  => 'Aplicación de herramientas y prompts de IA para la identificación, evaluación y mitigación predictiva de riesgos.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-award',
+            'title' => '16 HORAS & 16 PDU',
+            'desc'  => '16 PDU para el mantenimiento de credenciales PMI® (Categoría CCR – The PMI Talent Triangle®).',
+        ],
+        [
+            'icon'  => 'fa-solid fa-cloud',
+            'title' => 'PANEL CLOUD Y GRABACIÓN',
+            'desc'  => 'Panel de control 100% en la nube, entregables descargables y acceso a grabaciones durante 4 semanas.',
+        ],
+    ],
+    'objective'           => 'Presentar el vínculo de los procesos de la gestión de los riesgos según el nuevo estándar de riesgos PMI®, con los aspectos prácticos de la construcción. Identificar casos y compartir lecciones aprendidas donde se muestre la aplicación de los procesos de gestión de los riesgos. Nuestro docente es contribuidor registrado del nuevo Estándar de Riesgos para Portafolios, Programas y Proyectos del PMI®.',
+    'objective_highlights'=> [
+        'Alineamiento estricto al nuevo Estándar de Riesgos del PMI® 2024 y PMBOK® 7ma Edición.',
+        'Estructuración de matrices cualitativas y cuantitativas adaptadas a las realidades contractuales y técnicas en campo.',
+        'Formulación de planes de respuesta preventiva y contingencias para blindar plazo, costo y calidad constructiva.',
+        'Aplicación de casos prácticos reales y lecciones aprendidas en proyectos de edificación, minería e infraestructura.',
+    ],
+    'syllabus_intro'      => 'El programa comprende 6 procesos fundamentales de gestión de riesgos adaptados a la construcción y un taller de aplicación integral con Inteligencia Artificial:',
+    'syllabus'            => [
+        [
+            'title'   => 'Planificación de la Gestión de los Riesgos',
+            'icon'    => 'fa-solid fa-compass-drafting',
+            'content' => '<p>Se presentan los elementos de este proceso, como son el acta de constitución del proyecto, el plan de gestión de proyectos, entre otros, y cómo se interrelacionan a través, por ejemplo, del juicio experto para generar el plan de gestión de riesgos.</p>',
+        ],
+        [
+            'title'   => 'Identificación de Riesgos (+Caso de Aplicación)',
+            'icon'    => 'fa-solid fa-magnifying-glass-chart',
+            'content' => '<p>Se explican los elementos del proceso de identificación de riesgos, considerando sus entradas, como el plan de gestión de riesgos, acuerdos, etc., para que a partir de técnicas como la recopilación de datos, generar el registro de riesgos, entre otras salidas. Incluye caso de aplicación práctica en obra.</p>',
+        ],
+        [
+            'title'   => 'Realizar el Análisis de Riesgos',
+            'icon'    => 'fa-solid fa-chart-pie',
+            'content' => '<p>Se explica el alcance del análisis, tanto cualitativo y cuantitativo. Se desarrolla el análisis cualitativo, en cuanto a sus técnicas, y se evalúan los resultados. Se elabora una matriz de frecuencia – impacto, se genera el mapa de calor, y se define la asignación de riesgos. Se presentan los fundamentos del análisis cuantitativo.</p>',
+        ],
+        [
+            'title'   => 'Elaboración del Plan de Respuesta a Riesgos (+Caso de Aplicación)',
+            'icon'    => 'fa-solid fa-shield-halved',
+            'content' => '<p>Se desarrollan los tipos de respuesta a riesgos, a partir de las entradas de este proceso, haciendo uso de herramientas y técnicas, como las estrategias para abordar amenazas, oportunidades, el análisis de datos, a fin de obtener salidas como las solicitudes de cambios. Incluye caso de aplicación práctica.</p>',
+        ],
+        [
+            'title'   => 'Implementación de la Respuesta a Riesgos',
+            'icon'    => 'fa-solid fa-gears',
+            'content' => '<p>Se presentan las causas de la no implementación de las respuestas a riesgos, así como un modelo para crear un hábito para propiciar la respuesta a riesgos según lo planificado en la gestión de proyectos.</p>',
+        ],
+        [
+            'title'   => 'Elaboración del Panel de Monitoreo de Riesgos',
+            'icon'    => 'fa-solid fa-gauge-high',
+            'content' => '<p>Se exponen los criterios para el monitoreo de riesgo, a partir del plan de gestión del proyecto, datos de desempeño del trabajo, haciendo uso de auditorías, entre otras técnicas y herramientas, propiciando salidas como informes de desempeño del trabajo.</p>',
+        ],
+        [
+            'title'   => 'Taller de Aplicación Práctica con Inteligencia Artificial',
+            'icon'    => 'fa-solid fa-robot',
+            'content' => '<p>Elaboración de entregables y herramientas aplicadas en el sector construcción:</p><ul><li>Matriz Probabilidad por Impacto adaptada a obra.</li><li>Listado y registro integral de riesgos.</li><li>Plan formal de respuesta a riesgos.</li><li>Panel de Control 100% Nube (Cloud).</li><li>Usos prácticos de <strong>Inteligencia Artificial</strong> para analizar y predecir riesgos.</li></ul>',
+        ],
+    ],
+    'docente'             => [
+        'name'            => 'Ing. Omar A. Samaniego',
+        'experience_tag'  => 'Más de 25 años de experiencia',
+        'photo'           => 'img/Omar_Samaniego.png',
+        'photo_webp'      => 'img/Omar_Samaniego.webp',
+        'credentials'     => ['CIP', 'PMP®', 'PMI-RMP®', 'NEC4', 'VDC - Stanford', 'LSS Black Belt'],
+        'summary'         => 'Profesional con más de 25 años de experiencia en el Sector Construcción en Gestión de Proyectos, Riesgos y Calidad en empresas líderes en el Perú y el extranjero. Director de Quality Consulting Solutions, docente de postgrado y ponente en congresos internacionales.',
+        'highlights'      => [
+            '<strong>Contribuidor Registrado</strong> del nuevo <strong>Estándar de Riesgos del PMI® 2024</strong> y de la <strong>Guía del PMBOK® 7ma Edición</strong>.',
+            'Autor de los libros <em>«Gestión de los Riesgos Técnicos en la Construcción»</em> e <em>«ISO 9001 para la Construcción»</em>.',
+            'Trayectoria de alta dirección: Ex Risk & Quality Manager en Gleeds (UK), Jefe Corporativo de Calidad en Graña y Montero (GyM), Gerente de Proyectos en Buenaventura Ingenieros y Jefe de Calidad en Cosapi.',
+            'Catedrático de postgrado en la Universidad Peruana de Ciencias Aplicadas (UPC), MDI PUCP - Universidad Politécnica de Madrid, Universidad de Lima e Instituto para la Calidad.',
+        ],
+        'recognition'     => 'Expositor en conferencias internacionales de Stanford University (Techsuyo, 2017), Global Congress PMI (Washington D.C., 2010) y Congreso Regional PMI Lima.',
+    ],
+    'benefits'            => [
+        [
+            'icon'  => 'fa-solid fa-book',
+            'title' => 'Libro de Especialidad',
+            'text'  => 'Entrega del libro «Gestión de los Riesgos Técnicos en la Construcción» de autoría del docente.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-robot',
+            'title' => 'Herramientas e Inteligencia Artificial',
+            'text'  => 'Uso de prompts y flujos de IA para la identificación, análisis y mitigación de riesgos.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-award',
+            'title' => 'Certificación de 16 PDU',
+            'text'  => 'Acreditación oficial para el mantenimiento de credenciales PMI® bajo The PMI Talent Triangle®.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-certificate',
+            'title' => 'Diploma Digital Oficial',
+            'text'  => 'Diploma digital emitido a nombre de Quality Consulting Solutions.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-cloud',
+            'title' => 'Panel en la Nube y Plantillas',
+            'text'  => 'Acceso a panel de control cloud, formatos editables y matrices técnicas de trabajo.',
+        ],
+        [
+            'icon'  => 'fa-solid fa-video',
+            'title' => 'Grabación y Bolsa Laboral',
+            'text'  => 'Acceso a grabaciones durante 4 semanas e incorporación a la base de datos laboral institucional.',
+        ],
+    ],
+    'pdu_title'           => 'Acreditación Oficial de 16 PDU ante el PMI®',
+    'pdu_text'            => 'Si tienes certificación del PMI® este curso te brinda <strong>16 PDU</strong> (Professional Development Unit) para mantener tu certificación según la descripción provista por el PMI®: <em>(Professional Development Unit) Categoría PMI® CCR: General Education Third-Party Provider. The PMI Talent Triangle®</em>.',
+    'whatsapp_url'        => 'https://wa.me/51993463118?text=' . rawurlencode('Buen día, deseo solicitar información sobre el curso de Gestión de Riesgos Técnicos en la Construcción con el Estándar PMI® 2024'),
+    'whatsapp_btn_text'   => 'Solicitar información por WhatsApp',
+    'modal_service'       => 'Gestión de Riesgos Técnicos en la Construcción',
+    'paypal_slug'         => 'riesgos-tecnicos',
+    'area_back_url'       => '/capacitacion-riesgos',
+    'area_back_title'     => 'Volver al Área de Riesgos',
+    'videos'              => [
+        [
+            'header'    => 'Metodología y Casos Prácticos - Parte 1',
+            'embed_url' => 'https://www.youtube.com/embed/i_SoabWi3uo',
+            'title'     => 'Gestión de Riesgos Técnicos de la Construcción - Video 1',
+            'caption'   => '<strong>Fundamentos y Enfoque PMBOK®:</strong> Identificación técnica y estructuración del plan de riesgos en fases tempranas del proyecto.',
+        ],
+        [
+            'header'    => 'Aplicación y Lecciones en Obra - Parte 2',
+            'embed_url' => 'https://www.youtube.com/embed/lMo47jd1z8w',
+            'title'     => 'Gestión de Riesgos Técnicos de la Construcción - Video 2',
+            'caption'   => '<strong>Respuesta y Control Operativo:</strong> Implementación y monitoreo continuo de contingencias para blindar el plazo y costo contractual.',
+        ],
+    ],
+];
 
-                <!-- Subtítulo Requerido -->
-                <div class="intro-card">
-                    <p class="intro-text animate__animated animate__fadeInUp animate__delay-1s">
-                        Aprende a vincular los procesos de gestión de riesgos de la Guía del PMBOK® con los aspectos prácticos y lecciones aprendidas en obra.
-                    </p>
-                </div>
-
-                <!-- Grid de 3 Tarjetas de Características Destacadas dentro del Hero -->
-                <div class="hero-cards-grid">
-                    
-                    <!-- Tarjeta 1: Modalidad Grabada Online -->
-                    <div class="hero-feature-card">
-                        <div class="hero-feature-icon">
-                            <i class="fa-solid fa-circle-play"></i>
-                        </div>
-                        <div class="hero-feature-content">
-                            <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Modalidad Grabada Online</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Modalidad grabada 100% online. Acceso inmediato a las clases y disponible 24/7.</p>
-                        </div>
-                    </div>
-
-                    <!-- Tarjeta 2: Acceso Multiplataforma -->
-                    <div class="hero-feature-card">
-                        <div class="hero-feature-icon">
-                            <i class="fa-solid fa-laptop-code"></i>
-                        </div>
-                        <div class="hero-feature-content">
-                            <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Acceso Multiplataforma</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Disponible desde PC, Laptop, Tablet y Celular (Video HD y Chat interactivo).</p>
-                        </div>
-                    </div>
-
-                    <!-- Tarjeta 3: Beneficios de Acreditación -->
-                    <div class="hero-feature-card">
-                        <div class="hero-feature-icon">
-                            <i class="fa-solid fa-stamp"></i>
-                        </div>
-                        <div class="hero-feature-content">
-                            <h3 class="hero-feature-title animate__animated animate__fadeInUp animate__delay-1s">Diploma y Beneficios</h3>
-                            <p class="hero-feature-desc animate__animated animate__fadeInUp animate__delay-1s">Incluye Diploma + Ingreso a Bolsa de Trabajo + Descuentos de Ex-alumno.</p>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-
-
-        <!-- ==========================================================================
-             3. PERFIL DEL DOCENTE Y OBJETIVO DEL CURSO (Layout 2 Columnas)
-             ========================================================================== -->
-        <section class="content-section" id="perfil-objetivo">
-            <div class="section-container">
-                
-                <div class="grid-split-layout">
-                    
-                    <!-- Columna Izquierda: Perfil del Docente Destacado -->
-                    <div class="split-text-col">
-                        <div class="section-header-compact">
-                            <span class="sub-badge"><i class="fa-solid fa-user-graduate"></i> Excelencia Académica &amp; Profesional</span>
-                            <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">DOCENTE DEL PROGRAMA</h2>
-                            <div class="heading-line"></div>
-                        </div>
-
-                        <!-- Tarjeta del Docente Destacado -->
-                        <div class="docente-card" style="margin-top: 1.25rem;">
-                            <div class="docente-avatar-box">
-                                <div class="docente-avatar"><picture><source srcset="img/Omar_Samaniego.webp" type="image/webp"><img src="img/Omar_Samaniego.png" alt="Ing. Omar Samaniego" class="rounded-circle shadow-sm" style="width: 100%; height: 100%; object-fit: cover; object-position: top;"></picture></div>
-                                <span class="docente-verified-badge" title="Docente Principal Certificado">
-                                    <i class="fa-solid fa-check"></i>
-                                </span>
-                            </div>
-                            <div class="docente-info">
-                                <span class="docente-tag">Docente Principal</span>
-                                <h3 class="docente-name animate__animated animate__fadeInUp animate__delay-1s">ING. OMAR SAMANIEGO</h3>
-                                
-                                <!-- Credenciales / Badges Requeridos -->
-                                <div class="docente-credentials-row">
-                                    <span class="credential-badge"><i class="fa-solid fa-certificate"></i> CIP</span>
-                                    <span class="credential-badge"><i class="fa-solid fa-award"></i> PMP®</span>
-                                    <span class="credential-badge"><i class="fa-solid fa-shield-halved"></i> PMI-RMP®</span>
-                                    <span class="credential-badge"><i class="fa-solid fa-check-double"></i> IRCA</span>
-                                    <span class="credential-badge"><i class="fa-solid fa-medal"></i> LSS Black Belt</span>
-                                </div>
-
-                                <!-- Bio / Logros Destacados Requeridos -->
-                                <p class="docente-profile">
-                                    Profesional con más de 20 años de experiencia en Gestión de la Calidad en el Sector Construcción en empresas líderes del Perú y el extranjero.
-                                </p>
-                                <p class="docente-profile" style="margin-bottom: 0;">
-                                    Docente de postgrado en las principales universidades del país y ponente en prestigiosos congresos.
-                                </p>
-
-                                <!-- Reconocimiento Clave Requerido -->
-                                <div class="docente-recognition-card">
-                                    <i class="fa-solid fa-star text-gold"></i>
-                                    <div class="docente-recognition-text">
-                                        <strong>Reconocimiento Clave:</strong> Contribuidor Registrado del Estándar de Gestión de Riesgos del PMI® y Contribuidor Registrado de la Guía del PMBOK®.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Columna Derecha: Objetivo General del Curso -->
-                    <div class="split-text-col">
-                        <div class="section-header-compact">
-                            <span class="sub-badge"><i class="fa-solid fa-bullseye"></i> Enfoque Teórico-Práctico en Obra</span>
-                            <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">OBJETIVO DEL CURSO</h2>
-                            <div class="heading-line"></div>
-                        </div>
-
-                        <!-- Párrafo Explicativo Requerido -->
-                        <p class="paragraph-text paragraph-lead">
-                            Presentar el vínculo de los procesos de la gestión de los riesgos según la Guía del PMBOK®, con los aspectos prácticos de la construcción. Identificar casos reales y compartir lecciones aprendidas donde se muestre la aplicación de los procesos de gestión de los riesgos en proyectos de ingeniería y obra.
-                        </p>
-
-                        <!-- Puntos Clave de Valor Metodológico -->
-                        <div class="course-highlights-list" style="margin-top: 1.5rem;">
-                            <div class="course-highlight-item">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <span>Alineamiento estricto a las mejores prácticas internacionales del PMI-RMP® y PMBOK®.</span>
-                            </div>
-                            <div class="course-highlight-item">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <span>Matrices cualitativas y cuantitativas adaptadas a las realidades contractuales y de campo.</span>
-                            </div>
-                            <div class="course-highlight-item">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <span>Estrategias de mitigación proactivas frente a retrasos de cronograma y sobrecostos técnicos.</span>
-                            </div>
-                            <div class="course-highlight-item">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <span>Lecciones aprendidas en mega-obras de edificación, minería, energía e infraestructura vial.</span>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-             4. SECCIÓN MULTIMEDIA (2 Videos Promocionales de YouTube Responsive)
-             ========================================================================== -->
-        <section class="content-section bg-alternate" id="multimedia-videos">
-            <div class="section-container">
-                
-                <div class="section-header-center">
-                    <span class="sub-badge"><i class="fa-brands fa-youtube"></i> Cápsulas de Conocimiento &amp; Metodología</span>
-                    <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">CONOCE MÁS SOBRE LA METODOLOGÍA Y RIESGOS TÉCNICOS</h2>
-                    <div class="heading-line center-line"></div>
-                    <p class="section-subtitle-text">
-                        Visualiza las presentaciones y explicaciones del Ing. Omar Samaniego sobre la aplicación real de la gestión de riesgos en proyectos de alta complejidad.
-                    </p>
-                </div>
-
-                <!-- Grid Responsive de 2 Columnas para Videos -->
-                <div class="videos-promo-grid">
-                    
-                    <!-- Video 1 -->
-                    <div class="video-card-wrapper">
-                        <div class="video-header-bar">
-                            <span><i class="fa-brands fa-youtube text-danger"></i> Metodología y Casos Prácticos - Parte 1</span>
-                            <span class="video-live-pill">
-                                <span class="video-live-dot"></span> HD 1080p
-                            </span>
-                        </div>
-                        <div class="video-responsive-container">
-                            <iframe src="https://www.youtube.com/embed/i_SoabWi3uo" title="Gestión de Riesgos Técnicos de la Construcción - Video 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy">
-                            </iframe>
-                        </div>
-                        <div class="video-caption-box">
-                            <p>
-                                <i class="fa-solid fa-play-circle text-gold"></i> <strong>Fundamentos y Enfoque PMBOK®:</strong> Identificación técnica y estructuración del plan de riesgos en fases tempranas del proyecto.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Video 2 -->
-                    <div class="video-card-wrapper">
-                        <div class="video-header-bar">
-                            <span><i class="fa-brands fa-youtube text-danger"></i> Aplicación y Lecciones en Obra - Parte 2</span>
-                            <span class="video-live-pill">
-                                <span class="video-live-dot"></span> HD 1080p
-                            </span>
-                        </div>
-                        <div class="video-responsive-container">
-                            <iframe src="https://www.youtube.com/embed/lMo47jd1z8w" title="Gestión de Riesgos Técnicos de la Construcción - Video 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy">
-                            </iframe>
-                        </div>
-                        <div class="video-caption-box">
-                            <p>
-                                <i class="fa-solid fa-play-circle text-gold"></i> <strong>Respuesta y Control Operativo:</strong> Implementación y monitoreo continuo de contingencias para blindar el plazo y costo contractual.
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-             5. MÓDULOS DEL TEMARIO / CONTENIDOS DEL CURSO (Grid Modular PMBOK®)
-             ========================================================================== -->
-        <section class="content-section" id="estructura-curricular">
-            <div class="section-container">
-                
-                <div class="section-header-center">
-                    <span class="sub-badge"><i class="fa-solid fa-diagram-project"></i> Estándares Globales PMI®</span>
-                    <h2 class="section-heading animate__animated animate__fadeInUp animate__delay-1s">ESTRUCTURA CURRICULAR</h2>
-                    <div class="heading-line center-line"></div>
-                    <p class="section-subtitle-text">
-                        Programa dividido en 6 módulos especializados correspondientes a los procesos fundamentales de la Guía del PMBOK® aplicados al sector construcción.
-                    </p>
-                </div>
-
-                <!-- Grid Modular de 6 Tarjetas Interactivas con Hover -->
-                <div class="pmbok-grid-6">
-                    
-                    <!-- Módulo 1 -->
-                    <div class="pmbok-card">
-                        <div class="pmbok-card-header">
-                            <span class="pmbok-step-badge">PROCESO 01</span>
-                            <div class="pmbok-icon">
-                                <i class="fa-solid fa-compass-drafting"></i>
-                            </div>
-                        </div>
-                        <h3 class="pmbok-card-title animate__animated animate__fadeInUp animate__delay-1s">1. Planificar la Gestión de Riesgos</h3>
-                        <p class="pmbok-card-desc">
-                            Definición del enfoque metodológico, roles, responsabilidades, presupuesto de contingencia, periodicidad y categorías de riesgo técnico (RBS) adaptadas al entorno de obra.
-                        </p>
-                    </div>
-
-                    <!-- Módulo 2 -->
-                    <div class="pmbok-card">
-                        <div class="pmbok-card-header">
-                            <span class="pmbok-step-badge">PROCESO 02</span>
-                            <div class="pmbok-icon">
-                                <i class="fa-solid fa-magnifying-glass-chart"></i>
-                            </div>
-                        </div>
-                        <h3 class="pmbok-card-title animate__animated animate__fadeInUp animate__delay-1s">2. Identificar los Riesgos</h3>
-                        <p class="pmbok-card-desc">
-                            Técnicas de levantamiento en campo: talleres interdisciplinarios, listas de chequeo, análisis de supuestos, lecciones aprendidas y registro detallado de riesgos de ingeniería y procura.
-                        </p>
-                    </div>
-
-                    <!-- Módulo 3 -->
-                    <div class="pmbok-card">
-                        <div class="pmbok-card-header">
-                            <span class="pmbok-step-badge">PROCESO 03</span>
-                            <div class="pmbok-icon">
-                                <i class="fa-solid fa-chart-pie"></i>
-                            </div>
-                        </div>
-                        <h3 class="pmbok-card-title animate__animated animate__fadeInUp animate__delay-1s">3. Analizar los Riesgos</h3>
-                        <p class="pmbok-card-desc">
-                            Evaluación cualitativa (Probabilidad e Impacto, matriz PxI, urgencia y criticidad) y conceptos de análisis cuantitativo aplicados a incertidumbres en cronograma y presupuesto.
-                        </p>
-                    </div>
-
-                    <!-- Módulo 4 -->
-                    <div class="pmbok-card">
-                        <div class="pmbok-card-header">
-                            <span class="pmbok-step-badge">PROCESO 04</span>
-                            <div class="pmbok-icon">
-                                <i class="fa-solid fa-shield-halved"></i>
-                            </div>
-                        </div>
-                        <h3 class="pmbok-card-title animate__animated animate__fadeInUp animate__delay-1s">4. Planificar la Respuesta a Riesgos</h3>
-                        <p class="pmbok-card-desc">
-                            Diseño de estrategias efectivas frente a amenazas (mitigar, evitar, transferir, aceptar) y oportunidades (explotar, mejorar, compartir). Asignación de propietarios y reservas de contingencia.
-                        </p>
-                    </div>
-
-                    <!-- Módulo 5 -->
-                    <div class="pmbok-card">
-                        <div class="pmbok-card-header">
-                            <span class="pmbok-step-badge">PROCESO 05</span>
-                            <div class="pmbok-icon">
-                                <i class="fa-solid fa-gears"></i>
-                            </div>
-                        </div>
-                        <h3 class="pmbok-card-title animate__animated animate__fadeInUp animate__delay-1s">5. Implementar la Respuesta a Riesgos</h3>
-                        <p class="pmbok-card-desc">
-                            Ejecución operativa de los planes de mitigación acordados dentro del cronograma y procesos constructivos diarios, garantizando el involucramiento activo de contratistas y supervisión.
-                        </p>
-                    </div>
-
-                    <!-- Módulo 6 -->
-                    <div class="pmbok-card">
-                        <div class="pmbok-card-header">
-                            <span class="pmbok-step-badge">PROCESO 06</span>
-                            <div class="pmbok-icon">
-                                <i class="fa-solid fa-gauge-high"></i>
-                            </div>
-                        </div>
-                        <h3 class="pmbok-card-title animate__animated animate__fadeInUp animate__delay-1s">6. Monitorear los Riesgos</h3>
-                        <p class="pmbok-card-desc">
-                            Seguimiento al estado de los riesgos registrados, identificación de riesgos emergentes, auditorías de riesgo técnico, reevaluación periódica y actualización de lecciones aprendidas.
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-             6. SECCIÓN DE INSCRIPCIÓN Y PASARELAS DE PAGO (CTA Destacado)
-             ========================================================================== -->
-        <section class="content-section bg-alternate" id="inscripcion">
-            <div class="section-container">
-                
-                <div class="course-enrollment-card">
-                    
-                    <span class="enroll-badge">
-                        <i class="fa-solid fa-bolt"></i> CURSO ESPECIALIZADO • CLASES GRABADAS
-                    </span>
-                    
-                    <h2 class="enroll-title animate__animated animate__fadeInUp animate__delay-1s">ASEGURA TU VACANTE EN EL PROGRAMA</h2>
-                    <p class="enroll-subtitle">
-                        Accede a la formación de más alto nivel en riesgos para la construcción con respaldo institucional, docentes de primer nivel y diploma.
-                    </p>
-
-                    <!-- Beneficios de la Matrícula -->
-                    <div class="enroll-perks-grid">
-                        <div class="enroll-perk-item">
-                            <div class="enroll-perk-icon">
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                            </div>
-                            <span>Docente Contribuidor PMBOK® y Estándar PMI®</span>
-                        </div>
-
-                        <div class="enroll-perk-item">
-                            <div class="enroll-perk-icon">
-                                <i class="fa-solid fa-cloud-arrow-down"></i>
-                            </div>
-                            <span>Acceso inmediato a las clases y disponible 24/7.</span>
-                        </div>
-
-                        <div class="enroll-perk-item">
-                            <div class="enroll-perk-icon">
-                                <i class="fa-solid fa-certificate"></i>
-                            </div>
-                            <span>Incluye Diploma.</span>
-                        </div>
-
-                        <div class="enroll-perk-item">
-                            <div class="enroll-perk-icon">
-                                <i class="fa-solid fa-briefcase"></i>
-                            </div>
-                            <span>Bolsa de Trabajo &amp; Beneficios de Ex-alumno</span>
-                        </div>
-                    </div>
-
-                    <!-- Botones de Acción, Solicitud y Pago PayPal -->
-                    <div class="row g-3 justify-content-center">
-                        
-                        <!-- 1. Botón WhatsApp -->
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=Buen%20d%C3%ADa,%20deseo%20solicitar%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Gesti%C3%B3n%20de%20Riesgos%20T%C3%A9cnicos" target="_blank" rel="noopener noreferrer" class="btn btn-success btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Consultar información del curso de Riesgos Técnicos por WhatsApp">
-                                <i class="fab fa-whatsapp me-2"></i> Consultar por WhatsApp
-                            </a>
-                        </div>
-
-                        <!-- 2. Botón Modal Solicitar Información -->
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <button type="button" class="btn btn-warning text-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" data-bs-toggle="modal" data-bs-target="#modalSolicitarInfo" data-service="Gestión de Riesgos Técnicos en Construcción">
-                                <i class="fa-solid fa-headset me-2"></i> Solicitar Información
-                            </button>
-                        </div>
-
-                        <!-- 3. Botón Brochure / Ficha Técnica -->
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdG6DxrwAwUbAKicVXhgyV3TXrXcKVLhlVTc-BO95mJkgCe0g/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Solicitar información y brochure del curso en Google Forms">
-                                <i class="fas fa-file-pdf me-2"></i> Info &amp; Brochure
-                            </a>
-                        </div>
-
-                        <!-- 4. Botón Pago PayPal (Primera Clase) -->
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://www.paypal.com/paypalme/qualityconsulting/10" target="_blank" rel="noopener noreferrer" class="btn btn-paypal btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold text-white btn-paypal-first-class" data-course-slug="riesgos-tecnicos" aria-label="Pagar primera clase con PayPal">
-                                <i class="fab fa-paypal me-2"></i> PayPal
-                            </a>
-                        </div>
-
-                        <!-- Nota explicativa de alcance exclusivo de USD 10 -->
-                        <div class="col-12 text-center text-lg-start mt-2">
-                            <p class="small text-warning mb-0">
-                                <i class="fas fa-info-circle me-1"></i> Pago exclusivo de USD 10 por la primera clase del curso.
-                            </p>
-                        </div>
-
-                    </div>
-
-
-                    <!-- Barra de Confianza y Seguridad -->
-                    <div class="payment-trust-bar">
-                        <div class="payment-trust-item">
-                            <i class="fa-solid fa-lock"></i>
-                            <span>Plataforma con Encriptación SSL 256-bit</span>
-                        </div>
-                        <div class="payment-trust-item">
-                            <i class="fa-solid fa-shield-halved"></i>
-                            <span>Transacción 100% Segura y Verificada</span>
-                        </div>
-                        <div class="payment-trust-item">
-                            <i class="fa-solid fa-headset"></i>
-                            <span>Soporte Académico y Administrativo Permanente</span>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-             7. LLAMADO A LA ACCIÓN FINAL (Contacto Corporativo)
-             ========================================================================== -->
-        <section class="cta-banner-section" id="contacto-final">
-            <div class="cta-container">
-                <div class="cta-box">
-                    <div class="cta-content">
-                        <span class="cta-tag"><i class="fa-solid fa-calendar-check"></i> Próxima Convocatoria</span>
-                        <h3 class="animate__animated animate__fadeInUp animate__delay-1s">Reserva tu cupo para la próxima apertura</h3>
-                        <p>
-                            Contáctanos hoy mismo para asegurar tu vacante preferencial, resolver consultas curriculares o consultar por planes corporativos para tu empresa.
-                        </p>
-                        
-                        <!-- Teléfono Visible Clickeable Requerido -->
-                        <div class="cta-phone-wrapper" style="margin-top: 1.25rem;">
-                            <a href="tel:+51993463118" class="cta-phone-link" aria-label="Llamar al +51 993 463 118">
-                                <i class="fa-solid fa-phone-volume"></i>
-                                <span>+51 993 463 118</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="cta-actions">
-                        <a href="/contacto" class="btn btn-large btn-qcs-primary">
-                            <i class="fa-solid fa-envelope"></i> Contacto Directo
-                        </a>
-                        <a href="https://api.whatsapp.com/send?phone=51993463118&amp;text=w_%20%20%20%20%20%20Buen%20d%C3%ADa,%20%C2%BFpodr%C3%ADan%20enviarme%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Gesti%C3%B3n%20de%20Riesgos%20T%C3%A9cnicos?" target="_blank" rel="noopener noreferrer" class="btn btn-large btn-qcs-dark">
-                            <i class="fa-brands fa-whatsapp"></i> Chat WhatsApp
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
+require __DIR__ . '/../partials/course_detail_unified.php';

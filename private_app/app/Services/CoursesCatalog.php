@@ -319,47 +319,47 @@ class CoursesCatalog
             // ==========================================
             [
                 'number'        => 26,
-                'title'         => 'GESTIÓN DE LOS RIESGOS TÉCNICOS + LIBRO',
+                'title'         => 'GESTIÓN DE RIESGOS TÉCNICOS EN LA CONSTRUCCIÓN CON EL NUEVO ESTÁNDAR DEL PMI® 2024',
                 'category'      => 'Riesgos',
                 'category_slug' => 'riesgos',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-riesgos.webp',
-                'image_fallback'=> 'img/Index-riesgos.png',
+                'image'         => 'img/capacitaciones/gestion-de-riesgos-tecnicos-construccion.webp',
+                'image_fallback'=> 'img/capacitaciones/gestion-de-riesgos-tecnicos-construccion.png',
                 'route'         => '/riesgos-tecnicos',
-                'description'   => 'Metodología integral para identificar, mitigar y controlar riesgos geotécnicos, estructurales y constructivos.'
+                'description'   => 'Procesos de gestión de riesgos del nuevo estándar PMI® 2024, lecciones aprendidas en obra, Inteligencia Artificial y libro de autoría incluido.'
             ],
             [
                 'number'        => 27,
-                'title'         => 'GESTIÓN DE RIESGOS, CAMBIOS Y RECLAMOS',
+                'title'         => 'GESTIÓN DE RIESGOS, CAMBIOS Y RECLAMOS EN LA CONSTRUCCIÓN',
                 'category'      => 'Riesgos',
                 'category_slug' => 'riesgos',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-riesgos.webp',
-                'image_fallback'=> 'img/Index-riesgos.png',
+                'image'         => 'img/capacitaciones/gestion-de-riesgos-cambios-y-reclamos.webp',
+                'image_fallback'=> 'img/capacitaciones/gestion-de-riesgos-cambios-y-reclamos.png',
                 'route'         => '/gestion-de-riesgos',
-                'description'   => 'Interconexión entre la gestión preventiva de riesgos y la administración eficiente de cambios y controversias.'
+                'description'   => 'Criterios de gestión de cambios, riesgos de plazo y alcance, variaciones y administración de reclamos en proyectos de construcción.'
             ],
             [
                 'number'        => 28,
-                'title'         => 'ISO 31000 RIESGOS EN LA CADENA DE PRODUCCIÓN',
+                'title'         => 'RIESGOS EN LA CADENA DE PRODUCCIÓN DE LA CONSTRUCCIÓN ISO 31000 USANDO BIM',
                 'category'      => 'Riesgos',
                 'category_slug' => 'riesgos',
                 'type'          => 'Curso',
-                'image'         => 'img/caprodu1.webp',
-                'image_fallback'=> 'img/caprodu1.png',
+                'image'         => 'img/capacitaciones/iso-31000-riesgos-cadena-produccion.webp',
+                'image_fallback'=> 'img/capacitaciones/iso-31000-riesgos-cadena-produccion.png',
                 'route'         => '/riesgos-cadena-produccion',
-                'description'   => 'Evaluación y tratamiento del riesgo operacional en suministros, contratistas y logística de obra bajo ISO 31000.'
+                'description'   => 'Evaluación y tratamiento del riesgo operacional en suministros, contratistas y logística de obra bajo ISO 31000 y metodología BIM.'
             ],
             [
                 'number'        => 29,
-                'title'         => 'GESTIÓN DE RIESGOS CON EL ENFOQUE PMI',
+                'title'         => 'GESTIÓN DE RIESGOS EN PROYECTOS CON EL ENFOQUE PMI®',
                 'category'      => 'Riesgos',
                 'category_slug' => 'riesgos',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-RiesgosPMI.webp',
-                'image_fallback'=> 'img/Index-RiesgosPMI.png',
+                'image'         => 'img/capacitaciones/gestion-de-riesgos-enfoque-pmi.webp',
+                'image_fallback'=> 'img/capacitaciones/gestion-de-riesgos-enfoque-pmi.png',
                 'route'         => '/riesgos-pmi',
-                'description'   => 'Procesos de identificación cualitativa, cuantitativa y respuesta al riesgo según los estándares del PMI.'
+                'description'   => 'Identificación cualitativa y cuantitativa, matrices de frecuencia e impacto, plan de respuesta y monitoreo según estándares PMI®.'
             ],
             [
                 'number'        => 30,
@@ -367,10 +367,10 @@ class CoursesCatalog
                 'category'      => 'Riesgos',
                 'category_slug' => 'riesgos',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-RiesgosPMI.webp',
-                'image_fallback'=> 'img/Index-RiesgosPMI.png',
-                'route'         => '/riesgos-pmi',
-                'description'   => 'Modelación probabilística, reservas de contingencia y análisis Monte Carlo en cronogramas y presupuestos.'
+                'image'         => 'img/capacitaciones/analisis-cuantitativo-riesgos-monte-carlo.webp',
+                'image_fallback'=> 'img/capacitaciones/analisis-cuantitativo-riesgos-monte-carlo.png',
+                'route'         => '/analisis-cuantitativo-riesgos',
+                'description'   => 'Modelación probabilística, simulación de Monte Carlo, gráficos de tornado y cálculo justificado de reservas de contingencia de costo y plazo.'
             ],
 
             // ==========================================
