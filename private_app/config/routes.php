@@ -99,6 +99,7 @@ return function (Router $router, array $config): void {
     $router->get('/contrato-colaborativo-nec-3-4', [TrainingController::class, 'contratoColaborativoNec34']);
     $router->get('/contratos-fidic-epc-construccion', [TrainingController::class, 'contratosFidicEpcConstruccion']);
     $router->get('/gestion-reclamos-nec-fidic', [TrainingController::class, 'gestionReclamosNecFidic']);
+    $router->get('/junta-resolucion-disputas-dab', [TrainingController::class, 'juntaResolucionDisputasDab']);
     $router->get('/control-de-calidad-en-tuneleria', [TrainingController::class, 'controlCalidadTuneleria']);
     $router->get('/costos', [TrainingController::class, 'costos']);
     $router->get('/direccion-calidad-enfoque-pmi', [TrainingController::class, 'direccionCalidadEnfoquePmi']);

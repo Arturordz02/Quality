@@ -606,5 +606,20 @@ class TrainingController extends Controller
 
         $this->render('pages/gestion-reclamos-nec-fidic', $data, 'main');
     }
+
+    /**
+     * Curso: Claves para el Éxito en la Junta de Resolución de Disputas - JRD (DAB) de Obras.
+     */
+    public function juntaResolucionDisputasDab(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Claves para el Éxito en la Junta de Resolución de Disputas - JRD (DAB) de Obras | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en la Junta de Resolución de Disputas (DAB): gobernanza, consulta informal, hoja de ruta, preguntas poderosas, regulación ICC y experiencias en contratos NEC y FIDIC. 16 horas netas y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/junta-resolucion-disputas-dab',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/junta-resolucion-disputas-dab', $data, 'main');
+    }
 }
 

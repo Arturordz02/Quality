@@ -227,14 +227,14 @@ class CoursesCatalog
             ],
             [
                 'number'        => 18,
-                'title'         => 'JUNTA DE RESOLUCIÓN DE DISPUTAS (DAB) EN OBRAS',
+                'title'         => 'CLAVES PARA EL ÉXITO EN LA JUNTA DE RESOLUCIÓN DE DISPUTAS - JRD (DAB) DE OBRAS',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-Contratos-Internacionales.webp',
-                'image_fallback'=> 'img/Index-Contratos-Internacionales.png',
-                'route'         => '/contratos',
-                'description'   => 'Mecanismos de prevención y solución temprana de controversias con Dispute Adjudication Boards en infraestructura.'
+                'image'         => 'img/capacitaciones/junta-resolucion-disputas-dab.webp',
+                'image_fallback'=> 'img/capacitaciones/junta-resolucion-disputas-dab.png',
+                'route'         => '/junta-resolucion-disputas-dab',
+                'description'   => 'Prevención, asistencia y resolución temprana de controversias con Dispute Adjudication Boards en contratos NEC, FIDIC y regulación ICC.'
             ],
             [
                 'number'        => 19,

@@ -103,6 +103,11 @@ class CourseCatalog
             'title' => 'Casos de Aplicación del Diagrama de Ishikawa',
             'url'   => '/seminario-diagrama-ishikawa',
         ],
+        'junta-resolucion-disputas-dab' => [
+            'slug'  => 'junta-resolucion-disputas-dab',
+            'title' => 'Claves para el Éxito en la Junta de Resolución de Disputas - JRD (DAB) de Obras',
+            'url'   => '/junta-resolucion-disputas-dab',
+        ],
         'lean-last-planner' => [
             'slug'  => 'lean-last-planner',
             'title' => 'Lean Construction y Sistema Last Planner',
