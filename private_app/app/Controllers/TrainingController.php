@@ -591,5 +591,20 @@ class TrainingController extends Controller
 
         $this->render('pages/contratos-fidic-epc-construccion', $data, 'main');
     }
+
+    /**
+     * Curso: Gestión de Reclamos en Contratos de Construcción y Contratos Colaborativos NEC y FIDIC.
+     */
+    public function gestionReclamosNecFidic(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Gestión de Reclamos en Contratos de Construcción y Contratos Colaborativos NEC y FIDIC | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Gestión de Reclamos en Contratos de Construcción y Contratos Colaborativos NEC y FIDIC: estructura del claim, ampliaciones de plazo, demoras concurrentes, aceleración, daños, disruption y análisis de cronograma. 23 horas netas y 23 PDU.',
+            'canonical'       => 'https://quality-consulting.org/gestion-reclamos-nec-fidic',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/gestion-reclamos-nec-fidic', $data, 'main');
+    }
 }
 

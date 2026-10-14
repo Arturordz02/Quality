@@ -68,6 +68,11 @@ class CourseCatalog
             'title' => 'Gerencia de la Calidad en Construcción',
             'url'   => '/gerencia-de-calidad',
         ],
+        'gestion-reclamos-nec-fidic' => [
+            'slug'  => 'gestion-reclamos-nec-fidic',
+            'title' => 'Gestión de Reclamos en Contratos de Construcción y Contratos Colaborativos NEC y FIDIC',
+            'url'   => '/gestion-reclamos-nec-fidic',
+        ],
         'herramientas' => [
             'slug'  => 'herramientas',
             'title' => 'Taller de Herramientas de Gestión de Calidad en la Construcción',
