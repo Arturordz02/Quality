@@ -4,7 +4,7 @@
  * Vista de Página: Oficina Técnica en Edificaciones + Panel de Control 100% Real Time
  * Archivo: app/Views/pages/oficina-tecnica-edificaciones-panel-control.php
  *
- * Basado en la plantilla unificada aprobada: app/Views/partials/course_detail_unified.php
+ * Basado en la estructura unificada aprobada: app/Views/partials/course_detail_unified.php
  * Contenido auditado estrictamente contra el documento oficial externo:
  * D:\Descargas D\Brouchure\Oficina Tecnica\BROCHURE OFICINA TÉCNICA EN EDIFICACIONES - F (2).pdf
  */
@@ -77,7 +77,7 @@ $course = [
         [
             'title'   => 'Cloud Dashboard',
             'icon'    => 'fa-solid fa-cloud',
-            'content' => '<ul><li>Panel de Control de 100% tiempo real y vía cloud con Looker Studio (Google Data Studio).</li></ul>',
+            'content' => '<ul><li>Panel de Control 100% en tiempo real y vía cloud con Looker Studio (Google Data Studio).</li></ul>',
         ],
     ],
 

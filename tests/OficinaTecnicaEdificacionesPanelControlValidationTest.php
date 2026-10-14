@@ -20,6 +20,7 @@
  * 11. Sección del brochure reemplazada por mensaje de contacto comercial y canales activos.
  * 12. Botón de PayPal restringido a primera clase (USD 10) con aclaración de no inclusión del curso completo.
  * 13. URL oficial registrada en public_html/sitemap.xml.
+ * 14. Ausencia total de menciones a Excel o plantillas y respaldo exclusivo de Looker Studio (Google Data Studio).
  */
 
 declare(strict_types=1);
@@ -342,6 +343,65 @@ runTest("Sitemap.xml incluye la URL https://quality-consulting.org/oficina-tecni
     if (strpos($content, '<loc>https://quality-consulting.org/oficina-tecnica-edificaciones-panel-control</loc>') === false) {
         throw new \Exception("No se encontró la URL de la capacitación en sitemap.xml.");
     }
+    return true;
+});
+
+// Caso 14: Ausencia total de menciones a Excel o plantillas y respaldo exclusivo de Looker Studio
+runTest("Ausencia total de menciones a Excel y plantillas en la vista y en el HTML compilado", function(): bool {
+    $viewPath = dirname(__DIR__) . '/private_app/app/Views/pages/oficina-tecnica-edificaciones-panel-control.php';
+    $viewCode = file_get_contents($viewPath);
+
+    if (stripos($viewCode, 'excel') !== false) {
+        throw new \Exception("La vista contiene menciones no respaldadas a Excel.");
+    }
+    if (stripos($viewCode, 'plantilla') !== false) {
+        throw new \Exception("La vista contiene menciones no respaldadas a plantillas.");
+    }
+
+    $backedText = 'Panel de Control 100% en tiempo real y vía cloud con Looker Studio (Google Data Studio).';
+    if (strpos($viewCode, $backedText) === false) {
+        throw new \Exception("La vista no contiene el texto editorial respaldado exacto del panel de control.");
+    }
+
+    $view = new View();
+    $data = [
+        'title'           => 'Capacitación: Oficina Técnica en Edificaciones + Panel de Control 100% Real Time | Quality Consulting Solutions',
+        'metaDescription' => 'Curso especializado...',
+        'canonical'       => 'https://quality-consulting.org/oficina-tecnica-edificaciones-panel-control',
+        'activePage'      => 'capacitacion',
+    ];
+    $html = $view->render('pages/oficina-tecnica-edificaciones-panel-control', $data, 'main');
+
+    if (stripos($html, 'excel') !== false) {
+        throw new \Exception("El HTML renderizado contiene menciones a Excel.");
+    }
+    if (stripos($html, 'plantilla') !== false) {
+        throw new \Exception("El HTML renderizado contiene menciones a plantillas.");
+    }
+    if (strpos($html, 'Looker Studio') === false) {
+        throw new \Exception("El HTML renderizado no contiene 'Looker Studio'.");
+    }
+    if (strpos($html, 'Google Data Studio') === false) {
+        throw new \Exception("El HTML renderizado no contiene 'Google Data Studio'.");
+    }
+
+    $staticHtmlPath = dirname(__DIR__) . '/_site/oficina-tecnica-edificaciones-panel-control.html';
+    if (file_exists($staticHtmlPath)) {
+        $staticHtml = file_get_contents($staticHtmlPath);
+        if (stripos($staticHtml, 'excel') !== false) {
+            throw new \Exception("El HTML estático compilado contiene menciones a Excel.");
+        }
+        if (stripos($staticHtml, 'plantilla') !== false) {
+            throw new \Exception("El HTML estático compilado contiene menciones a plantillas.");
+        }
+        if (strpos($staticHtml, 'Looker Studio') === false) {
+            throw new \Exception("El HTML estático no contiene 'Looker Studio'.");
+        }
+        if (strpos($staticHtml, 'Google Data Studio') === false) {
+            throw new \Exception("El HTML estático no contiene 'Google Data Studio'.");
+        }
+    }
+
     return true;
 });
 
