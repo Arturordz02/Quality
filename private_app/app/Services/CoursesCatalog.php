@@ -205,14 +205,14 @@ class CoursesCatalog
             ],
             [
                 'number'        => 16,
-                'title'         => 'CONTRATOS COLABORATIVOS NEC 4',
+                'title'         => 'EL CONTRATO DE NEC4',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Curso',
-                'image'         => 'img/nec1.webp',
-                'image_fallback'=> 'img/nec1.png',
-                'route'         => '/nec',
-                'description'   => 'Novedades y mecanismos de colaboración del estándar NEC4: alertas tempranas y compensación.'
+                'image'         => 'img/capacitaciones/contrato-nec4.webp',
+                'image_fallback'=> 'img/capacitaciones/contrato-nec4.png',
+                'route'         => '/contrato-nec4',
+                'description'   => 'Cláusulas principales, opciones principales de la A a la F, resolución de disputas con cláusulas W y DAB, y cláusulas secundarias del contrato estándar NEC4.'
             ],
             [
                 'number'        => 17,

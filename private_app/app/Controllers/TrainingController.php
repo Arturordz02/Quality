@@ -651,6 +651,21 @@ class TrainingController extends Controller
 
         $this->render('pages/gestion-contractual-megaproyectos-mineros', $data, 'main');
     }
+
+    /**
+     * Curso: El Contrato de NEC4.
+     */
+    public function contratoNec4(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: El Contrato de NEC4 | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en El Contrato de NEC4: cláusulas principales 10 a 80, opciones principales A a F, resolución y prevención de disputas con cláusulas W y DAB, y cláusulas secundarias. 14 horas netas y 14 PDU.',
+            'canonical'       => 'https://quality-consulting.org/contrato-nec4',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/contrato-nec4', $data, 'main');
+    }
 }
 
 

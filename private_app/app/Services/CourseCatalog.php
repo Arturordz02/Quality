@@ -33,6 +33,11 @@ class CourseCatalog
             'title' => 'Contrato Colaborativo NEC 3/4',
             'url'   => '/contrato-colaborativo-nec-3-4',
         ],
+        'contrato-nec4' => [
+            'slug'  => 'contrato-nec4',
+            'title' => 'El Contrato de NEC4',
+            'url'   => '/contrato-nec4',
+        ],
         'contratos' => [
             'slug'  => 'contratos',
             'title' => 'Administración de Contratos de Construcción',
