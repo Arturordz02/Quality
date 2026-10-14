@@ -113,6 +113,11 @@ class CourseCatalog
             'title' => 'Oficina Técnica en Edificaciones y Hospitales',
             'url'   => '/oficina-tecnica-hospitales-edificaciones',
         ],
+        'oficina-tecnica-infraestructura-minera' => [
+            'slug'  => 'oficina-tecnica-infraestructura-minera',
+            'title' => 'Oficina Técnica en Infraestructura Minera (PADs, Presas de Relave, Geosintéticos)',
+            'url'   => '/oficina-tecnica-infraestructura-minera',
+        ],
         'pmo' => [
             'slug'  => 'pmo',
             'title' => 'Gestión e Implementación de PMO en Construcción',

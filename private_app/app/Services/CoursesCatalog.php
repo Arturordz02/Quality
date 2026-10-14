@@ -179,14 +179,14 @@ class CoursesCatalog
             ],
             [
                 'number'        => 14,
-                'title'         => 'OFICINA TÉCNICA EN OBRAS MINERAS',
+                'title'         => 'OFICINA TÉCNICA EN INFRAESTRUCTURA MINERA (PADs, PRESAS DE RELAVE, GEOSINTÉTICOS)',
                 'category'      => 'Oficina Técnica',
                 'category_slug' => 'oficina-tecnica',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-OficinaTecnicaObras.webp',
-                'image_fallback'=> 'img/Index-OficinaTecnicaObras.png',
-                'route'         => '/oficina-tecnica',
-                'description'   => 'Gestión contractual, control de avance y estándares de alta exigencia en proyectos mineros y plantas.'
+                'image'         => 'img/capacitaciones/oficina-tecnica-infraestructura-minera.webp',
+                'image_fallback'=> 'img/capacitaciones/oficina-tecnica-infraestructura-minera.png',
+                'route'         => '/oficina-tecnica-infraestructura-minera',
+                'description'   => 'Gestión y estrategias de oficina técnica en proyectos de movimiento de tierras para infraestructura minera: PADs de lixiviación, presas de relave y geosintéticos.'
             ],
 
             // ==========================================
