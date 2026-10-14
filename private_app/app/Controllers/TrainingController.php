@@ -576,5 +576,20 @@ class TrainingController extends Controller
 
         $this->render('pages/contrato-colaborativo-nec-3-4', $data, 'main');
     }
+
+    /**
+     * Curso: Contratos FIDIC para Contratos EPC y Construcción.
+     */
+    public function contratosFidicEpcConstruccion(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Contratos FIDIC para Contratos EPC y Construcción | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Contratos FIDIC para EPC y Construcción: Rainbow Suite (Red, Yellow y Silver Books 1999 y 2017), gestión de riesgos, reclamos y adecuación al derecho peruano. 20 horas netas y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/contratos-fidic-epc-construccion',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/contratos-fidic-epc-construccion', $data, 'main');
+    }
 }
 

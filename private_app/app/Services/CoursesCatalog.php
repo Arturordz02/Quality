@@ -260,14 +260,14 @@ class CoursesCatalog
             ],
             [
                 'number'        => 21,
-                'title'         => 'CONTRATOS FIDIC PARA EPC Y CONSTRUCCIÓN',
+                'title'         => 'CONTRATOS FIDIC PARA CONTRATOS EPC Y CONSTRUCCIÓN',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-Contratos-Internacionales.webp',
-                'image_fallback'=> 'img/Index-Contratos-Internacionales.png',
-                'route'         => '/fidic',
-                'description'   => 'Administración de contratos FIDIC Libro Rojo, Amarillo y Plata (EPC/Turnkey) en grandes proyectos.'
+                'image'         => 'img/capacitaciones/contratos-fidic-epc-construccion.webp',
+                'image_fallback'=> 'img/capacitaciones/contratos-fidic-epc-construccion.png',
+                'route'         => '/contratos-fidic-epc-construccion',
+                'description'   => 'Rainbow Suite (Libro Rojo, Amarillo y Plata 1999 y 2017) para contratos EPC y de construcción: riesgos, reclamos y adecuación al derecho peruano.'
             ],
             [
                 'number'        => 22,

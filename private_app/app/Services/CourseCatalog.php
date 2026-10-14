@@ -38,6 +38,11 @@ class CourseCatalog
             'title' => 'Administración de Contratos de Construcción',
             'url'   => '/contratos',
         ],
+        'contratos-fidic-epc-construccion' => [
+            'slug'  => 'contratos-fidic-epc-construccion',
+            'title' => 'Contratos FIDIC para Contratos EPC y Construcción',
+            'url'   => '/contratos-fidic-epc-construccion',
+        ],
         'costos' => [
             'slug'  => 'costos',
             'title' => 'Costos y Presupuestos en Edificaciones',
