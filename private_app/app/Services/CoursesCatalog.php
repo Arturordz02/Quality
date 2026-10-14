@@ -216,14 +216,14 @@ class CoursesCatalog
             ],
             [
                 'number'        => 17,
-                'title'         => 'CASOS DE APLICACIÓN EN CONTRATOS NEC4',
+                'title'         => 'CASOS PRÁCTICOS DE CONTRATOS NEC3-F',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Curso',
-                'image'         => 'img/nec1.webp',
-                'image_fallback'=> 'img/nec1.png',
-                'route'         => '/nec',
-                'description'   => 'Casuística real, resolución de disputas y administración de cambios en contratos internacionales NEC4.'
+                'image'         => 'img/capacitaciones/casos-practicos-contratos-nec3-f.webp',
+                'image_fallback'=> 'img/capacitaciones/casos-practicos-contratos-nec3-f.png',
+                'route'         => '/casos-practicos-contratos-nec3-f',
+                'description'   => 'Términos y definiciones bilingües, obligaciones de las partes, gestión de riesgos, alertas tempranas, eventos compensables y casuística real.'
             ],
             [
                 'number'        => 18,
