@@ -741,6 +741,216 @@ class TrainingController extends Controller
 
         $this->render('pages/casos-practicos-contratos-nec3-f', $data, 'main');
     }
+
+    /**
+     * Curso: Gestión de Proyectos con el Enfoque PMI.
+     */
+    public function gestionProyectosPmi(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Gestión de Proyectos con el Enfoque PMI | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Gestión de Proyectos con el Enfoque PMI: principios y dominios de desempeño del PMBOK® 7ma Edición, taller de riesgos y panel en Google Looker Studio. 20 horas netas y 20 PDU.',
+            'canonical'       => 'https://quality-consulting.org/gestion-proyectos-pmi',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/gestion-proyectos-pmi', $data, 'main');
+    }
+
+    /**
+     * Curso: Gestión de la PMO & VMO.
+     */
+    public function gestionPmoVmo(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Gestión de la PMO & VMO | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Gestión de la PMO & VMO: implementación de oficinas de gestión de proyectos, Value Management Office (VMO Ágil), templates oficiales del PMI y tableros en Google Looker Studio. 15 horas netas y 15 PDU.',
+            'canonical'       => 'https://quality-consulting.org/gestion-pmo-vmo',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/gestion-pmo-vmo', $data, 'main');
+    }
+
+    /**
+     * Curso: Brightline Initiative (Enfoque Estratégico del PMI).
+     */
+    public function brightlineInitiative(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Brightline Initiative (Enfoque Estratégico del PMI) | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Brightline Initiative: cierre de la brecha entre diseño estratégico y entrega efectiva aplicando los 10 principios del PMI. 15 horas netas y 15 PDU.',
+            'canonical'       => 'https://quality-consulting.org/brightline-initiative',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/brightline-initiative', $data, 'main');
+    }
+
+    /**
+     * Curso: Lean Construction en Edificaciones.
+     */
+    public function leanConstructionEdificaciones(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Lean Construction en Edificaciones | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Lean Construction en Edificaciones: Last Planner® System, sectorización, líneas de balance, trenes de trabajo, Lookahead y análisis de restricciones. 16 horas netas y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/lean-construction-edificaciones',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/lean-construction-edificaciones', $data, 'main');
+    }
+
+    /**
+     * Curso: Lean Construction en Infraestructura.
+     */
+    public function leanConstructionInfraestructura(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Lean Construction en Infraestructura | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Lean Construction en Infraestructura: Last Planner® System en megaproyectos lineales, obras viales y minería, Pull Planning, líneas de balance y mejora continua. 16 horas netas y 16 PDU.',
+            'canonical'       => 'https://quality-consulting.org/lean-construction-infraestructura',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/lean-construction-infraestructura', $data, 'main');
+    }
+
+    /**
+     * Curso: Liderazgo en la Construcción.
+     */
+    public function liderazgoConstruccion(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Liderazgo en la Construcción | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Liderazgo en la Construcción: liderazgo directivo, transformacional, Management 3.0, comunicación asertiva, escucha empática y feedback. 12 horas netas y 12 PDU.',
+            'canonical'       => 'https://quality-consulting.org/liderazgo-construccion',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/liderazgo-construccion', $data, 'main');
+    }
+
+    /**
+     * Curso: Resultado Operativo de Obra.
+     */
+    public function resultadoOperativoObra(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Resultado Operativo de Obra | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Resultado Operativo de Obra: control económico de obra, presupuesto venta vs meta, indicadores CPI/SPI/TCPI, proyecciones de costo al cierre y planes de acción. 12 horas netas y 12 PDU.',
+            'canonical'       => 'https://quality-consulting.org/resultado-operativo-obra',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/resultado-operativo-obra', $data, 'main');
+    }
+
+    /**
+     * Curso: Valor Ganado con MS Project y Power BI.
+     */
+    public function valorGanadoMsProjectPowerBi(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Valor Ganado con MS Project y Power BI | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Valor Ganado con MS Project y Power BI: método del valor ganado (EVM), líneas base, métricas de rendimiento y desarrollo de tableros en Power BI. 14 horas netas y 14 PDU.',
+            'canonical'       => 'https://quality-consulting.org/valor-ganado-ms-project-power-bi',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/valor-ganado-ms-project-power-bi', $data, 'main');
+    }
+
+    /**
+     * Curso: Costos en Edificaciones con Power BI.
+     */
+    public function costosEdificacionesPowerBi(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Costos en Edificaciones con Power BI | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Costos en Edificaciones con Power BI: cuentas de control, informe semanal de producción (ISP), resultado operativo, presupuesto meta y tableros interactivos. 14 horas netas y 14 PDU.',
+            'canonical'       => 'https://quality-consulting.org/costos-edificaciones-power-bi',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/costos-edificaciones-power-bi', $data, 'main');
+    }
+
+    /**
+     * Curso: Control de Proyectos con BIM y Power BI.
+     */
+    public function controlProyectosBimPowerBi(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Control de Proyectos con BIM y Power BI | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Control de Proyectos con BIM y Power BI: modelamiento digital de estructuras, sectorización, automatización con Dynamo y tableros analíticos en Power BI. 14 horas netas y 14 PDU.',
+            'canonical'       => 'https://quality-consulting.org/control-proyectos-bim-power-bi',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/control-proyectos-bim-power-bi', $data, 'main');
+    }
+
+    /**
+     * Curso: Virtual Design & Construction - VDC.
+     */
+    public function vdc(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Virtual Design & Construction - VDC | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Virtual Design & Construction (VDC): marco metodológico de Stanford University, objetivos del cliente, sesiones ICE, BIM, PPM y estándar COBie. 14 horas netas y 14 PDU.',
+            'canonical'       => 'https://quality-consulting.org/vdc',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/vdc', $data, 'main');
+    }
+
+    /**
+     * Curso: Control de Proyectos con Primavera P6.
+     */
+    public function controlProyectosPrimaveraP6(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Control de Proyectos con Primavera P6 | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Control de Proyectos con Primavera P6: estructura Enterprise (EPS), WBS, ruta crítica, curvas S, valor ganado y tableros en Power BI. 14 horas netas y 14 PDU.',
+            'canonical'       => 'https://quality-consulting.org/control-proyectos-primavera-p6',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/control-proyectos-primavera-p6', $data, 'main');
+    }
+
+    /**
+     * Curso: Análisis Forense del Cronograma con Primavera P6.
+     */
+    public function analisisForenseCronogramaPrimaveraP6(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Análisis Forense del Cronograma con Primavera P6 | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Análisis Forense del Cronograma con Primavera P6: metodologías AACE MIP 29R-03 y protocolo SCL, demoras concurrentes, fragnets y peritajes técnicos. 15 horas netas y 15 PDU.',
+            'canonical'       => 'https://quality-consulting.org/analisis-forense-cronograma-primavera-p6',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/analisis-forense-cronograma-primavera-p6', $data, 'main');
+    }
+
+    /**
+     * Curso: Control de Proyectos de Construcción.
+     */
+    public function controlProyectosConstruccion(): void
+    {
+        $data = [
+            'title'           => 'Capacitación: Control de Proyectos de Construcción | Quality Consulting Solutions',
+            'metaDescription' => 'Curso especializado en Control de Proyectos de Construcción: alcance (WBS), cronograma (CPM/PERT), costos directos e indirectos, presupuesto venta vs meta y valor ganado. 15 horas netas y 15 PDU.',
+            'canonical'       => 'https://quality-consulting.org/control-proyectos-construccion',
+            'activePage'      => 'capacitacion',
+        ];
+
+        $this->render('pages/control-proyectos-construccion', $data, 'main');
+    }
 }
 
 

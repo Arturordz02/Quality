@@ -135,6 +135,24 @@ return function (Router $router, array $config): void {
     $router->get('/oficina-tecnica-edificaciones-panel-control', [TrainingController::class, 'oficinaTecnicaEdificacionesPanelControl']);
 
     /**
+     * RUTAS DE CAPACITACIÓN: GESTIÓN DE PROYECTOS (15 CURSOS OFICIALES)
+     */
+    $router->get('/gestion-proyectos-pmi', [TrainingController::class, 'gestionProyectosPmi']);
+    $router->get('/gestion-pmo-vmo', [TrainingController::class, 'gestionPmoVmo']);
+    $router->get('/brightline-initiative', [TrainingController::class, 'brightlineInitiative']);
+    $router->get('/lean-construction-edificaciones', [TrainingController::class, 'leanConstructionEdificaciones']);
+    $router->get('/lean-construction-infraestructura', [TrainingController::class, 'leanConstructionInfraestructura']);
+    $router->get('/liderazgo-construccion', [TrainingController::class, 'liderazgoConstruccion']);
+    $router->get('/resultado-operativo-obra', [TrainingController::class, 'resultadoOperativoObra']);
+    $router->get('/valor-ganado-ms-project-power-bi', [TrainingController::class, 'valorGanadoMsProjectPowerBi']);
+    $router->get('/costos-edificaciones-power-bi', [TrainingController::class, 'costosEdificacionesPowerBi']);
+    $router->get('/control-proyectos-bim-power-bi', [TrainingController::class, 'controlProyectosBimPowerBi']);
+    $router->get('/vdc', [TrainingController::class, 'vdc']);
+    $router->get('/control-proyectos-primavera-p6', [TrainingController::class, 'controlProyectosPrimaveraP6']);
+    $router->get('/analisis-forense-cronograma-primavera-p6', [TrainingController::class, 'analisisForenseCronogramaPrimaveraP6']);
+    $router->get('/control-proyectos-construccion', [TrainingController::class, 'controlProyectosConstruccion']);
+
+    /**
      * RUTAS DE PASARELA PAYPAL (PRIMERA CLASE DEL CURSO - USD 10) Y REGISTRO
      */
     $router->get('/pagar-primera-clase', function() {

@@ -34,8 +34,8 @@ function copyDirectory(string $src, string $dst): void {
     @mkdir($dst, 0777, true);
     while (false !== ($file = readdir($dir))) {
         if (($file != '.') && ($file != '..')) {
-            // Evitar carpetas de backend, storage y brochures en despliegue estático
-            if ($file === 'backend' || $file === 'brochures' || $file === 'storage') {
+            // Evitar carpetas de backend y storage en despliegue estático (brochures se copian para enlaces de descarga)
+            if ($file === 'backend' || $file === 'storage') {
                 continue;
             }
             if (is_dir($src . '/' . $file)) {
@@ -95,6 +95,7 @@ foreach ($pageFiles as $pageFile) {
         $htmlTransformed = preg_replace('/href="\/registro-primera-clase(\?[^"]*)?"/', 'href="registro-primera-clase.html$1"', $htmlTransformed);
         $htmlTransformed = preg_replace('/href="\/registro-exitoso(\?[^"]*)?"/', 'href="registro-exitoso.html$1"', $htmlTransformed);
         $htmlTransformed = preg_replace('/href="\/pagar-primera-clase(\?[^"]*)?"/', 'href="registro-primera-clase.html$1"', $htmlTransformed);
+        $htmlTransformed = preg_replace('/href="\/brochures\//', 'href="brochures/', $htmlTransformed);
 
         // 2. Reemplazar href="/ruta" por "ruta.html" y href="/" por "index.html" para navegación estática
         $htmlTransformed = preg_replace_callback('/href="\/([a-zA-Z0-9\-_]+)"/', function($matches) {
