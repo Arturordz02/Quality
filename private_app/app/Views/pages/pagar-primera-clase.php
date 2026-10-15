@@ -6,6 +6,9 @@ $isStatic = !empty($staticBuild);
 $rawSlug = (string)($courseSlug ?? '');
 $rawTitle = (string)($courseTitle ?? '');
 $rawUrl = (string)($courseUrl ?? '/capacitacion');
+$rawMode = (string)($checkoutMode ?? 'api');
+$mode = in_array($rawMode, ['api', 'paypalme'], true) ? $rawMode : 'api';
+$paypalMeUrlSafe = htmlspecialchars((string)($paypalMeUrl ?? ''), ENT_QUOTES, 'UTF-8');
 ?>
 
 <main class="qcs-pay-page bg-dark text-light min-vh-100">
@@ -25,6 +28,18 @@ $rawUrl = (string)($courseUrl ?? '/capacitacion');
                         <div class="alert alert-dark border-secondary text-white-50 mb-4" role="status">
                             Pago disponible únicamente en el sitio oficial.
                         </div>
+                    <?php elseif ($mode === 'paypalme'): ?>
+                        <?php if ($paypalMeUrlSafe !== ''): ?>
+                            <a href="<?= $paypalMeUrlSafe ?>" target="_blank" rel="noopener noreferrer" class="btn btn-warning text-dark fw-bold w-100 py-3">
+                                <i class="fab fa-paypal me-2" aria-hidden="true"></i>Pagar con PayPal.Me
+                            </a>
+                            <a href="/registro-primera-clase?curso=<?= rawurlencode($rawSlug) ?>" class="btn btn-outline-light w-100 mt-3 py-2">
+                                Ya realicé el pago — completar mis datos
+                            </a>
+                            <p class="small text-white-50 mt-3 mb-0">El pago quedará pendiente de verificación manual.</p>
+                        <?php else: ?>
+                            <p class="text-white-50 mb-0">Pago no disponible por el momento.</p>
+                        <?php endif; ?>
                     <?php else: ?>
                         <div id="paypal-button-container" class="mx-auto w-100" style="max-width:420px;min-height:48px">
                             <div id="paypalLoading" class="text-white-50 small py-3">
@@ -56,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (cancel) cancel.href = <?= $isStatic ? "course.url.replace(/^\\//, '') + '.html'" : 'course.url' ?>;
     }
 
-<?php if (!$isStatic): ?>
+<?php if (!$isStatic && $mode === 'api'): ?>
     const status = document.getElementById('paymentStatus');
     const apiBase = (window.QCS_API_BASE_URL || '').replace(/\/+$/, '');
     const fail = (message) => {

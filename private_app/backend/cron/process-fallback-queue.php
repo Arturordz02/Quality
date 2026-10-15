@@ -500,6 +500,7 @@ function processPaypalFirstClassRegistration(PDO $pdo, array $config, array $dat
             `monto` DECIMAL(10,2) NOT NULL,
             `moneda` CHAR(3) NOT NULL,
             `fecha_registro` DATETIME NOT NULL,
+            `verification_status` VARCHAR(40) NOT NULL DEFAULT 'verified',
             `ip_origen` VARCHAR(45) NULL,
             `user_agent` TEXT NULL,
             `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -517,9 +518,9 @@ function processPaypalFirstClassRegistration(PDO $pdo, array $config, array $dat
         $saved = true;
         if (!$isDuplicate) {
             $stmt = $pdo->prepare("INSERT INTO `paypal_first_class_registrations`
-            (`paypal_order_id`, `paypal_capture_id`, `nombres`, `email`, `telefono`, `curso_slug`, `curso_titulo`, `concepto`, `monto`, `moneda`, `fecha_registro`, `ip_origen`, `user_agent`) 
+            (`paypal_order_id`, `paypal_capture_id`, `nombres`, `email`, `telefono`, `curso_slug`, `curso_titulo`, `concepto`, `monto`, `moneda`, `fecha_registro`, `verification_status`, `ip_origen`, `user_agent`)
             VALUES 
-            (:order_id, :capture_id, :nombres, :email, :telefono, :curso_slug, :curso_titulo, :concepto, :monto, :moneda, :fecha_reg, :ip, :ua)");
+            (:order_id, :capture_id, :nombres, :email, :telefono, :curso_slug, :curso_titulo, :concepto, :monto, :moneda, :fecha_reg, :verification_status, :ip, :ua)");
 
             $saved = $stmt->execute([
             ':order_id'     => $orderId,
@@ -533,6 +534,7 @@ function processPaypalFirstClassRegistration(PDO $pdo, array $config, array $dat
             ':monto'        => (float)($data['monto'] ?? 10.00),
             ':moneda'       => $data['moneda'] ?? 'USD',
             ':fecha_reg'    => $data['fecha_registro'] ?? date('Y-m-d H:i:s'),
+            ':verification_status' => $data['verification_status'] ?? 'verified',
             ':ip'           => $data['ip_origen'] ?? '127.0.0.1',
             ':ua'           => $data['user_agent'] ?? 'QCS Fallback Cron Worker',
             ]);
@@ -551,7 +553,9 @@ function processPaypalFirstClassRegistration(PDO $pdo, array $config, array $dat
                 $courseTitle = $data['curso_titulo'] ?? 'Capacitación';
                 $nombres = $data['nombres'] ?? 'Alumno';
                 $email = $data['email'] ?? '';
-                $subject = "Nueva Inscripción – Primera Clase (USD 10): {$courseTitle} - {$nombres}";
+                $subject = ($data['verification_status'] ?? 'verified') === 'pending_manual_verification'
+                    ? "Pago pendiente de verificación – Primera clase: {$courseTitle} - {$nombres}"
+                    : "Nueva Inscripción – Primera Clase (USD 10): {$courseTitle} - {$nombres}";
                 $bodyHtml = '<p>Notificación procesada desde la cola de contingencia.</p>'
                     . '<p><strong>Curso:</strong> ' . htmlspecialchars($courseTitle, ENT_QUOTES, 'UTF-8') . '</p>'
                     . '<p><strong>Alumno:</strong> ' . htmlspecialchars($nombres, ENT_QUOTES, 'UTF-8') . '</p>'

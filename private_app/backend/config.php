@@ -180,6 +180,10 @@ return [
     // 5. PASARELA PAYPAL (CHECKOUT SERVER-TO-SERVER - PRIMERA CLASE USD 10)
     // --------------------------------------------------------------------------
     'paypal' => [
+        'checkout_mode'          => in_array(strtolower((string)$env('PAYPAL_CHECKOUT_MODE', 'api')), ['api', 'paypalme'], true)
+            ? strtolower((string)$env('PAYPAL_CHECKOUT_MODE', 'api'))
+            : 'api',
+        'paypal_me_url'          => $env('PAYPAL_ME_URL', ''),
         'mode'                   => strtolower((string)$env('PAYPAL_MODE', 'sandbox')),
         'client_id'              => $env('PAYPAL_CLIENT_ID', ''),
         'client_secret'          => $env('PAYPAL_CLIENT_SECRET', ''),
