@@ -197,9 +197,8 @@ return [
     // 6. DESTINATARIOS DE NOTIFICACIONES ADMINISTRATIVAS
     // --------------------------------------------------------------------------
     'recipients' => [
-        // Destinatario oficial confirmado de coordinación comercial (Ing. Omar Samaniego)
-        'payment_notification' => $env('PAYMENT_NOTIFICATION_EMAIL', $env('OMAR_SAMANIEGO_EMAIL', 'comercial@quality-consulting.org')),
-        'omar_samaniego'       => $env('PAYMENT_NOTIFICATION_EMAIL', $env('OMAR_SAMANIEGO_EMAIL', 'comercial@quality-consulting.org')),
+        // Destinatario de coordinación; no reutilizar SMTP_USER como destinatario.
+        'payment_notification' => $env('PAYMENT_NOTIFICATION_EMAIL', ''),
     ],
 ];
 

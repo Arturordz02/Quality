@@ -319,31 +319,10 @@ $isVerifiedInSession = !empty($isVerifiedInSession);
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const coursesCatalog = {
-        'gerencia-de-calidad': 'Gerencia de la Calidad en la Construcción',
-        'iso-9001': 'ISO 9001 para la Construcción usando IA',
-        'control-de-calidad-en-tuneleria': 'Control de Calidad en Tunelería',
-        'sindrome-del-90': 'Seminario Completion - Evita el Síndrome del 90%',
-        'seminario-iso-9001-2026': 'Seminario ISO 9001:2026',
-        'indicadores-de-calidad': 'Seminario Indicadores Avanzados de Calidad en la Construcción',
-        'bim-revit-architecture': 'BIM Revit Architecture',
-        'contratos-estado': 'Contrataciones con el Estado y Ley 30225',
-        'contratos': 'Administración de Contratos de Construcción',
-        'costos': 'Costos y Presupuestos en Edificaciones',
-        'fidic': 'Contratos FIDIC en Infraestructura y Construcción',
-        'herramientas': 'Herramientas de Calidad en Construcción',
-        'lean-last-planner': 'Lean Construction y Sistema Last Planner',
-        'nec': 'Contratos NEC3 y NEC4 en Infraestructura',
-        'oficina-tecnica': 'Gestión Integral de Oficina Técnica en Obras',
-        'pmo': 'Gestión e Implementación de PMO en Construcción',
-        'proyectos-pmi': 'Gestión de Proyectos bajo el Enfoque PMI / PMBOK',
-        'gestion-de-riesgos': 'Gestión de Riesgos, Cambios y Reclamos en la Construcción',
-        'riesgos-cadena-produccion': 'Riesgos en la Cadena de Producción de la Construcción ISO 31000 usando BIM',
-        'analisis-cuantitativo-riesgos': 'Análisis Cuantitativo de Riesgos del Costo y Cronograma con Simulación de Monte Carlo',
-        'riesgos-pmi': 'Gestión de Riesgos en Proyectos con el Enfoque PMI®',
-        'riesgos-tecnicos': 'Gestión de Riesgos Técnicos en la Construcción',
-        'valor-ganado': 'Gestión del Valor Ganado (EVM) en Construcción'
-    };
+    const coursesCatalog = <?= json_encode(
+        array_map(static fn(array $course): string => (string)$course['title'], $courseCatalog ?? []),
+        JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
+    ) ?>;
 
     const isGitHubPages = window.location.hostname.includes('github.io');
     const apiBase = (window.QCS_API_BASE_URL || '').replace(/\/+$/, '');
