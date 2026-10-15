@@ -374,7 +374,7 @@ class CoursesCatalog
             ],
 
             // ==========================================
-            // GESTIÓN DE PROYECTOS (Números 31 al 48 - Total: 18)
+            // GESTIÓN DE PROYECTOS (15 Cursos Oficiales con Brochure)
             // ==========================================
             [
                 'number'        => 31,
@@ -382,10 +382,11 @@ class CoursesCatalog
                 'category'      => 'Gestión de Proyectos',
                 'category_slug' => 'gestion-de-proyectos',
                 'type'          => 'Curso',
-                'image'         => 'img/10-pmi_orig.webp',
-                'image_fallback'=> 'img/10-pmi_orig.jpg',
-                'route'         => '/proyectos-pmi',
-                'description'   => 'Dirección integral de proyectos según el PMBOK: integración, alcance, cronograma, costos y calidad.'
+                'image'         => 'img/capacitaciones/qcs_gp_31_gestion-proyectos-enfoque-pmi_reunion-control-wbs-kpis_v1.webp',
+                'image_fallback'=> 'img/capacitaciones/qcs_gp_31_gestion-proyectos-enfoque-pmi_reunion-control-wbs-kpis_v1.png',
+                'route'         => '/gestion-proyectos-pmi',
+                'brochure'      => 'brochures/gestion-proyectos/brochure-gestion-proyectos-pmi.pdf',
+                'description'   => 'Principios y dominios de desempeño del PMBOK® 7ma Edición y la Guía Práctica de Grupos de Procesos, con taller colaborativo de riesgos y panel en Google Looker Studio.'
             ],
             [
                 'number'        => 32,
@@ -393,21 +394,23 @@ class CoursesCatalog
                 'category'      => 'Gestión de Proyectos',
                 'category_slug' => 'gestion-de-proyectos',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-GestionPMO.webp',
-                'image_fallback'=> 'img/Index-GestionPMO.png',
-                'route'         => '/pmo',
-                'description'   => 'Implementación y operación de la Oficina de Gestión de Proyectos (PMO) y Value Management Office (VMO).'
+                'image'         => 'img/capacitaciones/qcs_gp_32_pmo-vmo_gobierno-portafolio-dashboard_v1.webp',
+                'image_fallback'=> 'img/capacitaciones/qcs_gp_32_pmo-vmo_gobierno-portafolio-dashboard_v1.png',
+                'route'         => '/gestion-pmo-vmo',
+                'brochure'      => 'brochures/gestion-proyectos/brochure-gestion-pmo-vmo.pdf',
+                'description'   => 'Implementación de la Oficina de Gestión de Proyectos (PMO) y la Value Management Office (VMO Ágil), gobernanza estratégica, templates oficiales y tableros en tiempo real.'
             ],
             [
                 'number'        => 33,
-                'title'         => 'BLIGHTLINE INITIATIVE (ENFOQUE ESTRATÉGICO DEL PMI)',
+                'title'         => 'BRIGHTLINE INITIATIVE (ENFOQUE ESTRATÉGICO DEL PMI)',
                 'category'      => 'Gestión de Proyectos',
                 'category_slug' => 'gestion-de-proyectos',
                 'type'          => 'Curso',
-                'image'         => 'img/gesPMO1.webp',
-                'image_fallback'=> 'img/gesPMO1.png',
-                'route'         => null,
-                'description'   => 'Cierre de la brecha entre la estrategia corporativa y la ejecución efectiva de proyectos según PMI Brightline.'
+                'image'         => 'img/capacitaciones/qcs_gp_33_brightline-initiative_estrategia-a-ejecucion_v1.webp',
+                'image_fallback'=> 'img/capacitaciones/qcs_gp_33_brightline-initiative_estrategia-a-ejecucion_v1.png',
+                'route'         => '/brightline-initiative',
+                'brochure'      => 'brochures/gestion-proyectos/brochure-brightline-initiative.pdf',
+                'description'   => 'Cierre de la brecha entre el diseño estratégico corporativo y la entrega efectiva mediante los 10 principios de Brightline Initiative del PMI.'
             ],
             [
                 'number'        => 34,
@@ -415,10 +418,11 @@ class CoursesCatalog
                 'category'      => 'Gestión de Proyectos',
                 'category_slug' => 'gestion-de-proyectos',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-OficinaTecnicaObras.webp',
-                'image_fallback'=> 'img/Index-OficinaTecnicaObras.png',
+                'image'         => 'img/capacitaciones/qcs_gp_34_gruas-torre_planificacion-productividad-izaje_v1.webp',
+                'image_fallback'=> 'img/capacitaciones/qcs_gp_34_gruas-torre_planificacion-productividad-izaje_v1.png',
                 'route'         => '/gruas-torre',
-                'description'   => 'Planificación de izajes, logística vertical, selección de equipos y seguridad operacional en edificios altos.'
+                'brochure'      => 'brochures/gestion-proyectos/brochure-gruas-torre.pdf',
+                'description'   => 'Criterios para elevar la productividad en obra mediante el uso eficiente de grúas torre, estudio de tiempos y movimientos, montaje, desmontaje y seguridad.'
             ],
             [
                 'number'        => 35,
@@ -426,10 +430,11 @@ class CoursesCatalog
                 'category'      => 'Gestión de Proyectos',
                 'category_slug' => 'gestion-de-proyectos',
                 'type'          => 'Curso',
-                'image'         => 'img/index_LeanLast.webp',
-                'image_fallback'=> 'img/index_LeanLast.png',
-                'route'         => '/lean-last-planner',
-                'description'   => 'Filosofía Lean, reducción de pérdidas y optimización de flujos de trabajo en obras de edificación urbana.'
+                'image'         => 'img/capacitaciones/qcs_gp_35_lean-construction-edificaciones_last-planner-edificacion_v1.webp',
+                'image_fallback'=> 'img/capacitaciones/qcs_gp_35_lean-construction-edificaciones_last-planner-edificacion_v1.png',
+                'route'         => '/lean-construction-edificaciones',
+                'brochure'      => 'brochures/gestion-proyectos/brochure-lean-construction-edificaciones.pdf',
+                'description'   => 'Filosofía Lean y Last Planner® System aplicados a edificaciones: sectorización, líneas de balance, trenes de trabajo, Lookahead y análisis de restricciones.'
             ],
             [
                 'number'        => 36,
@@ -437,10 +442,11 @@ class CoursesCatalog
                 'category'      => 'Gestión de Proyectos',
                 'category_slug' => 'gestion-de-proyectos',
                 'type'          => 'Curso',
-                'image'         => 'img/index_LeanLast.webp',
-                'image_fallback'=> 'img/index_LeanLast.png',
-                'route'         => '/lean-last-planner',
-                'description'   => 'Aplicación del sistema Lean a obras viales, saneamiento, puentes y grandes movimientos de tierras.'
+                'image'         => 'img/capacitaciones/qcs_gp_36_lean-construction-infraestructura_planificacion-colaborativa-vial_v1.webp',
+                'image_fallback'=> 'img/capacitaciones/qcs_gp_36_lean-construction-infraestructura_planificacion-colaborativa-vial_v1.png',
+                'route'         => '/lean-construction-infraestructura',
+                'brochure'      => 'brochures/gestion-proyectos/brochure-lean-construction-infraestructura.pdf',
+                'description'   => 'Sistema de producción Lean y Last Planner® en megaproyectos lineales, obras viales, presas, movimientos de tierra e infraestructura minera.'
             ],
             [
                 'number'        => 37,
@@ -448,10 +454,11 @@ class CoursesCatalog
                 'category'      => 'Gestión de Proyectos',
                 'category_slug' => 'gestion-de-proyectos',
                 'type'          => 'Curso',
-                'image'         => 'img/Omar_Samaniego.webp',
-                'image_fallback'=> 'img/Omar_Samaniego.png',
-                'route'         => null,
-                'description'   => 'Desarrollo de habilidades blandas, negociación, gestión de equipos multidisciplinarios y toma de decisiones.'
+                'image'         => 'img/capacitaciones/qcs_gp_37_liderazgo-en-la-construccion_liderazgo-obra_v1.webp',
+                'image_fallback'=> 'img/capacitaciones/qcs_gp_37_liderazgo-en-la-construccion_liderazgo-obra_v1.png',
+                'route'         => '/liderazgo-construccion',
+                'brochure'      => 'brochures/gestion-proyectos/brochure-liderazgo-construccion.pdf',
+                'description'   => 'Liderazgo transformacional, directivo y ágil en obra: gestión del capital humano, comunicación asertiva, negociación y resolución efectiva de conflictos.'
             ],
             [
                 'number'        => 38,
@@ -459,10 +466,11 @@ class CoursesCatalog
                 'category'      => 'Gestión de Proyectos',
                 'category_slug' => 'gestion-de-proyectos',
                 'type'          => 'Curso',
-                'image'         => 'img/costo1.webp',
-                'image_fallback'=> 'img/costo1.png',
-                'route'         => '/costos',
-                'description'   => 'Control económico, proyección de márgenes, balance de materiales y análisis del RO en proyectos de construcción.'
+                'image'         => 'img/capacitaciones/qcs_gp_38_resultado-operativo-de-obra_tablero-productividad-obra_v1.webp',
+                'image_fallback'=> 'img/capacitaciones/qcs_gp_38_resultado-operativo-de-obra_tablero-productividad-obra_v1.png',
+                'route'         => '/resultado-operativo-obra',
+                'brochure'      => 'brochures/gestion-proyectos/brochure-resultado-operativo-obra.pdf',
+                'description'   => 'Control económico y proyección del margen al cierre: presupuesto meta, análisis de desviaciones de venta/costo y uso de índices CPI, SPI y TCPI.'
             ],
             [
                 'number'        => 39,
@@ -470,10 +478,11 @@ class CoursesCatalog
                 'category'      => 'Gestión de Proyectos',
                 'category_slug' => 'gestion-de-proyectos',
                 'type'          => 'Curso',
-                'image'         => 'img/Index_ValorGanado.webp',
-                'image_fallback'=> 'img/Index_ValorGanado.png',
-                'route'         => '/valor-ganado',
-                'description'   => 'Cálculo de SPI, CPI, curvas S y tableros interactivos de control en Power BI combinados con MS Project.'
+                'image'         => 'img/capacitaciones/qcs_gp_39_valor-ganado-ms-project-power-bi_dashboard-evm-control_v1.webp',
+                'image_fallback'=> 'img/capacitaciones/qcs_gp_39_valor-ganado-ms-project-power-bi_dashboard-evm-control_v1.png',
+                'route'         => '/valor-ganado-ms-project-power-bi',
+                'brochure'      => 'brochures/gestion-proyectos/brochure-valor-ganado-ms-project-power-bi.pdf',
+                'description'   => 'Evaluación y control del avance de obra aplicando el Método del Valor Ganado (EVM), curvas S y modelamiento de paneles ejecutivos en Power BI.'
             ],
             [
                 'number'        => 40,
@@ -481,10 +490,11 @@ class CoursesCatalog
                 'category'      => 'Gestión de Proyectos',
                 'category_slug' => 'gestion-de-proyectos',
                 'type'          => 'Curso',
-                'image'         => 'img/costo1.webp',
-                'image_fallback'=> 'img/costo1.png',
-                'route'         => '/costos',
-                'description'   => 'Estructuración de presupuestos, seguimiento de gastos reales y visualización dinámica del costo de obra.'
+                'image'         => 'img/capacitaciones/qcs_gp_40_costos-edificaciones-power-bi_analisis-costos-dashboard_v1.webp',
+                'image_fallback'=> 'img/capacitaciones/qcs_gp_40_costos-edificaciones-power-bi_analisis-costos-dashboard_v1.png',
+                'route'         => '/costos-edificaciones-power-bi',
+                'brochure'      => 'brochures/gestion-proyectos/brochure-costos-edificaciones-power-bi.pdf',
+                'description'   => 'Seguimiento y control de costos previstos, reales y proyectados en edificaciones, presupuesto meta y dashboards dinámicos en Power BI.'
             ],
             [
                 'number'        => 41,
@@ -492,21 +502,23 @@ class CoursesCatalog
                 'category'      => 'Gestión de Proyectos',
                 'category_slug' => 'gestion-de-proyectos',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-BIMRevitArchitecture.webp',
-                'image_fallback'=> 'img/Index-BIMRevitArchitecture.png',
-                'route'         => '/bim-revit-architecture',
-                'description'   => 'Integración 4D y 5D: sincronización de modelos BIM paramétricos con tableros ejecutivos de control en Power BI.'
+                'image'         => 'img/capacitaciones/qcs_gp_41_control-proyectos-bim-power-bi_bim-analitica-dashboard_v1.webp',
+                'image_fallback'=> 'img/capacitaciones/qcs_gp_41_control-proyectos-bim-power-bi_bim-analitica-dashboard_v1.png',
+                'route'         => '/control-proyectos-bim-power-bi',
+                'brochure'      => 'brochures/gestion-proyectos/brochure-control-proyectos-bim-power-bi.pdf',
+                'description'   => 'Planificación y toma de decisiones integrando modelos BIM con Power BI: sectorización, automatización con Dynamo y análisis visual en tiempo real.'
             ],
             [
                 'number'        => 42,
-                'title'         => 'VIRTUAL DESIGN & CONSTRUCTION VDC',
+                'title'         => 'VIRTUAL DESIGN & CONSTRUCTION (VDC)',
                 'category'      => 'Gestión de Proyectos',
                 'category_slug' => 'gestion-de-proyectos',
                 'type'          => 'Curso',
-                'image'         => 'img/Index-BIMRevitArchitecture.webp',
-                'image_fallback'=> 'img/Index-BIMRevitArchitecture.png',
-                'route'         => '/bim-revit-architecture',
-                'description'   => 'Metodología Stanford CIFE: integración de BIM, sesiones ICE y gestión por procesos (PPM) en construcción.'
+                'image'         => 'img/capacitaciones/qcs_gp_42_vdc_virtual-design-construction_bim-coordinacion-clash_v1.webp',
+                'image_fallback'=> 'img/capacitaciones/qcs_gp_42_vdc_virtual-design-construction_bim-coordinacion-clash_v1.png',
+                'route'         => '/vdc',
+                'brochure'      => 'brochures/gestion-proyectos/brochure-vdc.pdf',
+                'description'   => 'Marco metodológico Stanford VDC: articulación de Sesiones ICE, modelamiento BIM multidisciplinario y Project Production Management (PPM).'
             ],
             [
                 'number'        => 43,
@@ -514,10 +526,11 @@ class CoursesCatalog
                 'category'      => 'Gestión de Proyectos',
                 'category_slug' => 'gestion-de-proyectos',
                 'type'          => 'Curso',
-                'image'         => 'img/crono1.webp',
-                'image_fallback'=> 'img/crono1.png',
-                'route'         => null,
-                'description'   => 'Programación avanzada con Primavera P6: línea base, camino crítico (CPM), asignación de recursos y seguimiento.'
+                'image'         => 'img/capacitaciones/qcs_gp_43_control-proyectos-primavera-p6_cronograma-primavera_v1.webp',
+                'image_fallback'=> 'img/capacitaciones/qcs_gp_43_control-proyectos-primavera-p6_cronograma-primavera_v1.png',
+                'route'         => '/control-proyectos-primavera-p6',
+                'brochure'      => 'brochures/gestion-proyectos/brochure-control-proyectos-primavera-p6.pdf',
+                'description'   => 'Planificación avanzada con Primavera P6 Enterprise: WBS, calendarios, ruta crítica CPM, asignación de recursos y paneles en Power BI.'
             ],
             [
                 'number'        => 44,
@@ -525,10 +538,11 @@ class CoursesCatalog
                 'category'      => 'Gestión de Proyectos',
                 'category_slug' => 'gestion-de-proyectos',
                 'type'          => 'Curso',
-                'image'         => 'img/crono2.webp',
-                'image_fallback'=> 'img/crono2.png',
-                'route'         => '/cronograma-forense',
-                'description'   => 'Metodologías de análisis de demoras (As-Built vs As-Planned, Time Impact Analysis) y peritajes técnicos.'
+                'image'         => 'img/capacitaciones/qcs_gp_44_analisis-forense-cronograma-primavera-p6_forensic-schedule-analysis_v1.webp',
+                'image_fallback'=> 'img/capacitaciones/qcs_gp_44_analisis-forense-cronograma-primavera-p6_forensic-schedule-analysis_v1.png',
+                'route'         => '/analisis-forense-cronograma-primavera-p6',
+                'brochure'      => 'brochures/gestion-proyectos/brochure-analisis-forense-cronograma-primavera-p6.pdf',
+                'description'   => 'Cuantificación pericial de retrasos y análisis de responsabilidades aplicando las metodologías forenses MIP 29R-03 de AACE® en Primavera P6.'
             ],
             [
                 'number'        => 45,
@@ -538,7 +552,7 @@ class CoursesCatalog
                 'type'          => 'Seminario',
                 'image'         => 'img/costo1.webp',
                 'image_fallback'=> 'img/costo1.png',
-                'route'         => '/costos',
+                'route'         => null,
                 'description'   => 'Diseño de dashboards ejecutivos para monitoreo en tiempo real de variaciones presupuestales e indicadores clave.'
             ],
             [
@@ -549,7 +563,7 @@ class CoursesCatalog
                 'type'          => 'Seminario',
                 'image'         => 'img/costo1.webp',
                 'image_fallback'=> 'img/costo1.png',
-                'route'         => '/costos',
+                'route'         => null,
                 'description'   => 'Proyecciones de liquidez, curvas de egresos e ingresos, y mitigación del déficit financiero en proyectos.'
             ],
             [
@@ -560,7 +574,7 @@ class CoursesCatalog
                 'type'          => 'Seminario',
                 'image'         => 'img/costo1.webp',
                 'image_fallback'=> 'img/costo1.png',
-                'route'         => '/costos',
+                'route'         => null,
                 'description'   => 'Técnicas avanzadas para el diagnóstico mensual del RO y determinación anticipada de desviaciones de margen.'
             ],
             [
@@ -571,8 +585,20 @@ class CoursesCatalog
                 'type'          => 'Seminario',
                 'image'         => 'img/index_LeanLast.webp',
                 'image_fallback'=> 'img/index_LeanLast.png',
-                'route'         => '/lean-last-planner',
+                'route'         => null,
                 'description'   => 'Digitalización del Lookahead, cálculo automático del PPC y gestión ágil de restricciones con herramientas digitales.'
+            ],
+            [
+                'number'        => null,
+                'title'         => 'CONTROL DE PROYECTOS DE CONSTRUCCIÓN',
+                'category'      => 'Gestión de Proyectos',
+                'category_slug' => 'gestion-de-proyectos',
+                'type'          => 'Curso',
+                'image'         => 'img/capacitaciones/qcs_gp_control-proyectos-construccion_dashboard-integral_v1.webp',
+                'image_fallback'=> 'img/capacitaciones/qcs_gp_control-proyectos-construccion_dashboard-integral_v1.png',
+                'route'         => '/control-proyectos-construccion',
+                'brochure'      => 'brochures/gestion-proyectos/brochure-control-proyectos-construccion.pdf',
+                'description'   => 'Gestión integral del avance físico, cronograma, costos directos e indirectos, productividad y métricas para el éxito de proyectos constructivos.'
             ],
         ];
     }

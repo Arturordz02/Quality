@@ -374,7 +374,7 @@ $courses = $courses ?? \App\Services\CoursesCatalog::getAll();
                     <div class="col-lg-4 col-md-6 catalog-item-col" 
                          data-category="<?= htmlspecialchars($c['category_slug'], ENT_QUOTES, 'UTF-8') ?>"
                          data-type="<?= htmlspecialchars(strtolower($c['type']), ENT_QUOTES, 'UTF-8') ?>"
-                         data-number="<?= (int)$c['number'] ?>"
+                         data-number="<?= !empty($c['number']) ? (int)$c['number'] : '' ?>"
                          data-search="<?= htmlspecialchars(strtolower($c['title'] . ' ' . $c['category'] . ' ' . $c['type'] . ' ' . $c['description']), ENT_QUOTES, 'UTF-8') ?>">
                         
                         <div class="course-card rounded-4 border-start border-4 border-warning h-100">
