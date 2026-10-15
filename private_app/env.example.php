@@ -53,7 +53,7 @@ return [
     'PAYPAL_FIRST_CLASS_PRICE'      => '10.00',
 
     // Destinatario oficial de notificaciones (Ing. Omar Samaniego / Coordinación Comercial)
-    'OMAR_SAMANIEGO_EMAIL'          => 'comercial@quality-consulting.org',
+    'PAYMENT_NOTIFICATION_EMAIL'    => 'notificaciones-pagos@example.com',
 ];
 
 

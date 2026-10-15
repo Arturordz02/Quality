@@ -22,6 +22,13 @@ class Database {
         self::$lastError = null;
     }
 
+    /** Inyecta una conexión controlada exclusivamente para pruebas. */
+    public static function setConnectionForTesting(?PDO $pdo): void {
+        self::$pdo = $pdo;
+        self::$initialized = $pdo !== null;
+        self::$lastError = null;
+    }
+
     /**
      * Obtiene una instancia singleton de conexión PDO
      */
@@ -85,12 +92,12 @@ class Database {
                 `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 `queue_id` VARCHAR(64) NULL,
                 `nombre` VARCHAR(150) NOT NULL,
-                `telefono` VARCHAR(30) NOT NULL,
+                `telefono` VARCHAR(50) NOT NULL,
                 `empresa` VARCHAR(150) NOT NULL,
                 `email` VARCHAR(150) NOT NULL,
                 `consulta` TEXT NOT NULL,
                 `ip_origen` VARCHAR(45) NULL,
-                `user_agent` VARCHAR(255) NULL,
+                `user_agent` TEXT NULL,
                 `estado` ENUM('pendiente', 'atendido', 'archivado') DEFAULT 'pendiente',
                 `creado_el` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 UNIQUE KEY `uq_contactos_queue_id` (`queue_id`),
@@ -121,10 +128,76 @@ class Database {
                 INDEX `idx_creado_el` (`creado_el`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
 
+            $sqlPayPal = "CREATE TABLE IF NOT EXISTS `paypal_first_class_registrations` (
+                `id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                `nombres` VARCHAR(150) NOT NULL,
+                `email` VARCHAR(150) NOT NULL,
+                `telefono` VARCHAR(30) NOT NULL,
+                `curso_slug` VARCHAR(190) NOT NULL,
+                `curso_titulo` VARCHAR(255) NOT NULL,
+                `paypal_order_id` VARCHAR(127) NOT NULL,
+                `paypal_capture_id` VARCHAR(127) NOT NULL,
+                `concepto` VARCHAR(255) NOT NULL,
+                `monto` DECIMAL(10,2) NOT NULL,
+                `moneda` CHAR(3) NOT NULL,
+                `fecha_registro` DATETIME NOT NULL,
+                `ip_origen` VARCHAR(45) NULL,
+                `user_agent` VARCHAR(255) NULL,
+                `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                UNIQUE KEY `uq_paypal_first_class_order` (`paypal_order_id`),
+                UNIQUE KEY `uq_paypal_first_class_capture` (`paypal_capture_id`),
+                INDEX `idx_paypal_first_class_email` (`email`),
+                INDEX `idx_paypal_first_class_created` (`created_at`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+
             self::$pdo->exec($sqlContactos);
             self::$pdo->exec($sqlLibro);
+            self::$pdo->exec($sqlPayPal);
         } catch (PDOException $e) {
             error_log('[QCS DB Init Table Error] ' . $e->getMessage());
+        }
+    }
+
+    /** Guarda directamente una inscripción PayPal validada. */
+    public static function savePayPalFirstClassRegistration(array $config, array $data): bool {
+        $pdo = self::getConnection($config);
+        if (!$pdo) return false;
+
+        try {
+            $sql = "INSERT INTO `paypal_first_class_registrations`
+                (`nombres`, `email`, `telefono`, `curso_slug`, `curso_titulo`, `paypal_order_id`,
+                 `paypal_capture_id`, `concepto`, `monto`, `moneda`, `fecha_registro`, `ip_origen`, `user_agent`)
+                VALUES (:nombres, :email, :telefono, :curso_slug, :curso_titulo, :order_id,
+                        :capture_id, :concepto, :monto, :moneda, :fecha_registro, :ip_origen, :user_agent)";
+            $stmt = $pdo->prepare($sql);
+            return $stmt->execute([
+                ':nombres' => $data['nombres'], ':email' => $data['email'], ':telefono' => $data['telefono'],
+                ':curso_slug' => $data['curso_slug'], ':curso_titulo' => $data['curso_titulo'],
+                ':order_id' => $data['paypal_order_id'], ':capture_id' => $data['paypal_capture_id'],
+                ':concepto' => $data['concepto'] ?? 'Primera clase del curso (no incluye el curso completo)',
+                ':monto' => $data['monto'], ':moneda' => $data['moneda'],
+                ':fecha_registro' => $data['fecha_registro'] ?? date('Y-m-d H:i:s'),
+                ':ip_origen' => $data['ip_origen'] ?? null, ':user_agent' => $data['user_agent'] ?? null,
+            ]);
+        } catch (PDOException $e) {
+            self::$lastError = $e->getMessage();
+            error_log('[QCS DB Insert PayPal Registration Error] ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    public static function isPayPalTransactionUsed(array $config, string $identifier): bool {
+        $pdo = self::getConnection($config);
+        if (!$pdo) return false;
+        try {
+            $stmt = $pdo->prepare("SELECT `id` FROM `paypal_first_class_registrations`
+                WHERE `paypal_order_id` = :order_id OR `paypal_capture_id` = :capture_id LIMIT 1");
+            $stmt->execute([':order_id' => $identifier, ':capture_id' => $identifier]);
+            return (bool)$stmt->fetch();
+        } catch (PDOException $e) {
+            self::$lastError = $e->getMessage();
+            error_log('[QCS DB PayPal Duplicate Check Error] ' . $e->getMessage());
+            return false;
         }
     }
 

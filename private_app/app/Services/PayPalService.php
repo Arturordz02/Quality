@@ -306,7 +306,7 @@ class PayPalService
     /**
      * Verifica si una transacción, orden o captura de PayPal ya fue utilizada en un registro previo.
      */
-    public static function isTransactionAlreadyUsed(string $identifier): bool
+    public static function isTransactionAlreadyUsed(string $identifier, array $config = []): bool
     {
         $cleanId = trim($identifier);
         if (empty($cleanId)) {
@@ -345,18 +345,9 @@ class PayPalService
         }
 
         // 3. Comprobación en base de datos MySQL si está activa
-        if (class_exists(\Database::class, false)) {
+        if (class_exists(\Database::class, false) && !empty($config)) {
             try {
-                $db = \Database::getInstance();
-                $pdo = $db->getConnection();
-                if ($pdo) {
-                    $stmt = $pdo->prepare("SELECT id FROM `paypal_first_class_registrations` 
-                        WHERE `paypal_order_id` = :id1 OR `paypal_capture_id` = :id2 LIMIT 1");
-                    $stmt->execute([':id1' => $cleanId, ':id2' => $cleanId]);
-                    if ($stmt->fetch()) {
-                        return true;
-                    }
-                }
+                return \Database::isPayPalTransactionUsed($config, $cleanId);
             } catch (\Throwable $e) {
                 // Silencioso, fallback a comprobación en cola
             }
@@ -379,6 +370,10 @@ class PayPalService
         $cleanOrderId = trim($orderId);
         if (empty($cleanOrderId)) {
             return ['valid' => false, 'error' => 'Código de orden de PayPal no proporcionado.'];
+        }
+
+        if (empty($expectedCourse) || !CourseCatalog::isValid($expectedCourse)) {
+            return ['valid' => false, 'error' => 'El curso asociado al pago no es válido.'];
         }
 
         // 1. Verificación de Transacción no utilizada previamente
@@ -550,6 +545,13 @@ class PayPalService
             $matchedCourse = str_contains($customId, $expectedCourse) ||
                              str_contains($referenceId, $expectedCourse) ||
                              str_contains(strtolower($desc), strtolower($expectedCourse));
+
+            if (!$matchedCourse) {
+                return [
+                    'valid' => false,
+                    'error' => 'La orden de PayPal no está asociada al curso seleccionado.',
+                ];
+            }
 
             // Si la orden traía un curso diferente expresamente registrado
             if (!empty($customId) && str_starts_with($customId, 'FIRST_CLASS_') && !str_contains($customId, $expectedCourse)) {

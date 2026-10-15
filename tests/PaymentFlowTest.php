@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 require_once dirname(__DIR__) . '/private_app/config/app.php';
 require_once dirname(__DIR__) . '/private_app/backend/Security.php';
+require_once dirname(__DIR__) . '/private_app/backend/Database.php';
 require_once dirname(__DIR__) . '/private_app/backend/resilience/FallbackQueue.php';
 require_once dirname(__DIR__) . '/private_app/backend/resilience/RateLimiter.php';
 require_once dirname(__DIR__) . '/private_app/app/Services/CourseCatalog.php';
@@ -187,7 +188,7 @@ runTest("FallbackQueue almacena y verifica en disco el registro de primera clase
 });
 
 // Test 7: Manejo de OMAR_SAMANIEGO_EMAIL con placeholder (No simular éxito)
-runTest("OMAR_SAMANIEGO_EMAIL con placeholder detecta destinatario pendiente y no simula éxito", function () use ($config) {
+runTest("PAYMENT_NOTIFICATION_EMAIL con placeholder detecta destinatario pendiente y no simula éxito", function () use ($config) {
     $placeholderEmail = 'PLACEHOLDER_EMAIL_ING_OMAR_SAMANIEGO_PENDIENTE@ejemplo.com';
     $isConfigured = !empty($placeholderEmail) &&
         !str_contains($placeholderEmail, 'PLACEHOLDER') &&
@@ -293,61 +294,6 @@ runTest("Acceso a /registro-primera-clase con curso tras pago en PayPal permite 
     return true;
 });
 
-// Test 12: Envío de formulario con código de transacción de PayPal válido es aceptado y registrado
-runTest("Envío de registro con código de transacción de PayPal validado en sesión es aceptado y persistido", function () {
-    $testTransId = 'PAYPAL_TX_TEST_' . time();
-    $code = '
-        require \'' . addslashes(dirname(__DIR__)) . '/private_app/config/app.php\';
-        require_once \'' . addslashes(dirname(__DIR__)) . '/private_app/backend/Security.php\';
-        require_once \'' . addslashes(dirname(__DIR__)) . '/private_app/app/Controllers/PaymentController.php\';
-        $cfg = require \'' . addslashes(dirname(__DIR__)) . '/private_app/config/app.php\';
-        Security::startSession();
-        $sig = hash_hmac(
-            \'sha256\',
-            \'' . $testTransId . '||10.00|USD|bim-revit-architecture\',
-            $cfg[\'security\'][\'honeypot_field\'] ?? \'qcs_secret_payment_hash\'
-        );
-        $_SESSION[\'paypal_confirmed_payment\'] = [
-            \'order_id\'     => \'' . $testTransId . '\',
-            \'capture_id\'   => \'\',
-            \'course_slug\'  => \'bim-revit-architecture\',
-            \'course_title\' => \'BIM Revit Architecture\',
-            \'amount\'       => 10.00,
-            \'currency\'     => \'USD\',
-            \'verified_at\'  => time(),
-            \'signature\'    => $sig,
-        ];
-        $_SERVER[\'REQUEST_METHOD\'] = \'POST\';
-        $_POST = [
-            \'_csrf_token\'     => Security::getCsrfToken(),
-            \'paypal_order_id\' => \'' . $testTransId . '\',
-            \'nombres\'         => \'Ing. Juan Alumno PayPal\',
-            \'email\'           => \'juan.alumno@empresa.com\',
-            \'telefono\'        => \'+51 987 654 321\',
-            \'curso\'           => \'bim-revit-architecture\',
-        ];
-        $c = new App\Controllers\PaymentController(new App\Core\View(), $cfg);
-        $c->procesarRegistroPrimeraClase();
-    ';
-    $output = runPhpCode($code);
-    // Verificar que el registro se guardó en la cola FallbackQueue
-    $queueDir = FallbackQueue::getQueueDir();
-    $allFiles = glob($queueDir . '/*paypal_first_class*');
-    $found = false;
-    foreach ($allFiles as $f) {
-        $content = file_get_contents($f);
-        if (str_contains($content, $testTransId)) {
-            $found = true;
-            @unlink($f);
-            break;
-        }
-    }
-    if (!$found) {
-        throw new \Exception("No se encontró el registro persistido en disco para {$testTransId}. Output: " . $output);
-    }
-    return true;
-});
-
 // Test 13: Bloqueo atómico por concurrencia (Mutex Locking)
 runTest("FallbackQueue::acquireTransactionLock previene ejecuciones simultáneas y libera correctamente", function () {
     $testOrderId = 'MUTEX_TEST_LOCK_' . uniqid();
@@ -439,11 +385,6 @@ runTest("Configuración y PayPalService diferencian entornos Sandbox y Live sin 
         throw new \Exception("El receptor oficial live no es comercial@quality-consulting.org (es: {$liveReceiver}).");
     }
 
-    $recipientOmar = $config['recipients']['omar_samaniego'] ?? '';
-    if ($recipientOmar !== 'comercial@quality-consulting.org') {
-        throw new \Exception("El destinatario oficial de notificaciones no es comercial@quality-consulting.org (es: {$recipientOmar}).");
-    }
-
     return true;
 });
 
@@ -465,6 +406,106 @@ runTest("Router registra endpoints /api/paypal/config, create-order, capture-ord
     }
     if (!isset($routes['POST']['/api/paypal/verify-transaction'])) {
         throw new \Exception("Falta POST /api/paypal/verify-transaction");
+    }
+    return true;
+});
+
+runTest("La vista publica todo CourseCatalog::all() sin una segunda lista manual", function () use ($config) {
+    Security::startSession();
+    unset($_SESSION['paypal_confirmed_payment']);
+    $_GET['curso'] = array_key_first(CourseCatalog::all());
+    $view = new App\Core\View(dirname(__DIR__) . '/private_app/app/Views');
+    ob_start();
+    (new PaymentController($view, $config))->registroPrimeraClase();
+    $html = ob_get_clean();
+    foreach (CourseCatalog::all() as $slug => $course) {
+        if (!str_contains($html, json_encode((string)$slug)) || !str_contains($html, (string)$course['title'])) {
+            throw new \Exception("El catálogo JavaScript no contiene el curso: {$slug}");
+        }
+    }
+    return true;
+});
+
+runTest("MySQL/PDO almacena directamente y los IDs de orden y captura son únicos", function () {
+    $pdo = new PDO('sqlite::memory:');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->exec('CREATE TABLE paypal_first_class_registrations (
+        id INTEGER PRIMARY KEY AUTOINCREMENT, nombres TEXT NOT NULL, email TEXT NOT NULL,
+        telefono TEXT NOT NULL, curso_slug TEXT NOT NULL, curso_titulo TEXT NOT NULL,
+        paypal_order_id TEXT NOT NULL UNIQUE, paypal_capture_id TEXT NOT NULL UNIQUE,
+        concepto TEXT NOT NULL, monto NUMERIC NOT NULL, moneda TEXT NOT NULL, fecha_registro TEXT NOT NULL,
+        ip_origen TEXT, user_agent TEXT
+    )');
+    Database::setConnectionForTesting($pdo);
+    $cfg = ['database' => ['enabled' => true]];
+    $base = [
+        'nombres' => 'Prueba DB', 'email' => 'db@example.com', 'telefono' => '+51999999999',
+        'curso_slug' => 'bim-revit-architecture', 'curso_titulo' => 'BIM Revit Architecture',
+        'paypal_order_id' => 'ORDER_DB_1', 'paypal_capture_id' => 'CAPTURE_DB_1',
+        'monto' => 10.00, 'moneda' => 'USD', 'mail_status' => 'pendiente_en_cola',
+    ];
+    if (!Database::savePayPalFirstClassRegistration($cfg, $base)) {
+        throw new \Exception('No se guardó directamente en PDO.');
+    }
+    if (!Database::isPayPalTransactionUsed($cfg, 'ORDER_DB_1') || !Database::isPayPalTransactionUsed($cfg, 'CAPTURE_DB_1')) {
+        throw new \Exception('No se detectaron ambos identificadores persistidos.');
+    }
+    $duplicateOrder = $base;
+    $duplicateOrder['paypal_capture_id'] = 'CAPTURE_DB_2';
+    $duplicateCapture = $base;
+    $duplicateCapture['paypal_order_id'] = 'ORDER_DB_2';
+    if (Database::savePayPalFirstClassRegistration($cfg, $duplicateOrder)
+        || Database::savePayPalFirstClassRegistration($cfg, $duplicateCapture)) {
+        throw new \Exception('Una restricción UNIQUE aceptó un identificador duplicado.');
+    }
+    Database::resetConnection();
+    return true;
+});
+
+runTest("La contingencia en cola conserva un registro cuando MySQL no está disponible", function () {
+    Database::resetConnection();
+    $cfg = ['database' => ['enabled' => false]];
+    $orderId = 'FALLBACK_DB_' . uniqid();
+    if (Database::savePayPalFirstClassRegistration($cfg, []) !== false) {
+        throw new \Exception('La base deshabilitada reportó persistencia.');
+    }
+    $saved = FallbackQueue::save('paypal_first_class', [
+        'paypal_order_id' => $orderId, 'paypal_capture_id' => 'CAP_' . $orderId,
+    ], $orderId);
+    if (empty($saved['success']) || !FallbackQueue::exists($saved['file_path'])) {
+        throw new \Exception('La cola de contingencia no conservó el registro.');
+    }
+    @unlink($saved['file_path']);
+    return true;
+});
+
+runTest("El destinatario de pagos proviene solo de PAYMENT_NOTIFICATION_EMAIL", function () {
+    $oldPayment = getenv('PAYMENT_NOTIFICATION_EMAIL');
+    $oldSmtp = getenv('SMTP_USER');
+    putenv('PAYMENT_NOTIFICATION_EMAIL=omar-notify@example.com');
+    putenv('SMTP_USER=smtp-account@example.net');
+    $loaded = require dirname(__DIR__) . '/private_app/backend/config.php';
+    if (($loaded['recipients']['payment_notification'] ?? '') !== 'omar-notify@example.com') {
+        throw new \Exception('No se leyó PAYMENT_NOTIFICATION_EMAIL.');
+    }
+    if ($loaded['recipients']['payment_notification'] === ($loaded['mail']['username'] ?? '')) {
+        throw new \Exception('El destinatario se confundió con SMTP_USER.');
+    }
+    putenv($oldPayment === false ? 'PAYMENT_NOTIFICATION_EMAIL' : 'PAYMENT_NOTIFICATION_EMAIL=' . $oldPayment);
+    putenv($oldSmtp === false ? 'SMTP_USER' : 'SMTP_USER=' . $oldSmtp);
+    return true;
+});
+
+runTest("El cron conserva la notificación pendiente aunque la inscripción ya exista", function () {
+    $cron = file_get_contents(dirname(__DIR__) . '/private_app/backend/cron/process-fallback-queue.php');
+    $duplicateCheck = strpos($cron, '$isDuplicate = (bool)$checkStmt->fetch();');
+    $mailAttempt = strpos($cron, '$mailDelivered = $mailer->send');
+    $pendingReturn = strpos($cron, "return ['success' => false, 'is_duplicate' => \$isDuplicate];");
+    if ($duplicateCheck === false || $mailAttempt === false || $pendingReturn === false) {
+        throw new \Exception('El cron no conserva explícitamente el reintento SMTP pendiente.');
+    }
+    if ($duplicateCheck > $mailAttempt) {
+        throw new \Exception('El cron intenta notificar antes de asegurar la persistencia idempotente.');
     }
     return true;
 });

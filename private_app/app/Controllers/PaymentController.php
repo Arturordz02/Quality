@@ -8,7 +8,7 @@
  * - Restringir y validar órdenes en el servidor contra la API v2 de PayPal.
  * - Bloquear el acceso al formulario de registro si el pago no está verificado en el backend.
  * - Procesar el formulario obligatorio post-pago con CSRF, sanitización, rate limiting y persistencia.
- * - Gestionar la variable OMAR_SAMANIEGO_EMAIL sin falsas simulaciones de envío.
+ * - Gestionar PAYMENT_NOTIFICATION_EMAIL sin confundir destinatario y cuenta SMTP.
  */
 
 declare(strict_types=1);
@@ -239,7 +239,7 @@ class PaymentController extends Controller
         }
 
         // 1. Verificación contra reutilización de transacciones
-        if (PayPalService::isTransactionAlreadyUsed($orderId)) {
+        if (PayPalService::isTransactionAlreadyUsed($orderId, $this->config)) {
             $this->json([
                 'success' => false,
                 'message' => "La transacción {$orderId} ya fue registrada previamente en el sistema. No se admiten registros duplicados para el mismo pago.",
@@ -341,6 +341,7 @@ class PaymentController extends Controller
             'currency'            => 'USD',
             'csrfToken'           => $csrfToken,
             'honeypotField'       => $this->config['security']['honeypot_field'] ?? '_qcs_verification_hp',
+            'courseCatalog'       => CourseCatalog::all(),
         ]);
     }
 
@@ -395,7 +396,7 @@ class PaymentController extends Controller
         }
 
         // Comprobación de no reutilización de transacción
-        if (PayPalService::isTransactionAlreadyUsed($orderId)) {
+        if (PayPalService::isTransactionAlreadyUsed($orderId, $this->config)) {
             $msg = "La transacción {$orderId} ya fue registrada previamente en el sistema. No se admiten registros duplicados para el mismo pago.";
             if ($this->isAjax()) {
                 $this->json(['success' => false, 'message' => $msg, 'code' => 'TRANSACTION_ALREADY_USED'], 409);
@@ -451,6 +452,26 @@ class PaymentController extends Controller
                 }
                 $_SESSION['_qcs_payment_error'] = $finalErr;
                 $this->redirect('/registro-primera-clase?curso=' . urlencode($cursoSlug) . '&order_id=' . urlencode($orderId));
+                return;
+            }
+
+            if (empty($captureId)) {
+                $finalErr = 'No fue posible confirmar el identificador de captura del pago.';
+                if ($this->isAjax()) {
+                    $this->json(['success' => false, 'message' => $finalErr], 422);
+                }
+                $_SESSION['_qcs_payment_error'] = $finalErr;
+                $this->redirect('/registro-primera-clase?curso=' . urlencode($cursoSlug));
+                return;
+            }
+
+            if (PayPalService::isTransactionAlreadyUsed($captureId, $this->config)) {
+                $msg = 'El pago ya fue registrado previamente. No se admiten registros duplicados.';
+                if ($this->isAjax()) {
+                    $this->json(['success' => false, 'message' => $msg, 'code' => 'TRANSACTION_ALREADY_USED'], 409);
+                }
+                $_SESSION['_qcs_payment_error'] = $msg;
+                $this->redirect('/registro-primera-clase?curso=' . urlencode($cursoSlug));
                 return;
             }
 
@@ -515,9 +536,24 @@ class PaymentController extends Controller
                 'mail_status'       => 'pendiente_en_cola',
             ];
 
-            // 5. Persistencia Garantizada en Cola de Contingencia (FallbackQueue) y MySQL
-            $savedFallback = \FallbackQueue::save('paypal_first_class', $registrationData, $orderId);
-            $isPersisted = !empty($savedFallback['success']);
+            // 5. MySQL es la persistencia primaria; la cola se usa solo como contingencia.
+            $savedDatabase = \Database::savePayPalFirstClassRegistration($this->config, $registrationData);
+            $savedFallback = ['success' => false];
+            if (!$savedDatabase) {
+                // Una restricción UNIQUE también protege frente a carreras entre procesos.
+                if (\Database::isPayPalTransactionUsed($this->config, $orderId)
+                    || \Database::isPayPalTransactionUsed($this->config, $captureId)) {
+                    $msg = 'El pago ya fue registrado previamente. No se admiten registros duplicados.';
+                    if ($this->isAjax()) {
+                        $this->json(['success' => false, 'message' => $msg, 'code' => 'TRANSACTION_ALREADY_USED'], 409);
+                    }
+                    $_SESSION['_qcs_payment_error'] = $msg;
+                    $this->redirect('/registro-primera-clase?curso=' . urlencode($cursoSlug));
+                    return;
+                }
+                $savedFallback = \FallbackQueue::save('paypal_first_class', $registrationData, $orderId);
+            }
+            $isPersisted = $savedDatabase || !empty($savedFallback['success']);
 
             if (!$isPersisted) {
                 if ($this->isAjax()) {
@@ -532,10 +568,7 @@ class PaymentController extends Controller
             }
 
             // 6. GESTIÓN DE NOTIFICACIÓN A COORDINACIÓN COMERCIAL (comercial@quality-consulting.org)
-            $omarEmail = (string)($this->config['recipients']['payment_notification']
-                ?? $this->config['recipients']['omar_samaniego']
-                ?? getenv('PAYMENT_NOTIFICATION_EMAIL')
-                ?: (getenv('OMAR_SAMANIEGO_EMAIL') ?: 'comercial@quality-consulting.org'));
+            $omarEmail = trim((string)($this->config['recipients']['payment_notification'] ?? ''));
             $isRecipientConfigured = !empty($omarEmail) &&
                 !str_contains($omarEmail, 'PLACEHOLDER') &&
                 !str_contains($omarEmail, 'ejemplo.com') &&
@@ -554,25 +587,30 @@ class PaymentController extends Controller
                     if ($mailSent) {
                         $mailStatus = 'aceptado_por_servidor_smtp';
                         $mailStatusNote = "Notificación aceptada por el servidor SMTP para entrega a la coordinación comercial ({$omarEmail}).";
-                        // Actualizar archivo en cola para reflejar que la notificación ya fue aceptada
-                        $registrationData['mail_sent'] = true;
-                        $registrationData['mail_status'] = $mailStatus;
-                        $registrationData['mail_sent_at'] = date('Y-m-d H:i:s');
-                        \FallbackQueue::save('paypal_first_class', $registrationData, $orderId);
+                        // Si MySQL falló, conservar la cola para que el cron inserte sin reenviar el correo.
+                        if (!$savedDatabase) {
+                            $registrationData['mail_sent'] = true;
+                            $registrationData['mail_status'] = $mailStatus;
+                            $registrationData['mail_sent_at'] = date('Y-m-d H:i:s');
+                            \FallbackQueue::save('paypal_first_class', $registrationData, $orderId);
+                        }
                     } else {
                         $mailStatus = 'pendiente_en_cola';
                         $mailStatusNote = "Registro guardado en el sistema con orden {$orderId}. La notificación por correo quedó en cola para reintento.";
+                        \FallbackQueue::save('paypal_first_class', $registrationData, $orderId);
                     }
                 } catch (\Throwable $e) {
                     error_log('[QCS PayPal Email Notification Error] ' . $e->getMessage());
                     $mailSent = false;
                     $mailStatus = 'pendiente_en_cola';
                     $mailStatusNote = "Registro guardado en el sistema con orden {$orderId}. Incidencia SMTP; la notificación quedó registrada en cola para reintento.";
+                    \FallbackQueue::save('paypal_first_class', $registrationData, $orderId);
                 }
             } else {
                 $mailSent = false;
                 $mailStatus = 'pendiente_en_cola';
-                $mailStatusNote = "Registro guardado con orden {$orderId}. La variable OMAR_SAMANIEGO_EMAIL no está configurada; notificación en cola.";
+                $mailStatusNote = "Registro guardado con orden {$orderId}. PAYMENT_NOTIFICATION_EMAIL no está configurada; notificación en cola.";
+                \FallbackQueue::save('paypal_first_class', $registrationData, $orderId);
                 error_log("[QCS PayPal Registration] {$mailStatusNote}");
             }
 
