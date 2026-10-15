@@ -220,7 +220,7 @@ runTest("Router registra correctamente las 6 rutas de PayPal y registro", functi
 
     $routes = $router->getRoutes();
     $expectedPaths = [
-        'GET'  => ['/registro-primera-clase', '/registro-exitoso', '/pago-cancelado'],
+        'GET'  => ['/pagar-primera-clase', '/registro-primera-clase', '/registro-exitoso', '/pago-cancelado'],
         'POST' => ['/api/paypal/create-order', '/api/paypal/capture-order', '/registro-primera-clase'],
     ];
 
@@ -281,15 +281,54 @@ runTest("Intento de registro con orden falsa o manipulada es rechazado por el ba
 // Test 11: Acceso a /registro-primera-clase con curso tras pago en PayPal carga correctamente
 runTest("Acceso a /registro-primera-clase con curso tras pago en PayPal permite cargar el formulario", function () use ($config) {
     Security::startSession();
-    unset($_SESSION['paypal_confirmed_payment']);
+    $orderId = 'TEST_FORM_ORDER';
+    $captureId = 'TEST_FORM_CAPTURE';
+    $_SESSION['paypal_confirmed_payment'] = [
+        'order_id' => $orderId,
+        'capture_id' => $captureId,
+        'course_slug' => 'bim-revit-architecture',
+        'course_title' => 'BIM Revit Architecture',
+        'amount' => 10.00,
+        'currency' => 'USD',
+        'verified_at' => time(),
+        'signature' => hash_hmac('sha256', "{$orderId}|{$captureId}|10.00|USD|bim-revit-architecture", $config['security']['honeypot_field'] ?? 'qcs_secret_payment_hash'),
+    ];
     $_GET['curso'] = 'bim-revit-architecture';
     $view = new App\Core\View(dirname(__DIR__) . '/private_app/app/Views');
     $c = new App\Controllers\PaymentController($view, $config);
     ob_start();
     $c->registroPrimeraClase();
     $html = ob_get_clean();
-    if (!str_contains($html, 'Paso 2: Datos de Inscripción del Participante') || !str_contains($html, 'BIM Revit Architecture')) {
+    if (!str_contains($html, 'Completa tus datos') || !str_contains($html, 'BIM Revit Architecture') || !str_contains($html, 'Enviar mis datos')) {
         throw new \Exception("El formulario no cargó para el curso seleccionado.");
+    }
+    if (str_contains($html, 'Paso 1') || str_contains($html, 'Verificar manualmente')) {
+        throw new \Exception('La vista de formulario todavía contiene elementos del checkout anterior.');
+    }
+    unset($_SESSION['paypal_confirmed_payment']);
+    return true;
+});
+
+runTest("Checkout y formulario están separados y la vista estática no envía datos", function () use ($config) {
+    $_GET['curso'] = 'bim-revit-architecture';
+    $view = new App\Core\View(dirname(__DIR__) . '/private_app/app/Views');
+    ob_start();
+    (new PaymentController($view, $config))->pagarPrimeraClase();
+    $checkout = ob_get_clean();
+    if (!str_contains($checkout, 'BIM Revit Architecture') || !str_contains($checkout, 'paypal-button-container')) {
+        throw new \Exception('El checkout independiente no contiene curso y botón PayPal.');
+    }
+    if (str_contains($checkout, 'formRegistroPrimeraClase') || str_contains($checkout, 'Verificar manualmente')) {
+        throw new \Exception('El checkout contiene el formulario o verificación manual anterior.');
+    }
+
+    $staticView = new App\Core\View(dirname(__DIR__) . '/private_app/app/Views');
+    $staticForm = $staticView->render('pages/registro-primera-clase', ['staticBuild' => true], null);
+    if (!str_contains($staticForm, 'Pago disponible únicamente en el sitio oficial.')) {
+        throw new \Exception('Falta el mensaje compacto para GitHub Pages.');
+    }
+    if (str_contains($staticForm, '<form') || str_contains($staticForm, 'paypal_order_id')) {
+        throw new \Exception('El formulario estático permite enviar o expone referencias PayPal.');
     }
     return true;
 });
@@ -411,12 +450,10 @@ runTest("Router registra endpoints /api/paypal/config, create-order, capture-ord
 });
 
 runTest("La vista publica todo CourseCatalog::all() sin una segunda lista manual", function () use ($config) {
-    Security::startSession();
-    unset($_SESSION['paypal_confirmed_payment']);
     $_GET['curso'] = array_key_first(CourseCatalog::all());
     $view = new App\Core\View(dirname(__DIR__) . '/private_app/app/Views');
     ob_start();
-    (new PaymentController($view, $config))->registroPrimeraClase();
+    (new PaymentController($view, $config))->pagarPrimeraClase();
     $html = ob_get_clean();
     foreach (CourseCatalog::all() as $slug => $course) {
         if (!str_contains($html, json_encode((string)$slug)) || !str_contains($html, (string)$course['title'])) {

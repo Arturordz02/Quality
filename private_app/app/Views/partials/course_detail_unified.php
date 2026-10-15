@@ -464,20 +464,19 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
                         <div class="qcs-cd-first-class-box">
                             <div class="qcs-cd-fc-price-col">
                                 <span class="qcs-cd-fc-label"><?= htmlspecialchars($firstClassLabel, ENT_QUOTES, 'UTF-8') ?></span>
-                                <span class="qcs-cd-fc-amount">US$ 10</span>
                             </div>
 
                             <div class="qcs-cd-fc-btn-col">
-                                <a href="/registro-primera-clase?curso=<?= htmlspecialchars($paypalSlug, ENT_QUOTES, 'UTF-8') ?>"
+                                <a href="/pagar-primera-clase?curso=<?= htmlspecialchars($paypalSlug, ENT_QUOTES, 'UTF-8') ?>"
                                    class="btn qcs-cd-btn-paypal-fc btn-paypal-first-class"
                                    data-course-slug="<?= htmlspecialchars($paypalSlug, ENT_QUOTES, 'UTF-8') ?>"
                                    aria-label="Pagar primera clase de <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?> por US$ 10 mediante PayPal">
-                                    <i class="fab fa-paypal me-2" aria-hidden="true"></i>Pagar primera clase
+                                    <i class="fab fa-paypal me-2" aria-hidden="true"></i>Continuar con PayPal
                                 </a>
                             </div>
 
                             <p class="qcs-cd-fc-note mb-0">
-                                US$10 únicamente por la primera clase. No incluye el curso completo.
+                                Este pago corresponde únicamente a la primera clase. No incluye el curso completo.
                             </p>
                         </div>
                         <?php endif; ?>
