@@ -351,7 +351,7 @@ declare(strict_types=1);
                         </div>
                     </div>
 
-                    <!-- 3 Botones de Acción y Pasarelas de Pago Requeridos -->
+                    <!-- Botones de acción -->
                     <div class="payment-buttons-grid-3">
                         
                         <!-- 1. Botón WhatsApp (Consultas Directas) -->
@@ -364,12 +364,16 @@ declare(strict_types=1);
                             <i class="fas fa-file-pdf"></i> Solicitar Más Información
                         </a>
 
-                        <!-- 3. Botón Comprar Ahora / Hotmart (Checkout Inmediato) -->
-                        <a href="https://pay.hotmart.com/A90717682C?bid=1787673008435" target="_blank" rel="noopener noreferrer" class="btn-hotmart payment-action-btn" aria-label="Inscribirse y pagar directamente en Hotmart">
-                            <i class="fas fa-shopping-cart"></i> Inscribirse / Comprar en Hotmart
+                        <!-- 3. Pago exclusivo de la primera clase -->
+                        <a href="/pagar-primera-clase?curso=calidad-y-pmi" class="btn-hotmart payment-action-btn btn-paypal-first-class" data-course-slug="calidad-y-pmi" aria-label="Continuar con PayPal para adquirir la primera clase por USD 10">
+                            <i class="fab fa-paypal"></i> Continuar con PayPal
                         </a>
 
                     </div>
+
+                    <p class="small text-warning mt-3 mb-0">
+                        <strong>Primera clase del curso – USD 10.</strong> Este pago corresponde únicamente a la primera clase. No incluye el curso completo.
+                    </p>
 
                     <!-- Barra de Confianza y Seguridad -->
                     <div class="payment-trust-bar">

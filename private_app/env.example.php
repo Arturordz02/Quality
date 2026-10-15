@@ -42,6 +42,8 @@ return [
     'CORS_ALLOWED_ORIGINS'    => 'https://quality-consulting.org,https://www.quality-consulting.org',
 
     // Pasarela PayPal (Pago exclusivo: Primera clase del curso - USD 10)
+    'PAYPAL_CHECKOUT_MODE'          => 'paypalme',
+    'PAYPAL_ME_URL'                 => 'https://www.paypal.com/paypalme/TU_USUARIO/10',
     'PAYPAL_MODE'                   => 'sandbox', // 'sandbox' o 'live'
     'PAYPAL_CLIENT_ID'              => 'TU_PAYPAL_CLIENT_ID_PRODUCCION',
     'PAYPAL_CLIENT_SECRET'          => 'TU_PAYPAL_CLIENT_SECRET_PRODUCCION',

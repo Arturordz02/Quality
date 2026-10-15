@@ -300,6 +300,11 @@ class PaymentController extends Controller
         }
 
         $course = CourseCatalog::find($courseSlug);
+        $checkoutMode = $this->getCheckoutMode();
+        $paypalMeUrl = trim((string)($this->config['paypal']['paypal_me_url'] ?? ''));
+        if (filter_var($paypalMeUrl, FILTER_VALIDATE_URL) === false || parse_url($paypalMeUrl, PHP_URL_SCHEME) !== 'https') {
+            $paypalMeUrl = '';
+        }
         $this->render('pages/pagar-primera-clase', [
             'title' => 'Pago de primera clase | Quality Consulting Solutions',
             'metaDescription' => 'Pago seguro de la primera clase del curso por USD 10.',
@@ -309,6 +314,8 @@ class PaymentController extends Controller
             'courseUrl' => (string)$course['url'],
             'courseCatalog' => CourseCatalog::all(),
             'staticBuild' => false,
+            'checkoutMode' => $checkoutMode,
+            'paypalMeUrl' => $checkoutMode === 'paypalme' ? $paypalMeUrl : '',
         ]);
     }
 
@@ -323,8 +330,15 @@ class PaymentController extends Controller
         $courseSlug = (string)($this->getQuery('curso', ''));
         $confirmedPayment = $_SESSION['paypal_confirmed_payment'] ?? null;
         $isSessionValid = $this->isSessionPaymentValid($confirmedPayment);
+        $isManualMode = $this->getCheckoutMode() === 'paypalme';
 
-        if (!$isSessionValid) {
+        if ($isManualMode && CourseCatalog::isValid($courseSlug)) {
+            $course = CourseCatalog::find($courseSlug);
+            $courseTitle = (string)$course['title'];
+            $orderId = '';
+            $captureId = '';
+            $isVerifiedInSession = false;
+        } elseif (!$isSessionValid) {
             $target = CourseCatalog::isValid($courseSlug)
                 ? '/pagar-primera-clase?curso=' . urlencode($courseSlug)
                 : '/capacitacion';
@@ -360,6 +374,7 @@ class PaymentController extends Controller
             'honeypotField'       => $this->config['security']['honeypot_field'] ?? '_qcs_verification_hp',
             'courseCatalog'       => CourseCatalog::all(),
             'staticBuild'         => false,
+            'manualVerification'  => $isManualMode,
         ]);
     }
 
@@ -377,6 +392,7 @@ class PaymentController extends Controller
         }
 
         \Security::startSession();
+        $postedCourseSlug = trim((string)$this->getPost('curso', ''));
 
         // 1. Protección CSRF obligatoria
         $csrfToken = (string)($this->getPost('_csrf_token', ''));
@@ -385,7 +401,7 @@ class PaymentController extends Controller
                 $this->json(['success' => false, 'message' => 'Token de seguridad CSRF inválido o expirado. Recarga la página.'], 403);
             }
             $_SESSION['_qcs_payment_error'] = 'Error de seguridad (CSRF). Por favor, intenta enviar el formulario nuevamente.';
-            $this->redirect('/registro-primera-clase');
+            $this->redirect('/registro-primera-clase?curso=' . urlencode($postedCourseSlug));
             return;
         }
 
@@ -401,14 +417,25 @@ class PaymentController extends Controller
 
         // 3. Validación estricta del pago en el backend (No confiar en datos del cliente)
         $orderId = trim((string)($this->getPost('paypal_order_id', '')));
-        $cursoSlug = trim((string)($this->getPost('curso', '')));
+        $cursoSlug = $postedCourseSlug;
         $confirmedPayment = $_SESSION['paypal_confirmed_payment'] ?? null;
+        $isManualMode = $this->getCheckoutMode() === 'paypalme';
 
         if (empty($orderId)) {
             if ($this->isAjax()) {
                 $this->json(['success' => false, 'message' => 'Se requiere el código de transacción de PayPal.'], 422);
             }
             $_SESSION['_qcs_payment_error'] = 'El código o referencia de la transacción de PayPal es obligatorio.';
+            $this->redirect('/registro-primera-clase?curso=' . urlencode($cursoSlug));
+            return;
+        }
+
+        if ($isManualMode && !preg_match('/^[A-Za-z0-9._-]{6,127}$/', $orderId)) {
+            $msg = 'Ingresa una referencia PayPal válida.';
+            if ($this->isAjax()) {
+                $this->json(['success' => false, 'message' => $msg], 422);
+            }
+            $_SESSION['_qcs_payment_error'] = $msg;
             $this->redirect('/registro-primera-clase?curso=' . urlencode($cursoSlug));
             return;
         }
@@ -437,10 +464,14 @@ class PaymentController extends Controller
 
         $paymentVerified = false;
         $paymentErrorMsg = null;
-        $captureId = trim((string)($this->getPost('paypal_capture_id', $confirmedPayment['capture_id'] ?? '')));
+        $captureId = $isManualMode
+            ? 'MANUAL_' . hash('sha256', strtolower($orderId))
+            : trim((string)($this->getPost('paypal_capture_id', $confirmedPayment['capture_id'] ?? '')));
 
         try {
-            if ($this->isSessionPaymentValid($confirmedPayment) &&
+            if ($isManualMode && CourseCatalog::isValid($cursoSlug)) {
+                $paymentVerified = true;
+            } elseif ($this->isSessionPaymentValid($confirmedPayment) &&
                 strcasecmp((string)$confirmedPayment['order_id'], $orderId) === 0 &&
                 $confirmedPayment['course_slug'] === $cursoSlug) {
                 $paymentVerified = true;
@@ -527,7 +558,7 @@ class PaymentController extends Controller
                 }
                 $_SESSION['_qcs_form_errors'] = $errors;
                 $_SESSION['_qcs_form_old'] = $_POST;
-                $this->redirect('/registro-primera-clase');
+                $this->redirect('/registro-primera-clase?curso=' . urlencode($cursoSlug));
                 return;
             }
 
@@ -552,6 +583,7 @@ class PaymentController extends Controller
                 'fecha_registro'    => date('Y-m-d H:i:s'),
                 'mail_sent'         => false,
                 'mail_status'       => 'pendiente_en_cola',
+                'verification_status' => $isManualMode ? 'pending_manual_verification' : 'verified',
             ];
 
             // 5. MySQL es la persistencia primaria; la cola se usa solo como contingencia.
@@ -581,7 +613,7 @@ class PaymentController extends Controller
                     ], 500);
                 }
                 $_SESSION['_qcs_payment_error'] = 'Error temporal al almacenar el registro. Por favor contáctenos con su código de transacción.';
-                $this->redirect('/registro-primera-clase');
+                $this->redirect('/registro-primera-clase?curso=' . urlencode($cursoSlug));
                 return;
             }
 
@@ -599,7 +631,9 @@ class PaymentController extends Controller
             if ($isRecipientConfigured) {
                 try {
                     $mailer = new \SmtpMailer($this->config);
-                    $subject = "Nueva Inscripción – Primera Clase (USD 10): {$courseTitle} - {$nombres}";
+                    $subject = $isManualMode
+                        ? "Pago pendiente de verificación – Primera clase: {$courseTitle} - {$nombres}"
+                        : "Nueva Inscripción – Primera Clase (USD 10): {$courseTitle} - {$nombres}";
                     $bodyHtml = $this->buildFirstClassEmailHtml($registrationData);
                     $mailSent = $mailer->send($omarEmail, $subject, $bodyHtml, $email);
                     if ($mailSent) {
@@ -649,12 +683,15 @@ class PaymentController extends Controller
                 'mail_status'             => $mailStatus,
                 'recipient_configured'    => $isRecipientConfigured,
                 'mail_status_note'        => $mailStatusNote,
+                'pending_manual_verification' => $isManualMode,
             ];
 
             if ($this->isAjax()) {
                 $this->json([
                     'success'                 => true,
-                    'message'                 => '¡Registro completado exitosamente! Tu inscripción a la primera clase ha sido procesada.',
+                    'message'                 => $isManualMode
+                        ? 'Hemos recibido tus datos. La inscripción será confirmada después de verificar manualmente el pago.'
+                        : '¡Registro completado exitosamente! Tu inscripción a la primera clase ha sido procesada.',
                     'redirect'                => '/registro-exitoso',
                     'mail_sent'               => $mailSent,
                     'mail_status'             => $mailStatus,
@@ -745,6 +782,12 @@ class PaymentController extends Controller
         );
 
         return hash_equals($sigWithCapture, $signature) || hash_equals($sigWithoutCapture, $signature);
+    }
+
+    private function getCheckoutMode(): string
+    {
+        $mode = strtolower(trim((string)($this->config['paypal']['checkout_mode'] ?? 'api')));
+        return in_array($mode, ['api', 'paypalme'], true) ? $mode : 'api';
     }
 
     /**

@@ -22,11 +22,13 @@ require_once dirname(__DIR__) . '/private_app/backend/Security.php';
 require_once dirname(__DIR__) . '/private_app/backend/Database.php';
 require_once dirname(__DIR__) . '/private_app/backend/resilience/FallbackQueue.php';
 require_once dirname(__DIR__) . '/private_app/backend/resilience/RateLimiter.php';
+require_once dirname(__DIR__) . '/private_app/app/Services/CoursesCatalog.php';
 require_once dirname(__DIR__) . '/private_app/app/Services/CourseCatalog.php';
 require_once dirname(__DIR__) . '/private_app/app/Services/PayPalService.php';
 require_once dirname(__DIR__) . '/private_app/app/Controllers/PaymentController.php';
 
 use App\Services\CourseCatalog;
+use App\Services\CoursesCatalog;
 use App\Services\PayPalService;
 use App\Controllers\PaymentController;
 
@@ -101,6 +103,16 @@ runTest("Catálogo reconoce los cursos requeridos de ambas ramas", function () {
         throw new \Exception("Slug inexistente aceptado indebidamente.");
     }
 
+    return true;
+});
+
+runTest("Todas las capacitaciones publicadas con ruta están habilitadas para pago", function () {
+    foreach (CoursesCatalog::getAll() as $course) {
+        $slug = trim((string)($course['route'] ?? ''), '/');
+        if ($slug !== '' && !CourseCatalog::isValid($slug)) {
+            throw new \Exception("Capacitación publicada no habilitada para pago: " . $slug);
+        }
+    }
     return true;
 });
 
@@ -333,6 +345,67 @@ runTest("Checkout y formulario están separados y la vista estática no envía d
     return true;
 });
 
+runTest("Modo paypalme abre enlace externo y muestra formulario de verificación manual", function () use ($config) {
+    $manualConfig = $config;
+    $manualConfig['paypal']['checkout_mode'] = 'paypalme';
+    $manualConfig['paypal']['paypal_me_url'] = 'https://www.paypal.com/paypalme/USUARIO_PRUEBA/10';
+    $_GET['curso'] = 'bim-revit-architecture';
+    unset($_SESSION['paypal_confirmed_payment']);
+    $view = new App\Core\View(dirname(__DIR__) . '/private_app/app/Views');
+    ob_start();
+    (new PaymentController($view, $manualConfig))->pagarPrimeraClase();
+    $checkout = ob_get_clean();
+    if (!str_contains($checkout, 'target="_blank"') || !str_contains($checkout, 'Ya realicé el pago — completar mis datos')) {
+        throw new \Exception('El checkout PayPal.Me no muestra el enlace externo y la continuación manual.');
+    }
+    if (str_contains($checkout, 'paypal-button-container')) {
+        throw new \Exception('El modo PayPal.Me cargó indebidamente Orders v2.');
+    }
+
+    ob_start();
+    (new PaymentController($view, $manualConfig))->registroPrimeraClase();
+    $form = ob_get_clean();
+    if (!str_contains($form, 'name="paypal_order_id"') || !str_contains($form, 'required')) {
+        throw new \Exception('La referencia PayPal manual no es obligatoria.');
+    }
+    if (str_contains($form, 'Pago verificado.')) {
+        throw new \Exception('El modo manual presenta indebidamente el pago como verificado.');
+    }
+    return true;
+});
+
+runTest("Modo api conserva el contenedor de Orders v2", function () use ($config) {
+    $apiConfig = $config;
+    $apiConfig['paypal']['checkout_mode'] = 'api';
+    $_GET['curso'] = 'bim-revit-architecture';
+    $view = new App\Core\View(dirname(__DIR__) . '/private_app/app/Views');
+    ob_start();
+    (new PaymentController($view, $apiConfig))->pagarPrimeraClase();
+    $checkout = ob_get_clean();
+    if (!str_contains($checkout, 'paypal-button-container') || !str_contains($checkout, '/api/paypal/create-order')) {
+        throw new \Exception('El modo API dejó de exponer el flujo Orders v2 existente.');
+    }
+    return true;
+});
+
+runTest("Referencia manual duplicada y asunto pendiente están protegidos", function () {
+    $ref = 'MANUAL_REF_' . uniqid();
+    $saved = FallbackQueue::save('paypal_first_class', [
+        'paypal_order_id' => $ref,
+        'paypal_capture_id' => 'MANUAL_' . hash('sha256', strtolower($ref)),
+        'verification_status' => 'pending_manual_verification',
+    ], $ref);
+    if (empty($saved['success']) || !PayPalService::isTransactionAlreadyUsed($ref)) {
+        throw new \Exception('No se bloqueó una referencia manual duplicada.');
+    }
+    @unlink($saved['file_path']);
+    $controller = file_get_contents(dirname(__DIR__) . '/private_app/app/Controllers/PaymentController.php');
+    if (!str_contains($controller, 'Pago pendiente de verificación – Primera clase')) {
+        throw new \Exception('Falta el asunto de notificación para verificación manual.');
+    }
+    return true;
+});
+
 // Test 13: Bloqueo atómico por concurrencia (Mutex Locking)
 runTest("FallbackQueue::acquireTransactionLock previene ejecuciones simultáneas y libera correctamente", function () {
     $testOrderId = 'MUTEX_TEST_LOCK_' . uniqid();
@@ -456,7 +529,11 @@ runTest("La vista publica todo CourseCatalog::all() sin una segunda lista manual
     (new PaymentController($view, $config))->pagarPrimeraClase();
     $html = ob_get_clean();
     foreach (CourseCatalog::all() as $slug => $course) {
-        if (!str_contains($html, json_encode((string)$slug)) || !str_contains($html, (string)$course['title'])) {
+        $encodedTitle = json_encode(
+            (string)$course['title'],
+            JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
+        );
+        if (!str_contains($html, json_encode((string)$slug)) || !str_contains($html, (string)$encodedTitle)) {
             throw new \Exception("El catálogo JavaScript no contiene el curso: {$slug}");
         }
     }
@@ -471,6 +548,7 @@ runTest("MySQL/PDO almacena directamente y los IDs de orden y captura son único
         telefono TEXT NOT NULL, curso_slug TEXT NOT NULL, curso_titulo TEXT NOT NULL,
         paypal_order_id TEXT NOT NULL UNIQUE, paypal_capture_id TEXT NOT NULL UNIQUE,
         concepto TEXT NOT NULL, monto NUMERIC NOT NULL, moneda TEXT NOT NULL, fecha_registro TEXT NOT NULL,
+        verification_status TEXT NOT NULL DEFAULT "verified",
         ip_origen TEXT, user_agent TEXT
     )');
     Database::setConnectionForTesting($pdo);
@@ -480,12 +558,17 @@ runTest("MySQL/PDO almacena directamente y los IDs de orden y captura son único
         'curso_slug' => 'bim-revit-architecture', 'curso_titulo' => 'BIM Revit Architecture',
         'paypal_order_id' => 'ORDER_DB_1', 'paypal_capture_id' => 'CAPTURE_DB_1',
         'monto' => 10.00, 'moneda' => 'USD', 'mail_status' => 'pendiente_en_cola',
+        'verification_status' => 'pending_manual_verification',
     ];
     if (!Database::savePayPalFirstClassRegistration($cfg, $base)) {
         throw new \Exception('No se guardó directamente en PDO.');
     }
     if (!Database::isPayPalTransactionUsed($cfg, 'ORDER_DB_1') || !Database::isPayPalTransactionUsed($cfg, 'CAPTURE_DB_1')) {
         throw new \Exception('No se detectaron ambos identificadores persistidos.');
+    }
+    $status = $pdo->query("SELECT verification_status FROM paypal_first_class_registrations WHERE paypal_order_id = 'ORDER_DB_1'")->fetchColumn();
+    if ($status !== 'pending_manual_verification') {
+        throw new \Exception('No se guardó el estado de verificación manual pendiente.');
     }
     $duplicateOrder = $base;
     $duplicateOrder['paypal_capture_id'] = 'CAPTURE_DB_2';

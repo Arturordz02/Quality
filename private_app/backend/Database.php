@@ -141,6 +141,7 @@ class Database {
                 `monto` DECIMAL(10,2) NOT NULL,
                 `moneda` CHAR(3) NOT NULL,
                 `fecha_registro` DATETIME NOT NULL,
+                `verification_status` VARCHAR(40) NOT NULL DEFAULT 'verified',
                 `ip_origen` VARCHAR(45) NULL,
                 `user_agent` VARCHAR(255) NULL,
                 `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -166,9 +167,9 @@ class Database {
         try {
             $sql = "INSERT INTO `paypal_first_class_registrations`
                 (`nombres`, `email`, `telefono`, `curso_slug`, `curso_titulo`, `paypal_order_id`,
-                 `paypal_capture_id`, `concepto`, `monto`, `moneda`, `fecha_registro`, `ip_origen`, `user_agent`)
+                 `paypal_capture_id`, `concepto`, `monto`, `moneda`, `fecha_registro`, `verification_status`, `ip_origen`, `user_agent`)
                 VALUES (:nombres, :email, :telefono, :curso_slug, :curso_titulo, :order_id,
-                        :capture_id, :concepto, :monto, :moneda, :fecha_registro, :ip_origen, :user_agent)";
+                        :capture_id, :concepto, :monto, :moneda, :fecha_registro, :verification_status, :ip_origen, :user_agent)";
             $stmt = $pdo->prepare($sql);
             return $stmt->execute([
                 ':nombres' => $data['nombres'], ':email' => $data['email'], ':telefono' => $data['telefono'],
@@ -177,6 +178,7 @@ class Database {
                 ':concepto' => $data['concepto'] ?? 'Primera clase del curso (no incluye el curso completo)',
                 ':monto' => $data['monto'], ':moneda' => $data['moneda'],
                 ':fecha_registro' => $data['fecha_registro'] ?? date('Y-m-d H:i:s'),
+                ':verification_status' => $data['verification_status'] ?? 'verified',
                 ':ip_origen' => $data['ip_origen'] ?? null, ':user_agent' => $data['user_agent'] ?? null,
             ]);
         } catch (PDOException $e) {

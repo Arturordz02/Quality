@@ -217,10 +217,29 @@ class CourseCatalog
 
     /**
      * Retorna todos los cursos catalogados.
+     *
+     * CoursesCatalog es la fuente institucional de capacitaciones publicadas.
+     * La lista local conserva cursos heredados que todavía tienen una página
+     * activa, pero no obliga a duplicar aquí cada nueva ruta oficial.
      */
     public static function all(): array
     {
-        return self::$courses;
+        $courses = self::$courses;
+
+        foreach (CoursesCatalog::getAll() as $publishedCourse) {
+            $route = trim((string)($publishedCourse['route'] ?? ''), '/');
+            if ($route === '') {
+                continue;
+            }
+
+            $courses[$route] = $courses[$route] ?? [
+                'slug'  => $route,
+                'title' => trim((string)($publishedCourse['title'] ?? '')),
+                'url'   => '/' . $route,
+            ];
+        }
+
+        return $courses;
     }
 
     /**
@@ -229,7 +248,8 @@ class CourseCatalog
     public static function find(string $slug): ?array
     {
         $normalized = trim(strtolower($slug));
-        return self::$courses[$normalized] ?? null;
+        $courses = self::all();
+        return $courses[$normalized] ?? null;
     }
 
     /**
@@ -238,7 +258,7 @@ class CourseCatalog
     public static function isValid(string $slug): bool
     {
         $normalized = trim(strtolower($slug));
-        return isset(self::$courses[$normalized]);
+        return isset(self::all()[$normalized]);
     }
 
     /**
@@ -247,7 +267,7 @@ class CourseCatalog
     public static function getTitle(string $slug): string
     {
         $normalized = trim(strtolower($slug));
-        return self::$courses[$normalized]['title'] ?? 'Curso Especializado de Construcción';
+        return self::all()[$normalized]['title'] ?? 'Curso Especializado de Construcción';
     }
 }
 
