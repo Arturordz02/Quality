@@ -741,7 +741,7 @@ declare(strict_types=1);
 
                         <!-- 4. Botón Pago PayPal (Primera Clase) -->
                         <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://www.paypal.com/paypalme/qualityconsulting/10" target="_blank" rel="noopener noreferrer" class="btn btn-paypal btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold text-white btn-paypal-first-class" data-course-slug="contratos" aria-label="Pagar primera clase con PayPal">
+                            <a href="/pagar-primera-clase?curso=contratos" class="btn btn-paypal btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold text-white btn-paypal-first-class" data-course-slug="contratos" aria-label="Continuar con PayPal">
                                 <i class="fab fa-paypal me-2"></i> PayPal
                             </a>
                         </div>
@@ -749,7 +749,7 @@ declare(strict_types=1);
                         <!-- Nota explicativa de alcance exclusivo de USD 10 -->
                         <div class="col-12 text-center text-lg-start mt-2">
                             <p class="small text-warning mb-0">
-                                <i class="fas fa-info-circle me-1"></i> Pago exclusivo de USD 10 por la primera clase del curso.
+                                <strong>Primera clase del curso – USD 10.</strong> Este pago corresponde únicamente a la primera clase. No incluye el curso completo.
                             </p>
                         </div>
 

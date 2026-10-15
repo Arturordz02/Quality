@@ -155,12 +155,7 @@ return function (Router $router, array $config): void {
     /**
      * RUTAS DE PASARELA PAYPAL (PRIMERA CLASE DEL CURSO - USD 10) Y REGISTRO
      */
-    $router->get('/pagar-primera-clase', function() {
-        $curso = (string)($_GET['curso'] ?? '');
-        $redirectUrl = '/registro-primera-clase' . ($curso !== '' ? '?curso=' . urlencode($curso) : '');
-        header('Location: ' . $redirectUrl, true, 302);
-        exit;
-    });
+    $router->get('/pagar-primera-clase', [PaymentController::class, 'pagarPrimeraClase']);
     $router->get('/api/paypal/config', [PaymentController::class, 'getPaypalConfig']);
     $router->addRoute('OPTIONS', '/api/paypal/config', [PaymentController::class, 'optionsPreflight']);
     $router->addRoute('OPTIONS', '/api/paypal/create-order', [PaymentController::class, 'optionsPreflight']);

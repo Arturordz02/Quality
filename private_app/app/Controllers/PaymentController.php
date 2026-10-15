@@ -290,6 +290,28 @@ class PaymentController extends Controller
         ]);
     }
 
+    /** VISTA: checkout exclusivo de la primera clase. */
+    public function pagarPrimeraClase(): void
+    {
+        $courseSlug = trim((string)$this->getQuery('curso', ''));
+        if (!CourseCatalog::isValid($courseSlug)) {
+            $this->redirect('/capacitacion');
+            return;
+        }
+
+        $course = CourseCatalog::find($courseSlug);
+        $this->render('pages/pagar-primera-clase', [
+            'title' => 'Pago de primera clase | Quality Consulting Solutions',
+            'metaDescription' => 'Pago seguro de la primera clase del curso por USD 10.',
+            'activePage' => 'capacitacion',
+            'courseSlug' => $courseSlug,
+            'courseTitle' => (string)$course['title'],
+            'courseUrl' => (string)$course['url'],
+            'courseCatalog' => CourseCatalog::all(),
+            'staticBuild' => false,
+        ]);
+    }
+
     /**
      * VISTA: Formulario Obligatorio post-pago de Primera Clase.
      * GET /registro-primera-clase?curso={slug}
@@ -303,16 +325,11 @@ class PaymentController extends Controller
         $isSessionValid = $this->isSessionPaymentValid($confirmedPayment);
 
         if (!$isSessionValid) {
-            if (!empty($courseSlug) && CourseCatalog::isValid($courseSlug)) {
-                $course = CourseCatalog::find($courseSlug);
-                $courseTitle = $course['title'];
-                $orderId = (string)($this->getQuery('order_id', ''));
-                $captureId = '';
-                $isVerifiedInSession = false;
-            } else {
-                $this->redirect('/capacitacion');
-                return;
-            }
+            $target = CourseCatalog::isValid($courseSlug)
+                ? '/pagar-primera-clase?curso=' . urlencode($courseSlug)
+                : '/capacitacion';
+            $this->redirect($target);
+            return;
         } else {
             $courseSlug = $confirmedPayment['course_slug'];
             $courseTitle = $confirmedPayment['course_title'];
@@ -342,6 +359,7 @@ class PaymentController extends Controller
             'csrfToken'           => $csrfToken,
             'honeypotField'       => $this->config['security']['honeypot_field'] ?? '_qcs_verification_hp',
             'courseCatalog'       => CourseCatalog::all(),
+            'staticBuild'         => false,
         ]);
     }
 

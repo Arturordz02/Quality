@@ -84,7 +84,12 @@ foreach ($pageFiles as $pageFile) {
     $data = [
         'title'        => $title,
         'canonicalUrl' => 'https://quality-consulting.org/' . ($pageName === 'home' ? '' : $pageName),
+        'staticBuild'   => true,
     ];
+
+    if (in_array($pageName, ['pagar-primera-clase', 'registro-primera-clase'], true)) {
+        $data['courseCatalog'] = \App\Services\CourseCatalog::all();
+    }
 
     try {
         $html = $viewEngine->render($viewPath, $data, 'main');
@@ -94,7 +99,7 @@ foreach ($pageFiles as $pageFile) {
         $htmlTransformed = preg_replace('/href="\/pago-cancelado(\?[^"]*)?"/', 'href="pago-cancelado.html$1"', $html);
         $htmlTransformed = preg_replace('/href="\/registro-primera-clase(\?[^"]*)?"/', 'href="registro-primera-clase.html$1"', $htmlTransformed);
         $htmlTransformed = preg_replace('/href="\/registro-exitoso(\?[^"]*)?"/', 'href="registro-exitoso.html$1"', $htmlTransformed);
-        $htmlTransformed = preg_replace('/href="\/pagar-primera-clase(\?[^"]*)?"/', 'href="registro-primera-clase.html$1"', $htmlTransformed);
+        $htmlTransformed = preg_replace('/href="\/pagar-primera-clase(\?[^"]*)?"/', 'href="pagar-primera-clase.html$1"', $htmlTransformed);
         $htmlTransformed = preg_replace('/href="\/brochures\//', 'href="brochures/', $htmlTransformed);
 
         // 2. Reemplazar href="/ruta" por "ruta.html" y href="/" por "index.html" para navegación estática
@@ -120,14 +125,6 @@ foreach ($pageFiles as $pageFile) {
         echo "  [ERROR] Falló {$pageName}: " . $e->getMessage() . "\n";
     }
 }
-
-// 3. Fallback de redirección estática de compatibilidad para pagar-primera-clase
-$compatRedirect = '<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Redirigiendo al formulario de primera clase...</title><script>var p=window.location.search;window.location.replace("registro-primera-clase.html"+p);</script><noscript><meta http-equiv="refresh" content="0;url=registro-primera-clase.html"></noscript></head><body><p>Redirigiendo a <a href="registro-primera-clase.html">registro</a>...</p></body></html>';
-file_put_contents($outputDir . '/pagar-primera-clase.html', $compatRedirect);
-if (!is_dir($outputDir . '/pagar-primera-clase')) {
-    mkdir($outputDir . '/pagar-primera-clase', 0777, true);
-}
-file_put_contents($outputDir . '/pagar-primera-clase/index.html', '<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Redirigiendo...</title><script>var p=window.location.search;window.location.replace("../registro-primera-clase.html"+p);</script><noscript><meta http-equiv="refresh" content="0;url=../registro-primera-clase.html"></noscript></head><body><p>Redirigiendo a <a href="../registro-primera-clase.html">registro</a>...</p></body></html>');
 
 // Asegurar 404.html en la raíz de output
 if (file_exists($publicHtmlDir . '/404.html') && !file_exists($outputDir . '/404.html')) {
