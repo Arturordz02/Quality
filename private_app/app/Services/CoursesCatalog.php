@@ -9,8 +9,8 @@
  * - Oficina Técnica (11–14)
  * - Contratos (15–25)
  * - Riesgos (26–30)
- * - Gestión de Proyectos (31–48)
- * Total: 48 Registros Oficiales
+ * - Gestión de Proyectos (31–49)
+ * Total: 49 Registros Oficiales
  */
 
 declare(strict_types=1);
@@ -20,7 +20,7 @@ namespace App\Services;
 class CoursesCatalog
 {
     /**
-     * Lista oficial de las 48 capacitaciones según registro institucional.
+     * Lista oficial de las 49 capacitaciones según registro institucional.
      */
     public static function getAll(): array
     {
@@ -832,6 +832,67 @@ class CoursesCatalog
         $data = $categories[$normalized];
         $data['courses'] = self::getByCategory($normalized);
         return $data;
+    }
+
+    /**
+     * Resumen dinámico de categorías oficiales con conteo exacto de capacitaciones.
+     */
+    public static function getCategoriesSummary(): array
+    {
+        $all = self::getAll();
+        $counts = [];
+        foreach ($all as $c) {
+            $slug = strtolower(trim((string)($c['category_slug'] ?? '')));
+            if ($slug !== '') {
+                $counts[$slug] = ($counts[$slug] ?? 0) + 1;
+            }
+        }
+
+        $categories = self::getCategories();
+        $order = ['calidad', 'gestion-de-proyectos', 'contratos', 'riesgos', 'oficina-tecnica'];
+
+        $result = [];
+        foreach ($order as $slug) {
+            if (isset($categories[$slug])) {
+                $result[$slug] = [
+                    'name'  => $categories[$slug]['name'],
+                    'slug'  => $slug,
+                    'count' => $counts[$slug] ?? 0,
+                ];
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Resumen dinámico de tipos de capacitación con conteo exacto.
+     */
+    public static function getTypesSummary(): array
+    {
+        $all = self::getAll();
+        $order = [
+            'curso'     => 'Cursos',
+            'seminario' => 'Seminarios',
+            'taller'    => 'Talleres',
+        ];
+
+        $counts = [];
+        foreach ($all as $c) {
+            $type = strtolower(trim((string)($c['type'] ?? 'curso')));
+            $counts[$type] = ($counts[$type] ?? 0) + 1;
+        }
+
+        $result = [];
+        foreach ($order as $slug => $label) {
+            $result[$slug] = [
+                'name'  => $label,
+                'slug'  => $slug,
+                'count' => $counts[$slug] ?? 0,
+            ];
+        }
+
+        return $result;
     }
 }
 

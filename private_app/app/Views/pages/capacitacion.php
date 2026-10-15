@@ -8,6 +8,9 @@
 declare(strict_types=1);
 
 $courses = $courses ?? \App\Services\CoursesCatalog::getAll();
+$totalCourses = count($courses);
+$categoriesSummary = \App\Services\CoursesCatalog::getCategoriesSummary();
+$typesSummary = \App\Services\CoursesCatalog::getTypesSummary();
 ?>
 <style>
         body {
@@ -304,7 +307,7 @@ $courses = $courses ?? \App\Services\CoursesCatalog::getAll();
         </section>
 
         <!-- ==========================================================================
-             3. CATÁLOGO GENERAL DE 48 CAPACITACIONES (Filtros, Buscador y Grilla)
+             3. CATÁLOGO GENERAL DE CAPACITACIONES (Filtros, Buscador y Grilla)
              ========================================================================== -->
         <section class="pb-5" id="catalogo">
             <div class="container">
@@ -318,11 +321,11 @@ $courses = $courses ?? \App\Services\CoursesCatalog::getAll();
                         CATÁLOGO OFICIAL DE CAPACITACIONES
                     </h2>
                     <p class="text-muted mx-auto" style="max-width: 760px;">
-                        Explora nuestros 48 programas, cursos, talleres y seminarios especializados para profesionales del sector construcción, infraestructura y minería.
+                        Explora nuestros <?= $totalCourses ?> programas, cursos, talleres y seminarios especializados para profesionales del sector construcción, infraestructura y minería.
                     </p>
                 </div>
 
-                <!-- Barra de Búsqueda y Filtros de Categoría -->
+                <!-- Barra de Búsqueda y Filtros de Categoría y Tipo -->
                 <div class="catalog-controls-card p-3 p-md-4 rounded-4 bg-white shadow-sm border mb-4">
                     
                     <!-- Fila 1: Buscador en ancho completo -->
@@ -334,32 +337,35 @@ $courses = $courses ?? \App\Services\CoursesCatalog::getAll();
                         </button>
                     </div>
 
-                    <!-- Fila 2: Filtros de Categoría Adaptables -->
-                    <div class="catalog-filter-bar d-flex flex-wrap gap-2 align-items-center mb-3">
-                        <button type="button" class="catalog-filter-btn active" data-category="todos">
-                            <span>Todos</span> <span class="badge rounded-pill ms-1">48</span>
-                        </button>
-                        <button type="button" class="catalog-filter-btn" data-category="calidad">
-                            <span>Calidad</span> <span class="badge rounded-pill ms-1">10</span>
-                        </button>
-                        <button type="button" class="catalog-filter-btn" data-category="riesgos">
-                            <span>Riesgos</span> <span class="badge rounded-pill ms-1">5</span>
-                        </button>
-                        <button type="button" class="catalog-filter-btn" data-category="contratos">
-                            <span>Contratos</span> <span class="badge rounded-pill ms-1">11</span>
-                        </button>
-                        <button type="button" class="catalog-filter-btn" data-category="gestion-de-proyectos">
-                            <span>Gestión de Proyectos</span> <span class="badge rounded-pill ms-1">18</span>
-                        </button>
-                        <button type="button" class="catalog-filter-btn" data-category="oficina-tecnica">
-                            <span>Oficina Técnica</span> <span class="badge rounded-pill ms-1">4</span>
-                        </button>
+                    <!-- Fila 2: Filtros de Categoría (Scroll táctil en mobile) y Tipo -->
+                    <div class="catalog-filters-row d-flex flex-column flex-lg-row justify-content-between align-items-stretch align-items-lg-center gap-3 mb-3">
+                        <div class="catalog-filter-bar d-flex align-items-center gap-2" role="tablist" aria-label="Filtro de categorías de capacitación">
+                            <button type="button" class="catalog-filter-btn active" data-category="todos" role="tab" aria-selected="true" aria-pressed="true">
+                                <span>Todos</span> <span class="badge rounded-pill ms-1"><?= $totalCourses ?></span>
+                            </button>
+                            <?php foreach ($categoriesSummary as $cat): ?>
+                            <button type="button" class="catalog-filter-btn" data-category="<?= htmlspecialchars($cat['slug'], ENT_QUOTES, 'UTF-8') ?>" role="tab" aria-selected="false" aria-pressed="false">
+                                <span><?= htmlspecialchars($cat['name'], ENT_QUOTES, 'UTF-8') ?></span> <span class="badge rounded-pill ms-1"><?= (int)$cat['count'] ?></span>
+                            </button>
+                            <?php endforeach; ?>
+                        </div>
+
+                        <!-- Filtro por Tipo de Capacitación -->
+                        <div class="catalog-type-filter-wrap flex-shrink-0">
+                            <label for="catalogTypeSelect" class="visually-hidden">Tipo de capacitación</label>
+                            <select id="catalogTypeSelect" class="form-select form-select-sm catalog-type-select" aria-label="Filtrar por tipo de capacitación">
+                                <option value="todos">Todos los tipos</option>
+                                <option value="curso">Cursos</option>
+                                <option value="seminario">Seminarios</option>
+                                <option value="taller">Talleres</option>
+                            </select>
+                        </div>
                     </div>
 
                     <!-- Fila 3: Contador debajo de los filtros y botón Restablecer búsqueda -->
                     <div class="catalog-status-bar d-flex justify-content-between align-items-center flex-wrap gap-2 pt-2 border-top">
                         <div id="catalogResultsCount" class="text-muted small fw-semibold">
-                            Mostrando <strong>48</strong> de 48 capacitaciones
+                            Mostrando <strong><?= min(12, $totalCourses) ?></strong> de <?= $totalCourses ?> capacitaciones
                         </div>
                         <button type="button" id="catalogResetFiltersBtn" class="btn btn-link btn-sm text-decoration-none text-danger p-0 d-none fw-semibold">
                             <i class="fa-solid fa-arrow-rotate-left me-1"></i> Restablecer búsqueda
@@ -368,7 +374,7 @@ $courses = $courses ?? \App\Services\CoursesCatalog::getAll();
 
                 </div>
 
-                <!-- Grilla Adaptable de las 48 Capacitaciones -->
+                <!-- Grilla Adaptable de Capacitaciones -->
                 <div class="row g-4" id="catalogGrid">
                     <?php foreach ($courses as $c): ?>
                     <div class="col-lg-4 col-md-6 catalog-item-col" 
@@ -427,6 +433,13 @@ $courses = $courses ?? \App\Services\CoursesCatalog::getAll();
 
                     </div>
                     <?php endforeach; ?>
+                </div>
+
+                <!-- Botón Carga Progresiva (Ver más) -->
+                <div id="catalogLoadMoreWrap" class="text-center mt-5 pt-2 <?= $totalCourses <= 12 ? 'd-none' : '' ?>">
+                    <button type="button" id="catalogLoadMoreBtn" class="btn btn-outline-dark btn-lg px-4 py-3 fw-bold rounded-pill shadow-sm catalog-load-more-btn">
+                        <i class="fa-solid fa-plus-circle me-2 text-warning"></i> VER MÁS CAPACITACIONES
+                    </button>
                 </div>
 
                 <!-- Estado Sin Resultados (Empty State) -->

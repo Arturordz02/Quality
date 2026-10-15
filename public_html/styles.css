@@ -8681,6 +8681,7 @@ html, body {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
+    white-space: nowrap;
 }
 
 .catalog-filter-btn:hover {
@@ -8699,6 +8700,95 @@ html, body {
 .catalog-filter-btn.active .badge {
     background-color: var(--accent-gold, #E5A813) !important;
     color: #000000 !important;
+}
+
+/* Enfoque accesible en botones de filtro */
+.catalog-filter-btn:focus-visible,
+.catalog-type-select:focus-visible,
+.catalog-load-more-btn:focus-visible {
+    outline: 2px solid var(--accent-gold, #E5A813) !important;
+    outline-offset: 2px !important;
+}
+
+/* Selector estilizado de Tipo de Capacitación */
+.catalog-type-select {
+    height: 42px;
+    border-radius: 50px;
+    border: 1.5px solid #cbd5e1;
+    background-color: #f8fafc;
+    color: #334155;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.84rem;
+    padding-left: 1rem;
+    padding-right: 2.2rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    min-width: 175px;
+}
+
+.catalog-type-select:focus {
+    background-color: #ffffff;
+    border-color: var(--accent-gold, #E5A813);
+    box-shadow: 0 0 0 3px rgba(229, 168, 19, 0.18);
+    outline: none;
+}
+
+/* Botón de Carga Progresiva (Ver más) */
+.catalog-load-more-btn {
+    border: 2px solid var(--qcs-dark-slate, #1A1D20);
+    color: var(--qcs-dark-slate, #1A1D20);
+    background-color: #ffffff;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    padding: 0.85rem 2.25rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.catalog-load-more-btn:hover {
+    background-color: var(--qcs-dark-slate, #1A1D20);
+    color: #ffffff;
+    border-color: var(--qcs-dark-slate, #1A1D20);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+}
+
+/* Scroll horizontal de chips de categoría en pantallas móviles y tablets */
+@media (max-width: 991.98px) {
+    .catalog-filter-bar {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.5rem;
+        padding-top: 0.2rem;
+        width: 100%;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(229, 168, 19, 0.3) transparent;
+    }
+
+    .catalog-filter-bar::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .catalog-filter-bar::-webkit-scrollbar-thumb {
+        background: rgba(229, 168, 19, 0.35);
+        border-radius: 4px;
+    }
+
+    .catalog-filter-btn {
+        flex-shrink: 0 !important;
+    }
+
+    .catalog-type-filter-wrap {
+        width: 100%;
+    }
+
+    .catalog-type-select {
+        width: 100%;
+    }
 }
 
 .catalog-item-col.is-hidden {

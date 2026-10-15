@@ -102,9 +102,10 @@ foreach ($pageFiles as $pageFile) {
         $htmlTransformed = preg_replace('/href="\/pagar-primera-clase(\?[^"]*)?"/', 'href="pagar-primera-clase.html$1"', $htmlTransformed);
         $htmlTransformed = preg_replace('/href="\/brochures\//', 'href="brochures/', $htmlTransformed);
 
-        // 2. Reemplazar href="/ruta" por "ruta.html" y href="/" por "index.html" para navegación estática
-        $htmlTransformed = preg_replace_callback('/href="\/([a-zA-Z0-9\-_]+)"/', function($matches) {
-            return 'href="' . $matches[1] . '.html"';
+        // 2. Reemplazar href="/ruta" por "ruta.html" (preservando query string) y href="/" por "index.html" para navegación estática
+        $htmlTransformed = preg_replace_callback('/href="\/([a-zA-Z0-9\-_]+)(\?[^"]*)?"/', function($matches) {
+            $qs = $matches[2] ?? '';
+            return 'href="' . $matches[1] . '.html' . $qs . '"';
         }, $htmlTransformed);
         $htmlTransformed = preg_replace('/href="\/"/', 'href="index.html"', $htmlTransformed);
         

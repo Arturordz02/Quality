@@ -23,7 +23,7 @@ class TrainingController extends Controller
     {
         $data = [
             'title'           => 'Capacitación Ejecutiva y Catálogo Oficial de Cursos | Quality Consulting Solutions',
-            'metaDescription' => 'Catálogo completo de las 48 capacitaciones oficiales en Calidad, Riesgos, Contratos, Gestión de Proyectos y Oficina Técnica. Cursos grabados con acceso flexible y certificación.',
+            'metaDescription' => 'Catálogo completo de las 49 capacitaciones oficiales en Calidad, Riesgos, Contratos, Gestión de Proyectos y Oficina Técnica. Cursos grabados con acceso flexible y certificación.',
             'canonical'       => 'https://quality-consulting.org/capacitacion',
             'activePage'      => 'capacitacion',
             'courses'         => \App\Services\CoursesCatalog::getAll(),

@@ -52,8 +52,8 @@ $waMessage = $category['wa_message'] ?? 'Hola, deseo solicitar información sobr
                         <a href="#capacitaciones-area" class="btn btn-warning btn-lg px-4 py-3 fw-bold rounded-pill text-dark shadow btn-qcs-primary">
                             <i class="fa-solid fa-compass me-2"></i> EXPLORAR CAPACITACIONES <i class="fa-solid fa-chevron-down ms-1"></i>
                         </a>
-                        <a href="/capacitacion" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold rounded-pill">
-                            <i class="fa-solid fa-table-cells me-2"></i> Catálogo Completo (48 Cursos)
+                        <a href="/capacitacion?categoria=<?= htmlspecialchars($category['category_slug'] ?? '', ENT_QUOTES, 'UTF-8') ?>" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold rounded-pill">
+                            <i class="fa-solid fa-table-cells me-2"></i> Catálogo Completo
                         </a>
                     </div>
                 </div>
@@ -173,8 +173,8 @@ $waMessage = $category['wa_message'] ?? 'Hola, deseo solicitar información sobr
                     </p>
                 </div>
                 <div class="mt-3 mt-md-0">
-                    <a href="/capacitacion" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-2 fw-semibold">
-                        <i class="fa-solid fa-arrow-left me-1"></i> Ver Catálogo Completo (48 Cursos)
+                    <a href="/capacitacion?categoria=<?= htmlspecialchars($category['category_slug'] ?? '', ENT_QUOTES, 'UTF-8') ?>" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-2 fw-semibold">
+                        <i class="fa-solid fa-arrow-left me-1"></i> Ver Catálogo Completo
                     </a>
                 </div>
             </div>
@@ -239,8 +239,8 @@ $waMessage = $category['wa_message'] ?? 'Hola, deseo solicitar información sobr
 
             <!-- Botón inferior para regresar al catálogo -->
             <div class="text-center mt-5 pt-3">
-                <a href="/capacitacion" class="btn btn-outline-dark btn-lg px-4 py-3 fw-bold rounded-pill">
-                    <i class="fa-solid fa-table-cells me-2"></i> Explorar las 48 Capacitaciones en el Catálogo General
+                <a href="/capacitacion?categoria=<?= htmlspecialchars($category['category_slug'] ?? '', ENT_QUOTES, 'UTF-8') ?>" class="btn btn-outline-dark btn-lg px-4 py-3 fw-bold rounded-pill">
+                    <i class="fa-solid fa-table-cells me-2"></i> Explorar en el Catálogo General
                 </a>
             </div>
 

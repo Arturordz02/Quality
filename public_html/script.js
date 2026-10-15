@@ -770,15 +770,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const searchInput = document.getElementById('catalogSearchInput');
         const clearSearchBtn = document.getElementById('catalogClearSearch');
         const filterBtns = document.querySelectorAll('.catalog-filter-btn');
+        const typeSelect = document.getElementById('catalogTypeSelect');
         const resultsCountEl = document.getElementById('catalogResultsCount');
         const resetFiltersBtn = document.getElementById('catalogResetFiltersBtn');
         const emptyStateEl = document.getElementById('catalogEmptyState');
         const emptyResetBtn = document.getElementById('catalogEmptyResetBtn');
+        const loadMoreWrap = document.getElementById('catalogLoadMoreWrap');
+        const loadMoreBtn = document.getElementById('catalogLoadMoreBtn');
         const itemCols = catalogGrid.querySelectorAll('.catalog-item-col');
         const totalItems = itemCols.length;
 
+        const PAGE_SIZE = 12;
+        let visibleLimit = PAGE_SIZE;
         let activeCategory = 'todos';
+        let activeType = 'todos';
         let activeQuery = '';
+        let searchDebounceTimer = null;
 
         // Función para normalizar texto eliminando tildes y diacríticos
         function normalizeStr(text) {
@@ -789,55 +796,111 @@ document.addEventListener('DOMContentLoaded', () => {
                 .trim();
         }
 
-        // Ejecutar filtrado combinado de forma síncrona e inmediata
+        // Leer parámetro ?categoria= en la URL al cargar
+        try {
+            const urlParams = new URLSearchParams(window.location.search);
+            const catParam = (urlParams.get('categoria') || '').toLowerCase().trim();
+            if (catParam) {
+                let matchedBtn = null;
+                filterBtns.forEach(btn => {
+                    const btnCat = (btn.getAttribute('data-category') || '').toLowerCase().trim();
+                    if (btnCat === catParam) {
+                        matchedBtn = btn;
+                    }
+                });
+                if (matchedBtn) {
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-pressed', 'false');
+                        b.setAttribute('aria-selected', 'false');
+                    });
+                    matchedBtn.classList.add('active');
+                    matchedBtn.setAttribute('aria-pressed', 'true');
+                    matchedBtn.setAttribute('aria-selected', 'true');
+                    activeCategory = catParam;
+                }
+            }
+        } catch (e) {
+            // Entorno sin soporte de URLSearchParams
+        }
+
+        // Ejecutar filtrado combinado (Categoría + Tipo + Búsqueda) y carga progresiva
         function applyFilter() {
-            let visibleCount = 0;
+            let matchedCount = 0;
+            let displayedCount = 0;
 
             itemCols.forEach(col => {
                 const category = (col.getAttribute('data-category') || '').toLowerCase().trim();
+                const type = (col.getAttribute('data-type') || '').toLowerCase().trim();
                 const searchText = normalizeStr(col.getAttribute('data-search') || '');
 
                 const matchesCategory = (activeCategory === 'todos' || category === activeCategory);
+                const matchesType = (activeType === 'todos' || type === activeType);
                 const matchesQuery = (!activeQuery || searchText.includes(activeQuery));
 
-                if (matchesCategory && matchesQuery) {
-                    col.classList.remove('is-hidden');
-                    // Asegurar que la tarjeta interna esté inmediatamente visible sin opacidades residuales
-                    const card = col.querySelector('.course-card');
-                    if (card) {
-                        card.classList.remove('aos-init', 'aos-animate');
+                const isMatch = (matchesCategory && matchesType && matchesQuery);
+
+                if (isMatch) {
+                    matchedCount++;
+                    if (matchedCount <= visibleLimit) {
+                        col.classList.remove('is-hidden');
+                        const card = col.querySelector('.course-card');
+                        if (card) {
+                            card.classList.remove('aos-init', 'aos-animate');
+                        }
+                        displayedCount++;
+                    } else {
+                        col.classList.add('is-hidden');
                     }
-                    visibleCount++;
                 } else {
                     col.classList.add('is-hidden');
                 }
             });
 
-            // Actualizar contador de resultados
+            // Gestionar botón "Ver más capacitaciones"
+            if (loadMoreWrap && loadMoreBtn) {
+                const hasMore = (matchedCount > displayedCount);
+                loadMoreWrap.classList.toggle('d-none', !hasMore);
+                if (hasMore) {
+                    const remaining = matchedCount - displayedCount;
+                    const nextBatch = Math.min(PAGE_SIZE, remaining);
+                    loadMoreBtn.innerHTML = `<i class="fa-solid fa-plus-circle me-2 text-warning"></i> VER MÁS CAPACITACIONES (+${nextBatch})`;
+                }
+            }
+
+            // Actualizar contador de resultados coherente con la carga progresiva
             if (resultsCountEl) {
-                if (activeCategory === 'todos' && !activeQuery) {
-                    resultsCountEl.innerHTML = `Mostrando <strong>${visibleCount}</strong> de ${totalItems} capacitaciones`;
+                if (matchedCount === 0) {
+                    resultsCountEl.innerHTML = `Mostrando <strong>0</strong> capacitaciones`;
+                } else if (matchedCount === 1) {
+                    resultsCountEl.innerHTML = `Mostrando <strong>1</strong> de 1 capacitación`;
+                } else if (displayedCount < matchedCount) {
+                    resultsCountEl.innerHTML = `Mostrando <strong>${displayedCount}</strong> de ${matchedCount} capacitaciones`;
                 } else {
-                    resultsCountEl.innerHTML = `Mostrando <strong>${visibleCount}</strong> resultado${visibleCount === 1 ? '' : 's'} (de ${totalItems})`;
+                    resultsCountEl.innerHTML = `Mostrando <strong>${matchedCount}</strong> de ${matchedCount} capacitaciones`;
                 }
             }
 
             // Mostrar u ocultar botón de restablecer búsqueda
-            const isFiltered = (activeCategory !== 'todos' || activeQuery !== '');
+            const isFiltered = (activeCategory !== 'todos' || activeType !== 'todos' || activeQuery !== '');
             if (resetFiltersBtn) {
                 resetFiltersBtn.classList.toggle('d-none', !isFiltered);
             }
 
             // Gestionar estado vacío
             if (emptyStateEl) {
-                emptyStateEl.classList.toggle('d-none', visibleCount > 0);
+                emptyStateEl.classList.toggle('d-none', matchedCount > 0);
             }
         }
 
-        // Resetear todos los filtros a estado inicial (Todos + buscador vacío)
+        // Resetear todos los filtros a estado inicial (Todos + Tipo Todos + buscador vacío + límite 12)
         function resetFilters() {
             activeCategory = 'todos';
+            activeType = 'todos';
             activeQuery = '';
+            visibleLimit = PAGE_SIZE;
+
+            clearTimeout(searchDebounceTimer);
 
             if (searchInput) {
                 searchInput.value = '';
@@ -845,10 +908,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (clearSearchBtn) {
                 clearSearchBtn.classList.add('d-none');
             }
+            if (typeSelect) {
+                typeSelect.value = 'todos';
+            }
 
             filterBtns.forEach(btn => {
                 const isAll = ((btn.getAttribute('data-category') || '').toLowerCase().trim() === 'todos');
                 btn.classList.toggle('active', isAll);
+                btn.setAttribute('aria-pressed', isAll ? 'true' : 'false');
+                btn.setAttribute('aria-selected', isAll ? 'true' : 'false');
             });
 
             applyFilter();
@@ -861,21 +929,42 @@ document.addEventListener('DOMContentLoaded', () => {
                 const targetBtn = this.closest('.catalog-filter-btn') || this;
                 const newCat = (targetBtn.getAttribute('data-category') || 'todos').toLowerCase().trim();
 
-                filterBtns.forEach(b => b.classList.remove('active'));
+                filterBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-pressed', 'false');
+                    b.setAttribute('aria-selected', 'false');
+                });
                 targetBtn.classList.add('active');
+                targetBtn.setAttribute('aria-pressed', 'true');
+                targetBtn.setAttribute('aria-selected', 'true');
                 activeCategory = newCat;
+                visibleLimit = PAGE_SIZE; // Reiniciar límite visible a 12
                 applyFilter();
             });
         });
 
-        // Eventos en el buscador
+        // Evento en el selector de tipo
+        if (typeSelect) {
+            typeSelect.addEventListener('change', function() {
+                activeType = (this.value || 'todos').toLowerCase().trim();
+                visibleLimit = PAGE_SIZE; // Reiniciar límite visible a 12
+                applyFilter();
+            });
+        }
+
+        // Evento en el buscador con debounce (220 ms)
         if (searchInput) {
             searchInput.addEventListener('input', function() {
-                activeQuery = normalizeStr(this.value);
+                const val = this.value;
                 if (clearSearchBtn) {
-                    clearSearchBtn.classList.toggle('d-none', this.value.length === 0);
+                    clearSearchBtn.classList.toggle('d-none', val.length === 0);
                 }
-                applyFilter();
+                clearTimeout(searchDebounceTimer);
+                searchDebounceTimer = setTimeout(() => {
+                    activeQuery = normalizeStr(val);
+                    visibleLimit = PAGE_SIZE; // Reiniciar límite visible a 12 al buscar
+                    applyFilter();
+                }, 220);
             });
         }
 
@@ -883,12 +972,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (clearSearchBtn) {
             clearSearchBtn.addEventListener('click', function(e) {
                 e.preventDefault();
+                clearTimeout(searchDebounceTimer);
                 if (searchInput) {
                     searchInput.value = '';
                     searchInput.focus();
                 }
                 activeQuery = '';
                 this.classList.add('d-none');
+                visibleLimit = PAGE_SIZE;
+                applyFilter();
+            });
+        }
+
+        // Botón "Ver más capacitaciones"
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                visibleLimit += PAGE_SIZE;
                 applyFilter();
             });
         }
