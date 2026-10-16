@@ -19,6 +19,8 @@ respaldos/
 *.zip
 private_app/backend/storage/*/*.json
 private_app/backend/storage/*/*.txt
+private_app/backend/storage/fallback_queue/.lock_PAYPAL_TX_TEST_*
+private_app/backend/storage/fallback_queue/.lock_*
 
 # Almacenamiento Privado de Documentos (No servidos públicamente)
 private_app/storage/
@@ -33,9 +35,14 @@ private_app/storage/
 *.sln
 .agents/
 
+# Temporales y scripts auxiliares
+scratch/
+
 # Sistema Operativo
 Thumbs.db
 ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
 .DS_Store
+
+
