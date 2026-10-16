@@ -44,7 +44,6 @@ if ($pduHeading === '') {
 $enrollBgImage     = $course['enroll_bg_image'] ?? '';
 $whatsappUrl       = $course['whatsapp_url'] ?? 'https://wa.me/51993463118';
 $whatsappBtnText   = $course['whatsapp_btn_text'] ?? 'Solicitar información por WhatsApp';
-$brochureUrl       = $course['brochure_url'] ?? '';
 $modalServiceTitle = $course['modal_service'] ?? $title;
 $paypalSlug        = $course['paypal_slug'] ?? '';
 $firstClassLabel   = $course['first_class_label'] ?? 'Primera clase del curso – USD 10';
@@ -380,15 +379,6 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
                 </div>
 
                 <div class="qcs-cd-brochure-actions">
-                    <?php if (!empty($brochureUrl)): ?>
-                    <a href="<?= htmlspecialchars($brochureUrl, ENT_QUOTES, 'UTF-8') ?>"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="btn qcs-cd-btn-brochure-gold-outline"
-                       aria-label="Descargar Brochure Oficial en PDF">
-                        <i class="fa-solid fa-file-pdf me-2" aria-hidden="true"></i>Brochure PDF
-                    </a>
-                    <?php endif; ?>
                     <button type="button"
                             class="btn qcs-cd-btn-brochure-dark"
                             data-bs-toggle="modal"
@@ -447,17 +437,6 @@ $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col
                            aria-label="<?= htmlspecialchars($whatsappBtnText, ENT_QUOTES, 'UTF-8') ?> sobre <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?>">
                             <i class="fab fa-whatsapp qcs-whatsapp-icon me-2" aria-hidden="true"></i><?= htmlspecialchars($whatsappBtnText, ENT_QUOTES, 'UTF-8') ?>
                         </a>
-
-                        <!-- 3. Botón Brochure PDF oficial si está disponible -->
-                        <?php if (!empty($brochureUrl)): ?>
-                        <a href="<?= htmlspecialchars($brochureUrl, ENT_QUOTES, 'UTF-8') ?>"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="btn btn-outline-warning w-100 py-2 fw-bold rounded-pill my-2"
-                           aria-label="Descargar Brochure Oficial en PDF de <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?>">
-                            <i class="fa-solid fa-file-pdf me-2" aria-hidden="true"></i>Descargar Brochure Oficial (PDF)
-                        </a>
-                        <?php endif; ?>
 
                         <!-- 3. Subbloque diferenciado para la primera clase (US$ 10 + PayPal) -->
                         <?php if (!empty($paypalSlug)): ?>
