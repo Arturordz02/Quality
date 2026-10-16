@@ -355,8 +355,11 @@ runTest("Modo paypalme abre enlace externo y muestra formulario de verificación
     ob_start();
     (new PaymentController($view, $manualConfig))->pagarPrimeraClase();
     $checkout = ob_get_clean();
-    if (!str_contains($checkout, 'target="_blank"') || !str_contains($checkout, 'Ya realicé el pago — completar mis datos')) {
+    if (!str_contains($checkout, 'target="_blank"') || !str_contains($checkout, 'Ya realicé el pago, completar mis datos')) {
         throw new \Exception('El checkout PayPal.Me no muestra el enlace externo y la continuación manual.');
+    }
+    if (!str_contains($checkout, 'Pagar USD 10 con PayPal')) {
+        throw new \Exception('El botón de pago no contiene el texto "Pagar USD 10 con PayPal".');
     }
     if (str_contains($checkout, 'paypal-button-container')) {
         throw new \Exception('El modo PayPal.Me cargó indebidamente Orders v2.');
@@ -370,6 +373,44 @@ runTest("Modo paypalme abre enlace externo y muestra formulario de verificación
     }
     if (str_contains($form, 'Pago verificado.')) {
         throw new \Exception('El modo manual presenta indebidamente el pago como verificado.');
+    }
+    if (!str_contains($form, 'text-white fw-semibold')) {
+        throw new \Exception('Las etiquetas no tienen clases de alto contraste.');
+    }
+    return true;
+});
+
+runTest("Ninguna página de curso enlaza directamente a /registro-primera-clase y todas dirigen a /pagar-primera-clase", function () {
+    $view = new App\Core\View(dirname(__DIR__) . '/private_app/app/Views');
+    $catalog = CourseCatalog::all();
+    foreach ($catalog as $slug => $info) {
+        $url = ltrim($info['url'], '/');
+        $viewFile = 'pages/' . $url;
+        if (!file_exists(dirname(__DIR__) . '/private_app/app/Views/' . $viewFile . '.php')) {
+            continue;
+        }
+        $html = $view->render($viewFile, [
+            'course' => $info,
+            'title' => $info['title'],
+            'canonicalUrl' => 'https://quality-consulting.org/' . $url,
+        ], null);
+        if (str_contains($html, 'registro-primera-clase?curso=')) {
+            throw new \Exception("El curso {$slug} contiene enlace directo a registro-primera-clase.");
+        }
+        if (!str_contains($html, 'pagar-primera-clase?curso=' . $slug) && !str_contains($html, 'pagar-primera-clase')) {
+            throw new \Exception("El curso {$slug} no contiene enlace a pagar-primera-clase.");
+        }
+    }
+    return true;
+});
+
+runTest("script.js redirige los botones de PayPal a pagar-primera-clase y no a registro-primera-clase", function () {
+    $js = file_get_contents(dirname(__DIR__) . '/public_html/script.js');
+    if (str_contains($js, "baseRegUrl = '/registro-primera-clase'") || str_contains($js, "baseRegUrl = 'registro-primera-clase.html'")) {
+        throw new \Exception("script.js todavía intercepta y redirige a registro-primera-clase.");
+    }
+    if (!str_contains($js, "basePayUrl = '/pagar-primera-clase'") || !str_contains($js, "pagar-primera-clase.html")) {
+        throw new \Exception("script.js no contiene la redirección a pagar-primera-clase.");
     }
     return true;
 });
