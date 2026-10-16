@@ -78,21 +78,36 @@ return function (Router $router, array $config): void {
     $router->get('/consultoria', [ServiceController::class, 'consultoria']);
     $router->get('/gestion-de-la-calidad', [ServiceController::class, 'gestionCalidad']);
     $router->get('/gestion-de-pmo', [ServiceController::class, 'gestionPmo']);
-    $router->get('/gestion-de-riesgos', [ServiceController::class, 'gestionRiesgos']);
     $router->get('/cronograma-forense', [ServiceController::class, 'cronogramaForense']);
     $router->get('/headhunting', [ServiceController::class, 'headhunting']);
     $router->get('/oficina-tecnica', [ServiceController::class, 'oficinaTecnica']);
-    $router->get('/sindrome-del-90', [ServiceController::class, 'sindromeDel90']);
 
     /**
      * RUTAS DE CAPACITACIÓN Y PROGRAMAS DE ESPECIALIZACIÓN
      */
     $router->get('/capacitacion', [TrainingController::class, 'capacitacion']);
+    $router->get('/capacitacion-calidad', [TrainingController::class, 'capacitacionCalidad']);
+    $router->get('/capacitacion-riesgos', [TrainingController::class, 'capacitacionRiesgos']);
+    $router->get('/capacitacion-contratos', [TrainingController::class, 'capacitacionContratos']);
+    $router->get('/capacitacion-gestion-de-proyectos', [TrainingController::class, 'capacitacionGestionProyectos']);
+    $router->get('/capacitacion-oficina-tecnica', [TrainingController::class, 'capacitacionOficinaTecnica']);
     $router->get('/bim-revit-architecture', [TrainingController::class, 'bimRevitArchitecture']);
     $router->get('/calidad-y-pmi', [TrainingController::class, 'calidadPmi']);
     $router->get('/contratos', [TrainingController::class, 'contratos']);
     $router->get('/contratos-estado', [TrainingController::class, 'contratosEstado']);
+    $router->get('/contrato-colaborativo-nec-3-4', [TrainingController::class, 'contratoColaborativoNec34']);
+    $router->get('/contratos-fidic-epc-construccion', [TrainingController::class, 'contratosFidicEpcConstruccion']);
+    $router->get('/gestion-reclamos-nec-fidic', [TrainingController::class, 'gestionReclamosNecFidic']);
+    $router->get('/junta-resolucion-disputas-dab', [TrainingController::class, 'juntaResolucionDisputasDab']);
+    $router->get('/gestion-cambios-contratos-estado', [TrainingController::class, 'gestionCambiosContratosEstado']);
+    $router->get('/gestion-contractual-megaproyectos-mineros', [TrainingController::class, 'gestionContractualMegaproyectosMineros']);
+    $router->get('/contrato-nec4', [TrainingController::class, 'contratoNec4']);
+    $router->get('/eventos-compensables-alertas-tempranas-nec4', [TrainingController::class, 'eventosCompensablesAlertasTempranasNec4']);
+    $router->get('/contratos-colaborativos-nec3-f', [TrainingController::class, 'contratosColaborativosNec3f']);
+    $router->get('/casos-practicos-contratos-nec3-f', [TrainingController::class, 'casosPracticosContratosNec3f']);
+    $router->get('/control-de-calidad-en-tuneleria', [TrainingController::class, 'controlCalidadTuneleria']);
     $router->get('/costos', [TrainingController::class, 'costos']);
+    $router->get('/direccion-calidad-enfoque-pmi', [TrainingController::class, 'direccionCalidadEnfoquePmi']);
     $router->get('/fidic', [TrainingController::class, 'fidic']);
     $router->get('/gerencia-de-calidad', [TrainingController::class, 'gerenciaCalidad']);
     $router->get('/gruas-torre', [TrainingController::class, 'gruasTorre']);
@@ -102,19 +117,53 @@ return function (Router $router, array $config): void {
     $router->get('/nec', [TrainingController::class, 'nec']);
     $router->get('/pmo', [TrainingController::class, 'pmo']);
     $router->get('/proyectos-pmi', [TrainingController::class, 'proyectosPmi']);
+    $router->get('/gestion-de-riesgos', [TrainingController::class, 'gestionRiesgos']);
     $router->get('/riesgo-del-plazo', [TrainingController::class, 'riesgoDelPlazo']);
     $router->get('/riesgos-cadena-produccion', [TrainingController::class, 'riesgosCadenaProduccion']);
+    $router->get('/analisis-cuantitativo-riesgos', [TrainingController::class, 'analisisCuantitativoRiesgos']);
     $router->get('/riesgos-pmi', [TrainingController::class, 'riesgosPmi']);
     $router->get('/riesgos-tecnicos', [TrainingController::class, 'riesgosTecnicos']);
     $router->get('/universidad-corporativa', [TrainingController::class, 'universidadCorporativa']);
     $router->get('/valor-ganado', [TrainingController::class, 'valorGanado']);
+    $router->get('/sindrome-del-90', [TrainingController::class, 'sindromeDel90']);
+    $router->get('/seminario-iso-9001-2026', [TrainingController::class, 'seminarioIso90012026']);
+    $router->get('/indicadores-de-calidad', [TrainingController::class, 'indicadoresDeCalidad']);
+    $router->get('/seminario-diagrama-ishikawa', [TrainingController::class, 'seminarioDiagramaIshikawa']);
+    $router->get('/oficina-tecnica-obras-viales', [TrainingController::class, 'oficinaTecnicaObrasViales']);
+    $router->get('/oficina-tecnica-hospitales-edificaciones', [TrainingController::class, 'oficinaTecnicaHospitalesEdificaciones']);
+    $router->get('/oficina-tecnica-infraestructura-minera', [TrainingController::class, 'oficinaTecnicaInfraestructuraMinera']);
+    $router->get('/oficina-tecnica-edificaciones-panel-control', [TrainingController::class, 'oficinaTecnicaEdificacionesPanelControl']);
+
+    /**
+     * RUTAS DE CAPACITACIÓN: GESTIÓN DE PROYECTOS (15 CURSOS OFICIALES)
+     */
+    $router->get('/gestion-proyectos-pmi', [TrainingController::class, 'gestionProyectosPmi']);
+    $router->get('/gestion-pmo-vmo', [TrainingController::class, 'gestionPmoVmo']);
+    $router->get('/brightline-initiative', [TrainingController::class, 'brightlineInitiative']);
+    $router->get('/lean-construction-edificaciones', [TrainingController::class, 'leanConstructionEdificaciones']);
+    $router->get('/lean-construction-infraestructura', [TrainingController::class, 'leanConstructionInfraestructura']);
+    $router->get('/liderazgo-construccion', [TrainingController::class, 'liderazgoConstruccion']);
+    $router->get('/resultado-operativo-obra', [TrainingController::class, 'resultadoOperativoObra']);
+    $router->get('/valor-ganado-ms-project-power-bi', [TrainingController::class, 'valorGanadoMsProjectPowerBi']);
+    $router->get('/costos-edificaciones-power-bi', [TrainingController::class, 'costosEdificacionesPowerBi']);
+    $router->get('/control-proyectos-bim-power-bi', [TrainingController::class, 'controlProyectosBimPowerBi']);
+    $router->get('/vdc', [TrainingController::class, 'vdc']);
+    $router->get('/control-proyectos-primavera-p6', [TrainingController::class, 'controlProyectosPrimaveraP6']);
+    $router->get('/analisis-forense-cronograma-primavera-p6', [TrainingController::class, 'analisisForenseCronogramaPrimaveraP6']);
+    $router->get('/control-proyectos-construccion', [TrainingController::class, 'controlProyectosConstruccion']);
 
     /**
      * RUTAS DE PASARELA PAYPAL (PRIMERA CLASE DEL CURSO - USD 10) Y REGISTRO
      */
-    $router->get('/pagar-primera-clase', [PaymentController::class, 'checkoutPrimeraClase']);
+    $router->get('/pagar-primera-clase', [PaymentController::class, 'pagarPrimeraClase']);
+    $router->get('/api/paypal/config', [PaymentController::class, 'getPaypalConfig']);
+    $router->addRoute('OPTIONS', '/api/paypal/config', [PaymentController::class, 'optionsPreflight']);
+    $router->addRoute('OPTIONS', '/api/paypal/create-order', [PaymentController::class, 'optionsPreflight']);
+    $router->addRoute('OPTIONS', '/api/paypal/capture-order', [PaymentController::class, 'optionsPreflight']);
+    $router->addRoute('OPTIONS', '/api/paypal/verify-transaction', [PaymentController::class, 'optionsPreflight']);
     $router->post('/api/paypal/create-order', [PaymentController::class, 'createPaypalOrder']);
     $router->post('/api/paypal/capture-order', [PaymentController::class, 'capturePaypalOrder']);
+    $router->post('/api/paypal/verify-transaction', [PaymentController::class, 'verifyTransaction']);
     $router->get('/registro-primera-clase', [PaymentController::class, 'registroPrimeraClase']);
     $router->post('/registro-primera-clase', [PaymentController::class, 'procesarRegistroPrimeraClase']);
     $router->get('/registro-exitoso', [PaymentController::class, 'registroExitoso']);

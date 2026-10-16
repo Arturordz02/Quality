@@ -34,10 +34,12 @@ function copyDirectory(string $src, string $dst): void {
     @mkdir($dst, 0777, true);
     while (false !== ($file = readdir($dir))) {
         if (($file != '.') && ($file != '..')) {
+            // Evitar carpetas de backend y storage en despliegue estático (brochures se copian para enlaces de descarga)
+            if ($file === 'backend' || $file === 'storage') {
+                continue;
+            }
             if (is_dir($src . '/' . $file)) {
-                if ($file !== 'backend') { // Evitar scripts de backend en estático
-                    copyDirectory($src . '/' . $file, $dst . '/' . $file);
-                }
+                copyDirectory($src . '/' . $file, $dst . '/' . $file);
             } else {
                 if (!str_ends_with($file, '.php') && !str_ends_with($file, '.htaccess')) {
                     copy($src . '/' . $file, $dst . '/' . $file);
@@ -82,19 +84,33 @@ foreach ($pageFiles as $pageFile) {
     $data = [
         'title'        => $title,
         'canonicalUrl' => 'https://quality-consulting.org/' . ($pageName === 'home' ? '' : $pageName),
+        'staticBuild'   => true,
     ];
+
+    if (in_array($pageName, ['pagar-primera-clase', 'registro-primera-clase'], true)) {
+        $data['courseCatalog'] = \App\Services\CourseCatalog::all();
+    }
 
     try {
         $html = $viewEngine->render($viewPath, $data, 'main');
         
-        // Ajustar enlaces relativos si es necesario para GitHub Pages (ej: href="/nosotros" o href="nosotros.html")
-        // Reemplazar href="/ruta" por "ruta.html" y href="/" por "index.html" para navegación estática perfecta
-        $htmlTransformed = preg_replace_callback('/href="\/([a-zA-Z0-9\-_]+)"/', function($matches) {
-            return 'href="' . $matches[1] . '.html"';
-        }, $html);
+        // Ajustar enlaces relativos para GitHub Pages
+        // 1. Mapear rutas dinámicas de pago a sus archivos estáticos compilados
+        $htmlTransformed = preg_replace('/href="\/pago-cancelado(\?[^"]*)?"/', 'href="pago-cancelado.html$1"', $html);
+        $htmlTransformed = preg_replace('/href="\/registro-primera-clase(\?[^"]*)?"/', 'href="registro-primera-clase.html$1"', $htmlTransformed);
+        $htmlTransformed = preg_replace('/href="\/registro-exitoso(\?[^"]*)?"/', 'href="registro-exitoso.html$1"', $htmlTransformed);
+        $htmlTransformed = preg_replace('/href="\/pagar-primera-clase(\?[^"]*)?"/', 'href="pagar-primera-clase.html$1"', $htmlTransformed);
+        $htmlTransformed = preg_replace('/href="\/brochures\//', 'href="brochures/', $htmlTransformed);
+
+        // 2. Reemplazar href="/ruta" por "ruta.html" (preservando query string) y href="/" por "index.html" para navegación estática
+        $htmlTransformed = preg_replace_callback('/href="\/([a-zA-Z0-9\-_]+)(\?[^"]*)?"/', function($matches) {
+            $qs = $matches[2] ?? '';
+            return 'href="' . $matches[1] . '.html' . $qs . '"';
+        }, $htmlTransformed);
         $htmlTransformed = preg_replace('/href="\/"/', 'href="index.html"', $htmlTransformed);
         
         file_put_contents($targetFile, $htmlTransformed);
+
 
         // Si no es home, también crear carpeta con index.html para URLs limpias (ej: /nosotros/)
         if ($pageName !== 'home' && $pageName !== '404') {

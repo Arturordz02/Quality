@@ -4,6 +4,10 @@
 !.env.example
 private_app/.env
 !private_app/.env.example
+env.php
+private_app/env.php
+!env.example.php
+!private_app/env.example.php
 
 # Logs y Temporales
 *.log
@@ -11,7 +15,15 @@ logs/
 tmp/
 temp/
 _site/
+respaldos/
 *.zip
+private_app/backend/storage/*/*.json
+private_app/backend/storage/*/*.txt
+private_app/backend/storage/fallback_queue/.lock_PAYPAL_TX_TEST_*
+private_app/backend/storage/fallback_queue/.lock_*
+
+# Almacenamiento Privado de Documentos (No servidos públicamente)
+private_app/storage/
 
 # IDEs y Editores
 .vscode/
@@ -23,9 +35,14 @@ _site/
 *.sln
 .agents/
 
+# Temporales y scripts auxiliares
+scratch/
+
 # Sistema Operativo
 Thumbs.db
 ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
 .DS_Store
+
+

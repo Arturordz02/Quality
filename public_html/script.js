@@ -753,4 +753,321 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     })();
+
+    /* --------------------------------------------------------------------------
+       16. CATÁLOGO GENERAL DE CAPACITACIONES: FILTROS, BUSCADOR Y MODAL
+       -------------------------------------------------------------------------- */
+    (function initTrainingCatalog() {
+        const catalogGrid = document.getElementById('catalogGrid');
+        if (!catalogGrid) return;
+
+        // Desactivar activamente cualquier atributo o clase de animación AOS dentro del catálogo
+        catalogGrid.querySelectorAll('[data-aos]').forEach(el => {
+            el.removeAttribute('data-aos');
+            el.classList.remove('aos-init', 'aos-animate');
+        });
+
+        const searchInput = document.getElementById('catalogSearchInput');
+        const clearSearchBtn = document.getElementById('catalogClearSearch');
+        const filterBtns = document.querySelectorAll('.catalog-filter-btn');
+        const typeSelect = document.getElementById('catalogTypeSelect');
+        const resultsCountEl = document.getElementById('catalogResultsCount');
+        const resetFiltersBtn = document.getElementById('catalogResetFiltersBtn');
+        const emptyStateEl = document.getElementById('catalogEmptyState');
+        const emptyResetBtn = document.getElementById('catalogEmptyResetBtn');
+        const loadMoreWrap = document.getElementById('catalogLoadMoreWrap');
+        const loadMoreBtn = document.getElementById('catalogLoadMoreBtn');
+        const itemCols = catalogGrid.querySelectorAll('.catalog-item-col');
+        const totalItems = itemCols.length;
+
+        const PAGE_SIZE = 12;
+        let visibleLimit = PAGE_SIZE;
+        let activeCategory = 'todos';
+        let activeType = 'todos';
+        let activeQuery = '';
+        let searchDebounceTimer = null;
+
+        // Función para normalizar texto eliminando tildes y diacríticos
+        function normalizeStr(text) {
+            return (text || '')
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase()
+                .trim();
+        }
+
+        // Leer parámetro ?categoria= en la URL al cargar
+        try {
+            const urlParams = new URLSearchParams(window.location.search);
+            const catParam = (urlParams.get('categoria') || '').toLowerCase().trim();
+            if (catParam) {
+                let matchedBtn = null;
+                filterBtns.forEach(btn => {
+                    const btnCat = (btn.getAttribute('data-category') || '').toLowerCase().trim();
+                    if (btnCat === catParam) {
+                        matchedBtn = btn;
+                    }
+                });
+                if (matchedBtn) {
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-pressed', 'false');
+                        b.setAttribute('aria-selected', 'false');
+                    });
+                    matchedBtn.classList.add('active');
+                    matchedBtn.setAttribute('aria-pressed', 'true');
+                    matchedBtn.setAttribute('aria-selected', 'true');
+                    activeCategory = catParam;
+                }
+            }
+        } catch (e) {
+            // Entorno sin soporte de URLSearchParams
+        }
+
+        // Ejecutar filtrado combinado (Categoría + Tipo + Búsqueda) y carga progresiva
+        function applyFilter() {
+            let matchedCount = 0;
+            let displayedCount = 0;
+
+            itemCols.forEach(col => {
+                const category = (col.getAttribute('data-category') || '').toLowerCase().trim();
+                const type = (col.getAttribute('data-type') || '').toLowerCase().trim();
+                const searchText = normalizeStr(col.getAttribute('data-search') || '');
+
+                const matchesCategory = (activeCategory === 'todos' || category === activeCategory);
+                const matchesType = (activeType === 'todos' || type === activeType);
+                const matchesQuery = (!activeQuery || searchText.includes(activeQuery));
+
+                const isMatch = (matchesCategory && matchesType && matchesQuery);
+
+                if (isMatch) {
+                    matchedCount++;
+                    if (matchedCount <= visibleLimit) {
+                        col.classList.remove('is-hidden');
+                        const card = col.querySelector('.course-card');
+                        if (card) {
+                            card.classList.remove('aos-init', 'aos-animate');
+                        }
+                        displayedCount++;
+                    } else {
+                        col.classList.add('is-hidden');
+                    }
+                } else {
+                    col.classList.add('is-hidden');
+                }
+            });
+
+            // Gestionar botón "Ver más capacitaciones"
+            if (loadMoreWrap && loadMoreBtn) {
+                const hasMore = (matchedCount > displayedCount);
+                loadMoreWrap.classList.toggle('d-none', !hasMore);
+                if (hasMore) {
+                    const remaining = matchedCount - displayedCount;
+                    const nextBatch = Math.min(PAGE_SIZE, remaining);
+                    loadMoreBtn.innerHTML = `<i class="fa-solid fa-plus-circle me-2 text-warning"></i> VER MÁS CAPACITACIONES (+${nextBatch})`;
+                }
+            }
+
+            // Actualizar contador de resultados coherente con la carga progresiva
+            if (resultsCountEl) {
+                if (matchedCount === 0) {
+                    resultsCountEl.innerHTML = `Mostrando <strong>0</strong> capacitaciones`;
+                } else if (matchedCount === 1) {
+                    resultsCountEl.innerHTML = `Mostrando <strong>1</strong> de 1 capacitación`;
+                } else if (displayedCount < matchedCount) {
+                    resultsCountEl.innerHTML = `Mostrando <strong>${displayedCount}</strong> de ${matchedCount} capacitaciones`;
+                } else {
+                    resultsCountEl.innerHTML = `Mostrando <strong>${matchedCount}</strong> de ${matchedCount} capacitaciones`;
+                }
+            }
+
+            // Mostrar u ocultar botón de restablecer búsqueda
+            const isFiltered = (activeCategory !== 'todos' || activeType !== 'todos' || activeQuery !== '');
+            if (resetFiltersBtn) {
+                resetFiltersBtn.classList.toggle('d-none', !isFiltered);
+            }
+
+            // Gestionar estado vacío
+            if (emptyStateEl) {
+                emptyStateEl.classList.toggle('d-none', matchedCount > 0);
+            }
+        }
+
+        // Resetear todos los filtros a estado inicial (Todos + Tipo Todos + buscador vacío + límite 12)
+        function resetFilters() {
+            activeCategory = 'todos';
+            activeType = 'todos';
+            activeQuery = '';
+            visibleLimit = PAGE_SIZE;
+
+            clearTimeout(searchDebounceTimer);
+
+            if (searchInput) {
+                searchInput.value = '';
+            }
+            if (clearSearchBtn) {
+                clearSearchBtn.classList.add('d-none');
+            }
+            if (typeSelect) {
+                typeSelect.value = 'todos';
+            }
+
+            filterBtns.forEach(btn => {
+                const isAll = ((btn.getAttribute('data-category') || '').toLowerCase().trim() === 'todos');
+                btn.classList.toggle('active', isAll);
+                btn.setAttribute('aria-pressed', isAll ? 'true' : 'false');
+                btn.setAttribute('aria-selected', isAll ? 'true' : 'false');
+            });
+
+            applyFilter();
+        }
+
+        // Eventos en botones de categoría
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetBtn = this.closest('.catalog-filter-btn') || this;
+                const newCat = (targetBtn.getAttribute('data-category') || 'todos').toLowerCase().trim();
+
+                filterBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-pressed', 'false');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                targetBtn.classList.add('active');
+                targetBtn.setAttribute('aria-pressed', 'true');
+                targetBtn.setAttribute('aria-selected', 'true');
+                activeCategory = newCat;
+                visibleLimit = PAGE_SIZE; // Reiniciar límite visible a 12
+                applyFilter();
+            });
+        });
+
+        // Evento en el selector de tipo
+        if (typeSelect) {
+            typeSelect.addEventListener('change', function() {
+                activeType = (this.value || 'todos').toLowerCase().trim();
+                visibleLimit = PAGE_SIZE; // Reiniciar límite visible a 12
+                applyFilter();
+            });
+        }
+
+        // Evento en el buscador con debounce (220 ms)
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                const val = this.value;
+                if (clearSearchBtn) {
+                    clearSearchBtn.classList.toggle('d-none', val.length === 0);
+                }
+                clearTimeout(searchDebounceTimer);
+                searchDebounceTimer = setTimeout(() => {
+                    activeQuery = normalizeStr(val);
+                    visibleLimit = PAGE_SIZE; // Reiniciar límite visible a 12 al buscar
+                    applyFilter();
+                }, 220);
+            });
+        }
+
+        // Botón limpiar búsqueda
+        if (clearSearchBtn) {
+            clearSearchBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                clearTimeout(searchDebounceTimer);
+                if (searchInput) {
+                    searchInput.value = '';
+                    searchInput.focus();
+                }
+                activeQuery = '';
+                this.classList.add('d-none');
+                visibleLimit = PAGE_SIZE;
+                applyFilter();
+            });
+        }
+
+        // Botón "Ver más capacitaciones"
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                visibleLimit += PAGE_SIZE;
+                applyFilter();
+            });
+        }
+
+        // Botones de restablecer búsqueda
+        if (resetFiltersBtn) {
+            resetFiltersBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                resetFilters();
+            });
+        }
+        if (emptyResetBtn) {
+            emptyResetBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                resetFilters();
+            });
+        }
+
+        // Inicializar estado inmediato
+        applyFilter();
+    })();
+
+    /* --------------------------------------------------------------------------
+       17. INTEGRACIÓN MODAL DE INFORMACIÓN CON CURSOS ESPECÍFICOS
+       -------------------------------------------------------------------------- */
+    (function initCourseModalBridge() {
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.btn-open-course-info');
+            if (!btn) return;
+
+            const courseTitle = btn.getAttribute('data-course-title') || 'Capacitación Especializada';
+            const courseCategory = btn.getAttribute('data-course-category') || 'Capacitación';
+
+            // Autocompletar campo en el formulario del modal
+            const programaInput = document.getElementById('modalInputPrograma');
+            if (programaInput) {
+                programaInput.value = `${courseTitle} (${courseCategory})`;
+            }
+
+            // Actualizar enlace directo de WhatsApp del modal
+            const modalWaBtn = document.getElementById('modalWhatsAppBtn');
+            if (modalWaBtn) {
+                const waText = encodeURIComponent(`Hola, deseo solicitar información sobre el curso: ${courseTitle}`);
+                modalWaBtn.href = `https://wa.me/51993463118?text=${waText}`;
+            }
+        });
+    })();
+
+    /* ----------------------------------------------------
+       18. NAVEGACIÓN A REGISTRO DE PRIMERA CLASE (PAYPAL US$ 10)
+       - Dirige al usuario al flujo oficial de pago y verificación previa al formulario
+       ---------------------------------------------------- */
+    (function initPaypalFirstClassHandler() {
+        const paypalButtons = document.querySelectorAll('.btn-paypal-first-class');
+        if (!paypalButtons.length) return;
+
+        paypalButtons.forEach((btn) => {
+            btn.addEventListener('click', function (e) {
+                const courseSlug = this.getAttribute('data-course-slug') || '';
+                const isGitHubPages = window.location.hostname.includes('github.io');
+                const isStatic = window.location.pathname.endsWith('.html') || isGitHubPages;
+
+                let baseRegUrl = '/registro-primera-clase';
+                if (isGitHubPages) {
+                    const pathParts = window.location.pathname.split('/').filter(Boolean);
+                    const repoPrefix = (pathParts.length > 0 && !pathParts[0].includes('.')) ? '/' + pathParts[0] : '';
+                    baseRegUrl = repoPrefix + '/registro-primera-clase.html';
+                } else if (isStatic) {
+                    baseRegUrl = 'registro-primera-clase.html';
+                }
+
+                const targetUrl = courseSlug
+                    ? `${baseRegUrl}?curso=${encodeURIComponent(courseSlug)}`
+                    : baseRegUrl;
+
+                e.preventDefault();
+                window.location.href = targetUrl;
+            });
+        });
+    })();
 });
+

@@ -26,47 +26,23 @@ $activePage = $activePage ?? '';
                     <a href="/nosotros" class="nav-link<?= $activePage === 'nosotros' ? ' active' : '' ?>">NOSOTROS</a>
                 </li>
 
-                <!-- ASESORÍA (Desplegable) -->
-                <li class="nav-item dropdown">
-                    <a href="/consultoria" class="nav-link dropdown-toggle<?= $activePage === 'consultoria' ? ' active' : '' ?>" id="dropdownConsultoria" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                        ASESORÍA <i class="fa-solid fa-chevron-down arrow-icon"></i>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownConsultoria">
-                        <li><a href="/gestion-de-pmo" class="dropdown-item">GESTIÓN DE PROYECTOS & PMO</a></li>
-                        <li><a href="/headhunting" class="dropdown-item">HEADHUNTING</a></li>
-                        <li><a href="/gestion-de-riesgos" class="dropdown-item">GESTION DE RIESGOS</a></li>
-                        <li><a href="/riesgo-del-plazo" class="dropdown-item">RIESGO DEL PLAZO</a></li>
-                        <li><a href="/cronograma-forense" class="dropdown-item">CRONOGRAMA-FORENSE</a></li>
-                        <li><a href="/gestion-de-la-calidad" class="dropdown-item">GESTION DE LA CALIDAD</a></li>
-                        <li><a href="/universidad-corporativa" class="dropdown-item">UNIVERSIDAD CORPORATIVA</a></li>
-                    </ul>
+                <!-- ASESORÍA -->
+                <li class="nav-item">
+                    <a href="/consultoria" class="nav-link<?= $activePage === 'consultoria' ? ' active' : '' ?>">ASESORÍA</a>
                 </li>
 
-                <!-- CAPACITACION (Desplegable Extenso) -->
-                <li class="nav-item dropdown dropdown-large">
+                <!-- CAPACITACION (Desplegable) -->
+                <li class="nav-item dropdown">
                     <a href="/capacitacion" class="nav-link dropdown-toggle<?= $activePage === 'capacitacion' ? ' active' : '' ?>" id="dropdownCapacitacion" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                         CAPACITACION <i class="fa-solid fa-chevron-down arrow-icon"></i>
                     </a>
-                    <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownCapacitacion">
-                        <li><a href="/lean-last-planner" class="dropdown-item">LEAN-LAST-PLANNER</a></li>
-                        <li><a href="/riesgos-tecnicos" class="dropdown-item">RIESGOS TECNICOS</a></li>
-                        <li><a href="/riesgos-pmi" class="dropdown-item">RIESGOS PMI</a></li>
-                        <li><a href="/riesgos-cadena-produccion" class="dropdown-item">RIESGOS CADENA PRODUCCION</a></li>
-                        <li><a href="/calidad-y-pmi" class="dropdown-item">CALIDAD Y PMI</a></li>
-                        <li><a href="/costos" class="dropdown-item">COSTOS</a></li>
-                        <li><a href="/nec" class="dropdown-item">NEC</a></li>
-                        <li><a href="/fidic" class="dropdown-item">FIDIC</a></li>
-                        <li><a href="/pmo" class="dropdown-item">PMO</a></li>
-                        <li><a href="/gerencia-de-calidad" class="dropdown-item">GERENCIA DE CALIDAD</a></li>
-                        <li><a href="/valor-ganado" class="dropdown-item">VALOR GANADO</a></li>
-                        <li><a href="/bim-revit-architecture" class="dropdown-item">BIM REVIT ARCHITECTURE</a></li>
-                        <li><a href="/iso-9001" class="dropdown-item">ISO 9001</a></li>
-                        <li><a href="/oficina-tecnica" class="dropdown-item">OFICINA-TECNICA</a></li>
-                        <li><a href="/herramientas" class="dropdown-item">HERRAMIENTAS</a></li>
-                        <li><a href="/proyectos-pmi" class="dropdown-item">PROYECTOS PMI</a></li>
-                        <li><a href="/contratos" class="dropdown-item">CONTRATOS</a></li>
-                        <li><a href="/contratos-estado" class="dropdown-item">CONTRATOS-ESTADO</a></li>
-                        <li><a href="/gruas-torre" class="dropdown-item">GRUAS TORRE</a></li>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownCapacitacion">
+                        <li><a href="/capacitacion" class="dropdown-item">Ver catálogo de cursos</a></li>
+                        <li><a href="/capacitacion-calidad" class="dropdown-item">Calidad</a></li>
+                        <li><a href="/capacitacion-riesgos" class="dropdown-item">Riesgos</a></li>
+                        <li><a href="/capacitacion-contratos" class="dropdown-item">Contratos</a></li>
+                        <li><a href="/capacitacion-gestion-de-proyectos" class="dropdown-item">Gestión de Proyectos</a></li>
+                        <li><a href="/capacitacion-oficina-tecnica" class="dropdown-item">Oficina Técnica</a></li>
                     </ul>
                 </li>
 

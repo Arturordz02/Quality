@@ -42,15 +42,20 @@ return [
     'CORS_ALLOWED_ORIGINS'    => 'https://quality-consulting.org,https://www.quality-consulting.org',
 
     // Pasarela PayPal (Pago exclusivo: Primera clase del curso - USD 10)
-    'PAYPAL_MODE'             => 'sandbox',
-    'PAYPAL_CLIENT_ID'        => 'TU_PAYPAL_CLIENT_ID_AQUI',
-    'PAYPAL_CLIENT_SECRET'    => 'TU_PAYPAL_CLIENT_SECRET_AQUI',
-    'PAYPAL_CURRENCY'         => 'USD',
-    'PAYPAL_FIRST_CLASS_PRICE'=> '10.00',
+    'PAYPAL_CHECKOUT_MODE'          => 'paypalme',
+    'PAYPAL_ME_URL'                 => 'https://www.paypal.com/paypalme/TU_USUARIO/10',
+    'PAYPAL_MODE'                   => 'sandbox', // 'sandbox' o 'live'
+    'PAYPAL_CLIENT_ID'              => 'TU_PAYPAL_CLIENT_ID_PRODUCCION',
+    'PAYPAL_CLIENT_SECRET'          => 'TU_PAYPAL_CLIENT_SECRET_PRODUCCION',
+    'PAYPAL_RECEIVER_EMAIL'         => 'comercial@quality-consulting.org',
+    'PAYPAL_SANDBOX_CLIENT_ID'      => 'TU_PAYPAL_CLIENT_ID_SANDBOX',
+    'PAYPAL_SANDBOX_CLIENT_SECRET'  => 'TU_PAYPAL_CLIENT_SECRET_SANDBOX',
+    'PAYPAL_SANDBOX_RECEIVER_EMAIL' => 'TU_CUENTA_VENDEDOR_SANDBOX@business.example.com',
+    'PAYPAL_CURRENCY'               => 'USD',
+    'PAYPAL_FIRST_CLASS_PRICE'      => '10.00',
 
-    // Destinatario de Coordinación Académica (Pendiente de confirmación)
-    // IMPORTANTE: Reemplazar este placeholder únicamente cuando la dirección confirme el correo oficial del Ing. Omar Samaniego.
-    'OMAR_SAMANIEGO_EMAIL'    => 'PLACEHOLDER_EMAIL_ING_OMAR_SAMANIEGO_PENDIENTE@ejemplo.com',
+    // Destinatario oficial de notificaciones (Ing. Omar Samaniego / Coordinación Comercial)
+    'PAYMENT_NOTIFICATION_EMAIL'    => 'notificaciones-pagos@example.com',
 ];
 
 
