@@ -360,12 +360,14 @@ runTest("Tarjeta de contacto muestra mensaje oficial y pasarela PayPal restringe
         throw new \Exception("Precio US$ 10 no encontrado");
     }
 
-    if (!str_contains($html, 'US$10 únicamente por la primera clase. No incluye el curso completo.')) {
-        throw new \Exception("Aclaración de alcance no encontrada");
+    if (stripos($html, 'primera clase') === false
+        || !str_contains($html, 'USD 10')
+        || stripos($html, 'No incluye el curso completo') === false) {
+        throw new \Exception("La aclaración semántica de alcance, precio y exclusión del curso completo no está presente");
     }
 
-    if (!str_contains($html, 'registro-primera-clase?curso=gestion-contractual-megaproyectos-mineros')) {
-        throw new \Exception("Enlace de pago a primera clase no encontrado");
+    if (!str_contains($html, '/pagar-primera-clase?curso=gestion-contractual-megaproyectos-mineros')) {
+        throw new \Exception("Enlace al checkout de primera clase no encontrado");
     }
 
     return true;

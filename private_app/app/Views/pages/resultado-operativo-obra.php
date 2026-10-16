@@ -167,7 +167,6 @@ $course = array (
   'whatsapp_url' => 'https://api.whatsapp.com/send?phone=51993463118&text=Buen%20d%C3%ADa,%20deseo%20solicitar%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Resultado%20Operativo%20de%20Obra',
   'modal_service' => 'Resultado Operativo de Obra',
   'paypal_slug' => 'resultado-operativo-obra',
-  'brochure_url' => 'brochures/gestion-proyectos/brochure-resultado-operativo-obra.pdf',
   'area_back_url' => '/capacitacion-gestion-de-proyectos',
   'area_back_title' => 'Volver a Gestión de Proyectos',
 );

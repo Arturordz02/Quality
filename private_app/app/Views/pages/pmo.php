@@ -506,8 +506,8 @@ declare(strict_types=1);
 
                         <!-- 3. Botón Brochure / Ficha Técnica -->
                         <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSebCzdfgUiXYiVof5klRLTbj2wqIX2WZFktmfMm3woWCKvhtw/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Descargar información y brochure del curso PMO">
-                                <i class="fas fa-file-pdf me-2"></i> Info &amp; Brochure
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSebCzdfgUiXYiVof5klRLTbj2wqIX2WZFktmfMm3woWCKvhtw/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Solicitar información del curso PMO">
+                                <i class="fas fa-circle-info me-2"></i> Solicitar información
                             </a>
                         </div>
 

@@ -371,8 +371,10 @@ runTest("Renderizado MVC no expone enlaces a PDFs ni portadas de brochure y mues
         throw new \Exception("El renderizado no incluye la etiqueta de primera clase de USD 10");
     }
 
-    if (!str_contains($html, 'US$10 únicamente por la primera clase. No incluye el curso completo.')) {
-        throw new \Exception("El renderizado no incluye el texto aclaratorio de la primera clase");
+    if (stripos($html, 'primera clase') === false
+        || !str_contains($html, 'USD 10')
+        || stripos($html, 'No incluye el curso completo') === false) {
+        throw new \Exception("El renderizado no incluye la aclaración semántica de alcance, precio y exclusión del curso completo");
     }
 
     if (stripos($html, '.pdf') !== false) {

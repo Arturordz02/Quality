@@ -360,8 +360,8 @@ declare(strict_types=1);
                         </a>
 
                         <!-- 2. Botón Más Información / Brochure (Google Forms) -->
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdSFYYYkr_ucWEsF0YTmNt9FLQFzh1A8O0YkOLKyKay1vBGeg/viewform" target="_blank" rel="noopener noreferrer" class="btn-outline payment-action-btn" aria-label="Solicitar más información y brochure del curso en Google Forms">
-                            <i class="fas fa-file-pdf"></i> Solicitar Más Información
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdSFYYYkr_ucWEsF0YTmNt9FLQFzh1A8O0YkOLKyKay1vBGeg/viewform" target="_blank" rel="noopener noreferrer" class="btn-outline payment-action-btn" aria-label="Solicitar información del curso en Google Forms">
+                            <i class="fas fa-circle-info"></i> Solicitar información
                         </a>
 
                         <!-- 3. Pago exclusivo de la primera clase -->

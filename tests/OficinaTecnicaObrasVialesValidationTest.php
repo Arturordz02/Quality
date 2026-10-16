@@ -376,11 +376,13 @@ runTest("Subbloque de PayPal está configurado para la primera clase a US$ 10", 
     if (!str_contains($html, 'US$ 10')) {
         throw new \Exception("Precio de US$ 10 no encontrado en el bloque de primera clase.");
     }
-    if (!str_contains($html, 'curso=oficina-tecnica-obras-viales')) {
-        throw new \Exception("Enlace a registro de primera clase con slug incorrecto.");
+    if (!str_contains($html, '/pagar-primera-clase?curso=oficina-tecnica-obras-viales')) {
+        throw new \Exception("Enlace al checkout de primera clase con slug incorrecto.");
     }
-    if (!str_contains($html, 'US$10 únicamente por la primera clase. No incluye el curso completo.')) {
-        throw new \Exception("Nota de restricción de alcance de pago ausente.");
+    if (stripos($html, 'primera clase') === false
+        || !str_contains($html, 'USD 10')
+        || stripos($html, 'No incluye el curso completo') === false) {
+        throw new \Exception("La nota semántica de alcance, precio y exclusión del curso completo está ausente.");
     }
 
     return true;

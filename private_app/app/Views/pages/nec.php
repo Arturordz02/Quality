@@ -325,7 +325,7 @@ declare(strict_types=1);
 
                     <h2 class="enroll-title animate__animated animate__fadeInUp animate__delay-1s">MATRICÚLATE EN EL CURSO DE CONTRATOS NEC</h2>
                     <p class="enroll-subtitle">
-                        Elige tu canal preferido para solicitar asesoría personalizada, descargar el brochure detallado o realizar tu inscripción segura en línea.
+                        Para más información, disponibilidad y precios, contáctanos.
                     </p>
 
                     <!-- Beneficios de la Matrícula -->
@@ -378,8 +378,8 @@ declare(strict_types=1);
 
                         <!-- 3. Botón Brochure -->
                         <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfy_G52KOxzUKFX-AE43tJ_vKpk8A_rgasf5TMm69gAtBJFVQ/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Descargar información y brochure del curso">
-                                <i class="fas fa-file-pdf me-2"></i> Info &amp; Brochure
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfy_G52KOxzUKFX-AE43tJ_vKpk8A_rgasf5TMm69gAtBJFVQ/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Solicitar información del curso">
+                                <i class="fas fa-circle-info me-2"></i> Solicitar información
                             </a>
                         </div>
 
