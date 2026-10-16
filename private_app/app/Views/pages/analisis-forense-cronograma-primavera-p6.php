@@ -157,7 +157,6 @@ $course = array (
   'whatsapp_url' => 'https://api.whatsapp.com/send?phone=51993463118&text=Buen%20d%C3%ADa,%20deseo%20solicitar%20informaci%C3%B3n%20sobre%20el%20curso%20de%20An%C3%A1lisis%20Forense%20del%20Cronograma%20con%20Primavera%20P6',
   'modal_service' => 'Análisis Forense del Cronograma con Primavera P6',
   'paypal_slug' => 'analisis-forense-cronograma-primavera-p6',
-  'brochure_url' => 'brochures/gestion-proyectos/brochure-analisis-forense-cronograma-primavera-p6.pdf',
   'area_back_url' => '/capacitacion-gestion-de-proyectos',
   'area_back_title' => 'Volver a Gestión de Proyectos',
 );

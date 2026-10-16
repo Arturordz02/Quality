@@ -384,8 +384,8 @@ runTest("Pasarela PayPal está configurada para primera clase por USD 10 indican
         throw new \Exception("Falta data-course-slug=\"eventos-compensables-alertas-tempranas-nec4\" en botón de pago PayPal");
     }
 
-    if (!str_contains($html, 'registro-primera-clase?curso=eventos-compensables-alertas-tempranas-nec4')) {
-        throw new \Exception("Falta enlace de registro primera clase con slug");
+    if (!str_contains($html, '/pagar-primera-clase?curso=eventos-compensables-alertas-tempranas-nec4')) {
+        throw new \Exception("Falta enlace al checkout de primera clase con slug");
     }
 
     if (!str_contains($html, 'Primera clase del curso – USD 10')) {
@@ -396,8 +396,10 @@ runTest("Pasarela PayPal está configurada para primera clase por USD 10 indican
         throw new \Exception("Precio US$ 10 no encontrado");
     }
 
-    if (!str_contains($html, 'US$10 únicamente por la primera clase. No incluye el curso completo.')) {
-        throw new \Exception("Aclaración de alcance no encontrada");
+    if (stripos($html, 'primera clase') === false
+        || !str_contains($html, 'USD 10')
+        || stripos($html, 'No incluye el curso completo') === false) {
+        throw new \Exception("La aclaración semántica de alcance, precio y exclusión del curso completo no está presente");
     }
 
     if (!str_contains($html, 'Para más información, disponibilidad y precios, contáctanos.')) {

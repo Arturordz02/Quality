@@ -155,7 +155,6 @@ $course = array (
   'whatsapp_url' => 'https://api.whatsapp.com/send?phone=51993463118&text=Buen%20d%C3%ADa,%20deseo%20solicitar%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Control%20de%20Proyectos%20con%20BIM%20y%20Power%20BI',
   'modal_service' => 'Control de Proyectos con BIM y Power BI',
   'paypal_slug' => 'control-proyectos-bim-power-bi',
-  'brochure_url' => 'brochures/gestion-proyectos/brochure-control-proyectos-bim-power-bi.pdf',
   'area_back_url' => '/capacitacion-gestion-de-proyectos',
   'area_back_title' => 'Volver a Gestión de Proyectos',
 );

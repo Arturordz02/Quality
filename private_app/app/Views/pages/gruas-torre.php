@@ -135,7 +135,6 @@ $course = array (
   'whatsapp_url' => 'https://api.whatsapp.com/send?phone=51993463118&text=Buen%20d%C3%ADa,%20deseo%20solicitar%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Gr%C3%BAas%20Torre',
   'modal_service' => 'Grúas Torre (Planificación y Productividad)',
   'paypal_slug' => 'gruas-torre',
-  'brochure_url' => 'brochures/gestion-proyectos/brochure-gruas-torre.pdf',
   'area_back_url' => '/capacitacion-gestion-de-proyectos',
   'area_back_title' => 'Volver a Gestión de Proyectos',
 );

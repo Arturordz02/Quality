@@ -86,16 +86,16 @@ runTest("El curso 3 conserva '/calidad-y-pmi', imagen 'capmi1' y no tiene el nue
     return true;
 });
 
-// 2. El curso 5 utiliza /direccion-calidad-enfoque-pmi
-runTest("El curso 5 utiliza '/direccion-calidad-enfoque-pmi' y brochure oficial", function () use ($course5) {
+// 2. El curso 5 utiliza /direccion-calidad-enfoque-pmi sin publicar brochures
+runTest("El curso 5 utiliza '/direccion-calidad-enfoque-pmi' sin brochure público", function () use ($course5) {
     if (!$course5) {
         throw new \Exception("Curso 5 no encontrado en CoursesCatalog.");
     }
     if ($course5['route'] !== '/direccion-calidad-enfoque-pmi') {
         throw new \Exception("Curso 5 no tiene la ruta esperada: " . $course5['route']);
     }
-    if ($course5['brochure'] !== 'brochures/calidad/direccion-calidad-enfoque-pmi.pdf') {
-        throw new \Exception("Curso 5 no tiene el brochure oficial: " . ($course5['brochure'] ?? 'vacío'));
+    if (array_key_exists('brochure', $course5) || !empty($course5['brochure'] ?? null)) {
+        throw new \Exception("Curso 5 no debe exponer una propiedad de brochure público.");
     }
     if (!str_contains(mb_strtoupper($course5['title']), 'DIRECCIÓN DE LA CALIDAD CON EL ENFOQUE PMI')) {
         throw new \Exception("Título de curso 5 no coincide: " . $course5['title']);

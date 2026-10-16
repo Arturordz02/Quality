@@ -6,7 +6,7 @@
  *
  * Basado en la plantilla unificada aprobada: app/Views/partials/course_detail_unified.php
  * Contenido auditado estrictamente contra el brochure oficial:
- * public_html/brochures/calidad/direccion-calidad-enfoque-pmi.pdf
+ * Fuente privada de contenido validada y no publicada.
  */
 
 declare(strict_types=1);
@@ -135,9 +135,6 @@ $course = [
     'duration_hours'      => '15 horas netas',
     'pdu_title'           => 'Unidades de desarrollo profesional (16 PDU)',
     'pdu_text'            => 'Si tienes certificación del PMI®, este curso te brinda 16 PDU (<em>Professional Development Unit</em>) para mantener tu certificación según la descripción provista por el PMI®: Categoría PMI® CCR: <em>General Education Third-Party Provider</em>. Duración total: <strong>15 horas netas</strong>.',
-    'brochure_url'        => 'brochures/calidad/direccion-calidad-enfoque-pmi.pdf',
-    'brochure_download'   => 'Brochure-Direccion-Calidad-Enfoque-PMI.pdf',
-    'brochure_thumb'      => 'img/brochures/portada-direccion-calidad-enfoque-pmi.png',
 
     // 7. Información e inscripción (Página 3 del brochure)
     'enroll_bg_image'     => 'img/capacitaciones/direccion-calidad-enfoque-pmi.webp',

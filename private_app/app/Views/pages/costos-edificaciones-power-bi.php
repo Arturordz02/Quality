@@ -160,7 +160,6 @@ $course = array (
   'whatsapp_url' => 'https://api.whatsapp.com/send?phone=51993463118&text=Buen%20d%C3%ADa,%20deseo%20solicitar%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Costos%20en%20Edificaciones%20con%20Power%20BI',
   'modal_service' => 'Costos en Edificaciones con Power BI',
   'paypal_slug' => 'costos-edificaciones-power-bi',
-  'brochure_url' => 'brochures/gestion-proyectos/brochure-costos-edificaciones-power-bi.pdf',
   'area_back_url' => '/capacitacion-gestion-de-proyectos',
   'area_back_title' => 'Volver a Gestión de Proyectos',
 );

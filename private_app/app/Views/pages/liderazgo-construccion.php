@@ -155,7 +155,6 @@ $course = array (
   'whatsapp_url' => 'https://api.whatsapp.com/send?phone=51993463118&text=Buen%20d%C3%ADa,%20deseo%20solicitar%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Liderazgo%20en%20la%20Construcci%C3%B3n',
   'modal_service' => 'Liderazgo en la Construcción',
   'paypal_slug' => 'liderazgo-construccion',
-  'brochure_url' => 'brochures/gestion-proyectos/brochure-liderazgo-construccion.pdf',
   'area_back_url' => '/capacitacion-gestion-de-proyectos',
   'area_back_title' => 'Volver a Gestión de Proyectos',
 );

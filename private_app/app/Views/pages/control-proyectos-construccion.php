@@ -165,7 +165,6 @@ $course = array (
   'whatsapp_url' => 'https://api.whatsapp.com/send?phone=51993463118&text=Buen%20d%C3%ADa,%20deseo%20solicitar%20informaci%C3%B3n%20sobre%20el%20curso%20de%20Control%20de%20Proyectos%20de%20Construcci%C3%B3n',
   'modal_service' => 'Control de Proyectos de Construcción',
   'paypal_slug' => 'control-proyectos-construccion',
-  'brochure_url' => 'brochures/gestion-proyectos/brochure-control-proyectos-construccion.pdf',
   'area_back_url' => '/capacitacion-gestion-de-proyectos',
   'area_back_title' => 'Volver a Gestión de Proyectos',
 );

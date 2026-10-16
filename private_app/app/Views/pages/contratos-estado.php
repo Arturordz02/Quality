@@ -756,7 +756,7 @@ declare(strict_types=1);
                         MATRICÚLATE EN EL CURSO DE ADICIONALES Y AMPLIACIÓN DE PLAZO
                     </h2>
                     <p class="text-secondary mx-auto mb-4" style="max-width: 740px;">
-                        Elige tu canal preferido para solicitar asesoría técnica personalizada, descargar el brochure con los módulos o formalizar tu inscripción online de forma segura.
+                        Para más información, disponibilidad y precios, contáctanos.
                     </p>
 
                     <!-- Beneficios Rápidos de Matrícula -->
@@ -802,8 +802,8 @@ declare(strict_types=1);
 
                         <!-- 3. Brochure / Ficha Técnica (Google Forms) -->
                         <div class="col-12 col-md-6 col-lg-3">
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdAnt9Kowdtr1YN0H1w1x7GI_Aprp7CuE5htHYPG3fdb-ie5w/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Descargar más información y brochure del curso">
-                                <i class="fas fa-file-pdf me-2"></i> Info &amp; Brochure
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdAnt9Kowdtr1YN0H1w1x7GI_Aprp7CuE5htHYPG3fdb-ie5w/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg w-100 my-1 shadow-sm font-montserrat fw-bold" aria-label="Solicitar información del curso">
+                                <i class="fas fa-circle-info me-2"></i> Solicitar información
                             </a>
                         </div>
 
