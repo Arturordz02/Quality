@@ -1038,8 +1038,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
 
     /* ----------------------------------------------------
-       18. NAVEGACIÓN A REGISTRO DE PRIMERA CLASE (PAYPAL US$ 10)
-       - Dirige al usuario al flujo oficial de pago y verificación previa al formulario
+       18. NAVEGACIÓN A PAGO DE PRIMERA CLASE (PAYPAL US$ 10)
+       - Dirige al usuario al checkout central /pagar-primera-clase
        ---------------------------------------------------- */
     (function initPaypalFirstClassHandler() {
         const paypalButtons = document.querySelectorAll('.btn-paypal-first-class');
@@ -1051,18 +1051,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 const isGitHubPages = window.location.hostname.includes('github.io');
                 const isStatic = window.location.pathname.endsWith('.html') || isGitHubPages;
 
-                let baseRegUrl = '/registro-primera-clase';
+                let basePayUrl = '/pagar-primera-clase';
                 if (isGitHubPages) {
                     const pathParts = window.location.pathname.split('/').filter(Boolean);
                     const repoPrefix = (pathParts.length > 0 && !pathParts[0].includes('.')) ? '/' + pathParts[0] : '';
-                    baseRegUrl = repoPrefix + '/registro-primera-clase.html';
+                    basePayUrl = repoPrefix + '/pagar-primera-clase.html';
                 } else if (isStatic) {
-                    baseRegUrl = 'registro-primera-clase.html';
+                    basePayUrl = 'pagar-primera-clase.html';
                 }
 
                 const targetUrl = courseSlug
-                    ? `${baseRegUrl}?curso=${encodeURIComponent(courseSlug)}`
-                    : baseRegUrl;
+                    ? `${basePayUrl}?curso=${encodeURIComponent(courseSlug)}`
+                    : basePayUrl;
 
                 e.preventDefault();
                 window.location.href = targetUrl;

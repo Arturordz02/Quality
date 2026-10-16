@@ -15,7 +15,7 @@ $paypalMeUrlSafe = htmlspecialchars((string)($paypalMeUrl ?? ''), ENT_QUOTES, 'U
     <div class="container py-4 py-md-5">
         <div class="row justify-content-center">
             <div class="col-12 col-md-9 col-lg-6 col-xl-5">
-                <section class="card bg-secondary bg-opacity-10 border border-warning border-opacity-50 rounded-4 p-4 p-md-5 shadow-lg text-center overflow-hidden">
+                <section class="card bg-secondary bg-opacity-10 border border-warning border-opacity-50 rounded-4 p-3 p-sm-4 p-md-5 shadow-lg text-center overflow-hidden">
                     <div class="d-inline-flex align-items-center justify-content-center rounded-circle bg-warning text-dark mx-auto mb-3" style="width:56px;height:56px">
                         <i class="fab fa-paypal fs-3" aria-hidden="true"></i>
                     </div>
@@ -30,11 +30,11 @@ $paypalMeUrlSafe = htmlspecialchars((string)($paypalMeUrl ?? ''), ENT_QUOTES, 'U
                         </div>
                     <?php elseif ($mode === 'paypalme'): ?>
                         <?php if ($paypalMeUrlSafe !== ''): ?>
-                            <a href="<?= $paypalMeUrlSafe ?>" target="_blank" rel="noopener noreferrer" class="btn btn-warning text-dark fw-bold w-100 py-3">
-                                <i class="fab fa-paypal me-2" aria-hidden="true"></i>Pagar con PayPal.Me
+                            <a href="<?= $paypalMeUrlSafe ?>" target="_blank" rel="noopener noreferrer" class="btn btn-warning text-dark fw-bold w-100 py-3" id="btnPaypalMeLink">
+                                <i class="fab fa-paypal me-2" aria-hidden="true"></i>Pagar USD 10 con PayPal
                             </a>
-                            <a href="/registro-primera-clase?curso=<?= rawurlencode($rawSlug) ?>" class="btn btn-outline-light w-100 mt-3 py-2">
-                                Ya realicé el pago — completar mis datos
+                            <a href="/registro-primera-clase?curso=<?= rawurlencode($rawSlug) ?>" id="completedPaymentLink" class="btn btn-outline-light w-100 mt-3 py-2">
+                                Ya realicé el pago, completar mis datos
                             </a>
                             <p class="small text-white-50 mt-3 mb-0">El pago quedará pendiente de verificación manual.</p>
                         <?php else: ?>
@@ -66,9 +66,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const course = catalog[slug] || null;
     const title = document.getElementById('checkoutCourseTitle');
     const cancel = document.getElementById('cancelPaymentLink');
+    const completedLink = document.getElementById('completedPaymentLink');
     if (course) {
         if (title) title.textContent = course.title;
         if (cancel) cancel.href = <?= $isStatic ? "course.url.replace(/^\\//, '') + '.html'" : 'course.url' ?>;
+    }
+    if (completedLink && slug) {
+        completedLink.href = <?= $isStatic ? "'registro-primera-clase.html?curso=' + encodeURIComponent(slug)" : "'/registro-primera-clase?curso=' + encodeURIComponent(slug)" ?>;
     }
 
 <?php if (!$isStatic && $mode === 'api'): ?>
