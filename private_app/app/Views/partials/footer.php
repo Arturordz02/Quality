@@ -46,7 +46,6 @@ $year = $currentYear ?? date('Y');
                 <ul class="footer-links">
                     <li><a href="/"><i class="fa-solid fa-angle-right"></i> Home</a></li>
                     <li><a href="/nosotros"><i class="fa-solid fa-angle-right"></i> Nosotros</a></li>
-                    <li><a href="/consultoria"><i class="fa-solid fa-angle-right"></i> Asesoría</a></li>
                     <li><a href="/capacitacion"><i class="fa-solid fa-angle-right"></i> Capacitación</a></li>
                     <li><a href="/medios"><i class="fa-solid fa-angle-right"></i> Medios y Podcasts</a></li>
                     <li><a href="/clientes"><i class="fa-solid fa-angle-right"></i> Clientes</a></li>

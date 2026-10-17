@@ -677,9 +677,6 @@ body {
 
                     <!-- Botones CTA de Alto Impacto -->
                     <div class="d-flex justify-content-center flex-wrap gap-2 gap-md-3 mb-4 position-relative" style="z-index: 2;">
-                        <a href="/consultoria" class="btn btn-qcs-hero-secondary btn-lg rounded-pill px-4 py-3 shadow">
-                            <i class="fas fa-briefcase me-2 text-warning"></i> ASESORÍA
-                        </a>
                         <a href="/capacitacion" class="btn btn-qcs-hero-primary btn-lg rounded-pill px-4 py-3 shadow-lg">
                             <i class="fas fa-graduation-cap me-2"></i> CAPACITACIÓN
                         </a>
