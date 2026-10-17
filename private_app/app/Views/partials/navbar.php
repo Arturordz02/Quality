@@ -26,11 +26,6 @@ $activePage = $activePage ?? '';
                     <a href="/nosotros" class="nav-link<?= $activePage === 'nosotros' ? ' active' : '' ?>">NOSOTROS</a>
                 </li>
 
-                <!-- ASESORÍA -->
-                <li class="nav-item">
-                    <a href="/consultoria" class="nav-link<?= $activePage === 'consultoria' ? ' active' : '' ?>">ASESORÍA</a>
-                </li>
-
                 <!-- CAPACITACION (Desplegable) -->
                 <li class="nav-item dropdown">
                     <a href="/capacitacion" class="nav-link dropdown-toggle<?= $activePage === 'capacitacion' ? ' active' : '' ?>" id="dropdownCapacitacion" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
