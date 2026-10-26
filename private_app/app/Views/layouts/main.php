@@ -69,6 +69,9 @@ $showFloat = $showWhatsAppFloat ?? true;
         <?php endif; ?>
     </header>
 
+    <!-- Migas de Pan (Breadcrumbs) Globales y Dinámicas -->
+    <?= $this->partial('breadcrumbs', get_defined_vars()) ?>
+
     <!-- Contenido Dinámico de la Vista -->
     <?= $content ?>
 
