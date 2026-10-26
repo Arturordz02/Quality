@@ -360,7 +360,7 @@ class SmtpMailer {
     public static function templateContactNotification(array $data): string {
         $nombre = htmlspecialchars($data['nombre'], ENT_QUOTES, 'UTF-8');
         $telefono = htmlspecialchars($data['telefono'], ENT_QUOTES, 'UTF-8');
-        $empresa = htmlspecialchars($data['empresa'], ENT_QUOTES, 'UTF-8');
+        $empresa = !empty($data['empresa']) ? htmlspecialchars($data['empresa'], ENT_QUOTES, 'UTF-8') : 'No especificada';
         $email = htmlspecialchars($data['email'], ENT_QUOTES, 'UTF-8');
         $consulta = nl2br(htmlspecialchars($data['consulta'], ENT_QUOTES, 'UTF-8'));
         $fecha = date('d/m/Y H:i:s');
