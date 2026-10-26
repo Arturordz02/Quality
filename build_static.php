@@ -90,6 +90,8 @@ foreach ($pageFiles as $pageFile) {
         'title'        => $title,
         'canonicalUrl' => 'https://quality-consulting.org/' . ($pageName === 'home' ? '' : $pageName),
         'staticBuild'   => true,
+        'pageName'     => $pageName,
+        'activePage'   => ($pageName === 'home') ? 'home' : $pageName,
     ];
 
     if (in_array($pageName, ['pagar-primera-clase', 'registro-primera-clase'], true)) {
