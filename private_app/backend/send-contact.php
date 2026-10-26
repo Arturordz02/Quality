@@ -67,8 +67,9 @@ if (empty($telefono) || !Security::isValidPhone($telefono)) {
     $errors['telefono'] = 'Por favor, ingrese un número de teléfono válido (ej: +51 999 999 999).';
 }
 
-if (empty($empresa) || mb_strlen($empresa, 'UTF-8') < 2) {
-    $errors['empresa'] = 'Por favor, ingrese el nombre de su empresa o institución.';
+// Empresa es opcional: solo validamos longitud si se proporciona
+if (!empty($empresa) && mb_strlen($empresa, 'UTF-8') > 120) {
+    $errors['empresa'] = 'El nombre de la empresa no debe superar los 120 caracteres.';
 }
 
 if (empty($email) || !Security::isValidEmail($email)) {
@@ -147,7 +148,8 @@ if (!$isPersisted) {
 // 5. Enviar Notificación por Correo (SMTP) como notificación adicional (No como almacenamiento principal)
 $mailer = new SmtpMailer($config);
 $recipient = $config['mail']['contact_recipient'] ?? 'contacto@quality-consulting.org';
-$subject = "Nueva Consulta Web: {$empresa} - {$nombre}";
+$empresaSubject = !empty($empresa) ? $empresa : 'No especificada';
+$subject = "Nueva Consulta Web: {$empresaSubject} - {$nombre}";
 $htmlBody = SmtpMailer::templateContactNotification($cleanData);
 
 $mailSent = false;

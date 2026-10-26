@@ -267,13 +267,18 @@ declare(strict_types=1);
                     <div class="col-lg-4 col-md-6">
                         <div class="hero-channel-card">
                             <div class="hero-channel-icon text-success">
-                                <i class="fab fa-whatsapp"></i>
+                                <i class="fas fa-headset"></i>
                             </div>
                             <h3 class="hero-channel-name animate__animated animate__fadeInUp animate__delay-1s">Teléfono Directo &amp; WhatsApp</h3>
                             <p class="hero-channel-desc">Llamadas e interacción inmediata</p>
-                            <a href="tel:+51993463118" class="text-white fw-bold d-inline-flex align-items-center gap-1">
-                                <i class="fab fa-whatsapp text-success me-2"></i> +51 993 463 118
-                            </a>
+                            <div class="d-flex flex-column gap-2 mt-2">
+                                <a href="tel:+51993463118" class="text-white fw-bold d-inline-flex align-items-center gap-2">
+                                    <i class="fas fa-phone-alt text-warning"></i> Llamar: +51 993 463 118
+                                </a>
+                                <a href="https://wa.me/51993463118" target="_blank" rel="noopener noreferrer" class="text-white fw-bold d-inline-flex align-items-center gap-2">
+                                    <i class="fab fa-whatsapp text-success"></i> Escribir por WhatsApp
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -362,10 +367,10 @@ declare(strict_types=1);
 
                                 <!-- Empresa / Organización -->
                                 <div class="mb-3">
-                                    <label for="contactEmpresa" class="form-label fw-bold small text-secondary">Empresa <span class="text-danger">*</span></label>
+                                    <label for="contactEmpresa" class="form-label fw-bold small text-secondary">Empresa <span class="text-muted fw-normal">(Opcional)</span></label>
                                     <div class="input-group">
                                         <span class="input-group-text bg-light border-end-0"><i class="fas fa-building text-muted"></i></span>
-                                        <input type="text" id="contactEmpresa" name="empresa" class="form-control border-start-0 ps-0" placeholder="Nombre de tu empresa o institución" required autocomplete="organization">
+                                        <input type="text" id="contactEmpresa" name="empresa" class="form-control border-start-0 ps-0" placeholder="Nombre de tu empresa o institución (opcional)" autocomplete="organization">
                                     </div>
                                 </div>
 
@@ -505,22 +510,22 @@ declare(strict_types=1);
                         
                         <div class="col-lg-8 mb-4 mb-lg-0">
                             <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3 shadow-sm">
-                                <i class="fa-solid fa-layer-group me-1"></i> CAPACITACIÓN Y ASESORÍA
+                                <i class="fa-solid fa-graduation-cap me-1"></i> FORMACIÓN Y GESTIÓN DE PROYECTOS
                             </span>
                             <h2 class="fw-bold font-montserrat text-white mb-3 animate__animated animate__fadeInUp animate__delay-1s" style="font-size: clamp(1.6rem, 2.5vw, 2.2rem);">
-                                Conoce nuestras Soluciones en Formación y Asesoría Especializada
+                                Conoce nuestras Soluciones en Formación Técnica y Gestión de Proyectos
                             </h2>
                             <p class="text-light text-opacity-90 mb-0" style="font-size: 1.05rem; line-height: 1.8;">
-                                Explora nuestro catálogo de formación técnica especializada o solicita asesoría especializada para orientar la gestión de PMO, directrices ISO 9001 y gestión de riesgos contractuales.
+                                Explora nuestro catálogo de formación especializada y programas corporativos para la gestión de PMO, directrices ISO 9001 y administración de riesgos contractuales.
                             </p>
                         </div>
 
                         <div class="col-lg-4 text-lg-end text-center">
                             <div class="d-flex flex-column gap-3 justify-content-center">
                                 <a href="/gestion-de-pmo" class="btn btn-warning btn-lg px-4 py-3 fw-bold rounded-pill shadow-lg btn-qcs-primary">
-                                    <i class="fa-solid fa-chart-pie me-2"></i> Ver Asesoría Especializada
+                                    <i class="fa-solid fa-chart-pie me-2"></i> Ver Gestión de Proyectos y PMO
                                 </a>
-                                <a href="/lean-last-planner" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold rounded-pill btn-qcs-primary">
+                                <a href="/capacitacion" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold rounded-pill btn-qcs-primary">
                                     <i class="fa-solid fa-graduation-cap me-2"></i> Ver Cursos y Capacitación
                                 </a>
                             </div>

@@ -394,7 +394,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const clientErrors = [];
             if (!nombre || nombre.length < 2) clientErrors.push('Ingrese su nombre y apellido.');
             if (!telefono || telefono.length < 6) clientErrors.push('Ingrese un teléfono de contacto válido.');
-            if (!empresa || empresa.length < 2) clientErrors.push('Ingrese el nombre de su empresa o institución.');
             if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) clientErrors.push('Ingrese un correo electrónico válido.');
             if (!consulta || consulta.length < 5) clientErrors.push('Ingrese el detalle de su consulta (mínimo 5 caracteres).');
 
@@ -513,9 +512,12 @@ document.addEventListener('DOMContentLoaded', () => {
        ---------------------------------------------------- */
     (function initTermsConsentBanner() {
         const CONSENT_KEY = 'qcs_terms_and_privacy_accepted';
+        const REJECT_KEY = 'qcs_terms_rejected';
         
-        // Si ya aceptó previamente o rechazó en esta sesión, no volvemos a mostrar el card
-        if (localStorage.getItem(CONSENT_KEY) === 'true' || sessionStorage.getItem('qcs_terms_rejected') === 'true') {
+        // Si ya aceptó previamente o rechazó en visitas anteriores o en esta sesión, no volvemos a mostrar el card
+        if (localStorage.getItem(CONSENT_KEY) === 'true' ||
+            localStorage.getItem(REJECT_KEY) === 'true' ||
+            sessionStorage.getItem(REJECT_KEY) === 'true') {
             return;
         }
 
@@ -531,7 +533,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         termsCard.innerHTML = `
             <div class="qcs-terms-header">
-                <i class="fas fa-shield-halved"></i>
+                <i class="fas fa-shield-halved" aria-hidden="true"></i>
                 <span>Términos y Privacidad</span>
             </div>
             <div class="qcs-terms-body">
@@ -558,12 +560,13 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(syncBannerHeight);
         window.addEventListener('resize', syncBannerHeight);
 
-        // Cierre y transición de retorno del botón de WhatsApp a su posición original
+        // Cierre y persistencia de preferencia
         const closeBanner = (accepted) => {
             if (accepted) {
                 localStorage.setItem(CONSENT_KEY, 'true');
             } else {
-                sessionStorage.setItem('qcs_terms_rejected', 'true');
+                localStorage.setItem(REJECT_KEY, 'true');
+                sessionStorage.setItem(REJECT_KEY, 'true');
             }
             document.body.classList.remove('has-terms-banner');
             window.removeEventListener('resize', syncBannerHeight);
@@ -581,7 +584,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btnAccept.addEventListener('click', () => closeBanner(true));
         }
 
-        // Evento Rechazar (Cierra el banner y regresa WhatsApp a su posición original)
+        // Evento Rechazar (Cierra el banner y persiste preferencia)
         const btnReject = document.getElementById('qcsBtnRejectTerms');
         if (btnReject) {
             btnReject.addEventListener('click', () => closeBanner(false));
