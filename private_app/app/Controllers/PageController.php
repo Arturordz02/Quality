@@ -26,6 +26,7 @@ class PageController extends Controller
             'metaDescription' => 'Formación especializada en gestión de proyectos, PMO y calidad para profesionales del sector construcción, infraestructura y minería. Capacitaciones y asesoría técnica.',
             'canonical'       => 'https://quality-consulting.org/',
             'activePage'      => 'home',
+            'coursesCount'    => count(\App\Services\CoursesCatalog::getAll()),
         ];
 
         $this->render('pages/home', $data, 'main');

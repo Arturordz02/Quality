@@ -6,6 +6,8 @@
  */
 
 declare(strict_types=1);
+
+$coursesCount = $coursesCount ?? count(\App\Services\CoursesCatalog::getAll());
 ?>
 <style>
 body {
@@ -340,109 +342,6 @@ body {
         }
 
         /* ----------------------------------------------------
-           3. SECCIÓN CONSULTORÍA: CARDS DE EJES Y METODOLOGÍA
-           ---------------------------------------------------- */
-        .consulting-card {
-            background: #ffffff;
-            border-radius: 20px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 10px 30px rgba(15, 35, 60, 0.06);
-            overflow: hidden;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .consulting-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 45px rgba(15, 17, 19, 0.2);
-            border-color: var(--accent-gold);
-        }
-
-        .consulting-card-img-wrap {
-            position: relative;
-            height: 220px;
-            overflow: hidden;
-        }
-
-        .consulting-card-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .consulting-card:hover .consulting-card-img {
-            transform: scale(1.08);
-        }
-
-        .consulting-card-icon-badge {
-            position: absolute;
-            bottom: -20px;
-            right: 1.5rem;
-            width: 54px;
-            height: 54px;
-            border-radius: 16px;
-            background: #ffffff;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-        }
-
-        .consulting-card-body {
-            padding: 2.25rem 1.75rem 1.75rem 1.75rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            justify-content: space-between;
-        }
-
-        .consulting-card-title {
-            font-family: var(--font-heading);
-            font-weight: 800;
-            font-size: 1.25rem;
-            color: var(--qcs-dark-slate);
-            margin-bottom: 0.75rem;
-            line-height: 1.35;
-        }
-
-        .consulting-card-desc {
-            font-size: 0.92rem;
-            line-height: 1.7;
-            color: #475569;
-            margin-bottom: 1.25rem;
-        }
-
-        .consulting-badge-tag {
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 0.3rem 0.65rem;
-            border-radius: 6px;
-            background-color: var(--qcs-bg-light);
-            color: #334155;
-        }
-
-        .methodology-feature-box {
-            background: #ffffff;
-            border-radius: 18px;
-            padding: 1.5rem 1.25rem;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
-            text-align: center;
-            height: 100%;
-            transition: all 0.3s ease;
-        }
-
-        .methodology-feature-box:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-gold);
-            box-shadow: 0 12px 25px rgba(15, 17, 19, 0.2);
-        }
-
-        /* ----------------------------------------------------
            4. SECCIÓN CAPACITACIÓN: GARANTÍA & CATÁLOGO DE CURSOS
            ---------------------------------------------------- */
         .value-guarantee-card {
@@ -652,7 +551,7 @@ body {
                     <div class="d-inline-flex align-items-center mb-3">
                         <span class="home-hero-badge shadow">
                             <span class="badge-pulse-dot"></span>
-                            <span>CAPACITACIÓN Y ASESORÍA ESPECIALIZADA EN INGENIERÍA</span>
+                            <span>CAPACITACIÓN ESPECIALIZADA EN INGENIERÍA</span>
                         </span>
                     </div>
 
@@ -672,7 +571,7 @@ body {
 
                     <!-- Párrafo Descriptivo Ejecutivo -->
                     <p class="home-hero-subtitle">
-                        La calidad es un tema estratégico para alcanzar la excelencia y sostenibilidad. Impulsamos a profesionales y organizaciones del sector construcción e infraestructura mediante metodologías aplicadas y asesoría técnica de alto nivel.
+                        La calidad es un tema estratégico para alcanzar la excelencia y sostenibilidad. Impulsamos a profesionales y organizaciones del sector construcción e infraestructura mediante metodologías aplicadas de alto nivel.
                     </p>
 
                     <!-- Botones CTA de Alto Impacto -->
@@ -751,188 +650,6 @@ body {
         </section>
 
         <!-- ==========================================================================
-             3. SECCIÓN DESTACADA: CONSULTORÍA TÉCNICA Y ESTRATÉGICA
-             ========================================================================== -->
-        <section class="py-5" id="consultoria">
-            <div class="container">
-                
-                <!-- Encabezado de Sección -->
-                <div class="text-center mb-5">
-                    <span class="badge bg-warning-subtle text-dark fw-bold px-3 py-2 rounded-pill text-uppercase mb-2">
-                        <i class="fa-solid fa-briefcase me-1"></i> Asesoría Especializada
-                    </span>
-                    <h2 class="fw-extrabold font-montserrat text-dark display-6 mb-2 animate__animated animate__fadeInUp animate__delay-1s" style="font-weight: 800;">
-                        ASESORÍA TÉCNICA Y FORMATIVA EN GESTIÓN DE PROYECTOS Y CALIDAD
-                    </h2>
-                    <p class="text-muted mx-auto" style="max-width: 780px;">
-                        Acompañamos y orientamos a profesionales y organizaciones del sector construcción, infraestructura y minería mediante asesoría especializada, transferencia de metodologías y programas de capacitación aplicada.
-                    </p>
-                </div>
-
-                <!-- Grid de 4 Ejes Estratégicos de Consultoría -->
-                <div class="row g-4">
-                    
-                    <!-- Eje 1: Gestión de la Calidad e ISO 9001 -->
-                    <div class="col-lg-6 col-md-6">
-                        <div class="consulting-card rounded-4 border-start border-4 border-warning" data-aos="fade-right">
-                            <div class="consulting-card-img-wrap">
-                                <img src="img/Index-GestionCalidad.png" alt="Gestión de la Calidad e ISO 9001 en Construcción" class="consulting-card-img" loading="lazy">
-                                <div class="consulting-card-icon-badge">
-                                    <i class="fas fa-certificate text-dark fs-3"></i>
-                                </div>
-                            </div>
-                            <div class="consulting-card-body">
-                                <div>
-                                    <div class="d-flex gap-2 flex-wrap mb-2">
-                                        <span class="consulting-badge-tag"><i class="fa-solid fa-check text-success me-1"></i> ISO 9001:2015</span>
-                                        <span class="consulting-badge-tag"><i class="fa-solid fa-check text-success me-1"></i> Planes de Calidad</span>
-                                        <span class="consulting-badge-tag"><i class="fa-solid fa-check text-success me-1"></i> No Conformidades</span>
-                                    </div>
-                                    <h3 class="consulting-card-title animate__animated animate__fadeInUp animate__delay-1s">Gestión de la Calidad e ISO 9001</h3>
-                                    <p class="consulting-card-desc">
-                                        Formación especializada en gestión de la calidad, ISO 9001, planes de calidad y control de no conformidades, orientada a profesionales del sector construcción.
-                                    </p>
-                                </div>
-                                <div>
-                                    <a href="/gestion-de-la-calidad" class="btn btn-qcs-dark w-100 py-2 fw-bold rounded-pill btn-qcs-primary" style="border-color: var(--qcs-yellow); color: var(--qcs-dark-slate);">
-                                        Ver formación en Calidad <i class="fas fa-arrow-right ms-1"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Eje 2: Gestión de Proyectos & PMO -->
-                    <div class="col-lg-6 col-md-6">
-                        <div class="consulting-card rounded-4 border-start border-4 border-warning" data-aos="fade-up">
-                            <div class="consulting-card-img-wrap">
-                                <img src="img/Index-GobernanzaPMO.png" alt="Gestión de Proyectos y PMO" class="consulting-card-img" loading="lazy">
-                                <div class="consulting-card-icon-badge">
-                                    <i class="fas fa-sitemap text-success fs-3"></i>
-                                </div>
-                            </div>
-                            <div class="consulting-card-body">
-                                <div>
-                                    <div class="d-flex gap-2 flex-wrap mb-2">
-                                        <span class="consulting-badge-tag"><i class="fa-solid fa-check text-success me-1"></i> Gestión de PMO</span>
-                                        <span class="consulting-badge-tag"><i class="fa-solid fa-check text-success me-1"></i> Gestión de Portafolios</span>
-                                        <span class="consulting-badge-tag"><i class="fa-solid fa-check text-success me-1"></i> KPIs de Proyectos</span>
-                                    </div>
-                                    <h3 class="consulting-card-title animate__animated animate__fadeInUp animate__delay-1s">GESTIÓN DE PROYECTOS &amp; PMO</h3>
-                                    <p class="consulting-card-desc">
-                                        Formación especializada en gestión de PMO, planificación y control de proyectos, gestión de portafolios y KPIs, con herramientas y metodologías aplicadas al sector construcción.
-                                    </p>
-                                </div>
-                                <div>
-                                    <a href="/gestion-de-pmo" class="btn btn-qcs-dark w-100 py-2 fw-bold rounded-pill btn-qcs-primary" style="border-color: var(--qcs-yellow); color: var(--qcs-dark-slate);">
-                                        Ver formación en PMO <i class="fas fa-arrow-right ms-1"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Eje 3: Gestión de Riesgos & Cronogramas Forenses -->
-                    <div class="col-lg-6 col-md-6">
-                        <div class="consulting-card rounded-4 border-start border-4 border-warning" data-aos="fade-left">
-                            <div class="consulting-card-img-wrap">
-                                <img src="img/Index-riesgos.png" alt="Gestión de Riesgos y Cronogramas Forenses" class="consulting-card-img" loading="lazy">
-                                <div class="consulting-card-icon-badge">
-                                    <i class="fas fa-shield-alt text-warning fs-3"></i>
-                                </div>
-                            </div>
-                            <div class="consulting-card-body">
-                                <div>
-                                    <div class="d-flex gap-2 flex-wrap mb-2">
-                                        <span class="consulting-badge-tag"><i class="fa-solid fa-check text-success me-1"></i> Curva de Liberación®</span>
-                                        <span class="consulting-badge-tag"><i class="fa-solid fa-check text-success me-1"></i> Análisis de Demoras</span>
-                                        <span class="consulting-badge-tag"><i class="fa-solid fa-check text-success me-1"></i> Riesgos Contractuales</span>
-                                    </div>
-                                    <h3 class="consulting-card-title animate__animated animate__fadeInUp animate__delay-1s">Gestión de Riesgos &amp; Cronogramas</h3>
-                                    <p class="consulting-card-desc">
-                                        Capacitación en metodologías de gestión de riesgos contractuales, análisis de demoras y aplicación de la Curva de Liberación®.
-                                    </p>
-                                </div>
-                                <div>
-                                    <a href="/gestion-de-riesgos" class="btn btn-qcs-dark w-100 py-2 fw-bold rounded-pill btn-qcs-primary" style="border-color: var(--qcs-yellow); color: var(--qcs-dark-slate);">
-                                        Ver programas en Riesgos <i class="fas fa-arrow-right ms-1"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Eje 4: Contratos NEC y FIDIC -->
-                    <div class="col-lg-6 col-md-6">
-                        <div class="consulting-card rounded-4 border-start border-4 border-warning" data-aos="fade-right">
-                            <div class="consulting-card-img-wrap">
-                                <img src="img/Index-Contratos-Internacionales.png" alt="Contratos NEC y FIDIC" class="consulting-card-img" loading="lazy">
-                                <div class="consulting-card-icon-badge">
-                                    <i class="fa-solid fa-file-contract text-warning fs-3"></i>
-                                </div>
-                            </div>
-                            <div class="consulting-card-body">
-                                <div>
-                                    <div class="d-flex gap-2 flex-wrap mb-2">
-                                        <span class="consulting-badge-tag"><i class="fa-solid fa-check text-success me-1"></i> Contratos NEC</span>
-                                        <span class="consulting-badge-tag"><i class="fa-solid fa-check text-success me-1"></i> Contratos FIDIC</span>
-                                        <span class="consulting-badge-tag"><i class="fa-solid fa-check text-success me-1"></i> Gestión Contractual</span>
-                                    </div>
-                                    <h3 class="consulting-card-title animate__animated animate__fadeInUp animate__delay-1s">Contratos NEC y FIDIC</h3>
-                                    <p class="consulting-card-desc">
-                                        Capacitación y asesoría especializada en contratos NEC y FIDIC, orientada a profesionales que buscan fortalecer sus competencias en gestión contractual y estándares internacionales.
-                                    </p>
-                                </div>
-                                <div class="d-flex gap-2">
-                                    <a href="/nec" class="btn btn-qcs-dark flex-fill py-2 fw-bold rounded-pill btn-qcs-primary text-center" style="border-color: var(--qcs-yellow); color: var(--qcs-dark-slate);">
-                                        Ver NEC <i class="fas fa-arrow-right ms-1"></i>
-                                    </a>
-                                    <a href="/fidic" class="btn btn-qcs-dark flex-fill py-2 fw-bold rounded-pill text-center" style="border-color: var(--qcs-yellow); color: var(--qcs-yellow);">
-                                        Ver FIDIC <i class="fas fa-arrow-right ms-1"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Franja de Respaldo Metodológico -->
-                <div class="row g-3 mt-4">
-                    <div class="col-lg-3 col-6">
-                        <div class="methodology-feature-box">
-                            <i class="fa-solid fa-user-check text-dark fs-3 mb-2"></i>
-                            <h4 class="fw-bold font-montserrat fs-6 mb-1 text-dark">Asesoría Personalizada</h4>
-                            <p class="small text-muted mb-0">Soluciones a medida para cada proyecto y tipo de contrato.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="methodology-feature-box">
-                            <i class="fa-solid fa-building-columns text-success fs-3 mb-2"></i>
-                            <h4 class="fw-bold font-montserrat fs-6 mb-1 text-dark">Metodología PMBOK® &amp; ISO</h4>
-                            <p class="small text-muted mb-0">Marcos de referencia con reconocimiento global.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="methodology-feature-box">
-                            <i class="fa-solid fa-chart-line text-warning fs-3 mb-2"></i>
-                            <h4 class="fw-bold font-montserrat fs-6 mb-1 text-dark">Curva de Liberación®</h4>
-                            <p class="small text-muted mb-0">Herramienta propietaria para prevención de atrasos.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="methodology-feature-box">
-                            <i class="fa-solid fa-magnifying-glass-chart text-warning fs-3 mb-2"></i>
-                            <h4 class="fw-bold font-montserrat fs-6 mb-1 text-dark">Metodología Forense y Análisis de Plazos</h4>
-                            <p class="small text-muted mb-0">Técnicas analíticas para evaluación de demoras en obra.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================================================
              4. SECCIÓN DESTACADA: CAPACITACIÓN EJECUTIVA & PORTAL ED-TECH
              ========================================================================== -->
         <section class="py-5 bg-white border-top border-bottom" id="capacitacion">
@@ -995,7 +712,7 @@ body {
                         <p class="text-muted small mb-0">Programas con apertura de inscripciones y diploma</p>
                     </div>
                     <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill font-montserrat fw-semibold">
-                        <i class="fa-solid fa-layer-group text-dark me-1"></i> +16 Cursos Disponibles
+                        <i class="fa-solid fa-layer-group text-dark me-1"></i> <?= (int)$coursesCount ?> Cursos Disponibles
                     </span>
                 </div>
 
