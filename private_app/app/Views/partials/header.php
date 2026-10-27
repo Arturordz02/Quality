@@ -29,7 +29,7 @@ declare(strict_types=1);
 
         <!-- Título Centrado -->
         <div class="header-center-title">
-            <h1 class="animate__animated animate__fadeInDown">QUALITY CONSULTING SOLUTIONS</h1>
+            <span class="header-brand-title animate__animated animate__fadeInDown">QUALITY CONSULTING SOLUTIONS</span>
             <p class="tagline animate__animated animate__fadeInUp animate__delay-1s">Ingeniería • Gestión de Proyectos • Capacitación • Calidad</p>
         </div>
 

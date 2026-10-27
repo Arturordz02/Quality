@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    QUALITY CONSULTING SOLUTIONS - ESTILOS PRINCIPALES (styles.css)
    ========================================================================== */
 
@@ -318,7 +318,9 @@ img {
     flex-grow: 1;
 }
 
-.header-center-title h1 {
+.header-center-title h1,
+.header-center-title .header-brand-title {
+    display: block;
     font-family: var(--font-heading);
     font-size: 1.35rem;
     font-weight: 800;
@@ -7712,7 +7714,8 @@ html, body {
         min-width: 0 !important;
     }
 
-    .header-center-title h1 {
+    .header-center-title h1,
+    .header-center-title .header-brand-title {
         font-size: clamp(0.85rem, 2.5vw, 1.15rem) !important;
         letter-spacing: 0.5px !important;
         white-space: nowrap !important;
@@ -8086,7 +8089,8 @@ html, body {
         display: none !important;
     }
 
-    .header-center-title h1 {
+    .header-center-title h1,
+    .header-center-title .header-brand-title {
         font-size: 0.85rem !important;
     }
 
