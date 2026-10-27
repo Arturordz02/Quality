@@ -83,6 +83,7 @@ class BreadcrumbsService
         'gestion-contractual-megaproyectos-mineros' => 'Gestión Contractual en los Megaproyectos de Construcción Mineros',
         'gestion-reclamos-nec-fidic' => 'Gestión de Reclamos en Contratos de Construcción y Contratos Colaborativos NEC y FIDIC',
         'junta-resolucion-disputas-dab' => 'Claves para el Éxito en la Junta de Resolución de Disputas - JRD (DAB) de Obras',
+        'seminario-valorizacion-obra-contratos-nec' => 'Seminario Valorización de Obra en Contratos NEC',
         'nec' => 'Seminario Valorización de Obra en Contratos NEC',
         'fidic' => 'Contratos FIDIC en Infraestructura y Construcción',
 

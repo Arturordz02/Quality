@@ -302,13 +302,14 @@ class CoursesCatalog
             ],
             [
                 'number'        => 25,
+                'slug'          => 'seminario-valorizacion-obra-contratos-nec',
                 'title'         => 'SEMINARIO VALORIZACIÓN DE OBRA EN CONTRATOS NEC',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Seminario',
                 'image'         => 'img/nec1.webp',
                 'image_fallback'=> 'img/nec1.png',
-                'route'         => '/nec',
+                'route'         => null,
                 'description'   => 'Cálculo del Price for Work Done to Date (PWDD), estimación de costos reales y auditoría de pagos en NEC.'
             ],
 
@@ -895,6 +896,7 @@ class CoursesCatalog
         }
         $num = $course['number'] ?? null;
         return match ($num) {
+            25 => 'seminario-valorizacion-obra-contratos-nec',
             45 => 'seminario-panel-control-costos-power-bi',
             46 => 'seminario-flujo-caja-obras',
             47 => 'seminario-resultado-operativo-obra',

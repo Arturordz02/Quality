@@ -57,34 +57,35 @@ runTest("CoursesCatalog::getAll() devuelve exactamente 49 capacitaciones", funct
     return true;
 });
 
-// Test 2: Conteo de rutas (45 con página propia, 4 con route => null)
-runTest("Exactamente 45 cursos tienen página individual y 4 cursos tienen route => null (45, 46, 47, 48)", function(): bool {
+// Test 2: Conteo de rutas (44 con página propia, 5 con route => null)
+runTest("Exactamente 44 cursos tienen página individual y 5 cursos tienen route => null (25, 45, 46, 47, 48)", function(): bool {
     $all = CoursesCatalog::getAll();
     $withRoute = array_filter($all, fn($c) => !empty($c['route']));
     $withoutRoute = array_filter($all, fn($c) => empty($c['route']));
 
-    if (count($withRoute) !== 45) {
-        throw new \Exception("Se esperaban 45 cursos con ruta, se encontraron " . count($withRoute));
+    if (count($withRoute) !== 44) {
+        throw new \Exception("Se esperaban 44 cursos con ruta, se encontraron " . count($withRoute));
     }
-    if (count($withoutRoute) !== 4) {
-        throw new \Exception("Se esperaban 4 cursos sin ruta, se encontraron " . count($withoutRoute));
+    if (count($withoutRoute) !== 5) {
+        throw new \Exception("Se esperaban 5 cursos sin ruta, se encontraron " . count($withoutRoute));
     }
 
     $pendingNumbers = array_map(fn($c) => $c['number'] ?? null, array_values($withoutRoute));
     sort($pendingNumbers);
-    if ($pendingNumbers !== [45, 46, 47, 48]) {
-        throw new \Exception("Los números de cursos sin ruta no coinciden con [45, 46, 47, 48]: " . json_encode($pendingNumbers));
+    if ($pendingNumbers !== [25, 45, 46, 47, 48]) {
+        throw new \Exception("Los números de cursos sin ruta no coinciden con [25, 45, 46, 47, 48]: " . json_encode($pendingNumbers));
     }
 
     return true;
 });
 
-// Test 3: Slugs canónicos de las 4 capacitaciones sin ruta
-runTest("Cursos 45, 46, 47 y 48 tienen slugs canónicos únicos y coherentes", function(): bool {
+// Test 3: Slugs canónicos de las 5 capacitaciones sin ruta
+runTest("Cursos 25, 45, 46, 47 y 48 tienen slugs canónicos únicos y coherentes", function(): bool {
     $all = CoursesCatalog::getAll();
     $pending = array_values(array_filter($all, fn($c) => empty($c['route'])));
 
     $expectedSlugs = [
+        25 => 'seminario-valorizacion-obra-contratos-nec',
         45 => 'seminario-panel-control-costos-power-bi',
         46 => 'seminario-flujo-caja-obras',
         47 => 'seminario-resultado-operativo-obra',
@@ -107,7 +108,11 @@ runTest("Cursos 45, 46, 47 y 48 tienen slugs canónicos únicos y coherentes", f
 
 // Test 4: Validación y búsqueda segura en CoursesCatalog::findBySlugOrIdentifier()
 runTest("CoursesCatalog::findBySlugOrIdentifier valida de forma segura y rechaza entradas inválidas", function(): bool {
-    // Casos válidos
+    $c25 = CoursesCatalog::findBySlugOrIdentifier('seminario-valorizacion-obra-contratos-nec');
+    if (!$c25 || ($c25['number'] ?? null) !== 25) {
+        throw new \Exception("Fallo al resolver curso 25 por slug");
+    }
+
     $c45 = CoursesCatalog::findBySlugOrIdentifier('seminario-panel-control-costos-power-bi');
     if (!$c45 || ($c45['number'] ?? null) !== 45) {
         throw new \Exception("Fallo al resolver curso 45 por slug");
@@ -254,7 +259,7 @@ runTest("script.js contiene initContactProgramAutoSelect y preserva el flujo de 
 });
 
 // Test 10: Renderizado en HTML y verificación de accesibilidad de tarjetas
-runTest("Renderizado real de capacitacion.php produce 49 tarjetas: 45 con 'VER CAPACITACIÓN' y 4 con 'Solicitar información'", function(): bool {
+runTest("Renderizado real de capacitacion.php produce 49 tarjetas: 44 con 'VER CAPACITACIÓN' y 5 con 'Solicitar información'", function(): bool {
     global $baseDir;
     $courses = CoursesCatalog::getAll();
     $categoriesSummary = CoursesCatalog::getCategoriesSummary();
@@ -269,20 +274,21 @@ runTest("Renderizado real de capacitacion.php produce 49 tarjetas: 45 con 'VER C
     $solicitarInfoCount = substr_count($html, 'Solicitar información');
     $proximamenteCount = substr_count($html, 'Información próximamente');
 
-    if ($verCapacitacionCount !== 45) {
-        throw new \Exception("Se esperaban 45 botones 'VER CAPACITACIÓN', se encontraron: {$verCapacitacionCount}");
+    if ($verCapacitacionCount !== 44) {
+        throw new \Exception("Se esperaban 44 botones 'VER CAPACITACIÓN', se encontraron: {$verCapacitacionCount}");
     }
 
-    if ($solicitarInfoCount !== 4) {
-        throw new \Exception("Se esperaban 4 enlaces 'Solicitar información', se encontraron: {$solicitarInfoCount}");
+    if ($solicitarInfoCount !== 5) {
+        throw new \Exception("Se esperaban 5 enlaces 'Solicitar información', se encontraron: {$solicitarInfoCount}");
     }
 
-    if ($proximamenteCount !== 4) {
-        throw new \Exception("Se esperaban 4 badges 'Información próximamente', se encontraron: {$proximamenteCount}");
+    if ($proximamenteCount !== 5) {
+        throw new \Exception("Se esperaban 5 badges 'Información próximamente', se encontraron: {$proximamenteCount}");
     }
 
-    // Verificar que los 4 enlaces contienen los parámetros correctos
+    // Verificar que los 5 enlaces contienen los parámetros correctos
     foreach ([
+        'seminario-valorizacion-obra-contratos-nec',
         'seminario-panel-control-costos-power-bi',
         'seminario-flujo-caja-obras',
         'seminario-resultado-operativo-obra',
