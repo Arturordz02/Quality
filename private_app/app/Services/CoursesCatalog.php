@@ -302,13 +302,14 @@ class CoursesCatalog
             ],
             [
                 'number'        => 25,
+                'slug'          => 'seminario-valorizacion-obra-contratos-nec',
                 'title'         => 'SEMINARIO VALORIZACIÓN DE OBRA EN CONTRATOS NEC',
                 'category'      => 'Contratos',
                 'category_slug' => 'contratos',
                 'type'          => 'Seminario',
                 'image'         => 'img/nec1.webp',
                 'image_fallback'=> 'img/nec1.png',
-                'route'         => '/nec',
+                'route'         => null,
                 'description'   => 'Cálculo del Price for Work Done to Date (PWDD), estimación de costos reales y auditoría de pagos en NEC.'
             ],
 
@@ -530,6 +531,7 @@ class CoursesCatalog
             ],
             [
                 'number'        => 45,
+                'slug'          => 'seminario-panel-control-costos-power-bi',
                 'title'         => 'SEMINARIO PANEL DE CONTROL DE COSTOS CON POWER BI',
                 'category'      => 'Gestión de Proyectos',
                 'category_slug' => 'gestion-de-proyectos',
@@ -541,6 +543,7 @@ class CoursesCatalog
             ],
             [
                 'number'        => 46,
+                'slug'          => 'seminario-flujo-caja-obras',
                 'title'         => 'SEMINARIO FLUJO DE CAJA EN OBRAS',
                 'category'      => 'Gestión de Proyectos',
                 'category_slug' => 'gestion-de-proyectos',
@@ -552,6 +555,7 @@ class CoursesCatalog
             ],
             [
                 'number'        => 47,
+                'slug'          => 'seminario-resultado-operativo-obra',
                 'title'         => 'SEMINARIO RESULTADO OPERATIVO DE OBRA',
                 'category'      => 'Gestión de Proyectos',
                 'category_slug' => 'gestion-de-proyectos',
@@ -563,6 +567,7 @@ class CoursesCatalog
             ],
             [
                 'number'        => 48,
+                'slug'          => 'seminario-automatizacion-last-planner-system',
                 'title'         => 'SEMINARIO AUTOMATIZACIÓN DE LAST PLANNER SYSTEM',
                 'category'      => 'Gestión de Proyectos',
                 'category_slug' => 'gestion-de-proyectos',
@@ -876,6 +881,64 @@ class CoursesCatalog
         }
 
         return $result;
+    }
+
+    /**
+     * Obtiene el slug canónico para un curso.
+     */
+    public static function getCourseSlug(array $course): string
+    {
+        if (!empty($course['slug'])) {
+            return (string) $course['slug'];
+        }
+        if (!empty($course['route'])) {
+            return ltrim((string) $course['route'], '/');
+        }
+        $num = $course['number'] ?? null;
+        return match ($num) {
+            25 => 'seminario-valorizacion-obra-contratos-nec',
+            45 => 'seminario-panel-control-costos-power-bi',
+            46 => 'seminario-flujo-caja-obras',
+            47 => 'seminario-resultado-operativo-obra',
+            48 => 'seminario-automatizacion-last-planner-system',
+            default => 'curso-' . ($num ?? 'info'),
+        };
+    }
+
+    /**
+     * Busca y valida un curso por slug, identificador o número.
+     * Retorna el registro del curso si es válido, o null si no existe.
+     */
+    public static function findBySlugOrIdentifier(string $identifier): ?array
+    {
+        $identifier = trim($identifier);
+        if ($identifier === '') {
+            return null;
+        }
+
+        $normalized = strtolower($identifier);
+        $normalizedSlug = ltrim($normalized, '/');
+
+        foreach (self::getAll() as $course) {
+            $slug = self::getCourseSlug($course);
+            if ($slug === $normalizedSlug) {
+                return $course;
+            }
+
+            if (!empty($course['route']) && ltrim(strtolower((string)$course['route']), '/') === $normalizedSlug) {
+                return $course;
+            }
+
+            if (isset($course['number']) && (string)$course['number'] === $identifier) {
+                return $course;
+            }
+
+            if (mb_strtolower((string)$course['title'], 'UTF-8') === $normalized) {
+                return $course;
+            }
+        }
+
+        return null;
     }
 }
 

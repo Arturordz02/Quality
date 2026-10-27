@@ -308,18 +308,12 @@ class TrainingController extends Controller
     }
 
     /**
-     * Curso: Contratos Colaborativos NEC.
+     * Ruta consolidada: Redirección permanente HTTP 301 hacia el curso oficial NEC3-F.
+     * Descarta parámetros de consulta para consolidar SEO de forma limpia y evitar bucles.
      */
     public function nec(): void
     {
-        $data = [
-            'title'           => 'Capacitación: Contratos Colaborativos NEC | Quality Consulting Solutions',
-            'metaDescription' => 'Curso de capacitación especializada en Contratos Colaborativos NEC (New Engineering Contract). Domina el estándar NEC3 Opción F utilizado en los Juegos Panamericanos Lima 2019.',
-            'canonical'       => 'https://quality-consulting.org/nec',
-            'activePage'      => 'capacitacion',
-        ];
-
-        $this->render('pages/nec', $data, 'main');
+        $this->redirect('/contratos-colaborativos-nec3-f', 301);
     }
 
     /**

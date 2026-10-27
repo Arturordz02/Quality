@@ -193,9 +193,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         <i class="fas fa-chevron-right arrow-go"></i>
                     </a>
                     <a href="https://api.whatsapp.com/send?phone=573152276029&text=Buen%20d%C3%ADa%20Quality%20Consulting%20Solutions,%20deseo%20informaci%C3%B3n%20de%20sus%20servicios/cursos" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
-                        <span class="country-flag">🇪🇨</span>
+                        <span class="country-flag">🇨🇴</span>
                         <div class="country-info">
-                            <span class="country-name">Ecuador</span>
+                            <span class="country-name">Colombia</span>
                             <span class="country-phone">+57 315 227 6029</span>
                         </div>
                         <i class="fas fa-chevron-right arrow-go"></i>
@@ -1138,5 +1138,40 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     })();
+
+    /* --------------------------------------------------------------------------
+       19. AUTO-SELECCIÓN DE PROGRAMA EN FORMULARIO DE CONTACTO POR PARÁMETRO URL
+       -------------------------------------------------------------------------- */
+    (function initContactProgramAutoSelect() {
+        const contactSelect = document.getElementById('contactPrograma');
+        if (!contactSelect) return;
+
+        const notice = document.getElementById('contactProgramaNotice');
+
+        // Escuchar cambios del usuario para permitir cambiar la selección en cualquier momento
+        contactSelect.addEventListener('change', function() {
+            if (notice) {
+                notice.style.display = 'none';
+            }
+        });
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const rawProgram = urlParams.get('programa');
+        if (!rawProgram) return;
+
+        const normalizedParam = rawProgram.trim().toLowerCase();
+
+        // Buscar coincidencia exacta por data-slug o valor en las opciones existentes (validadas por catálogo)
+        const matchingOption = Array.from(contactSelect.options).find(opt => {
+            const slug = (opt.getAttribute('data-slug') || '').toLowerCase();
+            const val = opt.value.toLowerCase();
+            return (slug && slug === normalizedParam) || (val && val === normalizedParam);
+        });
+
+        if (matchingOption) {
+            contactSelect.value = matchingOption.value;
+        }
+    })();
 });
+
 

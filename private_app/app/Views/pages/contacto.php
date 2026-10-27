@@ -6,6 +6,15 @@
  */
 
 declare(strict_types=1);
+
+$courses = $courses ?? \App\Services\CoursesCatalog::getAll();
+$categoriesSummary = $categoriesSummary ?? \App\Services\CoursesCatalog::getCategoriesSummary();
+if (!isset($selectedCourse)) {
+    $param = $_GET['programa'] ?? '';
+    $selectedCourse = (is_string($param) && trim($param) !== '') 
+        ? \App\Services\CoursesCatalog::findBySlugOrIdentifier($param) 
+        : null;
+}
 ?>
     <style>
         body {
@@ -372,6 +381,41 @@ declare(strict_types=1);
                                         <span class="input-group-text bg-light border-end-0"><i class="fas fa-building text-muted"></i></span>
                                         <input type="text" id="contactEmpresa" name="empresa" class="form-control border-start-0 ps-0" placeholder="Nombre de tu empresa o institución (opcional)" autocomplete="organization">
                                     </div>
+                                </div>
+
+                                <!-- Programa de Interés -->
+                                <div class="mb-3">
+                                    <label for="contactPrograma" class="form-label fw-bold small text-secondary">Programa de Interés <span class="text-muted fw-normal">(Opcional)</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light border-end-0"><i class="fas fa-graduation-cap text-muted"></i></span>
+                                        <select id="contactPrograma" name="programa" class="form-select border-start-0 ps-0">
+                                            <option value="">Consulta general / Otro programa</option>
+                                            <?php foreach ($categoriesSummary as $catSlug => $catInfo): ?>
+                                                <?php 
+                                                    $catCourses = array_filter($courses, fn($c) => ($c['category_slug'] ?? '') === $catSlug);
+                                                    if (empty($catCourses)) continue;
+                                                ?>
+                                                <optgroup label="<?= htmlspecialchars($catInfo['name'], ENT_QUOTES, 'UTF-8') ?>">
+                                                    <?php foreach ($catCourses as $c): ?>
+                                                        <?php 
+                                                            $cSlug = \App\Services\CoursesCatalog::getCourseSlug($c);
+                                                            $isSelected = ($selectedCourse && ($selectedCourse['title'] === $c['title'] || (isset($selectedCourse['number']) && $selectedCourse['number'] === $c['number'])));
+                                                        ?>
+                                                        <option value="<?= htmlspecialchars($c['title'], ENT_QUOTES, 'UTF-8') ?>" 
+                                                                data-slug="<?= htmlspecialchars($cSlug, ENT_QUOTES, 'UTF-8') ?>"
+                                                                <?= $isSelected ? 'selected' : '' ?>>
+                                                            <?= htmlspecialchars($c['title'], ENT_QUOTES, 'UTF-8') ?>
+                                                        </option>
+                                                    <?php endforeach; ?>
+                                                </optgroup>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                    <?php if ($selectedCourse): ?>
+                                    <div class="form-text text-muted small mt-1" id="contactProgramaNotice">
+                                        <i class="fa-solid fa-circle-info text-warning me-1"></i> Programa preseleccionado según tu consulta. Puedes cambiarlo en cualquier momento.
+                                    </div>
+                                    <?php endif; ?>
                                 </div>
 
                                 <!-- Correo Electrónico -->

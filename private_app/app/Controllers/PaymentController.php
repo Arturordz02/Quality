@@ -117,8 +117,8 @@ class PaymentController extends Controller
         }
 
         $courseSlug = trim((string)($this->getPost('curso', '')));
-        if (!CourseCatalog::isValid($courseSlug)) {
-            $this->json(['success' => false, 'message' => 'El curso seleccionado no es válido.'], 422);
+        if (!CourseCatalog::isValid($courseSlug) || !CourseCatalog::isPurchasable($courseSlug)) {
+            $this->json(['success' => false, 'message' => 'El curso seleccionado no es válido o no está disponible para compra.'], 422);
         }
 
         $courseTitle = CourseCatalog::getTitle($courseSlug);
@@ -294,7 +294,7 @@ class PaymentController extends Controller
     public function pagarPrimeraClase(): void
     {
         $courseSlug = trim((string)$this->getQuery('curso', ''));
-        if (!CourseCatalog::isValid($courseSlug)) {
+        if (!CourseCatalog::isValid($courseSlug) || !CourseCatalog::isPurchasable($courseSlug)) {
             $this->redirect('/capacitacion');
             return;
         }

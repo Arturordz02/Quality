@@ -26,6 +26,7 @@ class PageController extends Controller
             'metaDescription' => 'Formación especializada en gestión de proyectos, PMO y calidad para profesionales del sector construcción, infraestructura y minería. Capacitaciones y asesoría técnica.',
             'canonical'       => 'https://quality-consulting.org/',
             'activePage'      => 'home',
+            'coursesCount'    => count(\App\Services\CoursesCatalog::getAll()),
         ];
 
         $this->render('pages/home', $data, 'main');
@@ -83,11 +84,20 @@ class PageController extends Controller
      */
     public function contacto(): void
     {
+        $programaParam = $_GET['programa'] ?? '';
+        $selectedCourse = null;
+        if (is_string($programaParam) && trim($programaParam) !== '') {
+            $selectedCourse = \App\Services\CoursesCatalog::findBySlugOrIdentifier($programaParam);
+        }
+
         $data = [
-            'title'           => 'Contacto y Atención Corporativa | Quality Consulting Solutions',
-            'metaDescription' => 'Ponte en contacto con Quality Consulting Solutions para consultas sobre cursos de especialización, capacitaciones in-house y asesoría técnica en gestión de proyectos.',
-            'canonical'       => 'https://quality-consulting.org/contacto',
-            'activePage'      => 'contacto',
+            'title'             => 'Contacto y Atención Corporativa | Quality Consulting Solutions',
+            'metaDescription'   => 'Ponte en contacto con Quality Consulting Solutions para consultas sobre cursos de especialización, capacitaciones in-house y asesoría técnica en gestión de proyectos.',
+            'canonical'         => 'https://quality-consulting.org/contacto',
+            'activePage'        => 'contacto',
+            'courses'           => \App\Services\CoursesCatalog::getAll(),
+            'categoriesSummary' => \App\Services\CoursesCatalog::getCategoriesSummary(),
+            'selectedCourse'    => $selectedCourse,
         ];
 
         $this->render('pages/contacto', $data, 'main');

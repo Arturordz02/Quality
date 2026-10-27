@@ -418,13 +418,15 @@ $typesSummary = \App\Services\CoursesCatalog::getTypesSummary();
                                         VER CAPACITACIÓN <i class="fa-solid fa-chevron-right ms-1"></i>
                                     </a>
                                     <?php else: ?>
-                                    <button type="button" class="btn btn-warning w-100 py-2 fw-bold rounded-pill text-dark btn-qcs-primary shadow-sm btn-open-course-info" 
-                                            data-bs-toggle="modal" 
-                                            data-bs-target="#modalSolicitarInfo" 
-                                            data-course-title="<?= htmlspecialchars($c['title'], ENT_QUOTES, 'UTF-8') ?>"
-                                            data-course-category="<?= htmlspecialchars($c['category'], ENT_QUOTES, 'UTF-8') ?>">
-                                        SOLICITAR INFORMACIÓN <i class="fa-solid fa-chevron-right ms-1"></i>
-                                    </button>
+                                    <?php $courseSlug = \App\Services\CoursesCatalog::getCourseSlug($c); ?>
+                                    <div class="d-flex align-items-center justify-content-center mb-2">
+                                        <span class="badge bg-secondary-subtle text-secondary border px-2 py-1 rounded-pill small">
+                                            <i class="fa-regular fa-clock me-1" aria-hidden="true"></i> Información próximamente
+                                        </span>
+                                    </div>
+                                    <a href="/contacto?programa=<?= htmlspecialchars($courseSlug, ENT_QUOTES, 'UTF-8') ?>" class="btn btn-warning w-100 py-2 fw-bold rounded-pill text-dark btn-qcs-primary shadow-sm">
+                                        Solicitar información <i class="fa-solid fa-arrow-right ms-1"></i>
+                                    </a>
                                     <?php endif; ?>
                                 </div>
 

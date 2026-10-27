@@ -144,9 +144,12 @@ class CourseCatalog
             'url'   => '/lean-last-planner',
         ],
         'nec' => [
-            'slug'  => 'nec',
-            'title' => 'Contratos NEC3 y NEC4 en Infraestructura',
-            'url'   => '/nec',
+            'slug'        => 'nec',
+            'title'       => 'Contratos NEC3 y NEC4 en Infraestructura',
+            'url'         => '/contratos-colaborativos-nec3-f',
+            'purchasable' => false,
+            'legacy'      => true,
+            'note'        => 'Ruta heredada consolidada en /contratos-colaborativos-nec3-f. Deshabilitada para nuevas compras de primera clase.',
         ],
         'oficina-tecnica' => [
             'slug'  => 'oficina-tecnica',
@@ -259,6 +262,21 @@ class CourseCatalog
     {
         $normalized = trim(strtolower($slug));
         return isset(self::all()[$normalized]);
+    }
+
+    /**
+     * Determina si un curso está habilitado para nuevas compras de primera clase.
+     * Retorna false para slugs heredados, seminarios pendientes o cursos no transaccionables.
+     */
+    public static function isPurchasable(string $slug): bool
+    {
+        $normalized = trim(strtolower($slug));
+        $courses = self::all();
+        if (!isset($courses[$normalized])) {
+            return false;
+        }
+
+        return !isset($courses[$normalized]['purchasable']) || $courses[$normalized]['purchasable'] !== false;
     }
 
     /**

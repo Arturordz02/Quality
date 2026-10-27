@@ -115,10 +115,10 @@ declare(strict_types=1);
 
                             <!-- Empresa / Organización -->
                             <div class="mb-3">
-                                <label for="modalInputEmpresa" class="form-label small fw-bold text-secondary mb-1">Empresa / Organización <span class="text-danger">*</span></label>
+                                <label for="modalInputEmpresa" class="form-label small fw-bold text-secondary mb-1">Empresa / Organización <span class="text-muted fw-normal">(Opcional)</span></label>
                                 <div class="input-group">
                                     <span class="input-group-text bg-white border-end-0 text-muted"><i class="fa-solid fa-building"></i></span>
-                                    <input type="text" class="form-control border-start-0 ps-0 bg-white" id="modalInputEmpresa" name="empresa" placeholder="Empresa donde laboras o Independiente" required autocomplete="organization">
+                                    <input type="text" class="form-control border-start-0 ps-0 bg-white" id="modalInputEmpresa" name="empresa" placeholder="Empresa donde laboras o Independiente (opcional)" autocomplete="organization">
                                 </div>
                             </div>
 
