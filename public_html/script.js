@@ -1138,5 +1138,40 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     })();
+
+    /* --------------------------------------------------------------------------
+       19. AUTO-SELECCIÓN DE PROGRAMA EN FORMULARIO DE CONTACTO POR PARÁMETRO URL
+       -------------------------------------------------------------------------- */
+    (function initContactProgramAutoSelect() {
+        const contactSelect = document.getElementById('contactPrograma');
+        if (!contactSelect) return;
+
+        const notice = document.getElementById('contactProgramaNotice');
+
+        // Escuchar cambios del usuario para permitir cambiar la selección en cualquier momento
+        contactSelect.addEventListener('change', function() {
+            if (notice) {
+                notice.style.display = 'none';
+            }
+        });
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const rawProgram = urlParams.get('programa');
+        if (!rawProgram) return;
+
+        const normalizedParam = rawProgram.trim().toLowerCase();
+
+        // Buscar coincidencia exacta por data-slug o valor en las opciones existentes (validadas por catálogo)
+        const matchingOption = Array.from(contactSelect.options).find(opt => {
+            const slug = (opt.getAttribute('data-slug') || '').toLowerCase();
+            const val = opt.value.toLowerCase();
+            return (slug && slug === normalizedParam) || (val && val === normalizedParam);
+        });
+
+        if (matchingOption) {
+            contactSelect.value = matchingOption.value;
+        }
+    })();
 });
+
 
