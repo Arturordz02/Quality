@@ -433,7 +433,73 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // B. Formulario de Libro de Reclamaciones Virtual
+    // B. Formulario de Solicitud In-House
+    const inhouseForm = document.getElementById('inhouseForm');
+    const inhouseAlert = document.getElementById('inhouseFormAlert');
+    const inhouseBtn = document.getElementById('inhouseSubmitBtn');
+
+    if (inhouseForm) {
+        inhouseForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            if (inhouseAlert) {
+                inhouseAlert.innerHTML = '';
+                inhouseAlert.style.display = 'none';
+            }
+
+            const nombre = document.getElementById('inhouseNombre')?.value.trim();
+            const empresa = document.getElementById('inhouseEmpresa')?.value.trim();
+            const email = document.getElementById('inhouseEmail')?.value.trim();
+            const telefono = document.getElementById('inhouseTelefono')?.value.trim();
+            const area = document.getElementById('inhouseArea')?.value.trim();
+            const consulta = document.getElementById('inhouseConsulta')?.value.trim();
+            const privacy = document.getElementById('inhousePrivacy')?.checked;
+
+            const clientErrors = [];
+            if (!nombre || nombre.length < 2) clientErrors.push('Ingrese su nombre y apellido completo.');
+            if (!empresa || empresa.length < 2) clientErrors.push('Ingrese el nombre de su empresa u organización.');
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) clientErrors.push('Ingrese un correo electrónico válido.');
+            if (!telefono || telefono.length < 6) clientErrors.push('Ingrese un número de teléfono o WhatsApp válido.');
+            if (!area) clientErrors.push('Seleccione el área de formación de interés.');
+            if (!consulta || consulta.length < 5) clientErrors.push('Ingrese los detalles o requerimientos de su consulta.');
+            if (!privacy) clientErrors.push('Debe aceptar la política de tratamiento de datos personales.');
+
+            if (clientErrors.length > 0) {
+                showFormAlert(inhouseAlert, 'danger', 'Por favor, revise los siguientes campos obligatorios:', clientErrors);
+                return;
+            }
+
+            toggleButtonLoading(inhouseBtn, true, 'PROCESANDO SOLICITUD...');
+
+            try {
+                const formData = new FormData(inhouseForm);
+                const response = await fetch(inhouseForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    showFormAlert(inhouseAlert, 'success', data.message || '¡Tu solicitud In-House ha sido recibida con éxito! Nuestro equipo comercial se comunicará a la brevedad.');
+                    inhouseForm.reset();
+                } else {
+                    const serverErrors = data.errors ? Object.values(data.errors) : [];
+                    showFormAlert(inhouseAlert, 'danger', data.message || 'Ocurrió un error al procesar la solicitud.', serverErrors);
+                }
+            } catch (err) {
+                console.error('[QCS In-House Form Error]', err);
+                showFormAlert(inhouseAlert, 'danger', 'No se pudo conectar con el servidor. Por favor, verifique su conexión o contáctenos directamente por WhatsApp al +51 993 463 118.');
+            } finally {
+                toggleButtonLoading(inhouseBtn, false);
+            }
+        });
+    }
+
+    // C. Formulario de Libro de Reclamaciones Virtual
     const claimForm = document.getElementById('claimForm');
     const claimAlert = document.getElementById('claimFormAlert');
     const claimBtn = document.getElementById('claimSubmitBtn');

@@ -86,6 +86,7 @@ return function (Router $router, array $config): void {
      * RUTAS DE CAPACITACIÓN Y PROGRAMAS DE ESPECIALIZACIÓN
      */
     $router->get('/capacitacion', [TrainingController::class, 'capacitacion']);
+    $router->get('/in-house', [TrainingController::class, 'inHouse']);
     $router->get('/capacitacion-calidad', [TrainingController::class, 'capacitacionCalidad']);
     $router->get('/capacitacion-riesgos', [TrainingController::class, 'capacitacionRiesgos']);
     $router->get('/capacitacion-contratos', [TrainingController::class, 'capacitacionContratos']);

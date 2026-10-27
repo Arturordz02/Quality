@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    QUALITY CONSULTING SOLUTIONS - ESTILOS PRINCIPALES (styles.css)
    ========================================================================== */
 
@@ -10379,3 +10379,430 @@ html, body {
 
 
 
+
+
+
+/* ==========================================================================
+   SECCION IN-HOUSE (Formacion Corporativa a Medida)
+   ========================================================================== */
+
+/* 1. Ajuste Responsive de Barra de Navegacion (8 Elementos principales) */
+@media (min-width: 992px) and (max-width: 1200px) {
+    .nav-link {
+        padding: 0.65rem 0.6rem !important;
+        font-size: 0.80rem !important;
+        letter-spacing: 0.3px !important;
+        gap: 0.25rem !important;
+    }
+    .arrow-icon {
+        font-size: 0.6rem !important;
+    }
+}
+
+/* 2. Animaciones Discretas de Entrada (CSS Puras, Seguras y Resilientes) */
+@keyframes inhouseFadeSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 3. Hero Banner In-House */
+.inhouse-hero {
+    position: relative;
+    padding: 195px 1.5rem 90px 1.5rem;
+    background: linear-gradient(145deg, #0F1113 0%, #1A1D20 50%, #24292E 100%);
+    color: #ffffff;
+    overflow: hidden;
+    border-bottom: 4px solid var(--accent-gold);
+}
+
+.inhouse-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 85% 25%, rgba(229, 168, 19, 0.22) 0%, transparent 60%),
+                radial-gradient(circle at 15% 80%, rgba(142, 146, 151, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.inhouse-hero-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.inhouse-hero-title {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(2.2rem, 4.6vw, 3.6rem);
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    animation: inhouseFadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.inhouse-hero-subtitle {
+    font-family: var(--font-heading);
+    font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+    font-weight: 600;
+    color: var(--accent-gold);
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.2px;
+    animation: inhouseFadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
+.inhouse-hero-desc {
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    max-width: 780px;
+    line-height: 1.8;
+    animation: inhouseFadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+}
+
+.inhouse-hero-actions {
+    animation: inhouseFadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+}
+
+/* 4. Titulos y Secciones Generales */
+.inhouse-section-title {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(1.65rem, 3vw, 2.3rem);
+    letter-spacing: -0.5px;
+    color: #0F1113;
+}
+
+.max-w-750 {
+    max-width: 750px;
+}
+
+.inhouse-stat-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.inhouse-stat-num {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.inhouse-stat-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+/* 5. Tarjetas de Pilares */
+.inhouse-pillar-card {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.inhouse-pillar-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    border-color: #CBD5E1;
+}
+
+.inhouse-pillar-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(229, 168, 19, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+/* 6. Tarjetas de Areas de Formacion */
+.inhouse-area-card {
+    border-color: #E2E8F0 !important;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.inhouse-area-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(15, 17, 19, 0.12) !important;
+    border-color: rgba(229, 168, 19, 0.45) !important;
+}
+
+.inhouse-area-img-box {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background-color: #0F1113;
+}
+
+.inhouse-area-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.inhouse-area-card:hover .inhouse-area-img {
+    transform: scale(1.05);
+}
+
+.inhouse-area-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(15, 17, 19, 0.85);
+    color: var(--accent-gold);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.35rem 0.75rem;
+    border-radius: 50px;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(229, 168, 19, 0.4);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* 7. Pasos del Proceso de Atencion */
+.inhouse-step-card {
+    background: #FFFFFF;
+    border-color: #E2E8F0 !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.inhouse-step-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(15, 17, 19, 0.08) !important;
+    border-color: rgba(229, 168, 19, 0.4) !important;
+}
+
+.inhouse-step-number {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0F1113 0%, #24292E 100%);
+    color: var(--accent-gold);
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.35rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--accent-gold);
+    box-shadow: 0 4px 15px rgba(229, 168, 19, 0.25);
+}
+
+/* 8. Carrusel Horizontal Continuo de Clientes (Estilo Risk Peru adaptado a Quality) */
+.inhouse-clients-section {
+    background: linear-gradient(180deg, #0F1113 0%, #15181C 50%, #0F1113 100%);
+    border-top: 1px solid rgba(229, 168, 19, 0.25);
+    border-bottom: 1px solid rgba(229, 168, 19, 0.25);
+    padding: 3.5rem 0 4rem 0;
+}
+
+.inhouse-carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 0.75rem 0;
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    outline: none;
+}
+
+.inhouse-carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: inhouseMarquee 42s linear infinite;
+    will-change: transform;
+}
+
+/* Pausa suave en hover o interaccion por teclado */
+.inhouse-carousel-wrapper:hover .inhouse-carousel-track,
+.inhouse-carousel-wrapper:focus-within .inhouse-carousel-track {
+    animation-play-state: paused;
+}
+
+.inhouse-client-item {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inhouse-client-card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 10px 22px;
+    height: 72px;
+    min-width: 165px;
+    max-width: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.inhouse-client-item:hover .inhouse-client-card,
+.inhouse-client-item:focus .inhouse-client-card {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(229, 168, 19, 0.35);
+    border-color: var(--accent-gold);
+}
+
+.inhouse-client-img {
+    max-height: 48px;
+    max-width: 175px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.04));
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* Bucle infinito: traslado de exactamente el 50% mas la mitad del gap */
+@keyframes inhouseMarquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-50% - 0.75rem));
+    }
+}
+
+/* 9. Bloque de Contacto y Formulario */
+.inhouse-contact-section {
+    background: linear-gradient(145deg, #0F1113 0%, #171A1D 50%, #212529 100%);
+    border-top: 4px solid var(--accent-gold);
+}
+
+.inhouse-contact-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 10% 20%, rgba(229, 168, 19, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(142, 146, 151, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.inhouse-form-card {
+    border: 1px solid #E2E8F0;
+    position: relative;
+    z-index: 2;
+}
+
+.inhouse-support-card {
+    background: linear-gradient(145deg, #1A1D20 0%, #24292E 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    position: relative;
+    z-index: 2;
+}
+
+.inhouse-direct-box {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.inhouse-direct-box:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(229, 168, 19, 0.4);
+}
+
+/* 10. Accesibilidad: Preferencia de Movimiento Reducido */
+@media (prefers-reduced-motion: reduce) {
+    .inhouse-hero-title,
+    .inhouse-hero-subtitle,
+    .inhouse-hero-desc,
+    .inhouse-hero-actions,
+    .inhouse-area-card,
+    .inhouse-area-img,
+    .inhouse-step-card,
+    .inhouse-client-card {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+    }
+    .inhouse-carousel-wrapper {
+        mask-image: none !important;
+        -webkit-mask-image: none !important;
+        overflow-x: auto !important;
+    }
+    .inhouse-carousel-track {
+        animation: none !important;
+        transform: none !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        width: 100% !important;
+        padding: 0 1rem !important;
+    }
+    .inhouse-client-item[aria-hidden="true"] {
+        display: none !important;
+    }
+}
+
+/* 11. Responsive Mobile In-House */
+@media (max-width: 991.98px) {
+    .inhouse-hero {
+        padding-top: 135px;
+        padding-bottom: 60px;
+    }
+    .inhouse-area-img-box {
+        height: 190px;
+    }
+    .inhouse-client-card {
+        height: 64px;
+        min-width: 145px;
+        padding: 8px 16px;
+    }
+    .inhouse-client-img {
+        max-height: 42px;
+        max-width: 140px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .inhouse-hero {
+        padding-top: 120px;
+        padding-bottom: 50px;
+    }
+    .inhouse-area-img-box {
+        height: 170px;
+    }
+    .inhouse-carousel-track {
+        gap: 1rem;
+    }
+    .inhouse-client-card {
+        height: 58px;
+        min-width: 130px;
+        padding: 6px 12px;
+    }
+    .inhouse-client-img {
+        max-height: 38px;
+        max-width: 120px;
+    }
+}

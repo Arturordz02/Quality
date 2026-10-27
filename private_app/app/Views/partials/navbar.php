@@ -26,6 +26,10 @@ $activePage = $activePage ?? '';
                     <a href="/nosotros" class="nav-link<?= $activePage === 'nosotros' ? ' active' : '' ?>">NOSOTROS</a>
                 </li>
 
+<!-- IN-HOUSE -->
+<li class="nav-item">
+    <a href="/in-house" class="nav-link<?= $activePage === 'in-house' ? ' active' : '' ?>">IN-HOUSE</a>
+</li>
                 <!-- CAPACITACION (Desplegable) -->
                 <li class="nav-item dropdown">
                     <a href="/capacitacion" class="nav-link dropdown-toggle<?= $activePage === 'capacitacion' ? ' active' : '' ?>" id="dropdownCapacitacion" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
@@ -83,4 +87,3 @@ $activePage = $activePage ?? '';
 
 <!-- Overlay móvil -->
 <div class="mobile-overlay" id="mobileOverlay"></div>
-
