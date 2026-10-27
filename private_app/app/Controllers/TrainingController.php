@@ -715,6 +715,18 @@ class TrainingController extends Controller
     /**
      * Curso: Contratos Colaborativos NEC3-F.
      */
+    public function inHouse(): void
+    {
+        $data = [
+            'title'           => 'Capacitaciones In-House | Formación a la Medida para Empresas - Quality Consulting Solutions',
+            'metaDescription' => 'Programas de capacitación corporativa in-house para empresas en Calidad, Gestión de Riesgos, Contratos Colaborativos, PMO y Oficina Técnica. Formación especializada adaptada a tus proyectos reales.',
+            'canonical'       => 'https://quality-consulting.org/in-house',
+            'activePage'      => 'in-house',
+        ];
+
+        $this->render('pages/in-house', $data, 'main');
+    }
+
     public function contratosColaborativosNec3f(): void
     {
         $data = [

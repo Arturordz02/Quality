@@ -48,9 +48,21 @@ $telefono = Security::sanitizeString($inputData['telefono'] ?? '', 30);
 $empresa  = Security::sanitizeString($inputData['empresa'] ?? '', 120);
 $email    = Security::sanitizeEmail($inputData['email'] ?? '');
 $programa = Security::sanitizeString($inputData['programa'] ?? '', 150);
+$servicio = Security::sanitizeString($inputData['servicio'] ?? '', 100);
+$areaInteres = Security::sanitizeString($inputData['area_interes'] ?? '', 150);
+$participantes = Security::sanitizeString($inputData['participantes'] ?? '', 50);
 $rawConsulta = Security::sanitizeMultiline($inputData['consulta'] ?? ($inputData['mensaje'] ?? ''), 4000);
 
-if (!empty($programa) && !str_contains($rawConsulta, '[Programa de Interés:')) {
+if ($servicio === 'in-house' || !empty($areaInteres)) {
+    $prefix = "[Servicio: Capacitación In-House]\n";
+    if (!empty($areaInteres)) {
+        $prefix .= "[Área de Interés: {$areaInteres}]\n";
+    }
+    if (!empty($participantes)) {
+        $prefix .= "[Participantes Estimados: {$participantes}]\n";
+    }
+    $consulta = $prefix . $rawConsulta;
+} elseif (!empty($programa) && !str_contains($rawConsulta, '[Programa de Interés:')) {
     $consulta = "[Programa de Interés: {$programa}]\n" . $rawConsulta;
 } else {
     $consulta = $rawConsulta;
@@ -147,9 +159,15 @@ if (!$isPersisted) {
 
 // 5. Enviar Notificación por Correo (SMTP) como notificación adicional (No como almacenamiento principal)
 $mailer = new SmtpMailer($config);
-$recipient = $config['mail']['contact_recipient'] ?? 'contacto@quality-consulting.org';
+$recipient = ($servicio === 'in-house')
+    ? 'comercial@quality-consulting.org'
+    : ($config['mail']['contact_recipient'] ?? 'contacto@quality-consulting.org');
+
 $empresaSubject = !empty($empresa) ? $empresa : 'No especificada';
-$subject = "Nueva Consulta Web: {$empresaSubject} - {$nombre}";
+
+$subject = ($servicio === 'in-house')
+    ? "Solicitud In-House: {$empresaSubject} - {$nombre}"
+    : "Nueva Consulta Web: {$empresaSubject} - {$nombre}";
 $htmlBody = SmtpMailer::templateContactNotification($cleanData);
 
 $mailSent = false;
