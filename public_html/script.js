@@ -193,9 +193,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         <i class="fas fa-chevron-right arrow-go"></i>
                     </a>
                     <a href="https://api.whatsapp.com/send?phone=573152276029&text=Buen%20d%C3%ADa%20Quality%20Consulting%20Solutions,%20deseo%20informaci%C3%B3n%20de%20sus%20servicios/cursos" target="_blank" rel="noopener noreferrer" class="whatsapp-country-item">
-                        <span class="country-flag">🇪🇨</span>
+                        <span class="country-flag">🇨🇴</span>
                         <div class="country-info">
-                            <span class="country-name">Ecuador</span>
+                            <span class="country-name">Colombia</span>
                             <span class="country-phone">+57 315 227 6029</span>
                         </div>
                         <i class="fas fa-chevron-right arrow-go"></i>

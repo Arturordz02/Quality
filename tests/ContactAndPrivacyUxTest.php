@@ -45,6 +45,7 @@ echo "====================================================================\n\n";
 $baseDir = dirname(__DIR__);
 $contactoViewPath = $baseDir . '/private_app/app/Views/pages/contacto.php';
 $infoModalPath = $baseDir . '/private_app/app/Views/partials/info_modal.php';
+$whatsappFloatPath = $baseDir . '/private_app/app/Views/partials/whatsapp_float.php';
 $scriptJsPath = $baseDir . '/public_html/script.js';
 $stylesCssPath = $baseDir . '/public_html/styles.css';
 $backendSendContactPath = $baseDir . '/private_app/backend/send-contact.php';
@@ -52,6 +53,7 @@ $backendMailerPath = $baseDir . '/private_app/backend/SmtpMailer.php';
 
 $contactoView = file_get_contents($contactoViewPath);
 $infoModalView = file_get_contents($infoModalPath);
+$whatsappFloatView = file_get_contents($whatsappFloatPath);
 $scriptJs = file_get_contents($scriptJsPath);
 $stylesCss = file_get_contents($stylesCssPath);
 $backendSendContact = file_get_contents($backendSendContactPath);
@@ -211,6 +213,70 @@ runTest("El CTA final de contacto no promociona una sección independiente de As
     if (str_contains($contactoView, 'Ver Asesoría Especializada')) {
         throw new \RuntimeException("El CTA de contacto aún incluye el botón 'Ver Asesoría Especializada'.");
     }
+    return true;
+});
+
+// TEST 10: Widget flotante de WhatsApp (whatsapp_float.php) define coherentemente los 5 países
+runTest("Widget flotante de WhatsApp (whatsapp_float.php) contiene los 5 países coherentes y asocia +57 con Colombia", function() use ($whatsappFloatView): bool {
+    $expected = [
+        ['country' => 'Perú',     'code' => '+51',  'flag' => '🇵🇪', 'phone' => '51993463118'],
+        ['country' => 'Chile',    'code' => '+56',  'flag' => '🇨🇱', 'phone' => '56990760986'],
+        ['country' => 'Colombia', 'code' => '+57',  'flag' => '🇨🇴', 'phone' => '573152276029'],
+        ['country' => 'Panamá',   'code' => '+507', 'flag' => '🇵🇦', 'phone' => '50768195911'],
+        ['country' => 'México',   'code' => '+52',  'flag' => '🇲🇽', 'phone' => '525537208429'],
+    ];
+
+    foreach ($expected as $item) {
+        if (!str_contains($whatsappFloatView, $item['country'])) {
+            throw new \RuntimeException("whatsapp_float.php no contiene el país {$item['country']}.");
+        }
+        if (!str_contains($whatsappFloatView, $item['flag'])) {
+            throw new \RuntimeException("whatsapp_float.php no contiene la bandera {$item['flag']}.");
+        }
+        if (!str_contains($whatsappFloatView, $item['code'])) {
+            throw new \RuntimeException("whatsapp_float.php no contiene el código {$item['code']}.");
+        }
+        if (!str_contains($whatsappFloatView, 'phone=' . $item['phone'])) {
+            throw new \RuntimeException("whatsapp_float.php no contiene el enlace para {$item['phone']}.");
+        }
+    }
+
+    if (stripos($whatsappFloatView, 'Ecuador') !== false) {
+        throw new \RuntimeException("whatsapp_float.php aún contiene referencias a Ecuador.");
+    }
+
+    return true;
+});
+
+// TEST 11: script.js fallback contiene exactamente los mismos 5 países coherentes
+runTest("script.js fallback contiene los 5 países coherentes y no asocia Ecuador con +57", function() use ($scriptJs): bool {
+    $expected = [
+        ['country' => 'Perú',     'code' => '+51',  'flag' => '🇵🇪', 'phone' => '51993463118'],
+        ['country' => 'Chile',    'code' => '+56',  'flag' => '🇨🇱', 'phone' => '56990760986'],
+        ['country' => 'Colombia', 'code' => '+57',  'flag' => '🇨🇴', 'phone' => '573152276029'],
+        ['country' => 'Panamá',   'code' => '+507', 'flag' => '🇵🇦', 'phone' => '50768195911'],
+        ['country' => 'México',   'code' => '+52',  'flag' => '🇲🇽', 'phone' => '525537208429'],
+    ];
+
+    foreach ($expected as $item) {
+        if (!str_contains($scriptJs, $item['country'])) {
+            throw new \RuntimeException("script.js no contiene el país {$item['country']}.");
+        }
+        if (!str_contains($scriptJs, $item['flag'])) {
+            throw new \RuntimeException("script.js no contiene la bandera {$item['flag']}.");
+        }
+        if (!str_contains($scriptJs, $item['code'])) {
+            throw new \RuntimeException("script.js no contiene el código {$item['code']}.");
+        }
+        if (!str_contains($scriptJs, 'phone=' . $item['phone'])) {
+            throw new \RuntimeException("script.js no contiene el enlace para {$item['phone']}.");
+        }
+    }
+
+    if (stripos($scriptJs, 'Ecuador') !== false) {
+        throw new \RuntimeException("script.js aún contiene referencias a Ecuador.");
+    }
+
     return true;
 });
 
