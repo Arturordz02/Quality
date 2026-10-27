@@ -175,7 +175,7 @@ $clientLogos = [
                 <div class="col-lg-4 col-md-6">
                     <div class="inhouse-area-card bg-white rounded-4 overflow-hidden h-100 shadow-sm border">
                         <div class="inhouse-area-img-box">
-                            <img src="/img/Index-GerenciaCalidadObras.webp" alt="Formación In-House en Gestión de la Calidad" class="inhouse-area-img" loading="lazy">
+                            <img src="img/Index-GerenciaCalidadObras.webp" alt="Formación In-House en Gestión de la Calidad" class="inhouse-area-img" loading="lazy">
                             <span class="inhouse-area-badge">Área 01</span>
                         </div>
                         <div class="p-4 d-flex flex-column justify-content-between flex-grow-1">
@@ -200,7 +200,7 @@ $clientLogos = [
                 <div class="col-lg-4 col-md-6">
                     <div class="inhouse-area-card bg-white rounded-4 overflow-hidden h-100 shadow-sm border">
                         <div class="inhouse-area-img-box">
-                            <img src="/img/Index-riesgos.webp" alt="Formación In-House en Gestión de Riesgos" class="inhouse-area-img" loading="lazy">
+                            <img src="img/Index-riesgos.webp" alt="Formación In-House en Gestión de Riesgos" class="inhouse-area-img" loading="lazy">
                             <span class="inhouse-area-badge">Área 02</span>
                         </div>
                         <div class="p-4 d-flex flex-column justify-content-between flex-grow-1">
@@ -225,7 +225,7 @@ $clientLogos = [
                 <div class="col-lg-4 col-md-6">
                     <div class="inhouse-area-card bg-white rounded-4 overflow-hidden h-100 shadow-sm border">
                         <div class="inhouse-area-img-box">
-                            <img src="/img/Index-Contratos-Internacionales.webp" alt="Formación In-House en Contratos y Reclamos" class="inhouse-area-img" loading="lazy">
+                            <img src="img/Index-Contratos-Internacionales.webp" alt="Formación In-House en Contratos y Reclamos" class="inhouse-area-img" loading="lazy">
                             <span class="inhouse-area-badge">Área 03</span>
                         </div>
                         <div class="p-4 d-flex flex-column justify-content-between flex-grow-1">
@@ -250,7 +250,7 @@ $clientLogos = [
                 <div class="col-lg-6 col-md-6">
                     <div class="inhouse-area-card bg-white rounded-4 overflow-hidden h-100 shadow-sm border">
                         <div class="inhouse-area-img-box">
-                            <img src="/img/Index-GestionPMO.webp" alt="Formación In-House en Gestión de Proyectos y PMO" class="inhouse-area-img" loading="lazy">
+                            <img src="img/Index-GestionPMO.webp" alt="Formación In-House en Gestión de Proyectos y PMO" class="inhouse-area-img" loading="lazy">
                             <span class="inhouse-area-badge">Área 04</span>
                         </div>
                         <div class="p-4 d-flex flex-column justify-content-between flex-grow-1">
@@ -275,7 +275,7 @@ $clientLogos = [
                 <div class="col-lg-6 col-md-12">
                     <div class="inhouse-area-card bg-white rounded-4 overflow-hidden h-100 shadow-sm border">
                         <div class="inhouse-area-img-box">
-                            <img src="/img/Index-OficinaTecnicaObras.webp" alt="Formación In-House en Oficina Técnica de Obras" class="inhouse-area-img" loading="lazy">
+                            <img src="img/Index-OficinaTecnicaObras.webp" alt="Formación In-House en Oficina Técnica de Obras" class="inhouse-area-img" loading="lazy">
                             <span class="inhouse-area-badge">Área 05</span>
                         </div>
                         <div class="p-4 d-flex flex-column justify-content-between flex-grow-1">
@@ -383,7 +383,7 @@ $clientLogos = [
                 <?php foreach ($clientLogos as $client): ?>
                     <div class="inhouse-client-item" title="<?= htmlspecialchars($client['name'], ENT_QUOTES, 'UTF-8') ?>">
                         <div class="inhouse-client-card">
-                            <img src="/img/clientes/<?= htmlspecialchars($client['file'], ENT_QUOTES, 'UTF-8') ?>" 
+                            <img src="img/clientes/<?= htmlspecialchars($client['file'], ENT_QUOTES, 'UTF-8') ?>" 
                                  alt="Logo <?= htmlspecialchars($client['name'], ENT_QUOTES, 'UTF-8') ?>" 
                                  class="inhouse-client-img" 
                                  loading="lazy">
@@ -395,7 +395,7 @@ $clientLogos = [
                 <?php foreach ($clientLogos as $client): ?>
                     <div class="inhouse-client-item" aria-hidden="true" title="<?= htmlspecialchars($client['name'], ENT_QUOTES, 'UTF-8') ?>">
                         <div class="inhouse-client-card">
-                            <img src="/img/clientes/<?= htmlspecialchars($client['file'], ENT_QUOTES, 'UTF-8') ?>" 
+                            <img src="img/clientes/<?= htmlspecialchars($client['file'], ENT_QUOTES, 'UTF-8') ?>" 
                                  alt="" 
                                  class="inhouse-client-img" 
                                  loading="lazy">
