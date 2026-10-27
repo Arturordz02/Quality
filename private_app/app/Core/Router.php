@@ -96,6 +96,14 @@ class Router
         $resolvedUri = $this->resolveRequestUri($requestUri);
         $normalizedUri = $this->normalizePath($resolvedUri);
 
+        // Normalización canónica SEO: Si la ruta solicitada tiene barra final (ej: /in-house/)
+        // y no es la raíz (/), redirigir 301 a la versión limpia para garantizar resolución correcta de assets.
+        if ($method === 'GET' && strlen($resolvedUri) > 1 && str_ends_with($resolvedUri, '/') && !headers_sent()) {
+            $queryString = !empty($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '';
+            header('Location: ' . $normalizedUri . $queryString, true, 301);
+            exit;
+        }
+
         // 1. Buscar coincidencia exacta
         if (isset($this->routes[$method][$normalizedUri])) {
             return $this->executeHandler($this->routes[$method][$normalizedUri]);

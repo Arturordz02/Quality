@@ -108,11 +108,13 @@ foreach ($pageFiles as $pageFile) {
         $htmlTransformed = preg_replace('/href="\/registro-exitoso(\?[^"]*)?"/', 'href="registro-exitoso.html$1"', $htmlTransformed);
         $htmlTransformed = preg_replace('/href="\/pagar-primera-clase(\?[^"]*)?"/', 'href="pagar-primera-clase.html$1"', $htmlTransformed);
         // 2. Reemplazar href="/ruta" por "ruta.html" (preservando query string) y href="/" por "index.html" para navegación estática
-        $htmlTransformed = preg_replace_callback('/href="\/([a-zA-Z0-9\-_]+)(\?[^"]*)?"/', function($matches) {
+        $htmlTransformed = preg_replace_callback('/href="\/([a-zA-Z0-9\-_]+)((?:\?[^"#]*)?(?:#[^"]*)?)"/', function($matches) {
             $qs = $matches[2] ?? '';
             return 'href="' . $matches[1] . '.html' . $qs . '"';
         }, $htmlTransformed);
         $htmlTransformed = preg_replace('/href="\/"/', 'href="index.html"', $htmlTransformed);
+        // 3. Normalizar rutas de assets a relativas para despliegues en subdirectorios de GitHub Pages
+        $htmlTransformed = preg_replace('/(src|srcset)=([\"\'])\/img\//', '$1=$2img/', $htmlTransformed);
         
         file_put_contents($targetFile, $htmlTransformed);
 
@@ -123,7 +125,19 @@ foreach ($pageFiles as $pageFile) {
             if (!is_dir($subDir)) {
                 mkdir($subDir, 0777, true);
             }
-            file_put_contents($subDir . '/index.html', $htmlTransformed);
+            // Adaptar rutas relativas al nivel anidado (../) para que assets y enlaces resuelvan correctamente
+            $htmlSubDir = $htmlTransformed;
+            // 1. Assets: imágenes, css, js, favicons
+            $htmlSubDir = preg_replace('/(src|srcset)=([\"\'])\s*img\//i', '$1=$2../img/', $htmlSubDir);
+            $htmlSubDir = preg_replace('/(,\s*)img\//i', '$1../img/', $htmlSubDir);
+            $htmlSubDir = preg_replace('/href=([\"\'])styles\.css/', 'href=$1../styles.css', $htmlSubDir);
+            $htmlSubDir = preg_replace('/src=([\"\'])script\.js/', 'src=$1../script.js', $htmlSubDir);
+            $htmlSubDir = preg_replace('/href=([\"\'])\/?(favicon[^\'\"]*)/', 'href=$1../$2', $htmlSubDir);
+            $htmlSubDir = preg_replace('/href=([\"\'])\/?(apple-touch-icon[^\'\"]*)/', 'href=$1../$2', $htmlSubDir);
+            // 2. Enlaces HTML relativos a la raíz (index.html, nosotros.html, in-house.html, etc., preservando queries y fragmentos)
+            $htmlSubDir = preg_replace('/href=([\"\'])([a-zA-Z0-9\-_]+\.html(?:[?#][^\'\"]*)?)([\"\'])/', 'href=$1../$2$3', $htmlSubDir);
+
+            file_put_contents($subDir . '/index.html', $htmlSubDir);
         }
 
         echo "  [OK] Generado: {$pageName}\n";
