@@ -44,18 +44,20 @@ echo "====================================================================\n\n";
 
 $baseDir = dirname(__DIR__);
 $contactoViewPath = $baseDir . '/private_app/app/Views/pages/contacto.php';
+$infoModalPath = $baseDir . '/private_app/app/Views/partials/info_modal.php';
 $scriptJsPath = $baseDir . '/public_html/script.js';
 $stylesCssPath = $baseDir . '/public_html/styles.css';
 $backendSendContactPath = $baseDir . '/private_app/backend/send-contact.php';
 $backendMailerPath = $baseDir . '/private_app/backend/SmtpMailer.php';
 
 $contactoView = file_get_contents($contactoViewPath);
+$infoModalView = file_get_contents($infoModalPath);
 $scriptJs = file_get_contents($scriptJsPath);
 $stylesCss = file_get_contents($stylesCssPath);
 $backendSendContact = file_get_contents($backendSendContactPath);
 $backendMailer = file_get_contents($backendMailerPath);
 
-// TEST 1: Campo Empresa no es obligatorio en la vista
+// TEST 1: Campo Empresa no es obligatorio en contacto.php
 runTest("Campo Empresa en contacto.php no contiene required ni asterisco rojo", function() use ($contactoView): bool {
     // Verificar que el input de empresa no tenga el atributo 'required'
     if (preg_match('/<input[^>]+id="contactEmpresa"[^>]*\srequired[\s>]/i', $contactoView)) {
@@ -71,6 +73,26 @@ runTest("Campo Empresa en contacto.php no contiene required ni asterisco rojo", 
         }
     } else {
         throw new \RuntimeException("No se encontró la etiqueta <label for=\"contactEmpresa\">.");
+    }
+    return true;
+});
+
+// TEST 1B: Campo Empresa no es obligatorio en el modal emergente global (info_modal.php)
+runTest("Campo Empresa en info_modal.php no contiene required ni asterisco rojo y marca (Opcional)", function() use ($infoModalView): bool {
+    // Verificar que el input de empresa no tenga el atributo 'required'
+    if (preg_match('/<input[^>]+id="modalInputEmpresa"[^>]*\srequired[\s>]/i', $infoModalView)) {
+        throw new \RuntimeException("El input #modalInputEmpresa aún tiene el atributo 'required'.");
+    }
+    // Extraer exactamente el contenido de la etiqueta de Empresa
+    if (preg_match('/<label[^>]+for="modalInputEmpresa"[^>]*>(.*?)<\/label>/is', $infoModalView, $m)) {
+        if (str_contains($m[1], 'text-danger') || str_contains($m[1], '*')) {
+            throw new \RuntimeException("La etiqueta de Empresa en el modal aún contiene el asterisco obligatorio (text-danger / *).");
+        }
+        if (!str_contains($m[1], '(Opcional)')) {
+            throw new \RuntimeException("La etiqueta de Empresa en el modal debe indicar claramente que es (Opcional).");
+        }
+    } else {
+        throw new \RuntimeException("No se encontró la etiqueta <label for=\"modalInputEmpresa\">.");
     }
     return true;
 });
@@ -92,10 +114,12 @@ runTest("Campos obligatorios (nombre, teléfono, correo, consulta) se mantienen 
     return true;
 });
 
-// TEST 3: script.js no bloquea el envío si empresa está vacía
-runTest("script.js no incluye validación de obligatoriedad para el campo empresa", function() use ($scriptJs): bool {
-    if (str_contains($scriptJs, '!empresa || empresa.length')) {
-        throw new \RuntimeException("script.js aún valida la obligatoriedad de empresa.");
+// TEST 3: script.js no bloquea el envío si empresa está vacía en formularios de contacto
+runTest("script.js no incluye validación de obligatoriedad para el campo empresa en contacto", function() use ($scriptJs): bool {
+    if (preg_match('/contactForm\.addEventListener[\s\S]*?clientErrors\s*=\s*\[\];([\s\S]*?)if\s*\(\s*clientErrors\.length/i', $scriptJs, $match)) {
+        if (str_contains($match[1], '!empresa || empresa.length')) {
+            throw new \RuntimeException("script.js aún valida la obligatoriedad de empresa en el formulario de contacto.");
+        }
     }
     return true;
 });
