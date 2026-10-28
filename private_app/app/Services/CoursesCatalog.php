@@ -578,7 +578,7 @@ class CoursesCatalog
                 'description'   => 'Digitalización del Lookahead, cálculo automático del PPC y gestión ágil de restricciones con herramientas digitales.'
             ],
             [
-                'number'        => null,
+                'number'        => 49,
                 'title'         => 'CONTROL DE PROYECTOS DE CONSTRUCCIÓN',
                 'category'      => 'Gestión de Proyectos',
                 'category_slug' => 'gestion-de-proyectos',

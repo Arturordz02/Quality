@@ -6,13 +6,37 @@
   </url>
   <!-- Páginas Públicas e Indexables -->
   <url>
+    <loc>https://quality-consulting.org/analisis-cuantitativo-riesgos</loc>
+  </url>
+  <url>
+    <loc>https://quality-consulting.org/analisis-forense-cronograma-primavera-p6</loc>
+  </url>
+  <url>
     <loc>https://quality-consulting.org/bim-revit-architecture</loc>
+  </url>
+  <url>
+    <loc>https://quality-consulting.org/brightline-initiative</loc>
   </url>
   <url>
     <loc>https://quality-consulting.org/calidad-y-pmi</loc>
   </url>
   <url>
     <loc>https://quality-consulting.org/capacitacion</loc>
+  </url>
+  <url>
+    <loc>https://quality-consulting.org/capacitacion-calidad</loc>
+  </url>
+  <url>
+    <loc>https://quality-consulting.org/capacitacion-contratos</loc>
+  </url>
+  <url>
+    <loc>https://quality-consulting.org/capacitacion-gestion-de-proyectos</loc>
+  </url>
+  <url>
+    <loc>https://quality-consulting.org/capacitacion-oficina-tecnica</loc>
+  </url>
+  <url>
+    <loc>https://quality-consulting.org/capacitacion-riesgos</loc>
   </url>
   <url>
     <loc>https://quality-consulting.org/casos-practicos-contratos-nec3-f</loc>
@@ -33,19 +57,34 @@
     <loc>https://quality-consulting.org/contrato-nec4</loc>
   </url>
   <url>
+    <loc>https://quality-consulting.org/contratos</loc>
+  </url>
+  <url>
     <loc>https://quality-consulting.org/contratos-colaborativos-nec3-f</loc>
   </url>
   <url>
     <loc>https://quality-consulting.org/contratos-estado</loc>
   </url>
   <url>
-    <loc>https://quality-consulting.org/contratos</loc>
-  </url>
-  <url>
     <loc>https://quality-consulting.org/contratos-fidic-epc-construccion</loc>
   </url>
   <url>
+    <loc>https://quality-consulting.org/control-de-calidad-en-tuneleria</loc>
+  </url>
+  <url>
+    <loc>https://quality-consulting.org/control-proyectos-bim-power-bi</loc>
+  </url>
+  <url>
+    <loc>https://quality-consulting.org/control-proyectos-construccion</loc>
+  </url>
+  <url>
+    <loc>https://quality-consulting.org/control-proyectos-primavera-p6</loc>
+  </url>
+  <url>
     <loc>https://quality-consulting.org/costos</loc>
+  </url>
+  <url>
+    <loc>https://quality-consulting.org/costos-edificaciones-power-bi</loc>
   </url>
   <url>
     <loc>https://quality-consulting.org/cronograma-forense</loc>
@@ -84,6 +123,12 @@
     <loc>https://quality-consulting.org/gestion-de-riesgos</loc>
   </url>
   <url>
+    <loc>https://quality-consulting.org/gestion-pmo-vmo</loc>
+  </url>
+  <url>
+    <loc>https://quality-consulting.org/gestion-proyectos-pmi</loc>
+  </url>
+  <url>
     <loc>https://quality-consulting.org/gestion-reclamos-nec-fidic</loc>
   </url>
   <url>
@@ -96,6 +141,12 @@
     <loc>https://quality-consulting.org/herramientas</loc>
   </url>
   <url>
+    <loc>https://quality-consulting.org/in-house</loc>
+  </url>
+  <url>
+    <loc>https://quality-consulting.org/indicadores-de-calidad</loc>
+  </url>
+  <url>
     <loc>https://quality-consulting.org/investigacion</loc>
   </url>
   <url>
@@ -105,10 +156,19 @@
     <loc>https://quality-consulting.org/junta-resolucion-disputas-dab</loc>
   </url>
   <url>
+    <loc>https://quality-consulting.org/lean-construction-edificaciones</loc>
+  </url>
+  <url>
+    <loc>https://quality-consulting.org/lean-construction-infraestructura</loc>
+  </url>
+  <url>
     <loc>https://quality-consulting.org/lean-last-planner</loc>
   </url>
   <url>
     <loc>https://quality-consulting.org/libro-de-reclamaciones</loc>
+  </url>
+  <url>
+    <loc>https://quality-consulting.org/liderazgo-construccion</loc>
   </url>
   <url>
     <loc>https://quality-consulting.org/medios</loc>
@@ -123,7 +183,7 @@
     <loc>https://quality-consulting.org/oficina-tecnica</loc>
   </url>
   <url>
-    <loc>https://quality-consulting.org/oficina-tecnica-obras-viales</loc>
+    <loc>https://quality-consulting.org/oficina-tecnica-edificaciones-panel-control</loc>
   </url>
   <url>
     <loc>https://quality-consulting.org/oficina-tecnica-hospitales-edificaciones</loc>
@@ -132,7 +192,7 @@
     <loc>https://quality-consulting.org/oficina-tecnica-infraestructura-minera</loc>
   </url>
   <url>
-    <loc>https://quality-consulting.org/oficina-tecnica-edificaciones-panel-control</loc>
+    <loc>https://quality-consulting.org/oficina-tecnica-obras-viales</loc>
   </url>
   <url>
     <loc>https://quality-consulting.org/pmo</loc>
@@ -142,6 +202,9 @@
   </url>
   <url>
     <loc>https://quality-consulting.org/proyectos-pmi</loc>
+  </url>
+  <url>
+    <loc>https://quality-consulting.org/resultado-operativo-obra</loc>
   </url>
   <url>
     <loc>https://quality-consulting.org/riesgo-del-plazo</loc>
@@ -156,6 +219,12 @@
     <loc>https://quality-consulting.org/riesgos-tecnicos</loc>
   </url>
   <url>
+    <loc>https://quality-consulting.org/seminario-diagrama-ishikawa</loc>
+  </url>
+  <url>
+    <loc>https://quality-consulting.org/seminario-iso-9001-2026</loc>
+  </url>
+  <url>
     <loc>https://quality-consulting.org/sindrome-del-90</loc>
   </url>
   <url>
@@ -165,10 +234,12 @@
     <loc>https://quality-consulting.org/universidad-corporativa</loc>
   </url>
   <url>
-    <loc>https://quality-consulting.org/seminario-diagrama-ishikawa</loc>
-  </url>
-  <url>
     <loc>https://quality-consulting.org/valor-ganado</loc>
   </url>
+  <url>
+    <loc>https://quality-consulting.org/valor-ganado-ms-project-power-bi</loc>
+  </url>
+  <url>
+    <loc>https://quality-consulting.org/vdc</loc>
+  </url>
 </urlset>
-

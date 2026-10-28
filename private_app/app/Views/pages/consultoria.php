@@ -329,7 +329,7 @@ declare(strict_types=1);
                                     </p>
                                 </div>
                                 <div class="d-flex gap-2">
-                                    <a href="/nec" class="btn btn-qcs-dark flex-fill py-2 fw-bold rounded-pill btn-qcs-primary text-center" style="border-color: var(--qcs-yellow); color: var(--qcs-dark-slate);">
+                                    <a href="/contratos-colaborativos-nec3-f" class="btn btn-qcs-dark flex-fill py-2 fw-bold rounded-pill btn-qcs-primary text-center" style="border-color: var(--qcs-yellow); color: var(--qcs-dark-slate);">
                                         Ver NEC <i class="fas fa-arrow-right ms-1"></i>
                                     </a>
                                     <a href="/fidic" class="btn btn-qcs-dark flex-fill py-2 fw-bold rounded-pill text-center" style="border-color: var(--qcs-yellow); color: var(--qcs-yellow);">
