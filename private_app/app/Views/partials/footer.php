@@ -30,7 +30,7 @@ $year = $currentYear ?? date('Y');
                     </div>
                 </div>
                 <p class="footer-desc">
-                    Programas de capacitación especializada, cursos y asesoría técnica en gestión de proyectos, calidad y PMO para profesionales del sector construcción.
+                    Programas de capacitación especializada, cursos y talleres en gestión de proyectos, calidad y PMO para profesionales del sector construcción.
                 </p>
                 <div class="footer-socials mt-3">
                     <a href="https://pe.linkedin.com/in/omarsamaniego" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>

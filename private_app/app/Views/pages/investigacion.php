@@ -294,11 +294,11 @@ declare(strict_types=1);
                     <div class="cta-content">
                         <span class="cta-tag">Innovación y Metodología Aplicada</span>
                         <h3 class="animate__animated animate__fadeInUp animate__delay-1s">¿Desea capacitar a su equipo en metodologías de vanguardia para sus proyectos?</h3>
-                        <p>Capacitación y asesoría técnica en metodologías avanzadas de BIM LOD 400, Last Planner y analítica aplicada a proyectos.</p>
+                        <p>Capacitación especializada en metodologías avanzadas de BIM LOD 400, Last Planner y analítica aplicada a proyectos.</p>
                     </div>
                     <div class="cta-actions">
                         <a href="/contacto" class="btn btn-large btn-qcs-primary">
-                            <i class="fa-solid fa-envelope"></i> Solicitar Asesoría Técnica
+                            <i class="fa-solid fa-envelope"></i> Solicitar Información
                         </a>
                         <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-large animate__animated animate__pulse animate__infinite btn-qcs-primary">
                             <i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp

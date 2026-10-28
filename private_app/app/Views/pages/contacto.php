@@ -266,7 +266,7 @@ if (!isset($selectedCourse)) {
 
                 <!-- Subtítulo -->
                 <p class="contact-hero-subtitle">
-                    Ponte en contacto con nuestro equipo de especialistas. Estamos listos para atender tus consultas sobre cursos, programas de capacitación in-house y asesoría técnica especializada.
+                    Ponte en contacto con nuestro equipo de especialistas. Estamos listos para atender tus consultas sobre cursos, programas de capacitación in-house y capacitación especializada.
                 </p>
 
                 <!-- Grid de 3 Tarjetas de Canales de Respuesta Rápida -->
@@ -430,7 +430,7 @@ if (!isset($selectedCourse)) {
                                 <!-- Consulta o Mensaje -->
                                 <div class="mb-3">
                                     <label for="contactConsulta" class="form-label fw-bold small text-secondary">Consulta o Mensaje <span class="text-danger">*</span></label>
-                                    <textarea id="contactConsulta" name="consulta" class="form-control" rows="4" placeholder="Escribe aquí los detalles de tu consulta sobre cursos, capacitaciones in-house o asesoría técnica..." required></textarea>
+                                    <textarea id="contactConsulta" name="consulta" class="form-control" rows="4" placeholder="Escribe aquí los detalles de tu consulta sobre cursos, capacitaciones in-house o capacitación especializada..." required></textarea>
                                 </div>
 
                                 <!-- Botón de Envío -->

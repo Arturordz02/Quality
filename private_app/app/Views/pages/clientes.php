@@ -231,7 +231,7 @@ declare(strict_types=1);
             </h1>
 
             <p class="lead text-light opacity-90 mx-auto mb-4" style="max-width: 860px; font-size: 1.15rem; color: #e2e8f0;">
-                Agradecemos a las empresas líderes del sector construcción, ingeniería y minería por confiar en nuestros programas de capacitación y asesoría técnica especializada.
+                Agradecemos a las empresas líderes del sector construcción, ingeniería y minería por confiar en nuestros programas de formación y capacitación especializada.
             </p>
 
             <!-- Grid de 3 Tarjetas de Pilares de Valor en el Hero -->
@@ -328,7 +328,7 @@ declare(strict_types=1);
                 </h2>
                 <div class="title-underline mx-auto"></div>
                 <p class="text-secondary mx-auto mt-3" style="max-width: 780px;">
-                    Principales áreas de formación, capacitación y asesoría especializada brindadas a nuestra cartera de clientes.
+                    Principales áreas de formación y capacitación especializada brindadas a nuestra cartera de clientes.
                 </p>
             </div>
 
@@ -352,7 +352,7 @@ declare(strict_types=1);
                         <div class="service-perf-icon"><i class="fa-solid fa-file-contract"></i></div>
                     </div>
                     <h3 class="service-perf-title animate__animated animate__fadeInUp animate__delay-1s">02. Gestión Contractual (NEC y FIDIC)</h3>
-                    <p class="service-perf-desc">Capacitación y asesoría especializada en contratos NEC y FIDIC para la administración contractual y estándares internacionales.</p>
+                    <p class="service-perf-desc">Capacitación especializada en contratos NEC y FIDIC para la administración contractual y estándares internacionales.</p>
                 </div>
 
                 <!-- 03. Elaboración de Plan de Calidad -->
@@ -362,7 +362,7 @@ declare(strict_types=1);
                         <div class="service-perf-icon"><i class="fas fa-file-signature"></i></div>
                     </div>
                     <h3 class="service-perf-title animate__animated animate__fadeInUp animate__delay-1s">03. Elaboración de Plan de Calidad</h3>
-                    <p class="service-perf-desc">Asesoría especializada y capacitación en diseño de planes de calidad para organizaciones, megaproyectos y obras complejas.</p>
+                    <p class="service-perf-desc">Capacitación especializada en diseño de planes de calidad para organizaciones, megaproyectos y obras complejas.</p>
                 </div>
 
                 <!-- 04. Soporte en Propuestas de Gestión y Calidad -->
@@ -372,7 +372,7 @@ declare(strict_types=1);
                         <div class="service-perf-icon"><i class="fas fa-lightbulb"></i></div>
                     </div>
                     <h3 class="service-perf-title animate__animated animate__fadeInUp animate__delay-1s">04. Soporte en Propuestas de Gestión y Calidad</h3>
-                    <p class="service-perf-desc">Asesoría técnica estratégica en licitaciones privadas y públicas de alto impacto.</p>
+                    <p class="service-perf-desc">Capacitación y soporte técnico estratégico en licitaciones privadas y públicas de alto impacto.</p>
                 </div>
 
                 <!-- 05. Manual de Funciones -->
@@ -450,7 +450,7 @@ declare(strict_types=1);
                     <span class="cta-tag"><i class="fa-solid fa-handshake"></i> Alianzas Estratégicas</span>
                     <h3 class="animate__animated animate__fadeInUp animate__delay-1s">¿Listo para elevar el estándar técnico de tus proyectos?</h3>
                     <p>
-                        Conversa con nuestro equipo sobre programas de capacitación in-house, cursos especializados y asesoría técnica a la medida de tu organización.
+                        Conversa con nuestro equipo sobre programas de capacitación in-house, cursos y capacitación especializada a la medida de tu organización.
                     </p>
                     
                     <!-- Teléfono Visible Clickeable Requerido -->
@@ -467,7 +467,7 @@ declare(strict_types=1);
                         <i class="fa-solid fa-envelope"></i> Solicitar propuesta corporativa
                     </a>
                     <a href="/consultoria" class="btn btn-outline-light btn-large btn-qcs-primary" style="border: 2px solid #ffffff; color: #ffffff;">
-                        <i class="fa-solid fa-briefcase"></i> Ver asesoría especializada
+                        <i class="fa-solid fa-briefcase"></i> Ver consultoría especializada
                     </a>
                 </div>
             </div>
