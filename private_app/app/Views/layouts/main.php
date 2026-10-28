@@ -9,8 +9,8 @@
 
 declare(strict_types=1);
 
-$pageTitle = $title ?? 'Quality Consulting Solutions | Capacitación y Asesoría en PMO y Calidad';
-$description = $metaDescription ?? 'Capacitaciones, cursos especializados y asesoría técnica en gestión de proyectos, PMO y calidad para profesionales del sector construcción.';
+$pageTitle = $title ?? 'Quality Consulting Solutions | Capacitación Especializada en PMO y Calidad';
+$description = $metaDescription ?? 'Capacitaciones y cursos especializados en gestión de proyectos, PMO y calidad para profesionales del sector construcción.';
 $canonicalUrl = $canonical ?? '';
 $activePage = $activePage ?? '';
 $showFloat = $showWhatsAppFloat ?? true;
@@ -78,7 +78,7 @@ $showFloat = $showWhatsAppFloat ?? true;
     <!-- Pie de Página Corporativo -->
     <?= $this->partial('footer') ?>
 
-    <!-- Modal Global de Solicitud de Información / Asesoría -->
+    <!-- Modal Global de Solicitud de Información -->
     <?= $this->partial('info_modal') ?>
 
     <!-- Widget Flotante de WhatsApp -->

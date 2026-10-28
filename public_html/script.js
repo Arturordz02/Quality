@@ -695,7 +695,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
 
     /* ----------------------------------------------------
-       9. GESTIÓN DEL MODAL DE INFORMACIÓN Y ASESORÍA
+       9. GESTIÓN DEL MODAL DE INFORMACIÓN
        - Autocompletado del nombre del curso / servicio
        - Actualización dinámica del botón de WhatsApp
        - Envío ágil con AJAX sin recargar página
@@ -751,7 +751,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (modalWhatsAppBtn) {
-                const queryText = encodeURIComponent(`Hola, deseo solicitar información sobre: ${serviceName || 'sus programas y asesoría'}.`);
+                const queryText = encodeURIComponent(`Hola, deseo solicitar información sobre: ${serviceName || 'sus programas de capacitación'}.`);
                 modalWhatsAppBtn.href = `https://api.whatsapp.com/send?phone=51993463118&text=${queryText}`;
             }
 

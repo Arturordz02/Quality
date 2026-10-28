@@ -1,15 +1,15 @@
 <?php
 /**
- * QUALITY CONSULTING SOLUTIONS - MODAL GLOBAL DE INFORMACIÓN Y ASESORÍA
+ * QUALITY CONSULTING SOLUTIONS - MODAL GLOBAL DE INFORMACIÓN
  * Archivo: app/Views/partials/info_modal.php
  * 
  * Modal interactivo completo y seguro para solicitar temarios,
- * información de cursos o asesoría técnica con los mismos campos
+ * información de cursos o capacitación especializada con los mismos campos
  * completos de contacto.
  */
 declare(strict_types=1);
 ?>
-<!-- Modal Global de Solicitud de Información y Asesoría -->
+<!-- Modal Global de Solicitud de Información -->
 <div class="modal fade" id="modalSolicitarInfo" tabindex="-1" aria-labelledby="modalSolicitarInfoLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="true">
     <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
         <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
@@ -21,10 +21,10 @@ declare(strict_types=1);
                         <i class="fa-solid fa-headset me-1"></i> ATENCIÓN INMEDIATA
                     </span>
                     <h4 class="modal-title font-montserrat fw-bold text-white mb-1" id="modalSolicitarInfoLabel">
-                        Solicitar Información y Asesoría Técnica
+                        Solicitar Información
                     </h4>
                     <p class="text-white-50 small mb-0">
-                        Completa tus datos para recibir temarios detallados, cotización personalizada y asesoría con nuestros especialistas.
+                        Completa tus datos para recibir temarios detallados, cotización personalizada y orientación con nuestros especialistas.
                     </p>
                 </div>
                 <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4" data-bs-dismiss="modal" aria-label="Cerrar"></button>
@@ -100,7 +100,7 @@ declare(strict_types=1);
                                 <label for="modalInputPrograma" class="form-label small fw-bold text-secondary mb-1">Programa o Servicio de Interés <span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span class="input-group-text bg-white border-end-0 text-muted"><i class="fa-solid fa-graduation-cap"></i></span>
-                                    <input type="text" class="form-control border-start-0 ps-0 bg-white" id="modalInputPrograma" name="programa" placeholder="Curso, Diplomado o Asesoría" required>
+                                    <input type="text" class="form-control border-start-0 ps-0 bg-white" id="modalInputPrograma" name="programa" placeholder="Curso, taller, seminario o capacitación" required>
                                 </div>
                             </div>
 
