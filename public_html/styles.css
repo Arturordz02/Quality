@@ -461,8 +461,8 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.25rem;
+    flex-wrap: nowrap;
+    gap: 0.2rem;
     margin: 0;
     padding: 0.2rem 0;
     list-style: none;
@@ -10238,12 +10238,12 @@ html, body {
    Navegación horizontal discreta, separadores ›, foco accesible y responsive
    ========================================================================== */
 :root {
-    --qcs-header-height: 147px;
+    --qcs-header-height: 156px;
 }
 
 @media (max-width: 1199.98px) and (min-width: 992px) {
     :root {
-        --qcs-header-height: 173px;
+        --qcs-header-height: 188px;
     }
 }
 
@@ -10390,16 +10390,34 @@ html, body {
    SECCION IN-HOUSE (Formacion Corporativa a Medida)
    ========================================================================== */
 
-/* 1. Ajuste Responsive de Barra de Navegacion (8 Elementos principales) */
-@media (min-width: 992px) and (max-width: 1200px) {
+/* 1. Ajuste Responsive de Barra de Navegación Institucional (7 Elementos principales) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .nav-menu {
+        flex-wrap: nowrap !important;
+        gap: 0.15rem !important;
+    }
     .nav-link {
-        padding: 0.65rem 0.6rem !important;
-        font-size: 0.80rem !important;
-        letter-spacing: 0.3px !important;
+        padding: 0.65rem 0.55rem !important;
+        font-size: 0.78rem !important;
+        letter-spacing: 0.2px !important;
         gap: 0.25rem !important;
+        white-space: nowrap !important;
     }
     .arrow-icon {
         font-size: 0.6rem !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .nav-menu {
+        flex-wrap: nowrap !important;
+        gap: 0.25rem !important;
+    }
+    .nav-link {
+        padding: 0.75rem 0.85rem !important;
+        font-size: 0.82rem !important;
+        letter-spacing: 0.4px !important;
+        white-space: nowrap !important;
     }
 }
 
