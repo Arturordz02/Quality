@@ -390,6 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const empresa = document.getElementById('contactEmpresa')?.value.trim();
             const email = document.getElementById('contactEmail')?.value.trim();
             const consulta = document.getElementById('contactConsulta')?.value.trim();
+            const contactPrivacidad = document.getElementById('contactPrivacidad') || contactForm.querySelector('input[name="privacidad"]');
 
             const clientErrors = [];
             if (!nombre || nombre.length < 2) clientErrors.push('Ingrese su nombre y apellido.');
@@ -399,6 +400,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (clientErrors.length > 0) {
                 showFormAlert(contactAlert, 'danger', 'Por favor, revise los siguientes campos obligatorios:', clientErrors);
+                return;
+            }
+
+            if (contactPrivacidad && !contactPrivacidad.checked) {
+                showFormAlert(contactAlert, 'danger', 'Debe aceptar la política de protección de datos personales para continuar.');
+                contactPrivacidad.focus();
                 return;
             }
 
@@ -453,7 +460,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const telefono = document.getElementById('inhouseTelefono')?.value.trim();
             const area = document.getElementById('inhouseArea')?.value.trim();
             const consulta = document.getElementById('inhouseConsulta')?.value.trim();
-            const privacy = document.getElementById('inhousePrivacy')?.checked;
+            const inhousePrivacy = document.getElementById('inhousePrivacy') || inhouseForm.querySelector('input[name="privacidad"]');
 
             const clientErrors = [];
             if (!nombre || nombre.length < 2) clientErrors.push('Ingrese su nombre y apellido completo.');
@@ -462,10 +469,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!telefono || telefono.length < 6) clientErrors.push('Ingrese un número de teléfono o WhatsApp válido.');
             if (!area) clientErrors.push('Seleccione el área de formación de interés.');
             if (!consulta || consulta.length < 5) clientErrors.push('Ingrese los detalles o requerimientos de su consulta.');
-            if (!privacy) clientErrors.push('Debe aceptar la política de tratamiento de datos personales.');
 
             if (clientErrors.length > 0) {
                 showFormAlert(inhouseAlert, 'danger', 'Por favor, revise los siguientes campos obligatorios:', clientErrors);
+                return;
+            }
+
+            if (inhousePrivacy && !inhousePrivacy.checked) {
+                showFormAlert(inhouseAlert, 'danger', 'Debe aceptar la política de protección de datos personales para continuar.');
+                inhousePrivacy.focus();
                 return;
             }
 
@@ -766,6 +778,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (modalForm) {
             modalForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
+
+                const modalPrivacidad = document.getElementById('modalPrivacidad') || modalForm.querySelector('input[name="privacidad"]');
+                if (modalPrivacidad && !modalPrivacidad.checked) {
+                    if (formFeedback) {
+                        formFeedback.className = 'alert alert-danger py-2 px-3 small mb-3';
+                        formFeedback.innerHTML = '<i class="fa-solid fa-triangle-exclamation me-2"></i>Debe aceptar la política de protección de datos personales para continuar.';
+                    }
+                    modalPrivacidad.focus();
+                    return;
+                }
 
                 if (!modalForm.checkValidity()) {
                     modalForm.classList.add('was-validated');
@@ -1172,6 +1194,14 @@ document.addEventListener('DOMContentLoaded', () => {
             contactSelect.value = matchingOption.value;
         }
     })();
+    // Evitar que el clic en enlaces legales dentro de labels de consentimiento altere el estado de la casilla
+    document.addEventListener('click', (e) => {
+        const legalLink = e.target.closest('.form-check-label a');
+        if (legalLink) {
+            e.stopPropagation();
+        }
+    });
+
 });
 
 

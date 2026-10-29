@@ -544,9 +544,9 @@ $clientLogos = [
 
                             <!-- Consentimiento de Privacidad (NO marcado por defecto) -->
                             <div class="form-check mb-4">
-                                <input class="form-check-input" type="checkbox" id="inhousePrivacy" name="privacidad" required>
+                                <input class="form-check-input" type="checkbox" id="inhousePrivacy" name="privacidad" value="1" required>
                                 <label class="form-check-label small text-muted" for="inhousePrivacy">
-                                    Acepto el tratamiento de mis datos personales para la atención de esta solicitud corporativa, conforme a la <a href="/terminos-y-condiciones#clausula-6" target="_blank" class="text-decoration-underline text-secondary">Política de Privacidad y Protección de Datos</a> de Quality Consulting Solutions.
+                                    Acepto el tratamiento de mis datos personales para la atención de esta solicitud corporativa, conforme a la <a href="/terminos-y-condiciones#clausula-6" target="_blank" rel="noopener noreferrer" class="text-decoration-underline text-secondary">Política de Privacidad y Protección de Datos</a> de Quality Consulting Solutions.
                                 </label>
                             </div>
 

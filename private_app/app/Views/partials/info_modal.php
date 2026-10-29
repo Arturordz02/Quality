@@ -146,6 +146,14 @@ declare(strict_types=1);
                                 <textarea class="form-control bg-white" id="modalInputConsulta" name="consulta" rows="3" placeholder="Indícanos tus consultas sobre temarios, fechas, modalidades o requerimientos in-house..." required></textarea>
                             </div>
 
+                            <!-- Consentimiento de Privacidad (NO marcado por defecto) -->
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="modalPrivacidad" name="privacidad" value="1" required>
+                                <label class="form-check-label small text-muted" for="modalPrivacidad">
+                                    Acepto el tratamiento de mis datos personales para la atención de mi solicitud, conforme a la <a href="/terminos-y-condiciones#clausula-6" target="_blank" rel="noopener noreferrer" class="text-decoration-underline text-secondary">Política de Privacidad y Protección de Datos</a> de Quality Consulting Solutions.
+                                </label>
+                            </div>
+
                             <!-- Botón Enviar -->
                             <div class="mt-4">
                                 <button type="submit" id="modalSubmitBtn" class="btn btn-warning w-100 py-3 fw-bold text-dark rounded-pill shadow-sm font-montserrat btn-qcs-primary">

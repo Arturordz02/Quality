@@ -433,6 +433,14 @@ if (!isset($selectedCourse)) {
                                     <textarea id="contactConsulta" name="consulta" class="form-control" rows="4" placeholder="Escribe aquí los detalles de tu consulta sobre cursos, capacitaciones in-house o capacitación especializada..." required></textarea>
                                 </div>
 
+                                <!-- Consentimiento de Privacidad (NO marcado por defecto) -->
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="contactPrivacidad" name="privacidad" value="1" required>
+                                    <label class="form-check-label small text-muted" for="contactPrivacidad">
+                                        Acepto el tratamiento de mis datos personales para la atención de mi solicitud, conforme a la <a href="/terminos-y-condiciones#clausula-6" target="_blank" rel="noopener noreferrer" class="text-decoration-underline text-secondary">Política de Privacidad y Protección de Datos</a> de Quality Consulting Solutions.
+                                    </label>
+                                </div>
+
                                 <!-- Botón de Envío -->
                                 <div class="mt-4">
                                     <button type="submit" id="contactSubmitBtn" class="btn btn-lg w-100 py-3 fw-bold rounded-pill shadow btn-qcs-primary">

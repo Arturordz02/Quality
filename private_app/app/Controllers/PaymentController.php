@@ -552,12 +552,23 @@ class PaymentController extends Controller
                 $errors['paypal_order_id'] = 'El código o referencia de la transacción de PayPal es obligatorio.';
             }
 
+            // Validación de Consentimiento de Privacidad y Tratamiento de Datos Personales
+            $rawPrivacidad = $this->getPost('privacidad', null);
+            $privacyAccepted = ($rawPrivacidad === '1' || $rawPrivacidad === 1 || $rawPrivacidad === true || $rawPrivacidad === 'true' || $rawPrivacidad === 'on');
+            if (!$privacyAccepted) {
+                $errors['privacidad'] = 'Debe aceptar la política de protección de datos personales para continuar.';
+            }
+
             if (!empty($errors)) {
+                $errorMessage = (count($errors) === 1 && isset($errors['privacidad']))
+                    ? 'Debe aceptar la política de protección de datos personales para continuar.'
+                    : 'Existen campos vacíos o con formato inválido.';
                 if ($this->isAjax()) {
-                    $this->json(['success' => false, 'message' => 'Existen campos vacíos o con formato inválido.', 'errors' => $errors], 422);
+                    $this->json(['success' => false, 'message' => $errorMessage, 'errors' => $errors], 422);
                 }
                 $_SESSION['_qcs_form_errors'] = $errors;
                 $_SESSION['_qcs_form_old'] = $_POST;
+                $_SESSION['_qcs_payment_error'] = $errorMessage;
                 $this->redirect('/registro-primera-clase?curso=' . urlencode($cursoSlug));
                 return;
             }

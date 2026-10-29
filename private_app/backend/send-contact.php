@@ -92,8 +92,18 @@ if (empty($consulta) || mb_strlen($consulta, 'UTF-8') < 5) {
     $errors['consulta'] = 'Por favor, ingrese los detalles de su consulta (mínimo 5 caracteres).';
 }
 
+// Validación de Consentimiento de Privacidad y Tratamiento de Datos Personales
+$rawPrivacy = $inputData['privacidad'] ?? null;
+$privacyAccepted = ($rawPrivacy === '1' || $rawPrivacy === 1 || $rawPrivacy === true || $rawPrivacy === 'true' || $rawPrivacy === 'on');
+if (!$privacyAccepted) {
+    $errors['privacidad'] = 'Debe aceptar la política de protección de datos personales para continuar.';
+}
+
 if (!empty($errors)) {
-    Security::jsonError('Existen campos vacíos o con formato inválido.', 422, $errors);
+    $mainMessage = (count($errors) === 1 && isset($errors['privacidad']))
+        ? 'Debe aceptar la política de protección de datos personales para continuar.'
+        : 'Existen campos vacíos o con formato inválido.';
+    Security::jsonError($mainMessage, 422, $errors);
 }
 
 $cleanData = [

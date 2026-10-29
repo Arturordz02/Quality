@@ -44,6 +44,13 @@ if (isset($_SESSION)) {
      <?php else: ?>
       <p class="small text-white-50 mb-4"><i class="fab fa-paypal me-1" aria-hidden="true"></i>Pago verificado. Referencia terminada en <span class="font-monospace"><?= htmlspecialchars(substr($orderIdSafe, -6), ENT_QUOTES, 'UTF-8') ?></span>.</p>
      <?php endif; ?>
+     <div class="form-check mb-4">
+      <input class="form-check-input<?= isset($errors['privacidad']) ? ' is-invalid' : '' ?>" type="checkbox" id="registroPrivacidad" name="privacidad" value="1" required>
+      <label class="form-check-label small text-light text-opacity-85" for="registroPrivacidad">
+       Acepto el tratamiento de mis datos personales para la atención de mi solicitud, conforme a la <a href="/terminos-y-condiciones#clausula-6" target="_blank" rel="noopener noreferrer" class="text-decoration-underline text-warning">Política de Privacidad y Protección de Datos</a> de Quality Consulting Solutions.
+      </label>
+      <?php if (isset($errors['privacidad'])): ?><div class="invalid-feedback"><?= htmlspecialchars((string)$errors['privacidad'], ENT_QUOTES, 'UTF-8') ?></div><?php endif; ?>
+     </div>
      <button type="submit" class="btn btn-warning text-dark fw-bold w-100 py-3">Enviar mis datos</button>
     </form>
    <?php endif; ?>
