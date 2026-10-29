@@ -389,9 +389,8 @@ class BreadcrumbsService
         $rawTitle = (string)($context['pageTitle'] ?? $context['title'] ?? '');
 
         if ($rawTitle !== '') {
-            // Quitar sufijo institucional " | Quality Consulting Solutions"
-            $cleaned = preg_replace('/\s*\|\s*Quality Consulting Solutions.*$/i', '', $rawTitle);
-            $cleaned = preg_replace('/\s*–\s*Quality Consulting Solutions.*$/i', '', (string)$cleaned);
+            // Quitar sufijo institucional " | Quality Consulting Solutions", " - Quality Consulting Solutions" o " – Quality Consulting Solutions"
+            $cleaned = preg_replace('/\s*[-|–]\s*Quality Consulting Solutions.*$/i', '', $rawTitle);
             $cleaned = trim((string)$cleaned);
             if ($cleaned !== '') {
                 return $cleaned;

@@ -8523,7 +8523,8 @@ html, body {
 .course-card .course-badge {
     position: absolute;
     top: 1rem;
-    left: 1rem;
+    right: 1rem;
+    left: auto;
     z-index: 2;
     font-family: var(--font-heading);
     font-size: 0.75rem;
@@ -8692,6 +8693,7 @@ html, body {
     font-weight: 700;
     font-size: 0.84rem;
     padding: 0.5rem 1.15rem;
+    min-height: 44px;
     border-radius: 50px;
     transition: all 0.25s ease;
     cursor: pointer;
@@ -8714,8 +8716,44 @@ html, body {
     box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
 }
 
+.catalog-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Badge de contador numérico en filtros de categoría */
+.catalog-filter-btn .badge {
+    background-color: #f1f5f9;
+    color: var(--qcs-dark-slate, #1A1D20);
+    border: 1px solid #e2e8f0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25em 0.6em;
+    border-radius: 50rem;
+    transition: all 0.2s ease;
+}
+
+.catalog-filter-btn:hover .badge {
+    background-color: rgba(229, 168, 19, 0.2);
+    color: var(--qcs-black, #0F1113);
+    border-color: rgba(229, 168, 19, 0.4);
+}
+
+.catalog-filter-btn:focus-visible .badge {
+    background-color: #e2e8f0;
+    color: var(--qcs-black, #0F1113);
+}
+
 .catalog-filter-btn.active .badge {
     background-color: var(--accent-gold, #E5A813) !important;
+    color: #000000 !important;
+    border-color: transparent !important;
+}
+
+.catalog-filter-btn.active:hover .badge {
+    background-color: var(--qcs-yellow-hover, #C9910D) !important;
     color: #000000 !important;
 }
 
@@ -8772,39 +8810,45 @@ html, body {
     box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
 }
 
-/* Scroll horizontal de chips de categoría en pantallas móviles y tablets */
+/* Distribución táctil y multi-fila de chips de categoría en pantallas móviles y tablets */
 @media (max-width: 991.98px) {
     .catalog-filter-bar {
         display: flex !important;
-        flex-wrap: nowrap !important;
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 0.5rem;
-        padding-top: 0.2rem;
+        flex-wrap: wrap !important;
+        overflow-x: visible !important;
+        gap: 0.5rem !important;
         width: 100%;
-        scrollbar-width: thin;
-        scrollbar-color: rgba(229, 168, 19, 0.3) transparent;
-    }
-
-    .catalog-filter-bar::-webkit-scrollbar {
-        height: 4px;
-    }
-
-    .catalog-filter-bar::-webkit-scrollbar-thumb {
-        background: rgba(229, 168, 19, 0.35);
-        border-radius: 4px;
+        padding-bottom: 0.25rem;
+        padding-top: 0.2rem;
     }
 
     .catalog-filter-btn {
-        flex-shrink: 0 !important;
+        flex-shrink: 0;
+        min-height: 44px;
+        padding: 0.5rem 0.95rem;
+        font-size: 0.82rem;
     }
 
     .catalog-type-filter-wrap {
         width: 100%;
+        margin-top: 0.25rem;
     }
 
     .catalog-type-select {
         width: 100%;
+        min-height: 42px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .catalog-filter-bar {
+        gap: 0.45rem !important;
+    }
+
+    .catalog-filter-btn {
+        min-height: 44px;
+        padding: 0.45rem 0.8rem;
+        font-size: 0.8rem;
     }
 }
 
@@ -10259,15 +10303,19 @@ html, body {
     margin-top: var(--qcs-header-height);
     background: #1b1f22;
     border-bottom: 1px solid rgba(229, 168, 19, 0.25);
-    padding: 0.55rem 0;
+    padding: 0.6rem 0;
     font-size: 0.8125rem;
-    line-height: 1.4;
+    line-height: 1.5;
+    width: 100%;
+    overflow: hidden;
 }
 
 .qcs-breadcrumbs-container {
     max-width: 1380px;
     margin: 0 auto;
     padding: 0 1.5rem;
+    width: 100%;
+    overflow: hidden;
 }
 
 .qcs-breadcrumb {
@@ -10275,13 +10323,19 @@ html, body {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
+    overflow-y: hidden;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 0;
+    -ms-overflow-style: none;
+    padding: 0.25rem 0;
     margin: 0;
     list-style: none;
+    scroll-behavior: smooth;
+    overscroll-behavior-x: contain;
 }
 
 .qcs-breadcrumb::-webkit-scrollbar {
@@ -10291,9 +10345,16 @@ html, body {
 .qcs-breadcrumb .breadcrumb-item {
     display: inline-flex;
     align-items: center;
+    flex-shrink: 0;
     font-family: var(--font-heading, 'Montserrat', sans-serif);
     font-size: 0.8125rem;
     font-weight: 500;
+    line-height: 1.5;
+    padding: 2px 0;
+}
+
+.qcs-breadcrumb .breadcrumb-item:last-child {
+    padding-right: 1.5rem;
 }
 
 .qcs-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
@@ -10350,14 +10411,18 @@ html, body {
 @media (max-width: 991.98px) {
     .qcs-breadcrumbs-nav {
         margin-top: var(--qcs-header-height);
-        padding: 0.45rem 0;
+        padding: 0.5rem 0;
         font-size: 0.775rem;
+    }
+    .qcs-breadcrumb {
+        padding: 0.2rem 0;
     }
     .qcs-breadcrumb .breadcrumb-item {
         font-size: 0.775rem;
+        line-height: 1.5;
     }
     .qcs-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
-        padding: 0 0.35rem;
+        padding: 0 0.4rem;
     }
     .qcs-breadcrumbs-nav ~ main > section:first-child,
     .qcs-breadcrumbs-nav ~ main > section:first-of-type,
@@ -10375,6 +10440,9 @@ html, body {
 @media (max-width: 480px) {
     .qcs-breadcrumbs-container {
         padding: 0 1rem;
+    }
+    .qcs-breadcrumb .breadcrumb-item:last-child {
+        padding-right: 1rem;
     }
 }
 
