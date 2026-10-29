@@ -102,7 +102,11 @@ declare(strict_types=1);
 <main class="error-section">
     <div class="error-card">
         <div class="error-code">404</div>
+        <?php if (!empty($staticBuild)): ?>
         <h2 class="error-title">Página no encontrada</h2>
+        <?php else: ?>
+        <h1 class="error-title">Página no encontrada</h1>
+        <?php endif; ?>
         <p class="error-desc">
             Lo sentimos, la página que buscas no existe, ha sido movida o la dirección ingresada no es correcta. Te invitamos a retornar a nuestra página principal o contactarnos si necesitas asistencia.
         </p>

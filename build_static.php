@@ -115,6 +115,18 @@ foreach ($pageFiles as $pageFile) {
         $htmlTransformed = preg_replace('/href="\/"/', 'href="index.html"', $htmlTransformed);
         // 3. Normalizar rutas de assets a relativas para despliegues en subdirectorios de GitHub Pages
         $htmlTransformed = preg_replace('/(src|srcset)=([\"\'])\/img\//', '$1=$2img/', $htmlTransformed);
+        $htmlTransformed = preg_replace('/href=([\"\'])\/styles\.css/', 'href=$1styles.css', $htmlTransformed);
+        $htmlTransformed = preg_replace('/src=([\"\'])\/script\.js/', 'src=$1script.js', $htmlTransformed);
+        $htmlTransformed = preg_replace('/href=([\"\'])\/(favicon[^\'\"]*)/', 'href=$1$2', $htmlTransformed);
+        $htmlTransformed = preg_replace('/href=([\"\'])\/(apple-touch-icon[^\'\"]*)/', 'href=$1$2', $htmlTransformed);
+
+        // 4. En GitHub Pages, 404.html atiende errores en cualquier nivel de subruta (/Quality/nivel1/nivel2/...)
+        // Se inyecta <base href="/Quality/"> para que todos los assets y enlaces relativos resuelvan bajo /Quality/
+        if ($pageName === '404') {
+            if (!str_contains($htmlTransformed, '<base ')) {
+                $htmlTransformed = preg_replace('/<head>/i', "<head>\n    <base href=\"/Quality/\">", $htmlTransformed);
+            }
+        }
         
         file_put_contents($targetFile, $htmlTransformed);
 

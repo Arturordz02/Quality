@@ -21,8 +21,8 @@ $year = $currentYear ?? date('Y');
             <div class="footer-col brand-col">
                 <div class="logo-badge d-flex align-items-center mb-3">
                     <picture>
-                        <source srcset="img/Logo.webp" type="image/webp">
-                        <img src="img/Logo.png" alt="Quality Consulting Solutions Logo" width="44" height="44" class="d-inline-block align-text-top rounded-2 me-2 brand-logo animate__animated animate__bounceIn" style="object-fit: cover; width: 44px; height: 44px;">
+                        <source srcset="/img/Logo.webp" type="image/webp">
+                        <img src="/img/Logo.png" alt="Quality Consulting Solutions Logo" width="44" height="44" class="d-inline-block align-text-top rounded-2 me-2 brand-logo animate__animated animate__bounceIn" style="object-fit: cover; width: 44px; height: 44px;">
                     </picture>
                     <div class="logo-text-wrap">
                         <span class="logo-title text-light">QUALITY CONSULTING</span>
