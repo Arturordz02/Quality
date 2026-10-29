@@ -55,6 +55,9 @@
     Header set X-Frame-Options "SAMEORIGIN"
     Header set X-XSS-Protection "1; mode=block"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # HSTS conservador (1 día = 86400s) solo en conexiones seguras HTTPS (directas o proxy SSL)
+    Header always set Strict-Transport-Security "max-age=86400" "expr=%{HTTPS} == 'on' || %{HTTP:X-Forwarded-Proto} == 'https'"
     
     <FilesMatch "\.(ico|jpe?g|png|gif|webp|svg|css|js)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
@@ -116,11 +119,24 @@ ServerSignature Off
 # 6. PÁGINA 404 DE CONTINGENCIA
 ErrorDocument 404 /404.html
 
-# 7. REDIRECCIÓN HTTPS (OPCIONAL PARA ACTIVAR EN PRODUCCIÓN)
+# 7. REDIRECCIÓN HTTPS Y HOST CANÓNICO (APEX)
 <IfModule mod_rewrite.c>
-    # RewriteCond %{HTTPS} off
-    # RewriteCond %{HTTP:X-Forwarded-Proto} !https
-    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    RewriteEngine On
+
+    # 7.1 Exclusión explícita para renovación SSL Let's Encrypt / AutoSSL
+    RewriteCond %{REQUEST_URI} ^/\.well-known/acme-challenge/ [NC]
+    RewriteRule ^ - [L]
+
+    # 7.2 Redirección permanente (301) de tráfico HTTP no seguro hacia HTTPS canónico (apex)
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+    RewriteCond %{HTTP_HOST} ^(www\.)?quality-consulting\.org(:[0-9]+)?$ [NC]
+    RewriteRule ^ https://quality-consulting.org%{REQUEST_URI} [R=301,L,NE]
+
+    # 7.3 Redirección permanente (301) de host www hacia HTTPS canónico (apex)
+    RewriteCond %{HTTP_HOST} ^www\.quality-consulting\.org(:[0-9]+)?$ [NC]
+    RewriteRule ^ https://quality-consulting.org%{REQUEST_URI} [R=301,L,NE]
+
 </IfModule>
 
 # 8. ENRUTAMIENTO MVC Y NORMALIZACIÓN SEO 301
@@ -130,7 +146,7 @@ DirectoryIndex index.php
     RewriteEngine On
 
     # 8.1 Exclusión de proxies de backend autorizados y assets estáticos
-    RewriteCond %{REQUEST_URI} ^/(backend|img|css|js|fonts|assets)/ [NC]
+    RewriteCond %{REQUEST_URI} ^/(backend|img|css|js|fonts|assets|\.well-known)/ [NC]
     RewriteRule ^ - [L]
 
     # 8.2 Normalización SEO 301: index.html a raíz limpia /

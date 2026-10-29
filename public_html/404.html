@@ -26,7 +26,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Hoja de estilos principal del sitio -->
-    <link rel="stylesheet" href="styles.css?v=3.2">
+    <link rel="stylesheet" href="/styles.css?v=3.6">
 
     <style>
         .error-section {
@@ -127,9 +127,12 @@
     <div class="header-top">
         <div class="header-container top-container">
             <div class="header-logo">
-                <a href="index.html" class="logo-link" aria-label="Quality Consulting Solutions Inicio">
+                <a href="/" class="logo-link" aria-label="Quality Consulting Solutions Inicio">
                     <div class="logo-badge d-flex align-items-center">
-                        <img src="img/Logo.png" alt="Quality Consulting Solutions Logo" width="44" height="44" class="d-inline-block align-text-top rounded-2 me-2 brand-logo" style="object-fit: cover; width: 44px; height: 44px;">
+                        <picture>
+                            <source srcset="/img/Logo.webp" type="image/webp">
+                            <img src="/img/Logo.png" alt="Quality Consulting Solutions Logo" width="44" height="44" class="d-inline-block align-text-top rounded-2 me-2 brand-logo" style="object-fit: cover; width: 44px; height: 44px;">
+                        </picture>
                         <div class="logo-text-wrap">
                             <span class="logo-title">QUALITY CONSULTING</span>
                             <span class="logo-sub">SOLUTIONS</span>
@@ -175,42 +178,42 @@
 
                     <!-- 1. NOSOTROS -->
                     <li class="nav-item">
-                        <a href="nosotros.html" class="nav-link">NOSOTROS</a>
+                        <a href="/nosotros" class="nav-link">NOSOTROS</a>
                     </li>
 
                     <!-- 2. IN-HOUSE -->
                     <li class="nav-item">
-                        <a href="in-house.html" class="nav-link">IN-HOUSE</a>
+                        <a href="/in-house" class="nav-link">IN-HOUSE</a>
                     </li>
 
                     <!-- 3. CAPACITACIÓN (Desplegable) -->
                     <li class="nav-item dropdown">
-                        <a href="capacitacion.html" class="nav-link dropdown-toggle" id="dropdownCapacitacion" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" aria-haspopup="true">
+                        <a href="/capacitacion" class="nav-link dropdown-toggle" id="dropdownCapacitacion" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" aria-haspopup="true">
                             CAPACITACIÓN <i class="fa-solid fa-chevron-down arrow-icon" aria-hidden="true"></i>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownCapacitacion">
-                            <li><a href="capacitacion.html" class="dropdown-item">Ver catálogo de cursos</a></li>
-                            <li><a href="capacitacion-calidad.html" class="dropdown-item">Calidad</a></li>
-                            <li><a href="capacitacion-riesgos.html" class="dropdown-item">Riesgos</a></li>
-                            <li><a href="capacitacion-contratos.html" class="dropdown-item">Gestión de Contratos</a></li>
-                            <li><a href="capacitacion-gestion-de-proyectos.html" class="dropdown-item">Gestión de Proyectos</a></li>
-                            <li><a href="capacitacion-oficina-tecnica.html" class="dropdown-item">Oficina Técnica</a></li>
+                            <li><a href="/capacitacion" class="dropdown-item">Ver catálogo de cursos</a></li>
+                            <li><a href="/capacitacion-calidad" class="dropdown-item">Calidad</a></li>
+                            <li><a href="/capacitacion-riesgos" class="dropdown-item">Riesgos</a></li>
+                            <li><a href="/capacitacion-contratos" class="dropdown-item">Gestión de Contratos</a></li>
+                            <li><a href="/capacitacion-gestion-de-proyectos" class="dropdown-item">Gestión de Proyectos</a></li>
+                            <li><a href="/capacitacion-oficina-tecnica" class="dropdown-item">Oficina Técnica</a></li>
                         </ul>
                     </li>
 
                     <!-- 4. CLIENTES -->
                     <li class="nav-item">
-                        <a href="clientes.html" class="nav-link">CLIENTES</a>
+                        <a href="/clientes" class="nav-link">CLIENTES</a>
                     </li>
 
                     <!-- 5. MEDIOS Y PODCASTS -->
                     <li class="nav-item">
-                        <a href="medios.html" class="nav-link">MEDIOS Y PODCASTS</a>
+                        <a href="/medios" class="nav-link">MEDIOS Y PODCASTS</a>
                     </li>
 
                     <!-- 6. CONTACTO -->
                     <li class="nav-item">
-                        <a href="contacto.html" class="nav-link">CONTACTO</a>
+                        <a href="/contacto" class="nav-link">CONTACTO</a>
                     </li>
 
                     <!-- 7. MÁS (Desplegable) -->
@@ -219,10 +222,10 @@
                             MÁS <i class="fa-solid fa-chevron-down arrow-icon" aria-hidden="true"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMas">
-                            <li><a href="consultoria.html" class="dropdown-item">Consultoría</a></li>
-                            <li><a href="investigacion.html" class="dropdown-item">Investigación</a></li>
-                            <li><a href="encuestas-proyectos.html" class="dropdown-item">Encuestas de Proyectos</a></li>
-                            <li><a href="noticias.html" class="dropdown-item">Noticias</a></li>
+                            <li><a href="/consultoria" class="dropdown-item">Consultoría</a></li>
+                            <li><a href="/investigacion" class="dropdown-item">Investigación</a></li>
+                            <li><a href="/encuestas-proyectos" class="dropdown-item">Encuestas de Proyectos</a></li>
+                            <li><a href="/noticias" class="dropdown-item">Noticias</a></li>
                         </ul>
                     </li>
 
@@ -239,7 +242,7 @@
     <nav aria-label="Ruta de navegación" class="qcs-breadcrumbs-nav">
         <div class="header-container qcs-breadcrumbs-container">
             <ol class="breadcrumb qcs-breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="index.html" class="qcs-breadcrumb-link">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="/" class="qcs-breadcrumb-link">Inicio</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><span class="qcs-breadcrumb-current">Página no encontrada</span></li>
             </ol>
         </div>
@@ -254,10 +257,10 @@
                 Lo sentimos, la página que buscas no existe, ha sido movida o la dirección ingresada no es correcta. Te invitamos a retornar a nuestra página principal o contactarnos si necesitas asistencia.
             </p>
             <div class="error-actions">
-                <a href="index.html" class="btn-gold">
+                <a href="/" class="btn-gold">
                     <i class="fa-solid fa-house me-2"></i> Volver al Inicio
                 </a>
-                <a href="contacto.html" class="btn-outline-light-custom">
+                <a href="/contacto" class="btn-outline-light-custom">
                     <i class="fa-solid fa-envelope me-2"></i> Atención al Cliente
                 </a>
             </div>
@@ -268,22 +271,25 @@
     <footer class="footer bg-dark text-white py-4 mt-auto">
         <div class="container text-center">
             <div class="mb-3">
-                <img src="img/Logo.png" alt="Quality Consulting Solutions Logo" width="36" height="36" class="rounded-2 me-2" style="object-fit: cover; width: 36px; height: 36px;">
+                <picture>
+                    <source srcset="/img/Logo.webp" type="image/webp">
+                    <img src="/img/Logo.png" alt="Quality Consulting Solutions Logo" width="36" height="36" class="rounded-2 me-2" style="object-fit: cover; width: 36px; height: 36px;">
+                </picture>
                 <span class="fw-bold">QUALITY CONSULTING SOLUTIONS</span>
             </div>
             <p class="small text-muted mb-2">
                 © 2026 Quality Consulting Solutions. Todos los derechos reservados.
             </p>
             <div class="small">
-                <a href="terminos-y-condiciones.html" class="text-decoration-none text-muted me-3">Términos y Condiciones</a>
-                <a href="libro-de-reclamaciones.html" class="text-decoration-none text-muted">Libro de Reclamaciones</a>
+                <a href="/terminos-y-condiciones" class="text-decoration-none text-muted me-3">Términos y Condiciones</a>
+                <a href="/libro-de-reclamaciones" class="text-decoration-none text-muted">Libro de Reclamaciones</a>
             </div>
         </div>
     </footer>
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script src="/script.js?v=3.2"></script>
 </body>
 </html>
 
