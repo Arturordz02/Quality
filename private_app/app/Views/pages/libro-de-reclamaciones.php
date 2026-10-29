@@ -168,6 +168,13 @@ declare(strict_types=1);
                                 <textarea id="claimDetalle" name="detalle" class="form-control" rows="5" placeholder="Describa con claridad y precisión los hechos ocurridos..." required></textarea>
                             </div>
 
+                            <!-- Leyenda Informativa de Privacidad (No bloqueante) -->
+                            <div class="col-12 mt-3 text-start">
+                                <p class="small text-muted mb-0">
+                                    Los datos proporcionados serán tratados para la atención y gestión de su reclamo o queja. Puede consultar la información sobre <a href="/terminos-y-condiciones#clausula-6" target="_blank" rel="noopener noreferrer" class="text-decoration-underline text-secondary">protección de datos personales y el ejercicio de sus derechos ARCO</a>.
+                                </p>
+                            </div>
+
                             <div class="col-12 text-end mt-4">
                                 <button type="submit" id="claimSubmitBtn" class="btn btn-qcs-primary btn-lg fw-bold rounded-pill px-5 py-3 shadow">
                                     <span class="btn-text"><i class="fas fa-paper-plane me-2"></i> ENVIAR HOJA DE RECLAMACIÓN</span>

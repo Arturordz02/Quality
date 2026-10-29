@@ -54,7 +54,7 @@ $showFloat = $showWhatsAppFloat ?? true;
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
     
     <!-- Hoja de estilos principal del sitio -->
-    <link rel="stylesheet" href="/styles.css?v=3.7">
+    <link rel="stylesheet" href="/styles.css?v=3.8">
 
     <!-- Estilos específicos de cada vista si se requieren -->
     <?= $extraStyles ?? '' ?>
@@ -90,7 +90,7 @@ $showFloat = $showWhatsAppFloat ?? true;
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- Script Principal del sitio -->
-    <script src="/script.js?v=3.2"></script>
+    <script src="/script.js?v=3.3"></script>
 
     <!-- AOS init -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
