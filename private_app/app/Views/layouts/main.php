@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 $pageTitle = $title ?? 'Quality Consulting Solutions | Capacitación Especializada en PMO y Calidad';
 $description = $metaDescription ?? 'Capacitaciones y cursos especializados en gestión de proyectos, PMO y calidad para profesionales del sector construcción.';
-$canonicalUrl = $canonical ?? '';
+$canonicalUrl = $canonical ?? $canonicalUrl ?? '';
 $activePage = $activePage ?? '';
 $showFloat = $showWhatsAppFloat ?? true;
 ?>

@@ -153,11 +153,11 @@ DirectoryIndex index.php
     RewriteCond %{THE_REQUEST} /index\.html[\s?] [NC]
     RewriteRule ^index\.html$ / [R=301,L,NE,QSD]
 
-    # 8.3 Normalización SEO 301: Redirigir antiguas URLs .html hacia sus rutas limpias MVC
+    # 8.3 Normalización SEO 301: Redirigir de forma general cualquier URL .html hacia su ruta limpia MVC
     RewriteCond %{THE_REQUEST} \.html[\s?] [NC]
     RewriteCond %{REQUEST_URI} !index\.html$ [NC]
     RewriteCond %{REQUEST_URI} !404\.html$ [NC]
-    RewriteRule ^(bim-revit-architecture|calidad-y-pmi|capacitacion|clientes|consultoria|contacto|contratos-estado|contratos|costos|cronograma-forense|encuestas-proyectos|evaluacion-habilidades|fidic|gerencia-de-calidad|gestion-de-la-calidad|gestion-de-pmo|gestion-de-riesgos|gruas-torre|headhunting|herramientas|homologaciones|investigacion|iso-9001|lean-last-planner|lego-serious-play|libro-de-reclamaciones|medios|nec|nosotros|noticias|oficina-tecnica|permisologia|pmo|press|proyectos-pmi|riesgo-del-plazo|riesgos-cadena-produccion|riesgos-pmi|riesgos-tecnicos|sindrome-del-90|terminos-y-condiciones|universidad-corporativa|valor-ganado)\.html$ /$1 [R=301,L,QSA]
+    RewriteRule ^(.+)\.html$ /$1 [R=301,L,NE,QSA]
 
     # 8.4 Enrutamiento raíz hacia Front Controller
     RewriteRule ^$ index.php [L]
