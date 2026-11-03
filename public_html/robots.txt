@@ -5,6 +5,8 @@
 User-agent: *
 Allow: /
 Disallow: /backend/
+Disallow: /api/
+Disallow: /mvc-health
 
 # Ubicación canónica del mapa del sitio XML
 Sitemap: https://quality-consulting.org/sitemap.xml

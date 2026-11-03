@@ -98,23 +98,63 @@ class Router
 
         // Normalización canónica SEO: Si la ruta solicitada tiene barra final (ej: /in-house/)
         // y no es la raíz (/), redirigir 301 a la versión limpia para garantizar resolución correcta de assets.
-        if ($method === 'GET' && strlen($resolvedUri) > 1 && str_ends_with($resolvedUri, '/') && !headers_sent()) {
+        if (($method === 'GET' || $method === 'HEAD') && strlen($resolvedUri) > 1 && str_ends_with($resolvedUri, '/') && !headers_sent()) {
             $queryString = !empty($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '';
             header('Location: ' . $normalizedUri . $queryString, true, 301);
             exit;
         }
 
+        // Normalización canónica SEO: Si la ruta solicitada incluye .html (ej: /in-house.html o /index.html)
+        // y no es /404.html, redirigir 301 a la URL limpia oficial MVC (defensa en profundidad frente a Apache/CLI).
+        if (($method === 'GET' || $method === 'HEAD') && str_ends_with(strtolower($resolvedUri), '.html') && strtolower($resolvedUri) !== '/404.html' && !headers_sent()) {
+            $targetUri = (strtolower($normalizedUri) === '/index') ? '/' : $normalizedUri;
+            $queryString = !empty($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '';
+            header('Location: ' . $targetUri . $queryString, true, 301);
+            exit;
+        }
+
         // 1. Buscar coincidencia exacta
-        if (isset($this->routes[$method][$normalizedUri])) {
-            return $this->executeHandler($this->routes[$method][$normalizedUri]);
+        $handler = $this->routes[$method][$normalizedUri] ?? null;
+
+        // Soporte estándar HTTP para peticiones HEAD:
+        // Si el método es HEAD y no existe handler HEAD explícito, resolver utilizando la misma ruta registrada para GET.
+        $isHeadMethod = ($method === 'HEAD');
+        if ($isHeadMethod && $handler === null && isset($this->routes['GET'][$normalizedUri])) {
+            $handler = $this->routes['GET'][$normalizedUri];
+        }
+
+        if ($handler !== null) {
+            if ($isHeadMethod) {
+                // Suprimir el cuerpo de respuesta garantizando que no se envíe al cliente,
+                // mientras se ejecutan los controladores para que establezcan sus cabeceras HTTP y código de estado.
+                ob_start();
+                try {
+                    $this->executeHandler($handler);
+                } finally {
+                    ob_end_clean();
+                }
+                return null;
+            }
+
+            return $this->executeHandler($handler);
         }
 
         // 2. Fallback: Manejo de 404 (No Encontrado)
         if ($this->notFoundHandler !== null) {
+            if ($isHeadMethod) {
+                ob_start();
+                try {
+                    call_user_func($this->notFoundHandler, $normalizedUri);
+                } finally {
+                    ob_end_clean();
+                }
+                return null;
+            }
+
             return call_user_func($this->notFoundHandler, $normalizedUri);
         }
 
-        return $this->defaultNotFound($normalizedUri);
+        return $this->defaultNotFound($normalizedUri, $isHeadMethod);
     }
 
     /**
@@ -197,9 +237,12 @@ class Router
     /**
      * Respuesta por defecto en caso de ruta inexistente.
      */
-    protected function defaultNotFound(string $uri): void
+    protected function defaultNotFound(string $uri, bool $isHead = false): void
     {
         http_response_code(404);
+        if ($isHead) {
+            return;
+        }
 
         // Si existe un archivo 404.html estático en el proyecto, mostrarlo
         $custom404 = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . '404.html';

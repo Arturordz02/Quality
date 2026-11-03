@@ -308,6 +308,7 @@ class PaymentController extends Controller
         $this->render('pages/pagar-primera-clase', [
             'title' => 'Pago de primera clase | Quality Consulting Solutions',
             'metaDescription' => 'Pago seguro de la primera clase del curso por USD 10.',
+            'robots'          => 'noindex, nofollow',
             'activePage' => 'capacitacion',
             'courseSlug' => $courseSlug,
             'courseTitle' => (string)$course['title'],
@@ -361,6 +362,7 @@ class PaymentController extends Controller
         $this->render('pages/registro-primera-clase', [
             'title'               => 'Pago y Registro – Primera Clase | Quality Consulting Solutions',
             'metaDescription'     => 'Verificación de pago y formulario oficial de registro para la primera clase (USD 10).',
+            'robots'              => 'noindex, nofollow',
             'activePage'          => 'capacitacion',
             'courseSlug'          => $courseSlug,
             'courseTitle'         => $courseTitle,
@@ -735,6 +737,7 @@ class PaymentController extends Controller
         $this->render('pages/registro-exitoso', [
             'title'           => '¡Registro Confirmado! Primera Clase – Quality Consulting Solutions',
             'metaDescription' => 'Confirmación oficial del registro y compra de la primera clase del curso por USD 10.',
+            'robots'          => 'noindex, nofollow',
             'activePage'      => 'capacitacion',
             'summary'         => $summary,
         ]);
@@ -755,6 +758,7 @@ class PaymentController extends Controller
         $this->render('pages/pago-cancelado', [
             'title'           => 'Pago Cancelado o No Completado | Quality Consulting Solutions',
             'metaDescription' => 'El pago de la primera clase no fue completado o fue cancelado en PayPal.',
+            'robots'          => 'noindex, nofollow',
             'activePage'      => 'capacitacion',
             'course'          => $course,
             'courseSlug'      => $courseSlug,

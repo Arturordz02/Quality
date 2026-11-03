@@ -87,12 +87,16 @@ foreach ($pageFiles as $pageFile) {
     // Variables por defecto para cada página
     $title = ucwords(str_replace('-', ' ', $pageName)) . ' | Quality Consulting Solutions';
     $data = [
-        'title'        => $title,
-        'canonicalUrl' => 'https://quality-consulting.org/' . ($pageName === 'home' ? '' : $pageName),
-        'staticBuild'   => true,
-        'pageName'     => $pageName,
-        'activePage'   => ($pageName === 'home') ? 'home' : $pageName,
+        'title'       => $title,
+        'canonical'   => 'https://quality-consulting.org/' . ($pageName === 'home' ? '' : $pageName),
+        'staticBuild' => true,
+        'pageName'    => $pageName,
+        'activePage'  => ($pageName === 'home') ? 'home' : $pageName,
     ];
+
+    if (in_array($pageName, ['pagar-primera-clase', 'registro-primera-clase', 'registro-exitoso', 'pago-cancelado'], true)) {
+        $data['robots'] = 'noindex, nofollow';
+    }
 
     if (in_array($pageName, ['pagar-primera-clase', 'registro-primera-clase'], true)) {
         $data['courseCatalog'] = \App\Services\CourseCatalog::all();
