@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!floatingWidget) {
         const widgetHTML = `
         <div class="whatsapp-floating-widget" id="whatsappFloatingWidget">
-            <div class="whatsapp-floating-menu" id="whatsappFloatingMenu" aria-hidden="true">
+            <div class="whatsapp-floating-menu" id="whatsappFloatingMenu" role="dialog" aria-modal="false" aria-label="Menú de atención por WhatsApp" aria-hidden="true">
                 <div class="whatsapp-menu-header">
                     <div class="d-flex align-items-center justify-content-between mb-1">
                         <div class="d-flex align-items-center gap-2">
@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </a>
                 </div>
             </div>
-            <button class="whatsapp-floating-btn" id="whatsappFloatingBtn" aria-label="Contactar por WhatsApp" aria-expanded="false">
+            <button class="whatsapp-floating-btn" id="whatsappFloatingBtn" aria-label="Contactar por WhatsApp" aria-expanded="false" aria-haspopup="dialog" aria-controls="whatsappFloatingMenu">
                 <i class="fab fa-whatsapp"></i>
                 <span class="whatsapp-floating-pulse"></span>
             </button>
@@ -240,11 +240,26 @@ document.addEventListener('DOMContentLoaded', () => {
             if (shouldOpen) {
                 floatingWidget.classList.add('is-open');
                 floatingBtn.setAttribute('aria-expanded', 'true');
-                if (floatingMenu) floatingMenu.setAttribute('aria-hidden', 'false');
+                if (floatingMenu) {
+                    floatingMenu.setAttribute('aria-hidden', 'false');
+                    floatingMenu.setAttribute('aria-modal', 'true');
+                }
+                // Al abrir, mover el foco al botón de cerrar o al primer país
+                if (closeBtn) {
+                    setTimeout(() => closeBtn.focus(), 50);
+                }
             } else {
+                const wasOpen = floatingWidget.classList.contains('is-open');
                 floatingWidget.classList.remove('is-open');
                 floatingBtn.setAttribute('aria-expanded', 'false');
-                if (floatingMenu) floatingMenu.setAttribute('aria-hidden', 'true');
+                if (floatingMenu) {
+                    floatingMenu.setAttribute('aria-hidden', 'true');
+                    floatingMenu.setAttribute('aria-modal', 'false');
+                }
+                // Al cerrar, devolver el foco al botón flotante si estaba abierto
+                if (wasOpen && floatingBtn) {
+                    floatingBtn.focus();
+                }
             }
         };
 
@@ -252,6 +267,15 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             e.stopPropagation();
             toggleWidget();
+        });
+
+        // Soporte de apertura mediante teclado (Enter y Espacio)
+        floatingBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleWidget();
+            }
         });
 
         if (closeBtn) {
@@ -265,6 +289,48 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('click', (e) => {
             if (floatingWidget.classList.contains('is-open') && !floatingWidget.contains(e.target)) {
                 toggleWidget(false);
+            }
+        });
+
+        // Cierre mediante tecla Escape y trampa de foco circular exclusiva en menú flotante
+        document.addEventListener('keydown', (e) => {
+            if (!floatingWidget.classList.contains('is-open')) return;
+
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                toggleWidget(false);
+                return;
+            }
+
+            if (e.key === 'Tab') {
+                if (!floatingMenu) return;
+
+                // El ciclo de foco recorre EXCLUSIVAMENTE el botón de cierre y los enlaces internos de países
+                const focusable = Array.from(floatingMenu.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+                    .filter(el => !el.disabled && el.offsetParent !== null);
+                if (!focusable.length) return;
+
+                const firstEl = focusable[0];
+                const lastEl = focusable[focusable.length - 1];
+
+                // Si el foco estuviese fuera del menú flotante, reorientarlo hacia dentro
+                if (!floatingMenu.contains(document.activeElement)) {
+                    e.preventDefault();
+                    (e.shiftKey ? lastEl : firstEl).focus();
+                    return;
+                }
+
+                if (e.shiftKey) {
+                    if (document.activeElement === firstEl) {
+                        e.preventDefault();
+                        lastEl.focus();
+                    }
+                } else {
+                    if (document.activeElement === lastEl) {
+                        e.preventDefault();
+                        firstEl.focus();
+                    }
+                }
             }
         });
 
@@ -730,18 +796,35 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = 'hidden';
         });
 
-        document.addEventListener('hidden.bs.modal', () => {
+        document.addEventListener('hidden.bs.modal', (event) => {
             if (!document.querySelector('.modal.show')) {
                 document.documentElement.classList.remove('modal-open');
                 document.body.classList.remove('modal-open');
                 document.documentElement.style.overflow = '';
                 document.body.style.overflow = '';
             }
+
+            // Restaurar foco al botón o enlace de origen si fue #modalSolicitarInfo
+            if (event.target && event.target.id === 'modalSolicitarInfo') {
+                if (modalTriggerElement && typeof modalTriggerElement.focus === 'function' && document.body.contains(modalTriggerElement)) {
+                    const isHidden = modalTriggerElement.offsetParent === null && modalTriggerElement.getClientRects().length === 0;
+                    const isDisabled = modalTriggerElement.disabled || modalTriggerElement.getAttribute('aria-disabled') === 'true';
+                    if (!isHidden && !isDisabled) {
+                        try {
+                            modalTriggerElement.focus();
+                        } catch (_) {}
+                    }
+                }
+                modalTriggerElement = null;
+            }
         });
 
-        // Al abrir el modal, capturar el servicio/curso del botón activador
+        let modalTriggerElement = null;
+
+        // Al abrir el modal, capturar el servicio/curso y el disparador original
         infoModalEl.addEventListener('show.bs.modal', (event) => {
             const button = event.relatedTarget;
+            modalTriggerElement = button || document.activeElement;
             let serviceName = '';
 
             if (button) {

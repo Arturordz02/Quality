@@ -86,9 +86,9 @@ $isMasActive = in_array($currentPage, [
 
                 <!-- 7. MÁS (Desplegable) -->
                 <li class="nav-item dropdown dropdown-more">
-                    <a href="javascript:void(0)" class="nav-link dropdown-toggle<?= $isMasActive ? ' active' : '' ?>" id="dropdownMas" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" aria-haspopup="true">
+                    <button type="button" class="nav-link dropdown-toggle<?= $isMasActive ? ' active' : '' ?>" id="dropdownMas" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" aria-haspopup="true">
                         MÁS <i class="fa-solid fa-chevron-down arrow-icon" aria-hidden="true"></i>
-                    </a>
+                    </button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMas">
                         <li><a href="/consultoria" class="dropdown-item<?= $currentPage === 'consultoria' ? ' active' : '' ?>"<?= $currentPage === 'consultoria' ? ' aria-current="page"' : '' ?>>Consultoría</a></li>
                         <li><a href="/investigacion" class="dropdown-item<?= $currentPage === 'investigacion' ? ' active' : '' ?>"<?= $currentPage === 'investigacion' ? ' aria-current="page"' : '' ?>>Investigación</a></li>

@@ -26,7 +26,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Hoja de estilos principal del sitio -->
-    <link rel="stylesheet" href="/styles.css?v=3.8">
+    <link rel="stylesheet" href="/styles.css?v=3.9">
 
     <style>
         .error-section {
@@ -121,6 +121,9 @@
     </style>
 </head>
 <body>
+
+    <!-- Enlace accesible de salto al contenido principal (WCAG 2.4.1) -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
 <!-- Header Principal -->
 <header class="main-header" id="mainHeader">
@@ -218,9 +221,9 @@
 
                     <!-- 7. MÁS (Desplegable) -->
                     <li class="nav-item dropdown dropdown-more">
-                        <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="dropdownMas" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" aria-haspopup="true">
+                        <button type="button" class="nav-link dropdown-toggle" id="dropdownMas" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" aria-haspopup="true">
                             MÁS <i class="fa-solid fa-chevron-down arrow-icon" aria-hidden="true"></i>
-                        </a>
+                        </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMas">
                             <li><a href="/consultoria" class="dropdown-item">Consultoría</a></li>
                             <li><a href="/investigacion" class="dropdown-item">Investigación</a></li>
@@ -249,7 +252,7 @@
     </nav>
 
     <!-- Sección de Error 404 -->
-    <main class="error-section">
+    <main class="error-section" id="main-content" tabindex="-1">
         <div class="error-card">
             <div class="error-code">404</div>
             <h2 class="error-title">Página no encontrada</h2>
@@ -289,7 +292,7 @@
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/script.js?v=3.3"></script>
+    <script src="/script.js?v=3.4"></script>
 </body>
 </html>
 

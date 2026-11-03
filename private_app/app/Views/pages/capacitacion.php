@@ -364,7 +364,7 @@ $typesSummary = \App\Services\CoursesCatalog::getTypesSummary();
 
                     <!-- Fila 3: Contador debajo de los filtros y botón Restablecer búsqueda -->
                     <div class="catalog-status-bar d-flex justify-content-between align-items-center flex-wrap gap-2 pt-2 border-top">
-                        <div id="catalogResultsCount" class="text-muted small fw-semibold">
+                        <div id="catalogResultsCount" class="text-muted small fw-semibold" aria-live="polite" aria-atomic="true">
                             Mostrando <strong><?= min(12, $totalCourses) ?></strong> de <?= $totalCourses ?> capacitaciones
                         </div>
                         <button type="button" id="catalogResetFiltersBtn" class="btn btn-link btn-sm text-decoration-none text-danger p-0 d-none fw-semibold">

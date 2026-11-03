@@ -59,7 +59,7 @@ $areaBackTitle = $course['area_back_title']
 $heroCardCount = count($heroCards);
 $heroColClass  = $heroCardCount === 3 ? 'col-12 col-md-4' : 'col-12 col-sm-6 col-lg-3';
 ?>
-<main class="qcs-course-detail" id="main-content">
+<main class="qcs-course-detail">
 
     <!-- ==========================================================================
          1. HERO BANNER (COMPOSICIÓN DE REFERENCIA ISO 9001)

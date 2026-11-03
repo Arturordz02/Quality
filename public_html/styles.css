@@ -3238,7 +3238,7 @@ img {
     font-size: 0.88rem;
     line-height: 1.6;
     margin-top: 1.25rem;
-    color: #94a3b8;
+    color: #cbd5e1;
 }
 
 .footer-heading {
@@ -3322,7 +3322,7 @@ img {
     padding-top: 1.8rem;
     text-align: center;
     font-size: 0.82rem;
-    color: #64748b;
+    color: #cbd5e1;
 }
 
 .footer-bottom a {
@@ -10972,4 +10972,138 @@ html, body {
         font-size: 0.8rem;
         line-height: 1.4;
     }
+}
+
+/* ==========================================================================
+   13. MEJORAS DE ACCESIBILIDAD WCAG 2.1 / 2.2 AA (TECLADO, FOCO Y CONTRASTE)
+   ========================================================================== */
+
+/* A. Enlace 'Saltar al contenido principal' (Skip to main content) */
+.skip-link {
+    position: absolute;
+    top: -999px;
+    left: 1rem;
+    background: #0F1113;
+    color: #E5A813;
+    padding: 0.75rem 1.25rem;
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: 2px solid #E5A813;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    z-index: 99999;
+    text-decoration: none;
+    transition: top 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+    top: 0;
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+/* Destino del skip link: suprime el contorno exclusivamente en foco programático tabindex="-1" sin alterar controles internos */
+#main-content:focus:not(:focus-visible),
+main#main-content:focus:not(:focus-visible) {
+    outline: none !important;
+}
+
+#main-content {
+    scroll-margin-top: var(--qcs-header-height, 85px);
+}
+
+/* Reset nativo para botones dentro de navegación */
+button.nav-link {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    line-height: inherit;
+    text-align: inherit;
+    font-family: inherit;
+}
+
+/* B. Indicador Global de Foco Visible Accesible (WCAG 2.1 AA - 1.4.11) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid #0F3460 !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #0F3460 !important;
+}
+
+/* Foco visible adaptado en secciones y contenedores oscuros */
+.main-footer a:focus-visible,
+.main-footer button:focus-visible,
+.bg-dark a:focus-visible,
+.bg-dark button:focus-visible,
+.qcs-pay-page a:focus-visible,
+.qcs-pay-page button:focus-visible,
+.qcs-register-page a:focus-visible,
+.qcs-register-page button:focus-visible,
+.error-section a:focus-visible,
+.error-section button:focus-visible,
+.hero-section a:focus-visible,
+.hero-section button:focus-visible {
+    outline: 2px solid #FFFFFF !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 2px #0F1113, 0 0 0 4px #E5A813 !important;
+}
+
+/* Controles de formulario con foco accesible y contraste WCAG */
+.form-control:focus-visible,
+.form-select:focus-visible,
+textarea:focus-visible {
+    border-color: #0F3460 !important;
+    outline: 2px solid #0F3460 !important;
+    outline-offset: 1px !important;
+    box-shadow: 0 0 0 3px rgba(15, 52, 96, 0.25) !important;
+}
+
+/* C. Contraste de Placeholders WCAG AA (>= 4.5:1 sobre fondo blanco) */
+::placeholder {
+    color: #596780 !important;
+    opacity: 1 !important;
+}
+
+::-webkit-input-placeholder {
+    color: #596780 !important;
+    opacity: 1 !important;
+}
+
+::-moz-placeholder {
+    color: #596780 !important;
+    opacity: 1 !important;
+}
+
+:-ms-input-placeholder {
+    color: #596780 !important;
+    opacity: 1 !important;
+}
+
+/* D. Contraste mejorado para textos del pie de página */
+.main-footer .footer-desc,
+.main-footer .footer-links a,
+.main-footer .contact-col p,
+.main-footer .contact-col p a,
+.main-footer .footer-bottom,
+.main-footer .footer-bottom p {
+    color: #cbd5e1 !important;
+}
+
+.main-footer .footer-links a:hover,
+.main-footer .contact-col p a:hover {
+    color: var(--accent-gold, #E5A813) !important;
+}
+
+.main-footer .footer-bottom a {
+    color: #ffffff !important;
+}
+
+.main-footer .footer-bottom a:hover {
+    color: var(--accent-gold, #E5A813) !important;
 }

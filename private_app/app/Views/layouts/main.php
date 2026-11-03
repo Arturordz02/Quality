@@ -54,12 +54,15 @@ $showFloat = $showWhatsAppFloat ?? true;
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
     
     <!-- Hoja de estilos principal del sitio -->
-    <link rel="stylesheet" href="/styles.css?v=3.8">
+    <link rel="stylesheet" href="/styles.css?v=3.9">
 
     <!-- Estilos específicos de cada vista si se requieren -->
     <?= $extraStyles ?? '' ?>
 </head>
 <body>
+
+    <!-- Enlace accesible de salto al contenido principal (WCAG 2.4.1) -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
     <!-- Encabezado Principal y Menú de Navegación -->
     <header class="main-header" id="mainHeader">
@@ -73,6 +76,16 @@ $showFloat = $showWhatsAppFloat ?? true;
     <?= $this->partial('breadcrumbs', get_defined_vars()) ?>
 
     <!-- Contenido Dinámico de la Vista -->
+    <?php
+    // Inyectar id="main-content" y tabindex="-1" en el elemento <main> principal de la vista
+    // de forma limpia y directa, preservando intacta la jerarquía de hermanos y selectores del layout.
+    if (!str_contains($content, 'id="main-content"')) {
+        $content = preg_replace('/<main\b(?![^>]*\bid=)/i', '<main id="main-content" tabindex="-1"', $content, 1, $replacedCount);
+        if ($replacedCount === 0) {
+            $content = '<div id="main-content" tabindex="-1">' . $content . '</div>';
+        }
+    }
+    ?>
     <?= $content ?>
 
     <!-- Pie de Página Corporativo -->
@@ -90,7 +103,7 @@ $showFloat = $showWhatsAppFloat ?? true;
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- Script Principal del sitio -->
-    <script src="/script.js?v=3.3"></script>
+    <script src="/script.js?v=3.4"></script>
 
     <!-- AOS init -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
