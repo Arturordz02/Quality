@@ -10822,8 +10822,44 @@ html, body {
     border-color: rgba(229, 168, 19, 0.4);
 }
 
-/* 10. Accesibilidad: Preferencia de Movimiento Reducido */
+/* 10. Accesibilidad: Preferencia de Movimiento Reducido (WCAG 2.1 SC 2.3.3) */
 @media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto !important;
+    }
+    html {
+        scroll-behavior: auto !important;
+    }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    /* Detener pulsos continuos, brillos y animaciones decorativas infinitas */
+    .whatsapp-float-btn,
+    .whatsapp-pulse-ring,
+    .btn-whatsapp-pulse,
+    .pulse-live,
+    .pulse-glow,
+    .shine-effect,
+    .brand-logo,
+    [class*="animate__infinite"] {
+        animation: none !important;
+    }
+    /* Asegurar visibilidad inmediata para librerías de animación (AOS y Animate.css) */
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    .animate__animated {
+        animation: none !important;
+        opacity: 1 !important;
+    }
+    /* Elementos específicos In-House */
     .inhouse-hero-title,
     .inhouse-hero-subtitle,
     .inhouse-hero-desc,
