@@ -9,7 +9,7 @@ declare(strict_types=1);
 ?>
 <!-- Selector Flotante Multipaís de WhatsApp -->
 <div class="whatsapp-floating-widget" id="whatsappFloatingWidget">
-    <div class="whatsapp-floating-menu" id="whatsappFloatingMenu" aria-hidden="true">
+    <div class="whatsapp-floating-menu" id="whatsappFloatingMenu" role="dialog" aria-modal="false" aria-label="Menú de atención por WhatsApp" aria-hidden="true">
         <div class="whatsapp-menu-header">
             <div class="d-flex align-items-center justify-content-between mb-1">
                 <div class="d-flex align-items-center gap-2">
@@ -70,7 +70,7 @@ declare(strict_types=1);
             </a>
         </div>
     </div>
-    <button class="whatsapp-floating-btn" id="whatsappFloatingBtn" aria-label="Contactar por WhatsApp" aria-expanded="false">
+    <button class="whatsapp-floating-btn" id="whatsappFloatingBtn" aria-label="Contactar por WhatsApp" aria-expanded="false" aria-haspopup="dialog" aria-controls="whatsappFloatingMenu">
         <i class="fab fa-whatsapp"></i>
         <span class="whatsapp-floating-pulse"></span>
     </button>
