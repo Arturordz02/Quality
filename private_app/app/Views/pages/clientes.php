@@ -466,8 +466,8 @@ declare(strict_types=1);
                     <a href="/contacto" class="btn btn-large btn-qcs-primary">
                         <i class="fa-solid fa-envelope"></i> Solicitar propuesta corporativa
                     </a>
-                    <a href="/consultoria" class="btn btn-outline-light btn-large btn-qcs-primary" style="border: 2px solid #ffffff; color: #ffffff;">
-                        <i class="fa-solid fa-briefcase"></i> Ver consultoría especializada
+                    <a href="https://pmo-solutions.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-large btn-qcs-primary" style="border: 2px solid #ffffff; color: #ffffff;">
+                        <i class="fa-solid fa-briefcase"></i> Ver servicios en PMO Solutions
                     </a>
                 </div>
             </div>

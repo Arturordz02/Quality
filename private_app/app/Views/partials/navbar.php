@@ -32,7 +32,6 @@ if (in_array($currentPage, ['consultoria', 'investigacion', 'encuestas-proyectos
 
 // Comprobar si la página actual pertenece al menú MÁS
 $isMasActive = in_array($currentPage, [
-    'consultoria',
     'investigacion',
     'encuestas-proyectos',
     'noticias',
@@ -90,7 +89,6 @@ $isMasActive = in_array($currentPage, [
                         MÁS <i class="fa-solid fa-chevron-down arrow-icon" aria-hidden="true"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMas">
-                        <li><a href="/consultoria" class="dropdown-item<?= $currentPage === 'consultoria' ? ' active' : '' ?>"<?= $currentPage === 'consultoria' ? ' aria-current="page"' : '' ?>>Consultoría</a></li>
                         <li><a href="/investigacion" class="dropdown-item<?= $currentPage === 'investigacion' ? ' active' : '' ?>"<?= $currentPage === 'investigacion' ? ' aria-current="page"' : '' ?>>Investigación</a></li>
                         <li><a href="/encuestas-proyectos" class="dropdown-item<?= $currentPage === 'encuestas-proyectos' ? ' active' : '' ?>"<?= $currentPage === 'encuestas-proyectos' ? ' aria-current="page"' : '' ?>>Encuestas de Proyectos</a></li>
                         <li><a href="/noticias" class="dropdown-item<?= $currentPage === 'noticias' ? ' active' : '' ?>"<?= $currentPage === 'noticias' ? ' aria-current="page"' : '' ?>>Noticias</a></li>
