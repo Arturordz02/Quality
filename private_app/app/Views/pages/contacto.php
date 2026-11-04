@@ -278,7 +278,7 @@ if (!isset($selectedCourse)) {
                             <div class="hero-channel-icon text-success">
                                 <i class="fas fa-headset"></i>
                             </div>
-                            <h3 class="hero-channel-name animate__animated animate__fadeInUp animate__delay-1s">Teléfono Directo &amp; WhatsApp</h3>
+                            <h2 class="hero-channel-name animate__animated animate__fadeInUp animate__delay-1s">Teléfono Directo &amp; WhatsApp</h2>
                             <p class="hero-channel-desc">Llamadas e interacción inmediata</p>
                             <div class="d-flex flex-column gap-2 mt-2">
                                 <a href="tel:+51993463118" class="text-white fw-bold d-inline-flex align-items-center gap-2">
@@ -297,7 +297,7 @@ if (!isset($selectedCourse)) {
                             <div class="hero-channel-icon text-warning">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <h3 class="hero-channel-name animate__animated animate__fadeInUp animate__delay-1s">Correo Comercial</h3>
+                            <h2 class="hero-channel-name animate__animated animate__fadeInUp animate__delay-1s">Correo Comercial</h2>
                             <p class="hero-channel-desc">Solicitud de cotizaciones y propuestas</p>
                             <a href="mailto:contacto@quality-consulting.org" class="text-white fw-bold d-inline-flex align-items-center gap-1">
                                 <i class="fas fa-envelope text-warning me-2"></i> contacto@quality-consulting.org
@@ -311,7 +311,7 @@ if (!isset($selectedCourse)) {
                             <div class="hero-channel-icon text-warning">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <h3 class="hero-channel-name animate__animated animate__fadeInUp animate__delay-1s">Atención Presencial</h3>
+                            <h2 class="hero-channel-name animate__animated animate__fadeInUp animate__delay-1s">Atención Presencial</h2>
                             <p class="hero-channel-desc">Sede Central y Oficinas</p>
                             <span class="text-white fw-bold d-inline-flex align-items-center gap-1" style="font-size: 0.92rem;">
                                 <i class="fas fa-map-marker-alt text-warning me-2"></i> Av. Javier Prado 757, piso 10 Magdalena, Lima 17

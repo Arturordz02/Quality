@@ -298,7 +298,7 @@ declare(strict_types=1);
                         <div class="legal-sidebar-card">
                             <div class="legal-sidebar-header">
                                 <span class="legal-sidebar-badge">ESTRUCTURA DEL DOCUMENTO</span>
-                                <h3 class="legal-sidebar-title">Índice de Cláusulas</h3>
+                                <h2 class="legal-sidebar-title">Índice de Cláusulas</h2>
                             </div>
                             <nav class="legal-nav-list">
                                 <a href="#clausula-1" class="legal-nav-item">
@@ -410,11 +410,11 @@ declare(strict_types=1);
                             <span class="clause-num-badge">04</span>
                             <h2 class="clause-title">Políticas de Capacitación, Certificación y Cancelaciones</h2>
                         </div>
-                        <h6 class="fw-bold text-dark mt-2 mb-1" style="font-size: 0.95rem;">4.1. Emisión de Certificados y Diplomas</h6>
+                        <h3 class="fw-bold text-dark mt-2 mb-1" style="font-size: 0.95rem;">4.1. Emisión de Certificados y Diplomas</h3>
                         <p>
                             La acreditación académica y entrega del diploma correspondiente requiere el cumplimiento de los requisitos establecidos en el sílabo respectivo, incluyendo una asistencia mínima del <strong>80%</strong> a las sesiones lectivas y la aprobación de las evaluaciones programadas.
                         </p>
-                        <h6 class="fw-bold text-dark mt-3 mb-1" style="font-size: 0.95rem;">4.2. Reprogramaciones y Sustituciones</h6>
+                        <h3 class="fw-bold text-dark mt-3 mb-1" style="font-size: 0.95rem;">4.2. Reprogramaciones y Sustituciones</h3>
                         <p class="mb-0">
                             El cliente podrá sustituir a un participante registrado notificándolo por escrito con un mínimo de <strong>48 horas de anticipación</strong> al inicio del programa. Una vez iniciado el curso o facilitadas las credenciales de acceso al material digital, no se aplicarán devoluciones económicas.
                         </p>

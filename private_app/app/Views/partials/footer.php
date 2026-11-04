@@ -42,7 +42,7 @@ $year = $currentYear ?? date('Y');
 
             <!-- Columna 2: Enlaces Rápidos -->
             <div class="footer-col links-col">
-                <h4 class="footer-heading">Enlaces Rápidos</h4>
+                <h2 class="footer-heading">Enlaces Rápidos</h2>
                 <ul class="footer-links">
                     <li><a href="/"><i class="fa-solid fa-angle-right"></i> Home</a></li>
                     <li><a href="/nosotros"><i class="fa-solid fa-angle-right"></i> Nosotros</a></li>
@@ -55,7 +55,7 @@ $year = $currentYear ?? date('Y');
 
             <!-- Columna 3: Contacto & Libro de Reclamaciones -->
             <div class="footer-col contact-col">
-                <h4 class="footer-heading">Contacto Oficial</h4>
+                <h2 class="footer-heading">Contacto Oficial</h2>
                 <p><i class="fa-solid fa-location-dot me-2 text-warning"></i> Av. Javier Prado 757, piso 10 Magdalena, Lima 17</p>
                 <p><i class="fa-solid fa-envelope me-2 text-warning"></i> <a href="mailto:contacto@quality-consulting.org" class="text-light">contacto@quality-consulting.org</a></p>
                 <p><i class="fa-solid fa-phone me-2 text-warning"></i> <a href="tel:+51993463118" class="text-light">+51 993 463 118</a></p>

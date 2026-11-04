@@ -99,9 +99,9 @@ declare(strict_types=1);
                             
                             <!-- 1. Identificación del Consumidor Reclamante -->
                             <div class="col-12 mt-2">
-                                <h5 class="fw-bold text-dark font-montserrat border-bottom pb-2 small text-uppercase" style="letter-spacing: 0.5px;">
+                                <h3 class="h5 fw-bold text-dark font-montserrat border-bottom pb-2 small text-uppercase" style="letter-spacing: 0.5px;">
                                     1. Identificación del Consumidor Reclamante
-                                </h5>
+                                </h3>
                             </div>
 
                             <div class="col-md-6">
@@ -138,9 +138,9 @@ declare(strict_types=1);
 
                             <!-- 2. Detalle de la Reclamación -->
                             <div class="col-12 mt-4">
-                                <h5 class="fw-bold text-dark font-montserrat border-bottom pb-2 small text-uppercase" style="letter-spacing: 0.5px;">
+                                <h3 class="h5 fw-bold text-dark font-montserrat border-bottom pb-2 small text-uppercase" style="letter-spacing: 0.5px;">
                                     2. Detalle de la Reclamación y Pedido
-                                </h5>
+                                </h3>
                             </div>
 
                             <div class="col-md-6">

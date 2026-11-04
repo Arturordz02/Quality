@@ -273,7 +273,7 @@ $typesSummary = \App\Services\CoursesCatalog::getTypesSummary();
                     <div class="col-lg-3 col-md-6">
                         <div class="value-guarantee-card rounded-4 border-start border-4 border-warning" data-aos="fade-right">
                             <div class="value-icon"><i class="fa-solid fa-chalkboard-user text-dark"></i></div>
-                            <h4 class="fw-bold font-montserrat fs-6 text-dark">Capacitaciones Grabadas y En Vivo</h4>
+                            <p class="fw-bold font-montserrat fs-6 text-dark mb-0">Capacitaciones Grabadas y En Vivo</p>
                             <p class="small text-muted mb-0">Aprende a tu ritmo con clases grabadas o consulta disponibilidad para sesiones en vivo con nuestros especialistas.</p>
                         </div>
                     </div>
@@ -281,7 +281,7 @@ $typesSummary = \App\Services\CoursesCatalog::getTypesSummary();
                     <div class="col-lg-3 col-md-6">
                         <div class="value-guarantee-card rounded-4 border-start border-4 border-warning" data-aos="fade-up">
                             <div class="value-icon"><i class="fa-solid fa-cloud-arrow-down text-success"></i></div>
-                            <h4 class="fw-bold font-montserrat fs-6 text-dark">Acceso 24/7</h4>
+                            <p class="fw-bold font-montserrat fs-6 text-dark mb-0">Acceso 24/7</p>
                             <p class="small text-muted mb-0">Acceso inmediato a las clases y disponible 24/7.</p>
                         </div>
                     </div>
@@ -289,7 +289,7 @@ $typesSummary = \App\Services\CoursesCatalog::getTypesSummary();
                     <div class="col-lg-3 col-md-6">
                         <div class="value-guarantee-card rounded-4 border-start border-4 border-warning" data-aos="fade-left">
                             <div class="value-icon"><i class="fa-solid fa-certificate text-warning"></i></div>
-                            <h4 class="fw-bold font-montserrat fs-6 text-dark">Diploma</h4>
+                            <p class="fw-bold font-montserrat fs-6 text-dark mb-0">Diploma</p>
                             <p class="small text-muted mb-0">Certificado oficial con horas académicas y código único de validación.</p>
                         </div>
                     </div>
@@ -297,7 +297,7 @@ $typesSummary = \App\Services\CoursesCatalog::getTypesSummary();
                     <div class="col-lg-3 col-md-6">
                         <div class="value-guarantee-card rounded-4 border-start border-4 border-warning" data-aos="fade-right">
                             <div class="value-icon"><i class="fa-solid fa-briefcase text-warning"></i></div>
-                            <h4 class="fw-bold font-montserrat fs-6 text-dark">Bolsa de Trabajo</h4>
+                            <p class="fw-bold font-montserrat fs-6 text-dark mb-0">Bolsa de Trabajo</p>
                             <p class="small text-muted mb-0">Conexión con empresas líderes del sector para oportunidades laborales.</p>
                         </div>
                     </div>
