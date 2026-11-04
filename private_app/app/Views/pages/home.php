@@ -724,7 +724,10 @@ body {
                         <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-left">
                             <div class="course-card-img-wrap">
                                 <span class="course-badge bg-dark text-warning border border-warning-subtle text-white">CONTRATOS</span>
-                                <img src="img/Index-Contratos-Internacionales.png" alt="Contratos Internacionales FIDIC" class="course-card-img" loading="lazy">
+                                <picture>
+                                    <source srcset="img/Index-Contratos-Internacionales.webp" type="image/webp">
+                                    <img src="img/Index-Contratos-Internacionales.png" alt="Contratos Internacionales FIDIC" class="course-card-img" width="1024" height="600" loading="lazy">
+                                </picture>
                             </div>
                             <div class="course-card-body">
                                 <div>
@@ -744,7 +747,10 @@ body {
                         <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-right">
                             <div class="course-card-img-wrap">
                                 <span class="course-badge bg-success text-white">PMO</span>
-                                <img src="img/Index-GestionPMO.png" alt="Gestión de la PMO" class="course-card-img" loading="lazy">
+                                <picture>
+                                    <source srcset="img/Index-GestionPMO.webp" type="image/webp">
+                                    <img src="img/Index-GestionPMO.png" alt="Gestión de la PMO" class="course-card-img" width="1024" height="600" loading="lazy">
+                                </picture>
                             </div>
                             <div class="course-card-body">
                                 <div>
@@ -764,7 +770,10 @@ body {
                         <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-up">
                             <div class="course-card-img-wrap">
                                 <span class="course-badge bg-warning text-dark">CALIDAD</span>
-                                <img src="img/Index-GerenciaCalidadObras.png" alt="Gerencia de la Calidad para la Infraestructura" class="course-card-img" loading="lazy">
+                                <picture>
+                                    <source srcset="img/Index-GerenciaCalidadObras.webp" type="image/webp">
+                                    <img src="img/Index-GerenciaCalidadObras.png" alt="Gerencia de la Calidad para la Infraestructura" class="course-card-img" width="1024" height="600" loading="lazy">
+                                </picture>
                             </div>
                             <div class="course-card-body">
                                 <div>
@@ -784,7 +793,10 @@ body {
                         <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-left">
                             <div class="course-card-img-wrap">
                                 <span class="course-badge bg-warning text-dark text-dark">CONTROL</span>
-                                <img src="img/Index_ValorGanado.png" alt="Método del Valor Ganado (EVM)" class="course-card-img" loading="lazy">
+                                <picture>
+                                    <source srcset="img/Index_ValorGanado.webp" type="image/webp">
+                                    <img src="img/Index_ValorGanado.png" alt="Método del Valor Ganado (EVM)" class="course-card-img" width="1024" height="600" loading="lazy">
+                                </picture>
                             </div>
                             <div class="course-card-body">
                                 <div>
@@ -804,7 +816,10 @@ body {
                         <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-right">
                             <div class="course-card-img-wrap">
                                 <span class="course-badge bg-dark text-warning border border-warning-subtle text-white">BIM</span>
-                                <img src="img/Index-BIMRevitArchitecture.png" alt="BIM Revit Architecture" class="course-card-img" loading="lazy">
+                                <picture>
+                                    <source srcset="img/Index-BIMRevitArchitecture.webp" type="image/webp">
+                                    <img src="img/Index-BIMRevitArchitecture.png" alt="BIM Revit Architecture" class="course-card-img" width="1024" height="600" loading="lazy">
+                                </picture>
                             </div>
                             <div class="course-card-body">
                                 <div>
@@ -824,7 +839,10 @@ body {
                         <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-up">
                             <div class="course-card-img-wrap">
                                 <span class="course-badge bg-secondary text-white">OFICINA TÉCNICA</span>
-                                <img src="img/Index-OficinaTecnicaObras.png" alt="Oficina Técnica Obras Privadas y Públicas" class="course-card-img" loading="lazy">
+                                <picture>
+                                    <source srcset="img/Index-OficinaTecnicaObras.webp" type="image/webp">
+                                    <img src="img/Index-OficinaTecnicaObras.png" alt="Oficina Técnica Obras Privadas y Públicas" class="course-card-img" width="1024" height="600" loading="lazy">
+                                </picture>
                             </div>
                             <div class="course-card-body">
                                 <div>
@@ -844,7 +862,10 @@ body {
                         <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-left">
                             <div class="course-card-img-wrap">
                                 <span class="course-badge bg-success text-white">PRODUCTIVIDAD</span>
-                                <img src="img/index_LeanLast.png" alt="Lean Construction &amp; Last Planner" class="course-card-img" loading="lazy">
+                                <picture>
+                                    <source srcset="img/index_LeanLast.webp" type="image/webp">
+                                    <img src="img/index_LeanLast.png" alt="Lean Construction &amp; Last Planner" class="course-card-img" width="1024" height="600" loading="lazy">
+                                </picture>
                             </div>
                             <div class="course-card-body">
                                 <div>
@@ -864,7 +885,10 @@ body {
                         <div class="course-card rounded-4 border-start border-4 border-warning" data-aos="fade-right">
                             <div class="course-card-img-wrap">
                                 <span class="course-badge bg-warning text-dark">RIESGOS PMI</span>
-                                <img src="img/Index-RiesgosPMI.png" alt="Gestión de Riesgos con Enfoque PMI" class="course-card-img" loading="lazy">
+                                <picture>
+                                    <source srcset="img/Index-RiesgosPMI.webp" type="image/webp">
+                                    <img src="img/Index-RiesgosPMI.png" alt="Gestión de Riesgos con Enfoque PMI" class="course-card-img" width="1024" height="600" loading="lazy">
+                                </picture>
                             </div>
                             <div class="course-card-body">
                                 <div>
@@ -924,7 +948,10 @@ body {
 
                     <!-- Imagen de Clientes -->
                     <div class="clients-img-frame">
-                        <img src="img/ClientesQuality.png" alt="Empresas y Clientes que confían en Quality Consulting Solutions" class="img-fluid" style="max-height: 280px; object-fit: contain;" loading="lazy">
+                        <picture>
+                            <source srcset="img/ClientesQuality.webp" type="image/webp">
+                            <img src="img/ClientesQuality.png" alt="Empresas y Clientes que confían en Quality Consulting Solutions" class="img-fluid" style="max-height: 280px; object-fit: contain;" width="1100" height="688" loading="lazy">
+                        </picture>
                     </div>
 
                     <div>
