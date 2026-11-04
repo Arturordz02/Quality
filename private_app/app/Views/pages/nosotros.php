@@ -457,7 +457,7 @@ declare(strict_types=1);
                                 <i class="fa-solid fa-bullseye"></i>
                             </div>
                             <span class="badge bg-warning-subtle text-dark fw-bold text-uppercase px-2 py-1 rounded mb-2">Propósito Fundamental</span>
-                            <h3 class="fw-bold text-dark font-montserrat fs-4 mb-3">Nuestra Misión</h3>
+                            <h2 class="fw-bold text-dark font-montserrat fs-4 mb-3">Nuestra Misión</h2>
                             <p class="text-secondary" style="line-height: 1.75; font-size: 0.98rem;">
                                 Capacitar y asesorar a profesionales y empresas con metodologías avanzadas de gestión, ingeniería de costos, control contractual y BIM para elevar los estándares de la industria.
                             </p>
@@ -477,7 +477,7 @@ declare(strict_types=1);
                                 <i class="fa-solid fa-eye"></i>
                             </div>
                             <span class="badge bg-warning-subtle text-dark fw-bold text-uppercase px-2 py-1 rounded mb-2">Visión de Futuro</span>
-                            <h3 class="fw-bold text-dark font-montserrat fs-4 mb-3">Nuestra Visión</h3>
+                            <h2 class="fw-bold text-dark font-montserrat fs-4 mb-3">Nuestra Visión</h2>
                             <p class="text-secondary" style="line-height: 1.75; font-size: 0.98rem;">
                                 Ser reconocidos como el centro de consultoría y capacitación técnica referente en el país, destacado por la calidad de nuestra plana docente y la efectividad de nuestras soluciones.
                             </p>
@@ -497,7 +497,7 @@ declare(strict_types=1);
                                 <i class="fa-solid fa-gem"></i>
                             </div>
                             <span class="badge bg-warning-subtle text-dark fw-bold text-uppercase px-2 py-1 rounded mb-2">Valores Corporativos</span>
-                            <h3 class="fw-bold text-dark font-montserrat fs-4 mb-3">Nuestros Pilares</h3>
+                            <h2 class="fw-bold text-dark font-montserrat fs-4 mb-3">Nuestros Pilares</h2>
                             <p class="text-secondary mb-3" style="line-height: 1.6; font-size: 0.95rem;">
                                 Principios innegociables que guían cada uno de nuestros servicios de consultoría y programas de formación:
                             </p>

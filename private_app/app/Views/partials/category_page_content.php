@@ -84,7 +84,7 @@ $waMessage = $category['wa_message'] ?? 'Hola, deseo solicitar información sobr
                                 <i class="<?= htmlspecialchars($feat['icon'], ENT_QUOTES, 'UTF-8') ?>"></i>
                             </div>
                             <div>
-                                <h3 class="category-feature-title mb-1"><?= htmlspecialchars($feat['title'], ENT_QUOTES, 'UTF-8') ?></h3>
+                                <h2 class="category-feature-title mb-1"><?= htmlspecialchars($feat['title'], ENT_QUOTES, 'UTF-8') ?></h2>
                                 <p class="category-feature-desc mb-0"><?= htmlspecialchars($feat['description'], ENT_QUOTES, 'UTF-8') ?></p>
                             </div>
                         </div>

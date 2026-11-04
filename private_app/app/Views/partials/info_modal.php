@@ -20,7 +20,7 @@ declare(strict_types=1);
                     <span class="badge bg-warning text-dark fw-bold px-3 py-1 rounded-pill mb-2">
                         <i class="fa-solid fa-headset me-1"></i> ATENCIÓN INMEDIATA
                     </span>
-                    <h4 class="modal-title font-montserrat fw-bold text-white mb-1" id="modalSolicitarInfoLabel">
+                    <h2 class="modal-title font-montserrat fw-bold text-white mb-1 h4" id="modalSolicitarInfoLabel">
                         Solicitar Información
                     </h4>
                     <p class="text-white-50 small mb-0">
@@ -37,9 +37,9 @@ declare(strict_types=1);
                     <!-- Columna Izquierda: Contacto Directo WhatsApp y Datos Institucionales -->
                     <div class="col-lg-5 d-flex flex-column justify-content-between border-end-lg pe-lg-4">
                         <div>
-                            <h6 class="fw-bold text-dark mb-2 font-montserrat">
+                            <div class="fw-bold text-dark mb-2 font-montserrat fs-6">
                                 <i class="fa-solid fa-bolt text-warning me-2"></i>Respuesta Inmediata
-                            </h6>
+                            </div>
                             <p class="small text-muted mb-3">
                                 ¿Deseas una atención al instante? Escríbenos directamente a nuestra central de WhatsApp.
                             </p>
@@ -80,9 +80,9 @@ declare(strict_types=1);
 
                     <!-- Columna Derecha: Formulario Completo -->
                     <div class="col-lg-7 ps-lg-4">
-                        <h6 class="fw-bold text-dark mb-3 font-montserrat">
+                        <div class="fw-bold text-dark mb-3 font-montserrat fs-6">
                             <i class="fa-solid fa-file-signature text-warning me-2"></i>Datos de Contacto
-                        </h6>
+                        </div>
 
                         <!-- Contenedor para Alertas Dinámicas Ajax -->
                         <div id="modalFormFeedback" class="d-none alert py-2 px-3 small mb-3"></div>

@@ -8,9 +8,9 @@
  * 1. El partial global header.php no contiene etiquetas <h1> institucionales y utiliza el selector semántico .header-brand-title.
  * 2. styles.css define estilos idénticos para .header-brand-title en reglas base y en media queries responsive.
  * 3. Todas las páginas compiladas en _site/ poseen como máximo un solo <h1> semántico.
- * 4. Exactamente 85 páginas de contenido tienen EXACTAMENTE UN <h1> correspondiente a su título principal propio.
+ * 4. Exactamente 86 páginas de contenido tienen EXACTAMENTE UN <h1> correspondiente a su título principal propio.
  * 5. La página de Inicio (index.html / home.php) conserva su <h1> propio (.home-hero-title) de forma íntegra.
- * 6. La página de error 404 (404.html) no contiene <h1> y conserva su estructura con <h2> sin alteraciones de contenido.
+ * 6. La página de error 404 (404.html) contiene su <h1> con clase .error-title ("Página no encontrada").
  * 7. Ninguna página del sitio contiene múltiples etiquetas <h1> duplicadas.
  * 8. El archivo estático público public_html/404.html no contiene etiquetas <h1> en su cabecera.
  */
@@ -108,8 +108,8 @@ runTest("Ninguna página HTML compilada en _site/ contiene más de un <h1>", fun
     return true;
 });
 
-// Test 5: Exactamente 85 páginas de contenido tienen un único <h1> propio
-runTest("Exactamente 85 páginas poseen un <h1> único y 404.html permanece en 0 <h1> sin inventar títulos", function() use ($siteDir): bool {
+// Test 5: Exactamente 86 páginas de contenido tienen un único <h1> propio
+runTest("Exactamente 86 páginas poseen un <h1> único (incluyendo 404.html con 'Página no encontrada')", function() use ($siteDir): bool {
     $files = glob($siteDir . '/*.html');
     $exactlyOne = 0;
     $zeroH1 = [];
@@ -126,12 +126,12 @@ runTest("Exactamente 85 páginas poseen un <h1> único y 404.html permanece en 0
         }
     }
 
-    if ($exactlyOne !== 85) {
-        throw new \Exception("Se esperaban exactamente 85 páginas con un <h1>, se encontraron: {$exactlyOne}");
+    if ($exactlyOne !== 86) {
+        throw new \Exception("Se esperaban exactamente 86 páginas con un <h1>, se encontraron: {$exactlyOne}");
     }
 
-    if ($zeroH1 !== ['404.html']) {
-        throw new \Exception("Se esperaba que únicamente 404.html tuviera 0 <h1>, encontradas: " . json_encode($zeroH1));
+    if (!empty($zeroH1)) {
+        throw new \Exception("Se esperaba que 0 páginas tuvieran 0 <h1>, encontradas: " . json_encode($zeroH1));
     }
 
     return true;
