@@ -17,18 +17,12 @@ use App\Core\Controller;
 class ServiceController extends Controller
 {
     /**
-     * Hub principal de servicios de consultoría técnica y gestión de proyectos.
+     * Redirección permanente HTTP 301 hacia PMO Solutions.
+     * Los servicios de consultoría y asesoría se encuentran centralizados en PMO Solutions.
      */
     public function consultoria(): void
     {
-        $data = [
-            'title'           => 'Asesoría Especializada y Formación en Gestión de Proyectos | Quality Consulting Solutions',
-            'metaDescription' => 'Asesoría especializada para orientar a profesionales y organizaciones en gestión de PMO, directrices ISO 9001 y metodologías de gestión de riesgos.',
-            'canonical'       => 'https://quality-consulting.org/consultoria',
-            'activePage'      => 'consultoria',
-        ];
-
-        $this->render('pages/consultoria', $data, 'main');
+        $this->redirect('https://pmo-solutions.com/', 301);
     }
 
     /**

@@ -98,6 +98,12 @@ foreach ($pageFiles as $pageFile) {
         $data['robots'] = 'noindex, nofollow';
     }
 
+    if ($pageName === 'consultoria') {
+        $data['title']     = 'Redirección a PMO Solutions | Quality Consulting Solutions';
+        $data['canonical'] = 'https://pmo-solutions.com/';
+        $data['robots']    = 'noindex, follow';
+    }
+
     if (in_array($pageName, ['pagar-primera-clase', 'registro-primera-clase'], true)) {
         $data['courseCatalog'] = \App\Services\CourseCatalog::all();
     }
