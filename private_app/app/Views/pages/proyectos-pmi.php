@@ -434,7 +434,12 @@ declare(strict_types=1);
                         <div class="pmi-docente-card d-flex flex-column justify-content-between">
                             <div>
                                 <div class="d-flex align-items-center gap-3 mb-3">
-                                    <div class="docente-avatar-pmi overflow-hidden rounded-circle shadow-sm" style="width: 72px; height: 72px; border: 2px solid rgba(229, 168, 19, 0.4); display: inline-block;"><img src="img/Feliz-Valdes-Torero.jpg" alt="MSc. Félix Valdés-Torero" style="width: 100%; height: 100%; object-fit: cover; object-position: top;"></div>
+                                    <div class="docente-avatar-pmi overflow-hidden rounded-circle shadow-sm" style="width: 72px; height: 72px; border: 2px solid rgba(229, 168, 19, 0.4); display: inline-block;">
+                                        <picture>
+                                            <source srcset="img/Feliz-Valdes-Torero.webp" type="image/webp">
+                                            <img src="img/Feliz-Valdes-Torero.jpg" alt="MSc. Félix Valdés-Torero" width="1082" height="992" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: top;">
+                                        </picture>
+                                    </div>
                                     <div>
                                         <span class="badge bg-warning-subtle text-dark fw-bold text-uppercase px-2 py-1 rounded">
                                             <i class="fa-solid fa-chalkboard-user me-1"></i> Docente Principal
