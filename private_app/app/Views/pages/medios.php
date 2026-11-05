@@ -346,7 +346,7 @@ declare(strict_types=1);
             <div class="container">
                 
                 <div class="text-center mb-5">
-                    <span class="badge bg-success text-dark px-3 py-2 rounded-pill fw-bold text-uppercase mb-2 shadow-sm">
+                    <span class="badge bg-white text-dark px-3 py-2 rounded-pill fw-bold text-uppercase mb-2 shadow-sm">
                         <i class="fa-brands fa-spotify me-1"></i> Spotify Channel
                     </span>
                     <h2 class="display-6 fw-extrabold text-uppercase text-white animate__animated animate__fadeInUp animate__delay-1s" style="font-family: var(--font-heading);">

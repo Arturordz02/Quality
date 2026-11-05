@@ -101,7 +101,7 @@
 /* Formularios Corporativos y Recuadros de Entrada (Estándar Limpio y Ágil) */
 .form-control,
 .form-select {
-    border-color: #e2e8f0;
+    border-color: #718096;
     border-radius: 8px;
     padding: 0.75rem 1rem;
     font-size: 0.95rem;
@@ -310,6 +310,7 @@ img {
     font-weight: 800;
     letter-spacing: 1px;
     line-height: 1.1;
+    color: #0F3460;
 }
 
 /* 3.2 Título Central */
@@ -10590,6 +10591,7 @@ html, body {
     font-weight: 800;
     font-size: 2rem;
     line-height: 1;
+    color: #0F3460 !important;
 }
 
 .inhouse-stat-label {
@@ -11142,4 +11144,88 @@ textarea:focus-visible {
 
 .main-footer .footer-bottom a:hover {
     color: var(--accent-gold, #E5A813) !important;
+}
+
+/* ==========================================================================
+   FASE 10B — CORRECCIONES DE CONTRASTE Y LEGIBILIDAD WCAG 2.1 AA
+   ========================================================================== */
+
+/* 1. Pies y textos secundarios de tarjetas (/nosotros) */
+.exec-card-footer {
+    color: #0F3460 !important;
+}
+
+.floating-exec-card:hover .exec-card-footer {
+    color: #0F1113 !important;
+}
+
+/* 2. Numeradores de servicio en /clientes */
+.service-perf-num {
+    color: #334155 !important;
+}
+
+/* 3. Numeradores e índice en páginas legales (/terminos-y-condiciones) */
+.legal-nav-num {
+    color: #334155 !important;
+}
+
+.legal-nav-item:hover .legal-nav-num,
+.legal-nav-item:focus .legal-nav-num {
+    color: #0F3460 !important;
+}
+
+/* 4. Badges y etiquetas con contraste WCAG AA */
+.badge.bg-light.text-secondary {
+    color: #1e293b !important;
+}
+
+.badge.bg-secondary-subtle,
+.badge.bg-secondary-subtle.text-secondary {
+    color: #1f2937 !important;
+}
+
+.badge.bg-danger-subtle,
+.badge.bg-danger-subtle.text-danger {
+    color: #842029 !important;
+}
+
+/* 5. Badges directos en tarjetas oscuras de soporte */
+.support-info-card .badge.text-success {
+    color: #4ade80 !important;
+    border-color: #4ade80 !important;
+}
+
+/* 6. Footer en 404 y contenedores oscuros */
+footer.bg-dark .text-muted,
+footer.bg-dark a.text-muted,
+.footer.bg-dark .text-muted,
+.footer.bg-dark a.text-muted {
+    color: #cbd5e1 !important;
+}
+
+footer.bg-dark a.text-muted:hover,
+.footer.bg-dark a.text-muted:hover {
+    color: #ffffff !important;
+    text-decoration: underline;
+}
+
+/* 7. Botones dorados institucionales: texto oscuro accesible garantizado */
+.btn-warning:not(:disabled):not(.disabled),
+.btn-warning:not(:disabled):not(.disabled):hover,
+.btn-warning:not(:disabled):not(.disabled):focus,
+.btn-warning:not(:disabled):not(.disabled):active {
+    color: #0F1113 !important;
+}
+
+/* 8. Fallback de fondo oscuro para banners con degradado */
+.edtech-hero-banner,
+.contact-hero-banner,
+.category-hero-section,
+.category-contact-banner,
+.inhouse-hero,
+.inhouse-contact-section,
+.inhouse-support-card,
+.support-info-card,
+.podcast-section-bg {
+    background-color: #0F1113;
 }

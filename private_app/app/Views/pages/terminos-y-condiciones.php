@@ -158,12 +158,13 @@ declare(strict_types=1);
         font-family: var(--font-heading, 'Montserrat', sans-serif);
         font-size: 0.78rem;
         font-weight: 700;
-        color: #94a3b8;
+        color: #334155;
         min-width: 20px;
     }
 
-    .legal-nav-item:hover .legal-nav-num {
-        color: #b45309;
+    .legal-nav-item:hover .legal-nav-num,
+    .legal-nav-item:focus .legal-nav-num {
+        color: #0F3460;
     }
 
     .legal-sidebar-footer {
