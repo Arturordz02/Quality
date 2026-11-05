@@ -201,7 +201,12 @@ declare(strict_types=1);
                         <!-- Tarjeta Técnica del Docente -->
                         <div class="docente-card" style="margin-top: 1.25rem;">
                             <div class="docente-avatar-box">
-                                <div class="docente-avatar"><img src="img/Feliz-Valdes-Torero.jpg" alt="MSc. Félix Valdés-Torero" class="rounded-circle shadow-sm" style="width: 100%; height: 100%; object-fit: cover; object-position: top;"></div>
+                                <div class="docente-avatar">
+                                    <picture>
+                                        <source srcset="img/Feliz-Valdes-Torero.webp" type="image/webp">
+                                        <img src="img/Feliz-Valdes-Torero.jpg" alt="MSc. Félix Valdés-Torero" class="rounded-circle shadow-sm" width="1082" height="992" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: top;">
+                                    </picture>
+                                </div>
                                 <span class="docente-verified-badge" title="Docente Principal Certificado">
                                     <i class="fa-solid fa-check"></i>
                                 </span>
@@ -249,7 +254,10 @@ declare(strict_types=1);
                         <!-- Contenedor para Imagen de Gestión de Proyectos y PMO -->
                         <div class="course-img-preview-box" style="margin-top: 1.25rem; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-md); border: 1px solid var(--border-color);">
                             <!-- Imagen conceptual sobre gestión de PMO y portafolios -->
-                            <img src="img/gpmo1.png" alt="Gestión de PMO, Portafolios y Proyectos" class="course-img-preview" loading="lazy" style="width: 100%; height: 260px; object-fit: cover; display: block;">
+                            <picture>
+                                <source srcset="img/gpmo1.webp" type="image/webp">
+                                <img src="img/gpmo1.png" alt="Gestión de PMO, Portafolios y Proyectos" class="course-img-preview" width="1024" height="600" loading="lazy" decoding="async" style="width: 100%; height: 260px; object-fit: cover; display: block;">
+                            </picture>
                         </div>
 
                     </div>

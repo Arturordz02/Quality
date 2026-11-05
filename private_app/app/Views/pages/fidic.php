@@ -536,7 +536,10 @@ declare(strict_types=1);
                                 
                                 <div class="teacher-media-row">
                                     <div class="teacher-img-wrap">
-                                        <img src="img/sharon-2_orig.jpg" alt="Abg. Sharon Grados" class="teacher-img-card" loading="lazy">
+                                        <picture>
+                                            <source srcset="img/sharon-2_orig.webp" type="image/webp">
+                                            <img src="img/sharon-2_orig.jpg" alt="Abg. Sharon Grados" class="teacher-img-card" width="812" height="1247" loading="lazy" decoding="async">
+                                        </picture>
                                     </div>
                                     <div class="teacher-name-box">
                                         <span class="teacher-role-tag">Docente Principal</span>

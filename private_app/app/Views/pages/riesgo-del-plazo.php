@@ -103,7 +103,10 @@ declare(strict_types=1);
                     <div class="split-image-col">
                         <div class="image-card-wrapper">
                             <div class="image-container">
-                                <img src="img/s901.png" alt="Curva de Liberación y control del plazo en proyectos" class="section-image" loading="lazy" width="600" height="400">
+                                <picture>
+                                    <source srcset="img/s901.webp" type="image/webp">
+                                    <img src="img/s901.png" alt="Curva de Liberación y control del plazo en proyectos" class="section-image" loading="lazy" decoding="async" width="1024" height="600">
+                                </picture>
                                 <div class="image-badge-tag badge-gold">
                                     <i class="fa-solid fa-chart-area"></i> Curva de Liberación ®
                                 </div>
@@ -360,7 +363,10 @@ declare(strict_types=1);
                     <!-- Congreso Lean Construction - México D.F. -->
                     <div class="presentation-card">
                         <div class="presentation-media">
-                            <img src="img/19-lnx_orig.jpeg" alt="Congreso Lean Construction - México D.F." class="presentation-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&amp;w=600&amp;auto=format&amp;fit=crop';" loading="lazy" width="600" height="380">
+                            <picture>
+                                <source srcset="img/19-lnx_orig.webp" type="image/webp">
+                                <img src="img/19-lnx_orig.jpeg" alt="Congreso Lean Construction - México D.F." class="presentation-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&amp;w=600&amp;auto=format&amp;fit=crop';" loading="lazy" decoding="async" width="989" height="1280">
+                            </picture>
                             <div class="presentation-badge badge-gold"><i class="fa-solid fa-award"></i> Lean Construction</div>
                         </div>
                         <div class="presentation-content">

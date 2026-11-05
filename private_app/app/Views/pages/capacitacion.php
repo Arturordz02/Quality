@@ -394,7 +394,10 @@ $typesSummary = \App\Services\CoursesCatalog::getTypesSummary();
                                     <img src="<?= htmlspecialchars($c['image_fallback'] ?? $c['image'], ENT_QUOTES, 'UTF-8') ?>" 
                                          alt="<?= htmlspecialchars($c['title'], ENT_QUOTES, 'UTF-8') ?>" 
                                          class="course-card-img" 
-                                         loading="lazy">
+                                         width="1024"
+                                         height="600"
+                                         loading="lazy"
+                                         decoding="async">
                                 </picture>
                             </div>
 

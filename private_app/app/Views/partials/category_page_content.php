@@ -112,7 +112,10 @@ $waMessage = $category['wa_message'] ?? 'Hola, deseo solicitar información sobr
                             <img src="<?= htmlspecialchars($category['intro_image_fallback'] ?? $category['intro_image'] ?? 'img/Hero-Quality-Consulting.png', ENT_QUOTES, 'UTF-8') ?>" 
                                  alt="<?= htmlspecialchars($category['name'] ?? '', ENT_QUOTES, 'UTF-8') ?> - Quality Consulting Solutions" 
                                  class="img-fluid w-100 category-intro-img" 
-                                 loading="lazy">
+                                 width="1024"
+                                 height="600"
+                                 loading="lazy"
+                                 decoding="async">
                         </picture>
                         <div class="category-intro-img-badge">
                             <i class="fa-solid fa-hard-hat text-warning me-1"></i> Ingeniería Aplicada
@@ -195,7 +198,10 @@ $waMessage = $category['wa_message'] ?? 'Hola, deseo solicitar información sobr
                                 <img src="<?= htmlspecialchars($c['image_fallback'] ?? $c['image'], ENT_QUOTES, 'UTF-8') ?>" 
                                      alt="<?= htmlspecialchars($c['title'], ENT_QUOTES, 'UTF-8') ?>" 
                                      class="course-card-img" 
-                                     loading="lazy">
+                                     width="1024"
+                                     height="600"
+                                     loading="lazy"
+                                     decoding="async">
                             </picture>
                         </div>
 
@@ -296,7 +302,10 @@ $waMessage = $category['wa_message'] ?? 'Hola, deseo solicitar información sobr
                                 <img src="<?= htmlspecialchars($category['contact_image_fallback'] ?? $category['contact_image'] ?? 'img/Hero-Quality-Consulting.png', ENT_QUOTES, 'UTF-8') ?>" 
                                      alt="<?= htmlspecialchars($category['contact_image_alt'] ?? 'Capacitación en Construcción - Quality Consulting Solutions', ENT_QUOTES, 'UTF-8') ?>" 
                                      class="img-fluid w-100 category-contact-photo" 
-                                     loading="lazy">
+                                     width="1024"
+                                     height="600"
+                                     loading="lazy"
+                                     decoding="async">
                             </picture>
                             <div class="category-contact-photo-badge">
                                 <i class="fa-solid fa-award text-warning me-1"></i> Quality Consulting
