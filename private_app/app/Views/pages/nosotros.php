@@ -147,7 +147,12 @@ declare(strict_types=1);
     }
 
     .exec-card-footer {
+        color: #0F3460;
         transition: color 0.3s ease;
+    }
+
+    .floating-exec-card:hover .exec-card-footer {
+        color: #0F1113;
     }
 
     .floating-exec-card:hover .exec-card-footer i {
@@ -462,7 +467,7 @@ declare(strict_types=1);
                                 Capacitar y asesorar a profesionales y empresas con metodologías avanzadas de gestión, ingeniería de costos, control contractual y BIM para elevar los estándares de la industria.
                             </p>
                         </div>
-                        <div class="pt-3 border-top border-light-subtle d-flex align-items-center text-warning fw-bold small exec-card-footer">
+                        <div class="pt-3 border-top border-light-subtle d-flex align-items-center fw-bold small exec-card-footer">
                             <span>Impacto Técnico Transformador</span>
                             <i class="fa-solid fa-arrow-right ms-auto"></i>
                         </div>
@@ -482,7 +487,7 @@ declare(strict_types=1);
                                 Ser reconocidos como el centro de consultoría y capacitación técnica referente en el país, destacado por la calidad de nuestra plana docente y la efectividad de nuestras soluciones.
                             </p>
                         </div>
-                        <div class="pt-3 border-top border-light-subtle d-flex align-items-center text-warning fw-bold small exec-card-footer">
+                        <div class="pt-3 border-top border-light-subtle d-flex align-items-center fw-bold small exec-card-footer">
                             <span>Liderazgo &amp; Reconocimiento</span>
                             <i class="fa-solid fa-arrow-right ms-auto"></i>
                         </div>
@@ -508,7 +513,7 @@ declare(strict_types=1);
                                 <span class="pilar-badge-pill"><i class="fa-solid fa-check text-warning me-1"></i> Integridad y Transparencia</span>
                             </div>
                         </div>
-                        <div class="pt-3 border-top border-light-subtle d-flex align-items-center text-warning fw-bold small mt-3 exec-card-footer">
+                        <div class="pt-3 border-top border-light-subtle d-flex align-items-center fw-bold small mt-3 exec-card-footer">
                             <span>Cultura de Calidad Total</span>
                             <i class="fa-solid fa-arrow-right ms-auto"></i>
                         </div>

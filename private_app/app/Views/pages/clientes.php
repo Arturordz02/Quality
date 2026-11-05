@@ -170,7 +170,7 @@ declare(strict_types=1);
         font-family: var(--font-heading);
         font-size: 1.35rem;
         font-weight: 800;
-        color: #94a3b8;
+        color: #334155;
         line-height: 1;
     }
 

@@ -711,7 +711,7 @@ body {
                         <h3 class="fw-bold font-montserrat text-dark fs-4 mb-0 animate__animated animate__fadeInUp animate__delay-1s">Cursos Ejecutivos Más Destacados</h3>
                         <p class="text-muted small mb-0">Programas con apertura de inscripciones y diploma</p>
                     </div>
-                    <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill font-montserrat fw-semibold">
+                    <span class="badge bg-light text-dark border px-3 py-2 rounded-pill font-montserrat fw-semibold">
                         <i class="fa-solid fa-layer-group text-dark me-1"></i> <?= (int)$coursesCount ?> Cursos Disponibles
                     </span>
                 </div>

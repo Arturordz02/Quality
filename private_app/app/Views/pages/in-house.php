@@ -94,12 +94,12 @@ $clientLogos = [
                         </p>
                         <div class="d-flex align-items-center gap-3 pt-2">
                             <div class="inhouse-stat-box">
-                                <span class="inhouse-stat-num text-warning">+25</span>
+                                <span class="inhouse-stat-num">+25</span>
                                 <span class="inhouse-stat-label">Años de experiencia combinada</span>
                             </div>
                             <div class="vr mx-2 text-muted opacity-25"></div>
                             <div class="inhouse-stat-box">
-                                <span class="inhouse-stat-num text-warning">+1,500</span>
+                                <span class="inhouse-stat-num">+1,500</span>
                                 <span class="inhouse-stat-label">Profesionales capacitados</span>
                             </div>
                         </div>
