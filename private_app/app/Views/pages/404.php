@@ -97,6 +97,33 @@ declare(strict_types=1);
         color: #ffffff;
         transform: translateY(-2px);
     }
+    .btn-gold:focus-visible,
+    .btn-outline-light-custom:focus-visible {
+        outline: 3px solid #e5a813;
+        outline-offset: 3px;
+    }
+    @media (max-width: 575.98px) {
+        .error-section {
+            padding: 50px 1rem;
+        }
+        .error-card {
+            padding: 35px 20px;
+        }
+        .error-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .error-actions {
+            flex-direction: column;
+            gap: 12px;
+        }
+        .btn-gold,
+        .btn-outline-light-custom {
+            width: 100%;
+            justify-content: center;
+        }
+    }
 </style>
 
 <main class="error-section">

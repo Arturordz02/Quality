@@ -219,8 +219,8 @@ declare(strict_types=1);
         }
 
         .linkedin-author-badge {
-            font-size: 0.76rem;
-            color: #64748b;
+            font-size: 0.78rem;
+            color: #475569;
             font-weight: 600;
         }
 
@@ -239,9 +239,9 @@ declare(strict_types=1);
         }
 
         .linkedin-article-desc {
-            font-size: 0.84rem;
-            color: #64748b;
-            line-height: 1.5;
+            font-size: 0.88rem;
+            color: #334155;
+            line-height: 1.6;
             margin-bottom: 1.15rem;
             flex-grow: 1;
         }
@@ -290,6 +290,62 @@ declare(strict_types=1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+        }
+
+        /* Focus visible accesible para elementos interactivos */
+        .podcast-card:focus-visible,
+        .podcast-btn-spotify:focus-visible,
+        .linkedin-article-card:focus-visible,
+        .btn-linkedin-read:focus-visible,
+        .video-card-box a:focus-visible {
+            outline: 3px solid var(--accent-gold, #E5A813);
+            outline-offset: 3px;
+        }
+
+        /* Reglas Responsive y Legibilidad Optimizada */
+        @media (max-width: 991.98px) {
+            .media-hero-banner {
+                padding: 150px 1.25rem 65px 1.25rem;
+            }
+            .media-mission-card {
+                padding: 1.75rem 1.5rem;
+            }
+            .media-mission-icon {
+                font-size: 2.2rem;
+                right: 1.25rem;
+                top: 1.25rem;
+            }
+            .podcast-section-bg {
+                padding: 3.5rem 0;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .media-hero-banner {
+                padding: 120px 1rem 45px 1rem;
+            }
+            .media-mission-card {
+                padding: 1.5rem 1.15rem;
+            }
+            .media-mission-icon {
+                display: none;
+            }
+            .media-mission-text {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+            .podcast-card {
+                padding: 1.2rem 1rem;
+            }
+            .podcast-section-bg {
+                padding: 2.5rem 0;
+            }
+            .linkedin-article-card {
+                padding: 1.25rem 1rem;
+            }
+            .event-feature-box {
+                padding: 1.5rem 1.15rem;
+            }
         }
 
         </style>

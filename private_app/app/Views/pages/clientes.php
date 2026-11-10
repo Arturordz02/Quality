@@ -118,7 +118,7 @@ declare(strict_types=1);
     /* Grid de Servicios Realizados (10 Tarjetas) */
     .services-performed-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr));
         gap: 1.5rem;
         margin-top: 2rem;
     }
@@ -203,11 +203,72 @@ declare(strict_types=1);
     }
 
     .service-perf-desc {
-        font-size: 0.86rem;
-        color: #475569;
-        line-height: 1.55;
+        font-size: 0.88rem;
+        color: #334155;
+        line-height: 1.6;
         margin: 0;
         flex-grow: 1;
+    }
+
+    /* Focus visible accesible para elementos interactivos */
+    .clientes-hero-card:focus-visible,
+    .service-perf-card:focus-visible,
+    .trust-quote-card a:focus-visible {
+        outline: 3px solid var(--accent-gold, #E5A813);
+        outline-offset: 3px;
+    }
+
+    /* Reglas Responsive y Legibilidad Optimizada */
+    @media (max-width: 991.98px) {
+        .clientes-hero-banner {
+            padding: 150px 1.25rem 65px 1.25rem;
+        }
+        .trust-quote-card {
+            margin: -25px auto 1.75rem auto;
+            padding: 2.25rem 1.75rem;
+        }
+    }
+
+    @media (max-width: 575.98px) {
+        .clientes-hero-banner {
+            padding: 120px 1rem 45px 1rem;
+        }
+        .clientes-hero-card {
+            padding: 1.15rem 0.9rem;
+        }
+        .clientes-hero-icon {
+            width: 42px;
+            height: 42px;
+            font-size: 1.2rem;
+            margin-bottom: 0.65rem;
+        }
+        .clientes-hero-card-title {
+            font-size: 0.92rem;
+        }
+        .clientes-hero-card-desc {
+            font-size: 0.8rem;
+            line-height: 1.45;
+        }
+        .trust-quote-card {
+            margin: 0 auto 1.5rem auto;
+            padding: 1.75rem 1.15rem;
+            border-radius: 14px;
+        }
+        .trust-quote-icon {
+            font-size: 2rem;
+            margin-bottom: 0.85rem;
+        }
+        .trust-quote-text {
+            font-size: 0.98rem;
+            line-height: 1.75;
+        }
+        .services-performed-grid {
+            grid-template-columns: 1fr;
+            gap: 1.15rem;
+        }
+        .service-perf-card {
+            padding: 1.4rem 1.15rem;
+        }
     }
 </style>
 
