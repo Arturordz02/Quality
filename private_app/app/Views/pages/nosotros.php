@@ -399,6 +399,100 @@ declare(strict_types=1);
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(229, 168, 19, 0.25);
     }
+
+    /* Focus visible accesible para elementos interactivos */
+    .nosotros-hero-btn:focus-visible,
+    .exec-cta-contact-link:focus-visible,
+    .director-cert-badge:focus-visible {
+        outline: 3px solid var(--qcs-yellow, #E5A813);
+        outline-offset: 3px;
+    }
+
+    /* Reglas de Adaptación Responsive y Legibilidad Optimizada */
+    .stat-border-responsive {
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 991.98px) {
+        .nosotros-exec-hero {
+            padding: 150px 1.25rem 70px 1.25rem;
+        }
+        #mision-vision {
+            margin-top: 0 !important;
+        }
+        .stats-dark-strip {
+            padding: 2.25rem 1.5rem;
+        }
+        .stat-item-box {
+            padding: 1rem 0.5rem;
+        }
+        .stat-border-responsive {
+            border-right: none !important;
+        }
+        .stat-border-responsive:nth-child(odd) {
+            border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+        .stat-border-responsive:nth-child(1),
+        .stat-border-responsive:nth-child(2) {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1rem;
+        }
+        .stat-border-responsive:nth-child(3),
+        .stat-border-responsive:nth-child(4) {
+            padding-top: 1rem;
+        }
+        .exec-cta-banner {
+            padding: 2.75rem 1.75rem;
+        }
+    }
+
+    @media (max-width: 575.98px) {
+        .nosotros-exec-hero {
+            padding: 120px 1rem 50px 1rem;
+        }
+        .nosotros-hero-badge {
+            font-size: 0.76rem;
+            padding: 0.4rem 0.95rem;
+        }
+        .floating-exec-card {
+            padding: 1.6rem 1.25rem;
+        }
+        .exec-card-icon-wrap {
+            width: 54px;
+            height: 54px;
+            font-size: 1.45rem;
+            margin-bottom: 1rem;
+        }
+        .stats-dark-strip {
+            padding: 1.75rem 1rem;
+        }
+        .stat-number {
+            font-size: 1.85rem;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+        }
+        .director-profile-card {
+            padding: 1.5rem 1.15rem;
+        }
+        .director-img-container {
+            width: 110px;
+            height: 110px;
+        }
+        .diff-feature-item {
+            padding: 1.15rem 1rem;
+            gap: 0.85rem;
+        }
+        .diff-check-icon {
+            width: 38px;
+            height: 38px;
+            font-size: 1rem;
+        }
+        .exec-cta-banner {
+            padding: 2rem 1.25rem;
+            text-align: center;
+        }
+    }
 </style>
 
 <main>
@@ -533,7 +627,7 @@ declare(strict_types=1);
                 <div class="row g-4 text-center align-items-center">
                     
                     <!-- Métrica 1 -->
-                    <div class="col-lg-3 col-6 border-end border-white border-opacity-10">
+                    <div class="col-lg-3 col-6 stat-border-responsive">
                         <div class="stat-item-box">
                             <div class="stat-icon-wrap"><i class="fa-solid fa-calendar-check"></i></div>
                             <div class="stat-number">+25</div>
@@ -542,7 +636,7 @@ declare(strict_types=1);
                     </div>
 
                     <!-- Métrica 2 -->
-                    <div class="col-lg-3 col-6 border-end border-white border-opacity-10">
+                    <div class="col-lg-3 col-6 stat-border-responsive">
                         <div class="stat-item-box">
                             <div class="stat-icon-wrap"><i class="fa-solid fa-user-graduate"></i></div>
                             <div class="stat-number">+1,500</div>
@@ -551,7 +645,7 @@ declare(strict_types=1);
                     </div>
 
                     <!-- Métrica 3 -->
-                    <div class="col-lg-3 col-6 border-end border-white border-opacity-10">
+                    <div class="col-lg-3 col-6 stat-border-responsive">
                         <div class="stat-item-box">
                             <div class="stat-icon-wrap"><i class="fa-solid fa-hard-hat"></i></div>
                             <div class="stat-number">100%</div>
@@ -560,7 +654,7 @@ declare(strict_types=1);
                     </div>
 
                     <!-- Métrica 4 -->
-                    <div class="col-lg-3 col-6">
+                    <div class="col-lg-3 col-6 stat-border-responsive">
                         <div class="stat-item-box">
                             <div class="stat-icon-wrap"><i class="fa-solid fa-diagram-project"></i></div>
                             <div class="stat-number">+10</div>

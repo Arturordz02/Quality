@@ -247,6 +247,62 @@ declare(strict_types=1);
         padding: 1.15rem 1.25rem;
         margin-top: 1.25rem;
     }
+
+    /* Focus visible accesible para elementos interactivos */
+    .legal-nav-item:focus-visible,
+    .legal-corp-card a:focus-visible,
+    .legal-clause-card a:focus-visible {
+        outline: 3px solid var(--accent-gold, #E5A813);
+        outline-offset: 3px;
+    }
+
+    /* Reglas Responsive y Legibilidad Optimizada */
+    @media (max-width: 991.98px) {
+        .legal-hero-banner {
+            padding: 150px 1.25rem 55px 1.25rem;
+        }
+        .legal-sidebar-sticky {
+            position: static !important;
+            margin-bottom: 2rem;
+        }
+        .legal-sidebar-card {
+            padding: 1.35rem 1.15rem;
+        }
+        .legal-nav-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 0.4rem;
+        }
+    }
+
+    @media (max-width: 575.98px) {
+        .legal-hero-banner {
+            padding: 120px 1rem 40px 1rem;
+        }
+        .legal-corp-card {
+            padding: 1.25rem 1rem;
+        }
+        .legal-nav-list {
+            grid-template-columns: 1fr;
+        }
+        .legal-clause-card {
+            padding: 1.4rem 1.15rem;
+            margin-bottom: 1.25rem;
+        }
+        .clause-header {
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.65rem;
+        }
+        .clause-num-badge {
+            width: 32px;
+            height: 32px;
+            font-size: 0.85rem;
+        }
+        .clause-title {
+            font-size: 1.05rem;
+        }
+    }
 </style>
 
 <main>
