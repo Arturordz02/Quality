@@ -51,7 +51,7 @@ $showFloat = $showWhatsAppFloat ?? true;
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
     <!-- AOS (Animate On Scroll) -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
     
     <!-- Hoja de estilos principal del sitio -->
     <link rel="stylesheet" href="/styles.css?v=4.1">
@@ -106,14 +106,17 @@ $showFloat = $showWhatsAppFloat ?? true;
     <script src="/script.js?v=3.4"></script>
 
     <!-- AOS init -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             if (typeof AOS !== 'undefined') {
                 AOS.init({
                     duration: 800,
                     once: true,
-                    offset: 100
+                    offset: 100,
+                    disable: function() {
+                        return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    }
                 });
             }
         });

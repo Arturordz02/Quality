@@ -250,6 +250,35 @@ class Security {
     }
 
     /**
+     * Detecta de forma confiable si la petición actual se realiza sobre HTTPS.
+     * Solo evalúa X-Forwarded-Proto si proviene de un proxy de confianza configurado.
+     */
+    public static function isHttpsRequest(?array $config = null): bool {
+        if (!empty($_SERVER['HTTPS']) && strtolower((string)$_SERVER['HTTPS']) !== 'off') {
+            return true;
+        }
+        if ((int)($_SERVER['SERVER_PORT'] ?? 0) === 443) {
+            return true;
+        }
+
+        $cfg = $config ?? self::$config;
+        $trustProxy = !empty($cfg['security']['trust_proxy_headers']);
+        if (!$trustProxy) {
+            return false;
+        }
+
+        $trustedProxies = $cfg['security']['trusted_proxies'] ?? ['127.0.0.1', '::1'];
+        $remoteAddr = $_SERVER['REMOTE_ADDR'] ?? '';
+        $cleanRemoteAddr = filter_var($remoteAddr, FILTER_VALIDATE_IP) ? $remoteAddr : '';
+        if ($cleanRemoteAddr === '' || !in_array($cleanRemoteAddr, $trustedProxies, true)) {
+            return false;
+        }
+
+        $forwardedProto = strtolower(trim((string)($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '')));
+        return $forwardedProto === 'https';
+    }
+
+    /**
      * Inicia de forma segura la sesión PHP si aún no está activa.
      */
     public static function startSession(): void {
@@ -258,6 +287,9 @@ class Security {
                 ini_set('session.use_strict_mode', '1');
                 ini_set('session.cookie_httponly', '1');
                 ini_set('session.cookie_samesite', 'Lax');
+                if (self::isHttpsRequest()) {
+                    ini_set('session.cookie_secure', '1');
+                }
             }
             @session_start();
         }
