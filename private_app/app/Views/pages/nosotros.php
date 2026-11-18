@@ -630,8 +630,8 @@ declare(strict_types=1);
                     <div class="col-lg-3 col-6 stat-border-responsive">
                         <div class="stat-item-box">
                             <div class="stat-icon-wrap"><i class="fa-solid fa-calendar-check"></i></div>
-                            <div class="stat-number">+25</div>
-                            <div class="stat-label">Años de Experiencia Combinada</div>
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Años de Experiencia</div>
                         </div>
                     </div>
 

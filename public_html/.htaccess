@@ -78,6 +78,7 @@
     RedirectMatch 403 (?i)^.*private_app.*$
 </IfModule>
 
+Options -Indexes
 ServerSignature Off
 
 # 5. NEGOCIACIÓN DE CONTENIDO WEBP AUTOMÁTICA (CON PRESERVACIÓN DE LOGO.PNG)

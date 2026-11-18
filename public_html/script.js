@@ -5,6 +5,14 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    const prefersReducedMotion = () => window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const escapeHtml = (str) => String(str ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+
     // --- 1. REFERENCIAS AL DOM ---
     const mainHeader = document.getElementById('mainHeader');
     const mobileToggleBtn = document.getElementById('mobileToggleBtn');
@@ -141,10 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     bsCollapse.hide();
                 }
             }
-            const floatingWidget = document.getElementById('whatsappFloatingWidget');
-            if (floatingWidget && floatingWidget.classList.contains('is-open')) {
-                floatingWidget.classList.remove('is-open');
-            }
         }
     });
 
@@ -155,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 bsCollapse.hide();
             }
         }
-    });
+    }, { passive: true });
 
     // --- 7. SELECTOR FLOTANTE MULTIPAÍS DE WHATSAPP (Zero Dead-Space) ---
     let floatingWidget = document.getElementById('whatsappFloatingWidget');
@@ -351,7 +355,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 stepperNodes.forEach(n => n.classList.remove('active'));
                 node.classList.add('active');
                 if (stepperCards[index]) {
-                    stepperCards[index].style.transform = 'translateY(-8px)';
+                    if (!prefersReducedMotion()) {
+                        stepperCards[index].style.transform = 'translateY(-8px)';
+                    }
                     stepperCards[index].style.borderColor = 'var(--accent-gold)';
                     stepperCards[index].style.boxShadow = '0 16px 36px rgba(15, 52, 96, 0.16)';
                 }
@@ -369,7 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 stepperNodes.forEach(n => n.classList.remove('active'));
                 node.classList.add('active');
                 if (stepperCards[index]) {
-                    stepperCards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    stepperCards[index].scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'nearest' });
                 }
             });
         });
@@ -387,16 +393,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 9. GESTIÓN ASÍNCRONA DE FORMULARIOS (CONTACTO Y LIBRO DE RECLAMACIONES) ---
     
     // Función auxiliar para mostrar alertas animadas sin alterar el diseño existente
-    const showFormAlert = (containerEl, type, message, details = []) => {
+    const showFormAlert = (containerEl, type, message, details = [], isTrustedHtml = false) => {
         if (!containerEl) return;
         
         const iconClass = type === 'success' ? 'fa-check-circle text-success' : 'fa-exclamation-triangle text-danger';
         const alertClass = type === 'success' ? 'alert-success border-success' : 'alert-danger border-danger';
+        const safeMessage = isTrustedHtml ? String(message ?? '') : escapeHtml(message);
         
         let detailsHtml = '';
         if (details && details.length > 0) {
-            detailsHtml = '<ul class="mb-0 mt-2 ps-3 small text-start">' + 
-                details.map(err => `<li>${err}</li>`).join('') + 
+            detailsHtml = '<ul class="mb-0 mt-2 ps-3 small text-start">' +
+                details.map(err => `<li>${escapeHtml(err)}</li>`).join('') +
                 '</ul>';
         }
 
@@ -405,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="d-flex align-items-start gap-3">
                     <i class="fas ${iconClass} fs-4 mt-1"></i>
                     <div class="flex-grow-1">
-                        <div class="fw-semibold">${message}</div>
+                        <div class="fw-semibold">${safeMessage}</div>
                         ${detailsHtml}
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
@@ -413,7 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         containerEl.style.display = 'block';
-        containerEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        containerEl.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'nearest' });
     };
 
     const toggleButtonLoading = (btnEl, isLoading, loadingText = '') => {
@@ -631,12 +638,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = await response.json();
 
                 if (response.ok && data.success) {
-                    const codeBadge = data.claim_code ? `<div class="mt-2 p-2 bg-light rounded border border-success text-dark font-monospace fw-bold small"><i class="fas fa-ticket-alt me-1 text-success"></i> Código de Seguimiento: ${data.claim_code}</div>` : '';
+                    const safeMsg = escapeHtml(data.message || 'Su registro en el Libro de Reclamaciones ha sido enviado con éxito.');
+                    const codeBadge = data.claim_code ? `<div class="mt-2 p-2 bg-light rounded border border-success text-dark font-monospace fw-bold small"><i class="fas fa-ticket-alt me-1 text-success"></i> Código de Seguimiento: ${escapeHtml(data.claim_code)}</div>` : '';
                     const successMessage = `
-                        <div>${data.message || 'Su registro en el Libro de Reclamaciones ha sido enviado con éxito.'}</div>
+                        <div>${safeMsg}</div>
                         ${codeBadge}
                     `;
-                    showFormAlert(claimAlert, 'success', successMessage);
+                    showFormAlert(claimAlert, 'success', successMessage, [], true);
                     claimForm.reset();
                 } else {
                     const serverErrors = data.errors ? Object.values(data.errors) : [];
@@ -681,10 +689,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span>Términos y Privacidad</span>
             </div>
             <div class="qcs-terms-body">
-                Al navegar en este sitio web, usted acepta nuestros 
-                <a href="${termsUrl}" target="_blank" rel="noopener">Términos y Condiciones</a> 
-                y el tratamiento de datos conforme a nuestra 
-                <a href="${termsUrl}#clausula-6" target="_blank" rel="noopener">Política de Privacidad</a>.
+                Al navegar en este sitio web, usted acepta nuestros
+                <a href="${termsUrl}" target="_blank" rel="noopener noreferrer">Términos y Condiciones</a>
+                y el tratamiento de datos conforme a nuestra
+                <a href="${termsUrl}#clausula-6" target="_blank" rel="noopener noreferrer">Política de Privacidad</a>.
             </div>
             <div class="qcs-terms-actions">
                 <button type="button" id="qcsBtnAcceptTerms" class="qcs-terms-btn-accept">Aceptar</button>
@@ -702,7 +710,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
         requestAnimationFrame(syncBannerHeight);
-        window.addEventListener('resize', syncBannerHeight);
+        window.addEventListener('resize', syncBannerHeight, { passive: true });
 
         // Cierre y persistencia de preferencia
         const closeBanner = (accepted) => {
@@ -911,13 +919,17 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                         }, 2500);
                     } else {
-                        const errorMsg = (result.errors && Object.values(result.errors).join('<br>')) || result.error || result.message || 'Error al procesar la solicitud.';
-                        throw new Error(errorMsg);
+                        const errorHtml = (result.errors && Object.values(result.errors).map(escapeHtml).join('<br>'))
+                            || escapeHtml(result.error || result.message || 'Error al procesar la solicitud.');
+                        const errObj = new Error('QCS_FORM_ERROR');
+                        errObj.safeHtml = errorHtml;
+                        throw errObj;
                     }
                 } catch (error) {
                     if (formFeedback) {
                         formFeedback.className = 'alert alert-danger py-2 px-3 small mb-3';
-                        formFeedback.innerHTML = `<i class="fa-solid fa-triangle-exclamation me-2"></i>${error.message || 'Ocurrió un error. Por favor comunícate por WhatsApp.'}`;
+                        const feedbackHtml = error.safeHtml || escapeHtml(error.message || 'Ocurrió un error. Por favor comunícate por WhatsApp.');
+                        formFeedback.innerHTML = `<i class="fa-solid fa-triangle-exclamation me-2"></i>${feedbackHtml}`;
                     }
                 } finally {
                     if (submitBtn) submitBtn.disabled = false;
